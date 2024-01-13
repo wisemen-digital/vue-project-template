@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { useForm } from 'formango'
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 
-import { useTypedRouteParams } from '@/composables/core'
-import { resetPasswordForm } from '@/models'
-import { useResetPassword } from '@/modules/auth/api'
-import { mapResetPasswordFormToResetPasswordRequestDto } from '@/transformers'
-import { mapApiErrors } from '@/utils/api.util'
+import { useTypedRouteParams } from '@/composables/core/useTypedRouteParams.ts'
+import { resetPasswordForm } from '@/models/auth/forms'
+import { useResetPassword } from '@/modules/auth/api/resetPassword.post.ts'
+import AuthPage from '@/modules/auth/components/AuthPage.vue'
+import { mapResetPasswordFormToResetPasswordRequestDto } from '@/transformers/auth.transformer.ts'
+import { mapApiErrors } from '@/utils/api.util.ts'
 
 const hasPasswordBeenReset = ref<boolean>(false)
 
@@ -19,39 +23,38 @@ const { email } = router.query
 const { execute: resetPassword } = useResetPassword()
 
 const description = computed<string>(() => {
-  if (hasPasswordBeenReset.value)
-    return t('auth.features.your_password_has_been_reset_you_can')
+	if (hasPasswordBeenReset.value) {
+		return t('auth.features.your_password_has_been_reset_you_can')
+	}
 
-  return t('auth.features.enter_your_new_password_below')
+	return t('auth.features.enter_your_new_password_below')
 })
 
 onSubmitForm(async ({ password }) => {
-  try {
-    await resetPassword({
-      body: mapResetPasswordFormToResetPasswordRequestDto({
-        email: email as string,
-        password,
-        token,
-      }),
-    })
+	try {
+		await resetPassword({
+			body: mapResetPasswordFormToResetPasswordRequestDto({
+				email: email as string,
+				password,
+				token,
+			}),
+		})
 
-    hasPasswordBeenReset.value = true
-  }
-  catch (error) {
-    form.addErrors(mapApiErrors(error))
-  }
+		hasPasswordBeenReset.value = true
+	} catch (error) {
+		form.addErrors(mapApiErrors(error))
+	}
 })
 </script>
 
 <template>
-  <AuthPage
-    :title="t('common.reset_password')"
-    :description="description"
-  >
-    <ResetPasswordForm
-      v-if="!hasPasswordBeenReset"
-      :form="form"
-    />
-  </AuthPage>
+	<AuthPage
+		:description="description"
+		:title="t('common.reset_password')"
+	>
+		<ResetPasswordForm
+			v-if="!hasPasswordBeenReset"
+			:form="form"
+		/>
+	</AuthPage>
 </template>
-@/utils/api.util

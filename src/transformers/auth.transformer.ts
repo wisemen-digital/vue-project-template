@@ -1,59 +1,51 @@
+import type { CurrentUser, CurrentUserResponseDto } from '@/models/auth/currentUser.model.ts'
 import type {
-  CurrentUser,
-  CurrentUserResponseDto,
-  ForgotPasswordForm,
-  ForgotPasswordRequestDto,
-  LoginForm,
-  LoginRequestDto,
-  ResetPasswordForm,
-  ResetPasswordRequestDto,
-} from '@/models'
+	ForgotPasswordForm,
+	ForgotPasswordRequestDto,
+	LoginForm,
+	LoginRequestDto,
+	ResetPasswordForm,
+	ResetPasswordRequestDto,
+} from '@/models/auth/forms'
 
 export function mapLoginFormToLoginRequestDto(data: LoginForm): LoginRequestDto {
-  const { email, password } = data
+	const { email, password } = data
 
-  return {
-    username: email,
-    password,
-  }
+	return {
+		username: email,
+		password,
+	}
 }
 
 export function mapForgotPasswordFormToForgotPasswordRequestDto(data: ForgotPasswordForm): ForgotPasswordRequestDto {
-  const { email } = data
+	const { email } = data
 
-  return {
-    email,
-  }
+	return {
+		email,
+	}
 }
 
-export function mapResetPasswordFormToResetPasswordRequestDto(data: ResetPasswordForm & { token: string, email: string }): ResetPasswordRequestDto {
-  const {
-    token,
-    email,
-    password,
-  } = data
+export function mapResetPasswordFormToResetPasswordRequestDto(
+	data: ResetPasswordForm & { token: string; email: string }
+): ResetPasswordRequestDto {
+	const { token, email, password } = data
 
-  return {
-    token,
-    email,
-    password,
-    password_confirmation: password,
-  }
+	return {
+		token,
+		email,
+		password,
+		password_confirmation: password,
+	}
 }
 
 export function mapCurrentUserResponseDtoToCurrentUser(data: CurrentUserResponseDto): CurrentUser {
-  const {
-    id,
-    email,
-    first_name: firstName,
-    last_name: lastName,
-  } = data
+	const { id, email, first_name: firstName, last_name: lastName } = data
 
-  return {
-    id,
-    email,
-    firstName,
-    lastName,
-    fullName: `${firstName} ${lastName}`,
-  }
+	return {
+		id,
+		email,
+		firstName,
+		lastName,
+		fullName: `${firstName} ${lastName}`,
+	}
 }

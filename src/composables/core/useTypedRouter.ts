@@ -1,30 +1,27 @@
 import type { Router } from 'vue-router'
 import { useRouter } from 'vue-router'
 
-import type {
-  RouteLocationTyped,
-  Routes,
-} from '@/plugins/router'
+import type { RouteLocationTyped, Routes } from '@/plugins/router'
 
 type UseTypedRouterReturnType = Omit<Router, 'push' | 'replace'> & {
-  push: <T extends keyof Routes>(to: RouteLocationTyped<T>) => Promise<void>
-  replace: <T extends keyof Routes>(to: RouteLocationTyped<T>) => Promise<void>
+	push: <T extends keyof Routes>(to: RouteLocationTyped<T>) => Promise<void>
+	replace: <T extends keyof Routes>(to: RouteLocationTyped<T>) => Promise<void>
 }
 
 export function useTypedRouter(): UseTypedRouterReturnType {
-  const router = useRouter()
-  
-  const push = async (to: RouteLocationTyped<keyof Routes>): Promise<void> => {
-    await router.push(to)
-  }
-  
-  const replace = async (to: RouteLocationTyped<keyof Routes>): Promise<void> => {
-    await router.replace(to)
-  }
-  
-  return {
-    ...router,
-    push,
-    replace,
-  }
+	const router = useRouter()
+
+	const push = async (to: RouteLocationTyped<keyof Routes>): Promise<void> => {
+		await router.push(to)
+	}
+
+	const replace = async (to: RouteLocationTyped<keyof Routes>): Promise<void> => {
+		await router.replace(to)
+	}
+
+	return {
+		...router,
+		push,
+		replace,
+	}
 }

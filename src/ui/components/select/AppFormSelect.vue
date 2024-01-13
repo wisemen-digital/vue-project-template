@@ -6,52 +6,51 @@ import { generateUuid } from '@/ui/utils'
 
 import type { Props as AppSelectProps } from './AppSelect.vue'
 
-export interface Props<T extends SelectValue | SelectValue[]>
-  extends Omit<AppSelectProps<T>, 'isInvalid'> {
-  /**
-   * The error messages associated with the component, if any.
-   * It should be an object with an "_errors" property containing an array of strings.
-   */
-  errors?: z.ZodFormattedError<string> | undefined | null
+export interface Props<T extends SelectValue | SelectValue[]> extends Omit<AppSelectProps<T>, 'isInvalid'> {
+	/**
+	 * The error messages associated with the component, if any.
+	 * It should be an object with an "_errors" property containing an array of strings.
+	 */
+	errors?: z.ZodFormattedError<string> | undefined | null
 
-  /**
-   * The label to be displayed above the component.
-   */
-  label?: string | null
+	/**
+	 * The label to be displayed above the component.
+	 */
+	label?: string | null
 
-  /**
-   * Extra information to be displayed below the input.
-   */
-  description?: string | null
+	/**
+	 * Extra information to be displayed below the input.
+	 */
+	description?: string | null
 
-  /**
-   * Determines if the component has emitted a `blur` event.
-   */
-  isTouched: boolean
+	/**
+	 * Determines if the component has emitted a `blur` event.
+	 */
+	isTouched: boolean
 
-  /**
-   * Determines if the select is required.
-   */
-  isRequired?: boolean
+	/**
+	 * Determines if the select is required.
+	 */
+	isRequired?: boolean
 
-  placeholder?: string | null
+	placeholder?: string | null
 }
 
 const props = withDefaults(defineProps<Props<T>>(), {
-  errors: null,
-  label: null,
-  description: null,
-  isRequired: false,
-  placeholder: null,
+	errors: null,
+	label: null,
+	description: null,
+	isRequired: false,
+	placeholder: null,
 })
 
 const emit = defineEmits<{
-  (event: 'update:filter', value: string): void
-  (event: 'scroll:bottom'): void
+	(event: 'update:filter', value: string): void
+	(event: 'scroll:bottom'): void
 }>()
 
 const value = defineModel<T>({
-  required: true,
+	required: true,
 })
 
 const id = `app-form-select-${generateUuid()}`
@@ -63,54 +62,54 @@ const id = `app-form-select-${generateUuid()}`
 const attrs = useAttrs()
 
 const isInvalid = computed<boolean>(() => {
-  const { errors, isTouched } = props
+	const { errors, isTouched } = props
 
-  return isTouched && errors != null
+	return isTouched && errors != null
 })
 </script>
 
 <template>
-  <div :class="attrs.class">
-    <AppFormLabel
-      v-if="label !== null"
-      :id="id"
-      :is-disabled="isDisabled ?? false"
-      :is-invalid="isInvalid"
-      :is-required="isRequired"
-      :label="label"
-    />
+	<div :class="attrs.class">
+		<AppFormLabel
+			v-if="label !== null"
+			:id="id"
+			:is-disabled="isDisabled ?? false"
+			:is-invalid="isInvalid"
+			:is-required="isRequired"
+			:label="label"
+		/>
 
-    <AppSelect
-      :id="id"
-      v-model="value"
-      v-bind="{
-        ...(props as any),
-        ...attrs,
-        class: undefined,
-      }"
-      :is-invalid="isInvalid"
-      :placeholder="placeholder"
-      @scroll:bottom="emit('scroll:bottom')"
-      @update:filter="emit('update:filter', $event)"
-    >
-      <template #left>
-        <slot name="left" />
-      </template>
+		<AppSelect
+			:id="id"
+			v-model="value"
+			v-bind="{
+				...(props as any),
+				...attrs,
+				class: undefined,
+			}"
+			:is-invalid="isInvalid"
+			:placeholder="placeholder"
+			@scroll:bottom="emit('scroll:bottom')"
+			@update:filter="emit('update:filter', $event)"
+		>
+			<template #left>
+				<slot name="left" />
+			</template>
 
-      <slot />
-    </AppSelect>
+			<slot />
+		</AppSelect>
 
-    <AppText
-      v-if="description !== null"
-      class="mt-1"
-      variant="caption"
-    >
-      {{ description }}
-    </AppText>
+		<AppText
+			v-if="description !== null"
+			class="mt-1"
+			variant="caption"
+		>
+			{{ description }}
+		</AppText>
 
-    <AppFormError
-      :errors="errors"
-      :is-touched="isTouched"
-    />
-  </div>
+		<AppFormError
+			:errors="errors"
+			:is-touched="isTouched"
+		/>
+	</div>
 </template>
