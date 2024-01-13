@@ -1,7 +1,12 @@
 <script setup lang="ts" generic="T extends SelectValue | SelectValue[]">
+import { computed, useAttrs } from 'vue'
 import type { z } from 'zod'
 
-import type { SelectValue } from '@/ui/types'
+import AppText from '@/components/core/AppText.vue'
+import AppFormError from '@/ui/components/form-error/AppFormError.vue'
+import AppFormLabel from '@/ui/components/form-label/AppFormLabel.vue'
+import AppSelect from '@/ui/components/select/AppSelect.vue'
+import type { SelectValue } from '@/ui/types/select.type.ts'
 import { generateUuid } from '@/ui/utils'
 
 import type { Props as AppSelectProps } from './AppSelect.vue'
@@ -11,7 +16,7 @@ export interface Props<T extends SelectValue | SelectValue[]> extends Omit<AppSe
 	 * The error messages associated with the component, if any.
 	 * It should be an object with an "_errors" property containing an array of strings.
 	 */
-	errors?: z.ZodFormattedError<string> | undefined | null
+	errors?: z.ZodFormattedError<string> | null | undefined
 
 	/**
 	 * The label to be displayed above the component.

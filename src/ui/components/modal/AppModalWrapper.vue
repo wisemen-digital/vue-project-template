@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { FocusTrap } from 'focus-trap-vue'
+import { onErrorCaptured } from 'vue'
 
 interface Props {
 	/**

@@ -1,9 +1,11 @@
 <!-- eslint-disable-next-line vue/max-len -->
 <script setup lang="ts" generic="T extends InputType">
 import type { InputHTMLAttributes } from 'vue'
+import { ref, useAttrs } from 'vue'
+import { computed } from 'vue'
 
-import type { Icon } from '@/icons'
-import type { InputType, InputValue } from '@/ui/types'
+import AppIcon from '@/ui/components/icon/AppIcon.vue'
+import type { InputType, InputValue } from '@/ui/types/input.type.ts'
 
 import { input, inputIcon, inputWrapper } from './appInput.style'
 

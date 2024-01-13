@@ -1,7 +1,7 @@
-import type { UseMutationReturnType } from '@/composables/core'
-import { useMutation } from '@/composables/core'
-import { oAuthClient } from '@/libs/oAuth.lib'
-import type { LoginRequestDto } from '@/models'
+import type { UseMutationReturnType } from '@/composables/core/useMutation.ts'
+import { useMutation } from '@/composables/core/useMutation.ts'
+import { oAuthClient } from '@/libs/oAuth.lib.ts'
+import type { LoginRequestDto } from '@/models/auth/forms/loginRequestDto.model.ts'
 
 export function useLogin(): UseMutationReturnType<LoginRequestDto, void> {
 	return useMutation<LoginRequestDto, void>({

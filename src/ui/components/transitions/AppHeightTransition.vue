@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface Props {
 	duration?: number
 }
@@ -24,7 +26,7 @@ function handleEnter(el: Element): void {
 	element.style.visibility = ''
 	element.style.height = '0'
 
-	// eslint-disable-next-line no-unused-expressions
+	// eslint-disable-next-line no-unused-expressions,@typescript-eslint/no-unused-expressions
 	getComputedStyle(element).height
 
 	requestAnimationFrame(() => {
@@ -45,7 +47,7 @@ function handleLeave(el: Element): void {
 
 	element.style.height = height
 
-	// eslint-disable-next-line no-unused-expressions
+	// eslint-disable-next-line no-unused-expressions,@typescript-eslint/no-unused-expressions
 	getComputedStyle(element).height
 
 	requestAnimationFrame(() => {

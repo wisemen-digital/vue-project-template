@@ -1,9 +1,4 @@
-import type { ComponentPublicInstance, CSSProperties, Ref } from 'vue'
-
-export type ComponentProps = ComponentPublicInstance['$props']
-
-export type ModalId = number | string | symbol
-export type StyleValue = (CSSProperties | string)[] | CSSProperties | string
+import type { Ref } from 'vue'
 
 export type IgnoredKeys =
 	| '__v_isVNode'
@@ -27,11 +22,11 @@ type PickKeys<T extends object, TValue extends null | undefined> = NonNullable<
 type OptionalKeys<T extends object> = PickKeys<T, undefined>
 type RequiredKeys<T extends object> = Exclude<keyof T, OptionalKeys<T>>
 
-export interface Constructor<P = any> {
+export interface Constructor<P = never> {
 	__isFragment?: never
 	__isTeleport?: never
 	__isSuspense?: never
-	new (...args: any[]): { $props: P }
+	new (...args: never[]): { $props: P }
 }
 
 export type Attrs<TComponent> = Omit<
@@ -59,7 +54,7 @@ export interface UseModalReturnType<TComponent extends Record<string, unknown>> 
 	closeModal: () => void
 }
 
-export interface Modal extends UseModalOptions<any> {
+export interface Modal extends UseModalOptions<never> {
 	id: string
 	isOpen: boolean
 }

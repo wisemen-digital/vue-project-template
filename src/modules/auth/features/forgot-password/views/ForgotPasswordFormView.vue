@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { useForm } from 'formango'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { forgotPasswordForm } from '@/models/auth/forms'
+import { forgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model.ts'
 import { useForgotPassword } from '@/modules/auth/api/forgotPassword.post.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import ForgotPasswordReturnToLoginButton from '@/modules/auth/features/forgot-password/components/ForgotPasswordReturnToLoginButton.vue'
 import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.store.ts'
-import { mapForgotPasswordFormToForgotPasswordRequestDto } from '@/transformers/auth.transformer.ts'
 import { mapApiErrors } from '@/utils/api.util.ts'
 
 const forgotPasswordStore = useForgotPasswordStore()
@@ -34,7 +33,7 @@ const description = computed<string>(() => {
 onSubmitForm(async (data) => {
 	try {
 		await forgotPassword({
-			body: mapForgotPasswordFormToForgotPasswordRequestDto(data),
+			body: data,
 		})
 
 		hasResetPassword.value = true

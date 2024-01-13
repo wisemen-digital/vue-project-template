@@ -32,7 +32,7 @@ export function mapApiErrors<FormType, ResponseType>(
 	const { data } = response as { data: AxiosErrorData }
 	const { errors } = data
 
-	const mappedErrors = Object.entries(errors).reduce<z.ZodFormattedError<unknown>>(
+	return Object.entries(errors).reduce<z.ZodFormattedError<unknown>>(
 		(acc, [key]) => {
 			const keyAsCamelCase = snakeCaseToCamelCase(key)
 			const [mappedKey] = Object.entries(keyMapping).find(([_k, v]) => v === keyAsCamelCase) ?? []
@@ -46,6 +46,4 @@ export function mapApiErrors<FormType, ResponseType>(
 		},
 		{ _errors: [] }
 	)
-
-	return mappedErrors
 }

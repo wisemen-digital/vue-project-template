@@ -1,5 +1,5 @@
 import type { Component, Ref } from 'vue'
-import { computed, markRaw, reactive, ref } from 'vue'
+import { computed, h, markRaw, reactive, ref } from 'vue'
 
 import type {
 	Attrs,
@@ -39,8 +39,8 @@ export function useModal<TComponent extends Record<string, unknown>>(
 	async function createModal(attrs: Attrs<TComponent>): Promise<Ref<Modal>> {
 		const c = await options.component()
 
-		const component = computed<Component>(() =>
-			h(
+		const component = computed<Component>(() => {
+			return h(
 				c.default as Component,
 				reactive<Attrs<TComponent>>({
 					...attrs,
@@ -48,12 +48,12 @@ export function useModal<TComponent extends Record<string, unknown>>(
 					onClose: closeModal,
 				})
 			)
-		)
+		})
 
-		return ref<Modal>({
+		return ref<Modal>(<Modal>{
 			id: modalId,
 			isOpen: false,
-			component: markRaw(component) as any,
+			component: markRaw(component) as Component,
 		})
 	}
 
@@ -69,7 +69,7 @@ export function useModal<TComponent extends Record<string, unknown>>(
 
 	return {
 		modalId,
-		openModal: openModal as any,
+		openModal: openModal as UseModalReturnType<TComponent>['openModal'],
 		closeModal,
 	}
 }
