@@ -50,7 +50,7 @@ export function useTableQuery<T extends z.ZodType>({
 		},
 	})
 
-	const setSort = (key: string, direction: 'asc' | 'desc'): void => {
+	function setSort(key: string, direction: 'asc' | 'desc'): void {
 		sortState.value = {
 			column: key,
 			direction,

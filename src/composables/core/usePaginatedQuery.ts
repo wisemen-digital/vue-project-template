@@ -1,5 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/vue-query'
 import type { AxiosRequestConfig } from 'axios'
+import type { ComputedRef } from 'vue'
+import { computed } from 'vue'
 import { z } from 'zod'
 
 import { httpClient } from '@/libs'
@@ -64,7 +66,7 @@ export function usePaginatedQuery<T extends z.ZodType>({
 		},
 	})
 
-	const nextPage = async (): Promise<void> => {
+	async function nextPage(): Promise<void> {
 		if (isFetchingNextPage.value) {
 			return
 		}

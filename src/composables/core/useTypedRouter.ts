@@ -11,11 +11,11 @@ type UseTypedRouterReturnType = Omit<Router, 'push' | 'replace'> & {
 export function useTypedRouter(): UseTypedRouterReturnType {
 	const router = useRouter()
 
-	const push = async (to: RouteLocationTyped<keyof Routes>): Promise<void> => {
+	async function push(to: RouteLocationTyped<keyof Routes>): Promise<void> {
 		await router.push(to)
 	}
 
-	const replace = async (to: RouteLocationTyped<keyof Routes>): Promise<void> => {
+	async function replace(to: RouteLocationTyped<keyof Routes>): Promise<void> {
 		await router.replace(to)
 	}
 

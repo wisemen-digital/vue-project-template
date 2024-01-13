@@ -11,7 +11,7 @@ export interface Props extends /* @vue-ignore */ Omit<TextareaHTMLAttributes, 'd
 	 * The error messages associated with the component, if any.
 	 * It should be an object with an "_errors" property containing an array of strings.
 	 */
-	errors?: z.ZodFormattedError<string> | undefined | null
+	errors?: z.ZodFormattedError<string> | null | undefined
 
 	/**
 	 * The label to be displayed above the component.
@@ -38,7 +38,7 @@ export interface Props extends /* @vue-ignore */ Omit<TextareaHTMLAttributes, 'd
 	 * The resize property specifies whether or not an element is resizable by the user.
 	 * It can be set to none, both, horizontal or vertical:
 	 */
-	resize?: 'none' | 'vertical' | 'horizontal' | 'both' | 'block' | 'inline'
+	resize?: 'block' | 'both' | 'horizontal' | 'inline' | 'none' | 'vertical'
 
 	/**
 	 * The tailwind class to be applied to the textarea.

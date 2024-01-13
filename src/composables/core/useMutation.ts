@@ -1,5 +1,6 @@
 import { useMutation as useTanstackMutation, useQueryClient } from '@tanstack/vue-query'
 import type { AxiosError } from 'axios'
+import { computed } from 'vue'
 
 import type { QueryKeys } from '@/models'
 
@@ -87,7 +88,9 @@ export function useMutation<
 		},
 	})
 
-	const execute = async (params: RequestParams<TReqData, TParams>): Promise<TResData> => mutateAsync(params)
+	async function execute(params: RequestParams<TReqData, TParams>): Promise<TResData> {
+		return mutateAsync(params)
+	}
 
 	return {
 		data: computed<TResData extends any[] ? TResData[] : TResData | null>(() => data.value),

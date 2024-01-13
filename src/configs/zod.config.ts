@@ -4,7 +4,7 @@ import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
 
 const { t } = i18nPlugin.global
 
-const customErrorMap: z.ZodErrorMap = (issue, ctx) => {
+function customErrorMap(issue, ctx) {
 	const isInvalidTypeAndNull = issue.code === z.ZodIssueCode.invalid_type && issue.received === 'null'
 
 	const isInvalidDiscrimatorAndNull =

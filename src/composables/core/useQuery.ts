@@ -1,5 +1,6 @@
 import { useQuery as useTanstackQuery } from '@tanstack/vue-query'
 import type { MaybeRefOrGetter } from 'vue'
+import { computed } from 'vue'
 
 import type { QueryKeys } from '@/models'
 
@@ -76,11 +77,11 @@ export function useQuery<TResData>({
 		}),
 	})
 
-	const susp = async (): Promise<void> => {
+	async function susp(): Promise<void> {
 		await suspense()
 	}
 
-	const reftch = async (): Promise<void> => {
+	async function reftch(): Promise<void> {
 		await refetch()
 	}
 

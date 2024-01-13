@@ -1,4 +1,7 @@
 import type { Ref } from 'vue'
+import { watch } from 'vue'
+import { readonly } from 'vue'
+import { ref } from 'vue'
 
 interface UseDocumentTitleReturnType {
 	documentTitle: Readonly<Ref<string>>
@@ -11,11 +14,11 @@ const template = ref<string>('{title}')
 export function useDocumentTitle(): UseDocumentTitleReturnType {
 	const documentTitle = ref<string>(document.title)
 
-	const setDocumentTitle = (title: string): void => {
+	function setDocumentTitle(title: string): void {
 		documentTitle.value = title
 	}
 
-	const setTemplate = (newTemplate: string): void => {
+	function setTemplate(newTemplate: string): void {
 		if (!newTemplate.includes('{title}')) {
 			throw new Error('Template must include {title}')
 		}

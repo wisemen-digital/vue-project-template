@@ -35,7 +35,7 @@ export function useTable<T extends any[]>({
 		direction: 'asc',
 	})
 
-	const handleSort = (column: TableColumn<unknown>): void => {
+	function handleSort(column: TableColumn<unknown>): void {
 		if (!column.isSortable) {
 			return
 		}

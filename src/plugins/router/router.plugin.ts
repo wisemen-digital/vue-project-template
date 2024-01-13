@@ -38,18 +38,18 @@ export type RouteRecordTyped =
 	  })
 
 function setupRouteMiddlewareIncterceptor(router: Router): void {
-	const hasMiddleware = (
-		to: RouteRecordNormalized
-	): to is RouteRecordNormalized & {
+	function hasMiddleware(to: RouteRecordNormalized): to is RouteRecordNormalized & {
 		meta: {
 			middleware: RouteMiddleware[]
 		}
-	} => to.meta.middleware != null
+	} {
+		return to.meta.middleware != null
+	}
 
-	const handleRouteMiddlewares = async (
+	async function handleRouteMiddlewares(
 		to: RouteLocationNormalized,
 		from: RouteLocationNormalized
-	): Promise<RouteLocationRaw | undefined> => {
+	): Promise<RouteLocationRaw | undefined> {
 		const middlewares = to.matched.filter(hasMiddleware).flatMap(({ meta }) => meta.middleware)
 
 		for (const middleware of middlewares) {
