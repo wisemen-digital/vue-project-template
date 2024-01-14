@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { usePageLoader } from '@/composables/core'
+import { useRouter } from 'vue-router'
+
+import { usePageLoader } from '@/composables/core/page-loader/usePageLoader.ts'
 
 const router = useRouter()
 const { isLoading, setIsLoading } = usePageLoader()
@@ -7,36 +9,38 @@ const { isLoading, setIsLoading } = usePageLoader()
 let startLoadingTimeout: ReturnType<typeof setTimeout> | null = null
 
 router.beforeEach(() => {
-  if (startLoadingTimeout !== null)
-    clearTimeout(startLoadingTimeout)
+	if (startLoadingTimeout !== null) {
+		clearTimeout(startLoadingTimeout)
+	}
 
-  startLoadingTimeout = setTimeout(() => {
-    setIsLoading(true)
-  }, 100)
+	startLoadingTimeout = setTimeout(() => {
+		setIsLoading(true)
+	}, 100)
 })
 
 router.afterEach(() => {
-  if (startLoadingTimeout !== null)
-    clearTimeout(startLoadingTimeout)
+	if (startLoadingTimeout !== null) {
+		clearTimeout(startLoadingTimeout)
+	}
 
-  setIsLoading(false)
+	setIsLoading(false)
 })
 </script>
 
 <template>
-  <Transition
-    enter-active-class="duration-500"
-    leave-active-class="duration-500"
-    leave-to-class="opacity-0"
-  >
-    <div
-      v-if="isLoading"
-      class="fixed left-0 top-0 z-30 h-[2px] w-full"
-    >
-      <!-- eslint-disable-next-line tailwindcss/no-custom-classname -->
-      <div class="loader h-full w-1/2 bg-primary" />
-    </div>
-  </Transition>
+	<Transition
+		enter-active-class="duration-500"
+		leave-active-class="duration-500"
+		leave-to-class="opacity-0"
+	>
+		<div
+			v-if="isLoading"
+			class="fixed left-0 top-0 z-30 h-[2px] w-full"
+		>
+			<!-- eslint-disable-next-line tailwindcss/no-custom-classname -->
+			<div class="loader h-full w-1/2 bg-primary" />
+		</div>
+	</Transition>
 </template>
 
 <style scoped lang="scss">

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { Form } from 'formango'
+import { onUnmounted, watch } from 'vue'
 
-import { usePageLoader } from '@/composables/core'
+import { usePageLoader } from '@/composables/core/page-loader/usePageLoader.ts'
 
 interface Props {
-  form: Form<any>
+	form: Form<any>
 }
 
 const { form } = defineProps<Props>()
@@ -12,23 +13,23 @@ const { form } = defineProps<Props>()
 const { setIsLoading } = usePageLoader()
 
 watch(
-  () => form.isSubmitting,
-  (isSubmitting) => {
-    setIsLoading(isSubmitting)
-  },
+	() => form.isSubmitting,
+	(isSubmitting) => {
+		setIsLoading(isSubmitting)
+	}
 )
 
 onUnmounted(() => {
-  setIsLoading(false)
+	setIsLoading(false)
 })
 </script>
 
 <template>
-  <form
-    class="flex h-full w-full flex-1 flex-col @container/form-layout"
-    novalidate
-    @submit.prevent="form.submit"
-  >
-    <slot />
-  </form>
+	<form
+		class="flex h-full w-full flex-1 flex-col @container/form-layout"
+		novalidate
+		@submit.prevent="form.submit"
+	>
+		<slot />
+	</form>
 </template>

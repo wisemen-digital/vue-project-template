@@ -1,12 +1,14 @@
-import { oAuthClient } from '@/libs'
-import type { RouteMiddleware } from '@/models/core'
+import { oAuthClient } from '@/libs/oAuth.lib.ts'
+import type { RouteMiddleware } from '@/models/core/routeMiddleware.model.ts'
 
-export const guest: RouteMiddleware = () => {
-  const isLoggedIn = oAuthClient.isLoggedIn()
+export function guest(): RouteMiddleware | void {
+	const isLoggedIn = oAuthClient.isLoggedIn()
 
-  if (isLoggedIn) {
-    return {
-      name: 'index',
-    }
-  }
+	if (!isLoggedIn) {
+		return
+	}
+
+	return {
+		name: 'index',
+	}
 }

@@ -1,17 +1,15 @@
-type UseComponentEvents = () => Record<string, Function>
+import { useAttrs } from 'vue'
 
-export const useComponentEvents: UseComponentEvents = () => {
-  const attrs = useAttrs()
+type UseComponentEvents = () => Record<string, () => void>
 
-  const eventListeners = Object.entries(attrs).reduce<Record<string, Function>>(
-    (acc, [key, value]) => {
-      if (typeof value === 'function' && key.startsWith('on'))
-        acc[key] = value
+export function useComponentEvents(): UseComponentEvents {
+	const attrs = useAttrs()
 
-      return acc
-    },
-    {},
-  )
+	return Object.entries(attrs).reduce<Record<string, () => void>>((acc, [key, value]) => {
+		if (typeof value === 'function' && key.startsWith('on')) {
+			acc[key] = value
+		}
 
-  return eventListeners
+		return acc
+	}, {})
 }

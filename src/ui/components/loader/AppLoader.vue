@@ -1,16 +1,16 @@
 <template>
-  <svg viewBox="25 25 50 50">
-    <circle
-      class="h-full w-full"
-      cx="100%"
-      cy="100%"
-      fill="none"
-      r="20"
-      stroke="currentColor"
-      stroke-miterlimit="10"
-      stroke-width="2"
-    />
-  </svg>
+	<svg viewBox="25 25 50 50">
+		<circle
+			class="h-full w-full"
+			cx="100%"
+			cy="100%"
+			fill="none"
+			r="20"
+			stroke="currentColor"
+			stroke-miterlimit="10"
+			stroke-width="2"
+		/>
+	</svg>
 </template>
 
 <style scoped>
