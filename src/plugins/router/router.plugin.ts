@@ -8,7 +8,7 @@ import type {
 } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import type { RouteMiddleware } from '@/models/core/routeMiddleware.model.ts'
+import type { RouteMiddlewareParams, RouteMiddlewareReturnType } from '@/models/core/routeMiddleware.model.ts'
 import { routes } from '@/routes'
 
 import type { Routes } from './routes'
@@ -40,7 +40,7 @@ export type RouteRecordTyped =
 function setupRouteMiddlewareIncterceptor(router: Router): void {
 	function hasMiddleware(to: RouteRecordNormalized): to is RouteRecordNormalized & {
 		meta: {
-			middleware: RouteMiddleware[]
+			middleware: ((params: RouteMiddlewareParams) => RouteMiddlewareReturnType)[]
 		}
 	} {
 		return to.meta.middleware != null

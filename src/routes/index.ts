@@ -1,4 +1,6 @@
 import { auth } from '@/middlewares/auth.middleware.ts'
+import { authRoutes } from '@/modules/auth/routes'
+import { exampleRoutes } from '@/modules/example/routes'
 import type { RouteRecordTyped } from '@/plugins/router/router.plugin.ts'
 
 export const routes: RouteRecordTyped[] = [

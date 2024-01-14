@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { twMerge } from '@/libs'
+import { computed, useAttrs } from 'vue'
+
+import { twMerge } from '@/libs/twMerge.lib'
 
 interface Props {
 	variant: 'body' | 'caption' | 'heading' | 'hero' | 'subtext' | 'subtitle' | 'title'

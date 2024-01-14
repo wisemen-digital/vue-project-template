@@ -1,6 +1,6 @@
 import type { RouteRecordTyped } from '@/plugins/router/router.plugin.ts'
 
-export const routes: RouteRecordTyped[] = [
+export const exampleRoutes: RouteRecordTyped[] = [
 	{
 		path: 'example',
 		children: [

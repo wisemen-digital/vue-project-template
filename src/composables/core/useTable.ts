@@ -1,11 +1,12 @@
-import type { RendererElement, RendererNode, VNode } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import { computed, h, ref, type RendererElement, type RendererNode, type VNode } from 'vue'
 
 interface TableColumn<T> {
 	key: string
 	name: string
 	isSortable?: boolean
 	size?: string
-	component: (data: T) => VNode<RendererNode, RendererElement, { [key: string]: any }>
+	component: (data: T) => VNode<RendererNode, RendererElement, { [key: string]: unknown }>
 }
 
 interface SortState {
@@ -13,7 +14,7 @@ interface SortState {
 	direction: 'asc' | 'desc'
 }
 
-interface UseTableOptions<T extends any[]> {
+interface UseTableOptions<T extends unknown[]> {
 	data: ComputedRef<T> | Ref<T>
 	columns: TableColumn<T[number]>[]
 	rowComponent?: (data: T[number]) => VNode
@@ -24,7 +25,7 @@ interface UseTableReturnType {
 	table: ComputedRef<VNode>
 }
 
-export function useTable<T extends any[]>({
+export function useTable<T extends unknown[]>({
 	data,
 	columns,
 	rowComponent,

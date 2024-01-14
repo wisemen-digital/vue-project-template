@@ -1,10 +1,11 @@
+import type { ErrorMapCtx, ZodIssueOptionalMessage } from 'zod'
 import { z } from 'zod'
 
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
 
 const { t } = i18nPlugin.global
 
-function customErrorMap(issue, ctx) {
+function customErrorMap(issue: ZodIssueOptionalMessage, ctx: ErrorMapCtx): { message: string } {
 	const isInvalidTypeAndNull = issue.code === z.ZodIssueCode.invalid_type && issue.received === 'null'
 
 	const isInvalidDiscrimatorAndNull =

@@ -7,7 +7,7 @@ import AppForm from '@/components/core/AppForm.vue'
 import AppText from '@/components/core/AppText.vue'
 import AppTypedRouterLink from '@/components/core/AppTypedRouterLink.vue'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
-import type { loginForm } from '@/models/auth/forms'
+import type { loginForm } from '@/models/auth/forms/loginForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 import AppFormInput from '@/ui/components/input/AppFormInput.vue'
 

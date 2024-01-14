@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 interface Props {
 	message: string | null
 	status: number
@@ -18,6 +20,7 @@ const httpErrorMap = new Map<string, string>(
 	})
 )
 
+// eslint-disable-next-line no-console
 console.error(message)
 </script>
 

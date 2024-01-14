@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { Form } from 'formango'
+import { useI18n } from 'vue-i18n'
 
-import type { forgotPasswordForm } from '@/models'
+import type { forgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model'
 
 interface Props {
 	form: Form<typeof forgotPasswordForm>

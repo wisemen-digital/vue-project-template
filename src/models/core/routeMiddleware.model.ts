@@ -1,11 +1,11 @@
 import type { RouteLocationNormalized } from 'vue-router'
 
-import type { RouteLocationTyped } from '@/plugins/router/router.plugin.ts'
-import type { Routes } from '@/plugins/router/routes.ts'
+import type { RouteLocationTyped } from '@/plugins/router/router.plugin'
+import type { Routes } from '@/plugins/router/routes'
 
-type MaybePromise<T> = Promise<T> | T
-
-export type RouteMiddleware = (
-	to: RouteLocationNormalized,
+export type RouteMiddlewareParams = {
+	to: RouteLocationNormalized
 	from: RouteLocationNormalized
-) => MaybePromise<RouteLocationTyped<keyof Routes> | undefined>
+}
+
+export type RouteMiddlewareReturnType = RouteLocationTyped<keyof Routes> | undefined

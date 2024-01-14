@@ -1,7 +1,8 @@
 <script setup lang="ts" generic="T">
 import { AxiosError } from 'axios'
+import { watch } from 'vue'
 
-import type { UseQueryReturnType } from '@/composables/core'
+import type { UseQueryReturnType } from '@/composables/core/useQuery'
 
 interface Props {
 	queryFn: () => UseQueryReturnType<T>

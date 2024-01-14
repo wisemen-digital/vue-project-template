@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
 import { useTypedRouteParams } from '@/composables/core/useTypedRouteParams.ts'
-import { resetPasswordForm } from '@/models/auth/forms'
+import { resetPasswordForm } from '@/models/auth/forms/resetPasswordForm.model'
 import { useResetPassword } from '@/modules/auth/api/resetPassword.post.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import { mapResetPasswordFormToResetPasswordRequestDto } from '@/transformers/auth.transformer.ts'

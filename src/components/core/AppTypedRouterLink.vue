@@ -1,7 +1,8 @@
 <script setup lang="ts" generic="T extends keyof Routes">
 import type { RouteLocationNamedRaw } from 'vue-router'
 
-import type { RouteLocationTyped, Routes } from '@/plugins'
+import type { RouteLocationTyped } from '@/plugins/router/router.plugin'
+import type { Routes } from '@/plugins/router/routes'
 
 interface Props {
 	to: RouteLocationTyped<T>
