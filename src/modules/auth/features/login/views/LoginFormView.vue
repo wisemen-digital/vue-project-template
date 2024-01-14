@@ -13,7 +13,7 @@ import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.sto
 import { useLoginStore } from '@/modules/auth/stores/login.store.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer.ts'
-import { useToast } from '@/ui/composables'
+import { useToast } from '@/ui/composables/useToast.ts'
 
 const loginStore = useLoginStore()
 const authStore = useAuthStore()

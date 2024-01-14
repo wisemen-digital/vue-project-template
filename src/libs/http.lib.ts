@@ -1,6 +1,6 @@
 import { createHttpZodClient } from '@appwise/zod-http-client'
 
-import { useToast } from '@/ui/composables'
+import { useToast } from '@/ui/composables/useToast.ts'
 
 import { axios, unauthorizedAxios } from './axios.lib'
 

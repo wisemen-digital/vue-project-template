@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { useToast } from '@/ui/composables'
+import { computed } from 'vue'
+
+import AppText from '@/components/core/AppText.vue'
+import { useToast } from '@/ui/composables/useToast.ts'
 
 const { toast } = useToast()
 

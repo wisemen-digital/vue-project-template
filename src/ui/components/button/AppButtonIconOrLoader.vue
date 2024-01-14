@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import type { Icon } from '@/icons'
+import { computed } from 'vue'
+
+import type { Icon } from '@/icons/icon.type.ts'
+import AppIcon from '@/ui/components/icon/AppIcon.vue'
+import AppLoader from '@/ui/components/loader/AppLoader.vue'
 
 import type { ButtonProps } from './appButton.style'
 import { buttonIcon } from './appButton.style'

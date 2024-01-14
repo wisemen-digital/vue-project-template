@@ -37,7 +37,7 @@ export type RouteRecordTyped =
 			children: RouteRecordTyped[]
 	  })
 
-function setupRouteMiddlewareIncterceptor(router: Router): void {
+function setupRouteMiddlewareInterceptor(router: Router): void {
 	function hasMiddleware(to: RouteRecordNormalized): to is RouteRecordNormalized & {
 		meta: {
 			middleware: ((params: RouteMiddlewareParams) => RouteMiddlewareReturnType)[]
@@ -69,6 +69,6 @@ const router = createRouter({
 	routes: routes as RouteRecordRaw[],
 })
 
-setupRouteMiddlewareIncterceptor(router)
+setupRouteMiddlewareInterceptor(router)
 
 export const routerPlugin = router

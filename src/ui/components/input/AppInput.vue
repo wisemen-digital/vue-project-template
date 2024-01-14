@@ -4,6 +4,7 @@ import type { InputHTMLAttributes } from 'vue'
 import { ref, useAttrs } from 'vue'
 import { computed } from 'vue'
 
+import type { Icon } from '@/icons/icon.type.ts'
 import AppIcon from '@/ui/components/icon/AppIcon.vue'
 import type { InputType, InputValue } from '@/ui/types/input.type.ts'
 
@@ -46,7 +47,7 @@ export interface Props<T extends InputType> extends /* @vue-ignore */ Omit<Input
 	/**
 	 *
 	 */
-	dataMaska?: string | null
+	dataMasks?: string | null
 }
 
 const props = withDefaults(defineProps<Props<T>>(), {
@@ -57,6 +58,7 @@ const props = withDefaults(defineProps<Props<T>>(), {
 	isCompact: false,
 	iconLeft: null,
 	iconRight: null,
+	dataMasks: undefined,
 })
 
 const value = defineModel<InputValue<T>>({

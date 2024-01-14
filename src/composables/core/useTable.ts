@@ -53,12 +53,10 @@ export function useTable<T extends unknown[]>({
 	}
 
 	const gridTemplateColumns = computed<string>(() => {
-		const gridCols = columns.reduce((acc, column) => {
+		return columns.reduce((acc, column) => {
 			const colSpan = column.size ?? '1fr'
 			return `${acc} ${colSpan}`
 		}, '')
-
-		return gridCols
 	})
 
 	const tableComponent = computed<VNode>(() =>
