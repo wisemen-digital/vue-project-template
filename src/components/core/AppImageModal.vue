@@ -25,7 +25,7 @@ const { t } = useI18n()
 					icon-right="link"
 					variant="secondary"
 				>
-					{{ t('core.open_in_new_tab') }}
+					{{ t('components.image.open_in_new_tab') }}
 				</AppButton>
 			</div>
 

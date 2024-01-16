@@ -26,10 +26,10 @@ const { execute: forgotPassword } = useForgotPassword()
 
 const description = computed<string>(() => {
 	if (hasResetPassword.value) {
-		return t('auth.features.thank_you_within_a_few_minutes_you')
+		return t('auth.forgot_password.success_message')
 	}
 
-	return t('auth.features.dont_remember_your_password_enter_your_email')
+	return t('auth.forgot_password.forgot_your_password')
 })
 
 onSubmitForm(async (data) => {

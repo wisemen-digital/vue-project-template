@@ -30,14 +30,14 @@ const password = form.register('password')
 			<AppFormInput
 				v-bind="email"
 				:is-required="true"
-				:label="t('common.email')"
+				:label="t('form.fields.email')"
 				type="email"
 			/>
 
 			<AppFormInput
 				v-bind="password"
 				:is-required="true"
-				:label="t('common.password')"
+				:label="t('form.fields.password')"
 				type="password"
 			/>
 
@@ -48,13 +48,13 @@ const password = form.register('password')
 				}"
 			>
 				<AppText variant="subtext">
-					{{ t('auth.features.forgot_password') }}
+					{{ t('auth.login.forgot_password') }}
 				</AppText>
 			</AppTypedRouterLink>
 		</AppVerticalFormElementSpacer>
 
 		<AuthFormSubmitButton :form="form">
-			{{ t('auth.features.log_in') }}
+			{{ t('auth.login.log_in') }}
 		</AuthFormSubmitButton>
 	</AppForm>
 </template>

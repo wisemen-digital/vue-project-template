@@ -30,10 +30,10 @@ const router = useTypedRouter()
 
 const title = computed<string>(() => {
 	if (lastLoggedInUser.value === null) {
-		return t('auth.features.sign_in')
+		return t('auth.login.log_in')
 	}
 
-	return t('auth.features.welcome_back', {
+	return t('auth.login.welcome_back_name', {
 		name: lastLoggedInUser.value.firstName,
 	})
 })

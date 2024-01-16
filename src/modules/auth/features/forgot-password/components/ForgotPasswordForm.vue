@@ -24,7 +24,7 @@ const email = form.register('email', lastLoginAttemptEmail ?? undefined)
 		<AppFormInput
 			v-bind="email"
 			:is-required="true"
-			:label="t('common.email')"
+			:label="t('form.fields.email')"
 			type="email"
 		/>
 

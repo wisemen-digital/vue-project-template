@@ -4,12 +4,12 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
+import { useHandleApiError } from '@/composables/core/useHandleApiError'
 import { useTypedRouteParams } from '@/composables/core/useTypedRouteParams.ts'
 import { resetPasswordForm } from '@/models/auth/forms/resetPasswordForm.model'
 import { useResetPassword } from '@/modules/auth/api/resetPassword.post.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import { mapResetPasswordFormToResetPasswordRequestDto } from '@/transformers/auth.transformer.ts'
-import { mapApiErrors } from '@/utils/api.util.ts'
 
 import ResetPasswordForm from '../components/ResetPasswordForm.vue'
 
@@ -44,7 +44,7 @@ onSubmitForm(async ({ password }) => {
 
 		hasPasswordBeenReset.value = true
 	} catch (error) {
-		form.addErrors(mapApiErrors(error))
+		useHandleApiError(form, error)
 	}
 })
 </script>

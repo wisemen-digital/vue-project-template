@@ -1,22 +1,21 @@
 {
-	"auth.features.dont_remember_your_password_enter_your_email": "Don't remember your password? Enter your email address below.",
-	"auth.features.enter_your_new_password_below": "Enter your new password below.",
-	"auth.features.forgot_password": "Forgot password?",
-	"auth.features.invalid_email_or_password": "Invalid email or password.",
-	"auth.features.log_in": "Log in",
-	"auth.features.return_to_login": "Return to login",
-	"auth.features.send_link": "Send link",
-	"auth.features.sign_in": "Sign in",
-	"auth.features.sign_in_to_continue": "Sign in to continue",
-	"auth.features.thank_you_within_a_few_minutes_you": "Thank you, within a few minutes you will receive an e-mail containing a personal link. The link will allow you to enter a new password.",
-	"auth.features.welcome_back": "Welcome back, {name}",
-	"auth.features.your_password_has_been_reset_you_can": "Your password has been reset. You can now sign in with your new password.",
+	"auth.forgot_password.forgot_your_password": "Don't remember your password? Enter your email address below and we'll send you a link to reset it.",
+	"auth.forgot_password.return_to_login": "Return to login",
+	"auth.forgot_password.success_message": "Thank you for submitting your email. If your email is registered with us, you will receive a password reset link shortly.",
+	"auth.login.forgot_password": "Forgot password?",
+	"auth.login.log_in": "Log in",
+	"auth.login.welcome_back_name": "Welcome back, {name}",
 
-	"common.email": "Email",
-	"common.password": "Password",
-	"common.required": "Required",
-	"common.reset_password": "Reset password",
+	"components.image.open_in_new_tab": "Open in new tab",
 
-	"core.one_or_more_fields_are_invalid_please": "One or more fields are invalid. Please correct them in order to continue.",
-	"core.open_in_new_tab": "Open in new tab"
+	"error.bad_request": "Bad request",
+	"error.default_error": "Something went wrong. Please try again later.",
+	"error.forbidden": "Forbidden",
+	"error.internal_server_error": "Internal server error",
+	"error.resource_not_found": "Resource not found",
+	"error.unauthorized": "Unauthorized",
+	"error.validation_error": "One or more fields have errors. Please check and try again.",
+
+	"form.fields.email": "Email",
+	"form.fields.password": "Password"
 }

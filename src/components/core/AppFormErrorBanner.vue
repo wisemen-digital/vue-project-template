@@ -27,7 +27,7 @@ const { t } = useI18n()
 					class="ml-4 max-w-sm text-destructive"
 					variant="subtext"
 				>
-					{{ t('core.one_or_more_fields_are_invalid_please') }}
+					{{ t('error.validation_error') }}
 				</AppText>
 			</div>
 		</div>

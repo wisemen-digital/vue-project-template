@@ -3,7 +3,6 @@ import { computed, ref, useAttrs } from 'vue'
 import type { z } from 'zod'
 
 import AppText from '@/components/core/AppText.vue'
-import { Icon } from '@/icons/icon.type.ts'
 import AppButton from '@/ui/components/button/AppButton.vue'
 import AppFormError from '@/ui/components/form-error/AppFormError.vue'
 import AppFormLabel from '@/ui/components/form-label/AppFormLabel.vue'
@@ -125,7 +124,7 @@ function onTogglePassword(): void {
 					<AppButton
 						v-if="type === 'password'"
 						class="scale-[85%]"
-						:icon-left="isPasswordVisible ? Icon.EYE_SLASH : Icon.EYE"
+						:icon-left="isPasswordVisible ? 'eyeSlash' : 'eye'"
 						size="icon"
 						variant="ghost"
 						@click="onTogglePassword"
