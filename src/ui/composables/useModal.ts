@@ -69,7 +69,9 @@ export function useModal<TComponent extends Record<string, unknown>>(
 
 	return {
 		modalId,
-		openModal: openModal as UseModalReturnType<TComponent>['openModal'],
+		// TODO: Fix this type
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		openModal: openModal as any,
 		closeModal,
 	}
 }

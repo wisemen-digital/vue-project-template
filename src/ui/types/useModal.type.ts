@@ -44,13 +44,13 @@ export interface UseModalReturnType<TComponent extends Record<string, unknown>> 
 	modalId: string
 	openModal: Omit<Attrs<TComponent>, 'Symbol'> extends Record<string, never>
 		? // No params because there are no attributes
-		  () => void
+		  () => Promise<void>
 		: // Check if there are only optional attributes
 		RequiredKeys<Omit<Attrs<TComponent>, 'Symbol'>> extends Record<string, never>
 		? // If there are only optional attributes, then the parameter is optional
-		  (attrs?: Omit<Attrs<TComponent>, IgnoredKeys>) => void
+		  (attrs?: Omit<Attrs<TComponent>, IgnoredKeys>) => Promise<void>
 		: // If there are required attributes, then the parameter is required
-		  (attrs: Omit<Attrs<TComponent>, IgnoredKeys>) => void
+		  (attrs: Omit<Attrs<TComponent>, IgnoredKeys>) => Promise<void>
 	closeModal: () => void
 }
 
