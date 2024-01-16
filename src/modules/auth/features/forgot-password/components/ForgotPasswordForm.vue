@@ -28,7 +28,10 @@ const email = form.register('email', lastLoginAttemptEmail ?? undefined)
 			type="email"
 		/>
 
-		<AuthFormSubmitButton :form="form">
+		<AuthFormSubmitButton
+			:form="form"
+			:is-always-enabled="true"
+		>
 			{{ t('auth.features.send_link') }}
 		</AuthFormSubmitButton>
 	</AppForm>

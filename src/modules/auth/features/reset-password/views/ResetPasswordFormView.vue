@@ -11,6 +11,8 @@ import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import { mapResetPasswordFormToResetPasswordRequestDto } from '@/transformers/auth.transformer.ts'
 import { mapApiErrors } from '@/utils/api.util.ts'
 
+import ResetPasswordForm from '../components/ResetPasswordForm.vue'
+
 const hasPasswordBeenReset = ref<boolean>(false)
 
 const router = useRoute()

@@ -11,6 +11,8 @@ import ForgotPasswordReturnToLoginButton from '@/modules/auth/features/forgot-pa
 import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.store.ts'
 import { mapApiErrors } from '@/utils/api.util.ts'
 
+import ForgotPasswordForm from '../components/ForgotPasswordForm.vue'
+
 const forgotPasswordStore = useForgotPasswordStore()
 
 const { lastLoginAttemptEmail } = storeToRefs(forgotPasswordStore)

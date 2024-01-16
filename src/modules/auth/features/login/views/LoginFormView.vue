@@ -15,6 +15,8 @@ import { useAuthStore } from '@/stores/auth.store.ts'
 import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer.ts'
 import { useToast } from '@/ui/composables/useToast.ts'
 
+import LoginForm from '../components/LoginForm.vue'
+
 const loginStore = useLoginStore()
 const authStore = useAuthStore()
 const forgotPasswordStore = useForgotPasswordStore()

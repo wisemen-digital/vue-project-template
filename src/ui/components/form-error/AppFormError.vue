@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { z } from 'zod'
 
+import AppText from '@/components/core/AppText.vue'
+
+import AppIcon from '../icon/AppIcon.vue'
+import AppHeightTransition from '../transitions/AppHeightTransition.vue'
+
 interface Props {
 	errors?: z.ZodFormattedError<string> | null | undefined
 	isTouched?: boolean
