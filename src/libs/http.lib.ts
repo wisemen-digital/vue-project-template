@@ -1,6 +1,6 @@
 import { createHttpZodClient } from '@appwise/zod-http-client'
 
-import { useToast } from '@/ui/composables'
+import { useToast } from '@/ui/composables/useToast.ts'
 
 import { axios, unauthorizedAxios } from './axios.lib'
 
@@ -19,6 +19,7 @@ function onZodError({ url, method, error }: OnZodError): void {
 		showToastMessage(`${method.toUpperCase()} ${url} returned a malformed response.`)
 	}
 
+	// eslint-disable-next-line no-console
 	console.error(`${method.toUpperCase()} ${url} returned a malformed response\n\n`, error)
 }
 

@@ -7,13 +7,13 @@ import { useI18n } from 'vue-i18n'
 
 import { useTypedRouter } from '@/composables/core/useTypedRouter.ts'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
-import { loginForm } from '@/models/auth/forms'
+import { loginForm } from '@/models/auth/forms/loginForm.model'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.store.ts'
 import { useLoginStore } from '@/modules/auth/stores/login.store.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer.ts'
-import { useToast } from '@/ui/composables'
+import { useToast } from '@/ui/composables/useToast.ts'
 
 const loginStore = useLoginStore()
 const authStore = useAuthStore()

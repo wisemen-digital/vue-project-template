@@ -5,6 +5,7 @@ import { onUnmounted, watch } from 'vue'
 import { usePageLoader } from '@/composables/core/page-loader/usePageLoader.ts'
 
 interface Props {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	form: Form<any>
 }
 

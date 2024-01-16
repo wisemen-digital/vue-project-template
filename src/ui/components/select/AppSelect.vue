@@ -9,9 +9,11 @@ import {
 	ListboxOptions,
 } from '@headlessui/vue'
 import { Float } from '@headlessui-float/vue'
+import { computed, provide, ref, useSlots } from 'vue'
 
-import type { Icon } from '@/icons'
-import type { SelectValue } from '@/ui/types'
+import { Icon } from '@/icons/icon.type.ts'
+import AppIcon from '@/ui/components/icon/AppIcon.vue'
+import type { SelectValue } from '@/ui/types/select.type.ts'
 
 import { input, inputIcon, inputWrapper } from '../input/appInput.style'
 import { selectDropdown } from './appSelect.style'
@@ -120,14 +122,14 @@ const inputIconClasses = computed<string>(() =>
 const hasDefaultSlotContent = computed<boolean>(() => {
 	const defaultSlot = slots.default?.()
 
-	return defaultSlot != null && defaultSlot[0].children != null && (defaultSlot[0].children.length as number) > 0
+	return Boolean(defaultSlot && defaultSlot[0].children !== null && (defaultSlot[0].children.length as number) > 0)
 })
 
 const isMultiple = computed<boolean>(() => Array.isArray(value.value))
 
-const hasValue = computed<boolean>(() =>
-	isMultiple.value ? (value.value as unknown[]).length > 0 : value.value != null
-)
+const hasValue = computed<boolean>(() => {
+	return isMultiple.value ? (value.value as unknown[]).length > 0 : value.value != null
+})
 
 function onFocus(): void {
 	isFocused.value = true
@@ -212,7 +214,7 @@ provide('isFilterable', isFilterable)
 				<ComboboxButton class="absolute left-0 top-0 flex h-full w-full items-center justify-end bg-transparent p-3">
 					<AppIcon
 						class="h-3 w-3"
-						icon="chevronDown"
+						:icon="Icon.CHEVRON_DOWN"
 					/>
 				</ComboboxButton>
 
@@ -279,7 +281,7 @@ provide('isFilterable', isFilterable)
 
 					<AppIcon
 						class="h-3 w-3 shrink-0"
-						icon="chevronDown"
+						:icon="Icon.CHEVRON_DOWN"
 					/>
 				</div>
 			</ListboxButton>

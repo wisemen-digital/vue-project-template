@@ -2,6 +2,8 @@
 import { FocusTrap } from 'focus-trap-vue'
 import { onErrorCaptured } from 'vue'
 
+import { logError } from '@/utils/logger.util.ts'
+
 interface Props {
 	/**
 	 * Indicates whether the focus trap is currently active or inactive.
@@ -14,7 +16,7 @@ interface Props {
 const { disableFocusTrap = false } = defineProps<Props>()
 
 onErrorCaptured((err) => {
-	console.error(err)
+	logError(err)
 })
 </script>
 

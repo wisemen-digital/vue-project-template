@@ -4,8 +4,8 @@ import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import { z } from 'zod'
 
-import { httpClient } from '@/libs'
-import type { QueryKey } from '@/models'
+import { httpClient } from '@/libs/http.lib'
+import type { QueryKey } from '@/models/core/queryKey.model'
 
 export const meta = z.object({
 	currentPage: z.number(),
@@ -77,7 +77,7 @@ export function usePaginatedQuery<T extends z.ZodType>({
 	}
 
 	return {
-		data: computed<any>(() => data.value?.pages.flatMap((page) => page.data) ?? []),
+		data: computed<unknown>(() => data.value?.pages.flatMap((page) => page.data) ?? []),
 		meta: computed<z.infer<typeof meta> | null>(() => {
 			const pageLength = data.value?.pages.length ?? 1
 			const index = pageLength - 1

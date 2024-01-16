@@ -1,7 +1,14 @@
 <script setup lang="ts" generic="T extends InputType">
+import { computed, ref, useAttrs } from 'vue'
 import type { z } from 'zod'
 
-import type { InputType, InputValue } from '@/ui/types'
+import AppText from '@/components/core/AppText.vue'
+import { Icon } from '@/icons/icon.type.ts'
+import AppButton from '@/ui/components/button/AppButton.vue'
+import AppFormError from '@/ui/components/form-error/AppFormError.vue'
+import AppFormLabel from '@/ui/components/form-label/AppFormLabel.vue'
+import AppInput from '@/ui/components/input/AppInput.vue'
+import type { InputType, InputValue } from '@/ui/types/input.type.ts'
 import { generateUuid } from '@/ui/utils'
 
 import type { Props as AppInputProps } from './AppInput.vue'
@@ -11,7 +18,7 @@ export interface Props<T extends InputType> extends Omit<AppInputProps<T>, 'isIn
 	 * The error messages associated with the component, if any.
 	 * It should be an object with an "_errors" property containing an array of strings.
 	 */
-	errors?: z.ZodFormattedError<string> | undefined | null
+	errors?: z.ZodFormattedError<string> | null | undefined
 
 	/**
 	 * The label to be displayed above the component.
@@ -58,7 +65,7 @@ const attrs = useAttrs()
 const isInvalid = computed<boolean>(() => {
 	const { errors, isTouched } = props
 
-	return isTouched && errors != null
+	return isTouched && errors !== null
 })
 
 const computedValue = computed<InputValue<T>>({
@@ -118,7 +125,7 @@ function onTogglePassword(): void {
 					<AppButton
 						v-if="type === 'password'"
 						class="scale-[85%]"
-						:icon-left="isPasswordVisible ? 'eyeSlash' : 'eye'"
+						:icon-left="isPasswordVisible ? Icon.EYE_SLASH : Icon.EYE"
 						size="icon"
 						variant="ghost"
 						@click="onTogglePassword"

@@ -1,8 +1,9 @@
 import { useMutation as useTanstackMutation, useQueryClient } from '@tanstack/vue-query'
 import type { AxiosError } from 'axios'
+import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 
-import type { QueryKeys } from '@/models'
+import type { QueryKeys } from '@/models/core/queryKey.model'
 
 type RequestParams<TReqData, TParams> = TReqData extends Record<string, never>
 	? TParams extends Record<string, never>
@@ -42,7 +43,7 @@ export interface UseMutationReturnType<
 	/**
 	 * Response data
 	 */
-	data: ComputedRef<TResData extends any[] ? TResData[] : TResData | null>
+	data: ComputedRef<TResData extends unknown[] ? TResData[] : TResData | null>
 
 	/**
 	 * Whether mutation is loading
@@ -93,7 +94,7 @@ export function useMutation<
 	}
 
 	return {
-		data: computed<TResData extends any[] ? TResData[] : TResData | null>(() => data.value),
+		data: computed<TResData extends unknown[] ? TResData[] : TResData | null>(() => data.value),
 		isLoading: computed<boolean>(() => isPending.value),
 		execute,
 	}

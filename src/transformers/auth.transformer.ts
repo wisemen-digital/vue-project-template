@@ -27,7 +27,7 @@ export function mapResetPasswordFormToResetPasswordRequestDto(
 		token: data.token,
 		email: data.email,
 		password: data.password,
-		password_confirmation: data.password,
+		passwordConfirmation: data.password,
 	}
 }
 
@@ -35,8 +35,8 @@ export function mapCurrentUserResponseDtoToCurrentUser(data: CurrentUserResponse
 	return {
 		id: data.id,
 		email: data.email,
-		firstName: data.first_name,
-		lastName: data.last_name,
-		fullName: `${data.first_name} ${data.last_name}`,
+		firstName: data.firstName,
+		lastName: data.lastName,
+		fullName: `${data.firstName} ${data.lastName}`,
 	}
 }

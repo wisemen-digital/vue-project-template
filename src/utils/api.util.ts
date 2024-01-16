@@ -35,6 +35,7 @@ export function mapApiErrors<FormType, ResponseType>(
 	return Object.entries(errors).reduce<z.ZodFormattedError<unknown>>(
 		(acc, [key]) => {
 			const keyAsCamelCase = snakeCaseToCamelCase(key)
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			const [mappedKey] = Object.entries(keyMapping).find(([_k, v]) => v === keyAsCamelCase) ?? []
 
 			return {

@@ -1,10 +1,15 @@
-import type { RouteMiddleware } from './routeMiddleware.model'
+import type { RouteMiddlewareReturnType } from './routeMiddleware.model'
+
+type MaybePromise<T> = Promise<T> | T
 
 declare module 'vue-router' {
 	interface RouteMeta {
 		/**
 		 * Route middleware
 		 */
-		middleware?: RouteMiddleware[]
+		middleware?: ((
+			to: RouteLocationNormalized,
+			from: RouteLocationNormalized
+		) => MaybePromise<RouteMiddlewareReturnType>)[]
 	}
 }

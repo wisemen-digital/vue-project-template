@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ComboboxOption, ListboxOption } from '@headlessui/vue'
+import { inject } from 'vue'
 
 import { selectOption } from './appSelect.style'
 

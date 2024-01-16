@@ -1,6 +1,8 @@
+import type { ComputedRef } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import type { z } from 'zod'
 
-import type { QueryKey } from '@/models'
+import type { QueryKey } from '@/models/core/queryKey.model'
 
 import type { Meta } from './usePaginatedQuery'
 import { usePaginatedQuery } from './usePaginatedQuery'

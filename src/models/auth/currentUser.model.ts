@@ -1,10 +1,9 @@
-/* eslint-disable camelcase */
 import { z } from 'zod'
 
 export const currentUserResponseDto = z.object({
 	id: z.string().uuid(),
-	first_name: z.string(),
-	last_name: z.string(),
+	firstName: z.string(),
+	lastName: z.string(),
 	email: z.string().email(),
 })
 

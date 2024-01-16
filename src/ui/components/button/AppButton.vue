@@ -1,10 +1,14 @@
 <script setup lang="ts" generic="T extends keyof Routes">
 import type { ButtonHTMLAttributes } from 'vue'
+import { computed, useAttrs } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
 import AppTypedRouterLink from '@/components/core/AppTypedRouterLink.vue'
-import type { Icon } from '@/icons'
-import type { RouteLocationTyped, Routes } from '@/plugins'
+import type { Icon } from '@/icons/icon.type.ts'
+import type { RouteLocationTyped } from '@/plugins/router/router.plugin.ts'
+import type { Routes } from '@/plugins/router/routes.ts'
+import AppButtonIconOrLoader from '@/ui/components/button/AppButtonIconOrLoader.vue'
+import AppLoader from '@/ui/components/loader/AppLoader.vue'
 
 import type { ButtonProps } from './appButton.style'
 import { button } from './appButton.style'

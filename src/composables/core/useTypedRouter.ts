@@ -1,7 +1,8 @@
 import type { Router } from 'vue-router'
 import { useRouter } from 'vue-router'
 
-import type { RouteLocationTyped, Routes } from '@/plugins/router'
+import type { RouteLocationTyped } from '@/plugins/router/router.plugin'
+import type { Routes } from '@/plugins/router/routes'
 
 type UseTypedRouterReturnType = Omit<Router, 'push' | 'replace'> & {
 	push: <T extends keyof Routes>(to: RouteLocationTyped<T>) => Promise<void>

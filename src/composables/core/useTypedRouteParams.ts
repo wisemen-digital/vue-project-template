@@ -10,6 +10,7 @@ type UseTypedRouteParamsReturnType<T extends keyof Routes> = {
 		: never)]: string
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function useTypedRouteParams<T extends keyof Routes>(_routeName: T): UseTypedRouteParamsReturnType<T> {
 	const route = useRoute()
 

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { TextareaHTMLAttributes } from 'vue'
+import { computed, useAttrs } from 'vue'
 import type { z } from 'zod'
 
+import AppFormError from '@/ui/components/form-error/AppFormError.vue'
+import AppFormLabel from '@/ui/components/form-label/AppFormLabel.vue'
 import { generateUuid } from '@/ui/utils'
 
 import { textarea } from './appTextarea.style'
@@ -51,6 +54,8 @@ const props = withDefaults(defineProps<Props>(), {
 	isDisabled: false,
 	isRequired: false,
 	resize: 'none',
+	heightClass: undefined,
+	errors: undefined,
 })
 
 const value = defineModel<string | null>({

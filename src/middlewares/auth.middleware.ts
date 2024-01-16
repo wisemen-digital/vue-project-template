@@ -1,8 +1,8 @@
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import type { RouteMiddleware } from '@/models/core/routeMiddleware.model.ts'
+import type { RouteMiddlewareReturnType } from '@/models/core/routeMiddleware.model.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
-export async function auth(): Promise<RouteMiddleware | void> {
+export async function auth(): Promise<RouteMiddlewareReturnType> {
 	const authStore = useAuthStore()
 	const hasTokens = oAuthClient.isLoggedIn()
 
@@ -15,7 +15,6 @@ export async function auth(): Promise<RouteMiddleware | void> {
 	try {
 		await authStore.getCurrentUser()
 	} catch (error) {
-		console.error(error)
 		authStore.logout()
 
 		return {

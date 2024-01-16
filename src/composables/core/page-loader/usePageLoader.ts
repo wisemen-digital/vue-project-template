@@ -6,9 +6,9 @@ interface UsePageLoaderReturnType {
 	setIsLoading: (value: boolean) => void
 }
 
-export function usePageLoader(): UsePageLoaderReturnType {
-	const isLoading = ref<boolean>(false)
+const isLoading = ref<boolean>(false)
 
+export function usePageLoader(): UsePageLoaderReturnType {
 	function setIsLoading(value: boolean): void {
 		isLoading.value = value
 	}

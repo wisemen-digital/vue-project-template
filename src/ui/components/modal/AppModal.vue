@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useEventListener } from '@vueuse/core'
-import { Transition } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, Transition, watch } from 'vue'
+
+import AppModalOverlay from '@/ui/components/modal/AppModalOverlay.vue'
+import AppModalWrapper from '@/ui/components/modal/AppModalWrapper.vue'
 
 interface Props {
 	modalId?: string | null
@@ -102,7 +105,7 @@ function onOverlayClick(): void {
 	isModalShown.value = false
 }
 
-watch(isModalShown, (isModalShown) => {
+watch(isModalShown, (isModalShown: boolean | undefined) => {
 	if (isModalShown) {
 		showModal()
 	} else {
@@ -112,7 +115,7 @@ watch(isModalShown, (isModalShown) => {
 
 watch(
 	isModalActuallyShown,
-	(isShown) => {
+	(isShown: boolean) => {
 		document.body.style.overflow = isShown ? 'hidden' : 'auto'
 	},
 	{ immediate: true }
