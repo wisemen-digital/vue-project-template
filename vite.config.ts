@@ -2,6 +2,9 @@ import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+	define: {
+		__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
+	},
 	plugins: [
 		vue({
 			script: {
