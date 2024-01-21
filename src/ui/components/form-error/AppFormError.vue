@@ -2,6 +2,7 @@
 import type { z } from 'zod'
 
 import AppText from '@/components/core/AppText.vue'
+import { Icon } from '@/icons/icon.type.ts'
 
 import AppIcon from '../icon/AppIcon.vue'
 import AppHeightTransition from '../transitions/AppHeightTransition.vue'
@@ -20,11 +21,11 @@ const { errors, isTouched = true } = defineProps<Props>()
 			<div class="mt-1 flex items-center gap-x-2">
 				<AppIcon
 					class="w-3.5 shrink-0 fill-white text-destructive"
-					icon="warning"
+					:icon="Icon.WARNING"
 				/>
 
 				<AppText
-					v-if="errors != null"
+					v-if="errors"
 					class="text-destructive"
 					variant="subtext"
 				>
