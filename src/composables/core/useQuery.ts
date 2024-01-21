@@ -29,7 +29,7 @@ interface UseQueryOptions<TResData> {
 	}[keyof QueryKeys][]
 }
 
-export interface UseQueryReturnType<TResData> {
+export interface UseQueryResult<TResData> {
 	/**
 	 * Response data
 	 */
@@ -64,7 +64,7 @@ export function useQuery<TResData>({
 	queryFn,
 	isEnabled,
 	queryKey,
-}: UseQueryOptions<TResData>): UseQueryReturnType<TResData> {
+}: UseQueryOptions<TResData>): UseQueryResult<TResData> {
 	const { data, error, isLoading, isError, isSuccess, suspense, refetch } = useTanstackQuery({
 		queryFn,
 		enabled: isEnabled,

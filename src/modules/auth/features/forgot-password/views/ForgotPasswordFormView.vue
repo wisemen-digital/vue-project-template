@@ -5,7 +5,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { forgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model.ts'
-import { useForgotPassword } from '@/modules/auth/api/forgotPassword.post.ts'
+import { useForgotPasswordCommand } from '@/modules/auth/commands/forgotPassword.command.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import ForgotPasswordReturnToLoginButton from '@/modules/auth/features/forgot-password/components/ForgotPasswordReturnToLoginButton.vue'
 import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.store.ts'
@@ -22,7 +22,7 @@ const hasResetPassword = ref<boolean>(false)
 const { t } = useI18n()
 const { form, onSubmitForm } = useForm(forgotPasswordForm)
 
-const { execute: forgotPassword } = useForgotPassword()
+const { execute: forgotPassword } = useForgotPasswordCommand()
 
 const description = computed<string>(() => {
 	if (hasResetPassword.value) {

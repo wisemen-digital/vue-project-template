@@ -35,11 +35,7 @@ interface UseMutationOptions<TReqData, TResData, TParams> {
 	}[keyof QueryKeys][]
 }
 
-export interface UseMutationReturnType<
-	TReqData,
-	TResData,
-	TParams extends Record<string, string> = Record<string, never>,
-> {
+export interface UseCommandResult<TReqData, TResData, TParams extends Record<string, string> = Record<string, never>> {
 	/**
 	 * Response data
 	 */
@@ -60,14 +56,14 @@ export interface UseMutationReturnType<
 	execute: (params: RequestParams<TReqData, TParams>) => Promise<TResData>
 }
 
-export function useMutation<
+export function useCommand<
 	TReqData = Record<string, never>,
 	TResData = Record<string, never>,
 	TParams extends Record<string, string> = Record<string, never>,
 >({
 	queryFn,
 	queryKeysToInvalidate,
-}: UseMutationOptions<TReqData, TResData, TParams>): UseMutationReturnType<TReqData, TResData, TParams> {
+}: UseMutationOptions<TReqData, TResData, TParams>): UseCommandResult<TReqData, TResData, TParams> {
 	const queryClient = useQueryClient()
 
 	const { data, isPending, mutateAsync } = useTanstackMutation<
