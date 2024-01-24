@@ -32,7 +32,7 @@ const email = form.register('email', lastLoginAttemptEmail ?? undefined)
 			:form="form"
 			:is-always-enabled="true"
 		>
-			{{ t('auth.features.send_link') }}
+			{{ t('auth.forgot_password.send_link') }}
 		</AuthFormSubmitButton>
 	</AppForm>
 </template>

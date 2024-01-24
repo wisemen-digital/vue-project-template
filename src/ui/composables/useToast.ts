@@ -1,46 +1,120 @@
-import type { ComputedRef } from 'vue'
-import { computed, ref } from 'vue'
+import { h, markRaw } from 'vue'
+import { toast } from 'vue-sonner'
 
-interface Toast {
-	id: string
-	message: string
+import type { Icon } from '@/icons/icon.type'
+
+import type { Toast } from '../components/toast-v2/appToast.style'
+import AppToast from '../components/toast-v2/AppToast.vue'
+
+export interface ToastPromise<TPromise> {
+	/**
+	 * The promise that the toast is waiting for.
+	 * The toast will be closed when the promise is resolved or rejected.
+	 * The toast will show the success message when the promise is resolved.
+	 * The toast will show the error message when the promise is rejected.
+	 * The toast will show the loading message when the promise is pending.
+	 */
+	action: Promise<TPromise>
+	/**
+	 * The message that the toast will show when the promise is pending.
+	 */
+	loadingMessage: string
+	/**
+	 * The message that the toast will show when the promise is resolved.
+	 */
+	successMessage: (data: TPromise) => string
+	/**
+	 * The message that the toast will show when the promise is rejected.
+	 */
+	errorMessage: (error: string) => string
 }
+export interface ToastParams<TPromise> {
+	/**
+	 * The title of the toast.
+	 */
+	title: string
 
-interface UseToastReturnType {
-	toast: ComputedRef<Toast | null>
-	showToastMessage: (message: string) => void
+	/**
+	 * The description of the toast.
+	 */
+	desciption?: string
+	/**
+	 * The action of the toast.
+	 */
+	action?: {
+		/**
+		 * The callback that will be called when the action is clicked.
+		 */
+		onClick: () => void
+		/**
+		 * The label of the action.
+		 */
+		label: string
+	}
+	/**
+	 * The icon shown in front of the toast.
+	 */
+	icon?: Icon
+	/**
+	 * The variant of the toast that decides the styling.
+	 */
+	variant?: Toast['variant']
+	/**
+	 * The duration of the toast.
+	 */
+	duration?: number
+
+	/**
+	 * The promise that the toast is waiting for.
+	 */
+	promise?: ToastPromise<TPromise>
 }
+export type ToastParamsWithoutVariant<TPromise> = Omit<ToastParams<TPromise>, 'variant'>
 
-const toasts = ref<Toast[]>([])
-const toast = computed<Toast | null>(() => toasts.value[0] ?? null)
-
-let timeout: ReturnType<typeof setTimeout> | null = null
-
-export function useToast(): UseToastReturnType {
-	function setRemoveToastTimeout(): void {
-		timeout = setTimeout(() => {
-			toasts.value.shift()
-			timeout = null
-
-			if (toasts.value.length > 0) {
-				setRemoveToastTimeout()
-			}
-		}, 5000)
+export function useToast(): {
+	showToastError: <TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>) => void
+	showToastSuccess: <TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>) => void
+	showToastInfo: <TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>) => void
+	showToastWarn: <TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>) => void
+	showToast: <TPromise>(toastParams: ToastParams<TPromise>) => void
+} {
+	function renderToast<TPromise>({
+		title,
+		action,
+		duration = Number.POSITIVE_INFINITY,
+		icon,
+		variant,
+		promise,
+	}: ToastParams<TPromise>): void {
+		const toastComponent = h(AppToast<TPromise>, { title, action, icon, variant, promise })
+		toast.custom(markRaw(toastComponent), { duration })
 	}
 
-	function showToastMessage(message: string): void {
-		toasts.value.push({
-			id: Math.random().toString(36),
-			message,
-		})
+	function showToastError<TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>): void {
+		renderToast({ variant: 'error', icon: 'warning', ...toastParams })
+	}
 
-		if (timeout === null) {
-			setRemoveToastTimeout()
-		}
+	function showToastSuccess<TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>): void {
+		renderToast({ variant: 'success', icon: 'checkmark', ...toastParams })
+	}
+
+	function showToastInfo<TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>): void {
+		renderToast({ variant: 'info', icon: 'info', ...toastParams })
+	}
+
+	function showToastWarn<TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>): void {
+		renderToast({ variant: 'warn', icon: 'warning', ...toastParams })
+	}
+
+	function showToast<TPromise>(toastParams: ToastParams<TPromise>): void {
+		renderToast({ variant: 'default', ...toastParams })
 	}
 
 	return {
-		toast,
-		showToastMessage,
+		showToastError,
+		showToastSuccess,
+		showToastInfo,
+		showToastWarn,
+		showToast,
 	}
 }

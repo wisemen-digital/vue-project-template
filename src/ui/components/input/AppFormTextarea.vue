@@ -65,15 +65,6 @@ const value = defineModel<string | null>({
 const id = `app-form-input-${generateUuid()}`
 const attrs = useAttrs()
 
-const computedValue = computed<string | undefined>({
-	get() {
-		return value.value ?? undefined
-	},
-	set(newValue) {
-		value.value = newValue ?? null
-	},
-})
-
 const isInvalid = computed<boolean>(() => {
 	const { errors, isTouched } = props
 
@@ -108,7 +99,7 @@ const textareaClasses = computed<string>(() => {
 		/>
 
 		<textarea
-			v-model="computedValue"
+			v-model="value"
 			v-bind="textareaAttrs"
 			:class="[
 				textareaClasses,

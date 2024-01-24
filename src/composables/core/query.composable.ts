@@ -17,14 +17,14 @@ interface UseQueryOptions<TResData> {
 	/*
 	 * Query keys to invalidate after query is successful
 	 */
-	queryKey: {
+	queryKeys: {
 		[K in keyof QueryKeys]: QueryKeys[K] extends void
 			? {
 					key: K
 			  }
 			: {
 					key: K
-					params: QueryKeys[K]
+					params: MaybeRefOrGetter<QueryKeys[K]>
 			  }
 	}[keyof QueryKeys][]
 }
@@ -63,12 +63,12 @@ export interface UseQueryReturnType<TResData> {
 export function useQuery<TResData>({
 	queryFn,
 	isEnabled,
-	queryKey,
+	queryKeys,
 }: UseQueryOptions<TResData>): UseQueryReturnType<TResData> {
 	const { data, error, isLoading, isError, isSuccess, suspense, refetch } = useTanstackQuery({
 		queryFn,
 		enabled: isEnabled,
-		queryKey: queryKey.map((key) => {
+		queryKey: queryKeys.map((key) => {
 			if (typeof key === 'object' && 'params' in key) {
 				return [key.key, ...Object.values(key.params)]
 			}

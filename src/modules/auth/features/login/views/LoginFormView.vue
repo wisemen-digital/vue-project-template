@@ -5,14 +5,13 @@ import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useTypedRouter } from '@/composables/core/useTypedRouter.ts'
+import { useTypedRouter } from '@/composables/core/typedRouter.composable'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
 import { loginForm } from '@/models/auth/forms/loginForm.model'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.store.ts'
 import { useLoginStore } from '@/modules/auth/stores/login.store.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
-import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer.ts'
 import { useToast } from '@/ui/composables/useToast.ts'
 
 import LoginForm from '../components/LoginForm.vue'
@@ -24,8 +23,10 @@ const forgotPasswordStore = useForgotPasswordStore()
 const { lastLoggedInUser } = storeToRefs(loginStore)
 
 const { t } = useI18n()
-const { showToastMessage } = useToast()
-const { form, onSubmitForm } = useForm(loginForm)
+const { showToast } = useToast()
+const { form, onSubmitForm } = useForm({
+	schema: loginForm,
+})
 const router = useTypedRouter()
 
 const title = computed<string>(() => {
@@ -49,14 +50,16 @@ async function onLoggedIn(user: CurrentUser): Promise<void> {
 
 function onLoginFailed(email: string): void {
 	forgotPasswordStore.setLastLoginAttemptEmail(email)
-	showToastMessage(t('auth.features.invalid_email_or_password'))
+	showToast({
+		title: t('auth.login.invalid_email_or_password'),
+	})
 }
 
 function handleLoginErrors(error: unknown): void {
 	if (error instanceof AxiosError) {
 		form.addErrors({
 			password: {
-				_errors: [t('auth.features.invalid_email_or_password')],
+				_errors: [t('auth.login.invalid_email_or_password')],
 			},
 		})
 	} else {
@@ -66,8 +69,7 @@ function handleLoginErrors(error: unknown): void {
 
 onSubmitForm(async (data) => {
 	try {
-		await authStore.login(mapLoginFormToLoginRequestDto(data))
-
+		await authStore.login(data)
 		const currentUser = await authStore.getCurrentUser()
 
 		await onLoggedIn(currentUser)
@@ -80,7 +82,7 @@ onSubmitForm(async (data) => {
 
 <template>
 	<AuthPage
-		:description="t('auth.features.sign_in_to_continue')"
+		:description="t('auth.login.sign_in_to_continue')"
 		:title="title"
 	>
 		<LoginForm

@@ -1,11 +1,11 @@
 import { useInfiniteQuery } from '@tanstack/vue-query'
 import type { AxiosRequestConfig } from 'axios'
-import type { ComputedRef } from 'vue'
+import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import { computed } from 'vue'
 import { z } from 'zod'
 
 import { httpClient } from '@/libs/http.lib'
-import type { QueryKey } from '@/models/core/queryKey.model'
+import type { QueryKeys } from '@/models/core/queryKey.model'
 
 export const meta = z.object({
 	currentPage: z.number(),
@@ -25,9 +25,18 @@ export type Links = z.infer<typeof links>
 
 interface UsePaginatedQueryOptions<T extends z.ZodType> {
 	url: string
-	queryKey: QueryKey[]
 	responseSchema: T
 	config?: AxiosRequestConfig
+	queryKeys: {
+		[K in keyof QueryKeys]: QueryKeys[K] extends void
+			? {
+					key: K
+			  }
+			: {
+					key: K
+					params: MaybeRefOrGetter<QueryKeys[K]>
+			  }
+	}[keyof QueryKeys][]
 }
 
 interface UsePaginatedQueryReturnType {
@@ -39,7 +48,7 @@ interface UsePaginatedQueryReturnType {
 export function usePaginatedQuery<T extends z.ZodType>({
 	url,
 	responseSchema,
-	queryKey,
+	queryKeys,
 	config,
 }: UsePaginatedQueryOptions<T>): UsePaginatedQueryReturnType {
 	const { data, isFetchingNextPage, hasNextPage, fetchNextPage } = useInfiniteQuery({
@@ -53,7 +62,16 @@ export function usePaginatedQuery<T extends z.ZodType>({
 					links,
 				}),
 			}),
-		queryKey: [...queryKey, config?.params],
+		queryKey: [
+			...queryKeys.map((key) => {
+				if (typeof key === 'object' && 'params' in key) {
+					return [key.key, ...Object.values(key.params)]
+				}
+
+				return key.key
+			}),
+			config?.params,
+		],
 		initialPageParam: '1',
 		getNextPageParam: (data) => {
 			const { currentPage, lastPage } = data.meta

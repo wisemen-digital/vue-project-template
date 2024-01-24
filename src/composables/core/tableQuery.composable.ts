@@ -1,11 +1,11 @@
-import type { ComputedRef } from 'vue'
+import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import { computed, reactive, ref } from 'vue'
 import type { z } from 'zod'
 
-import type { QueryKey } from '@/models/core/queryKey.model'
+import type { QueryKeys } from '@/models/core/queryKey.model'
 
-import type { Meta } from './usePaginatedQuery'
-import { usePaginatedQuery } from './usePaginatedQuery'
+import type { Meta } from './paginatedQuery.composable'
+import { usePaginatedQuery } from './paginatedQuery.composable'
 
 export interface UseTableQueryReturnType<T extends z.ZodType> {
 	data: ComputedRef<z.infer<T>[]>
@@ -17,7 +17,16 @@ export interface UseTableQueryReturnType<T extends z.ZodType> {
 interface UseTableOptions<T extends z.ZodType> {
 	url: string
 	responseSchema: T
-	queryKey: QueryKey[]
+	queryKeys: {
+		[K in keyof QueryKeys]: QueryKeys[K] extends void
+			? {
+					key: K
+			  }
+			: {
+					key: K
+					params: MaybeRefOrGetter<QueryKeys[K]>
+			  }
+	}[keyof QueryKeys][]
 }
 
 interface SortState {
@@ -38,12 +47,12 @@ const sortState = ref<SortState | null>(null)
 export function useTableQuery<T extends z.ZodType>({
 	url,
 	responseSchema,
-	queryKey,
+	queryKeys,
 }: UseTableOptions<T>): UseTableQueryReturnType<T> {
 	const { data, meta, nextPage } = usePaginatedQuery({
 		url,
 		responseSchema,
-		queryKey,
+		queryKeys,
 		config: {
 			params: reactive<QueryFnParams>({
 				column: computed<string | undefined>(() => sortState.value?.column),

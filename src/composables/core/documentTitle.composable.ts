@@ -1,7 +1,5 @@
 import type { Ref } from 'vue'
-import { watch } from 'vue'
-import { readonly } from 'vue'
-import { ref } from 'vue'
+import { readonly, ref, watch } from 'vue'
 
 interface UseDocumentTitleReturnType {
 	documentTitle: Readonly<Ref<string>>

@@ -14,6 +14,7 @@ export const routes: RouteRecordTyped[] = [
 			{
 				path: '',
 				name: 'index',
+				props: {},
 				redirect: {
 					name: 'example-index',
 				},

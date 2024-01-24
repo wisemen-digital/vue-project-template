@@ -4,8 +4,8 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
-import { useHandleApiError } from '@/composables/core/useHandleApiError'
-import { useTypedRouteParams } from '@/composables/core/useTypedRouteParams.ts'
+import { useHandleApiError } from '@/composables/core/handleApiError.composable'
+import { useTypedRouteParams } from '@/composables/core/typedRouteParams.composable'
 import { resetPasswordForm } from '@/models/auth/forms/resetPasswordForm.model'
 import { useResetPassword } from '@/modules/auth/api/resetPassword.post.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
@@ -17,7 +17,9 @@ const hasPasswordBeenReset = ref<boolean>(false)
 
 const router = useRoute()
 const { t } = useI18n()
-const { form, onSubmitForm } = useForm(resetPasswordForm)
+const { form, onSubmitForm } = useForm({
+	schema: resetPasswordForm,
+})
 const { token } = useTypedRouteParams('reset-password-form')
 
 const { email } = router.query
@@ -44,7 +46,7 @@ onSubmitForm(async ({ password }) => {
 
 		hasPasswordBeenReset.value = true
 	} catch (error) {
-		useHandleApiError(form, error)
+		useHandleApiError(error, form)
 	}
 })
 </script>

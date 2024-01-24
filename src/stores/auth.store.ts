@@ -4,6 +4,7 @@ import { computed, ref, watch } from 'vue'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
 import { useGetCurrentUser } from '@/modules/auth/api/currentUser.get.ts'
+import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer'
 
 export const useAuthStore = defineStore('auth', () => {
 	const { data, isError, refetch } = useGetCurrentUser()
@@ -32,7 +33,8 @@ export const useAuthStore = defineStore('auth', () => {
 		currentUser.value = user
 	}
 
-	async function login({ username, password }: { username: string; password: string }): Promise<void> {
+	async function login(data: { email: string; password: string }): Promise<void> {
+		const { username, password } = mapLoginFormToLoginRequestDto(data)
 		await oAuthClient.login(username, password)
 	}
 

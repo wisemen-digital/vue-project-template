@@ -20,7 +20,7 @@ function onCloseModal(): void {
 		<div class="flex items-center gap-x-2">
 			<div class="rounded-md border border-solid border-border p-2">
 				<AppIcon
-					class="h-4 w-4"
+					class="size-4"
 					:icon="icon"
 				/>
 			</div>
@@ -34,7 +34,7 @@ function onCloseModal(): void {
 		</div>
 
 		<AppButton
-			class="h-8 w-8"
+			class="size-8"
 			icon-left="close"
 			size="icon"
 			variant="secondary"

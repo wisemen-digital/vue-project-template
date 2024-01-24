@@ -1,15 +1,15 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import { useLoading } from '@/composables/core/loading/loading.composable.ts'
 
 describe('useLoading', () => {
-	test('isLoading default be false', () => {
+	it('isLoading default be false', () => {
 		const { isLoading } = useLoading()
 
 		expect(isLoading.value).toBe(false)
 	})
 
-	test('isLoading be true when setting the state to true', () => {
+	it('isLoading be true when setting the state to true', () => {
 		const { isLoading, setLoadingState } = useLoading()
 
 		setLoadingState(true)

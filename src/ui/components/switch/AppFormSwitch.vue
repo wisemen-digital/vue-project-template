@@ -40,7 +40,7 @@ function onBlur(e: FocusEvent): void {
 		@focus="onFocus"
 	>
 		<span
-			class="inline-block h-5 w-5 rounded-full bg-white shadow-sm duration-100"
+			class="inline-block size-5 rounded-full bg-white shadow-sm duration-100"
 			:class="isSelected ? 'translate-x-[1.15rem]' : 'translate-x-0.5'"
 		/>
 	</Switch>

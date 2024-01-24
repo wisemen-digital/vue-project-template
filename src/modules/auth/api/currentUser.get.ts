@@ -1,38 +1,28 @@
-import { computed } from 'vue'
-
-import type { UseQueryReturnType } from '@/composables/core/useQuery.ts'
-import { useQuery } from '@/composables/core/useQuery.ts'
+import type { UseQueryReturnType } from '@/composables/core/query.composable'
+import { useQuery } from '@/composables/core/query.composable'
 import { httpClient } from '@/libs/http.lib.ts'
-import type { CurrentUser, CurrentUserResponseDto } from '@/models/auth/currentUser.model.ts'
+import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
 import { currentUserResponseDto } from '@/models/auth/currentUser.model.ts'
 import { QueryKey } from '@/models/core/queryKey.model.ts'
 import { mapCurrentUserResponseDtoToCurrentUser } from '@/transformers/auth.transformer.ts'
 
+async function getCurrentUser(): Promise<CurrentUser> {
+	const data = await httpClient.get({
+		url: '/users/me',
+		responseSchema: currentUserResponseDto,
+	})
+
+	return mapCurrentUserResponseDtoToCurrentUser(data)
+}
+
 export function useGetCurrentUser(): UseQueryReturnType<CurrentUser> {
-	const { data, suspense, ...rest } = useQuery<CurrentUserResponseDto>({
+	return useQuery<CurrentUser>({
 		isEnabled: false,
-		queryKey: [
+		queryKeys: [
 			{
 				key: QueryKey.CURRENT_USER,
 			},
 		],
-		queryFn: () => {
-			return httpClient.get({
-				url: '/users/me',
-				responseSchema: currentUserResponseDto,
-			})
-		},
+		queryFn: getCurrentUser,
 	})
-
-	return {
-		...rest,
-		suspense,
-		data: computed<CurrentUser | null>(() => {
-			if (data.value === null) {
-				return null
-			}
-
-			return mapCurrentUserResponseDtoToCurrentUser(data.value)
-		}),
-	}
 }

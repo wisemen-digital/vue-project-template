@@ -31,7 +31,7 @@ const buttonIconClasses = computed<string>(() =>
 		:class="buttonIconClasses"
 	>
 		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-			<AppLoader class="h-4 w-4" />
+			<AppLoader class="size-4" />
 		</div>
 	</div>
 
