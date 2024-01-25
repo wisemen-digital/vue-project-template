@@ -3,11 +3,11 @@ import { computed, ref, watch } from 'vue'
 
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
-import { useGetCurrentUser } from '@/modules/auth/api/currentUser.get.ts'
+import { useGetCurrentUserQuery } from '@/modules/auth/api/queries/currentUser.query'
 import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer'
 
 export const useAuthStore = defineStore('auth', () => {
-	const { data, isError, refetch } = useGetCurrentUser()
+	const { data, isError, refetch } = useGetCurrentUserQuery()
 
 	const currentUser = ref<CurrentUser | null>(null)
 

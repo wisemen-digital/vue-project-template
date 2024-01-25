@@ -18,6 +18,9 @@ export interface Routes {
 		params: {
 			token: string
 		}
+		queryParams: {
+			email: string
+		}
 	}
 	// Example
 	'example-index': {

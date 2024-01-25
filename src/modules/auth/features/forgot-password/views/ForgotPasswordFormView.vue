@@ -6,7 +6,7 @@ import { useI18n } from 'vue-i18n'
 
 import { useHandleApiError } from '@/composables/core/handleApiError.composable'
 import { forgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model.ts'
-import { useForgotPassword } from '@/modules/auth/api/forgotPassword.post.ts'
+import { useForgotPasswordMutation } from '@/modules/auth/api/mutations/forgotPassword.mutation'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import ForgotPasswordReturnToLoginButton from '@/modules/auth/features/forgot-password/components/ForgotPasswordReturnToLoginButton.vue'
 import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.store.ts'
@@ -24,7 +24,7 @@ const { form, onSubmitForm } = useForm({
 	schema: forgotPasswordForm,
 })
 
-const { execute: forgotPassword } = useForgotPassword()
+const { execute: forgotPassword } = useForgotPasswordMutation()
 
 const description = computed<string>(() => {
 	if (hasResetPassword.value) {

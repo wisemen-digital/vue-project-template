@@ -24,10 +24,10 @@ const { lastLoggedInUser } = storeToRefs(loginStore)
 
 const { t } = useI18n()
 const { showToast } = useToast()
+const router = useTypedRouter()
 const { form, onSubmitForm } = useForm({
 	schema: loginForm,
 })
-const router = useTypedRouter()
 
 const title = computed<string>(() => {
 	if (lastLoggedInUser.value === null) {
@@ -39,7 +39,7 @@ const title = computed<string>(() => {
 	})
 })
 
-async function onLoggedIn(user: CurrentUser): Promise<void> {
+async function handleLoggedIn(user: CurrentUser): Promise<void> {
 	forgotPasswordStore.setLastLoginAttemptEmail(null)
 	loginStore.setLastLoggedInUser(user)
 
@@ -48,7 +48,7 @@ async function onLoggedIn(user: CurrentUser): Promise<void> {
 	})
 }
 
-function onLoginFailed(email: string): void {
+function handleLoginFailed(email: string): void {
 	forgotPasswordStore.setLastLoginAttemptEmail(email)
 	showToast({
 		title: t('auth.login.invalid_email_or_password'),
@@ -72,10 +72,10 @@ onSubmitForm(async (data) => {
 		await authStore.login(data)
 		const currentUser = await authStore.getCurrentUser()
 
-		await onLoggedIn(currentUser)
+		await handleLoggedIn(currentUser)
 	} catch (error) {
 		handleLoginErrors(error)
-		onLoginFailed(data.email)
+		handleLoginFailed(data.email)
 	}
 })
 </script>

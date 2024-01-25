@@ -15,7 +15,7 @@ async function getCurrentUser(): Promise<CurrentUser> {
 	return mapCurrentUserResponseDtoToCurrentUser(data)
 }
 
-export function useGetCurrentUser(): UseQueryReturnType<CurrentUser> {
+export function useGetCurrentUserQuery(): UseQueryReturnType<CurrentUser> {
 	return useQuery<CurrentUser>({
 		isEnabled: false,
 		queryKeys: [
