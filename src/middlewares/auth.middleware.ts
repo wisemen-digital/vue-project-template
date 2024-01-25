@@ -1,11 +1,11 @@
 import { isAxiosError } from 'axios'
 
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import type { RouteMiddlewareReturnType } from '@/models/core/routeMiddleware.model.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { logError } from '@/utils/logger.util'
+import { createMiddleware } from '@/utils/middleware.util'
 
-export async function auth(): Promise<RouteMiddlewareReturnType> {
+export const auth = createMiddleware(async () => {
 	const authStore = useAuthStore()
 	const hasTokens = oAuthClient.isLoggedIn()
 
@@ -28,4 +28,4 @@ export async function auth(): Promise<RouteMiddlewareReturnType> {
 			name: 'login-form',
 		}
 	}
-}
+})
