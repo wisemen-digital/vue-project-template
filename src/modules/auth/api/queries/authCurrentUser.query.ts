@@ -5,7 +5,7 @@ import { QueryKey } from '@/models/core/queryKey.model.ts'
 
 import { authService } from '../services/auth.service'
 
-export function useGetCurrentUserQuery(): UseQueryReturnType<CurrentUser> {
+export function useAuthCurrentUserQuery(): UseQueryReturnType<CurrentUser> {
 	return useQuery<CurrentUser>({
 		isEnabled: false,
 		queryKeys: [

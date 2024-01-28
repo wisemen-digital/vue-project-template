@@ -5,27 +5,25 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { useHandleApiError } from '@/composables/core/handleApiError.composable'
-import { forgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model.ts'
-import { useForgotPasswordMutation } from '@/modules/auth/api/mutations/forgotPassword.mutation'
+import { forgotPasswordFormSchema } from '@/models/auth/forms/forgotPasswordForm.model.ts'
+import { useAuthForgotPasswordMutation } from '@/modules/auth/api/mutations/authForgotPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
-import ForgotPasswordReturnToLoginButton from '@/modules/auth/features/forgot-password/components/ForgotPasswordReturnToLoginButton.vue'
-import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.store.ts'
+import ForgotPasswordReturnToLoginButton from '@/modules/auth/features/forgot-password/components/AuthForgotPasswordReturnToLoginButton.vue'
+import { useAuthStore } from '@/stores/auth.store.ts'
 
-import ForgotPasswordForm from '../components/ForgotPasswordForm.vue'
+const authStore = useAuthStore()
 
-const forgotPasswordStore = useForgotPasswordStore()
-
-const { lastLoginAttemptEmail } = storeToRefs(forgotPasswordStore)
+const { lastLoginAttemptEmail } = storeToRefs(authStore)
 
 const hasResetPassword = ref<boolean>(false)
 
 const { t } = useI18n()
 
 const { form, onSubmitForm } = useForm({
-	schema: forgotPasswordForm,
+	schema: forgotPasswordFormSchema,
 })
 
-const { execute: forgotPassword } = useForgotPasswordMutation()
+const { execute: forgotPassword } = useAuthForgotPasswordMutation()
 
 const description = computed<string>(() => {
 	if (hasResetPassword.value) {
@@ -55,7 +53,7 @@ onSubmitForm(async (data) => {
 	>
 		<ForgotPasswordReturnToLoginButton v-if="hasResetPassword" />
 
-		<ForgotPasswordForm
+		<forgotPasswordFormSchema
 			v-else
 			:form="form"
 			:last-login-attempt-email="lastLoginAttemptEmail"

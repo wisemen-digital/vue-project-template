@@ -6,25 +6,23 @@ import { useI18n } from 'vue-i18n'
 import { useHandleApiError } from '@/composables/core/handleApiError.composable'
 import { useTypedRouteParams } from '@/composables/core/typedRouteParams.composable'
 import { useTypedRouteQuery } from '@/composables/core/typedRouteQuery.composable'
-import { resetPasswordForm } from '@/models/auth/forms/resetPasswordForm.model'
-import { useResetPasswordMutation } from '@/modules/auth/api/mutations/resetPassword.mutation'
+import { resetPasswordFormSchema } from '@/models/auth/forms/resetPasswordForm.model'
+import { useAuthResetPasswordMutation } from '@/modules/auth/api/mutations/authResetPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import { mapResetPasswordFormToResetPasswordRequestDto } from '@/transformers/auth.transformer.ts'
-
-import ResetPasswordForm from '../components/ResetPasswordForm.vue'
 
 const hasPasswordBeenReset = ref<boolean>(false)
 
 const { t } = useI18n()
 
 const { form, onSubmitForm } = useForm({
-	schema: resetPasswordForm,
+	schema: resetPasswordFormSchema,
 })
 
 const { token } = useTypedRouteParams('reset-password-form')
 const { email } = useTypedRouteQuery('reset-password-form')
 
-const { execute: resetPassword } = useResetPasswordMutation()
+const { execute: resetPassword } = useAuthResetPasswordMutation()
 
 const description = computed<string>(() => {
 	if (hasPasswordBeenReset.value) {
@@ -56,7 +54,7 @@ onSubmitForm(async ({ password }) => {
 		:description="description"
 		:title="t('common.reset_password')"
 	>
-		<ResetPasswordForm
+		<resetPasswordFormSchema
 			v-if="!hasPasswordBeenReset"
 			:form="form"
 		/>

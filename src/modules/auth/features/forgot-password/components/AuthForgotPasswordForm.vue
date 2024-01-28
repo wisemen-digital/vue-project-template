@@ -3,12 +3,12 @@ import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import AppForm from '@/components/core/AppForm.vue'
-import type { forgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model'
+import type { forgotPasswordFormSchema } from '@/models/auth/forms/forgotPasswordForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 import AppFormInput from '@/ui/components/input/AppFormInput.vue'
 
 interface Props {
-	form: Form<typeof forgotPasswordForm>
+	form: Form<typeof forgotPasswordFormSchema>
 	lastLoginAttemptEmail: string | null
 }
 

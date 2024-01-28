@@ -7,27 +7,22 @@ import { useI18n } from 'vue-i18n'
 
 import { useTypedRouter } from '@/composables/core/typedRouter.composable'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
-import { loginForm } from '@/models/auth/forms/loginForm.model'
+import { loginFormSchema } from '@/models/auth/forms/loginForm.model'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
-import { useForgotPasswordStore } from '@/modules/auth/stores/forgotPassword.store.ts'
-import { useLoginStore } from '@/modules/auth/stores/login.store.ts'
+import AuthLoginForm from '@/modules/auth/features/login/components/AuthLoginForm.vue'
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { useToast } from '@/ui/composables/useToast.ts'
 
-import LoginForm from '../components/LoginForm.vue'
-
-const loginStore = useLoginStore()
 const authStore = useAuthStore()
-const forgotPasswordStore = useForgotPasswordStore()
 
-const { lastLoggedInUser } = storeToRefs(loginStore)
+const { lastLoggedInUser } = storeToRefs(authStore)
 
 const { t } = useI18n()
 const { showToast } = useToast()
 const router = useTypedRouter()
 
 const { form, onSubmitForm } = useForm({
-	schema: loginForm,
+	schema: loginFormSchema,
 })
 
 const title = computed<string>(() => {
@@ -41,8 +36,8 @@ const title = computed<string>(() => {
 })
 
 async function handleLoggedIn(user: CurrentUser): Promise<void> {
-	forgotPasswordStore.setLastLoginAttemptEmail(null)
-	loginStore.setLastLoggedInUser(user)
+	authStore.setLastLoginAttemptEmail(null)
+	authStore.setLastLoggedInUser(user)
 
 	await router.replace({
 		name: 'index',
@@ -50,7 +45,7 @@ async function handleLoggedIn(user: CurrentUser): Promise<void> {
 }
 
 function handleLoginFailed(email: string): void {
-	forgotPasswordStore.setLastLoginAttemptEmail(email)
+	authStore.setLastLoginAttemptEmail(email)
 	showToast({
 		title: t('auth.login.invalid_email_or_password'),
 	})
@@ -86,7 +81,7 @@ onSubmitForm(async (data) => {
 		:description="t('auth.login.sign_in_to_continue')"
 		:title="title"
 	>
-		<LoginForm
+		<AuthLoginForm
 			:form="form"
 			:last-logged-in-user="lastLoggedInUser"
 		/>
