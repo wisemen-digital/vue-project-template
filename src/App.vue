@@ -11,8 +11,10 @@ setTemplate('{title} | App')
 </script>
 
 <template>
-	<RouterView />
-	<AppPageLoader />
-	<AppModalsContainer />
-	<AppToastsContainer />
+	<div>
+		<RouterView />
+		<AppPageLoader />
+		<AppModalsContainer />
+		<AppToastsContainer />
+	</div>
 </template>

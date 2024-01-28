@@ -24,7 +24,7 @@ const { errors, isTouched = true } = defineProps<Props>()
 				/>
 
 				<AppText
-					v-if="errors != null"
+					v-if="errors"
 					class="text-destructive"
 					variant="subtext"
 				>

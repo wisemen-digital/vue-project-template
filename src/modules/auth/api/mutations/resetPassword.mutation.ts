@@ -6,7 +6,9 @@ import { authService } from '../services/auth.service'
 
 export function useResetPasswordMutation(): UseMutationReturnType<ResetPasswordRequestDto, void> {
 	return useMutation<ResetPasswordRequestDto, void>({
-		queryFn: ({ body }) => authService.resetPassword(body),
+		queryFn: async ({ body }) => {
+			await authService.resetPassword(body)
+		},
 		queryKeysToInvalidate: [],
 	})
 }

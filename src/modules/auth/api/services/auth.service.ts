@@ -14,14 +14,14 @@ interface AuthService {
 }
 
 export const authService: AuthService = {
-	forgotPassword: (body) => {
+	forgotPassword: (body: ForgotPasswordRequestDto) => {
 		return unauthorizedHttpClient.post({
 			url: '/forgot-password',
 			body,
 			responseSchema: z.unknown(),
 		})
 	},
-	resetPassword: (body) => {
+	resetPassword: (body: ResetPasswordRequestDto) => {
 		return unauthorizedHttpClient.post({
 			url: '/reset-password',
 			body,
