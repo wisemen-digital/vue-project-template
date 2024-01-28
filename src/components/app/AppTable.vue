@@ -97,18 +97,8 @@ function setPage(page: number): void {
 	handlePageChange(updatedPaginationOptions)
 }
 
-function getPagination(): NonNullable<PaginationOptions<TFilters>['pagination']> {
-	const pagination = paginationOptions.value.pagination ?? null
-
-	if (pagination === null) {
-		throw new Error('Pagination is not defined')
-	}
-
-	return pagination
-}
-
 function handlePrevPage(): void {
-	const { page } = getPagination()
+	const { page } = paginationOptions.value.pagination
 
 	if (page === 1) {
 		return
@@ -117,14 +107,14 @@ function handlePrevPage(): void {
 	setPage(page - 1)
 }
 
-function getTotalPages(data: unknown[], perPage: number): number {
-	return Math.ceil(data.length / perPage)
-}
-
 function handleNextPage(): void {
-	const { page, perPage } = getPagination()
+	const { page, perPage, total } = paginationOptions.value.pagination
 
-	const totalPages = getTotalPages(data.value, perPage)
+	if (total === undefined) {
+		return
+	}
+
+	const totalPages = Math.ceil(total / perPage)
 
 	if (page === totalPages) {
 		return

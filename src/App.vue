@@ -19,7 +19,7 @@ interface User {
 	name: string
 }
 
-const { paginationOptions, handleFilterChange, handlePageChange, handleSortChange } =
+const { paginationOptions, handleFilterChange, handlePageChange, handleSortChange, setPagination } =
 	useTablePagination<UserTableFilters>({
 		id: 'users',
 		defaultPaginationOptions: {
@@ -35,6 +35,12 @@ const data: User[] = [
 		name: `User ${i}`,
 	})),
 ]
+
+setPagination({
+	page: 1,
+	perPage: 10,
+	total: data.length,
+})
 
 const columns: TableColumn<User>[] = [
 	{
