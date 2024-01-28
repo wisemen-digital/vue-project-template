@@ -12,17 +12,17 @@ export const authRoutes: RouteRecordTyped[] = [
 			{
 				path: 'login',
 				name: 'login-form',
-				component: async () => import('../features/login/views/LoginFormView.vue'),
+				component: async () => import('../features/login/views/AuthLoginView.vue'),
 			},
 			{
 				path: 'forgot-password',
 				name: 'forgot-password-form',
-				component: async () => import('../features/forgot-password/views/ForgotPasswordFormView.vue'),
+				component: async () => import('../features/forgot-password/views/AuthForgotPasswordFormView.vue'),
 			},
 			{
 				path: 'reset-password/:token',
 				name: 'reset-password-form',
-				component: async () => import('../features/reset-password/views/ResetPasswordFormView.vue'),
+				component: async () => import('../features/reset-password/views/AuthResetPasswordFormView.vue'),
 			},
 		],
 	},
