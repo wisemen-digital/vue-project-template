@@ -25,6 +25,7 @@ const { lastLoggedInUser } = storeToRefs(loginStore)
 const { t } = useI18n()
 const { showToast } = useToast()
 const router = useTypedRouter()
+
 const { form, onSubmitForm } = useForm({
 	schema: loginForm,
 })

@@ -20,6 +20,7 @@ const { lastLoginAttemptEmail } = storeToRefs(forgotPasswordStore)
 const hasResetPassword = ref<boolean>(false)
 
 const { t } = useI18n()
+
 const { form, onSubmitForm } = useForm({
 	schema: forgotPasswordForm,
 })
