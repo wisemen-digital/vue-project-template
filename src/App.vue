@@ -1,18 +1,77 @@
 <script setup lang="ts">
-import AppPageLoader from '@/components/core/AppPageLoader.vue'
-import AppModalsContainer from '@/ui/components/modal/AppModalsContainer.vue'
-import AppToastsContainer from '@/ui/components/toast-v2/AppToastsContainer.vue'
+import { h } from 'vue'
 
+import AppTable from './components/app/AppTable.vue'
 import { useDocumentTitle } from './composables/core/documentTitle.composable'
+import { useTablePagination } from './composables/core/tablePagination.composable'
+import type { TableColumn, TableFilter } from './models/table/table.model'
 
 const { setTemplate } = useDocumentTitle()
 
 setTemplate('{title} | App')
+
+interface UserTableFilters {
+	name?: string
+}
+
+interface User {
+	uuid: string
+	name: string
+}
+
+const { paginationOptions, handleFilterChange, handlePageChange, handleSortChange } =
+	useTablePagination<UserTableFilters>({
+		id: 'users',
+		defaultPaginationOptions: {
+			filters: {
+				name: 'defaultValue',
+			},
+		},
+	})
+
+const data: User[] = [
+	...Array.from({ length: 100 }, (_, i) => ({
+		uuid: `uuid-${i}`,
+		name: `User ${i}`,
+	})),
+]
+
+const columns: TableColumn<User>[] = [
+	{
+		id: 'uuid',
+		name: 'UUID',
+		size: '1fr',
+		isSortable: true,
+		render: (row) => h('div', row.uuid),
+	},
+	{
+		id: 'name',
+		name: 'Name',
+		size: '1fr',
+		isSortable: true,
+		render: (row) => h('div', row.name),
+	},
+]
+
+const filters: TableFilter<UserTableFilters>[] = [
+	{
+		id: 'name',
+		type: 'text',
+		label: 'Name',
+	},
+]
 </script>
 
 <template>
-	<RouterView />
-	<AppPageLoader />
-	<AppModalsContainer />
-	<AppToastsContainer />
+	<div class="p-24">
+		<AppTable
+			:columns="columns"
+			:data="data"
+			:filters="filters"
+			:pagination-options="paginationOptions"
+			@filter="handleFilterChange"
+			@page="handlePageChange"
+			@sort="handleSortChange"
+		/>
+	</div>
 </template>
