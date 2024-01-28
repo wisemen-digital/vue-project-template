@@ -32,10 +32,10 @@ const isFilterable = inject('isFilterable', false)
 				})
 			"
 		>
-			<div class="flex h-5 w-5 shrink-0 items-center justify-center">
+			<div class="flex size-5 shrink-0 items-center justify-center">
 				<AppIcon
 					v-if="selected"
-					class="h-3.5 w-3.5"
+					class="size-3.5"
 					icon="checkmark"
 				/>
 			</div>

@@ -20,11 +20,11 @@ export const inputWrapper = cva({
 })
 
 export const input = cva({
-	base: 'h-full w-full truncate bg-transparent px-3 py-2 text-subtext outline-none placeholder:text-muted-foreground/50 disabled:cursor-not-allowed',
+	base: 'size-full truncate bg-transparent px-3 py-2 text-subtext outline-none placeholder:text-muted-foreground/50 disabled:cursor-not-allowed',
 })
 
 export const inputIcon = cva({
-	base: 'h-3.5 w-3.5 text-muted-foreground',
+	base: 'size-3.5 text-muted-foreground',
 	variants: {
 		isInvalid: {
 			true: 'text-destructive',

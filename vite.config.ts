@@ -1,11 +1,13 @@
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
 	define: {
 		__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
 	},
 	plugins: [
+		VueDevTools(),
 		vue({
 			script: {
 				propsDestructure: true,

@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="TFormType extends z.ZodType">
 import type { Form } from 'formango'
+import type { z } from 'zod'
 
 import AppFormSubmitButton from '@/components/core/AppFormSubmitButton.vue'
 
 interface Props {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	form: Form<any>
+	form: Form<TFormType>
 }
 
 const { form } = defineProps<Props>()

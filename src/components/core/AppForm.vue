@@ -1,12 +1,12 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="TFormType extends z.ZodType">
 import type { Form } from 'formango'
 import { onUnmounted, watch } from 'vue'
+import type { z } from 'zod'
 
 import { usePageLoader } from '@/composables/core/page-loader/usePageLoader.ts'
 
 interface Props {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	form: Form<any>
+	form: Form<TFormType>
 }
 
 const { form } = defineProps<Props>()
@@ -27,7 +27,7 @@ onUnmounted(() => {
 
 <template>
 	<form
-		class="flex h-full w-full flex-1 flex-col @container/form-layout"
+		class="flex size-full flex-1 flex-col @container/form-layout"
 		novalidate
 		@submit.prevent="form.submit"
 	>

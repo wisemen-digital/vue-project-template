@@ -27,5 +27,14 @@
 		"skipLibCheck": true
 	},
 	"references": [{ "path": "./tsconfig.node.json" }],
-	"include": ["env.d.ts", ".eslintrc.json", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+	"include": [
+		"env.d.ts",
+		"eslint.config.js",
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		"auto-imports.d.ts",
+		"components.d.ts"
+	]
 }

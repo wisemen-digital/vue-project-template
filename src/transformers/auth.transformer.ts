@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import type { CurrentUser, CurrentUserResponseDto } from '@/models/auth/currentUser.model.ts'
 import type { ForgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model.ts'
 import type { ForgotPasswordRequestDto } from '@/models/auth/forms/forgotPasswordRequestDto.model.ts'

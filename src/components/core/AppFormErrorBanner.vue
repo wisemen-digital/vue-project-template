@@ -1,10 +1,10 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="TFormType extends z.ZodType">
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
+import type { z } from 'zod'
 
 interface Props {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	form: Form<any>
+	form: Form<TFormType>
 }
 
 const { form } = defineProps<Props>()
@@ -19,7 +19,7 @@ const { t } = useI18n()
 				class="mb-4 flex items-center rounded-input border border-solid border-destructive bg-destructive/5 px-4 py-3"
 			>
 				<AppIcon
-					class="h-5 w-5 flex-shrink-0 text-destructive"
+					class="size-5 flex-shrink-0 text-destructive"
 					icon="warning"
 				/>
 
@@ -27,7 +27,7 @@ const { t } = useI18n()
 					class="ml-4 max-w-sm text-destructive"
 					variant="subtext"
 				>
-					{{ t('core.one_or_more_fields_are_invalid_please') }}
+					{{ t('error.validation_error') }}
 				</AppText>
 			</div>
 		</div>

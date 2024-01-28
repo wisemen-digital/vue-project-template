@@ -13,6 +13,6 @@ const { t } = useI18n()
 			name: 'login-form',
 		}"
 	>
-		{{ t('auth.features.return_to_login') }}
+		{{ t('auth.forgot_password.return_to_login') }}
 	</AppButton>
 </template>

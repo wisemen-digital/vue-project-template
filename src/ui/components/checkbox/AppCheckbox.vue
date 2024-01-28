@@ -28,7 +28,7 @@ function onBlur(e: FocusEvent): void {
 <template>
 	<Switch
 		v-model="isSelected"
-		class="inline-flex h-5 w-5 items-center justify-center rounded border border-solid bg-background ring-primary ring-offset-background duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+		class="inline-flex size-5 items-center justify-center rounded border border-solid bg-background ring-primary ring-offset-background duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 		:class="[
 			isSelected ? 'border-primary bg-primary' : 'border-border',
 			{
@@ -41,7 +41,7 @@ function onBlur(e: FocusEvent): void {
 	>
 		<AppIcon
 			v-if="isSelected"
-			class="h-3 w-3 text-primary-foreground"
+			class="size-3 text-primary-foreground"
 			icon="checkmark"
 		/>
 	</Switch>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
+import { logError } from '@/utils/logger.util'
+
 interface Props {
 	message: string | null
 	status: number
@@ -20,8 +22,7 @@ const httpErrorMap = new Map<string, string>(
 	})
 )
 
-// eslint-disable-next-line no-console
-console.error(message)
+logError(message)
 </script>
 
 <template>

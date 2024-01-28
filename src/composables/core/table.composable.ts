@@ -1,5 +1,5 @@
-import type { ComputedRef, Ref } from 'vue'
-import { computed, h, ref, type RendererElement, type RendererNode, type VNode } from 'vue'
+import type { ComputedRef, Ref, RendererElement, RendererNode, VNode } from 'vue'
+import { computed, h, ref } from 'vue'
 
 interface TableColumn<T> {
 	key: string
@@ -37,19 +37,22 @@ export function useTable<T extends unknown[]>({
 	})
 
 	function handleSort(column: TableColumn<unknown>): void {
-		if (!column.isSortable) {
+		const { key } = column
+		const isSortable = column.isSortable ?? false
+
+		if (!isSortable) {
 			return
 		}
 
-		if (sortState.value.column === column.key) {
+		if (sortState.value.column === key) {
 			sortState.value.direction = sortState.value.direction === 'asc' ? 'desc' : 'asc'
 		} else {
 			sortState.value.direction = 'asc'
 		}
 
-		sortState.value.column = column.key
+		sortState.value.column = key
 
-		onSort?.(column.key, sortState.value.direction)
+		onSort?.(key, sortState.value.direction)
 	}
 
 	const gridTemplateColumns = computed<string>(() => {

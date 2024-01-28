@@ -18,9 +18,9 @@ const dasharray = computed<number>(() => lerp(minDasharray, maxDasharray, progre
 </script>
 
 <template>
-	<div class="h-5 w-5">
+	<div class="size-5">
 		<svg
-			class="relative h-full w-full"
+			class="relative size-full"
 			viewBox="0 0 50 50"
 		>
 			<circle

@@ -1,8 +1,11 @@
-import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import type { RouteMiddlewareReturnType } from '@/models/core/routeMiddleware.model.ts'
-import { useAuthStore } from '@/stores/auth.store.ts'
+import { isAxiosError } from 'axios'
 
-export async function auth(): Promise<RouteMiddlewareReturnType> {
+import { oAuthClient } from '@/libs/oAuth.lib.ts'
+import { useAuthStore } from '@/stores/auth.store.ts'
+import { logError } from '@/utils/logger.util'
+import { createMiddleware } from '@/utils/middleware.util'
+
+export const auth = createMiddleware(async () => {
 	const authStore = useAuthStore()
 	const hasTokens = oAuthClient.isLoggedIn()
 
@@ -15,10 +18,14 @@ export async function auth(): Promise<RouteMiddlewareReturnType> {
 	try {
 		await authStore.getCurrentUser()
 	} catch (error) {
-		authStore.logout()
+		if (isAxiosError(error)) {
+			authStore.logout()
+		}
+
+		logError(error)
 
 		return {
 			name: 'login-form',
 		}
 	}
-}
+})

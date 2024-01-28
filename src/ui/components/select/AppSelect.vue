@@ -211,9 +211,9 @@ provide('isFilterable', isFilterable)
 				@close="emit('blur')"
 				@show="onShow"
 			>
-				<ComboboxButton class="absolute left-0 top-0 flex h-full w-full items-center justify-end bg-transparent p-3">
+				<ComboboxButton class="absolute left-0 top-0 flex size-full items-center justify-end bg-transparent p-3">
 					<AppIcon
-						class="h-3 w-3"
+						class="size-3"
 						:icon="Icon.CHEVRON_DOWN"
 					/>
 				</ComboboxButton>
@@ -280,7 +280,7 @@ provide('isFilterable', isFilterable)
 					</span>
 
 					<AppIcon
-						class="h-3 w-3 shrink-0"
+						class="size-3 shrink-0"
 						:icon="Icon.CHEVRON_DOWN"
 					/>
 				</div>

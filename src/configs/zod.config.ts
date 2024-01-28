@@ -6,18 +6,17 @@ import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
 const { t } = i18nPlugin.global
 
 function customErrorMap(issue: ZodIssueOptionalMessage, ctx: ErrorMapCtx): { message: string } {
-	const isInvalidTypeAndNull = issue.code === z.ZodIssueCode.invalid_type && issue.received === 'null'
+	const isStringAndEmpty = issue.code === 'too_small' && issue.minimum === 1 && issue.type === 'string'
+	const isInvalidType = issue.code === 'invalid_type'
+	const isInvalidDiscrimator = issue.code === 'invalid_union_discriminator'
 
-	const isInvalidDiscrimatorAndNull =
-		issue.code === z.ZodIssueCode.invalid_union || issue.code === z.ZodIssueCode.invalid_union_discriminator
-
-	const isTooSmallAndString = issue.code === z.ZodIssueCode.too_small && issue.minimum === 1 && issue.type === 'string'
-
-	if (isInvalidTypeAndNull || isTooSmallAndString || isInvalidDiscrimatorAndNull) {
+	if (isStringAndEmpty || isInvalidType || isInvalidDiscrimator) {
 		return {
-			message: t('common.required'),
+			message: t('validation.required'),
 		}
 	}
+
+	// TODO: Add more custom error messages here.
 
 	return {
 		message: ctx.defaultError,

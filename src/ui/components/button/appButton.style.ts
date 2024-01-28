@@ -20,7 +20,7 @@ export const button = cva({
 			default: 'h-10 px-4 py-2',
 			sm: 'h-9 rounded-md px-3',
 			lg: 'h-11 rounded-md px-8',
-			icon: 'h-10 w-10 gap-x-0',
+			icon: 'size-10 gap-x-0',
 		},
 		isLoading: {
 			true: '!opacity-100',
@@ -35,10 +35,10 @@ export const button = cva({
 export const buttonIcon = cva({
 	variants: {
 		size: {
-			default: 'h-3.5 w-3.5',
-			sm: 'h-3.5 w-3.5',
-			lg: 'h-4 w-4',
-			icon: 'h-3.5 w-3.5',
+			default: 'size-3.5',
+			sm: 'size-3.5',
+			lg: 'size-4',
+			icon: 'size-3.5',
 		},
 	},
 	defaultVariants: {

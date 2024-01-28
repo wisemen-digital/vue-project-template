@@ -156,7 +156,7 @@ const componentProps = computed<Record<string, unknown>>(() => {
 			v-if="isLoading && iconLeft === null && iconRight === null"
 			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
 		>
-			<AppLoader class="h-5 w-5" />
+			<AppLoader class="size-5" />
 		</div>
 
 		<AppButtonIconOrLoader
