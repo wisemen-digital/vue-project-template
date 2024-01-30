@@ -14,7 +14,7 @@
 			"@/*": ["src/*"]
 		},
 		"resolveJsonModule": true,
-		"types": [],
+		"types": ["vite-plugin-pwa/client"],
 		"allowImportingTsExtensions": true,
 
 		/* Linting */

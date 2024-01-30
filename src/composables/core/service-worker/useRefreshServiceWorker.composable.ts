@@ -24,7 +24,7 @@ export function useRefreshServiceWorker(): RefreshServiceWorker {
 
 	const { needRefresh, updateServiceWorker } = useRegisterSW({
 		immediate: true,
-		onRegisteredSW(swScriptUrl, registration) {
+		onRegisteredSW(swScriptUrl: string, registration: ServiceWorkerRegistration | undefined) {
 			logInfo(`ServiceWorker registered at: ${swScriptUrl}`)
 
 			if (!registration) {
