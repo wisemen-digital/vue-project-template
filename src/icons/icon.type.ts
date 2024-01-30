@@ -1,6 +1,11 @@
 import type { Component } from 'vue'
 
 export const icons = {
+	arrowDown: import('./ArrowDownIcon.vue'),
+	arrowLeft: import('./ArrowLeftIcon.vue'),
+	arrowRight: import('./ArrowRightIcon.vue'),
+	arrowUpArrowDown: import('./ArrowUpArrowDownIcon.vue'),
+	arrowUp: import('./ArrowUpIcon.vue'),
 	checkmark: import('./CheckmarkIcon.vue'),
 	chevronDown: import('./ChevronDownIcon.vue'),
 	chevronUp: import('./ChevronUpIcon.vue'),

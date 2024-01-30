@@ -1,12 +1,23 @@
 import type { VNode } from 'vue'
 
-export interface TableColumn<TSchema> {
+interface BaseTableColumn {
 	id: string
-	name: string
+	label: string
 	isSortable?: boolean
 	size: string
-	render: (row: TSchema) => VNode
 }
+
+interface TableColumnWithRender<TSchema> extends BaseTableColumn {
+	render: (row: TSchema) => VNode
+	value?: never
+}
+
+interface TableColumnWithValue<TSchema> extends BaseTableColumn {
+	value: (row: TSchema) => string
+	render?: never
+}
+
+export type TableColumn<TSchema> = TableColumnWithRender<TSchema> | TableColumnWithValue<TSchema>
 
 interface TableFilterBase<TFilters> {
 	id: keyof TFilters
