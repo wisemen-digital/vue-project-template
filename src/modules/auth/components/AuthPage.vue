@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppText from '@/components/core/AppText.vue'
+import AppText from '@/components/core/text/AppText.vue'
 
 const { title, description } = defineProps<{
 	title: string

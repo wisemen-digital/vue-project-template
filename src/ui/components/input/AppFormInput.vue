@@ -2,7 +2,7 @@
 import { computed, ref, useAttrs } from 'vue'
 import type { z } from 'zod'
 
-import AppText from '@/components/core/AppText.vue'
+import AppText from '@/components/core/text/AppText.vue'
 import AppButton from '@/ui/components/button/AppButton.vue'
 import AppFormError from '@/ui/components/form-error/AppFormError.vue'
 import AppFormLabel from '@/ui/components/form-label/AppFormLabel.vue'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAttrs } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 import type { TextProps } from '@/components/core/text/appText.style'
 import { textVariants } from '@/components/core/text/appText.style'
@@ -13,11 +13,6 @@ interface Props {
 	variant?: TextProps['variant']
 
 	/**
-	 * The boldness of the text.
-	 */
-	boldness?: TextProps['boldness']
-
-	/**
 	 * The number of lines to truncate the text.
 	 */
 	numberOfLines?: TextProps['truncate']
@@ -28,15 +23,50 @@ interface Props {
 	as?: TextType
 }
 
-const { variant = 'body', numberOfLines, boldness, as = 'p' } = defineProps<Props>()
+const { variant = 'body', numberOfLines, as = 'p' } = defineProps<Props>()
 
+const classes = computed<string>(() => {
+	const classes: string[] = []
+
+	switch (variant) {
+		case 'hero':
+			classes.push('text-hero font-bold')
+			break
+
+		case 'title':
+			classes.push('text-title font-bold')
+			break
+
+		case 'subtitle':
+			classes.push('text-subtitle')
+			break
+
+		case 'heading':
+			classes.push('text-heading')
+			break
+
+		case 'body':
+			classes.push('text-body')
+			break
+
+		case 'subtext':
+			classes.push('text-subtext')
+			break
+
+		case 'caption':
+			classes.push('text-caption')
+			break
+	}
+
+	return classes.join(' ')
+})
 const attrs = useAttrs()
 </script>
 
 <template>
 	<Component
 		:is="as"
-		:class="textVariants({ variant, boldness, truncate: numberOfLines, class: attrs?.class as string })"
+		:class="textVariants({ variant, truncate: numberOfLines, class: [...classes, attrs.class] })"
 	>
 		<slot />
 	</Component>

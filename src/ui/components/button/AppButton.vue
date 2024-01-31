@@ -3,7 +3,7 @@ import type { ButtonHTMLAttributes } from 'vue'
 import { computed, useAttrs } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
-import AppTypedRouterLink from '@/components/core/AppTypedRouterLink.vue'
+import AppTypedRouterLink from '@/components/core/link/AppTypedRouterLink.vue'
 import type { Icon } from '@/icons/icon.type.ts'
 import type { RouteLocationTyped } from '@/plugins/router/router.plugin.ts'
 import type { Routes } from '@/plugins/router/routes.ts'

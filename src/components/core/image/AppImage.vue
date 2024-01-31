@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppFocusable from '@/components/core/AppFocusable.vue'
+import AppFocusable from '@/components/core/focusable/AppFocusable.vue'
 import { useModal } from '@/ui/composables/useModal.ts'
 
 const {
@@ -13,7 +13,7 @@ const {
 }>()
 
 const { modalId, openModal } = useModal({
-	component: () => import('./AppImageModal.vue'),
+	component: () => import('../image/AppImageModal.vue'),
 })
 
 function onClick(): void {

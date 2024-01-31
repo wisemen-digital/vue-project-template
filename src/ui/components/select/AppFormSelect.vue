@@ -2,8 +2,8 @@
 import { computed, useAttrs } from 'vue'
 import type { z } from 'zod'
 
-import AppText from '@/components/core/AppText.vue'
 import type { AppSelectProps } from '@/components/core/select/AppSelect.vue'
+import AppText from '@/components/core/text/AppText.vue'
 import AppFormError from '@/ui/components/form-error/AppFormError.vue'
 import AppFormLabel from '@/ui/components/form-label/AppFormLabel.vue'
 import AppSelect from '@/ui/components/select/AppSelect.vue'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { z } from 'zod'
 
-import AppText from '@/components/core/AppText.vue'
+import AppText from '@/components/core/text/AppText.vue'
 
 import AppIcon from '../icon/AppIcon.vue'
 import AppHeightTransition from '../transitions/AppHeightTransition.vue'
