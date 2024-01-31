@@ -3,13 +3,12 @@ import { computed, useAttrs } from 'vue'
 import type { z } from 'zod'
 
 import AppText from '@/components/core/AppText.vue'
+import type { AppSelectProps } from '@/components/core/select/AppSelect.vue'
 import AppFormError from '@/ui/components/form-error/AppFormError.vue'
 import AppFormLabel from '@/ui/components/form-label/AppFormLabel.vue'
 import AppSelect from '@/ui/components/select/AppSelect.vue'
 import type { SelectValue } from '@/ui/types/select.type.ts'
 import { generateUuid } from '@/ui/utils'
-
-import type { Props as AppSelectProps } from './AppSelect.vue'
 
 export interface Props<T extends SelectValue | SelectValue[]> extends Omit<AppSelectProps<T>, 'isInvalid'> {
 	/**
@@ -37,8 +36,6 @@ export interface Props<T extends SelectValue | SelectValue[]> extends Omit<AppSe
 	 * Determines if the select is required.
 	 */
 	isRequired?: boolean
-
-	placeholder?: string | null
 }
 
 const props = withDefaults(defineProps<Props<T>>(), {
@@ -46,7 +43,6 @@ const props = withDefaults(defineProps<Props<T>>(), {
 	label: null,
 	description: null,
 	isRequired: false,
-	placeholder: null,
 })
 
 const emit = defineEmits<{

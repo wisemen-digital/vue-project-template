@@ -1,0 +1,14 @@
+{
+	"$schema": "https://wisemen-digital.github.io/vue-components",
+	"style": "wisemen",
+	"aliases": {
+		"components": "@/components/core",
+		"utils": "@/utils/core",
+		"composables": "@/composables/core",
+		"transitions": "@/transitions",
+		"icons": "@/icons",
+		"styles": "src/assets/styles",
+		"config": "./",
+		"types": "@/types/core"
+	}
+}

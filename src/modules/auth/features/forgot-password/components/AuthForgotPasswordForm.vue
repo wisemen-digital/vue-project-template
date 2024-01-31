@@ -2,7 +2,7 @@
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
-import AppForm from '@/components/core/AppForm.vue'
+import AppForm from '@/components/core/form/AppForm.vue'
 import type { forgotPasswordFormSchema } from '@/models/auth/forms/forgotPasswordForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 import AppFormInput from '@/ui/components/input/AppFormInput.vue'
