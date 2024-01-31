@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { MenuItem } from '@headlessui/vue'
 
+import AppText from '@/components/core/AppText.vue'
 import type { Icon } from '@/icons/icon.type.ts'
+import AppIcon from '@/ui/components/icon/AppIcon.vue'
 
 interface Props {
 	isDanger?: boolean
@@ -12,6 +14,10 @@ interface Props {
 const { isDanger = false, isDisabled = false, icon } = defineProps<Props>()
 
 const emit = defineEmits<{ (event: 'action'): void }>()
+
+function onButtonClick(): void {
+	emit('action')
+}
 </script>
 
 <template>
@@ -26,10 +32,7 @@ const emit = defineEmits<{ (event: 'action'): void }>()
 			}"
 			:disabled="isDisabled"
 			type="button"
-			@click.prevent="
-				emit('action')
-				close()
-			"
+			@click.prevent="onButtonClick"
 		>
 			<div
 				class="flex items-center justify-between gap-x-3 px-3 py-2"

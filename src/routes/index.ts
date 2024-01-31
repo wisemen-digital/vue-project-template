@@ -1,4 +1,4 @@
-import { auth } from '@/middlewares/auth.middleware.ts'
+import { authMiddleware } from '@/middlewares/auth.middleware.ts'
 import { authRoutes } from '@/modules/auth/routes/auth.routes.ts'
 import { exampleRoutes } from '@/modules/example/routes'
 import type { RouteRecordTyped } from '@/plugins/router/router.plugin.ts'
@@ -7,7 +7,7 @@ export const routes: RouteRecordTyped[] = [
 	{
 		path: '',
 		meta: {
-			middleware: [auth],
+			middleware: [authMiddleware],
 		},
 		component: () => import('@/components/layout/AppLayout.vue'),
 		children: [

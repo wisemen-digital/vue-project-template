@@ -8,6 +8,7 @@ export const icons = {
 	eye: import('./EyeIcon.vue'),
 	eyeSlash: import('./EyeSlashIcon.vue'),
 	plus: import('./PlusIcon.vue'),
+	logo: import('./LogoIcon.vue'),
 	search: import('./SearchIcon.vue'),
 	warning: import('./WarningIcon.vue'),
 	info: import('./WarningIcon.vue'), // TODO: Replace with info icon

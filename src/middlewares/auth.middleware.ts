@@ -1,15 +1,18 @@
 import { isAxiosError } from 'axios'
 
+import { useEnvironment } from '@/composables/core/environment.composable.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { logError } from '@/utils/logger.util'
 import { createMiddleware } from '@/utils/middleware.util'
 
-export const auth = createMiddleware(async () => {
+export const authMiddleware = createMiddleware(async () => {
 	const authStore = useAuthStore()
+
+	const { isDevelopment } = useEnvironment()
 	const hasTokens = oAuthClient.isLoggedIn()
 
-	if (!hasTokens) {
+	if (!hasTokens && !isDevelopment.value) {
 		return {
 			name: 'login-form',
 		}
