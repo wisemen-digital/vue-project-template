@@ -1,5 +1,5 @@
-import type { VariantProps } from '@/utils/core/tailwind/cva'
-import { cva } from '@/utils/core/tailwind/cva'
+import type { VariantProps } from '@/libs/cva.lib'
+import { cva } from '@/libs/cva.lib'
 
 export const variantOptions = {
 	default: 'bg-popover text-popover-foreground',

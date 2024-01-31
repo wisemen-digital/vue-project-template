@@ -7,7 +7,7 @@ import AppFormLabel from '@/components/core/form-label/AppFormLabel.vue'
 import type { AppSelectProps } from '@/components/core/select/AppSelect.vue'
 import AppSelect from '@/components/core/select/AppSelect.vue'
 import AppTextFormDescription from '@/components/core/text/AppTextFormDescription.vue'
-import { generateUuid } from '@/utils/core/uuid/generateUuid'
+import { generateUuid } from '@/utils/core/uuid/generateUuid.util'
 
 interface AppFormSelectProps extends AppSelectProps<T> {
 	/**

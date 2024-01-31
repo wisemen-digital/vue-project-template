@@ -3,7 +3,7 @@ import { computed, toValue } from 'vue'
 import type { ZodFormattedError } from 'zod'
 
 import type { InputType, InputValue } from '@/types/core/input.type'
-import { generateUuid } from '@/utils/core/uuid/generateUuid'
+import { generateUuid } from '@/utils/core/uuid/generateUuid.util'
 
 export interface UseFormInputProps<TInputType extends InputType> {
 	/**

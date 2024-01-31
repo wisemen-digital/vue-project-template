@@ -6,7 +6,7 @@ import type { z } from 'zod'
 import AppFormError from '@/components/core/form-error/AppFormError.vue'
 import AppFormLabel from '@/components/core/form-label/AppFormLabel.vue'
 import { textarea } from '@/components/core/input/appTextarea.style'
-import { generateUuid } from '@/utils/core/uuid/generateUuid'
+import { generateUuid } from '@/utils/core/uuid/generateUuid.util'
 
 export interface Props extends /* @vue-ignore */ Omit<TextareaHTMLAttributes, 'disabled'> {
 	/**

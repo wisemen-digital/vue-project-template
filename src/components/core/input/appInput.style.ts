@@ -1,4 +1,4 @@
-import { cva } from '@/utils/core/tailwind/cva'
+import { cva } from '@/libs/cva.lib'
 
 export const inputWrapper = cva({
 	base: 'relative flex w-full items-center rounded-input border border-solid border-input-border bg-background shadow-input-shadow ring-offset-background duration-100',

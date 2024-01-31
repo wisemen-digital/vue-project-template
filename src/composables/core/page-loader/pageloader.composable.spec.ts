@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { usePageLoader } from '@/composables/core/page-loader/usePageLoader.ts'
+import { usePageLoader } from '@/composables/core/page-loader/pageLoader.composable'
 
 describe('usePageLoader', () => {
 	it('isLoading is default false', () => {

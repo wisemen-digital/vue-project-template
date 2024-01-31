@@ -3,7 +3,7 @@ import type { Form } from 'formango'
 import { onUnmounted, watch } from 'vue'
 import type { z } from 'zod'
 
-import { usePageLoader } from '@/composables/core/page-loader/usePageLoader.ts'
+import { usePageLoader } from '@/composables/core/page-loader/pageLoader.composable'
 
 const { form } = defineProps<{
 	form: Form<TFormType>

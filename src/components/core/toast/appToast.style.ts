@@ -1,5 +1,5 @@
-import type { VariantProps } from '@/utils/core/tailwind/cva'
-import { cva } from '@/utils/core/tailwind/cva'
+import type { VariantProps } from '@/libs/cva.lib'
+import { cva } from '@/libs/cva.lib'
 
 export const variantOptions = {
 	warn: 'bg-warn/20 text-warn',

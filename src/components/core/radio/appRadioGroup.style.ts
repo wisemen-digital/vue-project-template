@@ -1,5 +1,5 @@
-import type { VariantProps } from '@/utils/core/tailwind/cva'
-import { cva } from '@/utils/core/tailwind/cva'
+import type { VariantProps } from '@/libs/cva.lib'
+import { cva } from '@/libs/cva.lib'
 
 export const radioGroupIndicatorContainerVariants = cva({
 	base: 'relative flex h-6 w-6 flex-none cursor-pointer items-center justify-center rounded-full border bg-background',

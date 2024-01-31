@@ -7,7 +7,7 @@ import AppFormLabel from '@/components/core/form-label/AppFormLabel.vue'
 import type { AppSwitchProps } from '@/components/core/switch/AppSwitch.vue'
 import AppSwitch from '@/components/core/switch/AppSwitch.vue'
 import AppTextFormDescription from '@/components/core/text/AppTextFormDescription.vue'
-import { generateUuid } from '@/utils/core/uuid/generateUuid'
+import { generateUuid } from '@/utils/core/uuid/generateUuid.util'
 
 export interface Props<T> extends Omit<AppSwitchProps<T>, 'isInvalid'> {
 	/**

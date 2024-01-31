@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 
-import { usePageLoader } from '@/composables/core/page-loader/usePageLoader.ts'
+import { usePageLoader } from '@/composables/core/page-loader/pageLoader.composable'
 
 const router = useRouter()
 const { isLoading, setIsLoading } = usePageLoader()

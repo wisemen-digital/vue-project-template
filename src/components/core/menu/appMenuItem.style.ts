@@ -1,5 +1,5 @@
-import type { VariantProps } from '@/utils/core/tailwind/cva'
-import { cva } from '@/utils/core/tailwind/cva'
+import type { VariantProps } from '@/libs/cva.lib'
+import { cva } from '@/libs/cva.lib'
 
 export const menuItemVariants = cva({
 	base: 'flex min-w-40 max-w-max items-center justify-between gap-2 px-4 py-2',

@@ -4,7 +4,7 @@ import AppRadioGroupContainer from '@/components/core/radio/AppRadioGroupContain
 import AppRadioGroupLabel from '@/components/core/radio/AppRadioGroupLabel.vue'
 import AppRadioGroupOption from '@/components/core/radio/AppRadioGroupOption.vue'
 import AppRadioGroupOptions from '@/components/core/radio/AppRadioGroupOptions.vue'
-import { generateUuid } from '@/utils/core/uuid/generateUuid'
+import { generateUuid } from '@/utils/core/uuid/generateUuid.util'
 
 export interface AppRadioGroupProps<TItem> {
 	/**

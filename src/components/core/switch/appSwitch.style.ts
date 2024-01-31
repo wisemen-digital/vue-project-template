@@ -1,4 +1,4 @@
-import { cva } from '@/utils/core/tailwind/cva'
+import { cva } from '@/libs/cva.lib'
 
 export const switchWrapper = cva({
 	base: 'transition duration-200',

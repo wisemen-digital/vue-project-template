@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { twMerge } from '@/utils/core//tailwind/twMerge'
+import { twMerge } from '@/libs/twMerge.lib'
 
 const props = defineProps<{
 	/**
