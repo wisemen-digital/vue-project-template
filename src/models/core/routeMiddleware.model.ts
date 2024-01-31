@@ -1,4 +1,3 @@
-import type { RouteLocationTyped } from '@/plugins/router/router.plugin'
-import type { Routes } from '@/plugins/router/routes'
+import type { RouteLocationTyped } from './router.model'
 
-export type RouteMiddlewareReturnType = RouteLocationTyped<keyof Routes> | undefined
+export type RouteMiddlewareReturnType = RouteLocationTyped | undefined

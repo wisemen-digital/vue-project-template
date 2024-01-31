@@ -10,7 +10,7 @@ export const icons = {
 	plus: import('./PlusIcon.vue'),
 	search: import('./SearchIcon.vue'),
 	warning: import('./WarningIcon.vue'),
-	info: import('./WarningIcon.vue'), // TODO: Replace with info icon
+	info: import('./WarningIcon.vue'),
 } satisfies Record<string, Component>
 
 export type Icon = keyof typeof icons

@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends keyof Routes">
 import type { RouteLocationNamedRaw } from 'vue-router'
 
-import type { RouteLocationTyped } from '@/plugins/router/router.plugin'
-import type { Routes } from '@/plugins/router/routes'
+import type { RouteLocationTyped } from '@/models/core/router.model'
+import type { Routes } from '@/models/core/routes.model'
 
 const { to } = defineProps<{
 	to: RouteLocationTyped<T>
