@@ -3,12 +3,10 @@ import { computed, useAttrs } from 'vue'
 
 import { twMerge } from '@/libs/twMerge.lib'
 
-interface Props {
+const { as, variant } = defineProps<{
 	variant: 'body' | 'caption' | 'heading' | 'hero' | 'subtext' | 'subtitle' | 'title'
 	as?: string
-}
-
-const { as, variant } = defineProps<Props>()
+}>()
 
 const attrs = useAttrs()
 

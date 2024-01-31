@@ -2,11 +2,9 @@
 import AppContainer from '@/components/app/AppContainer.vue'
 import AppText from '@/components/core/AppText.vue'
 
-interface Props {
+const { title } = defineProps<{
 	title: string
-}
-
-const { title } = defineProps<Props>()
+}>()
 </script>
 
 <template>

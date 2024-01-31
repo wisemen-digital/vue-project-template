@@ -3,13 +3,15 @@ import { MenuItem } from '@headlessui/vue'
 
 import type { Icon } from '@/icons/icon.type.ts'
 
-interface Props {
+const {
+	isDanger = false,
+	isDisabled = false,
+	icon,
+} = defineProps<{
 	isDanger?: boolean
 	icon?: Icon
 	isDisabled?: boolean
-}
-
-const { isDanger = false, isDisabled = false, icon } = defineProps<Props>()
+}>()
 
 const emit = defineEmits<{ (event: 'action'): void }>()
 </script>

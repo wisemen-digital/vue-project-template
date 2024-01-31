@@ -3,12 +3,10 @@ import { useI18n } from 'vue-i18n'
 
 import { logError } from '@/utils/logger.util'
 
-interface Props {
+const { message, status } = defineProps<{
 	message: string | null
 	status: number
-}
-
-const { message, status } = defineProps<Props>()
+}>()
 
 const { t } = useI18n()
 

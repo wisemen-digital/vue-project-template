@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-interface Props {
+const { src, alt } = defineProps<{
 	src: string
 	alt?: string | null
-}
-
-const { src, alt } = defineProps<Props>()
+}>()
 
 const emit = defineEmits<{
 	close: []

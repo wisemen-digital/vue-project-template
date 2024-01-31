@@ -4,11 +4,10 @@ import { shallowRef, watch } from 'vue'
 
 import { type Icon, icons } from '@/icons/icon.type'
 
-interface Props {
+const { icon } = defineProps<{
 	icon: Icon
-}
+}>()
 
-const { icon } = defineProps<Props>()
 const svgComponent = shallowRef<Component | null>(null)
 
 watch(

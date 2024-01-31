@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { Switch } from '@headlessui/vue'
 
-interface Props {
+const { isDisabled = false } = defineProps<{
 	isDisabled?: boolean
-}
-
-const { isDisabled = false } = defineProps<Props>()
+}>()
 
 const emit = defineEmits<{
 	(event: 'focus', e: FocusEvent): void

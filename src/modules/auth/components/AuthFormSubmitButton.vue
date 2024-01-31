@@ -4,11 +4,9 @@ import type { z } from 'zod'
 
 import AppFormSubmitButton from '@/components/core/AppFormSubmitButton.vue'
 
-interface Props {
+const { form } = defineProps<{
 	form: Form<TFormType>
-}
-
-const { form } = defineProps<Props>()
+}>()
 </script>
 
 <template>

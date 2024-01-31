@@ -4,16 +4,14 @@ import { onErrorCaptured } from 'vue'
 
 import { logError } from '@/utils/logger.util.ts'
 
-interface Props {
+const { disableFocusTrap = false } = defineProps<{
 	/**
 	 * Indicates whether the focus trap is currently active or inactive.
 	 * If active, the focus will be trapped inside the component.
 	 * If inactive, the focus will not be trapped.
 	 */
 	disableFocusTrap?: boolean
-}
-
-const { disableFocusTrap = false } = defineProps<Props>()
+}>()
 
 onErrorCaptured((err) => {
 	logError(err)

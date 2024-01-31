@@ -10,21 +10,16 @@ import type { CurrentUser } from '@/models/auth/currentUser.model'
 import type { loginFormSchema } from '@/models/auth/forms/loginForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 import AppFormInput from '@/ui/components/input/AppFormInput.vue'
-import { toComputedRefs } from '@/utils/toComputedRefs.util'
 
-interface Props {
+const { form, lastLoggedInUser } = defineProps<{
 	form: Form<typeof loginFormSchema>
 	lastLoggedInUser: CurrentUser | null
-}
-
-const props = defineProps<Props>()
-
-const { form, lastLoggedInUser } = toComputedRefs(props)
+}>()
 
 const { t } = useI18n()
 
-const email = form.value.register('email', lastLoggedInUser.value?.email)
-const password = form.value.register('password')
+const email = form.register('email', lastLoggedInUser?.email)
+const password = form.register('password')
 </script>
 
 <template>

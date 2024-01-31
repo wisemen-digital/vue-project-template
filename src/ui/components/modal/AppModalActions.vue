@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-interface Props {
+const {
+	primaryAction,
+	isLoading = false,
+	isPrimaryActionDestructive = false,
+} = defineProps<{
 	primaryAction?: string
 	isPrimaryActionDestructive?: boolean
 	isLoading?: boolean
-}
-
-const { primaryAction, isLoading = false, isPrimaryActionDestructive = false } = defineProps<Props>()
+}>()
 
 const emit = defineEmits<{
 	(event: 'action:cancel'): void

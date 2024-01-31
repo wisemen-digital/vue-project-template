@@ -4,14 +4,12 @@ import { inject } from 'vue'
 
 import { selectOption } from './appSelect.style'
 
-interface Props {
+const { isDisabled } = defineProps<{
 	/**
 	 * Determines if the option is disabled.
 	 */
 	isDisabled?: boolean
-}
-
-const { isDisabled } = defineProps<Props>()
+}>()
 
 const isFilterable = inject('isFilterable', false)
 </script>

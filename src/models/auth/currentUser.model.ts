@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+// GET /users/me
 export const currentUserResponseDto = z.object({
 	id: z.string().uuid(),
 	firstName: z.string(),

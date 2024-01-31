@@ -3,11 +3,9 @@ import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 import type { z } from 'zod'
 
-interface Props {
+const { form } = defineProps<{
 	form: Form<TFormType>
-}
-
-const { form } = defineProps<Props>()
+}>()
 
 const { t } = useI18n()
 </script>

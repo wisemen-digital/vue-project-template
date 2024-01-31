@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import type { Icon } from '@/icons/icon.type.ts'
 
-interface Props {
+const { title, icon } = defineProps<{
 	title: string
 	icon: Icon
-}
-
-const { title, icon } = defineProps<Props>()
+}>()
 
 const emit = defineEmits<{ (event: 'action:close'): void }>()
 

@@ -7,12 +7,10 @@ import type { forgotPasswordFormSchema } from '@/models/auth/forms/forgotPasswor
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 import AppFormInput from '@/ui/components/input/AppFormInput.vue'
 
-interface Props {
+const { form, lastLoginAttemptEmail } = defineProps<{
 	form: Form<typeof forgotPasswordFormSchema>
 	lastLoginAttemptEmail: string | null
-}
-
-const { form, lastLoginAttemptEmail } = defineProps<Props>()
+}>()
 
 const { t } = useI18n()
 

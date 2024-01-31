@@ -3,12 +3,10 @@ import type { Placement } from '@floating-ui/dom'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { Float } from '@headlessui-float/vue'
 
-interface Props {
+const { position, isDark = false } = defineProps<{
 	position?: Placement
 	isDark?: boolean
-}
-
-const { position, isDark = false } = defineProps<Props>()
+}>()
 </script>
 
 <template>

@@ -5,11 +5,9 @@ import type { z } from 'zod'
 
 import { usePageLoader } from '@/composables/core/page-loader/usePageLoader.ts'
 
-interface Props {
+const { form } = defineProps<{
 	form: Form<TFormType>
-}
-
-const { form } = defineProps<Props>()
+}>()
 
 const { setIsLoading } = usePageLoader()
 

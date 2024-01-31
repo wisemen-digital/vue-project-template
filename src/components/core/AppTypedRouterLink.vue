@@ -4,11 +4,9 @@ import type { RouteLocationNamedRaw } from 'vue-router'
 import type { RouteLocationTyped } from '@/plugins/router/router.plugin'
 import type { Routes } from '@/plugins/router/routes'
 
-interface Props {
+const { to } = defineProps<{
 	to: RouteLocationTyped<T>
-}
-
-const { to } = defineProps<Props>()
+}>()
 </script>
 
 <template>

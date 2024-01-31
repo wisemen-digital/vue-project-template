@@ -1,9 +1,7 @@
 <script setup lang="ts">
-interface Props {
+const { as = 'button' } = defineProps<{
 	as?: Record<string, unknown> | string
-}
-
-const { as = 'button' } = defineProps<Props>()
+}>()
 </script>
 
 <template>

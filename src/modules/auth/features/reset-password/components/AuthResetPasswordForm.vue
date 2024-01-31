@@ -7,11 +7,9 @@ import type { resetPasswordFormSchema } from '@/models/auth/forms/resetPasswordF
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 import AppFormInput from '@/ui/components/input/AppFormInput.vue'
 
-interface Props {
+const { form } = defineProps<{
 	form: Form<typeof resetPasswordFormSchema>
-}
-
-const { form } = defineProps<Props>()
+}>()
 
 const { t } = useI18n()
 

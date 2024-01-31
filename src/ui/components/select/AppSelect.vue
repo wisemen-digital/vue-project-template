@@ -18,7 +18,17 @@ import type { SelectValue } from '@/ui/types/select.type.ts'
 import { input, inputIcon, inputWrapper } from '../input/appInput.style'
 import { selectDropdown } from './appSelect.style'
 
-export interface Props<T> {
+const {
+	displayValue,
+	isDisabled = false,
+	isInvalid = false,
+	isFilterable = false,
+	isCompact = false,
+	by = null,
+	id = null,
+	iconLeft = null,
+	placeholder = null,
+} = defineProps<{
 	/**
 	 * A function that converts the input value to a string for display.
 	 * @param value The value of the input.
@@ -65,19 +75,7 @@ export interface Props<T> {
 	 *
 	 */
 	isCompact?: boolean
-}
-
-const {
-	displayValue,
-	isDisabled = false,
-	isInvalid = false,
-	isFilterable = false,
-	isCompact = false,
-	by = null,
-	id = null,
-	iconLeft = null,
-	placeholder = null,
-} = defineProps<Props<T>>()
+}>()
 
 const emit = defineEmits<{
 	(event: 'focus'): void

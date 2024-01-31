@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-interface Props {
+const { progressPercentage } = defineProps<{
 	progressPercentage: number
-}
-
-const { progressPercentage } = defineProps<Props>()
+}>()
 
 const minDasharray = 1
 const maxDasharray = 130

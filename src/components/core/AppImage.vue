@@ -2,13 +2,15 @@
 import AppFocusable from '@/components/core/AppFocusable.vue'
 import { useModal } from '@/ui/composables/useModal.ts'
 
-interface Props {
+const {
+	src,
+	alt = null,
+	disableEnlargeOnClick = false,
+} = defineProps<{
 	src: string
 	alt?: string | null
 	disableEnlargeOnClick?: boolean
-}
-
-const { src, alt = null, disableEnlargeOnClick = false } = defineProps<Props>()
+}>()
 
 const { modalId, openModal } = useModal({
 	component: () => import('./AppImageModal.vue'),

@@ -8,14 +8,12 @@ import AppLoader from '@/ui/components/loader/AppLoader.vue'
 import type { ButtonProps } from './appButton.style'
 import { buttonIcon } from './appButton.style'
 
-interface Props {
+const { isLoading, size } = defineProps<{
 	icon: Icon
 	isLoading: boolean
 	size: ButtonProps['size']
 	variant: ButtonProps['variant']
-}
-
-const { isLoading, size } = defineProps<Props>()
+}>()
 
 const buttonIconClasses = computed<string>(() =>
 	buttonIcon({

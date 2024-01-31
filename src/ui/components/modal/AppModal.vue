@@ -5,12 +5,10 @@ import { computed, nextTick, onBeforeUnmount, ref, Transition, watch } from 'vue
 import AppModalOverlay from '@/ui/components/modal/AppModalOverlay.vue'
 import AppModalWrapper from '@/ui/components/modal/AppModalWrapper.vue'
 
-interface Props {
+const { modalId = null, modalClasses = 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2' } = defineProps<{
 	modalId?: string | null
 	modalClasses?: string
-}
-
-const { modalId = null, modalClasses = 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2' } = defineProps<Props>()
+}>()
 
 const emit = defineEmits<{ (event: 'close'): void }>()
 

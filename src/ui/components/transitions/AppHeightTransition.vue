@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-interface Props {
+const { duration = 500 } = defineProps<{
 	duration?: number
-}
-
-const { duration = 500 } = defineProps<Props>()
+}>()
 
 const heightTransition = computed<string>(() => `${duration}ms`)
 
