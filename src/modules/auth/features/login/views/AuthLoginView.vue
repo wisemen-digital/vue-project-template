@@ -5,13 +5,13 @@ import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useToast } from '@/composables/core/toast/toast.composable'
 import { useTypedRouter } from '@/composables/core/typedRouter.composable'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
 import { loginFormSchema } from '@/models/auth/forms/loginForm.model'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import AuthLoginForm from '@/modules/auth/features/login/components/AuthLoginForm.vue'
 import { useAuthStore } from '@/stores/auth.store.ts'
-import { useToast } from '@/ui/composables/useToast.ts'
 
 const authStore = useAuthStore()
 

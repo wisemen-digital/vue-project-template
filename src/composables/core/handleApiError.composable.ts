@@ -2,8 +2,8 @@ import { AxiosError } from 'axios'
 import type { Form } from 'formango'
 import type { z } from 'zod'
 
+import { useToast } from '@/composables/core/toast/toast.composable'
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin'
-import { useToast } from '@/ui/composables/useToast'
 import { logError, logInfo } from '@/utils/logger.util'
 
 /**

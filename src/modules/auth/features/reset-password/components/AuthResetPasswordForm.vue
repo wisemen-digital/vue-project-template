@@ -2,10 +2,10 @@
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
-import AppForm from '@/components/core/AppForm.vue'
+import AppForm from '@/components/core/form/AppForm.vue'
+import AppFormInput from '@/components/core/input/AppFormInput.vue'
 import type { resetPasswordFormSchema } from '@/models/auth/forms/resetPasswordForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
-import AppFormInput from '@/ui/components/input/AppFormInput.vue'
 
 const { form } = defineProps<{
 	form: Form<typeof resetPasswordFormSchema>
