@@ -11,18 +11,18 @@ export const authRoutes: RouteRecordTyped[] = [
 		children: [
 			{
 				path: 'login',
-				name: 'login-form',
+				name: 'login',
 				component: async () => import('../features/login/views/AuthLoginView.vue'),
 			},
 			{
 				path: 'forgot-password',
-				name: 'forgot-password-form',
-				component: async () => import('../features/forgot-password/views/AuthForgotPasswordFormView.vue'),
+				name: 'forgot-password',
+				component: async () => import('../features/forgot-password/views/AuthForgotPasswordView.vue'),
 			},
 			{
 				path: 'reset-password/:token',
-				name: 'reset-password-form',
-				component: async () => import('../features/reset-password/views/AuthResetPasswordFormView.vue'),
+				name: 'reset-password',
+				component: async () => import('../features/reset-password/views/AuthResetPasswordView.vue'),
 			},
 		],
 	},

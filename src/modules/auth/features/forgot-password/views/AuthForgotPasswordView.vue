@@ -11,6 +11,8 @@ import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import ForgotPasswordReturnToLoginButton from '@/modules/auth/features/forgot-password/components/AuthForgotPasswordReturnToLoginButton.vue'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
+import ForgotPasswordForm from '../components/AuthForgotPasswordForm.vue'
+
 const authStore = useAuthStore()
 
 const { lastLoginAttemptEmail } = storeToRefs(authStore)
@@ -53,7 +55,7 @@ onSubmitForm(async (data) => {
 	>
 		<ForgotPasswordReturnToLoginButton v-if="hasResetPassword" />
 
-		<forgotPasswordFormSchema
+		<ForgotPasswordForm
 			v-else
 			:form="form"
 			:last-login-attempt-email="lastLoginAttemptEmail"

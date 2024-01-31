@@ -11,6 +11,8 @@ import { useAuthResetPasswordMutation } from '@/modules/auth/api/mutations/authR
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import { mapResetPasswordFormToResetPasswordRequestDto } from '@/transformers/auth.transformer.ts'
 
+import ResetPasswordForm from '../components/AuthResetPasswordForm.vue'
+
 const hasPasswordBeenReset = ref<boolean>(false)
 
 const { t } = useI18n()
@@ -19,8 +21,8 @@ const { form, onSubmitForm } = useForm({
 	schema: resetPasswordFormSchema,
 })
 
-const { token } = useTypedRouteParams('reset-password-form')
-const { email } = useTypedRouteQuery('reset-password-form')
+const { token } = useTypedRouteParams('reset-password')
+const { email } = useTypedRouteQuery('reset-password')
 
 const { execute: resetPassword } = useAuthResetPasswordMutation()
 
@@ -54,7 +56,7 @@ onSubmitForm(async ({ password }) => {
 		:description="description"
 		:title="t('common.reset_password')"
 	>
-		<resetPasswordFormSchema
+		<ResetPasswordForm
 			v-if="!hasPasswordBeenReset"
 			:form="form"
 		/>

@@ -12,7 +12,7 @@ function logout(): void {
 	authStore.logout()
 
 	router.replace({
-		name: 'login-form',
+		name: 'login',
 	})
 }
 </script>

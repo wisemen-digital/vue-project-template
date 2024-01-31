@@ -13,7 +13,7 @@ import { routes } from '@/routes'
 
 import type { Routes } from './routes'
 
-export type RouteLocationTyped<T extends keyof Routes> = RouteLocationNamedRaw &
+export type RouteLocationTyped<T extends keyof Routes = keyof Routes> = RouteLocationNamedRaw &
 	(Routes[T] extends { params: infer P }
 		? P extends undefined
 			? object

@@ -7,13 +7,13 @@ export interface Routes {
 		path: '/:catchAll(.*)'
 	}
 	// Auth
-	'login-form': {
+	'login': {
 		path: '/login'
 	}
-	'forgot-password-form': {
+	'forgot-password': {
 		path: '/forgot-password'
 	}
-	'reset-password-form': {
+	'reset-password': {
 		path: '/reset-password/:token'
 		params: {
 			token: string

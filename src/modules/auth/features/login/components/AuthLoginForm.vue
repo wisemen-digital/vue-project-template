@@ -42,7 +42,7 @@ const password = form.register('password')
 			<AppTypedRouterLink
 				class="self-start"
 				:to="{
-					name: 'forgot-password-form',
+					name: 'forgot-password',
 				}"
 			>
 				<AppText variant="subtext">

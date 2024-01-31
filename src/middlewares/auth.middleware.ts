@@ -11,7 +11,7 @@ export const auth = createMiddleware(async () => {
 
 	if (!hasTokens) {
 		return {
-			name: 'login-form',
+			name: 'login',
 		}
 	}
 
@@ -25,7 +25,7 @@ export const auth = createMiddleware(async () => {
 		logError(error)
 
 		return {
-			name: 'login-form',
+			name: 'login',
 		}
 	}
 })

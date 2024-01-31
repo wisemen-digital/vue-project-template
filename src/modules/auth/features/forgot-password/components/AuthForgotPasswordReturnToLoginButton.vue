@@ -10,7 +10,7 @@ const { t } = useI18n()
 	<AppButton
 		class="w-full"
 		:to="{
-			name: 'login-form',
+			name: 'login',
 		}"
 	>
 		{{ t('auth.forgot_password.return_to_login') }}
