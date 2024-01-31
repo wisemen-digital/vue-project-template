@@ -3,13 +3,13 @@ import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElementSpacer.vue'
-import AppForm from '@/components/core/AppForm.vue'
-import AppText from '@/components/core/AppText.vue'
-import AppTypedRouterLink from '@/components/core/AppTypedRouterLink.vue'
+import AppForm from '@/components/core/form/AppForm.vue'
+import AppFormInput from '@/components/core/input/AppFormInput.vue'
+import AppTypedRouterLink from '@/components/core/link/AppTypedRouterLink.vue'
+import AppText from '@/components/core/text/AppText.vue'
 import type { CurrentUser } from '@/models/auth/currentUser.model'
 import type { loginFormSchema } from '@/models/auth/forms/loginForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
-import AppFormInput from '@/ui/components/input/AppFormInput.vue'
 
 const { form, lastLoggedInUser } = defineProps<{
 	form: Form<typeof loginFormSchema>

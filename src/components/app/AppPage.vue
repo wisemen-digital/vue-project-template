@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppContainer from '@/components/app/AppContainer.vue'
-import AppText from '@/components/core/AppText.vue'
+import AppText from '@/components/core/text/AppText.vue'
 
 const { title } = defineProps<{
 	title: string
