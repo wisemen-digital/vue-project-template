@@ -5,7 +5,7 @@ import type { z } from 'zod'
 
 import type { Props as ButtonProps } from '@/components/core/button/AppButton.vue'
 import AppButton from '@/components/core/button/AppButton.vue'
-import type { Routes } from '@/plugins/router/routes'
+import type { Routes } from '@/models/core/routes.model.ts'
 
 interface Props extends Omit<ButtonProps<keyof Routes>, 'form'> {
 	form: Form<TFormType>

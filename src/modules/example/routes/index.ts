@@ -1,4 +1,4 @@
-import type { RouteRecordTyped } from '@/plugins/router/router.plugin.ts'
+import type { RouteRecordTyped } from '@/models/core/router.model.ts'
 
 export const exampleRoutes: RouteRecordTyped[] = [
 	{
