@@ -6,7 +6,7 @@ import AppFormError from '@/components/core/form-error/AppFormError.vue'
 import AppFormLabel from '@/components/core/form-label/AppFormLabel.vue'
 import AppInput from '@/components/core/input/AppInput.vue'
 import AppTextFormDescription from '@/components/core/text/AppTextFormDescription.vue'
-import { useFormInput } from '@/composables/core/form/useFormInput'
+import { useFormInput } from '@/composables/core/form/formInput.composable'
 import type { InputFormProps, InputType, InputValue } from '@/types/core/input.type'
 
 const props = withDefaults(defineProps<InputFormProps<TInputType>>(), {
@@ -95,3 +95,4 @@ function onTogglePassword(): void {
 		/>
 	</div>
 </template>
+@/composables/core/form/formInput.composable

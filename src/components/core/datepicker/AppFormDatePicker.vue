@@ -7,7 +7,7 @@ import AppFormLabel from '@/components/core/form-label/AppFormLabel.vue'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppInput from '@/components/core/input/AppInput.vue'
 import AppTextFormDescription from '@/components/core/text/AppTextFormDescription.vue'
-import { useFormInput } from '@/composables/core/form/useFormInput'
+import { useFormInput } from '@/composables/core/form/formInput.composable'
 import { fadeTransition } from '@/transitions'
 import type { DateSelectorProps, ModelDate } from '@/types/core/datePicker.type'
 import type { InputFormProps, InputType } from '@/types/core/input.type'
@@ -155,3 +155,4 @@ function handleClose(): void {
 		/>
 	</div>
 </template>
+@/composables/core/form/formInput.composable

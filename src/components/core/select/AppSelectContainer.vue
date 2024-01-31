@@ -3,7 +3,7 @@ import { Combobox, Listbox } from '@headlessui/vue'
 import { Float } from '@headlessui-float/vue'
 import { computed, ref, watch } from 'vue'
 
-import { useProvideAppSelectContext } from '@/composables/core/select/useAppSelectContext'
+import { useProvideAppSelectContext } from '@/composables/core/select/appSelectContext.composable'
 import { popoverTransition } from '@/transitions'
 
 export interface AppSelectProps<T> {
@@ -160,3 +160,4 @@ function onShow(): void {
 		</Listbox>
 	</div>
 </template>
+@/composables/core/select/appSelectContext.composable

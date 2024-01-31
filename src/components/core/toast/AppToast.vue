@@ -2,16 +2,22 @@
 import type { Ref } from 'vue'
 import { computed, ref } from 'vue'
 
-import type { ToastParams } from '@/ui/composables/useToast'
+import AppButton from '@/components/core/button/AppButton.vue'
+import AppIcon from '@/components/core/icon/AppIcon.vue'
+import AppLoader from '@/components/core/loader/AppLoader.vue'
+import AppText from '@/components/core/text/AppText.vue'
+import { toast, toastContainer } from '@/components/core/toast/appToast.style'
+import type { ToastParams } from '@/composables/core/toast/toast.composable'
+import { toastSwipeComposable } from '@/composables/core/toast/toastSwipe.composable'
+import { fadeTransition } from '@/transitions'
 
-import AppButton from '../button/AppButton.vue'
-import AppIcon from '../icon/AppIcon.vue'
-import AppLoader from '../loader/AppLoader.vue'
-import { toast, toastContainer, toastIcon } from './appToast.style'
+export type PromiseStatus = 'pending' | 'rejected' | 'resolved'
 
 const { action, title, variant, icon, promise } = defineProps<ToastParams<TPromise>>()
-
 const emits = defineEmits<{
+	/**
+	 * Emitted when the toast is closed.
+	 */
 	closeToast: []
 }>()
 
@@ -19,6 +25,7 @@ function handleClose(): void {
 	emits('closeToast')
 }
 
+// Action logic
 function handleAction(): void {
 	if (!action) {
 		return
@@ -28,11 +35,12 @@ function handleAction(): void {
 	handleClose()
 }
 
+// Promise logic
 const isPromiseToast = computed<boolean>(() => {
-	return promise != null
+	return !!promise
 })
 
-const promiseStatus = ref<'pending' | 'rejected' | 'resolved'>('pending')
+const promiseStatus = ref<PromiseStatus>('pending')
 const promiseData = ref<TPromise | null | undefined>(null) as Ref<TPromise | null | undefined>
 const promiseError = ref<string | null>(null)
 
@@ -59,22 +67,11 @@ if (isPromiseToast.value) {
 const toastElement = ref<HTMLElement | null>(null)
 const toastContainerElement = ref<HTMLElement | null>(null)
 
-const toastContainerClasses = computed<string>(() =>
-	toastContainer({
-		variant,
-	})
-)
-const toastClasses = computed<string>(() =>
-	toast({
-		variant,
-	})
-)
-
-const toastIconClasses = computed<string>(() =>
-	toastIcon({
-		variant,
-	})
-)
+const { bottom, left, opacity } = toastSwipeComposable({
+	toastElement,
+	toastContainerElement,
+	onClose: handleClose,
+})
 </script>
 
 <template>
@@ -85,68 +82,75 @@ const toastIconClasses = computed<string>(() =>
 		<div
 			ref="toastElement"
 			class="transition-all ease-linear"
-			:class="toastContainerClasses"
+			:class="[
+				toastContainer({
+					variant,
+				}),
+			]"
+			:style="`transform: translate(${left}, ${bottom}); opacity: ${opacity}`"
 		>
-			<div :class="toastClasses">
+			<div
+				:class="
+					toast({
+						variant,
+					})
+				"
+			>
 				<div class="flex items-center gap-2">
-					<AppIcon
-						v-if="icon && !isPromiseToast"
-						:class="toastIconClasses"
-						:icon="icon"
-					/>
-
+					<!-- Icon that is showing -->
+					<div v-if="!isPromiseToast">
+						<AppIcon
+							v-if="icon"
+							class="h-4"
+							:icon="icon"
+						/>
+					</div>
 					<Transition
-						v-else-if="isPromiseToast"
-						enter-active-class="duration-200"
-						leave-active-class="duration-200"
-						leave-from-class="opacity-100"
-						leave-to-class="opacity-0"
+						v-else
+						v-bind="fadeTransition"
+						mode="out-in"
 					>
 						<AppLoader
 							v-if="promiseStatus === 'pending'"
-							:class="toastIconClasses"
+							class="h-4"
 						/>
-
 						<AppIcon
 							v-else-if="promiseStatus === 'resolved'"
-							:class="toastIconClasses"
+							class="h-4"
 							icon="checkmark"
 						/>
-
 						<AppIcon
 							v-else-if="promiseStatus === 'rejected'"
-							:class="toastIconClasses"
+							class="h-4"
 							icon="warning"
 						/>
 					</Transition>
 
+					<!-- Text that is showing -->
 					<div>
-						<p class="text-subtext">
+						<AppText class="text-subtext">
 							{{ title }}
-						</p>
-
+						</AppText>
 						<div class="text-caption">
-							<p v-if="desciption && !isPromiseToast">
-								{{ desciption }}
-							</p>
-
+							<template v-if="!isPromiseToast">
+								<AppText v-if="desciption">
+									{{ desciption }}
+								</AppText>
+							</template>
 							<Transition
 								v-else
-								enter-active-class="duration-200"
-								leave-active-class="duration-200"
-								leave-from-class="opacity-100"
-								leave-to-class="opacity-0"
+								v-bind="fadeTransition"
 								mode="out-in"
 							>
-								<p v-if="promise != null && promiseStatus === 'pending'">
-									{{ promise.loadingMessage }}
-								</p>
-								<p v-else-if="promise != null && promiseStatus === 'resolved' && promiseData">
-									{{ promise.successMessage(promiseData) }}
-								</p>
-								<p v-else-if="promise != null && promiseStatus === 'rejected' && promiseError">
-									{{ promise.errorMessage(promiseError) }}
-								</p>
+								<AppText v-if="promiseStatus === 'pending'">
+									{{ promise?.loadingMessage }}
+								</AppText>
+								<AppText v-else-if="promiseStatus === 'resolved' && promiseData">
+									{{ promise?.successMessage(promiseData) }}
+								</AppText>
+								<AppText v-else-if="promiseStatus === 'rejected' && promiseError">
+									{{ promise?.errorMessage(promiseError) }}
+								</AppText>
 							</Transition>
 						</div>
 					</div>
@@ -168,7 +172,7 @@ const toastIconClasses = computed<string>(() =>
 						@touchstart="handleClose"
 					>
 						<AppIcon
-							:class="toastIconClasses"
+							class="h-4"
 							icon="close"
 						/>
 					</AppButton>

@@ -8,7 +8,7 @@ import AppTabsGroup from '@/components/core/tabs/AppTabsGroup.vue'
 import AppTabsList from '@/components/core/tabs/AppTabsList.vue'
 import AppTabsPanels from '@/components/core/tabs/AppTabsPanels.vue'
 import AppTabsTab from '@/components/core/tabs/AppTabsTab.vue'
-import { useTabQuery } from '@/composables/core/tabs/useTabsQuery'
+import { useTabQuery } from '@/composables/core/tabs/tabsQuery.composable'
 import type { Icon } from '@/icons'
 
 export interface TabWithRoutes {
@@ -127,3 +127,4 @@ if (!isUsingRouter.value) {
 		</AppTabsPanels>
 	</AppTabsGroup>
 </template>
+@/composables/core/tabs/tabsQuery.composable

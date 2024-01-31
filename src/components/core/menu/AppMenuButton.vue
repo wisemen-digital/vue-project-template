@@ -1,11 +1,12 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends keyof Routes">
 import { MenuButton } from '@headlessui/vue'
 
 import type { Props } from '@/components/core/button/AppButton.vue'
 import AppButton from '@/components/core/button/AppButton.vue'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
+import type { Routes } from '@/plugins/router/routes'
 
-const props = defineProps<Props>()
+const props = defineProps<Props<T>>()
 </script>
 
 <template>

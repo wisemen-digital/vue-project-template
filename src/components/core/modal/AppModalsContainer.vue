@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
-import { useModalsContainer } from '@/ui/composables/useModal.ts'
+import { useModalsContainer } from '@/composables/core/modal/modal.composable'
 
 const { modals } = useModalsContainer()
 const isMounted = ref<boolean>(false)

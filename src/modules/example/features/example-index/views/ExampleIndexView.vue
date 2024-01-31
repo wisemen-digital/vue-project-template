@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import AppPage from '@/components/app/AppPage.vue'
+import AppButton from '@/components/core/button/AppButton.vue'
 import AppImage from '@/components/core/image/AppImage.vue'
 import { useTypedRouter } from '@/composables/core/typedRouter.composable'
 import { useAuthStore } from '@/stores/auth.store.ts'
-import AppButton from '@/ui/components/button/AppButton.vue'
 
 const authStore = useAuthStore()
 const router = useTypedRouter()

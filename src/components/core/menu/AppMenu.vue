@@ -1,10 +1,11 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends keyof Routes">
 import type { Props as ButtonProps } from '@/components/core/button/AppButton.vue'
 import AppMenuButton from '@/components/core/menu/AppMenuButton.vue'
 import AppMenuContainer from '@/components/core/menu/AppMenuContainer.vue'
 import AppMenuDivider from '@/components/core/menu/AppMenuDivider.vue'
 import AppMenuItem from '@/components/core/menu/AppMenuItem.vue'
 import AppMenuPanel from '@/components/core/menu/AppMenuPanel.vue'
+import type { Routes } from '@/plugins/router/routes'
 import type { MenuConfiguration, MenuOption } from '@/types/core/menu.type'
 
 defineProps<{
@@ -15,7 +16,7 @@ defineProps<{
 	/**
 	 * The button props, which are passed to the button component.
 	 */
-	buttonProps?: ButtonProps
+	buttonProps?: ButtonProps<T>
 }>()
 export type MenuItemComponent = typeof AppMenuDivider | typeof AppMenuItem
 

@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 import type { AppSelectOptionProps } from '@/components/core/select/appSelect.style'
 import { appSelectOptionVariants } from '@/components/core/select/appSelect.style'
-import { useAppSelectContext } from '@/composables/core/select/useAppSelectContext'
+import { useAppSelectContext } from '@/composables/core/select/appSelectContext.composable'
 
 interface Props {
 	/**
@@ -45,3 +45,4 @@ const { getDisplayValue } = useAppSelectContext()
 		{{ getDisplayValue(value) }}
 	</button>
 </template>
+@/composables/core/select/appSelectContext.composable

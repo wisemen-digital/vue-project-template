@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppPageLoader from '@/components/core/loader/AppPageLoader.vue'
-import AppModalsContainer from '@/ui/components/modal/AppModalsContainer.vue'
-import AppToastsContainer from '@/ui/components/toast-v2/AppToastsContainer.vue'
+import AppModalsContainer from '@/components/core/modal/AppModalsContainer.vue'
+import AppToastsContainer from '@/components/core/toast/AppToastContainer.vue'
 
 import { useDocumentTitle } from './composables/core/documentTitle.composable'
 

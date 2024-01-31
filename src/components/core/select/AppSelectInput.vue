@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import { input, inputIcon, inputWrapper } from '@/components/core/input/appInput.style'
-import { useAppSelectContext } from '@/composables/core/select/useAppSelectContext'
+import { useAppSelectContext } from '@/composables/core/select/appSelectContext.composable'
 import type { Icon } from '@/icons'
 
 interface Props {
@@ -160,3 +160,4 @@ function onBlur(): void {
 		</ListboxButton>
 	</div>
 </template>
+@/composables/core/select/appSelectContext.composable

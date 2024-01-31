@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppFocusable from '@/components/core/focusable/AppFocusable.vue'
-import { useModal } from '@/ui/composables/useModal.ts'
+import { useModal } from '@/composables/core/modal/modal.composable.ts'
 
 const {
 	src,

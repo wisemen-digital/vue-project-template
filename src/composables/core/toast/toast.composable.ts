@@ -1,11 +1,9 @@
 import { h, markRaw } from 'vue'
 import { toast } from 'vue-sonner'
 
-import type { Icon } from '@/icons/icon.type'
-
-import type { Toast } from '../components/toast-v2/appToast.style'
-import AppToast from '../components/toast-v2/AppToast.vue'
-
+import type { ToastProps } from '@/components/core/toast/appToast.style'
+import AppToast from '@/components/core/toast/AppToast.vue'
+import type { Icon } from '@/icons'
 export interface ToastPromise<TPromise> {
 	/**
 	 * The promise that the toast is waiting for.
@@ -58,7 +56,7 @@ export interface ToastParams<TPromise> {
 	/**
 	 * The variant of the toast that decides the styling.
 	 */
-	variant?: Toast['variant']
+	variant?: ToastProps['variant']
 	/**
 	 * The duration of the toast.
 	 */

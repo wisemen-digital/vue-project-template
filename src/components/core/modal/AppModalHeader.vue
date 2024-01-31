@@ -1,39 +1,42 @@
 <script setup lang="ts">
-import { DialogTitle } from '@headlessui/vue'
+import type { Icon } from '@/icons/icon.type.ts'
 
-import AppIcon from '@/components/core/icon/AppIcon.vue'
-import { useModalContext } from '@/composables/core/modal/useModalContext'
-import { twMerge } from '@/utils/core//tailwind/twMerge'
+const { title, icon } = defineProps<{
+	title: string
+	icon: Icon
+}>()
 
-interface Props {
-	/**
-	 * Determines if there is a close button on the modal.
-	 */
-	hideCloseButton?: boolean
+const emit = defineEmits<{ (event: 'action:close'): void }>()
 
-	/**
-	 * The class to be applied to the modal header.
-	 */
-	class?: string
-}
-
-const props = defineProps<Props>()
-const { close } = useModalContext()
-
-function handleClickCloseButton(): void {
-	close()
+function onCloseModal(): void {
+	emit('action:close')
 }
 </script>
 
 <template>
-	<div :class="twMerge('flex justify-between gap-4 p-4', props.class)">
-		<DialogTitle>
-			<slot />
-		</DialogTitle>
-		<div v-if="!hideCloseButton">
-			<button @click="handleClickCloseButton">
-				<AppIcon icon="close" />
-			</button>
+	<div class="flex items-center justify-between px-6 py-4">
+		<div class="flex items-center gap-x-2">
+			<div class="rounded-md border border-solid border-border p-2">
+				<AppIcon
+					class="size-4"
+					:icon="icon"
+				/>
+			</div>
+
+			<AppText
+				class="font-medium"
+				variant="heading"
+			>
+				{{ title }}
+			</AppText>
 		</div>
+
+		<AppButton
+			class="size-8"
+			icon-left="close"
+			size="icon"
+			variant="secondary"
+			@click="onCloseModal"
+		/>
 	</div>
 </template>

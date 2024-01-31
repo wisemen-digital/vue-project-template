@@ -1,16 +1,19 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends keyof Routes">
 import type { ButtonHTMLAttributes } from 'vue'
 import { computed, useAttrs } from 'vue'
-import type { RouteLocationRaw, RouteRecordRaw } from 'vue-router'
-import { RouterLink } from 'vue-router'
+import type { RouteLocationRaw } from 'vue-router'
 
-import type { ButtonProps } from '@/components/core/button/appButton.style'
-import { button } from '@/components/core/button/appButton.style'
 import AppButtonIconOrLoader from '@/components/core/button/AppButtonIconOrLoader.vue'
+import AppTypedRouterLink from '@/components/core/link/AppTypedRouterLink.vue'
 import AppLoader from '@/components/core/loader/AppLoader.vue'
-import type { Icon } from '@/icons'
+import type { Icon } from '@/icons/icon.type.ts'
+import type { RouteLocationTyped } from '@/plugins/router/router.plugin.ts'
+import type { Routes } from '@/plugins/router/routes.ts'
 
-export interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
+import type { ButtonProps } from './appButton.style'
+import { button } from './appButton.style'
+
+export interface Props<T extends keyof Routes> extends /* @vue-ignore */ ButtonHTMLAttributes {
 	/**
 	 * Whether the button is disabled or not.
 	 * If true, the button is disabled and cannot be clicked.
@@ -49,7 +52,7 @@ export interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
 	 * The route to navigate to when the button is clicked.
 	 * If defined, renders a `<RouterLink>` element instead of an `<a>` element.
 	 */
-	to?: RouteRecordRaw | null
+	to?: RouteLocationTyped<T> | null
 
 	/**
 	 * The URL to navigate to when the button is clicked.
@@ -62,11 +65,6 @@ export interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
 	 * Values are 'button', 'reset', and 'submit'.
 	 */
 	type?: 'button' | 'reset' | 'submit'
-
-	/**
-	 * The tag to use for the button.
-	 */
-	as?: string
 }
 
 const {
@@ -83,8 +81,7 @@ const {
 	href = null,
 
 	type = 'button',
-	as,
-} = defineProps<Props>()
+} = defineProps<Props<T>>()
 
 const attrs = useAttrs()
 
@@ -97,13 +94,9 @@ const buttonClasses = computed<string>(() =>
 	})
 )
 
-const componentType = computed<string | typeof RouterLink>(() => {
-	if (as !== undefined) {
-		return as
-	}
-
+const componentType = computed<string | typeof AppTypedRouterLink>(() => {
 	if (to !== null) {
-		return RouterLink
+		return AppTypedRouterLink
 	} else if (href !== null) {
 		return 'a'
 	}
@@ -121,7 +114,7 @@ const componentProps = computed<Record<string, unknown>>(() => {
 		}
 	}
 
-	if (componentType.value === RouterLink) {
+	if (componentType.value === AppTypedRouterLink) {
 		return {
 			to: to as RouteLocationRaw,
 			class: buttonClasses.value,
@@ -140,7 +133,7 @@ const componentProps = computed<Record<string, unknown>>(() => {
 	<!-- Not casting `componentProps` to `any` throws a ts error on build -->
 	<Component
 		:is="componentType"
-		v-bind="componentProps"
+		v-bind="componentProps as any"
 	>
 		<AppButtonIconOrLoader
 			v-if="iconLeft !== null"
@@ -163,7 +156,7 @@ const componentProps = computed<Record<string, unknown>>(() => {
 			v-if="isLoading && iconLeft === null && iconRight === null"
 			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
 		>
-			<AppLoader class="h-5 w-5" />
+			<AppLoader class="size-5" />
 		</div>
 
 		<AppButtonIconOrLoader
