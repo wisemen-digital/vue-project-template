@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+// POST /reset-password
 const resetPasswordRequestDto = z.object({
 	token: z.string(),
 	email: z.string().email(),

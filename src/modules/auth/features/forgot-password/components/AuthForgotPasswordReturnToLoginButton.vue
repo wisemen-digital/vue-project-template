@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AppButton from '@/ui/components/button/AppButton.vue'
+import AppButton from '@/components/core/button/AppButton.vue'
 
 const { t } = useI18n()
 </script>
@@ -10,7 +10,7 @@ const { t } = useI18n()
 	<AppButton
 		class="w-full"
 		:to="{
-			name: 'login-form',
+			name: 'login',
 		}"
 	>
 		{{ t('auth.forgot_password.return_to_login') }}

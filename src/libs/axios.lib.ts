@@ -35,7 +35,7 @@ axios.interceptors.response.use(
 			authStore.logout()
 
 			await routerPlugin.replace({
-				name: 'login-form',
+				name: 'login',
 			})
 		}
 

@@ -22,7 +22,7 @@ describe('currency util', () => {
 
 			const result = formatCurrency(input)
 
-			expect(result).toBe('€ 10,00')
+			expect(result).toBe('€ 10,00')
 		})
 	})
 

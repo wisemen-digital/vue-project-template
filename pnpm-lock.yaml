@@ -41,9 +41,15 @@ dependencies:
   '@tanstack/vue-query':
     specifier: 5.12.0
     version: 5.12.0(vue@3.4.14)
+  '@vuepic/vue-datepicker':
+    specifier: ^7.4.1
+    version: 7.4.1(vue@3.4.14)
   '@vueuse/core':
     specifier: 10.7.1
     version: 10.7.1(vue@3.4.14)
+  '@vueuse/router':
+    specifier: ^10.7.2
+    version: 10.7.2(vue-router@4.2.5)(vue@3.4.14)
   axios:
     specifier: 1.6.5
     version: 1.6.5
@@ -128,8 +134,8 @@ devDependencies:
     specifier: 0.5.1
     version: 0.5.1(vite@5.0.12)
   vite-plugin-pwa:
-    specifier: ^0.17.4
-    version: 0.17.5(vite@5.0.12)(workbox-build@7.0.0)(workbox-window@7.0.0)
+    specifier: 0.17.4
+    version: 0.17.4(vite@5.0.12)(workbox-build@7.0.0)(workbox-window@7.0.0)
   vite-plugin-vue-devtools:
     specifier: 7.0.10
     version: 7.0.10(rollup@2.79.1)(vite@5.0.12)
@@ -3345,6 +3351,18 @@ packages:
       vue-component-type-helpers: 1.8.27
     dev: true
 
+  /@vuepic/vue-datepicker@7.4.1(vue@3.4.14):
+    resolution:
+      { integrity: sha512-sFdBMdFnvf6GMD5Ghaw6IQUbLqlVU1XYzMVJmjD34DggP5k/7866gDyH4CB+4oD6/FpYFL8y3z5sYgY0S8zHig== }
+    engines: { node: '>=18.12.0' }
+    peerDependencies:
+      vue: '>=3.2.0'
+    dependencies:
+      date-fns: 2.30.0
+      date-fns-tz: 1.3.8(date-fns@2.30.0)
+      vue: 3.4.14(typescript@5.3.3)
+    dev: false
+
   /@vueuse/core@10.7.1(vue@3.4.14):
     resolution:
       { integrity: sha512-74mWHlaesJSWGp1ihg76vAnfVq9NTv1YT0SYhAQ6zwFNdBkkP+CKKJmVOEHcdSnLXCXYiL5e7MaewblfiYLP7g== }
@@ -3363,9 +3381,33 @@ packages:
       { integrity: sha512-jX8MbX5UX067DYVsbtrmKn6eG6KMcXxLRLlurGkZku5ZYT3vxgBjui2zajvUZ18QLIjrgBkFRsu7CqTAg18QFw== }
     dev: false
 
+  /@vueuse/router@10.7.2(vue-router@4.2.5)(vue@3.4.14):
+    resolution:
+      { integrity: sha512-TE9QtcqtZ793bwJWnlxn1gir7TXHJh5Y0KTIAS2DFOFvz4f3yTPmxAtIHC5e96oBVaVdnzxQQ9EsOhBDfBtCDg== }
+    peerDependencies:
+      vue-router: '>=4.0.0-rc.1'
+    dependencies:
+      '@vueuse/shared': 10.7.2(vue@3.4.14)
+      vue-demi: 0.14.6(vue@3.4.14)
+      vue-router: 4.2.5(vue@3.4.14)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
   /@vueuse/shared@10.7.1(vue@3.4.14):
     resolution:
       { integrity: sha512-v0jbRR31LSgRY/C5i5X279A/WQjD6/JsMzGa+eqt658oJ75IvQXAeONmwvEMrvJQKnRElq/frzBR7fhmWY5uLw== }
+    dependencies:
+      vue-demi: 0.14.6(vue@3.4.14)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
+  /@vueuse/shared@10.7.2(vue@3.4.14):
+    resolution:
+      { integrity: sha512-qFbXoxS44pi2FkgFjPvF4h7c9oMDutpyBdcJdMYIMg9XyXli2meFMuaKn+UMgsClo//Th6+beeCgqweT/79BVA== }
     dependencies:
       vue-demi: 0.14.6(vue@3.4.14)
     transitivePeerDependencies:
@@ -3997,6 +4039,23 @@ packages:
     dependencies:
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.0.0
+
+  /date-fns-tz@1.3.8(date-fns@2.30.0):
+    resolution:
+      { integrity: sha512-qwNXUFtMHTTU6CFSFjoJ80W8Fzzp24LntbjFFBgL/faqds4e5mo9mftoRLgr3Vi1trISsg4awSpYVsOQCRnapQ== }
+    peerDependencies:
+      date-fns: '>=2.0.0'
+    dependencies:
+      date-fns: 2.30.0
+    dev: false
+
+  /date-fns@2.30.0:
+    resolution:
+      { integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw== }
+    engines: { node: '>=0.11' }
+    dependencies:
+      '@babel/runtime': 7.23.5
+    dev: false
 
   /dayjs@1.11.10:
     resolution:
@@ -7404,9 +7463,9 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-pwa@0.17.5(vite@5.0.12)(workbox-build@7.0.0)(workbox-window@7.0.0):
+  /vite-plugin-pwa@0.17.4(vite@5.0.12)(workbox-build@7.0.0)(workbox-window@7.0.0):
     resolution:
-      { integrity: sha512-UxRNPiJBzh4tqU/vc8G2TxmrUTzT6BqvSzhszLk62uKsf+npXdvLxGDz9C675f4BJi6MbD2tPnJhi5txlMzxbQ== }
+      { integrity: sha512-j9iiyinFOYyof4Zk3Q+DtmYyDVBDAi6PuMGNGq6uGI0pw7E+LNm9e+nQ2ep9obMP/kjdWwzilqUrlfVRj9OobA== }
     engines: { node: '>=16.0.0' }
     peerDependencies:
       vite: ^3.1.0 || ^4.0.0 || ^5.0.0
