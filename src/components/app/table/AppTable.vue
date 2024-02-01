@@ -3,6 +3,10 @@ import { computed, ref } from 'vue'
 import { onMounted } from 'vue'
 import { onBeforeUnmount } from 'vue'
 
+import AppTableBody from '@/components/app/table/AppTableBody.vue'
+import AppTableFooter from '@/components/app/table/AppTableFooter.vue'
+import AppTableHeader from '@/components/app/table/AppTableHeader.vue'
+import AppTableTop from '@/components/app/table/AppTableTop.vue'
 import type {
 	FilterChangeEvent,
 	PageChangeEvent,
@@ -10,11 +14,6 @@ import type {
 	SortChangeEvent,
 } from '@/composables/core/tablePagination.composable'
 import type { TableColumn, TableFilter } from '@/models/table/table.model'
-
-import AppTableBody from './AppTableBody.vue'
-import AppTableFooter from './AppTableFooter.vue'
-import AppTableHeader from './AppTableHeader.vue'
-import AppTableTop from './AppTableTop.vue'
 
 interface PaginatedData<TSchema> {
 	data: TSchema[]
@@ -39,7 +38,7 @@ type Emits = {
 	page: [event: PageChangeEvent]
 }
 
-const { data, paginationOptions, columns, filters, pinFirstColumn, pinLastColumn } = defineProps<Props>()
+const { data, paginationOptions, columns, pinFirstColumn, pinLastColumn } = defineProps<Props>()
 
 const emit = defineEmits<Emits>()
 
@@ -63,14 +62,14 @@ function handleSortChange(sortChangeEvent: SortChangeEvent): void {
 	emit('sort', sortChangeEvent)
 }
 
-function handleFilterChange(filterId: keyof TFilters, value: unknown): void {
-	const updatedFilters = {
-		...paginationOptions.filters,
-		[filterId]: value,
-	} as FilterChangeEvent<TFilters>
-
-	emit('filter', updatedFilters)
-}
+// function handleFilterChange(filterId: keyof TFilters, value: unknown): void {
+// 	const updatedFilters = {
+// 		...paginationOptions.filters,
+// 		[filterId]: value,
+// 	} as FilterChangeEvent<TFilters>
+//
+// 	emit('filter', updatedFilters)
+// }
 
 function handlePageChange(event: PageChangeEvent): void {
 	emit('page', event)

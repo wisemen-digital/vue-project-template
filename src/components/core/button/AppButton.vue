@@ -6,7 +6,7 @@ import type { RouteLocationRaw } from 'vue-router'
 import AppButtonIconOrLoader from '@/components/core/button/AppButtonIconOrLoader.vue'
 import AppTypedRouterLink from '@/components/core/link/AppTypedRouterLink.vue'
 import AppLoader from '@/components/core/loader/AppLoader.vue'
-import type { Icon } from '@/icons/icon.type.ts'
+import type { Icon } from '@/icons'
 import type { RouteLocationTyped } from '@/models/core/router.model.ts'
 import type { Routes } from '@/models/core/routes.model.ts'
 

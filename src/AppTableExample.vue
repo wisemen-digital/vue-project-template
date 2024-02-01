@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import AppTableTags from './AppTableTags.vue'
+import AppTableTags from '@/AppTableTags.vue'
+
 import AppTable from './components/app/table/AppTable.vue'
 import { useTablePagination } from './composables/core/tablePagination.composable'
 import type { TableColumn, TableFilter } from './models/table/table.model'

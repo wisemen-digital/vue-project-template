@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="TSchema">
 import { computed } from 'vue'
 
-import AppText from '@/components/core/AppText.vue'
+import AppIcon from '@/components/core/icon/AppIcon.vue'
+import AppText from '@/components/core/text/AppText.vue'
 import type { PaginationOptions, SortChangeEvent, SortDirection } from '@/composables/core/tablePagination.composable'
-import type { Icon } from '@/icons/icon.type'
+import type { Icon } from '@/icons'
 import type { TableColumn } from '@/models/table/table.model'
-import AppIcon from '@/ui/components/icon/AppIcon.vue'
 
 type Props = {
 	gridTemplateColumns: string

@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import AppTableExample from '@/AppTableExample.vue'
 import AppPage from '@/components/app/AppPage.vue'
-import AppInput from '@/components/core/input/AppInput.vue'
 import AppButton from '@/components/core/button/AppButton.vue'
+import AppInput from '@/components/core/input/AppInput.vue'
 </script>
 
 <template>
@@ -15,6 +16,8 @@ import AppButton from '@/components/core/button/AppButton.vue'
 			<AppButton> Nieuwe klant </AppButton>
 		</template>
 
-		<template #default> hier komt een table </template>
+		<template #default>
+			<AppTableExample />
+		</template>
 	</AppPage>
 </template>

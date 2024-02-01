@@ -9,11 +9,11 @@ const { title } = defineProps<{
 
 <template>
 	<div class="flex w-full flex-1 flex-col">
-		<AppContainer class="py-8">
+		<AppContainer class="py-4">
 			<div class="flex items-center justify-between">
 				<AppText
 					class="mr-auto"
-					variant="title"
+					variant="subtitle"
 				>
 					{{ title }}
 				</AppText>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import AppText from '@/components/core/AppText.vue'
+import AppText from '@/components/core/text/AppText.vue'
 import type { PageChangeEvent, PaginationOptions } from '@/composables/core/tablePagination.composable'
 
 import AppTablePagination from './AppTablePagination.vue'
@@ -38,7 +38,7 @@ function handlePageEvent(event: PageChangeEvent): void {
 
 <template>
 	<div
-		class="sticky bottom-0 left-0 z-10 flex w-full items-center justify-between border-t border-solid border-border bg-background px-6 py-4"
+		class="sticky bottom-0 left-0 z-10 flex w-full items-center justify-between border-t border-solid border-border bg-background px-6 py-2"
 	>
 		<AppText variant="subtext"> {{ currentPageFrom }} - {{ currentPageUntil }} of {{ total }} </AppText>
 

@@ -35,6 +35,9 @@
 			"password": "Password"
 		}
 	},
+	"label": {
+		"customers": "Customers"
+	},
 	"validation": {
 		"required": "Required"
 	}

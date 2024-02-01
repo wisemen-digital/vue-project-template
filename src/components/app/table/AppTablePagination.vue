@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import AppText from '@/components/core/AppText.vue'
+import AppButton from '@/components/core/button/AppButton.vue'
+import AppIcon from '@/components/core/icon/AppIcon.vue'
+import AppText from '@/components/core/text/AppText.vue'
 import type { PageChangeEvent, PaginationOptions } from '@/composables/core/tablePagination.composable'
-import AppButton from '@/ui/components/button/AppButton.vue'
-import AppIcon from '@/ui/components/icon/AppIcon.vue'
 
 type Props = {
 	paginationOptions: PaginationOptions<unknown>
