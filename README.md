@@ -30,7 +30,7 @@ This templated will help you to create great applications at Wisemen.
 
 ## Project setup
 
-#### Clone repo and install dependencies
+#### Fork repo and install dependencies
 ```
 pnpm install
 ```
