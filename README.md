@@ -8,10 +8,11 @@ This templated will help you to create great applications at Wisemen.
     - [Clone repo and install dependencies](#clone-repo-and-install-dependencies) 
     - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
     - [Clean the project before pushing changes](#clean-the-project-before-pushing-changes)
+- [Code Style](#code-style)
 - [Structure](#structure)
 - [Components](#components)
 - [Authentication](#authentication)
-- [Code Style](#code-style)
+- [Form validation](#form-validation)
 - [Testing your application](#testing-your-application)
   - [Unit Tests](#unit-tests)
   - [E2E Tests](#e2e-tests)
@@ -43,6 +44,11 @@ This command will automatically run the linting, type checking, unit tests, e2e 
 pnpm clean
 ```
 
+## Code Style
+The project template uses the [Wisemen ESLint configuration](https://github.com/wisemen-digital/eslint-config-vue) for automatic code formatting and linting.
+
+TODO add our preferences and examples
+
 ## Structure
 The application uses a module based structure with vertical slices (features).
 
@@ -62,10 +68,8 @@ The project template uses the Wisemen component library. TODO @robbe
 ## Authentication
 The project template uses the Wisemen authentication library. TODO @wouter
 
-## Code Style
-The project template uses the [Wisemen ESLint configuration](https://github.com/wisemen-digital/eslint-config-vue) for automatic code formatting and linting.
-
-TODO add our preferences and examples
+## Form validation
+The project template uses the Formango validation library. TODO @robbe
 
 ## Testing your application
 
