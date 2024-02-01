@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<InputProps<T>>(), {
 	isInvalid: false,
 	isCompact: false,
 	isReadonly: false,
+	placeholder: undefined,
 	iconLeft: null,
 	iconRight: null,
 })
@@ -93,6 +94,7 @@ function onBlur(): void {
 			v-bind="inputAttrs"
 			:class="inputClasses"
 			:disabled="isDisabled"
+			:placeholder="placeholder"
 			:readonly="isReadonly"
 			:type="type as string"
 			@blur="onBlur"

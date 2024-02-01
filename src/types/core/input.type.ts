@@ -42,6 +42,8 @@ export interface InputProps<T extends InputType> extends /* @vue-ignore */ Omit<
 	 */
 	type?: T
 
+	placeholder?: string
+
 	/**
 	 * Whether the input is disabled or not.
 	 * If true, the input is disabled and cannot be focused.

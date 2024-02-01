@@ -127,4 +127,3 @@ if (!isUsingRouter.value) {
 		</AppTabsPanels>
 	</AppTabsGroup>
 </template>
-@/composables/core/tabs/tabsQuery.composable

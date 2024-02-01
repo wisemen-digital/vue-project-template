@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppPage from '@/components/app/AppPage.vue'
 import AppButton from '@/components/core/button/AppButton.vue'
-import AppImage from '@/components/core/image/AppImage.vue'
+import AppInput from '@/components/core/input/AppInput.vue'
 import { useTypedRouter } from '@/composables/core/typedRouter.composable'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
@@ -18,14 +18,16 @@ function logout(): void {
 </script>
 
 <template>
-	<AppPage title="Example">
-		<div>
-			<AppButton @click="logout"> Log out </AppButton>
-		</div>
+	<AppPage title="Klanten">
+		<template #actions>
+			<AppInput
+				icon-left="search"
+				model-value=""
+				placeholder="Zoek klant"
+			/>
+			<AppButton> Nieuwe klant </AppButton>
+		</template>
 
-		<AppImage
-			class="size-8"
-			src="https://vuejs.org/images/logo.png"
-		/>
+		<template #default> hier komt een table </template>
 	</AppPage>
 </template>
