@@ -13,6 +13,8 @@ This templated will help you to create great applications at Wisemen.
 - [Components](#components)
 - [Authentication](#authentication)
 - [Form validation](#form-validation)
+- [Sentry](#sentry)
+- [PWA](#pwa)
 - [Testing your application](#testing-your-application)
   - [Unit Tests](#unit-tests)
   - [E2E Tests](#e2e-tests)
@@ -65,22 +67,38 @@ Each module contains multiple features which group together related functionalit
 ## Components
 The project template uses the Wisemen component library. TODO @robbe
 
+> TODO @robbe add link to component docs and some explanation maybe?
+
 ## Authentication
 The project template uses the Wisemen authentication library. TODO @wouter
 
+> TODO @wouter add link to auth docs and env variables config explanation
+
 ## Form validation
-The project template uses the Formango validation library. TODO @robbe
+The project template uses the Formango validation library.
+
+> TODO @robbe add link to formango and zod docs and maybe some explanation?
+
+## Sentry
+The project template uses [Sentry](https://docs.sentry.io/platforms/javascript/) for error tracking. 
+
+> TODO add explanation which env variables need to be set @Nick
+
+## PWA (Progressive Web App)
+The project template uses [Vite PWA](https://vite-pwa-org.netlify.app/) for PWA support.
+
+You only need to update the vitest.config with your project name, description, and icons.
 
 ## Testing your application
 
 ### Unit Tests
-Unit tests are written using Vitest. To run the unit tests, run:
+Unit tests are written using [Vitest](https://vitest.dev/). To run the unit tests, run:
 ```
 pnpm test:unit
 ```
 
 ### E2E Tests
-E2E tests are written using Playwright. To run the e2e tests, run:
+E2E tests are written using [Playwright](https://playwright.dev/). To run the e2e tests, run:
 ```
 pnpm test:e2e
 ```
