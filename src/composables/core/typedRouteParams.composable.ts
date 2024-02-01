@@ -1,6 +1,6 @@
 import { useRoute } from 'vue-router'
 
-import type { Routes } from '@/plugins/router/routes.ts'
+import type { Routes } from '@/models/core/routes.model.ts'
 
 type UseTypedRouteParamsReturnType<T extends keyof Routes> = {
 	[K in keyof (Routes[T] extends {

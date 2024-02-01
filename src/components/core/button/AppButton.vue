@@ -7,8 +7,8 @@ import AppButtonIconOrLoader from '@/components/core/button/AppButtonIconOrLoade
 import AppTypedRouterLink from '@/components/core/link/AppTypedRouterLink.vue'
 import AppLoader from '@/components/core/loader/AppLoader.vue'
 import type { Icon } from '@/icons/icon.type.ts'
-import type { RouteLocationTyped } from '@/plugins/router/router.plugin.ts'
-import type { Routes } from '@/plugins/router/routes.ts'
+import type { RouteLocationTyped } from '@/models/core/router.model.ts'
+import type { Routes } from '@/models/core/routes.model.ts'
 
 import type { ButtonProps } from './appButton.style'
 import { button } from './appButton.style'
