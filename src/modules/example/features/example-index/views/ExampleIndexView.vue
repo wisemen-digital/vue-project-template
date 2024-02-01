@@ -1,20 +1,7 @@
 <script setup lang="ts">
 import AppPage from '@/components/app/AppPage.vue'
-import AppButton from '@/components/core/button/AppButton.vue'
 import AppInput from '@/components/core/input/AppInput.vue'
-import { useTypedRouter } from '@/composables/core/typedRouter.composable'
-import { useAuthStore } from '@/stores/auth.store.ts'
-
-const authStore = useAuthStore()
-const router = useTypedRouter()
-
-function logout(): void {
-	authStore.logout()
-
-	router.replace({
-		name: 'login',
-	})
-}
+import AppButton from '@/components/core/button/AppButton.vue'
 </script>
 
 <template>
