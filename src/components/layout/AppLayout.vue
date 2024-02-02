@@ -5,7 +5,7 @@ import AppNavbar from '@/components/app/navbar/AppNavbar.vue'
 <template>
 	<div>
 		<AppNavbar />
-		<div class="flex flex-1 items-center">
+		<div class="flex flex-1 flex-col items-center">
 			<RouterView />
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="TSchema">
-import type { TableColumn } from '@/models/table/table.model'
+import AppText from '@/components/core/text/AppText.vue'
+import type { TableColumn } from '@/types/core/table/table.model'
 
 import AppTableTextCell from './AppTableTextCell.vue'
 
@@ -12,6 +13,8 @@ type Props = {
 	isHorizontallyScrollable: boolean
 	isScrolledToRight: boolean
 	hasReachedHorizontalScrollEnd: boolean
+	isLoading?: boolean
+	emptyMessage?: string
 }
 
 const {
@@ -28,6 +31,15 @@ const {
 
 <template>
 	<div>
+		<div
+			v-if="!isLoading && data.length == 0 && emptyMessage"
+			class="flex items-center justify-center p-4"
+		>
+			<AppText variant="subtext">
+				{{ emptyMessage }}
+			</AppText>
+		</div>
+
 		<div
 			v-for="(row, index) in data"
 			:key="index"

@@ -5,7 +5,7 @@ import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppText from '@/components/core/text/AppText.vue'
 import type { PaginationOptions, SortChangeEvent, SortDirection } from '@/composables/core/tablePagination.composable'
 import type { Icon } from '@/icons'
-import type { TableColumn } from '@/models/table/table.model'
+import type { TableColumn } from '@/types/core/table/table.model'
 
 type Props = {
 	gridTemplateColumns: string

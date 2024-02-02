@@ -1,7 +1,7 @@
 import type { RouteLocationNamedRaw, RouteRecordRaw } from 'vue-router'
 
-import type { RouteMiddlewareReturnType } from './routeMiddleware.model'
-import type { Routes } from './routes.model'
+import type { RouteMiddlewareReturnType } from './routeMiddleware.model.ts'
+import type { Routes } from './routes.model.ts'
 
 type MaybePromise<T> = Promise<T> | T
 

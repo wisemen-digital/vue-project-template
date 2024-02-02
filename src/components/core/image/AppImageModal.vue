@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
+import AppButton from '@/components/core/button/AppButton.vue'
+import AppModal from '@/components/core/modal/AppModal.vue'
+
 const { src, alt } = defineProps<{
 	src: string
 	alt?: string | null
@@ -20,7 +23,6 @@ const { t } = useI18n()
 				<AppButton
 					class="h-9"
 					:href="src"
-					icon-right="link"
 					variant="secondary"
 				>
 					{{ t('components.image.open_in_new_tab') }}

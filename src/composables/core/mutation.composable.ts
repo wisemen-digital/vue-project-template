@@ -3,7 +3,7 @@ import type { AxiosError } from 'axios'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 
-import type { QueryKeys } from '@/models/core/queryKey.model'
+import type { QueryKeys } from '@/types/core/query/queryKey.model.ts'
 
 type RequestParams<TReqData, TParams> = TReqData extends Record<string, never>
 	? TParams extends Record<string, never>

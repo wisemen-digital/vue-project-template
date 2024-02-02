@@ -2,7 +2,7 @@ import { useQuery as useTanstackQuery } from '@tanstack/vue-query'
 import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import { computed } from 'vue'
 
-import type { QueryKeys } from '@/models/core/queryKey.model'
+import type { QueryKeys } from '@/types/core/query/queryKey.model.ts'
 
 interface UseQueryOptions<TResData> {
 	/**

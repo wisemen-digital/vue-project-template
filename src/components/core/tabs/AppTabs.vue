@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="TRouter extends true | false | undefined = false">
 import { computed, watch } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
-import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppTabsGroup from '@/components/core/tabs/AppTabsGroup.vue'
@@ -10,11 +9,12 @@ import AppTabsPanels from '@/components/core/tabs/AppTabsPanels.vue'
 import AppTabsTab from '@/components/core/tabs/AppTabsTab.vue'
 import { useTabQuery } from '@/composables/core/tabs/tabsQuery.composable'
 import type { Icon } from '@/icons'
+import type { Routes } from '@/types/core/router/routes.model.ts'
 
 export interface TabWithRoutes {
 	label: string
 	icon?: Icon
-	to: RouteLocationRaw
+	to: keyof Routes
 }
 
 export interface TabWithoutRoutes {

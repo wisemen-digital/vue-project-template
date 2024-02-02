@@ -1,7 +1,7 @@
 import { authMiddleware } from '@/middlewares/auth.middleware.ts'
-import type { RouteRecordTyped } from '@/models/core/router.model.ts'
 import { authRoutes } from '@/modules/auth/routes/auth.routes.ts'
-import { exampleRoutes } from '@/modules/example/routes'
+import { customersRoutes } from '@/modules/customers/routes/customers.routes.ts'
+import type { RouteRecordTyped } from '@/types/core/router/router.model.ts'
 
 export const routes: RouteRecordTyped[] = [
 	{
@@ -16,13 +16,13 @@ export const routes: RouteRecordTyped[] = [
 				name: 'index',
 				props: {},
 				redirect: {
-					name: 'example-index',
+					name: 'customers-overview',
 				},
 			},
 			/**
 			 * Authenticated routes
 			 */
-			...exampleRoutes,
+			...customersRoutes,
 		],
 	},
 	/**

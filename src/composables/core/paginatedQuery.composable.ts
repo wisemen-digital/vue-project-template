@@ -5,7 +5,7 @@ import { computed } from 'vue'
 import { z } from 'zod'
 
 import { httpClient } from '@/libs/http.lib'
-import type { QueryKeys } from '@/models/core/queryKey.model'
+import type { QueryKeys } from '@/types/core/query/queryKey.model.ts'
 
 export const meta = z.object({
 	currentPage: z.number(),

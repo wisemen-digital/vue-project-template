@@ -133,8 +133,8 @@ const { bottom, left, opacity } = toastSwipeComposable({
 						</AppText>
 						<div class="text-caption">
 							<template v-if="!isPromiseToast">
-								<AppText v-if="desciption">
-									{{ desciption }}
+								<AppText v-if="description">
+									{{ description }}
 								</AppText>
 							</template>
 							<Transition

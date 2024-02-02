@@ -20,6 +20,15 @@
 			"open_in_new_tab": "Open in new tab"
 		}
 	},
+	"customers": {
+		"back_to_overview": "Terug naar klantenoverzicht",
+		"create": "Create customer",
+		"create_subtitle": "Vul alle informatie aan om een nieuwe klant aan te maken",
+		"new": "New customer",
+		"not_found": "No customers found",
+		"search": "Search customer",
+		"view_and_manage": "View and manage all of your customers."
+	},
 	"error": {
 		"bad_request": "Bad request",
 		"default_error": "Something went wrong. Please try again later.",
@@ -35,8 +44,30 @@
 			"password": "Password"
 		}
 	},
-	"label": {
-		"customers": "Customers"
+	"shared": {
+		"address": "Address",
+		"cancel": "Cancel",
+		"company": "Company",
+		"company_information": "Company information",
+		"company_name": "Company name",
+		"contact": "Contact",
+		"contact_person": "Contact person",
+		"customer_type": "Customer type",
+		"customers": "Customers",
+		"email": "Email",
+		"information": "Information",
+		"invoice_information": "Invoice information",
+		"matching": "Matching",
+		"next": "Next",
+		"phoneNumber": "Phonenumber",
+		"previous": "Previous",
+		"sales_consultant": "Salesconsultant",
+		"studaro": "Studaro",
+		"students": "Students",
+		"submit": "Submit",
+		"vacancies": "Vacancies",
+		"vat_number": "VAT-number",
+		"website": "Website"
 	},
 	"validation": {
 		"required": "Required"

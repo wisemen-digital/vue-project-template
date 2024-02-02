@@ -13,7 +13,7 @@ import type {
 	PaginationOptions,
 	SortChangeEvent,
 } from '@/composables/core/tablePagination.composable'
-import type { TableColumn, TableFilter } from '@/models/table/table.model'
+import type { TableColumn, TableFilter } from '@/types/core/table/table.model'
 
 interface PaginatedData<TSchema> {
 	data: TSchema[]
@@ -28,6 +28,8 @@ type Props = {
 
 	// Visual
 	title: string
+	isLoading?: boolean
+	emptyMessage?: string
 	pinFirstColumn?: boolean
 	pinLastColumn?: boolean
 }
@@ -144,7 +146,7 @@ onBeforeUnmount(() => {
 
 		<div
 			ref="tableRef"
-			class="flex h-full w-full flex-1 flex-col overflow-auto"
+			class="bg-bac flex h-full w-full flex-1 flex-col overflow-auto"
 			@scroll="handleScroll"
 		>
 			<AppTableHeader
@@ -162,9 +164,11 @@ onBeforeUnmount(() => {
 			<AppTableBody
 				:columns="columns"
 				:data="data.data"
+				:empty-message="emptyMessage"
 				:grid-template-columns="gridTemplateColumns"
 				:has-reached-horizontal-scroll-end="hasReachedHorizontalScrollEnd"
 				:is-horizontally-scrollable="isHorizontallyScrollable"
+				:is-loading="isLoading"
 				:is-scrolled-to-right="isScrolledToRight"
 				:pin-first-column="pinFirstColumn"
 				:pin-last-column="pinLastColumn"

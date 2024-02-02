@@ -4,6 +4,7 @@ import AppText from '@/components/core/text/AppText.vue'
 
 const { title } = defineProps<{
 	title: string
+	subtitle?: string
 }>()
 </script>
 
@@ -11,12 +12,14 @@ const { title } = defineProps<{
 	<div class="flex w-full flex-1 flex-col">
 		<AppContainer class="py-4">
 			<div class="flex items-center justify-between">
-				<AppText
-					class="mr-auto"
-					variant="subtitle"
-				>
-					{{ title }}
-				</AppText>
+				<div class="mr-auto space-y-2">
+					<AppText variant="title">
+						{{ title }}
+					</AppText>
+					<AppText v-if="subtitle">
+						{{ subtitle }}
+					</AppText>
+				</div>
 				<div class="flex items-center justify-end gap-4">
 					<slot name="actions" />
 				</div>

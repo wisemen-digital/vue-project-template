@@ -22,8 +22,26 @@ export interface Routes {
 			email: string
 		}
 	}
-	// Example
-	'example-index': {
-		path: '/example'
+	// Customers
+	'customers-overview': {
+		path: '/customers'
+	}
+	'customers-create': {
+		path: '/customer/create'
+	}
+
+	//Vacancies
+	'vacancies-overview': {
+		path: '/vacancies'
+	}
+
+	//Students
+	'students-overview': {
+		path: '/students'
+	}
+
+	//Matching
+	'matching-overview': {
+		path: '/matching'
 	}
 }

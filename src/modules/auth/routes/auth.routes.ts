@@ -1,5 +1,5 @@
 import { guest } from '@/middlewares/guest.middleware.ts'
-import type { RouteRecordTyped } from '@/models/core/router.model.ts'
+import type { RouteRecordTyped } from '@/types/core/router/router.model.ts'
 
 export const authRoutes: RouteRecordTyped[] = [
 	{
