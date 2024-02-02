@@ -87,6 +87,7 @@ To use Sentry, you need to add some environment variable to your `.env` file or 
 ### VITE_SENTRY_DSN
 The DSN for your Sentry project. This is the most important environment variable and is required for Sentry to work.
 You can ask your project manager, team lead or a Sysops Engineer for the DSN.
+
 ```env
 VITE_SENTRY_DSN='YOUR_SENTRY_DSN'
 ```
@@ -94,19 +95,20 @@ VITE_SENTRY_DSN='YOUR_SENTRY_DSN'
 ### VITE_SENTRY_AUTH_TOKEN
 The auth token for your Sentry project. This is required for Sentry to work.
 You can ask your project manager, team lead or a Sysops Engineer for the auth token.
+
 ```env
 VITE_SENTRY_AUTH_TOKEN='YOUR_SENTRY_AUTH_TOKEN'
 ```
 
 ### VITE_SENTRY_SAMPLE_RATE
 The sample rate for Sentry. This is a number between 0 and 1. It represents the percentage of errors that will be sent to Sentry.
+
 ```env
 VITE_SENTRY_SAMPLE_RATE=1
 ```
 
 ### Other needed environment variables
 Some other neccessary environment variables for Sentry.
-
 
 ```env
 VITE_SENTRY_ORG='wisemen'
