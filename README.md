@@ -82,7 +82,57 @@ The project template uses the Formango validation library.
 ## Sentry
 The project template uses [Sentry](https://docs.sentry.io/platforms/javascript/) for error tracking. 
 
-> TODO add explanation which env variables need to be set @Nick
+To use Sentry, you need to add some environment variable to your `.env` file or GitHub secrets.
+
+### VITE_SENTRY_DSN
+The DSN for your Sentry project. This is the most important environment variable and is required for Sentry to work.
+You can ask your project manager, team lead or a Sysops Engineer for the DSN.
+
+```env
+VITE_SENTRY_DSN='YOUR_SENTRY_DSN'
+```
+
+### VITE_SENTRY_AUTH_TOKEN
+The auth token for your Sentry project. This is required for Sentry to work.
+You can ask your project manager, team lead or a Sysops Engineer for the auth token.
+
+```env
+VITE_SENTRY_AUTH_TOKEN='YOUR_SENTRY_AUTH_TOKEN'
+```
+
+### VITE_SENTRY_SAMPLE_RATE
+The sample rate for Sentry. This is a number between 0 and 1. It represents the percentage of errors that will be sent to Sentry.
+
+```env
+VITE_SENTRY_SAMPLE_RATE=1
+```
+
+### Other needed environment variables
+Some other neccessary environment variables for Sentry.
+
+```env
+VITE_SENTRY_ORG='wisemen'
+VITE_SENTRY_PROJECT='YOUR_PROJECT_NAME'
+VITE_SENTRY_URL='https://sentry.appwi.se'
+VITE_ENVIRONMENT='development'
+VITE_APP_VERSION=$npm_package_version
+```
+
+### GitHub Actions
+If you are using GitHub actions, make sure to included the following settings. Note that these secrets also have to be added to your GitHub secrets.
+```yaml
+- uses: actions/checkout@v3
+  with:
+    fetch-depth: 0
+
+- name: Create Sentry release
+  uses: getsentry/action-release@v1
+  env:
+    SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+    SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+    SENTRY_URL: ${{ vars.SENTRY_URL }}
+```
 
 ## PWA (Progressive Web App)
 The project template uses [Vite PWA](https://vite-pwa-org.netlify.app/) for PWA support.

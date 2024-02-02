@@ -4,6 +4,7 @@ import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import {sentryVitePlugin} from "@sentry/vite-plugin";
 
 export default defineConfig({
 	define: {
@@ -45,6 +46,12 @@ export default defineConfig({
 				propsDestructure: true,
 				defineModel: true,
 			},
+		}),
+		sentryVitePlugin({
+			org: process.env.VITE_SENTRY_ORG,
+			project: process.env.VITE_SENTRY_PROJECT,
+			authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+			url: process.env.VITE_SENTRY_URL,
 		}),
 	],
 	resolve: {
