@@ -117,7 +117,7 @@ VITE_APP_VERSION=$npm_package_version
 ```
 
 ### GitHub Actions
-If you are using GitHub actions, make sure to included the following settings
+If you are using GitHub actions, make sure to included the following settings. Note that these secrets also have to be added to your GitHub secrets.
 ```yaml
 - uses: actions/checkout@v3
   with:
