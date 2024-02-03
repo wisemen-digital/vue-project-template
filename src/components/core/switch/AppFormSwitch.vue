@@ -72,23 +72,25 @@ function onFocus(): void {
 
 <template>
 	<div class="flex flex-col">
-		<AppFormLabel
-			v-if="label !== null"
-			:id="id"
-			:is-disabled="isDisabled ?? false"
-			:is-invalid="isInvalid"
-			:is-required="isRequired"
-			:label="label"
-		/>
+		<div :class="{ 'flex flex-row-reverse items-center justify-end gap-2': isCheckbox }">
+			<AppFormLabel
+				v-if="label !== null"
+				:id="id"
+				:is-disabled="isDisabled ?? false"
+				:is-invalid="isInvalid"
+				:is-required="isRequired"
+				:label="label"
+			/>
 
-		<AppSwitch
-			:id="id"
-			v-model="value"
-			v-bind="props"
-			:is-invalid="isInvalid"
-			@blur="onBlur"
-			@focus="onFocus"
-		/>
+			<AppSwitch
+				:id="id"
+				v-model="value"
+				v-bind="props"
+				:is-invalid="isInvalid"
+				@blur="onBlur"
+				@focus="onFocus"
+			/>
+		</div>
 
 		<AppTextFormDescription
 			v-if="description !== null"

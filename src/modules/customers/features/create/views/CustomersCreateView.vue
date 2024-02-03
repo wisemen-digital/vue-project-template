@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useForm } from 'formango'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppFormPage from '@/components/app/form-page/AppFormPage.vue'
@@ -10,9 +10,9 @@ import type { FormStep } from '@/components/core/stepper/appFormStep.type.ts'
 import AppFormStepper from '@/components/core/stepper/AppFormStepper.vue'
 import { useFormStepper } from '@/composables/core/stepper/stepper.composable.ts'
 import { useToast } from '@/composables/core/toast/toast.composable.ts'
-import { useUnsavedChanges } from '@/composables/core/unsavedChanges.composable.ts'
 import type { CustomerCreateForm } from '@/models/customers/customerCreateForm.model.ts'
 import { customerCreateFormSchema } from '@/models/customers/customerCreateForm.model.ts'
+import type { SalesConsultant } from '@/models/customers/salesConsultant.model.ts'
 import { useCustomerCreateMutation } from '@/modules/customers/api/mutations/customerCreate.mutation.ts'
 import CustomersCreateCompanyInformationStep from '@/modules/customers/features/create/components/CustomersCreateCompanyInformationStep.vue'
 import CustomersCreateContactPersonStep from '@/modules/customers/features/create/components/CustomersCreateContactPersonStep.vue'
@@ -23,38 +23,39 @@ const { t } = useI18n()
 const toast = useToast()
 const customerCreateMutation = useCustomerCreateMutation()
 
-const steps: FormStep[] = [
+const { onSubmitForm, form } = useForm({ schema: customerCreateFormSchema })
+
+const steps = computed<FormStep[]>(() => [
 	{
 		id: 'company-information',
 		label: t('shared.company_information'),
 		icon: 'building',
-		hasError: false,
+		hasError: computed<boolean>(() => Number(form.errors.companyInformation?._errors) > 0),
 		isCompleted: false,
 	},
 	{
 		id: 'contact-person',
 		label: t('shared.contact_person'),
 		icon: 'mail',
-		hasError: false,
+		hasError: computed<boolean>(() => Number(form.errors.contactPersons?._errors) > 0),
 		isCompleted: false,
 	},
 	{
 		id: 'invoice-information',
 		label: t('shared.invoice_information'),
 		icon: 'creditCard',
-		hasError: false,
+		hasError: computed<boolean>(() => Number(form.errors.invoiceInformation?._errors) > 0),
 		isCompleted: false,
 	},
-]
+])
 
 const { nextStep, previousStep, onStepClick, isStepActive, activeStepId, isLastStepActive, isFirstStepActive } =
-	useFormStepper(steps)
+	useFormStepper({ steps: steps })
 
-const { onSubmitForm, form } = useForm({ schema: customerCreateFormSchema })
+const salesConsultants = ref<SalesConsultant[]>([])
 
-const formState = computed(() => form.state)
-
-const { setSnapshot } = useUnsavedChanges(formState)
+// const formState = computed(() => form.state)
+// const { setSnapshot } = useUnsavedChanges(formState)
 
 function onSubmitButtonClick(): void {
 	form.submit()
@@ -71,7 +72,7 @@ onSubmitForm(async (form: CustomerCreateForm) => {
 })
 
 onMounted(() => {
-	setSnapshot(form.state)
+	// setSnapshot(form.state)
 })
 </script>
 
@@ -124,13 +125,14 @@ onMounted(() => {
 				<CustomersCreateCompanyInformationStep
 					v-if="isStepActive('company-information')"
 					:form="form"
+					:sales-consultants="salesConsultants"
 				/>
 				<CustomersCreateContactPersonStep
 					v-if="isStepActive('contact-person')"
 					:form="form"
 				/>
 				<CustomersCreateInvoiceInformationStep
-					v-if="isStepActive('company-information')"
+					v-if="isStepActive('invoice-information')"
 					:form="form"
 				/>
 			</AppForm>

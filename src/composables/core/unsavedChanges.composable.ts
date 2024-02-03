@@ -5,6 +5,7 @@ import { onBeforeRouteLeave, useRouter } from 'vue-router'
 
 import { useModal } from '@/composables/core/modal/modal.composable.ts'
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
+import { deepClone } from '@/utils/object.util.ts'
 
 interface UnsavedChanges<T> {
 	setSnapshot: (object: T | null) => void
@@ -35,7 +36,8 @@ export function useUnsavedChanges<T>(currentObject: ComputedRef<T>): UnsavedChan
 			return
 		}
 
-		objectSnapshot.value = structuredClone(object)
+		console.log('object', object)
+		objectSnapshot.value = deepClone(object)
 	}
 
 	function handleUnsavedClose(callback: () => void): void {

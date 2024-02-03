@@ -1,75 +1,88 @@
 {
-	"auth": {
-		"forgot_password": {
-			"forgot_password": "Forgot password",
-			"forgot_your_password": "Don't remember your password? Enter your email address below and we'll send you a link to reset it.",
-			"return_to_login": "Return to login",
-			"send_link": "Send link",
-			"success_message": "Thank you for submitting your email. If your email is registered with us, you will receive a password reset link shortly."
-		},
-		"login": {
-			"forgot_password": "Forgot password?",
-			"invalid_email_or_password": "Invalid email or password",
-			"log_in": "Log in",
-			"sign_in_to_continue": "Sign in to continue",
-			"welcome_back_name": "Welcome back, {name}"
-		}
-	},
-	"components": {
-		"image": {
-			"open_in_new_tab": "Open in new tab"
-		}
-	},
-	"customers": {
-		"back_to_overview": "Terug naar klantenoverzicht",
-		"create": "Create customer",
-		"create_subtitle": "Vul alle informatie aan om een nieuwe klant aan te maken",
-		"new": "New customer",
-		"not_found": "No customers found",
-		"search": "Search customer",
-		"view_and_manage": "View and manage all of your customers."
-	},
-	"error": {
-		"bad_request": "Bad request",
-		"default_error": "Something went wrong. Please try again later.",
-		"forbidden": "Forbidden",
-		"internal_server_error": "Internal server error",
-		"resource_not_found": "Resource not found",
-		"unauthorized": "Unauthorized",
-		"validation_error": "One or more fields have errors. Please check and try again."
-	},
-	"form": {
-		"fields": {
-			"email": "Email",
-			"password": "Password"
-		}
-	},
-	"shared": {
-		"address": "Address",
-		"cancel": "Cancel",
-		"company": "Company",
-		"company_information": "Company information",
-		"company_name": "Company name",
-		"contact": "Contact",
-		"contact_person": "Contact person",
-		"customer_type": "Customer type",
-		"customers": "Customers",
-		"email": "Email",
-		"information": "Information",
-		"invoice_information": "Invoice information",
-		"matching": "Matching",
-		"next": "Next",
-		"phoneNumber": "Phonenumber",
-		"previous": "Previous",
-		"sales_consultant": "Salesconsultant",
-		"studaro": "Studaro",
-		"students": "Students",
-		"submit": "Submit",
-		"vacancies": "Vacancies",
-		"vat_number": "VAT-number",
-		"website": "Website"
-	},
-	"validation": {
-		"required": "Required"
-	}
+  "auth": {
+    "forgot_password": {
+      "forgot_password": "Forgot password",
+      "forgot_your_password": "Don't remember your password? Enter your email address below and we'll send you a link to reset it.",
+      "return_to_login": "Return to login",
+      "send_link": "Send link",
+      "success_message": "Thank you for submitting your email. If your email is registered with us, you will receive a password reset link shortly."
+    },
+    "login": {
+      "forgot_password": "Forgot password?",
+      "invalid_email_or_password": "Invalid email or password",
+      "log_in": "Log in",
+      "sign_in_to_continue": "Sign in to continue",
+      "welcome_back_name": "Welcome back, {name}"
+    }
+  },
+  "components": {
+    "image": {
+      "open_in_new_tab": "Open in new tab"
+    }
+  },
+  "customers": {
+    "back_to_overview": "Terug naar klantenoverzicht",
+    "create": "Create customer",
+    "create_subtitle": "Vul alle informatie aan om een nieuwe klant aan te maken",
+    "new": "New customer",
+    "not_found": "No customers found",
+    "search": "Search customer",
+    "view_and_manage": "View and manage all of your customers."
+  },
+  "error": {
+    "bad_request": "Bad request",
+    "default_error": "Something went wrong. Please try again later.",
+    "forbidden": "Forbidden",
+    "internal_server_error": "Internal server error",
+    "resource_not_found": "Resource not found",
+    "unauthorized": "Unauthorized",
+    "validation_error": "One or more fields have errors. Please check and try again."
+  },
+  "form": {
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    }
+  },
+  "shared": {
+    "add_contact": "Add contact",
+    "address": "Address",
+    "b2b": "B2B",
+    "b2g": "B2G",
+    "cancel": "Cancel",
+    "company": "Company",
+    "company_information": "Company information",
+    "company_name": "Company name",
+    "confirm": "Confirm",
+    "contact": "Contact",
+    "contact_person": "Contact person",
+    "customer_type": "Customer type",
+    "customers": "Customers",
+    "delete": "Delete",
+    "email": "Email",
+    "first_name": "First name",
+    "function": "Function",
+    "information": "Information",
+    "invoice_information": "Invoice information",
+    "last_name": "Last name",
+    "matching": "Matching",
+    "next": "Next",
+    "phoneNumber": "Phonenumber",
+    "phone_number": "Phonenumber",
+    "previous": "Previous",
+    "primary_contact_person": "Primary contact person",
+    "sales_consultant": "Salesconsultant",
+    "studaro": "Studaro",
+    "students": "Students",
+    "submit": "Submit",
+    "title": "Title",
+    "unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
+    "unsaved_changes_title": "Unsaved changes",
+    "vacancies": "Vacancies",
+    "vat_number": "VAT-number",
+    "website": "Website"
+  },
+  "validation": {
+    "required": "Required"
+  }
 }

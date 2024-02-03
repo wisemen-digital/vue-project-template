@@ -1,21 +1,24 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import type { FormStep } from '@/components/core/stepper/appFormStep.type.ts'
 import AppText from '@/components/core/text/AppText.vue'
 
-type Props = {
+const props = defineProps<{
 	activeStepId: string
 	steps: FormStep[]
-}
+}>()
 
-const { steps, activeStepId } = defineProps<Props>()
+const activeStepId = computed<string>(() => props.activeStepId)
+const steps = computed<FormStep[]>(() => props.steps)
 
 const emits = defineEmits<{
 	'step-click': [step: string]
 }>()
 
 function isStepActive(stepId: string): boolean {
-	return stepId === activeStepId
+	return stepId === activeStepId.value
 }
 
 function onStepClick(stepId: string): void {

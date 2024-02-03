@@ -1,3 +1,5 @@
+import type { ComputedRef } from 'vue'
+
 import type { Icon } from '@/icons'
 
 export interface FormStep {
@@ -5,5 +7,5 @@ export interface FormStep {
 	icon: Icon
 	label: string
 	isCompleted: boolean
-	hasError: boolean
+	hasError: ComputedRef<boolean>
 }

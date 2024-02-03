@@ -29,7 +29,7 @@ interface AppFormSelectProps extends AppSelectProps<T> {
 	/**
 	 * Determines if the component has emitted a `blur` event.
 	 */
-	isTouched: boolean
+	isTouched?: boolean
 
 	/**
 	 * Determines if the input is required.

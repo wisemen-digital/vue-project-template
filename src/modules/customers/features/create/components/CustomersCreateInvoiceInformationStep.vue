@@ -13,7 +13,7 @@ const { form } = defineProps<{
 
 const { t } = useI18n()
 
-const invoiceEmail = form.register('invoiceEmail')
+const invoiceEmail = form.register('invoiceInformation.email')
 </script>
 
 <template>

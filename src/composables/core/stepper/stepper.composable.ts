@@ -13,34 +13,32 @@ interface FormStepper {
 	onStepClick: (stepId: string) => void
 }
 
-export function useFormStepper(steps: MaybeRefOrGetter<FormStep[]>): FormStepper {
-	const activeStepId = ref<string>(toValue(steps)[0].id)
+export function useFormStepper(props: { steps: MaybeRefOrGetter<FormStep[]> }): FormStepper {
+	const activeStepId = ref<string>(toValue(props.steps)[0].id)
+
+	const steps = computed<FormStep[]>(() => toValue(props.steps))
 
 	const isFirstStepActive = computed<boolean>(() => {
-		const stepsValue = toValue(steps)
-		return stepsValue[0].id === activeStepId.value
+		return steps.value[0].id === activeStepId.value
 	})
 
 	const isLastStepActive = computed<boolean>(() => {
-		const stepsValue = toValue(steps)
-		return stepsValue[stepsValue.length - 1].id === activeStepId.value
+		return steps.value[steps.value.length - 1].id === activeStepId.value
 	})
 
 	function nextStep(): void {
-		const stepsValue = toValue(steps)
-		const activeStepIndex = stepsValue.findIndex((step) => step.id === activeStepId.value)
+		const activeStepIndex = steps.value.findIndex((step) => step.id === activeStepId.value)
 
-		if (activeStepIndex < stepsValue.length - 1) {
-			activeStepId.value = stepsValue[activeStepIndex + 1].id
+		if (activeStepIndex < steps.value.length - 1) {
+			activeStepId.value = steps.value[activeStepIndex + 1].id
 		}
 	}
 
 	function previousStep(): void {
-		const stepsValue = toValue(steps)
-		const activeStepIndex = stepsValue.findIndex((step) => step.id === activeStepId.value)
+		const activeStepIndex = steps.value.findIndex((step) => step.id === activeStepId.value)
 
 		if (activeStepIndex > 0) {
-			activeStepId.value = stepsValue[activeStepIndex - 1].id
+			activeStepId.value = steps.value[activeStepIndex - 1].id
 		}
 	}
 

@@ -1,30 +1,32 @@
 import { z } from 'zod'
 
-import { addressFormSchema } from '@/models/address/addressForm.model.ts'
+import { customerTypeSchema } from '@/models/customers/customer.model.ts'
 
 export const customerCreateContactPersonFormSchema = z.object({
 	title: z.string(),
 	firstName: z.string(),
 	lastName: z.string(),
-	function: z.string(),
+	personFunction: z.string(),
 	email: z.string().email(),
 	phoneNumber: z.string(),
 	isPrimary: z.boolean(),
 })
 
 export const customerCreateFormSchema = z.object({
-	firstName: z.string(),
-	lastName: z.string(),
-	companyName: z.string(),
-	email: z.string().email(),
-	vatNumber: z.string(),
-	type: z.enum(['individual', 'company']),
-	phoneNumber: z.string(),
-	salesConsultant: z.string(),
-	website: z.string(),
-	address: addressFormSchema,
+	companyInformation: z.object({
+		name: z.string(),
+		email: z.string().email(),
+		vatNumber: z.string(),
+		salesConsultantUuid: z.string(),
+		address: z.string(),
+		website: z.string(),
+		phoneNumber: z.string(),
+		type: customerTypeSchema,
+	}),
 	contactPersons: z.array(customerCreateContactPersonFormSchema),
-	invoiceEmail: z.string().email(),
+	invoiceInformation: z.object({
+		email: z.string().email(),
+	}),
 })
 
 export type CustomerCreateForm = z.infer<typeof customerCreateFormSchema>
