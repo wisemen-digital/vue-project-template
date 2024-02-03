@@ -1,9 +1,9 @@
 import { z } from 'zod'
 
-import { customerUuidSchema } from '@/models/customers/customer.model.ts'
+import { clientUuidSchema } from '@/models/clients/client.model.ts'
 
-export const customerIndexSchema = z.object({
-	uuid: customerUuidSchema,
+export const clientIndexSchema = z.object({
+	uuid: clientUuidSchema,
 	companyName: z.string(),
 	companyCity: z.string(),
 	contactPersonName: z.string(),
@@ -13,4 +13,4 @@ export const customerIndexSchema = z.object({
 	website: z.string(),
 })
 
-export type CustomerIndex = z.infer<typeof customerIndexSchema>
+export type ClientIndex = z.infer<typeof clientIndexSchema>

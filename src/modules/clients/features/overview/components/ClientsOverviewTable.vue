@@ -5,8 +5,8 @@ import { useI18n } from 'vue-i18n'
 import AppDisplayData from '@/components/app/AppDisplayData.vue'
 import AppTable from '@/components/app/table/AppTable.vue'
 import { useTablePagination } from '@/composables/core/tablePagination.composable.ts'
-import type { CustomerUuid } from '@/models/customers/customer.model.ts'
-import type { CustomerIndex } from '@/models/customers/customerIndex.model.ts'
+import type { ClientUuid } from '@/models/clients/client.model.ts'
+import type { ClientIndex } from '@/models/clients/clientIndex.model.ts'
 import type { TableColumn } from '@/types/core/table/table.model.ts'
 import { generateUuid } from '@/utils/core/uuid/generateUuid.util.ts'
 import { createComponent } from '@/utils/createComponent.util.ts'
@@ -20,7 +20,7 @@ const { t } = useI18n()
 
 const { paginationOptions, handleFilterChange, handlePageChange, handleSortChange } =
 	useTablePagination<UserTableFilters>({
-		id: 'customers',
+		id: 'clients',
 		defaultPaginationOptions: {
 			pagination: {
 				perPage: 10,
@@ -29,9 +29,9 @@ const { paginationOptions, handleFilterChange, handlePageChange, handleSortChang
 		},
 	})
 
-const data: CustomerIndex[] = [
+const data: ClientIndex[] = [
 	{
-		uuid: generateUuid<CustomerUuid>(),
+		uuid: generateUuid<ClientUuid>(),
 		companyEmail: 'example@email.com',
 		companyCity: 'Amsterdam',
 		companyName: 'Studaro',
@@ -43,7 +43,7 @@ const data: CustomerIndex[] = [
 ]
 
 const paginatedData = computed<{
-	data: CustomerIndex[]
+	data: ClientIndex[]
 	total: number
 }>(() => {
 	const { page, perPage } = paginationOptions.value.pagination ?? {}
@@ -57,7 +57,7 @@ const paginatedData = computed<{
 	}
 })
 
-const columns: TableColumn<CustomerIndex>[] = [
+const columns: TableColumn<ClientIndex>[] = [
 	{
 		id: 'company',
 		label: t('shared.company'),
@@ -108,13 +108,13 @@ const columns: TableColumn<CustomerIndex>[] = [
 	<AppTable
 		:columns="columns"
 		:data="paginatedData"
-		:empty-message="t('customers.not_found')"
+		:empty-message="t('clients.not_found')"
 		:filters="[]"
 		:is-loading="false"
 		:pagination-options="paginationOptions"
 		:pin-first-column="true"
 		:pin-last-column="false"
-		:title="t('shared.customers')"
+		:title="t('shared.clients')"
 		@filter="handleFilterChange"
 		@page="handlePageChange"
 		@sort="handleSortChange"

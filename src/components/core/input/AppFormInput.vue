@@ -2,6 +2,7 @@
 import { ref, toRefs, useAttrs } from 'vue'
 
 import AppButton from '@/components/core/button/AppButton.vue'
+import AppFormGroup from '@/components/core/form/AppFormGroup.vue'
 import AppFormError from '@/components/core/form-error/AppFormError.vue'
 import AppFormLabel from '@/components/core/form-label/AppFormLabel.vue'
 import AppInput from '@/components/core/input/AppInput.vue'
@@ -14,6 +15,7 @@ const props = withDefaults(defineProps<InputFormProps<TInputType>>(), {
 	label: null,
 	description: null,
 	isRequired: false,
+	showErrorMessage: false,
 })
 
 const value = defineModel<InputValue<TInputType>>({
@@ -44,7 +46,7 @@ function onTogglePassword(): void {
 </script>
 
 <template>
-	<div :class="attrs.class">
+	<AppFormGroup :class="attrs.class">
 		<AppFormLabel
 			v-if="label !== null"
 			:id="id"
@@ -90,8 +92,9 @@ function onTogglePassword(): void {
 		</AppTextFormDescription>
 
 		<AppFormError
+			v-if="showErrorMessage"
 			:errors="errors"
 			:is-touched="isTouched"
 		/>
-	</div>
+	</AppFormGroup>
 </template>

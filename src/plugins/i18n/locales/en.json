@@ -15,19 +15,19 @@
       "welcome_back_name": "Welcome back, {name}"
     }
   },
+  "clients": {
+    "back_to_overview": "Terug naar klantenoverzicht",
+    "create": "Create client",
+    "create_subtitle": "Vul alle informatie aan om een nieuwe klant aan te maken",
+    "new": "New client",
+    "not_found": "No clients found",
+    "search": "Search client",
+    "view_and_manage": "View and manage all of your clients."
+  },
   "components": {
     "image": {
       "open_in_new_tab": "Open in new tab"
     }
-  },
-  "customers": {
-    "back_to_overview": "Terug naar klantenoverzicht",
-    "create": "Create customer",
-    "create_subtitle": "Vul alle informatie aan om een nieuwe klant aan te maken",
-    "new": "New customer",
-    "not_found": "No customers found",
-    "search": "Search customer",
-    "view_and_manage": "View and manage all of your customers."
   },
   "error": {
     "bad_request": "Bad request",
@@ -49,15 +49,17 @@
     "address": "Address",
     "b2b": "B2B",
     "b2g": "B2G",
+    "billing_email": "Billing email",
+    "billing_information": "Billing information",
     "cancel": "Cancel",
+    "client_type": "Client type",
+    "clients": "Clients",
     "company": "Company",
     "company_information": "Company information",
     "company_name": "Company name",
     "confirm": "Confirm",
     "contact": "Contact",
     "contact_person": "Contact person",
-    "customer_type": "Customer type",
-    "customers": "Customers",
     "delete": "Delete",
     "email": "Email",
     "first_name": "First name",
@@ -72,6 +74,7 @@
     "previous": "Previous",
     "primary_contact_person": "Primary contact person",
     "sales_consultant": "Salesconsultant",
+    "select": "Select",
     "studaro": "Studaro",
     "students": "Students",
     "submit": "Submit",

@@ -7,18 +7,18 @@ import AppGrid from '@/components/app/AppGrid.vue'
 import AppFormGrid from '@/components/app/grid/AppFormGrid.vue'
 import AppButton from '@/components/core/button/AppButton.vue'
 import AppFormSection from '@/components/core/form/AppFormSection.vue'
-import type { customerCreateFormSchema } from '@/models/customers/customerCreateForm.model.ts'
-import CustomersCreateContactPersonForm from '@/modules/clients/features/create/components/CustomersCreateContactPersonForm.vue'
+import type { clientCreateFormSchema } from '@/models/clients/clientCreateForm.model.ts'
+import ClientsCreateContactPersonForm from '@/modules/clients/features/create/components/ClientsCreateContactPersonForm.vue'
 
 const { form } = defineProps<{
-	form: Form<typeof customerCreateFormSchema>
+	form: Form<typeof clientCreateFormSchema>
 }>()
 
 const { t } = useI18n()
 
 const contactPersons = form.registerArray('contactPersons', [
 	{
-		title: '',
+		title: 'mr',
 		firstName: '',
 		phoneNumber: '',
 		email: '',
@@ -30,7 +30,7 @@ const contactPersons = form.registerArray('contactPersons', [
 
 function onAddContactButtonClick(): void {
 	contactPersons.append({
-		title: '',
+		title: 'mr',
 		firstName: '',
 		phoneNumber: '',
 		email: '',
@@ -43,13 +43,13 @@ function onAddContactButtonClick(): void {
 
 <template>
 	<AppFormGrid :cols="1">
-		<AppFormSection :title="t('shared.information')">
+		<AppFormSection :title="t('shared.contact_person')">
 			<AppGrid
 				v-for="(_, index) in contactPersons.modelValue.length"
 				:key="index"
 				:cols="1"
 			>
-				<CustomersCreateContactPersonForm
+				<ClientsCreateContactPersonForm
 					:contact-persons="contactPersons"
 					:index="index"
 				/>

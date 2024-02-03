@@ -7,11 +7,13 @@ import AppButton from '@/components/core/button/AppButton.vue'
 import AppFormInput from '@/components/core/input/AppFormInput.vue'
 import AppFormSelect from '@/components/core/select/AppFormSelect.vue'
 import AppFormSwitch from '@/components/core/switch/AppFormSwitch.vue'
+import type { PersonTitleConstant } from '@/constants/personTitle.constant.ts'
 import { PERSON_TITLE_ITEMS } from '@/constants/personTitle.constant.ts'
-import type { CustomerCreateContactPersonForm } from '@/models/customers/customerCreateForm.model.ts'
+import type { ContactPersonForm } from '@/models/contact-person/contactPersonForm.model.ts'
+import type { DataItem } from '@/types/core/dataItem.type.ts'
 
 const props = defineProps<{
-	contactPersons: FieldArray<CustomerCreateContactPersonForm[]>
+	contactPersons: FieldArray<ContactPersonForm[]>
 	index: number
 }>()
 
@@ -33,8 +35,9 @@ const isPrimary = props.contactPersons.register(`${props.index}.isPrimary`)
 			:cols="2"
 		>
 			<AppFormSelect
-				:display-function="(item) => t(item.label)"
+				:display-function="(item: DataItem<PersonTitleConstant>) => item.label"
 				:items="PERSON_TITLE_ITEMS"
+				key-value="value"
 				:label="t('shared.title')"
 				v-bind="title"
 			/>

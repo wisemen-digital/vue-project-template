@@ -10,44 +10,46 @@ import type { FormStep } from '@/components/core/stepper/appFormStep.type.ts'
 import AppFormStepper from '@/components/core/stepper/AppFormStepper.vue'
 import { useFormStepper } from '@/composables/core/stepper/stepper.composable.ts'
 import { useToast } from '@/composables/core/toast/toast.composable.ts'
-import type { CustomerCreateForm } from '@/models/customers/customerCreateForm.model.ts'
-import { customerCreateFormSchema } from '@/models/customers/customerCreateForm.model.ts'
-import type { SalesConsultant } from '@/models/customers/salesConsultant.model.ts'
-import { useCustomerCreateMutation } from '@/modules/clients/api/mutations/customerCreate.mutation.ts'
-import CustomersCreateCompanyInformationStep from '@/modules/clients/features/create/components/CustomersCreateCompanyInformationStep.vue'
-import CustomersCreateContactPersonStep from '@/modules/clients/features/create/components/CustomersCreateContactPersonStep.vue'
-import CustomersCreateInvoiceInformationStep from '@/modules/clients/features/create/components/CustomersCreateInvoiceInformationStep.vue'
+import type { ClientCreateForm } from '@/models/clients/clientCreateForm.model.ts'
+import { clientCreateFormSchema } from '@/models/clients/clientCreateForm.model.ts'
+import type { SalesConsultant } from '@/models/clients/salesConsultant.model.ts'
+import { useClientCreateMutation } from '@/modules/clients/api/mutations/clientCreate.mutation.ts'
+import ClientsCreateCompanyInformationStep from '@/modules/clients/features/create/components/ClientsCreateCompanyInformationStep.vue'
+import ClientsCreateContactPersonStep from '@/modules/clients/features/create/components/ClientsCreateContactPersonStep.vue'
+import ClientsCreateInvoiceInformationStep from '@/modules/clients/features/create/components/ClientsCreateInvoiceInformationStep.vue'
 import { logInfo } from '@/utils/logger.util.ts'
 
 const { t } = useI18n()
 const toast = useToast()
-const customerCreateMutation = useCustomerCreateMutation()
+const clientCreateMutation = useClientCreateMutation()
 
-const { onSubmitForm, form } = useForm({ schema: customerCreateFormSchema })
+const { onSubmitForm, form } = useForm({ schema: clientCreateFormSchema })
 
-const steps = computed<FormStep[]>(() => [
-	{
-		id: 'company-information',
-		label: t('shared.company_information'),
-		icon: 'building',
-		hasError: computed<boolean>(() => Number(form.errors.companyInformation?._errors) > 0),
-		isCompleted: false,
-	},
-	{
-		id: 'contact-person',
-		label: t('shared.contact_person'),
-		icon: 'mail',
-		hasError: computed<boolean>(() => Number(form.errors.contactPersons?._errors) > 0),
-		isCompleted: false,
-	},
-	{
-		id: 'invoice-information',
-		label: t('shared.invoice_information'),
-		icon: 'creditCard',
-		hasError: computed<boolean>(() => Number(form.errors.invoiceInformation?._errors) > 0),
-		isCompleted: false,
-	},
-])
+const steps = computed<FormStep[]>(() => {
+	return [
+		{
+			id: 'company-information',
+			label: t('shared.company_information'),
+			icon: 'building',
+			hasError: computed<boolean>(() => Number(form.errors.companyInformation?._errors) > 0),
+			isCompleted: false,
+		},
+		{
+			id: 'contact-person',
+			label: t('shared.contact_person'),
+			icon: 'mail',
+			hasError: computed<boolean>(() => Number(form.errors.contactPersons?._errors) > 0),
+			isCompleted: false,
+		},
+		{
+			id: 'invoice-information',
+			label: t('shared.billing_information'),
+			icon: 'creditCard',
+			hasError: computed<boolean>(() => Number(form.errors.billingInformation?._errors) > 0),
+			isCompleted: false,
+		},
+	]
+})
 
 const { nextStep, previousStep, onStepClick, isStepActive, activeStepId, isLastStepActive, isFirstStepActive } =
 	useFormStepper({ steps: steps })
@@ -61,11 +63,11 @@ function onSubmitButtonClick(): void {
 	form.submit()
 }
 
-onSubmitForm(async (form: CustomerCreateForm) => {
+onSubmitForm(async (form: ClientCreateForm) => {
 	logInfo('Form submitted', form)
 
 	try {
-		await customerCreateMutation.execute({ body: form })
+		await clientCreateMutation.execute({ body: form })
 	} catch (error) {
 		toast.showToastApiError(error)
 	}
@@ -78,9 +80,9 @@ onMounted(() => {
 
 <template>
 	<AppFormPage
-		:navigation-label="t('customers.back_to_overview')"
-		:subtitle="t('customers.create_subtitle')"
-		:title="t('customers.new')"
+		:navigation-label="t('clients.back_to_overview')"
+		:subtitle="t('clients.create_subtitle')"
+		:title="t('clients.new')"
 	>
 		<template #stepper>
 			<AppFormStepper
@@ -93,7 +95,7 @@ onMounted(() => {
 		<template #actions>
 			<AppButton
 				v-if="isFirstStepActive"
-				:to="{ name: 'customers-overview' }"
+				:to="{ name: 'clients-overview' }"
 				variant="outline"
 			>
 				{{ t('shared.cancel') }}
@@ -113,7 +115,7 @@ onMounted(() => {
 			</AppButton>
 			<AppButton
 				v-if="isLastStepActive"
-				:is-loading="customerCreateMutation.isLoading.value"
+				:is-loading="clientCreateMutation.isLoading.value"
 				@click="onSubmitButtonClick"
 			>
 				{{ t('shared.submit') }}
@@ -122,16 +124,16 @@ onMounted(() => {
 
 		<template #default>
 			<AppForm :form="form">
-				<CustomersCreateCompanyInformationStep
+				<ClientsCreateCompanyInformationStep
 					v-if="isStepActive('company-information')"
 					:form="form"
 					:sales-consultants="salesConsultants"
 				/>
-				<CustomersCreateContactPersonStep
+				<ClientsCreateContactPersonStep
 					v-if="isStepActive('contact-person')"
 					:form="form"
 				/>
-				<CustomersCreateInvoiceInformationStep
+				<ClientsCreateInvoiceInformationStep
 					v-if="isStepActive('invoice-information')"
 					:form="form"
 				/>

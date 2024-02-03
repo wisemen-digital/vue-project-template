@@ -36,7 +36,6 @@ export function useUnsavedChanges<T>(currentObject: ComputedRef<T>): UnsavedChan
 			return
 		}
 
-		console.log('object', object)
 		objectSnapshot.value = deepClone(object)
 	}
 

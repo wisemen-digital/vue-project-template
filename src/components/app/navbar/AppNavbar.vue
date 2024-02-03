@@ -30,8 +30,8 @@ const tabs: TabWithRoutes[] = [
 		to: 'students-overview',
 	},
 	{
-		label: t('shared.customers'),
-		to: 'customers-overview',
+		label: t('shared.clients'),
+		to: 'clients-overview',
 	},
 ]
 

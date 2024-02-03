@@ -32,6 +32,8 @@ export interface InputFormProps<T extends InputType> extends Omit<InputProps<T>,
 	 * Determines if the input is required.
 	 */
 	isRequired?: boolean
+
+	showErrorMessage?: boolean
 }
 
 export interface InputProps<T extends InputType> extends /* @vue-ignore */ Omit<InputHTMLAttributes, 'disabled'> {

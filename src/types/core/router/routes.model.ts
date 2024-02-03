@@ -22,12 +22,12 @@ export interface Routes {
 			email: string
 		}
 	}
-	// Customers
-	'customers-overview': {
-		path: '/customers'
+	// Clients
+	'clients-overview': {
+		path: '/clients'
 	}
-	'customers-create': {
-		path: '/customer/create'
+	'clients-create': {
+		path: '/clients/create'
 	}
 
 	//Vacancies

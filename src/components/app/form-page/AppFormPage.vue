@@ -10,13 +10,13 @@ const props = defineProps<{
 </script>
 
 <template>
-	<div class="flex w-full flex-1 flex-col">
-		<div class="relative grid h-full w-full flex-1 grid-cols-[1fr_2fr]">
-			<div class="sticky top-12 flex flex-col gap-8 bg-muted-background px-12 py-8">
+	<div class="relative flex w-full flex-1">
+		<div class="w-[360px] bg-muted-background">
+			<div class="sticky top-14 flex flex-col gap-8 bg-muted-background px-12 py-8">
 				<div>
 					<AppButton
 						icon-left="arrowLeft"
-						:to="{ name: 'customers-overview' }"
+						:to="{ name: 'clients-overview' }"
 						variant="ghost"
 					>
 						{{ props.navigationLabel }}
@@ -26,25 +26,22 @@ const props = defineProps<{
 					<slot name="stepper" />
 				</div>
 			</div>
-			<div class="flex flex-col px-12 py-8">
-				<div class="mb-8 flex items-center justify-between">
-					<div>
-						<AppText variant="title">
-							{{ props.title }}
-						</AppText>
-						<AppText
-							class="text-subtext"
-							variant="subtext"
-						>
-							{{ props.subtitle }}
-						</AppText>
-					</div>
-					<div class="flex items-center justify-end gap-2">
-						<slot name="actions" />
-					</div>
+		</div>
+		<div class="mx-auto flex w-full max-w-[800px] flex-col px-12 py-8">
+			<div class="mb-8 flex items-center justify-between">
+				<div>
+					<AppText variant="title">
+						{{ props.title }}
+					</AppText>
+					<AppText variant="body">
+						{{ props.subtitle }}
+					</AppText>
 				</div>
-				<slot />
+				<div class="flex items-center justify-end gap-2">
+					<slot name="actions" />
+				</div>
 			</div>
+			<slot />
 		</div>
 	</div>
 </template>

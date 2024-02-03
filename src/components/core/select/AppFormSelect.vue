@@ -2,6 +2,7 @@
 import { computed, useAttrs } from 'vue'
 import type { z } from 'zod'
 
+import AppFormGroup from '@/components/core/form/AppFormGroup.vue'
 import AppFormError from '@/components/core/form-error/AppFormError.vue'
 import AppFormLabel from '@/components/core/form-label/AppFormLabel.vue'
 import type { AppSelectProps } from '@/components/core/select/AppSelect.vue'
@@ -35,6 +36,8 @@ interface AppFormSelectProps extends AppSelectProps<T> {
 	 * Determines if the input is required.
 	 */
 	isRequired?: boolean
+
+	showErrorMessage?: boolean
 }
 
 const {
@@ -46,6 +49,7 @@ const {
 	displayFunction,
 	isDisabled,
 	isTouched,
+	showErrorMessage = false,
 	keyValue,
 } = defineProps<AppFormSelectProps>()
 
@@ -75,7 +79,7 @@ const isInvalid = computed<boolean>(() => {
 </script>
 
 <template>
-	<div :class="attrs.class">
+	<AppFormGroup :class="attrs.class">
 		<AppFormLabel
 			v-if="label !== null"
 			:id="id"
@@ -110,8 +114,9 @@ const isInvalid = computed<boolean>(() => {
 		</AppTextFormDescription>
 
 		<AppFormError
+			v-if="showErrorMessage"
 			:errors="errors"
 			:is-touched="isTouched"
 		/>
-	</div>
+	</AppFormGroup>
 </template>

@@ -1,6 +1,6 @@
 import { computed } from 'vue'
 
-import type { CustomerType } from '@/models/customers/customer.model.ts'
+import type { ClientType } from '@/models/clients/client.model.ts'
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
 
 interface DataItem<T> {
@@ -8,7 +8,7 @@ interface DataItem<T> {
 	label: string
 }
 
-export const CUSTOMER_TYPE_ITEMS = computed<DataItem<CustomerType>[]>(() => {
+export const CLIENT_TYPE_ITEMS = computed<DataItem<ClientType>[]>(() => {
 	const { t } = i18nPlugin.global
 
 	return [

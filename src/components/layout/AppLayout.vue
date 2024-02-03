@@ -3,10 +3,8 @@ import AppNavbar from '@/components/app/navbar/AppNavbar.vue'
 </script>
 
 <template>
-	<div>
+	<div class="flex h-full w-full flex-col">
 		<AppNavbar />
-		<div class="flex flex-1 flex-col items-center">
-			<RouterView />
-		</div>
+		<RouterView />
 	</div>
 </template>

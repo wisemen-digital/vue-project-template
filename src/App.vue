@@ -11,7 +11,7 @@ setTemplate('{title} | App')
 </script>
 
 <template>
-	<div class="h-full w-full">
+	<div class="h-screen w-screen">
 		<RouterView />
 		<AppPageLoader />
 		<AppModalsContainer />

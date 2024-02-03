@@ -6,12 +6,14 @@ import AppFormGrid from '@/components/app/grid/AppFormGrid.vue'
 import AppFormSection from '@/components/core/form/AppFormSection.vue'
 import AppFormInput from '@/components/core/input/AppFormInput.vue'
 import AppFormSelect from '@/components/core/select/AppFormSelect.vue'
-import type { customerCreateFormSchema } from '@/models/customers/customerCreateForm.model.ts'
-import type { SalesConsultant } from '@/models/customers/salesConsultant.model.ts'
-import { CUSTOMER_TYPE_ITEMS } from '@/modules/clients/constants/customerType.constant.ts'
+import type { ClientType } from '@/models/clients/client.model.ts'
+import type { clientCreateFormSchema } from '@/models/clients/clientCreateForm.model.ts'
+import type { SalesConsultant } from '@/models/clients/salesConsultant.model.ts'
+import { CLIENT_TYPE_ITEMS } from '@/modules/clients/constants/clientType.constant.ts'
+import type { DataItem } from '@/types/core/dataItem.type.ts'
 
 const { form } = defineProps<{
-	form: Form<typeof customerCreateFormSchema>
+	form: Form<typeof clientCreateFormSchema>
 	salesConsultants: SalesConsultant[]
 }>()
 
@@ -21,7 +23,7 @@ const companyName = form.register('companyInformation.name')
 const vatNumber = form.register('companyInformation.vatNumber')
 const type = form.register('companyInformation.type')
 
-const salesConsultantUuid = form.register('companyInformation.salesConsultantUuid')
+const salesConsultant = form.register('companyInformation.salesConsultant')
 const address = form.register('companyInformation.address')
 const website = form.register('companyInformation.website')
 const phoneNumber = form.register('companyInformation.phoneNumber')
@@ -45,9 +47,11 @@ const phoneNumber = form.register('companyInformation.phoneNumber')
 					v-bind="vatNumber"
 				/>
 				<AppFormSelect
-					:display-function="(item) => item.label"
-					:items="CUSTOMER_TYPE_ITEMS"
-					:label="t('shared.customer_type')"
+					:display-function="(item: DataItem<ClientType>) => item.label"
+					:items="CLIENT_TYPE_ITEMS"
+					key-value="value"
+					:label="t('shared.client_type')"
+					:placeholder="t('shared.select')"
 					v-bind="type"
 				/>
 			</AppFormGrid>
@@ -55,10 +59,11 @@ const phoneNumber = form.register('companyInformation.phoneNumber')
 		<AppFormSection :title="t('shared.studaro')">
 			<AppFormGrid :cols="2">
 				<AppFormSelect
-					:display-function="(item: SalesConsultant) => item.uuid"
+					:display-function="(item: SalesConsultant) => item.fullName"
 					:items="salesConsultants"
-					:label="t('shared.customer_type')"
-					v-bind="salesConsultantUuid"
+					:label="t('shared.client_type')"
+					:placeholder="t('shared.select')"
+					v-bind="salesConsultant"
 				/>
 			</AppFormGrid>
 		</AppFormSection>
