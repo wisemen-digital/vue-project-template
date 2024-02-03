@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AppButton from '@/components/core/button/AppButton.vue'
+import AppText from '@/components/core/text/AppText.vue'
 
 const { t } = useI18n()
 </script>
 
 <template>
-	<AppButton
-		class="w-full"
-		:to="{
-			name: 'login',
-		}"
-	>
-		{{ t('auth.forgot_password.return_to_login') }}
-	</AppButton>
+	<div class="space-y-4">
+		<AppText variant="title">
+			{{ t('auth.check_your_email') }}
+		</AppText>
+		<AppText>
+			{{ t('auth.check_your_email_description') }}
+		</AppText>
+	</div>
 </template>

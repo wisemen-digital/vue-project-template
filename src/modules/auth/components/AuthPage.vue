@@ -11,21 +11,20 @@ const { title, description } = defineProps<{
 <template>
 	<div class="flex w-full flex-col items-center justify-center pb-24">
 		<AppIcon
-			class="mb-8"
+			class="h-20 w-40"
 			icon="logo"
-			size="xl"
 		/>
 
 		<AppText
-			class="font-medium text-foreground"
+			class="text-center font-medium text-foreground"
 			variant="title"
 		>
 			{{ title }}
 		</AppText>
 
 		<AppText
-			class="mt-1 text-gray-500"
-			variant="body"
+			class="mt-2 text-center text-gray-500"
+			variant="subtext"
 		>
 			{{ description }}
 		</AppText>

@@ -23,7 +23,7 @@ const { isFilterable } = useAppSelectContext<T>()
 <template>
 	<ComboboxOptions
 		v-if="isFilterable"
-		class="rounded bg-popover p-2"
+		class="rounded bg-popover p-2 shadow-popover"
 	>
 		<AppHeightTransition>
 			<div>
@@ -46,7 +46,7 @@ const { isFilterable } = useAppSelectContext<T>()
 	</ComboboxOptions>
 	<ListboxOptions
 		v-else
-		class="rounded bg-popover p-2"
+		class="rounded border border-solid border-muted bg-popover p-1 shadow-popover-shadow shadow-popover"
 	>
 		<AppHeightTransition>
 			<div class="flex flex-col gap-1">
@@ -68,4 +68,3 @@ const { isFilterable } = useAppSelectContext<T>()
 		</AppHeightTransition>
 	</ListboxOptions>
 </template>
-@/composables/core/select/appSelectContext.composable

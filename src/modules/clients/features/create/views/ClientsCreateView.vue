@@ -63,11 +63,11 @@ function onSubmitButtonClick(): void {
 	form.submit()
 }
 
-onSubmitForm(async (form: ClientCreateForm) => {
-	logInfo('Form submitted', form)
+onSubmitForm(async (formData: ClientCreateForm) => {
+	logInfo('Form submitted', formData)
 
 	try {
-		await clientCreateMutation.execute({ body: form })
+		await clientCreateMutation.execute({ body: formData })
 	} catch (error) {
 		toast.showToastApiError(error)
 	}

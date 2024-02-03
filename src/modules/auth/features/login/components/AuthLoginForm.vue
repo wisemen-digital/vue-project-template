@@ -42,13 +42,13 @@ const password = form.register('password')
 			/>
 
 			<AppTypedRouterLink
-				class="self-start py-2"
+				class="py-2"
 				:to="{
 					name: 'forgot-password',
 				}"
 			>
 				<AppText
-					class="text-primary"
+					class="font-medium text-primary"
 					variant="subtext"
 				>
 					{{ t('auth.login.forgot_password') }}

@@ -21,8 +21,10 @@ const email = form.register('email', lastLoginAttemptEmail ?? undefined)
 	<AppForm :form="form">
 		<AppFormInput
 			v-bind="email"
+			icon-left="mail"
 			:is-required="true"
 			:label="t('form.fields.email')"
+			:placeholder="t('auth.enter_your_email')"
 			type="email"
 		/>
 
@@ -30,7 +32,7 @@ const email = form.register('email', lastLoginAttemptEmail ?? undefined)
 			:form="form"
 			:is-always-enabled="true"
 		>
-			{{ t('auth.forgot_password.send_link') }}
+			{{ t('auth.reset_password') }}
 		</AuthFormSubmitButton>
 	</AppForm>
 </template>

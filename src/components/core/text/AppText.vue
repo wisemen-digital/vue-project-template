@@ -34,7 +34,7 @@ const classes = computed<string>(() => {
 			break
 
 		case 'title':
-			classes.push('text-title font-semibold')
+			classes.push('text-title font-semibold text-foreground')
 			break
 
 		case 'subtitle':

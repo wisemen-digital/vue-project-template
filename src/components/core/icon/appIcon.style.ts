@@ -7,6 +7,7 @@ export const sizeOptions = {
 	sm: 'h-4',
 	lg: 'h-8',
 	xl: 'h-10',
+	xxl: 'h-14',
 	full: 'h-full',
 }
 

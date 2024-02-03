@@ -45,4 +45,3 @@ const { getDisplayValue } = useAppSelectContext()
 		{{ getDisplayValue(value) }}
 	</button>
 </template>
-@/composables/core/select/appSelectContext.composable
