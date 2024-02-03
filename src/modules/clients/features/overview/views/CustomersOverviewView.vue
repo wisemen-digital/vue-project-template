@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import AppPage from '@/components/app/AppPage.vue'
 import AppButton from '@/components/core/button/AppButton.vue'
 import AppInput from '@/components/core/input/AppInput.vue'
-import CustomersOverviewTable from '@/modules/customers/features/overview/components/CustomersOverviewTable.vue'
+import CustomersOverviewTable from '@/modules/clients/features/overview/components/CustomersOverviewTable.vue'
 
 const { t } = useI18n()
 </script>

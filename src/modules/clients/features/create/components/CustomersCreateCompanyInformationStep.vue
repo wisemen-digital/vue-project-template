@@ -8,7 +8,7 @@ import AppFormInput from '@/components/core/input/AppFormInput.vue'
 import AppFormSelect from '@/components/core/select/AppFormSelect.vue'
 import type { customerCreateFormSchema } from '@/models/customers/customerCreateForm.model.ts'
 import type { SalesConsultant } from '@/models/customers/salesConsultant.model.ts'
-import { CUSTOMER_TYPE_ITEMS } from '@/modules/customers/constants/customerType.constant.ts'
+import { CUSTOMER_TYPE_ITEMS } from '@/modules/clients/constants/customerType.constant.ts'
 
 const { form } = defineProps<{
 	form: Form<typeof customerCreateFormSchema>

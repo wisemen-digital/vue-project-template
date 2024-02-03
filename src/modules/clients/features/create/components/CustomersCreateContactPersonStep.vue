@@ -8,7 +8,7 @@ import AppFormGrid from '@/components/app/grid/AppFormGrid.vue'
 import AppButton from '@/components/core/button/AppButton.vue'
 import AppFormSection from '@/components/core/form/AppFormSection.vue'
 import type { customerCreateFormSchema } from '@/models/customers/customerCreateForm.model.ts'
-import CustomersCreateContactPersonForm from '@/modules/customers/features/create/components/CustomersCreateContactPersonForm.vue'
+import CustomersCreateContactPersonForm from '@/modules/clients/features/create/components/CustomersCreateContactPersonForm.vue'
 
 const { form } = defineProps<{
 	form: Form<typeof customerCreateFormSchema>
