@@ -1,8 +1,8 @@
-export function generateUuid(): string {
+export function generateUuid<T>(): T {
 	// Public Domain/MIT
 	let d = new Date().getTime() // Timestamp
 	let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0 // Time in microseconds since page-load or 0 if unsupported
-	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+	const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
 		let r = Math.random() * 16 // random number between 0 and 16
 
 		if (d > 0) {
@@ -17,4 +17,6 @@ export function generateUuid(): string {
 
 		return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
 	})
+
+	return uuid as unknown as T
 }

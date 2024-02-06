@@ -1,13 +1,13 @@
-import { auth } from '@/middlewares/auth.middleware.ts'
-import type { RouteRecordTyped } from '@/models/core/router.model.ts'
+import { authMiddleware } from '@/middlewares/auth.middleware.ts'
 import { authRoutes } from '@/modules/auth/routes/auth.routes.ts'
-import { exampleRoutes } from '@/modules/example/routes'
+import { clientsRoutes } from '@/modules/clients/routes/clients.routes.ts'
+import type { RouteRecordTyped } from '@/types/core/router/router.model.ts'
 
 export const routes: RouteRecordTyped[] = [
 	{
 		path: '',
 		meta: {
-			middleware: [auth],
+			middleware: [authMiddleware],
 		},
 		component: () => import('@/components/layout/AppLayout.vue'),
 		children: [
@@ -16,13 +16,13 @@ export const routes: RouteRecordTyped[] = [
 				name: 'index',
 				props: {},
 				redirect: {
-					name: 'example-index',
+					name: 'clients-overview',
 				},
 			},
 			/**
 			 * Authenticated routes
 			 */
-			...exampleRoutes,
+			...clientsRoutes,
 		],
 	},
 	/**

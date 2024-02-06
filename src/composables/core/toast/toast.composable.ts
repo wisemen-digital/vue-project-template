@@ -35,7 +35,7 @@ export interface ToastParams<TPromise> {
 	/**
 	 * The description of the toast.
 	 */
-	desciption?: string
+	description?: string
 	/**
 	 * The action of the toast.
 	 */
@@ -71,6 +71,7 @@ export type ToastParamsWithoutVariant<TPromise> = Omit<ToastParams<TPromise>, 'v
 
 export function useToast(): {
 	showToastError: <TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>) => void
+	showToastApiError: (error: unknown) => void
 	showToastSuccess: <TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>) => void
 	showToastInfo: <TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>) => void
 	showToastWarn: <TPromise>(toastParams: ToastParamsWithoutVariant<TPromise>) => void
@@ -108,8 +109,16 @@ export function useToast(): {
 		renderToast({ variant: 'default', ...toastParams })
 	}
 
+	function showToastApiError(error: unknown): void {
+		showToastError({
+			title: 'Error',
+			description: error instanceof Error ? error.message : 'An error occurred',
+		})
+	}
+
 	return {
 		showToastError,
+		showToastApiError,
 		showToastSuccess,
 		showToastInfo,
 		showToastWarn,

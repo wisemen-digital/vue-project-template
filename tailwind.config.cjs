@@ -63,6 +63,7 @@ export default {
 
 			boxShadow: {
 				'DEFAULT': 'var(--shadow)',
+				'sm': 'var(--shadow-sm)',
 				'card-shadow': 'var(--shadow-card);',
 				'card-hover-shadow': 'var(--shadow-card-hover);',
 				'button-shadow': 'var(--shadow-button);',

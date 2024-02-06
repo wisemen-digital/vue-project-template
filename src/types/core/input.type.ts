@@ -26,12 +26,14 @@ export interface InputFormProps<T extends InputType> extends Omit<InputProps<T>,
 	/**
 	 * Determines if the component has emitted a `blur` event.
 	 */
-	isTouched: boolean
+	isTouched?: boolean
 
 	/**
 	 * Determines if the input is required.
 	 */
 	isRequired?: boolean
+
+	showErrorMessage?: boolean
 }
 
 export interface InputProps<T extends InputType> extends /* @vue-ignore */ Omit<InputHTMLAttributes, 'disabled'> {
@@ -41,6 +43,8 @@ export interface InputProps<T extends InputType> extends /* @vue-ignore */ Omit<
 	 * Defaults to 'text'.
 	 */
 	type?: T
+
+	placeholder?: string
 
 	/**
 	 * Whether the input is disabled or not.

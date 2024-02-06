@@ -2,16 +2,18 @@ import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, readonly, ref, watch } from 'vue'
 
+import { useEnvironment } from '@/composables/core/environment.composable.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
 import { useAuthCurrentUserQuery } from '@/modules/auth/api/queries/authCurrentUser.query.ts'
 import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer'
 
 export const useAuthStore = defineStore('auth', () => {
-	const { data, isError, refetch } = useAuthCurrentUserQuery()
-
 	const lastLoginAttemptEmail = ref<string | null>(null)
 	const currentUser = ref<CurrentUser | null>(null)
+
+	const { data, isError, refetch: refetchCurrentUser } = useAuthCurrentUserQuery()
+	const { isDevelopment } = useEnvironment()
 
 	const lastLoggedInUser = useLocalStorage<CurrentUser | null>('lastLoggedInUser', null, {
 		serializer: {
@@ -31,6 +33,16 @@ export const useAuthStore = defineStore('auth', () => {
 	}
 
 	async function getCurrentUser(): Promise<CurrentUser> {
+		if (isDevelopment.value) {
+			return Promise.resolve({
+				id: '1',
+				email: '',
+				firstName: '',
+				fullName: '',
+				lastName: '',
+			})
+		}
+
 		if (isError.value) {
 			throw new Error('Failed to get current user')
 		}
@@ -39,7 +51,7 @@ export const useAuthStore = defineStore('auth', () => {
 			return currentUser.value
 		}
 
-		await refetch()
+		await refetchCurrentUser()
 
 		return currentUser.value!
 	}
@@ -49,6 +61,10 @@ export const useAuthStore = defineStore('auth', () => {
 	}
 
 	async function login(data: { email: string; password: string }): Promise<void> {
+		if (isDevelopment.value) {
+			return
+		}
+
 		const { username, password } = mapLoginFormToLoginRequestDto(data)
 		await oAuthClient.login(username, password)
 	}

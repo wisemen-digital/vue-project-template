@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import type { Icon } from '@/icons/icon.type.ts'
+import AppButton from '@/components/core/button/AppButton.vue'
+import AppIcon from '@/components/core/icon/AppIcon.vue'
+import AppText from '@/components/core/text/AppText.vue'
+import type { Icon } from '@/icons'
 
 const { title, icon } = defineProps<{
 	title: string

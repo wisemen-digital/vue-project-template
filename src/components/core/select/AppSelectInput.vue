@@ -160,4 +160,3 @@ function onBlur(): void {
 		</ListboxButton>
 	</div>
 </template>
-@/composables/core/select/appSelectContext.composable

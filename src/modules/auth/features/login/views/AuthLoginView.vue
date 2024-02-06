@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { AxiosError } from 'axios'
 import { useForm } from 'formango'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
@@ -18,7 +17,7 @@ const authStore = useAuthStore()
 const { lastLoggedInUser } = storeToRefs(authStore)
 
 const { t } = useI18n()
-const { showToast } = useToast()
+const toast = useToast()
 const router = useTypedRouter()
 
 const { form, onSubmitForm } = useForm({
@@ -44,25 +43,6 @@ async function handleLoggedIn(user: CurrentUser): Promise<void> {
 	})
 }
 
-function handleLoginFailed(email: string): void {
-	authStore.setLastLoginAttemptEmail(email)
-	showToast({
-		title: t('auth.login.invalid_email_or_password'),
-	})
-}
-
-function handleLoginErrors(error: unknown): void {
-	if (error instanceof AxiosError) {
-		form.addErrors({
-			password: {
-				_errors: [t('auth.login.invalid_email_or_password')],
-			},
-		})
-	} else {
-		throw error
-	}
-}
-
 onSubmitForm(async (data) => {
 	try {
 		await authStore.login(data)
@@ -70,8 +50,8 @@ onSubmitForm(async (data) => {
 
 		await handleLoggedIn(currentUser)
 	} catch (error) {
-		handleLoginErrors(error)
-		handleLoginFailed(data.email)
+		toast.showToastApiError(error)
+		authStore.setLastLoginAttemptEmail(data.email)
 	}
 })
 </script>

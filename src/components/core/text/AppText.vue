@@ -34,7 +34,7 @@ const classes = computed<string>(() => {
 			break
 
 		case 'title':
-			classes.push('text-title font-bold')
+			classes.push('text-title font-semibold text-foreground')
 			break
 
 		case 'subtitle':
@@ -66,7 +66,7 @@ const attrs = useAttrs()
 <template>
 	<Component
 		:is="as"
-		:class="textVariants({ variant, truncate: numberOfLines, class: [...classes, attrs.class] })"
+		:class="textVariants({ variant, truncate: numberOfLines, class: [classes, attrs.class] })"
 	>
 		<slot />
 	</Component>

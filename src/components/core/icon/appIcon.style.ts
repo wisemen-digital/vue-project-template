@@ -3,8 +3,11 @@ import { cva } from '@/libs/cva.lib'
 
 export const sizeOptions = {
 	default: 'h-6',
+	xs: 'h-2',
 	sm: 'h-4',
 	lg: 'h-8',
+	xl: 'h-10',
+	xxl: 'h-14',
 	full: 'h-full',
 }
 

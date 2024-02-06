@@ -1,12 +1,13 @@
 <script setup lang="ts" generic="T extends keyof Routes">
 import type { Props as ButtonProps } from '@/components/core/button/AppButton.vue'
+import AppCustomMenuButton from '@/components/core/menu/AppCustomMenuButton.vue'
 import AppMenuButton from '@/components/core/menu/AppMenuButton.vue'
 import AppMenuContainer from '@/components/core/menu/AppMenuContainer.vue'
 import AppMenuDivider from '@/components/core/menu/AppMenuDivider.vue'
 import AppMenuItem from '@/components/core/menu/AppMenuItem.vue'
 import AppMenuPanel from '@/components/core/menu/AppMenuPanel.vue'
-import type { Routes } from '@/models/core/routes.model.ts'
 import type { MenuConfiguration, MenuOption } from '@/types/core/menu.type'
+import type { Routes } from '@/types/core/router/routes.model.ts'
 
 defineProps<{
 	/**
@@ -17,6 +18,8 @@ defineProps<{
 	 * The button props, which are passed to the button component.
 	 */
 	buttonProps?: ButtonProps<T>
+
+	isCustomButton?: boolean
 }>()
 export type MenuItemComponent = typeof AppMenuDivider | typeof AppMenuItem
 
@@ -32,7 +35,16 @@ function getMenuConfigurationItem(type: MenuOption): MenuItemComponent {
 
 <template>
 	<AppMenuContainer>
-		<AppMenuButton v-bind="buttonProps">
+		<AppCustomMenuButton
+			v-if="isCustomButton"
+			v-bind="buttonProps"
+		>
+			<slot />
+		</AppCustomMenuButton>
+		<AppMenuButton
+			v-else
+			v-bind="buttonProps"
+		>
 			<slot />
 		</AppMenuButton>
 		<AppMenuPanel>

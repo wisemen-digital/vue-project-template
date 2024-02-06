@@ -29,6 +29,7 @@ const password = form.register('password')
 				v-bind="email"
 				:is-required="true"
 				:label="t('form.fields.email')"
+				placeholder="hello@studaro.be"
 				type="email"
 			/>
 
@@ -36,16 +37,20 @@ const password = form.register('password')
 				v-bind="password"
 				:is-required="true"
 				:label="t('form.fields.password')"
+				placeholder="wachtwoord"
 				type="password"
 			/>
 
 			<AppTypedRouterLink
-				class="self-start"
+				class="py-2"
 				:to="{
 					name: 'forgot-password',
 				}"
 			>
-				<AppText variant="subtext">
+				<AppText
+					class="font-medium text-primary"
+					variant="subtext"
+				>
 					{{ t('auth.login.forgot_password') }}
 				</AppText>
 			</AppTypedRouterLink>

@@ -7,15 +7,15 @@ export const variantOptions = {
 }
 
 export const active = {
-	true: 'bg-secondary text-secondary-foreground bg-secondary/80',
+	true: 'text-secondary-foreground bg-primary/10',
 }
 
 export const selected = {
-	true: 'text-primary underline-offset-4 underline hover:bg-secondary/80',
+	true: 'text-primary',
 }
 
 export const appSelectOptionVariants = cva({
-	base: 'flex w-full gap-2 rounded border border-transparent bg-white px-2 py-1 text-left text-black transition-all',
+	base: 'flex w-full gap-2 hover:bg-primary/20 rounded border border-transparent bg-white p-2 text-left text-black transition-all',
 	variants: {
 		variant: variantOptions,
 		active,
