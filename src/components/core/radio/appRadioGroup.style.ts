@@ -2,7 +2,7 @@ import type { VariantProps } from '@/libs/cva.lib'
 import { cva } from '@/libs/cva.lib'
 
 export const radioGroupIndicatorContainerVariants = cva({
-	base: 'relative flex h-6 w-6 flex-none cursor-pointer items-center justify-center rounded-full border bg-background',
+	base: 'relative flex size-6 flex-none cursor-pointer items-center justify-center rounded-full border bg-background',
 	variants: {
 		isInvalid: {
 			true: 'border-destructive',
@@ -18,8 +18,8 @@ export const radioGroupIndicatorVariants = cva({
 	base: 'absolute rounded-full bg-primary duration-200',
 	variants: {
 		isChecked: {
-			true: 'h-3 w-3',
-			false: 'h-0 w-0',
+			true: 'size-3',
+			false: 'size-0',
 		},
 	},
 	defaultVariants: {

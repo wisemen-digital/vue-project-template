@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { twMerge } from '@/libs/twMerge.lib'
 
-const props = defineProps<{
+const { class: classes } = defineProps<{
 	/**
 	 * The class to be applied to the card content.
 	 */
@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-	<div :class="twMerge('flex flex-col gap-1 p-4 pt-0', props.class)">
+	<div :class="twMerge('flex flex-col gap-1 p-4 pt-0', classes)">
 		<slot />
 	</div>
 </template>

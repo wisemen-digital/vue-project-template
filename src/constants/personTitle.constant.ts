@@ -1,8 +1,8 @@
 import { computed } from 'vue'
 import { z } from 'zod'
 
+import type { DataItem } from '@/models/core/dataItem.model'
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
-import type { DataItem } from '@/types/core/dataItem.type.ts'
 
 export const personTitleConstantSchema = z.enum(['mr', 'mrs', 'miss', 'ms', 'dr', 'prof', 'other'])
 

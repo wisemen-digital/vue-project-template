@@ -4,7 +4,7 @@ import { MenuButton } from '@headlessui/vue'
 import type { Props } from '@/components/core/button/AppButton.vue'
 import AppButton from '@/components/core/button/AppButton.vue'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
-import type { Routes } from '@/types/core/router/routes.model.ts'
+import type { Routes } from '@/models/core/router/routes.model'
 
 const props = defineProps<Props<T>>()
 </script>

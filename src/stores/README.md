@@ -1,0 +1,1 @@
+A collection of global stores used throughout multiple modules. If a store is only used in a single module, it should not be here.

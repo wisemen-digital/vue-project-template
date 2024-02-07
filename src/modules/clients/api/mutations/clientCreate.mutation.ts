@@ -1,5 +1,5 @@
-import type { UseMutationReturnType } from '@/composables/core/mutation.composable.ts'
-import { useMutation } from '@/composables/core/mutation.composable.ts'
+import type { UseMutationReturnType } from '@/composables/core/mutation/mutation.composable'
+import { useMutation } from '@/composables/core/mutation/mutation.composable'
 import type { ClientCreateForm } from '@/models/clients/clientCreateForm.model.ts'
 import { clientService } from '@/modules/clients/api/services/client.service.ts'
 

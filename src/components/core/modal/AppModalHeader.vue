@@ -2,17 +2,17 @@
 import AppButton from '@/components/core/button/AppButton.vue'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppText from '@/components/core/text/AppText.vue'
-import type { Icon } from '@/icons'
+import type { Icon } from '@/icons/icons'
 
 const { title, icon } = defineProps<{
 	title: string
 	icon: Icon
 }>()
 
-const emit = defineEmits<{ (event: 'action:close'): void }>()
+const emit = defineEmits<{ (event: 'close'): void }>()
 
 function onCloseModal(): void {
-	emit('action:close')
+	emit('close')
 }
 </script>
 

@@ -3,6 +3,8 @@ import { useI18n } from 'vue-i18n'
 
 import { logError } from '@/utils/logger.util'
 
+import AppText from '../text/AppText.vue'
+
 const { message, status } = defineProps<{
 	message: string | null
 	status: number

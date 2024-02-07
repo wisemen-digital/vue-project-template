@@ -4,10 +4,10 @@ import { useI18n } from 'vue-i18n'
 
 import AppDisplayData from '@/components/app/AppDisplayData.vue'
 import AppTable from '@/components/app/table/AppTable.vue'
-import { useTablePagination } from '@/composables/core/tablePagination.composable.ts'
+import { useTablePagination } from '@/composables/core/table-pagination/tablePagination.composable'
 import type { ClientUuid } from '@/models/clients/client.model.ts'
 import type { ClientIndex } from '@/models/clients/clientIndex.model.ts'
-import type { TableColumn } from '@/types/core/table/table.model.ts'
+import type { TableColumn } from '@/models/core/table/table.model'
 import { generateUuid } from '@/utils/core/uuid/generateUuid.util.ts'
 import { createComponent } from '@/utils/createComponent.util.ts'
 

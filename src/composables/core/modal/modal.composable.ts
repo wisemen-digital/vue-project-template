@@ -7,7 +7,7 @@ import type {
 	UseModalOptions,
 	UseModalReturnType,
 	UseModalsContainerReturnType,
-} from '@/types/core/modal/useModal.type.ts'
+} from '@/models/core/modal/useModal.type'
 import { generateUuid } from '@/utils/core/uuid/generateUuid.util'
 
 const modals = ref<Modal[]>([])
@@ -68,9 +68,7 @@ export function useModal<TComponent extends Record<string, unknown>>(
 
 	return {
 		modalId,
-		// TODO: Fix this type
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		openModal: openModal as any,
+		openModal: openModal as unknown as UseModalReturnType<TComponent>['openModal'],
 		closeModal,
 	}
 }

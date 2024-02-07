@@ -1,0 +1,1 @@
+Initialisation files of plugins / packages which only configure a plugin but not export it.

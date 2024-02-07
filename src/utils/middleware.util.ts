@@ -1,4 +1,4 @@
-import type { RouteMiddlewareReturnType } from '@/types/core/router/routeMiddleware.model.ts'
+import type { RouteMiddlewareReturnType } from '@/models/core/router/routeMiddleware.model'
 
 type MiddlewareFn = () => Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
 type Middleware = Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType

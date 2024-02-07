@@ -2,7 +2,7 @@ import * as Sentry from '@sentry/vue'
 import type { App } from 'vue'
 import type { Router } from 'vue-router'
 
-import { EnvironmentMode } from '@/composables/core/environment.composable.ts'
+import { EnvironmentMode } from '@/utils/environment.util'
 
 export function configureSentry(app: App<Element>, router: Router): void {
 	if (import.meta.env.VITE_SENTRY_DSN === undefined) {

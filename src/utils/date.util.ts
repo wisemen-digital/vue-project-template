@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import type { Locale } from 'vue-i18n'
 
-//format: DD/MM/YYYY
+// format: DD/MM/YYYY
 export function formatDate(date?: Date | string | null): string {
 	if (!date) {
 		return '-'
@@ -10,7 +10,7 @@ export function formatDate(date?: Date | string | null): string {
 	return dayjs(date).format('DD/MM/YYYY')
 }
 
-//format: DD/MM
+// format: DD/MM
 export function formatShortDate(date?: Date | string): string {
 	if (!date) {
 		return '-'
@@ -19,7 +19,7 @@ export function formatShortDate(date?: Date | string): string {
 	return dayjs(date).format('DD/MM')
 }
 
-//format: DDD DD/MM
+// format: DDD DD/MM
 export function formatShortDateWithDay(date?: Date | string): string | null {
 	if (!date) {
 		return null
@@ -94,7 +94,7 @@ export function getToday(): Date {
 	return new Date()
 }
 
-//format: HH:mm
+// format: HH:mm
 export function formatTime(date: Date | string | null): string {
 	if (!date) {
 		return '-'
@@ -103,7 +103,7 @@ export function formatTime(date: Date | string | null): string {
 	return dayjs(date).format('HH:mm')
 }
 
-//format: DD/MM/YYYY HH:mm
+// format: DD/MM/YYYY HH:mm
 export function formatDateTime(date: Date | string | null): string | null {
 	if (!date) {
 		return null
@@ -119,10 +119,11 @@ export function formatDateTimeToDto(date: Date | string): string {
 
 	const formattedDate = dayjs(date).format()
 	const formattedTime = date ? dayjs.utc(date).format() : dayjs().hour(0).minute(0).format()
+
 	return `${formattedDate.toString().substr(0, 11)}${formattedTime.toString().substr(11, 5)}`
 }
 
-//format: dddd DD MMMM YYYY
+// format: dddd DD MMMM YYYY
 export function formatDateToFullDisplayString(date: Date | string): string {
 	if (!date) {
 		return '-'
@@ -131,7 +132,7 @@ export function formatDateToFullDisplayString(date: Date | string): string {
 	return dayjs(date).format('dddd DD MMMM YYYY')
 }
 
-//format: DD MMMM YYYY - HH:mm
+// format: DD MMMM YYYY - HH:mm
 export function formatDateTimeToFullDisplayString(date: Date | string): string {
 	if (!date) {
 		return '-'
@@ -140,7 +141,7 @@ export function formatDateTimeToFullDisplayString(date: Date | string): string {
 	return dayjs(date).format('DD MMMM YYYY - HH:mm')
 }
 
-//format: HH:MM / DD MMM
+// format: HH:MM / DD MMM
 export function formatTimeOrDateShort(date: Date | null): string {
 	if (!date) {
 		return '-'
@@ -161,7 +162,7 @@ export function calculateDurationInMinutes(startDate: Date | null, endDate: Date
 	return dayjs(endDate).diff(dayjs(startDate), 'minute')
 }
 
-//format: MMMM YYYY example: 2021-01-01 -> january 2021
+// format: MMMM YYYY example: 2021-01-01 -> january 2021
 export function formatDateToMonthAndYear(date: Date | null): string {
 	if (!date) {
 		return '-'
@@ -170,7 +171,7 @@ export function formatDateToMonthAndYear(date: Date | null): string {
 	return dayjs(date).format('MMMM YYYY')
 }
 
-//format: MM/YYYY
+// format: MM/YYYY
 export function formatDateMonthYear(date?: Date | string): string {
 	if (!date) {
 		return '-'
@@ -179,7 +180,7 @@ export function formatDateMonthYear(date?: Date | string): string {
 	return dayjs(date).format('MM/YY')
 }
 
-//parse: DD/MM/YYYY hh:mm
+// parse: DD/MM/YYYY hh:mm
 export function parseFullDateTime(dateString: string): Date {
 	return dayjs(dateString, 'DD/MM/YYYY hh:mm').toDate()
 }

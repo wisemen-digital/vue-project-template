@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import AppText from '@/components/core/text/AppText.vue'
 
-type Props = {
+const { title } = defineProps<{
 	title: string
-}
-
-const { title } = defineProps<Props>()
+}>()
 </script>
 
 <template>

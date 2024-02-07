@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import AppText from '@/components/core/text/AppText.vue'
 
-type Props = {
+const { label, value } = defineProps<{
 	label: string
 	value: string
-}
-
-const { label, value } = defineProps<Props>()
+}>()
 </script>
 
 <template>

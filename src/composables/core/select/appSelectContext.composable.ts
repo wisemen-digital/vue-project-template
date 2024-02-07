@@ -10,7 +10,7 @@ export interface AppSelectContext<T> {
 	isDisabled: ComputedRef<boolean>
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Unknown does not work in this example, it needs an any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const appSelectContext = Symbol('AppSelectContext') as InjectionKey<AppSelectContext<any>>
 
 export function useAppSelectContext<T>(): AppSelectContext<T> {

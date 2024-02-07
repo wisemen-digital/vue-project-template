@@ -8,13 +8,14 @@ import AppTabsList from '@/components/core/tabs/AppTabsList.vue'
 import AppTabsPanels from '@/components/core/tabs/AppTabsPanels.vue'
 import AppTabsTab from '@/components/core/tabs/AppTabsTab.vue'
 import { useTabQuery } from '@/composables/core/tabs/tabsQuery.composable'
-import type { Icon } from '@/icons'
-import type { Routes } from '@/types/core/router/routes.model.ts'
+import type { Icon } from '@/icons/icons'
+import type { RouteLocationTyped } from '@/models/core/router/router.model'
+import type { Routes } from '@/models/core/router/routes.model'
 
 export interface TabWithRoutes {
 	label: string
 	icon?: Icon
-	to: keyof Routes
+	to: RouteLocationTyped<keyof Routes>
 }
 
 export interface TabWithoutRoutes {
@@ -72,6 +73,7 @@ const tabComponent = computed<typeof RouterLink | 'button'>(() => {
 
 // Router logic
 const route = useRoute()
+
 watch(
 	() => route?.path,
 	() => {
@@ -81,7 +83,7 @@ watch(
 
 		const tab = (allTabs.value as TabWithRoutes[]).find((tab) => {
 			return route?.matched.find((route) => {
-				return tab.to === route?.path
+				return tab.to.name === route?.path
 			})
 		})
 
@@ -127,3 +129,4 @@ if (!isUsingRouter.value) {
 		</AppTabsPanels>
 	</AppTabsGroup>
 </template>
+@/models/core/router/routes.model

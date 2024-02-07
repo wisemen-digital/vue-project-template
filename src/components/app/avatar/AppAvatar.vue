@@ -4,17 +4,17 @@ import { computed } from 'vue'
 import AppButton from '@/components/core/button/AppButton.vue'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
 
-const props = defineProps<{
+const { user } = defineProps<{
 	user: CurrentUser | null
 }>()
 
 const userInitials = computed<string>(() => {
-	if (!props.user) {
+	if (user === null) {
 		return ''
 	}
 
-	const firstNameLetter = props.user.firstName.charAt(0)
-	const lastNameLetter = props.user.lastName.charAt(0)
+	const firstNameLetter = user.firstName.charAt(0)
+	const lastNameLetter = user.lastName.charAt(0)
 
 	return `${firstNameLetter}${lastNameLetter}`
 })

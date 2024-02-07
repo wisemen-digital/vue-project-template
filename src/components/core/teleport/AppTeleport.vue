@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import { useIsMounted } from '@/composables/core/isMounted.composable'
+import { useIsMounted } from '@/composables/core/is-mounted/isMounted.composable'
 
 type TeleportTarget = 'body'
 

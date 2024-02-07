@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="TSchema">
 import AppText from '@/components/core/text/AppText.vue'
-import type { TableColumn } from '@/types/core/table/table.model'
+import type { TableColumn } from '@/models/core/table/table.model'
 
 import AppTableTextCell from './AppTableTextCell.vue'
 

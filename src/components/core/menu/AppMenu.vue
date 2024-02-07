@@ -6,8 +6,8 @@ import AppMenuContainer from '@/components/core/menu/AppMenuContainer.vue'
 import AppMenuDivider from '@/components/core/menu/AppMenuDivider.vue'
 import AppMenuItem from '@/components/core/menu/AppMenuItem.vue'
 import AppMenuPanel from '@/components/core/menu/AppMenuPanel.vue'
-import type { MenuConfiguration, MenuOption } from '@/types/core/menu.type'
-import type { Routes } from '@/types/core/router/routes.model.ts'
+import type { MenuConfiguration, MenuOption } from '@/models/core/menu.model'
+import type { Routes } from '@/models/core/router/routes.model'
 
 defineProps<{
 	/**

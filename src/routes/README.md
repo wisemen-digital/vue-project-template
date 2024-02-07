@@ -1,0 +1,1 @@
+Main routes entry. Should contain all child routes of the application. There should only be `routes.ts` in this directory.

@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
 import { httpClient } from '@/libs/http.lib'
-import { mapClientCreateFormToClientCreateDto } from '@/models/clients/clientCreateDto.model.ts'
 import type { ClientCreateForm } from '@/models/clients/clientCreateForm.model.ts'
+import { mapClientCreateFormToClientCreateDto } from '@/transformers/client.transformer'
 
 interface ClientService {
 	create: (form: ClientCreateForm) => Promise<void>

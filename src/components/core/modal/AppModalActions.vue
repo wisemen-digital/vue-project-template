@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
+import AppButton from '../button/AppButton.vue'
+
 const {
 	primaryAction,
 	isLoading = false,
@@ -12,18 +14,18 @@ const {
 }>()
 
 const emit = defineEmits<{
-	(event: 'action:cancel'): void
-	(event: 'action:primary'): void
+	(event: 'cancel'): void
+	(event: 'primary'): void
 }>()
 
 const { t } = useI18n()
 
 function onCancel(): void {
-	emit('action:cancel')
+	emit('cancel')
 }
 
 function onPrimaryAction(): void {
-	emit('action:primary')
+	emit('primary')
 }
 </script>
 

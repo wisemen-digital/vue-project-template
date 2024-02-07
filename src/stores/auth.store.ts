@@ -2,11 +2,11 @@ import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { computed, readonly, ref, watch } from 'vue'
 
-import { useEnvironment } from '@/composables/core/environment.composable.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
 import { useAuthCurrentUserQuery } from '@/modules/auth/api/queries/authCurrentUser.query.ts'
 import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer'
+import { useEnvironment } from '@/utils/environment.util'
 
 export const useAuthStore = defineStore('auth', () => {
 	const lastLoginAttemptEmail = ref<string | null>(null)

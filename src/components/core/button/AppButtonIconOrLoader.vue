@@ -5,7 +5,7 @@ import type { ButtonProps } from '@/components/core/button/appButton.style'
 import { buttonIcon } from '@/components/core/button/appButton.style'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppLoader from '@/components/core/loader/AppLoader.vue'
-import type { Icon } from '@/icons'
+import type { Icon } from '@/icons/icons'
 
 interface Props {
 	icon: Icon
@@ -30,7 +30,7 @@ const buttonIconClasses = computed<string>(() =>
 		:class="buttonIconClasses"
 	>
 		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-			<AppLoader class="h-4 w-4" />
+			<AppLoader class="size-4" />
 		</div>
 	</div>
 

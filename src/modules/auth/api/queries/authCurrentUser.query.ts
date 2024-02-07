@@ -1,7 +1,7 @@
-import type { UseQueryReturnType } from '@/composables/core/query.composable'
-import { useQuery } from '@/composables/core/query.composable'
+import type { UseQueryReturnType } from '@/composables/core/query/query.composable'
+import { useQuery } from '@/composables/core/query/query.composable'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
-import { QueryKey } from '@/types/core/query/queryKey.model.ts'
+import { QueryKey } from '@/models/core/query/queryKey.model'
 
 import { authService } from '../services/auth.service'
 

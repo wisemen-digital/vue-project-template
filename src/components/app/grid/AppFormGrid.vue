@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { cn } from '@/utils/style.util.ts'
 
-type Props = {
+const { cols } = defineProps<{
 	cols: 1 | 2 | 3 | 4 | 5
-}
-
-const { cols } = defineProps<Props>()
+}>()
 </script>
 
 <template>

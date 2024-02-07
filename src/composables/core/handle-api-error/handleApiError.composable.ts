@@ -10,7 +10,7 @@ import { logError, logInfo } from '@/utils/logger.util'
  * TODO
  * Maps API errors to form errors.
  */
-function mapApiErrorsToFormErrors(errors: unknown): Record<string, never> | z.ZodFormattedError<unknown> {
+function mapApiErrorsToFormErrors(errors: unknown): z.ZodFormattedError<unknown> {
 	logInfo(errors)
 
 	return {
@@ -18,8 +18,7 @@ function mapApiErrorsToFormErrors(errors: unknown): Record<string, never> | z.Zo
 	}
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function handleAxiosError(error: AxiosError, form?: Form<any>): void {
+function handleAxiosError<T extends z.ZodType>(error: AxiosError, form?: Form<T>): void {
 	const { t } = i18nPlugin.global
 	const { showToast } = useToast()
 
@@ -36,7 +35,10 @@ function handleAxiosError(error: AxiosError, form?: Form<any>): void {
 			showToast({
 				title: t('error.validation_error'),
 			})
-			form?.addErrors(mapApiErrorsToFormErrors(response?.data ?? {}))
+			const mappedErrors = mapApiErrorsToFormErrors(response?.data)
+
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			form?.addErrors(mappedErrors as any)
 			break
 		case 500:
 			showToast({
@@ -53,8 +55,7 @@ function handleAxiosError(error: AxiosError, form?: Form<any>): void {
 	}
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function useHandleApiError(error: unknown, form?: Form<any>): void {
+export function useHandleApiError<T extends z.ZodType>(error: unknown, form?: Form<T>): void {
 	if (error instanceof AxiosError) {
 		handleAxiosError(error, form)
 		return

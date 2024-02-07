@@ -3,7 +3,8 @@ import { toast } from 'vue-sonner'
 
 import type { ToastProps } from '@/components/core/toast/appToast.style'
 import AppToast from '@/components/core/toast/AppToast.vue'
-import type { Icon } from '@/icons'
+import type { Icon } from '@/icons/icons'
+
 export interface ToastPromise<TPromise> {
 	/**
 	 * The promise that the toast is waiting for.

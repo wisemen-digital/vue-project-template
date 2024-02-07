@@ -9,6 +9,8 @@ export enum EnvironmentMode {
 	STAGING = 'staging',
 }
 
+// TODO
+
 interface Environment {
 	isDevelopment: ComputedRef<boolean>
 	isAllowed: (environmentMode: EnvironmentMode[]) => boolean

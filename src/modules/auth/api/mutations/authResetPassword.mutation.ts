@@ -1,5 +1,5 @@
-import type { UseMutationReturnType } from '@/composables/core/mutation.composable.ts'
-import { useMutation } from '@/composables/core/mutation.composable.ts'
+import type { UseMutationReturnType } from '@/composables/core/mutation/mutation.composable.ts'
+import { useMutation } from '@/composables/core/mutation/mutation.composable.ts'
 import type { ResetPasswordRequestDto } from '@/models/auth/forms/resetPasswordRequestDto.model.ts'
 
 import { authService } from '../services/auth.service.ts'

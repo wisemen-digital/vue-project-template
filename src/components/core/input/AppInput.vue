@@ -1,14 +1,13 @@
-<!-- eslint-disable-next-line vue/max-len -->
 <script setup lang="ts" generic="T extends InputType">
 import { computed, ref, useAttrs } from 'vue'
 
 import AppIcon from '@/components/core/icon/AppIcon.vue'
-import type { InputProps, InputType, InputValue } from '@/types/core/input.type'
+import type { InputProps, InputType, InputValue } from '@/models/core/input.model'
 
 import { input, inputIcon, inputWrapper } from './appInput.style'
 
 const props = withDefaults(defineProps<InputProps<T>>(), {
-	// @ts-expect-error Yet another vue ts error
+	// @ts-expect-error - TODO @Robbe
 	type: 'text',
 	isOutsideFocused: false,
 	isDisabled: false,

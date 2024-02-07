@@ -3,9 +3,13 @@ import { computed } from 'vue'
 
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppText from '@/components/core/text/AppText.vue'
-import type { PaginationOptions, SortChangeEvent, SortDirection } from '@/composables/core/tablePagination.composable'
-import type { Icon } from '@/icons'
-import type { TableColumn } from '@/types/core/table/table.model'
+import type {
+	PaginationOptions,
+	SortChangeEvent,
+	SortDirection,
+} from '@/composables/core/table-pagination/tablePagination.composable'
+import type { Icon } from '@/icons/icons'
+import type { TableColumn } from '@/models/core/table/table.model'
 
 type Props = {
 	gridTemplateColumns: string

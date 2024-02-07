@@ -4,7 +4,7 @@ export const switchWrapper = cva({
 	base: 'transition duration-200',
 	variants: {
 		isCheckbox: {
-			true: 'flex h-6 w-6 items-center justify-center rounded-input border border-border bg-neutral-200',
+			true: 'flex size-6 items-center justify-center rounded-input border border-border bg-neutral-200',
 			false:
 				'relative inline-flex h-6 w-10 items-center rounded-full border bg-white ring-primary ring-offset-background duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
 		},
@@ -18,10 +18,10 @@ export const switchWrapper = cva({
 })
 
 export const switchElement = cva({
-	base: 'h-4 w-4 rounded-full bg-input-disabled',
+	base: 'size-4 rounded-full bg-input-disabled',
 	variants: {
 		isCheckbox: {
-			true: 'h-4 w-4',
+			true: 'size-4',
 			false: 'bg-input-disabled opacity-50',
 		},
 		isInvalid: {

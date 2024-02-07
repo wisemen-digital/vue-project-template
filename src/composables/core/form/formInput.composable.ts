@@ -2,7 +2,7 @@ import type { MaybeRefOrGetter, Ref } from 'vue'
 import { computed, toValue } from 'vue'
 import type { ZodFormattedError } from 'zod'
 
-import type { InputType, InputValue } from '@/types/core/input.type'
+import type { InputType, InputValue } from '@/models/core/input.model'
 import { generateUuid } from '@/utils/core/uuid/generateUuid.util'
 
 export interface UseFormInputProps<TInputType extends InputType> {

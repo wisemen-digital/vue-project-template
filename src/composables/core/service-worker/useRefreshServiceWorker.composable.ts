@@ -13,15 +13,6 @@ const ONE_MINUTE_INTERVAL = 60 * 1000
 export function useRefreshServiceWorker(): RefreshServiceWorker {
 	const needRefreshCallback = ref<() => void>(() => {})
 
-	function onRefresh(callback: () => void): void {
-		needRefreshCallback.value = callback
-	}
-
-	async function refresh(): Promise<void> {
-		await updateServiceWorker(true)
-		needRefresh.value = false
-	}
-
 	const { needRefresh, updateServiceWorker } = useRegisterSW({
 		immediate: true,
 		onRegisteredSW(swScriptUrl: string, registration: ServiceWorkerRegistration | undefined) {
@@ -46,6 +37,15 @@ export function useRefreshServiceWorker(): RefreshServiceWorker {
 			needRefreshCallback.value()
 		},
 	})
+
+	function onRefresh(callback: () => void): void {
+		needRefreshCallback.value = callback
+	}
+
+	async function refresh(): Promise<void> {
+		await updateServiceWorker(true)
+		needRefresh.value = false
+	}
 
 	return {
 		refresh,
