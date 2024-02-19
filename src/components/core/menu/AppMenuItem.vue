@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import { menuItemVariants } from '@/components/core/menu/appMenuItem.style'
 import AppTextDescription from '@/components/core/text/AppTextDescription.vue'
-import type { MenuItemProps } from '@/types/core/menu.type'
+import type { MenuItemProps } from '@/models/core/menu.model'
 
 interface MenuItemSlotProps {
 	/**

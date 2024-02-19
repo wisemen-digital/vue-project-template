@@ -4,7 +4,7 @@ import { computed } from 'vue'
 import AppButton from '@/components/core/button/AppButton.vue'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppText from '@/components/core/text/AppText.vue'
-import type { PageChangeEvent, PaginationOptions } from '@/composables/core/tablePagination.composable'
+import type { PageChangeEvent, PaginationOptions } from '@/composables/core/table-pagination/tablePagination.composable'
 
 type Props = {
 	paginationOptions: PaginationOptions<unknown>

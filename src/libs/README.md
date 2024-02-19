@@ -1,0 +1,1 @@
+A collection of libraries. This directory should not contain vue plugins.

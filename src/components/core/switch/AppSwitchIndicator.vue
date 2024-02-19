@@ -56,7 +56,7 @@ const wrapperClasses = computed<string>(() => {
 		/>
 		<span
 			v-else
-			class="inline-block h-5 w-5 rounded-full bg-white duration-100"
+			class="inline-block size-5 rounded-full bg-white duration-100"
 			:class="isSelected ? 'translate-x-[1.15rem]' : 'translate-x-0.5'"
 		/>
 	</div>

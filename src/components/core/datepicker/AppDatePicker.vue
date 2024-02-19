@@ -2,8 +2,8 @@
 import AppDateSelector from '@/components/core/datepicker/AppDateSelector.vue'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppInput from '@/components/core/input/AppInput.vue'
+import type { DateSelectorProps, ModelDate } from '@/models/core/datePicker.model'
 import { fadeTransition } from '@/transitions'
-import type { DateSelectorProps, ModelDate } from '@/types/core/datePicker.type'
 
 const {
 	hasTimePicker = false,
@@ -86,3 +86,4 @@ const date = defineModel<ModelDate<TRange>>({
 		</template>
 	</AppDateSelector>
 </template>
+@/models/core/datePicker.type

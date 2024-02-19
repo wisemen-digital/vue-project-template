@@ -4,7 +4,7 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import VueDatePicker from '@vuepic/vue-datepicker'
 
 import AppIcon from '@/components/core/icon/AppIcon.vue'
-import type { DateSelectorProps, ModelDate } from '@/types/core/datePicker.type'
+import type { DateSelectorProps, ModelDate } from '@/models/core/datePicker.model'
 
 const {
 	hasTimePicker = false,

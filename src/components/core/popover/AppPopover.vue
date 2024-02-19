@@ -2,8 +2,8 @@
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { Float } from '@headlessui-float/vue'
 
+import type { FloatProps } from '@/models/core/float.model'
 import { popoverTransition } from '@/transitions'
-import type { FloatProps } from '@/types/core/float.type'
 
 export interface PopoverProps extends FloatProps {
 	/**

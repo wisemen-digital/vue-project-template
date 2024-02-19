@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { cn } from '@/utils/style.util.ts'
 
-type Props = {
+const { direction } = defineProps<{
 	direction: 'horizontal' | 'vertical'
-}
-
-defineProps<Props>()
+}>()
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import {
 	formatCurrency,
@@ -9,7 +9,7 @@ import {
 
 describe('currency util', () => {
 	describe('formatCurrency', () => {
-		test('return null when input is null', () => {
+		it('return null when input is null', () => {
 			const input = null
 
 			const result = formatCurrency(input)
@@ -17,7 +17,7 @@ describe('currency util', () => {
 			expect(result).toBe(null)
 		})
 
-		test('return correctly formatted number', () => {
+		it('return correctly formatted number', () => {
 			const input = 100000
 
 			const result = formatCurrency(input)
@@ -27,7 +27,7 @@ describe('currency util', () => {
 	})
 
 	describe('formatPercentage', () => {
-		test('return correctly formatted number', () => {
+		it('return correctly formatted number', () => {
 			const input = 10
 
 			const result = formatPercentage(input)
@@ -37,7 +37,7 @@ describe('currency util', () => {
 	})
 
 	describe('mapCurrencyToDto', () => {
-		test('return null when input is null', () => {
+		it('return null when input is null', () => {
 			const input = null
 
 			const result = mapCurrencyToDto(input)
@@ -45,7 +45,7 @@ describe('currency util', () => {
 			expect(result).toBe(null)
 		})
 
-		test('return correctly formatted number', () => {
+		it('return correctly formatted number', () => {
 			const input = 1
 
 			const result = mapCurrencyToDto(input)
@@ -55,7 +55,7 @@ describe('currency util', () => {
 	})
 
 	describe('mapCurrencyDtoToForm', () => {
-		test('return null when input is null', () => {
+		it('return null when input is null', () => {
 			const input = null
 
 			const result = mapCurrencyDtoToForm(input)
@@ -63,7 +63,7 @@ describe('currency util', () => {
 			expect(result).toBe(null)
 		})
 
-		test('return correctly formatted number', () => {
+		it('return correctly formatted number', () => {
 			const input = 10000
 
 			const result = mapCurrencyDtoToForm(input)

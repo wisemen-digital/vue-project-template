@@ -2,7 +2,7 @@
 import AppButton from '@/components/core/button/AppButton.vue'
 import AppText from '@/components/core/text/AppText.vue'
 
-const props = defineProps<{
+const { title, subtitle, navigationLabel } = defineProps<{
 	title: string
 	subtitle: string
 	navigationLabel: string
@@ -19,7 +19,7 @@ const props = defineProps<{
 						:to="{ name: 'clients-overview' }"
 						variant="ghost"
 					>
-						{{ props.navigationLabel }}
+						{{ navigationLabel }}
 					</AppButton>
 				</div>
 				<div class="flex-1">
@@ -31,10 +31,10 @@ const props = defineProps<{
 			<div class="mb-8 flex items-center justify-between">
 				<div>
 					<AppText variant="title">
-						{{ props.title }}
+						{{ title }}
 					</AppText>
 					<AppText variant="body">
-						{{ props.subtitle }}
+						{{ subtitle }}
 					</AppText>
 				</div>
 				<div class="flex items-center justify-end gap-2">

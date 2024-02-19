@@ -1,8 +1,8 @@
 import { isAxiosError } from 'axios'
 
-import { useEnvironment } from '@/composables/core/environment.composable.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
+import { useEnvironment } from '@/utils/environment.util'
 import { logError } from '@/utils/logger.util'
 import { createMiddleware } from '@/utils/middleware.util'
 

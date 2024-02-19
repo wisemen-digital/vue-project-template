@@ -6,7 +6,7 @@ import { useI18n } from 'vue-i18n'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import { input, inputIcon, inputWrapper } from '@/components/core/input/appInput.style'
 import { useAppSelectContext } from '@/composables/core/select/appSelectContext.composable'
-import type { Icon } from '@/icons'
+import type { Icon } from '@/icons/icons'
 
 interface Props {
 	/**
@@ -94,7 +94,7 @@ function onBlur(): void {
 			>
 				<AppIcon
 					aria-hidden="true"
-					class="h-3 w-3 shrink-0 transition-transform duration-200"
+					class="size-3 shrink-0 transition-transform duration-200"
 					:class="[
 						{
 							'rotate-180': open,
@@ -147,7 +147,7 @@ function onBlur(): void {
 			<div class="inset-y-0 right-0 flex items-center pr-2">
 				<AppIcon
 					aria-hidden="true"
-					class="h-3 w-3 shrink-0 transition-transform duration-200"
+					class="size-3 shrink-0 transition-transform duration-200"
 					:class="[
 						{
 							'rotate-180': isOpen,

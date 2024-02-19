@@ -5,12 +5,10 @@ import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppText from '@/components/core/text/AppText.vue'
 import AppHeightTransition from '@/components/core/transitions/AppHeightTransition.vue'
 
-interface Props {
+const { errors, isTouched = true } = defineProps<{
 	errors?: z.ZodFormattedError<string> | null | undefined
 	isTouched?: boolean
-}
-
-const { errors, isTouched = true } = defineProps<Props>()
+}>()
 </script>
 
 <template>

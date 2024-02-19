@@ -9,8 +9,8 @@ import AppFormSelect from '@/components/core/select/AppFormSelect.vue'
 import type { ClientType } from '@/models/clients/client.model.ts'
 import type { clientCreateFormSchema } from '@/models/clients/clientCreateForm.model.ts'
 import type { SalesConsultant } from '@/models/clients/salesConsultant.model.ts'
+import type { DataItem } from '@/models/core/dataItem.model'
 import { CLIENT_TYPE_ITEMS } from '@/modules/clients/constants/clientType.constant.ts'
-import type { DataItem } from '@/types/core/dataItem.type.ts'
 
 const { form } = defineProps<{
 	form: Form<typeof clientCreateFormSchema>

@@ -29,19 +29,4 @@ export interface Routes {
 	'clients-create': {
 		path: '/clients/create'
 	}
-
-	//Vacancies
-	'vacancies-overview': {
-		path: '/vacancies'
-	}
-
-	//Students
-	'students-overview': {
-		path: '/students'
-	}
-
-	//Matching
-	'matching-overview': {
-		path: '/matching'
-	}
 }

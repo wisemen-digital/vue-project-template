@@ -6,14 +6,13 @@ import AppButton from '@/components/core/button/AppButton.vue'
 import AppModal from '@/components/core/modal/AppModal.vue'
 import AppText from '@/components/core/text/AppText.vue'
 
-type Props = {
+const { t } = useI18n()
+
+const { isOpen, title, description } = defineProps<{
 	isOpen: boolean
 	title: string
 	description: string
-}
-const { t } = useI18n()
-
-defineProps<Props>()
+}>()
 
 const emit = defineEmits<{
 	close: []

@@ -8,11 +8,12 @@ import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppInput from '@/components/core/input/AppInput.vue'
 import AppTextFormDescription from '@/components/core/text/AppTextFormDescription.vue'
 import { useFormInput } from '@/composables/core/form/formInput.composable'
+import type { DateSelectorProps, ModelDate } from '@/models/core/datePicker.model'
+import type { InputFormProps, InputType } from '@/models/core/input.model'
 import { fadeTransition } from '@/transitions'
-import type { DateSelectorProps, ModelDate } from '@/types/core/datePicker.type'
-import type { InputFormProps, InputType } from '@/types/core/input.type'
 
 export type DateProps<TRange extends boolean> = Omit<DateSelectorProps<TRange>, 'isInput'>
+// eslint-disable-next-line vue/prop-name-casing
 type Props = DateProps<TRange> & Omit<InputFormProps<TInputType>, 'onBlur'>
 const {
 	hasTimePicker = false,
@@ -109,7 +110,7 @@ function handleClose(): void {
 			:year-range="yearRange"
 			@close="handleClose"
 		>
-			<template #input="{ value, onInput, onEnter, onTab, onKeypress, onPaste, onClear, isMenuOpen }">
+			<template #input="inputSlotProps">
 				<AppInput
 					v-bind="{
 						...attrs,
@@ -117,14 +118,14 @@ function handleClose(): void {
 					}"
 					icon-left="calendar"
 					:is-invalid="isInvalid"
-					:is-outside-focused="isMenuOpen"
+					:is-outside-focused="inputSlotProps.isMenuOpen"
 					is-readonly
 					:model-value="value"
 					type="text"
-					@blur="handleBlur(isMenuOpen)"
+					@blur="handleBlur(inputSlotProps.isMenuOpen)"
 					@input="onInput"
-					@keydown.enter="onEnter"
-					@keydown.tab="onTab"
+					@keydown.enter="inputSlotProps.onEnter"
+					@keydown.tab="inputSlotProps.onTab"
 					@keypress="onKeypress"
 					@paste="onPaste"
 				>
@@ -134,7 +135,7 @@ function handleClose(): void {
 								<AppIcon
 									class="h-4 px-2"
 									icon="close"
-									@click.stop="onClear"
+									@click.stop="inputSlotProps.onClear"
 								/>
 							</button>
 						</Transition>
@@ -155,4 +156,4 @@ function handleClose(): void {
 		/>
 	</div>
 </template>
-@/composables/core/form/formInput.composable
+@/models/core/datePicker.type@/models/core/input.type

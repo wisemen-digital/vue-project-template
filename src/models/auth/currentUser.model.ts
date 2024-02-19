@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 // GET /users/me
-export const currentUserResponseDto = z.object({
+export const currentUserDto = z.object({
 	id: z.string().uuid(),
 	firstName: z.string(),
 	lastName: z.string(),
@@ -16,5 +16,5 @@ export const currentUser = z.object({
 	email: z.string().email(),
 })
 
-export type CurrentUserResponseDto = z.infer<typeof currentUserResponseDto>
+export type CurrentUserDto = z.infer<typeof currentUserDto>
 export type CurrentUser = z.infer<typeof currentUser>

@@ -12,8 +12,8 @@ import type {
 	PageChangeEvent,
 	PaginationOptions,
 	SortChangeEvent,
-} from '@/composables/core/tablePagination.composable'
-import type { TableColumn, TableFilter } from '@/types/core/table/table.model'
+} from '@/composables/core/table-pagination/tablePagination.composable'
+import type { TableColumn, TableFilter } from '@/models/core/table/table.model'
 
 interface PaginatedData<TSchema> {
 	data: TSchema[]

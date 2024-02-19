@@ -1,8 +1,8 @@
 import type { InputHTMLAttributes } from 'vue'
 import type { ZodFormattedError } from 'zod'
 
-import type { Icon } from '@/icons'
-import type { ModelDate } from '@/types/core/datePicker.type'
+import type { Icon } from '@/icons/icons'
+import type { ModelDate } from '@/models/core/datePicker.model'
 
 export type InputType = 'date' | 'datetime-local' | 'email' | 'number' | 'password' | 'text' | 'time'
 export type InputValue<T> = ModelDate<boolean> | (T extends 'number' ? number : string) | null

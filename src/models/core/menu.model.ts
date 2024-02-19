@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-import type { Icon } from '@/icons'
+import type { Icon } from '@/icons/icons'
 
 export interface MenuItemProps {
 	/**

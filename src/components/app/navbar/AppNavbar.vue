@@ -7,10 +7,10 @@ import AppButton from '@/components/core/button/AppButton.vue'
 import AppIcon from '@/components/core/icon/AppIcon.vue'
 import AppMenu from '@/components/core/menu/AppMenu.vue'
 import type { TabWithRoutes } from '@/components/core/tabs/AppTabs.vue'
-import { useTypedRouter } from '@/composables/core/typedRouter.composable.ts'
+import { useTypedRouter } from '@/composables/core/router/typedRouter.composable'
 import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
+import type { MenuConfiguration } from '@/models/core/menu.model'
 import { useAuthStore } from '@/stores/auth.store.ts'
-import type { MenuConfiguration } from '@/types/core/menu.type.ts'
 
 const { t } = useI18n()
 const router = useTypedRouter()
@@ -18,20 +18,10 @@ const authStore = useAuthStore()
 
 const tabs: TabWithRoutes[] = [
 	{
-		label: t('shared.matching'),
-		to: 'matching-overview',
-	},
-	{
-		label: t('shared.vacancies'),
-		to: 'vacancies-overview',
-	},
-	{
-		label: t('shared.students'),
-		to: 'students-overview',
-	},
-	{
 		label: t('shared.clients'),
-		to: 'clients-overview',
+		to: {
+			name: 'clients-overview',
+		},
 	},
 ]
 
@@ -51,11 +41,11 @@ const menuConfiguration: MenuConfiguration = [
 const currentUser = computed<CurrentUser | null>(() => authStore.currentUser)
 
 function onTabClick(tab: TabWithRoutes): void {
-	router.push({ name: tab.to })
+	router.push(tab.to)
 }
 
 function isRouteActive(tab: TabWithRoutes): boolean {
-	return router.currentRoute.value.name === tab.to
+	return router.currentRoute.value.name === tab.to.name
 }
 </script>
 

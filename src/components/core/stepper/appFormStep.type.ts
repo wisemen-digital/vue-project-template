@@ -1,6 +1,6 @@
 import type { ComputedRef } from 'vue'
 
-import type { Icon } from '@/icons'
+import type { Icon } from '@/icons/icons'
 
 export interface FormStep {
 	id: string

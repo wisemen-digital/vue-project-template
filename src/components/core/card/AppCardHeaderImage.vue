@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { twMerge } from '@/libs/twMerge.lib'
 
-const props = defineProps<{
+const { src, class: classes } = defineProps<{
 	/**
 	 * The image source.
 	 */
@@ -16,7 +16,7 @@ const props = defineProps<{
 
 <template>
 	<img
-		:class="twMerge('h-48 w-full object-cover', props.class)"
+		:class="twMerge('h-48 w-full object-cover', classes)"
 		:src="src"
 	/>
 </template>

@@ -10,7 +10,7 @@ import AppFormSwitch from '@/components/core/switch/AppFormSwitch.vue'
 import type { PersonTitleConstant } from '@/constants/personTitle.constant.ts'
 import { PERSON_TITLE_ITEMS } from '@/constants/personTitle.constant.ts'
 import type { ContactPersonForm } from '@/models/contact-person/contactPersonForm.model.ts'
-import type { DataItem } from '@/types/core/dataItem.type.ts'
+import type { DataItem } from '@/models/core/dataItem.model'
 
 const props = defineProps<{
 	contactPersons: FieldArray<ContactPersonForm[]>

@@ -6,9 +6,9 @@ import type { RouteLocationRaw } from 'vue-router'
 import AppButtonIconOrLoader from '@/components/core/button/AppButtonIconOrLoader.vue'
 import AppTypedRouterLink from '@/components/core/link/AppTypedRouterLink.vue'
 import AppLoader from '@/components/core/loader/AppLoader.vue'
-import type { Icon } from '@/icons'
-import type { RouteLocationTyped } from '@/types/core/router/router.model.ts'
-import type { Routes } from '@/types/core/router/routes.model.ts'
+import type { Icon } from '@/icons/icons'
+import type { RouteLocationTyped } from '@/models/core/router/router.model'
+import type { Routes } from '@/models/core/router/routes.model'
 
 import type { ButtonProps } from './appButton.style'
 import { button } from './appButton.style'
@@ -168,3 +168,4 @@ const componentProps = computed<Record<string, unknown>>(() => {
 		/>
 	</Component>
 </template>
+@/models/core/router/router.model@/models/core/router/routes.model

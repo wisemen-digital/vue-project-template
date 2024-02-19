@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppText from '@/components/core/text/AppText.vue'
 
-interface Props {
+const { content, footer, headerImage, subtitle, title } = defineProps<{
 	/**
 	 * The main content of the card.
 	 */
@@ -26,9 +26,7 @@ interface Props {
 	 * The image to display on the header of the card.
 	 */
 	headerImage?: string
-}
-
-defineProps<Props>()
+}>()
 
 defineSlots<{
 	content?: () => void

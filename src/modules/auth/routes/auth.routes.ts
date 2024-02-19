@@ -1,5 +1,5 @@
 import { guest } from '@/middlewares/guest.middleware.ts'
-import type { RouteRecordTyped } from '@/types/core/router/router.model.ts'
+import type { RouteRecordTyped } from '@/models/core/router/router.model'
 
 export const authRoutes: RouteRecordTyped[] = [
 	{
@@ -12,17 +12,17 @@ export const authRoutes: RouteRecordTyped[] = [
 			{
 				path: 'login',
 				name: 'login',
-				component: async () => import('../features/login/views/AuthLoginView.vue'),
+				component: async () => await import('../features/login/views/AuthLoginView.vue'),
 			},
 			{
 				path: 'forgot-password',
 				name: 'forgot-password',
-				component: async () => import('../features/forgot-password/views/AuthForgotPasswordView.vue'),
+				component: async () => await import('../features/forgot-password/views/AuthForgotPasswordView.vue'),
 			},
 			{
 				path: 'reset-password/:token',
 				name: 'reset-password',
-				component: async () => import('../features/reset-password/views/AuthResetPasswordView.vue'),
+				component: async () => await import('../features/reset-password/views/AuthResetPasswordView.vue'),
 			},
 		],
 	},

@@ -1,4 +1,4 @@
-import type { CurrentUser, CurrentUserResponseDto } from '@/models/auth/currentUser.model.ts'
+import type { CurrentUser, CurrentUserDto } from '@/models/auth/currentUser.model.ts'
 import type { ForgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model.ts'
 import type { ForgotPasswordRequestDto } from '@/models/auth/forms/forgotPasswordRequestDto.model.ts'
 import type { LoginForm } from '@/models/auth/forms/loginForm.model.ts'
@@ -30,7 +30,7 @@ export function mapResetPasswordFormToResetPasswordRequestDto(
 	}
 }
 
-export function mapCurrentUserResponseDtoToCurrentUser(data: CurrentUserResponseDto): CurrentUser {
+export function mapCurrentUserDtoToCurrentUser(data: CurrentUserDto): CurrentUser {
 	return {
 		id: data.id,
 		email: data.email,

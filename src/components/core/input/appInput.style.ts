@@ -23,7 +23,7 @@ export const inputWrapper = cva({
 })
 
 export const input = cva({
-	base: 'h-full w-full truncate bg-transparent px-3 py-2 text-subtext text-input-foreground outline-none placeholder:text-input-foreground/50 placeholder:transition-all placeholder:duration-300 focus:placeholder:translate-x-1 focus:placeholder:opacity-0 disabled:cursor-not-allowed',
+	base: 'size-full truncate bg-transparent px-3 py-2 text-subtext text-input-foreground outline-none placeholder:text-input-foreground/50 placeholder:transition-all placeholder:duration-300 focus:placeholder:translate-x-1 focus:placeholder:opacity-0 disabled:cursor-not-allowed',
 	variants: {
 		isReadonly: {
 			true: 'focus:placeholder:translate-x-0 focus:placeholder:opacity-100',
@@ -35,7 +35,7 @@ export const input = cva({
 })
 
 export const inputIcon = cva({
-	base: 'h-3.5 w-3.5 text-input-foreground',
+	base: 'size-3.5 text-input-foreground',
 	variants: {
 		isInvalid: {
 			true: 'text-destructive',

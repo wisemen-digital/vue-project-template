@@ -5,10 +5,10 @@ import { computed, useAttrs } from 'vue'
 
 import type { IconProps } from '@/components/core/icon/appIcon.style'
 import { iconVariants } from '@/components/core/icon/appIcon.style'
-import type { Icon } from '@/icons'
-import { icons } from '@/icons'
+import type { Icon } from '@/icons/icons'
+import { icons } from '@/icons/icons'
 
-interface Props {
+const { icon, size = 'default' } = defineProps<{
 	/**
 	 * The icon to display.
 	 */
@@ -18,9 +18,7 @@ interface Props {
 	 * The size of the icon.
 	 */
 	size?: IconProps['size']
-}
-
-const { icon, size = 'default' } = defineProps<Props>()
+}>()
 
 const attrs = useAttrs()
 

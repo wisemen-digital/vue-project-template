@@ -3,7 +3,7 @@ import type { AxiosError } from 'axios'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 
-import type { QueryKeys } from '@/types/core/query/queryKey.model.ts'
+import type { QueryKeys } from '@/models/core/query/queryKey.model'
 
 type RequestParams<TReqData, TParams> = TReqData extends Record<string, never>
 	? TParams extends Record<string, never>
@@ -90,7 +90,7 @@ export function useMutation<
 	})
 
 	async function execute(params: RequestParams<TReqData, TParams>): Promise<TResData> {
-		return mutateAsync(params)
+		return await mutateAsync(params)
 	}
 
 	return {
