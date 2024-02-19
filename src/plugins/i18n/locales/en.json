@@ -1,91 +1,91 @@
 {
-  "auth": {
-    "back_to_login": "Back to login",
-    "check_your_email": "Check your email",
-    "enter_your_email": "Enter your email",
-    "forgot_password": "Forgot password?",
-    "forgot_password_message": "Don't worry, we'll send you a reset link",
-    "instruction_email_sent_to": "We sent an email with further instructions to {email}",
-    "login": {
-      "forgot_password": "Forgot password?",
-      "invalid_email_or_password": "Invalid email or password",
-      "log_in": "Log in",
-      "sign_in_to_continue": "Sign in to continue",
-      "welcome_back_name": "Welcome back, {name}"
-    },
-    "reset_password": "Reset password"
-  },
-  "clients": {
-    "back_to_overview": "Terug naar klantenoverzicht",
-    "create": "Create client",
-    "create_subtitle": "Vul alle informatie aan om een nieuwe klant aan te maken",
-    "new": "New client",
-    "not_found": "No clients found",
-    "search": "Search client",
-    "view_and_manage": "View and manage all of your clients."
-  },
-  "components": {
-    "image": {
-      "open_in_new_tab": "Open in new tab"
-    }
-  },
-  "error": {
-    "bad_request": "Bad request",
-    "default_error": "Something went wrong. Please try again later.",
-    "forbidden": "Forbidden",
-    "internal_server_error": "Internal server error",
-    "resource_not_found": "Resource not found",
-    "unauthorized": "Unauthorized",
-    "validation_error": "One or more fields have errors. Please check and try again."
-  },
-  "form": {
-    "fields": {
-      "email": "Email",
-      "password": "Password"
-    }
-  },
-  "shared": {
-    "add_contact": "Add contact",
-    "address": "Address",
-    "b2b": "B2B",
-    "b2g": "B2G",
-    "billing_email": "Billing email",
-    "billing_information": "Billing information",
-    "cancel": "Cancel",
-    "client_type": "Client type",
-    "clients": "Clients",
-    "company": "Company",
-    "company_information": "Company information",
-    "company_name": "Company name",
-    "confirm": "Confirm",
-    "contact": "Contact",
-    "contact_person": "Contact person",
-    "delete": "Delete",
-    "email": "Email",
-    "first_name": "First name",
-    "function": "Function",
-    "information": "Information",
-    "invoice_information": "Invoice information",
-    "last_name": "Last name",
-    "matching": "Matching",
-    "next": "Next",
-    "phoneNumber": "Phonenumber",
-    "phone_number": "Phonenumber",
-    "previous": "Previous",
-    "primary_contact_person": "Primary contact person",
-    "sales_consultant": "Salesconsultant",
-    "select": "Select",
-    "studaro": "Studaro",
-    "students": "Students",
-    "submit": "Submit",
-    "title": "Title",
-    "unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
-    "unsaved_changes_title": "Unsaved changes",
-    "vacancies": "Vacancies",
-    "vat_number": "VAT-number",
-    "website": "Website"
-  },
-  "validation": {
-    "required": "Required"
-  }
+	"auth": {
+		"back_to_login": "Back to login",
+		"check_your_email": "Check your email",
+		"enter_your_email": "Enter your email",
+		"forgot_password": "Forgot password?",
+		"forgot_password_message": "Don't worry, we'll send you a reset link",
+		"instruction_email_sent_to": "We sent an email with further instructions to {email}",
+		"login": {
+			"forgot_password": "Forgot password?",
+			"invalid_email_or_password": "Invalid email or password",
+			"log_in": "Log in",
+			"sign_in_to_continue": "Sign in to continue",
+			"welcome_back_name": "Welcome back, {name}"
+		},
+		"reset_password": "Reset password"
+	},
+	"clients": {
+		"back_to_overview": "Terug naar klantenoverzicht",
+		"create": "Create client",
+		"create_subtitle": "Vul alle informatie aan om een nieuwe klant aan te maken",
+		"new": "New client",
+		"not_found": "No clients found",
+		"search": "Search client",
+		"view_and_manage": "View and manage all of your clients."
+	},
+	"components": {
+		"image": {
+			"open_in_new_tab": "Open in new tab"
+		}
+	},
+	"error": {
+		"bad_request": "Bad request",
+		"default_error": "Something went wrong. Please try again later.",
+		"forbidden": "Forbidden",
+		"internal_server_error": "Internal server error",
+		"resource_not_found": "Resource not found",
+		"unauthorized": "Unauthorized",
+		"validation_error": "One or more fields have errors. Please check and try again."
+	},
+	"form": {
+		"fields": {
+			"email": "Email",
+			"password": "Password"
+		}
+	},
+	"shared": {
+		"add_contact": "Add contact",
+		"address": "Address",
+		"b2b": "B2B",
+		"b2g": "B2G",
+		"billing_email": "Billing email",
+		"billing_information": "Billing information",
+		"cancel": "Cancel",
+		"client_type": "Client type",
+		"clients": "Clients",
+		"company": "Company",
+		"company_information": "Company information",
+		"company_name": "Company name",
+		"confirm": "Confirm",
+		"contact": "Contact",
+		"contact_person": "Contact person",
+		"delete": "Delete",
+		"email": "Email",
+		"first_name": "First name",
+		"function": "Function",
+		"information": "Information",
+		"invoice_information": "Invoice information",
+		"last_name": "Last name",
+		"matching": "Matching",
+		"next": "Next",
+		"phoneNumber": "Phonenumber",
+		"phone_number": "Phonenumber",
+		"previous": "Previous",
+		"primary_contact_person": "Primary contact person",
+		"sales_consultant": "Salesconsultant",
+		"select": "Select",
+		"studaro": "Studaro",
+		"students": "Students",
+		"submit": "Submit",
+		"title": "Title",
+		"unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
+		"unsaved_changes_title": "Unsaved changes",
+		"vacancies": "Vacancies",
+		"vat_number": "VAT-number",
+		"website": "Website"
+	},
+	"validation": {
+		"required": "Required"
+	}
 }

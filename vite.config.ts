@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
-import {sentryVitePlugin} from "@sentry/vite-plugin";
 
 export default defineConfig({
 	define: {
