@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppText from '@/components/core/text/AppText.vue'
+import AppText from '@/components/app/text/AppText.vue'
 </script>
 
 <template>

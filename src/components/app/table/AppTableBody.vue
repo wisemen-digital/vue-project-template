@@ -1,67 +1,89 @@
 <script setup lang="ts" generic="TSchema">
-import AppText from '@/components/core/text/AppText.vue'
-import type { TableColumn } from '@/models/core/table/table.model'
+import type { Component } from 'vue'
+import { computed } from 'vue'
 
+import type { TableColumn } from '@/types/table/table.type'
+
+import AppFocusable from '../focusable/AppFocusable.vue'
+import AppText from '../text/AppText.vue'
+import AppTableSkeletonLoader from './AppTableSkeletonLoader.vue'
 import AppTableTextCell from './AppTableTextCell.vue'
 
-type Props = {
+const props = defineProps<{
 	data: TSchema[]
-	gridTemplateColumns: string
 	columns: TableColumn<TSchema>[]
+	gridTemplateColumns: string
 	pinFirstColumn: boolean
 	pinLastColumn: boolean
-	isHorizontallyScrollable: boolean
 	isScrolledToRight: boolean
+	isHorizontallyScrollable: boolean
 	hasReachedHorizontalScrollEnd: boolean
-	isLoading?: boolean
-	emptyMessage?: string
-}
+	isLoading: boolean
+	isRowClickable: boolean
+	emptyMessage: string
+}>()
 
-const {
-	data,
-	gridTemplateColumns,
-	columns,
-	pinFirstColumn,
-	pinLastColumn,
-	isHorizontallyScrollable,
-	isScrolledToRight,
-	hasReachedHorizontalScrollEnd,
-} = defineProps<Props>()
+const emit = defineEmits<{
+	'row:click': [row: TSchema]
+}>()
+
+const rowComponent = computed<Component | string>(() => {
+	if (props.isRowClickable) {
+		return AppFocusable
+	}
+
+	return 'div'
+})
+
+function handleRowClick(row: TSchema): void {
+	if (!props.isRowClickable) {
+		return
+	}
+
+	emit('row:click', row)
+}
 </script>
 
 <template>
-	<div>
+	<div class="flex h-full w-full flex-1 flex-col">
+		<AppTableSkeletonLoader v-if="props.isLoading" />
+
 		<div
-			v-if="!isLoading && data.length == 0 && emptyMessage"
-			class="flex items-center justify-center p-4"
+			v-else-if="props.data.length === 0 && props.emptyMessage !== null"
+			class="flex h-full items-center justify-center p-4"
 		>
 			<AppText variant="subtext">
-				{{ emptyMessage }}
+				{{ props.emptyMessage }}
 			</AppText>
 		</div>
 
-		<div
-			v-for="(row, index) in data"
+		<Component
+			:is="rowComponent"
+			v-for="(row, index) in props.data"
 			:key="index"
-			class="grid items-center border-b border-solid border-border last:border-none"
-			:class="[isHorizontallyScrollable ? 'w-fit' : 'w-full']"
+			class="group grid items-center border-b border-solid border-border last:border-none"
+			:class="[props.isHorizontallyScrollable ? 'w-fit' : 'w-full']"
 			:style="{
-				gridTemplateColumns,
+				gridTemplateColumns: props.gridTemplateColumns,
 			}"
+			@click="handleRowClick(row)"
 		>
 			<div
-				v-for="column in columns"
+				v-for="column in props.columns"
 				:key="column.id"
 				class="flex h-full items-center px-6 py-4"
 				:class="[
-					isScrolledToRight ? 'first:border-r-border' : 'first:border-r-transparent',
-					hasReachedHorizontalScrollEnd ? 'last:border-l-transparent' : 'last:border-l-border',
+					props.isScrolledToRight ? 'first:border-r-border' : 'first:border-r-transparent',
+					props.hasReachedHorizontalScrollEnd ? 'last:border-l-transparent' : 'last:border-l-border',
 					{
-						'left-0 bg-background first:sticky first:z-10 first:border-r first:border-solid': pinFirstColumn,
+						'left-0 bg-background first:sticky first:z-10 first:border-r first:border-solid': props.pinFirstColumn,
 					},
 					{
 						'right-0 bg-background last:sticky last:z-10 last:border-l last:border-solid':
-							pinLastColumn && isHorizontallyScrollable,
+							props.pinLastColumn && props.isHorizontallyScrollable,
+					},
+					{
+						'group-hover:bg-muted-background group-focus-visible:bg-muted-background': props.isRowClickable,
 					},
 				]"
 			>
@@ -74,6 +96,6 @@ const {
 					{{ column.value(row) }}
 				</AppTableTextCell>
 			</div>
-		</div>
+		</Component>
 	</div>
 </template>

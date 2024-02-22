@@ -9,6 +9,7 @@ export default {
 		extend: {
 			gridTemplateColumns: {
 				'auth-layout': '1fr 1.75fr',
+				'table-skeleton': '1fr 4fr 2fr 1fr',
 			},
 
 			fontFamily: {

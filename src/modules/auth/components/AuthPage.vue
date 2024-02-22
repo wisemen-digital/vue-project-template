@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import AppIcon from '@/components/core/icon/AppIcon.vue'
-import AppText from '@/components/core/text/AppText.vue'
+import AppIcon from '@/components/app/icon/AppIcon.vue'
+import AppText from '@/components/app/text/AppText.vue'
 
-const { title, description } = defineProps<{
+const props = defineProps<{
 	title: string
 	description: string
 }>()
@@ -19,14 +19,14 @@ const { title, description } = defineProps<{
 			class="text-center font-medium text-foreground"
 			variant="title"
 		>
-			{{ title }}
+			{{ props.title }}
 		</AppText>
 
 		<AppText
 			class="mt-2 text-center text-gray-500"
 			variant="subtext"
 		>
-			{{ description }}
+			{{ props.description }}
 		</AppText>
 
 		<div class="mt-6 w-full">

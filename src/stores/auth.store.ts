@@ -3,9 +3,9 @@ import { defineStore } from 'pinia'
 import { computed, readonly, ref, watch } from 'vue'
 
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
+import { transformLoginFormToLoginDto } from '@/models/auth/auth.transformer'
+import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import { useAuthCurrentUserQuery } from '@/modules/auth/api/queries/authCurrentUser.query.ts'
-import { mapLoginFormToLoginRequestDto } from '@/transformers/auth.transformer'
 import { useEnvironment } from '@/utils/environment.util'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -65,7 +65,7 @@ export const useAuthStore = defineStore('auth', () => {
 			return
 		}
 
-		const { username, password } = mapLoginFormToLoginRequestDto(data)
+		const { username, password } = transformLoginFormToLoginDto(data)
 		await oAuthClient.login(username, password)
 	}
 

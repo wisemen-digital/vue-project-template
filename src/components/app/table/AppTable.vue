@@ -3,46 +3,49 @@ import { computed, ref } from 'vue'
 import { onMounted } from 'vue'
 import { onBeforeUnmount } from 'vue'
 
-import AppTableBody from '@/components/app/table/AppTableBody.vue'
-import AppTableFooter from '@/components/app/table/AppTableFooter.vue'
-import AppTableHeader from '@/components/app/table/AppTableHeader.vue'
-import AppTableTop from '@/components/app/table/AppTableTop.vue'
 import type {
 	FilterChangeEvent,
 	PageChangeEvent,
 	PaginationOptions,
 	SortChangeEvent,
-} from '@/composables/core/table-pagination/tablePagination.composable'
-import type { TableColumn, TableFilter } from '@/models/core/table/table.model'
+} from '@/composables/table-pagination/tablePagination.composable'
+import type { PaginatedData } from '@/types/pagination.type'
+import type { TableColumn, TableFilter } from '@/types/table/table.type'
 
-interface PaginatedData<TSchema> {
-	data: TSchema[]
-	total: number
-}
+import AppTableBody from './AppTableBody.vue'
+import AppTableFooter from './AppTableFooter.vue'
+import AppTableHeader from './AppTableHeader.vue'
+import AppTableTop from './AppTableTop.vue'
 
-type Props = {
-	data: PaginatedData<TSchema>
-	paginationOptions: PaginationOptions<TFilters>
-	columns: TableColumn<TSchema>[]
-	filters: TableFilter<TFilters>[]
+const props = withDefaults(
+	defineProps<{
+		data: PaginatedData<TSchema> | null
+		paginationOptions: PaginationOptions<TFilters>
+		columns: TableColumn<TSchema>[]
+		filters: TableFilter<TFilters>[]
 
-	// Visual
-	title: string
-	isLoading?: boolean
-	emptyMessage?: string
-	pinFirstColumn?: boolean
-	pinLastColumn?: boolean
-}
+		isRowClickable?: boolean
+		isLoading: boolean
 
-type Emits = {
-	filter: [event: FilterChangeEvent<TFilters>]
-	sort: [event: SortChangeEvent]
-	page: [event: PageChangeEvent]
-}
+		// Visual
+		title: string
+		emptyMessage: string
+		pinFirstColumn?: boolean
+		pinLastColumn?: boolean
+	}>(),
+	{
+		isRowClickable: false,
+		pinFirstColumn: false,
+		pinLastColumn: false,
+	}
+)
 
-const { data, paginationOptions, columns, pinFirstColumn, pinLastColumn } = defineProps<Props>()
-
-const emit = defineEmits<Emits>()
+const emit = defineEmits<{
+	'filter': [event: FilterChangeEvent<TFilters>]
+	'sort': [event: SortChangeEvent]
+	'page': [event: PageChangeEvent]
+	'row:click': [row: TSchema]
+}>()
 
 const tableRef = ref<HTMLElement | null>(null)
 
@@ -54,7 +57,7 @@ const hasReachedHorizontalScrollEnd = ref<boolean>(false)
 let resizeObserver: ResizeObserver | null = null
 
 const gridTemplateColumns = computed<string>(() => {
-	return columns.reduce((acc, column) => {
+	return props.columns.reduce((acc, column) => {
 		const colSpan = column.size ?? '1fr'
 		return `${acc} ${colSpan}`
 	}, '')
@@ -75,6 +78,10 @@ function handleSortChange(sortChangeEvent: SortChangeEvent): void {
 
 function handlePageChange(event: PageChangeEvent): void {
 	emit('page', event)
+}
+
+function handleRowClick(row: TSchema): void {
+	emit('row:click', row)
 }
 
 function setIsHorizontallyScrollable(): void {
@@ -140,8 +147,8 @@ onBeforeUnmount(() => {
 <template>
 	<div class="flex h-full flex-1 flex-col overflow-hidden rounded-xl border border-solid border-border">
 		<AppTableTop
-			:title="title"
-			:total="data.total"
+			:title="props.title"
+			:total="props.data?.total ?? 0"
 		/>
 
 		<div
@@ -150,34 +157,37 @@ onBeforeUnmount(() => {
 			@scroll="handleScroll"
 		>
 			<AppTableHeader
-				:columns="columns"
+				v-if="!props.isLoading"
+				:columns="props.columns"
 				:grid-template-columns="gridTemplateColumns"
 				:has-reached-horizontal-scroll-end="hasReachedHorizontalScrollEnd"
 				:is-horizontally-scrollable="isHorizontallyScrollable"
 				:is-scrolled-to-right="isScrolledToRight"
-				:pagination-options="paginationOptions"
-				:pin-first-column="pinFirstColumn"
-				:pin-last-column="pinLastColumn"
+				:pagination-options="props.paginationOptions"
+				:pin-first-column="props.pinFirstColumn"
+				:pin-last-column="props.pinLastColumn"
 				@sort="handleSortChange"
 			/>
 
 			<AppTableBody
-				:columns="columns"
-				:data="data.data"
-				:empty-message="emptyMessage"
+				:columns="props.columns"
+				:data="props.data?.data ?? []"
+				:empty-message="props.emptyMessage"
 				:grid-template-columns="gridTemplateColumns"
 				:has-reached-horizontal-scroll-end="hasReachedHorizontalScrollEnd"
 				:is-horizontally-scrollable="isHorizontallyScrollable"
-				:is-loading="isLoading"
+				:is-loading="props.isLoading"
+				:is-row-clickable="props.isRowClickable"
 				:is-scrolled-to-right="isScrolledToRight"
-				:pin-first-column="pinFirstColumn"
-				:pin-last-column="pinLastColumn"
+				:pin-first-column="props.pinFirstColumn"
+				:pin-last-column="props.pinLastColumn"
+				@row:click="handleRowClick"
 			/>
 		</div>
 
 		<AppTableFooter
-			:pagination-options="paginationOptions"
-			:total="data.total"
+			:pagination-options="props.paginationOptions"
+			:total="props.data?.total ?? 0"
 			@page="handlePageChange"
 		/>
 	</div>

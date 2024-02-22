@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import AppText from '@/components/core/text/AppText.vue'
+import { toLocaleNumber } from '@/utils/number.util'
 
 import AppBadge from '../AppBadge.vue'
+import AppText from '../text/AppText.vue'
 
-interface Props {
+const props = defineProps<{
 	title: string
 	total: number
-}
-
-const { title, total } = defineProps<Props>()
+}>()
 </script>
 
 <template>
@@ -18,10 +17,10 @@ const { title, total } = defineProps<Props>()
 				class="font-medium"
 				variant="subtitle"
 			>
-				{{ title }}
+				{{ props.title }}
 			</AppText>
 
-			<AppBadge class="mt-0.5"> {{ total }} items </AppBadge>
+			<AppBadge class="mt-0.5"> {{ toLocaleNumber(props.total) }} items </AppBadge>
 		</div>
 	</div>
 </template>

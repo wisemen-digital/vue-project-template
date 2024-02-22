@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 
-import AppPageLoader from '@/components/core/loader/AppPageLoader.vue'
-import AppModalsContainer from '@/components/core/modal/AppModalsContainer.vue'
-import AppToastsContainer from '@/components/core/toast/AppToastContainer.vue'
+import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
+import AppModalsContainer from '@/components/app/modal/AppModalsContainer.vue'
 
-import { useDocumentTitle } from './composables/core/document-title/documentTitle.composable'
+import AppToastContainer from './components/app/toast/AppToastContainer.vue'
+import { useDocumentTitle } from './composables/document-title/documentTitle.composable'
 
 const { setTemplate } = useDocumentTitle()
 
@@ -16,5 +16,5 @@ setTemplate('{title} | App')
 	<RouterView />
 	<AppPageLoader />
 	<AppModalsContainer />
-	<AppToastsContainer />
+	<AppToastContainer />
 </template>

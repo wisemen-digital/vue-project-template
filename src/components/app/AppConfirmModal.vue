@@ -2,13 +2,13 @@
 import { useI18n } from 'vue-i18n'
 
 import AppDivider from '@/components/app/AppDivider.vue'
-import AppButton from '@/components/core/button/AppButton.vue'
-import AppModal from '@/components/core/modal/AppModal.vue'
-import AppText from '@/components/core/text/AppText.vue'
+import AppButton from '@/components/app/button/AppButton.vue'
+import AppModal from '@/components/app/modal/AppModal.vue'
+import AppText from '@/components/app/text/AppText.vue'
 
 const { t } = useI18n()
 
-const { isOpen, title, description } = defineProps<{
+const props = defineProps<{
 	isOpen: boolean
 	title: string
 	description: string
@@ -34,7 +34,7 @@ function onConfirmButtonClick(): void {
 
 <template>
 	<AppModal
-		:is-open="isOpen"
+		:is-open="props.isOpen"
 		@close="onCloseButtonClick"
 	>
 		<div class="max-w-md">
@@ -43,10 +43,10 @@ function onConfirmButtonClick(): void {
 					class="font-medium"
 					variant="body"
 				>
-					{{ title }}
+					{{ props.title }}
 				</AppText>
 				<AppText variant="body">
-					{{ description }}
+					{{ props.description }}
 				</AppText>
 			</div>
 			<AppDivider direction="horizontal" />

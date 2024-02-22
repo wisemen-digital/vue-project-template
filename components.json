@@ -1,14 +1,16 @@
 {
-	"$schema": "https://wisemen-digital.github.io/vue-components",
-	"style": "wisemen",
+	"$schema": "https://shadcn-vue.com/schema.json",
+	"style": "default",
+	"typescript": true,
+	"tailwind": {
+		"config": "tailwind.config.ts",
+		"css": "src/assets/index.scss",
+		"baseColor": "slate",
+		"cssVariables": true
+	},
+	"framework": "vite",
 	"aliases": {
-		"components": "@/components/core",
-		"utils": "@/utils/core",
-		"composables": "@/composables/core",
-		"transitions": "@/transitions",
-		"icons": "@/icons",
-		"styles": "src/assets/styles",
-		"config": "./",
-		"types": "@/types/core"
+		"components": "@/components",
+		"utils": "@/utils"
 	}
 }

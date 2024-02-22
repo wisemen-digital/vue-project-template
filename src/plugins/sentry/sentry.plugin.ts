@@ -4,27 +4,29 @@ import type { Router } from 'vue-router'
 
 import { EnvironmentMode } from '@/utils/environment.util'
 
+const { VITE_SENTRY_DSN, VITE_ENVIRONMENT, VITE_SENTRY_SAMPLE_RATE, VITE_APP_VERSION } = import.meta.env
+
 export function configureSentry(app: App<Element>, router: Router): void {
-	if (import.meta.env.VITE_SENTRY_DSN === undefined) {
+	if (VITE_SENTRY_DSN === undefined) {
 		return
 	}
 
-	if (import.meta.env.MODE === EnvironmentMode.DEVELOPMENT) {
+	if (VITE_ENVIRONMENT === EnvironmentMode.DEVELOPMENT) {
 		return
 	}
 
 	return Sentry.init({
 		app,
-		dsn: import.meta.env.VITE_SENTRY_DSN,
-		environment: import.meta.env.VITE_ENVIRONMENT,
-		release: import.meta.env.VITE_APP_VERSION,
+		dsn: VITE_SENTRY_DSN,
+		environment: VITE_ENVIRONMENT,
+		release: VITE_APP_VERSION,
 		integrations: [
 			new Sentry.BrowserTracing({
 				routingInstrumentation: Sentry.vueRouterInstrumentation(router),
 			}),
 			new Sentry.Replay(),
 		],
-		tracesSampleRate: import.meta.env.VITE_SENTRY_SAMPLE_RATE ?? 1,
+		tracesSampleRate: VITE_SENTRY_SAMPLE_RATE ?? 1,
 		replaysSessionSampleRate: 0.1,
 		replaysOnErrorSampleRate: 1.0,
 		sampleRate: 1,

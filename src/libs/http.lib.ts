@@ -1,6 +1,6 @@
 import { createHttpZodClient } from '@appwise/zod-http-client'
 
-import { useToast } from '@/composables/core/toast/toast.composable'
+import { useToast } from '@/composables/toast/toast.composable'
 import { logError } from '@/utils/logger.util'
 
 import { axios, unauthorizedAxios } from './axios.lib'
