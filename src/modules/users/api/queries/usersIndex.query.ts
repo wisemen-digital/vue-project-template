@@ -1,7 +1,8 @@
-import { computed, type ComputedRef } from 'vue'
+import { type ComputedRef } from 'vue'
 
 import type { UseQueryReturnType } from '@/composables/query/query.composable'
 import { useQuery } from '@/composables/query/query.composable'
+import { usePaginationOptionsToApiParams } from '@/composables/table-pagination/pagination.composable'
 import type { PaginationOptions } from '@/composables/table-pagination/tablePagination.composable'
 import { TIME } from '@/constants/time.constant'
 import type { UserIndex } from '@/models/users/index/userIndex.model'
@@ -17,9 +18,7 @@ export function useGetIndexUsersQuery(
 		staleTime: TIME.FIVE_MINUTES,
 		queryKey: {
 			key: QueryKey.USERS,
-			params: {
-				page: computed<number>(() => paginationOptions.value.pagination.page),
-			},
+			params: usePaginationOptionsToApiParams(paginationOptions),
 		},
 		queryFn: () => {
 			return userService.getAll(paginationOptions)
