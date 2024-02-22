@@ -1,18 +1,31 @@
 import type { ComputedRef } from 'vue'
-import { computed, reactive } from 'vue'
+import { computed, reactive, watch } from 'vue'
 
 import type { PaginationApiParams } from '@/types/pagination.type'
 
 import type { PaginationOptions } from './tablePagination.composable'
 
-export function usePaginationOptionsToApiParams<T>(
-	paginationOptions: ComputedRef<PaginationOptions<T>>
+export function usePaginationOptionsToApiParams(
+	paginationOptions: ComputedRef<PaginationOptions<unknown>>
 ): PaginationApiParams {
-	return reactive<{
-		perPage: ComputedRef<number>
-		page: ComputedRef<number>
-	}>({
+	const apiParams = reactive<PaginationApiParams>({
 		perPage: computed<number>(() => paginationOptions.value.pagination.perPage),
 		page: computed<number>(() => paginationOptions.value.pagination.page + 1), // Test API is 1-based, we are 0-based
 	})
+
+	watch(
+		() => paginationOptions.value.filters,
+		() => {
+			Object.entries(paginationOptions.value.filters ?? {}).forEach(([key, value]) => {
+				apiParams[key] = computed<unknown>(() => value)
+			})
+		},
+		{
+			deep: true,
+			immediate: true,
+		}
+	)
+
+	// We need to cast this because of computed in reactive
+	return apiParams as unknown as PaginationApiParams
 }

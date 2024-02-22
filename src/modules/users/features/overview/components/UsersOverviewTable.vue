@@ -3,13 +3,14 @@ import { useI18n } from 'vue-i18n'
 
 import AppTable from '@/components/app/table/AppTable.vue'
 import type { UserIndex } from '@/models/users/index/userIndex.model'
+import type { UserIndexFilters } from '@/models/users/index/userIndexFilters.model'
 import type { UserUuid } from '@/models/users/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
 import type { Pagination, TableColumn } from '@/types/table/table.type'
 
 const props = defineProps<{
 	data: PaginatedData<UserIndex> | null
-	pagination: Pagination<[]>
+	pagination: Pagination<UserIndexFilters>
 	isLoading: boolean
 }>()
 

@@ -1,6 +1,8 @@
-export interface PaginationApiParams {
-	perPage: number
-	page: number
+import type { ComputedRef } from 'vue'
+
+export type PaginationApiParams = Record<string, ComputedRef<unknown>> & {
+	page: ComputedRef<number>
+	perPage: ComputedRef<number>
 }
 
 export interface PaginatedData<TSchema> {

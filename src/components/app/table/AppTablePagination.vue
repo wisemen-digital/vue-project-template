@@ -133,7 +133,7 @@ function pageControlButtonVariant(page: number): 'ghost' | 'secondary' {
 
 			<AppText
 				v-else
-				class="cursor-default px-2"
+				class="cursor-default px-2 text-muted-foreground"
 				variant="subtext"
 			>
 				{{ page }}

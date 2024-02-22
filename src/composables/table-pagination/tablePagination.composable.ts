@@ -10,7 +10,7 @@ export type SortDirection = 'asc' | 'desc'
 type PaginationSort = Record<string, SortDirection>
 
 type PaginationFilters<TFilters> = {
-	[K in keyof TFilters]: unknown
+	[K in keyof TFilters]: TFilters[K]
 }
 
 export interface PageChangeEvent {
@@ -19,7 +19,7 @@ export interface PageChangeEvent {
 }
 
 export type FilterChangeEvent<TFilters> = {
-	[K in keyof TFilters]: unknown
+	[K in keyof TFilters]?: unknown
 }
 
 export type SortChangeEvent = Record<string, SortDirection>
@@ -118,7 +118,10 @@ export function useTablePagination<TFilters>({
 	function handleFilterChange(event: FilterChangeEvent<TFilters>): void {
 		paginationOptions.value = {
 			...paginationOptions.value,
-			filters: event,
+			filters: {
+				...paginationOptions.value.filters,
+				...event,
+			} as PaginationFilters<TFilters>,
 		}
 	}
 
