@@ -2,7 +2,6 @@
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppGrid from '@/components/app/AppGrid.vue'
 import AppButton from '@/components/app/button/AppButton.vue'
 import AppInput from '@/components/app/input/AppInput.vue'
 import { useDebouncedSearch } from '@/composables/debounce-search/debounceSearch.composable'
@@ -31,7 +30,7 @@ watch(debouncedSearch, onDebouncedSearchChange)
 </script>
 
 <template>
-	<AppGrid :cols="2">
+	<div class="flex gap-x-2">
 		<AppInput
 			id="TODO"
 			v-model="search"
@@ -44,5 +43,5 @@ watch(debouncedSearch, onDebouncedSearchChange)
 		>
 			{{ t('users.overview.new_user') }}
 		</AppButton>
-	</AppGrid>
+	</div>
 </template>

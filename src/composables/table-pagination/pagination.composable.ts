@@ -17,11 +17,27 @@ export function usePaginationOptionsToApiParams(
 		() => paginationOptions.value.filters,
 		() => {
 			Object.entries(paginationOptions.value.filters ?? {}).forEach(([key, value]) => {
-				apiParams[key] = computed<unknown>(() => value)
+				apiParams[key] = value
 			})
 		},
 		{
-			deep: true,
+			immediate: true,
+		}
+	)
+
+	watch(
+		() => paginationOptions.value.sort,
+		(sortState) => {
+			if (sortState === undefined) {
+				return
+			}
+
+			const [key, direction] = Object.entries(sortState)[0] ?? []
+
+			apiParams.orderBy = key
+			apiParams.orderDirection = direction
+		},
+		{
 			immediate: true,
 		}
 	)

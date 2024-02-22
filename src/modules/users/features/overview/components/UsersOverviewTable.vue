@@ -26,6 +26,7 @@ const columns: TableColumn<UserIndex>[] = [
 		size: '1fr',
 		label: t('shared.name'),
 		value: (row: UserIndex) => row.fullName,
+		isSortable: true,
 	},
 ]
 
