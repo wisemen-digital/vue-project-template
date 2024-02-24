@@ -6,7 +6,8 @@ import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElemen
 import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
 import AppText from '@/components/app/text/AppText.vue'
 import AppForm from '@/components/form/form/AppForm.vue'
-import AppFormInput from '@/components/form/input/FormInput.vue'
+import FormInput from '@/components/form/input/FormInput.vue'
+import FormPasswordInput from '@/components/form/input/FormPasswordInput.vue'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import type { loginFormSchema } from '@/models/auth/login/loginForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
@@ -25,20 +26,19 @@ const password = props.form.register('password')
 <template>
 	<AppForm :form="form">
 		<AppVerticalFormElementSpacer>
-			<AppFormInput
+			<FormInput
 				v-bind="email"
 				:is-required="true"
 				:label="t('form.fields.email')"
-				placeholder="hello@studaro.be"
+				placeholder="email@example.com"
 				type="email"
 			/>
 
-			<AppFormInput
+			<FormPasswordInput
 				v-bind="password"
 				:is-required="true"
 				:label="t('form.fields.password')"
-				placeholder="wachtwoord"
-				type="password"
+				:placeholder="t('form.fields.password')"
 			/>
 
 			<AppTypedRouterLink

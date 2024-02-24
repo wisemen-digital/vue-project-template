@@ -2,10 +2,9 @@
 import { useI18n } from 'vue-i18n'
 
 import AppPage from '@/components/app/AppPage.vue'
+import AppButton from '@/components/app/button/AppButton.vue'
 import type { User } from '@/models/users/detail/user.model'
 import type { Breadcrumb } from '@/types/breadcrumb.type'
-
-import UsersDetailHeaderActions from '../components/UsersDetailHeaderActions.vue'
 
 const props = defineProps<{
 	user: User
@@ -32,7 +31,16 @@ const breadcrumbs: Breadcrumb[] = [
 		:title="props.user.fullName"
 	>
 		<template #header-actions>
-			<UsersDetailHeaderActions :user-uuid="props.user.uuid" />
+			<AppButton
+				:to="{
+					name: 'users-update',
+					params: {
+						userUuid: props.user.uuid,
+					},
+				}"
+			>
+				{{ t('users.detail.edit_user') }}
+			</AppButton>
 		</template>
 	</AppPage>
 </template>

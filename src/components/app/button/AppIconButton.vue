@@ -4,7 +4,7 @@ import type { Icon } from '@/icons/icons'
 import AppIcon from '../icon/AppIcon.vue'
 import AppButton from './AppButton.vue'
 
-const { icon } = defineProps<{
+const props = defineProps<{
 	icon: Icon
 }>()
 </script>
@@ -15,7 +15,7 @@ const { icon } = defineProps<{
 		variant="ghost"
 	>
 		<AppIcon
-			:icon="icon"
+			:icon="props.icon"
 			size="sm"
 		/>
 	</AppButton>

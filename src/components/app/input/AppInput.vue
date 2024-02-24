@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useElementSize } from '@vueuse/core'
 import { computed, ref } from 'vue'
+import { useAttrs } from 'vue'
 
 import AppIcon from '@/components/app/icon/AppIcon.vue'
 import AppText from '@/components/app/text/AppText.vue'
@@ -36,6 +37,7 @@ const emit = defineEmits<{
 }>()
 
 const model = defineModel<string | null>()
+const attrs = useAttrs()
 
 const prefixElementRef = ref<HTMLElement | null>(null)
 const suffixElementRef = ref<HTMLElement | null>(null)
@@ -82,10 +84,11 @@ const paddingRightWidth = computed<string>(() => {
 		</div>
 		<input
 			:id="props.id"
+			v-bind="attrs"
 			v-model="model"
 			:class="
 				cn(
-					'flex h-10 w-full rounded-md border border-input-border px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+					'flex h-10 w-full rounded-md border border-input-border px-3 py-2 text-sm ring-offset-background duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
 					{
 						'border-destructive': props.isInvalid,
 					},
@@ -97,17 +100,19 @@ const paddingRightWidth = computed<string>(() => {
 			:style="`padding-left: ${paddingLeftWidth}px; padding-right: ${paddingRightWidth}px;`"
 			@blur="() => emit('blur')"
 		/>
-		<div
-			v-if="props.suffixIcon"
-			ref="suffixElementRef"
-			class="absolute bottom-0 right-2 top-0 flex items-center"
-		>
-			<AppIcon
-				class="text-input-foreground"
-				:icon="props.suffixIcon"
-				size="sm"
-			/>
-		</div>
+		<slot name="right">
+			<div
+				v-if="props.suffixIcon"
+				ref="suffixElementRef"
+				class="absolute bottom-0 right-2 top-0 flex items-center"
+			>
+				<AppIcon
+					class="text-input-foreground"
+					:icon="props.suffixIcon"
+					size="sm"
+				/>
+			</div>
+		</slot>
 		<div
 			v-if="props.suffixText"
 			ref="suffixElementRef"

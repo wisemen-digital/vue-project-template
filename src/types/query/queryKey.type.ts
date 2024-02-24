@@ -1,5 +1,7 @@
 import type { MaybeRefOrGetter } from 'vue'
 
+import type { PaginationApiParams } from '../pagination.type'
+
 export enum QueryKey {
 	CURRENT_USER = 'currentUser',
 
@@ -12,9 +14,7 @@ export interface QueryKeys {
 	[QueryKey.CURRENT_USER]: void
 
 	// Users
-	[QueryKey.USERS]: {
-		page: MaybeRefOrGetter<number>
-	}
+	[QueryKey.USERS]: PaginationApiParams
 	[QueryKey.USERS_DETAIL]: {
 		userUuid: MaybeRefOrGetter<string>
 	}

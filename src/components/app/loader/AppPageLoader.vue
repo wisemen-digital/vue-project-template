@@ -67,4 +67,3 @@ router.afterEach(() => {
 	animation: loader 1s linear infinite;
 }
 </style>
-@/composables/page-loader/pageLoader.composable

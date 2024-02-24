@@ -12,7 +12,7 @@ import { QueryKey } from '@/types/query/queryKey.type'
 
 import { userService } from '../services/user.service'
 
-export function useGetIndexUsersQuery(
+export function useUsersIndexQuery(
 	paginationOptions: ComputedRef<PaginationOptions<UserIndexFilters>>
 ): UseQueryReturnType<PaginatedData<UserIndex>> {
 	return useQuery<PaginatedData<UserIndex>>({

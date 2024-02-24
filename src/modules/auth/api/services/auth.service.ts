@@ -34,8 +34,11 @@ export const authService: AuthService = {
 	},
 	getCurrentUser: async (): Promise<CurrentUser> => {
 		const data = await httpClient.get({
-			url: '/users/me',
+			url: '/api/auth/userinfo',
 			responseSchema: currentUserDtoSchema,
+			config: {
+				baseURL: import.meta.env.VITE_API_BASE_URL,
+			},
 		})
 
 		return transformCurrentUserDtoToCurrentUser(data)

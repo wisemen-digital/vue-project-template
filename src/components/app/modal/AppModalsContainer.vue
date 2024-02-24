@@ -24,4 +24,3 @@ onMounted(() => {
 		/>
 	</Teleport>
 </template>
-@/composables/modal/modal.composable

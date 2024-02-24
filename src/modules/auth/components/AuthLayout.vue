@@ -6,11 +6,6 @@
 			</div>
 		</div>
 
-		<div class="relative hidden h-full items-center justify-end px-6 py-6 md:flex">
-			<img
-				class="h-full max-w-[800px] overflow-hidden rounded-card"
-				src="/src/assets/images/studaro_space_cowboy.png"
-			/>
-		</div>
+		<div class="bg-black" />
 	</div>
 </template>

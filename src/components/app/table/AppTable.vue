@@ -2,6 +2,8 @@
 import { computed, ref } from 'vue'
 import { onMounted } from 'vue'
 import { onBeforeUnmount } from 'vue'
+import { watch } from 'vue'
+import { nextTick } from 'vue'
 
 import type {
 	FilterChangeEvent,
@@ -129,6 +131,13 @@ function handleScroll(): void {
 	setIsScrolledToRight()
 	setHasReachedHorizontalScrollEnd()
 }
+
+async function onDataChange(): Promise<void> {
+	await nextTick()
+	setIsHorizontallyScrollable()
+}
+
+watch(() => props.data, onDataChange)
 
 onMounted(() => {
 	if (tableRef.value === null) {

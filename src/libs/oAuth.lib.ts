@@ -7,5 +7,5 @@ export const oAuthClient = new OAuth2VueClient({
 	axios,
 	clientId: VITE_API_CLIENT_ID,
 	clientSecret: VITE_API_CLIENT_SECRET,
-	tokenEndpoint: `${VITE_API_BASE_URL}/oauth/token`,
+	tokenEndpoint: `${VITE_API_BASE_URL}/api/auth/token`,
 })

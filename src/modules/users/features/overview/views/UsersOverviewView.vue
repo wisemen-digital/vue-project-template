@@ -6,7 +6,7 @@ import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import { useTablePagination } from '@/composables/table-pagination/tablePagination.composable'
 import type { UserIndexFilters } from '@/models/users/index/userIndexFilters.model'
 import type { UserUuid } from '@/models/users/userUuid.model'
-import { useGetIndexUsersQuery } from '@/modules/users/api/queries/usersIndex.query'
+import { useUsersIndexQuery } from '@/modules/users/api/queries/usersIndex.query'
 
 import UsersOverviewHeaderActions from '../components/UsersOverviewHeaderActions.vue'
 import UsersOverviewTable from '../components/UsersOverviewTable.vue'
@@ -18,7 +18,7 @@ const paginationOptions = useTablePagination<UserIndexFilters>({
 	id: 'users',
 })
 
-const { data: paginatedUsers, isLoading: isLoadingUsers } = useGetIndexUsersQuery(paginationOptions.paginationOptions)
+const { data: paginatedUsers, isLoading: isLoadingUsers } = useUsersIndexQuery(paginationOptions.paginationOptions)
 
 function onNavigateToUserDetail(userUuid: UserUuid): void {
 	router.push({
@@ -46,11 +46,13 @@ function onSearch(search: string | null): void {
 			/>
 		</template>
 
-		<UsersOverviewTable
-			:data="paginatedUsers"
-			:is-loading="isLoadingUsers"
-			:pagination="paginationOptions"
-			@navigate-to-user-detail="onNavigateToUserDetail"
-		/>
+		<template #default>
+			<UsersOverviewTable
+				:data="paginatedUsers"
+				:is-loading="isLoadingUsers"
+				:pagination="paginationOptions"
+				@navigate-to-user-detail="onNavigateToUserDetail"
+			/>
+		</template>
 	</AppTablePage>
 </template>

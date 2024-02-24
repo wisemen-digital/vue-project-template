@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="TInputType extends InputType">
 import { computed } from 'vue'
+import { useAttrs } from 'vue'
 
 import AppInput from '@/components/app/input/AppInput.vue'
 import FormGroup from '@/components/form/group/FormGroup.vue'
@@ -17,6 +18,7 @@ const props = withDefaults(
 		placeholder?: string | null
 		isRequired?: boolean
 		errors?: FormErrors
+		class?: string | null
 	}>(),
 	{
 		placeholder: null,
@@ -24,6 +26,7 @@ const props = withDefaults(
 		isTouched: false,
 		isRequired: false,
 		errors: undefined,
+		class: null,
 	}
 )
 
@@ -34,6 +37,8 @@ const model = defineModel<string | null>({
 const emits = defineEmits<{
 	blur: []
 }>()
+
+const attrs = useAttrs()
 
 const formId = computed<string>(() => `form-input-${generateUuid()}`)
 const errors = computed<FormErrors | undefined>(() => props.errors)
@@ -56,13 +61,20 @@ function onBlur(): void {
 			:is-required="props.isRequired"
 			:label="props.label"
 		/>
+
 		<AppInput
 			:id="formId"
+			v-bind="attrs"
 			v-model="model"
+			:class="props.class"
 			:is-disabled="props.isDisabled"
 			:is-invalid="isFormInvalid"
 			:placeholder="props.placeholder"
 			@blur="onBlur"
-		/>
+		>
+			<template #right>
+				<slot name="right" />
+			</template>
+		</AppInput>
 	</FormGroup>
 </template>
