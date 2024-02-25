@@ -1,7 +1,6 @@
 import { createHttpZodClient } from '@appwise/zod-http-client'
 
 import { useToast } from '@/composables/toast/toast.composable'
-import { logError } from '@/utils/logger.util'
 
 import { axios, unauthorizedAxios } from './axios.lib'
 
@@ -11,18 +10,19 @@ interface ZodError {
 	error: unknown
 }
 
-const { VITE_ENVIRONMENT } = import.meta.env
+const ENVIRONMENT = import.meta.env.ENVIRONMENT
 
 function onZodError({ url, method, error }: ZodError): void {
 	const { showToast } = useToast()
 
-	if (VITE_ENVIRONMENT !== 'production') {
+	if (ENVIRONMENT !== 'production') {
 		showToast({
 			title: `${method.toUpperCase()} ${url} returned a malformed response.`,
 		})
 	}
 
-	logError(`${method.toUpperCase()} ${url} returned a malformed response\n\n`, error)
+	// eslint-disable-next-line no-console
+	console.error(`${method.toUpperCase()} ${url} returned a malformed response\n\n`, error)
 }
 
 export const httpClient = createHttpZodClient({

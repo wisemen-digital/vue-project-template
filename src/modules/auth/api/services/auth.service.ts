@@ -37,7 +37,7 @@ export const authService: AuthService = {
 			url: '/api/auth/userinfo',
 			responseSchema: currentUserDtoSchema,
 			config: {
-				baseURL: import.meta.env.VITE_API_BASE_URL,
+				baseURL: import.meta.env.API_BASE_URL,
 			},
 		})
 

@@ -7,10 +7,11 @@ import { useAuthStore } from '@/stores/auth.store.ts'
 
 import { oAuthClient } from './oAuth.lib'
 
-const { VITE_API_BASE_URL, VITE_API_ENDPOINT } = import.meta.env
+const API_BASE_URL = import.meta.env.API_BASE_URL
+const API_ENDPOINT = import.meta.env.API_ENDPOINT
 
 const axiosConfig: CreateAxiosDefaults = {
-	baseURL: `${VITE_API_BASE_URL}${VITE_API_ENDPOINT}`,
+	baseURL: `${API_BASE_URL}${API_ENDPOINT}`,
 	headers: {
 		'Accept-Language': navigator.language,
 	},
