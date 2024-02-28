@@ -18,21 +18,21 @@ interface AuthService {
 }
 
 export const authService: AuthService = {
-	forgotPassword: async (form: ForgotPasswordForm): Promise<void> => {
+	forgotPassword: async (form) => {
 		await unauthorizedHttpClient.post({
 			url: '/forgot-password',
 			body: transformForgotPasswordFormToForgotPasswordDto(form),
 			responseSchema: z.unknown(),
 		})
 	},
-	resetPassword: async (form: ResetPasswordForm): Promise<void> => {
+	resetPassword: async (form) => {
 		await unauthorizedHttpClient.post({
 			url: '/reset-password',
 			body: transformResetPasswordFormToResetPasswordDto(form),
 			responseSchema: z.unknown(),
 		})
 	},
-	getCurrentUser: async (): Promise<CurrentUser> => {
+	getCurrentUser: async () => {
 		const data = await httpClient.get({
 			url: '/api/auth/userinfo',
 			responseSchema: currentUserDtoSchema,

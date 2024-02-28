@@ -29,7 +29,6 @@ const props = withDefaults(
 		isRowClickable?: boolean
 		isLoading: boolean
 
-		// Visual
 		title: string
 		emptyMessage: string
 		pinFirstColumn?: boolean

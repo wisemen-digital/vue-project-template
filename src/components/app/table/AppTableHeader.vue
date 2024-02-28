@@ -29,6 +29,7 @@ const emit = defineEmits<{
 
 const currentSortDirection = computed<SortDirection>(() => {
 	const { sort } = props.paginationOptions
+
 	const columnId = Object.keys(sort ?? {})[0]
 
 	return getCurrentSortDirection(sort ?? null, columnId)
@@ -43,17 +44,15 @@ function toggleSortDirection(direction: SortDirection): SortDirection {
 }
 
 function isColumnSorted(columnId: string): boolean {
-	const { sort } = props.paginationOptions
-	const isSameColumn = Object.keys(sort ?? {})[0] === columnId
+	const isSameColumn = Object.keys(props.paginationOptions.sort ?? {})[0] === columnId
 
 	return isSameColumn
 }
 
 function handleSortChange(columnId: string): void {
-	const { sort } = props.paginationOptions
 	const isSameColumn = isColumnSorted(columnId)
 
-	let direction = getCurrentSortDirection(sort ?? null, columnId)
+	let direction = getCurrentSortDirection(props.paginationOptions.sort ?? null, columnId)
 
 	if (shouldRemoveSort(isSameColumn, direction)) {
 		removeSort()

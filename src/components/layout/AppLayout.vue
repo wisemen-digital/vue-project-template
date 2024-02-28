@@ -2,7 +2,7 @@
 
 <template>
 	<div class="flex h-full w-full flex-col">
-		<!-- sidebar, header, ... -->
+		<!-- TODO: sidebar, header, ... -->
 		<div class="flex flex-1 overflow-hidden">
 			<RouterView />
 		</div>

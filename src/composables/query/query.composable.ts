@@ -75,14 +75,14 @@ export function useQuery<TResData>({
 	const { data, error, isLoading, isError, isSuccess, suspense, refetch } = useTanstackQuery({
 		queryFn,
 		staleTime,
-		queryKey: getQueryKey(),
+		queryKey: computed<string[]>(() => getQueryKey()),
 		enabled: isEnabled,
 		placeholderData: (data) => data,
 	})
 
 	function getQueryKey(): string[] {
 		if (typeof queryKey === 'object' && 'params' in queryKey) {
-			return [queryKey.key, queryKey.params as unknown as string]
+			return [queryKey.key, ...Object.values(queryKey.params)]
 		}
 
 		return [queryKey.key]

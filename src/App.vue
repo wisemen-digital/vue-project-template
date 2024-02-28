@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
+import {
+	//
+	VueQueryDevtools,
+} from '@tanstack/vue-query-devtools'
 import { RouterView } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'

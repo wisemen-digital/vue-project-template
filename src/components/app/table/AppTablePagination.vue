@@ -43,9 +43,7 @@ const pageControls = computed<(number | string)[]>(() => {
 })
 
 const isFirstPage = computed<boolean>(() => {
-	const { page } = props.paginationOptions.pagination
-
-	return page === 0
+	return props.paginationOptions.pagination.page === 0
 })
 
 const isLastPage = computed<boolean>(() => {
@@ -57,9 +55,7 @@ const isLastPage = computed<boolean>(() => {
 })
 
 const hasMoreThanOnePage = computed<boolean>(() => {
-	const { perPage } = props.paginationOptions.pagination
-
-	return props.total > perPage
+	return props.total > props.paginationOptions.pagination.perPage
 })
 
 function setPage(page: number): void {
