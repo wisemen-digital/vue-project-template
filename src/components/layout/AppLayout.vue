@@ -1,10 +1,10 @@
-<script setup lang="ts">
-import AppNavbar from '@/components/app/navbar/AppNavbar.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
 	<div class="flex h-full w-full flex-col">
-		<AppNavbar />
-		<RouterView />
+		<!-- TODO: sidebar, header, ... -->
+		<div class="flex flex-1 overflow-hidden">
+			<RouterView />
+		</div>
 	</div>
 </template>

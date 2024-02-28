@@ -1,7 +1,17 @@
 import { authMiddleware } from '@/middlewares/auth.middleware.ts'
-import type { RouteRecordTyped } from '@/models/core/router/router.model'
+import type { AuthRoutes } from '@/modules/auth/routes/auth.routes.ts'
 import { authRoutes } from '@/modules/auth/routes/auth.routes.ts'
-import { clientsRoutes } from '@/modules/clients/routes/clients.routes.ts'
+import { type UsersRoutes, usersRoutes } from '@/modules/users/routes/users.routes'
+import type { RouteRecordTyped } from '@/types/router/router.type'
+
+export interface Routes extends AuthRoutes, UsersRoutes {
+	'index': {
+		path: '/'
+	}
+	'404': {
+		path: '/:catchAll(.*)'
+	}
+}
 
 export const routes: RouteRecordTyped[] = [
 	{
@@ -16,13 +26,13 @@ export const routes: RouteRecordTyped[] = [
 				name: 'index',
 				props: {},
 				redirect: {
-					name: 'clients-overview',
+					name: 'users-overview',
 				},
 			},
 			/**
 			 * Authenticated routes
 			 */
-			...clientsRoutes,
+			...usersRoutes,
 		],
 	},
 	/**

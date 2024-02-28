@@ -4,10 +4,10 @@ import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useTypedRouter } from '@/composables/core/router/typedRouter.composable'
-import { useToast } from '@/composables/core/toast/toast.composable'
-import type { CurrentUser } from '@/models/auth/currentUser.model.ts'
-import { loginFormSchema } from '@/models/auth/forms/loginForm.model'
+import { useHandleApiError } from '@/composables/handle-api-error/handleApiError.composable'
+import { useTypedRouter } from '@/composables/router/typedRouter.composable'
+import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
+import { loginFormSchema } from '@/models/auth/login/loginForm.model'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import AuthLoginForm from '@/modules/auth/features/login/components/AuthLoginForm.vue'
 import { useAuthStore } from '@/stores/auth.store.ts'
@@ -17,7 +17,6 @@ const authStore = useAuthStore()
 const { lastLoggedInUser } = storeToRefs(authStore)
 
 const { t } = useI18n()
-const toast = useToast()
 const router = useTypedRouter()
 
 const { form, onSubmitForm } = useForm({
@@ -50,7 +49,7 @@ onSubmitForm(async (data) => {
 
 		await handleLoggedIn(currentUser)
 	} catch (error) {
-		toast.showToastApiError(error)
+		useHandleApiError(error, form)
 		authStore.setLastLoginAttemptEmail(data.email)
 	}
 })

@@ -3,13 +3,12 @@ import { useForm } from 'formango'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useHandleApiError } from '@/composables/core/handle-api-error/handleApiError.composable'
-import { useTypedRouteParams } from '@/composables/core/router/typedRouteParams.composable'
-import { useTypedRouteQuery } from '@/composables/core/router/typedRouteQuery.composable'
-import { resetPasswordFormSchema } from '@/models/auth/forms/resetPasswordForm.model'
+import { useHandleApiError } from '@/composables/handle-api-error/handleApiError.composable'
+import { useTypedRouteParams } from '@/composables/router/typedRouteParams.composable'
+import { useTypedRouteQuery } from '@/composables/router/typedRouteQuery.composable'
+import { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
 import { useAuthResetPasswordMutation } from '@/modules/auth/api/mutations/authResetPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
-import { mapResetPasswordFormToResetPasswordRequestDto } from '@/transformers/auth.transformer.ts'
 
 import ResetPasswordForm from '../components/AuthResetPasswordForm.vue'
 
@@ -24,6 +23,9 @@ const { form, onSubmitForm } = useForm({
 const { token } = useTypedRouteParams('reset-password')
 const { email } = useTypedRouteQuery('reset-password')
 
+form.register('token', token)
+form.register('email', email)
+
 const { execute: resetPassword } = useAuthResetPasswordMutation()
 
 const description = computed<string>(() => {
@@ -34,14 +36,10 @@ const description = computed<string>(() => {
 	return t('auth.features.enter_your_new_password_below')
 })
 
-onSubmitForm(async ({ password }) => {
+onSubmitForm(async (values) => {
 	try {
 		await resetPassword({
-			body: mapResetPasswordFormToResetPasswordRequestDto({
-				email: email as string,
-				password,
-				token,
-			}),
+			body: values,
 		})
 
 		hasPasswordBeenReset.value = true

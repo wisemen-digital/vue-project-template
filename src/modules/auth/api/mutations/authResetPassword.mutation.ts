@@ -1,11 +1,11 @@
-import type { UseMutationReturnType } from '@/composables/core/mutation/mutation.composable.ts'
-import { useMutation } from '@/composables/core/mutation/mutation.composable.ts'
-import type { ResetPasswordRequestDto } from '@/models/auth/forms/resetPasswordRequestDto.model.ts'
+import type { UseMutationReturnType } from '@/composables/mutation/mutation.composable.ts'
+import { useMutation } from '@/composables/mutation/mutation.composable.ts'
+import type { ResetPasswordForm } from '@/models/auth/reset-password/resetPasswordForm.model.ts'
 
 import { authService } from '../services/auth.service.ts'
 
-export function useAuthResetPasswordMutation(): UseMutationReturnType<ResetPasswordRequestDto, void> {
-	return useMutation<ResetPasswordRequestDto, void>({
+export function useAuthResetPasswordMutation(): UseMutationReturnType<ResetPasswordForm, void> {
+	return useMutation<ResetPasswordForm, void>({
 		queryFn: async ({ body }) => {
 			await authService.resetPassword(body)
 		},

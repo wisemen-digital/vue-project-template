@@ -1,32 +1,56 @@
 <script setup lang="ts">
 import AppContainer from '@/components/app/AppContainer.vue'
-import AppText from '@/components/core/text/AppText.vue'
+import AppText from '@/components/app/text/AppText.vue'
+import type { Breadcrumb } from '@/types/breadcrumb.type'
 
-const { title } = defineProps<{
-	title: string
-	subtitle?: string
-}>()
+import AppPageBreadcrumbs from './AppPageBreadcrumbs.vue'
+
+const props = withDefaults(
+	defineProps<{
+		title: string
+		subtitle?: string | null
+		breadcrumbs?: Breadcrumb[] | null
+	}>(),
+	{
+		subtitle: null,
+		breadcrumbs: null,
+	}
+)
 </script>
 
 <template>
-	<div class="flex w-full flex-1 flex-col">
-		<AppContainer class="py-4">
+	<div class="flex w-full flex-1 flex-col bg-background">
+		<AppContainer class="py-10">
+			<AppPageBreadcrumbs
+				v-if="props.breadcrumbs !== null"
+				:breadcrumbs="props.breadcrumbs"
+				class="mb-1"
+			/>
+
 			<div class="flex items-center justify-between">
 				<div class="mr-auto space-y-2">
 					<AppText variant="title">
-						{{ title }}
+						{{ props.title }}
 					</AppText>
-					<AppText v-if="subtitle">
-						{{ subtitle }}
+
+					<AppText
+						v-if="props.subtitle !== null"
+						variant="subtitle"
+					>
+						{{ props.subtitle }}
 					</AppText>
 				</div>
-				<div class="flex items-center justify-end gap-4">
-					<slot name="actions" />
+
+				<div
+					id="header-actions"
+					class="flex items-center justify-end gap-4"
+				>
+					<slot name="header-actions" />
 				</div>
 			</div>
 		</AppContainer>
 
-		<AppContainer class="flex flex-1 flex-col pb-8 pt-6">
+		<AppContainer class="flex flex-1 flex-col overflow-hidden pb-8 pt-6">
 			<slot />
 		</AppContainer>
 	</div>

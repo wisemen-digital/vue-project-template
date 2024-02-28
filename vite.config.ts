@@ -1,18 +1,26 @@
 /* eslint-disable camelcase */
+import ImportMetaEnvPlugin from '@import-meta-env/unplugin'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
-import VueDevTools from 'vite-plugin-vue-devtools'
+// import VueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
 	define: {
 		__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
+		BUILD_COMMIT: JSON.stringify(process.env.BUILD_COMMIT || 'undefined'),
+		BUILD_NUMBER: JSON.stringify(process.env.BUILD_NUMBER || '0'),
+		BUILD_TIMESTAMP: JSON.stringify(process.env.BUILD_TIMESTAMP || 'undefined'),
 	},
 	plugins: [
+		ImportMetaEnvPlugin.vite({
+			env: '.env',
+			example: '.env.example',
+		}),
 		viteCompression(),
-		VueDevTools(),
+		// VueDevTools(),
 		VitePWA({
 			registerType: 'prompt',
 			workbox: {
@@ -68,14 +76,6 @@ export default defineConfig({
 			host: 'localhost',
 			protocol: 'ws',
 			clientPort: 3000,
-		},
-		proxy: {
-			'/api': {
-				target: 'http://localhost:3000',
-				changeOrigin: true,
-				secure: false,
-				ws: true,
-			},
 		},
 	},
 })

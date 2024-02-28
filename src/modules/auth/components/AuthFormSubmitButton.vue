@@ -2,9 +2,9 @@
 import type { Form } from 'formango'
 import type { z } from 'zod'
 
-import AppFormSubmitButton from '@/components/core/form/AppFormSubmitButton.vue'
+import AppFormSubmitButton from '@/components/form/form/AppFormSubmitButton.vue'
 
-const { form } = defineProps<{
+const props = defineProps<{
 	form: Form<TFormType>
 }>()
 </script>
@@ -12,7 +12,7 @@ const { form } = defineProps<{
 <template>
 	<AppFormSubmitButton
 		class="mt-4"
-		:form="form"
+		:form="props.form"
 	>
 		<slot />
 	</AppFormSubmitButton>

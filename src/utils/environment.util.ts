@@ -1,6 +1,3 @@
-import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
-
 export enum EnvironmentMode {
 	DEVELOPMENT = 'development',
 	QA = 'qa',
@@ -9,36 +6,17 @@ export enum EnvironmentMode {
 	STAGING = 'staging',
 }
 
-// TODO
-
-interface Environment {
-	isDevelopment: ComputedRef<boolean>
+export interface Environment {
+	version: string
+	isDevelopment: boolean
+	currentEnvironment: EnvironmentMode
 	isAllowed: (environmentMode: EnvironmentMode[]) => boolean
-	version: ComputedRef<string>
-	currentEnvironment: ComputedRef<EnvironmentMode>
 }
 
-export function useEnvironment(): Environment {
-	const isDevelopment = computed<boolean>(() => {
-		return import.meta.env.MODE === EnvironmentMode.DEVELOPMENT
-	})
+export const IS_DEVELOPMENT = import.meta.env.MODE === EnvironmentMode.DEVELOPMENT
+export const CURRENT_ENVIRONMENT = import.meta.env.MODE as EnvironmentMode
+export const VERSION = import.meta.env.VITE_APP_VERSION as string
 
-	const currentEnvironment = computed<EnvironmentMode>(() => {
-		return import.meta.env.MODE as EnvironmentMode
-	})
-
-	const version = computed<string>(() => {
-		return import.meta.env.VITE_APP_VERSION as string
-	})
-
-	function isAllowed(environmentMode: EnvironmentMode[]): boolean {
-		return environmentMode.includes(import.meta.env.MODE as EnvironmentMode)
-	}
-
-	return {
-		currentEnvironment,
-		isAllowed,
-		isDevelopment,
-		version,
-	}
+export function isAllowed(environmentMode: EnvironmentMode[]): boolean {
+	return environmentMode.includes(import.meta.env.MODE as EnvironmentMode)
 }

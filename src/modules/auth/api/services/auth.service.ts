@@ -1,46 +1,46 @@
 import { z } from 'zod'
 
 import { httpClient, unauthorizedHttpClient } from '@/libs/http.lib'
-import type { CurrentUser } from '@/models/auth/currentUser.model'
-import { currentUserDto } from '@/models/auth/currentUser.model'
-import type { ForgotPasswordRequestDto } from '@/models/auth/forms/forgotPasswordRequestDto.model'
-import type { ResetPasswordRequestDto } from '@/models/auth/forms/resetPasswordRequestDto.model'
-import { mapCurrentUserDtoToCurrentUser } from '@/transformers/auth.transformer'
-import { useEnvironment } from '@/utils/environment.util'
+import {
+	transformCurrentUserDtoToCurrentUser,
+	transformForgotPasswordFormToForgotPasswordDto,
+	transformResetPasswordFormToResetPasswordDto,
+} from '@/models/auth/auth.transformer'
+import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
+import { currentUserDtoSchema } from '@/models/auth/current-user/currentUserDto.model'
+import type { ForgotPasswordForm } from '@/models/auth/forgot-password/forgotPasswordForm.model'
+import type { ResetPasswordForm } from '@/models/auth/reset-password/resetPasswordForm.model'
 
 interface AuthService {
-	forgotPassword: (body: ForgotPasswordRequestDto) => Promise<void>
-	resetPassword: (body: ResetPasswordRequestDto) => Promise<void>
+	forgotPassword: (body: ForgotPasswordForm) => Promise<void>
+	resetPassword: (body: ResetPasswordForm) => Promise<void>
 	getCurrentUser: () => Promise<CurrentUser>
 }
 
 export const authService: AuthService = {
-	forgotPassword: async (body: ForgotPasswordRequestDto): Promise<void> => {
-		const { isDevelopment } = useEnvironment()
-
-		if (isDevelopment.value) {
-			return
-		}
-
+	forgotPassword: async (form) => {
 		await unauthorizedHttpClient.post({
 			url: '/forgot-password',
-			body,
+			body: transformForgotPasswordFormToForgotPasswordDto(form),
 			responseSchema: z.unknown(),
 		})
 	},
-	resetPassword: async (body: ResetPasswordRequestDto): Promise<void> => {
+	resetPassword: async (form) => {
 		await unauthorizedHttpClient.post({
 			url: '/reset-password',
-			body,
+			body: transformResetPasswordFormToResetPasswordDto(form),
 			responseSchema: z.unknown(),
 		})
 	},
-	getCurrentUser: async (): Promise<CurrentUser> => {
+	getCurrentUser: async () => {
 		const data = await httpClient.get({
-			url: '/users/me',
-			responseSchema: currentUserDto,
+			url: '/api/auth/userinfo',
+			responseSchema: currentUserDtoSchema,
+			config: {
+				baseURL: import.meta.env.API_BASE_URL,
+			},
 		})
 
-		return mapCurrentUserDtoToCurrentUser(data)
+		return transformCurrentUserDtoToCurrentUser(data)
 	},
 }

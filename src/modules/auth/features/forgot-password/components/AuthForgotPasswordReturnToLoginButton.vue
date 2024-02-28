@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AppText from '@/components/core/text/AppText.vue'
+import AppText from '@/components/app/text/AppText.vue'
 
 const { t } = useI18n()
 </script>
@@ -11,7 +11,8 @@ const { t } = useI18n()
 		<AppText variant="title">
 			{{ t('auth.check_your_email') }}
 		</AppText>
-		<AppText>
+
+		<AppText variant="body">
 			{{ t('auth.check_your_email_description') }}
 		</AppText>
 	</div>

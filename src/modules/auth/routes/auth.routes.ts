@@ -1,5 +1,23 @@
 import { guest } from '@/middlewares/guest.middleware.ts'
-import type { RouteRecordTyped } from '@/models/core/router/router.model'
+import type { RouteRecordTyped } from '@/types/router/router.type'
+
+export interface AuthRoutes {
+	'login': {
+		path: '/login'
+	}
+	'forgot-password': {
+		path: '/forgot-password'
+	}
+	'reset-password': {
+		path: '/reset-password/:token'
+		params: {
+			token: string
+		}
+		queryParams: {
+			email: string
+		}
+	}
+}
 
 export const authRoutes: RouteRecordTyped[] = [
 	{

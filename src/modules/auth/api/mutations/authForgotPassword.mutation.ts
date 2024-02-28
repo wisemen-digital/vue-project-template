@@ -1,14 +1,19 @@
-import type { UseMutationReturnType } from '@/composables/core/mutation/mutation.composable.ts'
-import { useMutation } from '@/composables/core/mutation/mutation.composable.ts'
-import type { ForgotPasswordRequestDto } from '@/models/auth/forms/forgotPasswordRequestDto.model.ts'
+import type { UseMutationReturnType } from '@/composables/mutation/mutation.composable.ts'
+import { useMutation } from '@/composables/mutation/mutation.composable.ts'
+import type { ForgotPasswordForm } from '@/models/auth/forgot-password/forgotPasswordForm.model.ts'
+import { QueryKey } from '@/types/query/queryKey.type'
 
 import { authService } from '../services/auth.service.ts'
 
-export function useAuthForgotPasswordMutation(): UseMutationReturnType<ForgotPasswordRequestDto, void> {
-	return useMutation<ForgotPasswordRequestDto, void>({
+export function useAuthForgotPasswordMutation(): UseMutationReturnType<ForgotPasswordForm, void> {
+	return useMutation<ForgotPasswordForm, void>({
 		queryFn: async ({ body }) => {
 			await authService.forgotPassword(body)
 		},
-		queryKeysToInvalidate: [],
+		queryKeysToInvalidate: [
+			{
+				key: QueryKey.CURRENT_USER,
+			},
+		],
 	})
 }

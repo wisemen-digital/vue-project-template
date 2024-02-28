@@ -4,10 +4,9 @@ import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppButton from '@/components/core/button/AppButton.vue'
-import { useToast } from '@/composables/core/toast/toast.composable.ts'
-import type { ForgotPasswordForm } from '@/models/auth/forms/forgotPasswordForm.model.ts'
-import { forgotPasswordFormSchema } from '@/models/auth/forms/forgotPasswordForm.model.ts'
+import AppButton from '@/components/app/button/AppButton.vue'
+import { useHandleApiError } from '@/composables/handle-api-error/handleApiError.composable'
+import { forgotPasswordFormSchema } from '@/models/auth/forgot-password/forgotPasswordForm.model'
 import { useAuthForgotPasswordMutation } from '@/modules/auth/api/mutations/authForgotPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import AuthForgotPasswordForm from '@/modules/auth/features/forgot-password/components/AuthForgotPasswordForm.vue'
@@ -20,7 +19,6 @@ const { lastLoginAttemptEmail } = storeToRefs(authStore)
 const hasResetPassword = ref<boolean>(false)
 
 const { t } = useI18n()
-const toast = useToast()
 
 const resetEmail = ref<string>('')
 
@@ -46,13 +44,16 @@ const description = computed<string>(() => {
 	return t('auth.forgot_password_message')
 })
 
-onSubmitForm(async (data: ForgotPasswordForm) => {
+onSubmitForm(async (values) => {
 	try {
-		await forgotPasswordMutation.execute({ body: data })
+		await forgotPasswordMutation.execute({
+			body: values,
+		})
+
 		hasResetPassword.value = true
-		resetEmail.value = data.email
+		resetEmail.value = values.email
 	} catch (error) {
-		toast.showToastApiError(error)
+		useHandleApiError(error, form)
 	}
 })
 </script>

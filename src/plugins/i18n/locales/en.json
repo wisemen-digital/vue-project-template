@@ -15,15 +15,6 @@
 		},
 		"reset_password": "Reset password"
 	},
-	"clients": {
-		"back_to_overview": "Terug naar klantenoverzicht",
-		"create": "Create client",
-		"create_subtitle": "Vul alle informatie aan om een nieuwe klant aan te maken",
-		"new": "New client",
-		"not_found": "No clients found",
-		"search": "Search client",
-		"view_and_manage": "View and manage all of your clients."
-	},
 	"components": {
 		"image": {
 			"open_in_new_tab": "Open in new tab"
@@ -42,7 +33,8 @@
 		"fields": {
 			"email": "Email",
 			"password": "Password"
-		}
+		},
+		"save_changes": "Save changes"
 	},
 	"shared": {
 		"add_contact": "Add contact",
@@ -61,6 +53,7 @@
 		"contact": "Contact",
 		"contact_person": "Contact person",
 		"delete": "Delete",
+		"edit": "Edit",
 		"email": "Email",
 		"first_name": "First name",
 		"function": "Function",
@@ -68,6 +61,7 @@
 		"invoice_information": "Invoice information",
 		"last_name": "Last name",
 		"matching": "Matching",
+		"name": "Name",
 		"next": "Next",
 		"phoneNumber": "Phonenumber",
 		"phone_number": "Phonenumber",
@@ -75,15 +69,35 @@
 		"primary_contact_person": "Primary contact person",
 		"sales_consultant": "Salesconsultant",
 		"select": "Select",
-		"studaro": "Studaro",
 		"students": "Students",
 		"submit": "Submit",
 		"title": "Title",
 		"unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
 		"unsaved_changes_title": "Unsaved changes",
+		"users": "Users",
 		"vacancies": "Vacancies",
 		"vat_number": "VAT-number",
 		"website": "Website"
+	},
+	"users": {
+		"create": {
+			"create_user": "Create User",
+			"title": "New user"
+		},
+		"detail": {
+			"edit_user": "Edit user"
+		},
+		"form": {
+			"section": {
+				"name": {
+					"description": "First and last name of the user."
+				}
+			}
+		},
+		"overview": {
+			"empty": "No users found.",
+			"new_user": "New user"
+		}
 	},
 	"validation": {
 		"required": "Required"

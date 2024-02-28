@@ -3,42 +3,42 @@ import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElementSpacer.vue'
-import AppForm from '@/components/core/form/AppForm.vue'
-import AppFormInput from '@/components/core/input/AppFormInput.vue'
-import AppTypedRouterLink from '@/components/core/link/AppTypedRouterLink.vue'
-import AppText from '@/components/core/text/AppText.vue'
-import type { CurrentUser } from '@/models/auth/currentUser.model'
-import type { loginFormSchema } from '@/models/auth/forms/loginForm.model'
+import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
+import AppText from '@/components/app/text/AppText.vue'
+import AppForm from '@/components/form/form/AppForm.vue'
+import FormInput from '@/components/form/input/FormInput.vue'
+import FormPasswordInput from '@/components/form/input/FormPasswordInput.vue'
+import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
+import type { loginFormSchema } from '@/models/auth/login/loginForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 
-const { form, lastLoggedInUser } = defineProps<{
+const props = defineProps<{
 	form: Form<typeof loginFormSchema>
 	lastLoggedInUser: CurrentUser | null
 }>()
 
 const { t } = useI18n()
 
-const email = form.register('email', lastLoggedInUser?.email)
-const password = form.register('password')
+const email = props.form.register('email', props.lastLoggedInUser?.email)
+const password = props.form.register('password')
 </script>
 
 <template>
 	<AppForm :form="form">
 		<AppVerticalFormElementSpacer>
-			<AppFormInput
+			<FormInput
 				v-bind="email"
 				:is-required="true"
 				:label="t('form.fields.email')"
-				placeholder="hello@studaro.be"
+				placeholder="email@example.com"
 				type="email"
 			/>
 
-			<AppFormInput
+			<FormPasswordInput
 				v-bind="password"
 				:is-required="true"
 				:label="t('form.fields.password')"
-				placeholder="wachtwoord"
-				type="password"
+				:placeholder="t('form.fields.password')"
 			/>
 
 			<AppTypedRouterLink

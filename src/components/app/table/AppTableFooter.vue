@@ -1,34 +1,31 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import AppText from '@/components/core/text/AppText.vue'
-import type { PageChangeEvent, PaginationOptions } from '@/composables/core/table-pagination/tablePagination.composable'
+import type { PageChangeEvent, PaginationOptions } from '@/composables/table-pagination/tablePagination.composable'
+import { toLocaleNumber } from '@/utils/number.util'
 
+import AppText from '../text/AppText.vue'
 import AppTablePagination from './AppTablePagination.vue'
 
-type Props = {
+const props = defineProps<{
 	paginationOptions: PaginationOptions<unknown>
 	total: number
-}
+}>()
 
-type Emits = {
+const emit = defineEmits<{
 	page: [event: PageChangeEvent]
-}
-
-const { paginationOptions, total } = defineProps<Props>()
-
-const emit = defineEmits<Emits>()
+}>()
 
 const currentPageFrom = computed<number>(() => {
-	const { page, perPage } = paginationOptions.pagination
+	const { page, perPage } = props.paginationOptions.pagination
 
-	return perPage * (page - 1) + 1
+	return perPage * page + 1
 })
 
 const currentPageUntil = computed<number>(() => {
-	const { page, perPage } = paginationOptions.pagination
+	const { page, perPage } = props.paginationOptions.pagination
 
-	return Math.min(perPage * page, total)
+	return Math.min(perPage * (page + 1), props.total)
 })
 
 function handlePageEvent(event: PageChangeEvent): void {
@@ -40,11 +37,13 @@ function handlePageEvent(event: PageChangeEvent): void {
 	<div
 		class="sticky bottom-0 left-0 z-10 flex w-full items-center justify-between border-t border-solid border-border bg-background px-6 py-2"
 	>
-		<AppText variant="subtext"> {{ currentPageFrom }} - {{ currentPageUntil }} of {{ total }} </AppText>
+		<AppText variant="subtext">
+			{{ currentPageFrom }} - {{ currentPageUntil }} of {{ toLocaleNumber(props.total) }}
+		</AppText>
 
 		<AppTablePagination
 			:pagination-options="paginationOptions"
-			:total="total"
+			:total="props.total"
 			@page="handlePageEvent"
 		/>
 	</div>

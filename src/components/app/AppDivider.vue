@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { cn } from '@/utils/style.util.ts'
 
-const { direction } = defineProps<{
+const props = defineProps<{
 	direction: 'horizontal' | 'vertical'
 }>()
 </script>
@@ -9,6 +9,13 @@ const { direction } = defineProps<{
 <template>
 	<div
 		class="bg-muted"
-		:class="cn({ 'h-full w-[1px]': direction === 'vertical' }, { 'h-[1px] w-full': direction === 'horizontal' })"
+		:class="
+			cn(
+				{
+					'h-full w-[1px]': props.direction === 'vertical',
+				},
+				{ 'h-[1px] w-full': props.direction === 'horizontal' }
+			)
+		"
 	/>
 </template>

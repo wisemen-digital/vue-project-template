@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AppText from '@/components/core/text/AppText.vue'
+import AppText from '@/components/app/text/AppText.vue'
 
-const { label, value } = defineProps<{
+const props = defineProps<{
 	label: string
 	value: string
 }>()
@@ -10,10 +10,10 @@ const { label, value } = defineProps<{
 <template>
 	<div>
 		<AppText variant="subtext">
-			{{ label }}
+			{{ props.label }}
 		</AppText>
 		<AppText variant="caption">
-			{{ value }}
+			{{ props.value }}
 		</AppText>
 	</div>
 </template>
