@@ -11,6 +11,7 @@ import {
 	ComboboxViewport,
 } from 'radix-vue'
 import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import AppIcon from '@/components/app/icon/AppIcon.vue'
 import type { DataItem } from '@/types/dataItem.type'
@@ -23,10 +24,12 @@ const props = withDefaults(
 		options: DataItem<T>[]
 		isInvalid?: boolean
 		placeholder?: string | null
+		emptyText?: string | null
 	}>(),
 	{
 		isInvalid: false,
 		placeholder: null,
+		emptyText: null,
 	}
 )
 
@@ -40,6 +43,8 @@ const model = computed<T | T[] | undefined>({
 		emit('update:modelValue', value ?? null)
 	},
 })
+
+const { t } = useI18n()
 
 const isOpen = ref<boolean>(false)
 
@@ -138,7 +143,9 @@ function displayFn(value: T): string {
 							position="popper"
 						>
 							<ComboboxViewport class="max-h-[25rem] p-1.5">
-								<ComboboxEmpty> Empty </ComboboxEmpty>
+								<ComboboxEmpty>
+									{{ props.emptyText ?? t('components.combobox.empty') }}
+								</ComboboxEmpty>
 
 								<AppComboboxItem
 									v-for="option of props.options"

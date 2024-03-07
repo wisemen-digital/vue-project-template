@@ -8,6 +8,7 @@ import type { FormErrors } from '@/types/form/formErrors.type'
 import { generateUuid } from '@/utils/uuid/generateUuid.util'
 
 import FormError from '../error/FormError.vue'
+import FormGroup from '../group/FormGroup.vue'
 import FormLabel from '../label/FormLabel.vue'
 
 const props = withDefaults(
@@ -18,10 +19,12 @@ const props = withDefaults(
 		label: string
 		isInvalid?: boolean
 		placeholder?: string | null
+		emptyText?: string | null
 	}>(),
 	{
 		isInvalid: false,
 		placeholder: null,
+		emptyText: null,
 	}
 )
 
@@ -46,7 +49,7 @@ function onBlur(): void {
 </script>
 
 <template>
-	<div>
+	<FormGroup>
 		<FormLabel
 			:id="id"
 			:is-required="true"
@@ -56,6 +59,7 @@ function onBlur(): void {
 		<AppCombobox
 			:id="id"
 			v-model="model"
+			:empty-text="props.emptyText"
 			:is-invalid="isFormInvalid"
 			:options="props.options"
 			:placeholder="props.placeholder"
@@ -66,5 +70,5 @@ function onBlur(): void {
 			:errors="errors"
 			:is-touched="isTouched"
 		/>
-	</div>
+	</FormGroup>
 </template>
