@@ -95,6 +95,15 @@
     --font-line-height-subtext: 1.25rem;
     --font-line-height-caption: 1rem;
   }
+
+  .custom-theme {
+    --primary: 217, 86, 127;
+    --secondary: 249, 250, 251;
+    --accent: 255, 255, 255;
+    --destructive: 108, 108, 245;
+    --success: 181, 67, 129;
+    --warning: 178, 247, 51;
+  }
 }
 
 @layer base {

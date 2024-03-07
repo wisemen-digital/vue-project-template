@@ -7,6 +7,7 @@ import { RouterView } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
 import AppModalsContainer from '@/components/app/modal/AppModalsContainer.vue'
+import ThemeProvider from '@/components/layout/ThemeProvider.vue'
 
 import AppToastContainer from './components/app/toast/AppToastContainer.vue'
 import { useDocumentTitle } from './composables/document-title/documentTitle.composable'
@@ -17,9 +18,11 @@ setTemplate('{title} | App')
 </script>
 
 <template>
-	<RouterView />
+	<ThemeProvider>
+		<RouterView />
+		<AppPageLoader />
+		<AppModalsContainer />
+		<AppToastContainer />
+	</ThemeProvider>
 	<VueQueryDevtools />
-	<AppPageLoader />
-	<AppModalsContainer />
-	<AppToastContainer />
 </template>

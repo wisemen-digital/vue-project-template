@@ -8,7 +8,7 @@ import type {
 	UseModalReturnType,
 	UseModalsContainerReturnType,
 } from '@/types/modal/useModal.type'
-import { generateUuid } from '@/utils/core/uuid/generateUuid.util'
+import { generateUuid } from '@/utils/uuid/generateUuid.util.ts'
 
 const modals = ref<Modal[]>([])
 
