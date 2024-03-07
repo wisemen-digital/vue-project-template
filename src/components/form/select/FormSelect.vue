@@ -8,6 +8,7 @@ import type { FormErrors } from '@/types/form/formErrors.type'
 import { generateUuid } from '@/utils/uuid/generateUuid.util'
 
 import FormError from '../error/FormError.vue'
+import FormGroup from '../group/FormGroup.vue'
 import FormLabel from '../label/FormLabel.vue'
 
 const props = withDefaults(
@@ -44,7 +45,7 @@ function onBlur(): void {
 </script>
 
 <template>
-	<div>
+	<FormGroup>
 		<FormLabel
 			:id="id"
 			:is-required="true"
@@ -63,5 +64,5 @@ function onBlur(): void {
 			:errors="errors"
 			:is-touched="isTouched"
 		/>
-	</div>
+	</FormGroup>
 </template>
