@@ -10,14 +10,14 @@ export interface UseThemeReturnType {
 }
 
 export function useTheme(): UseThemeReturnType {
-	const theme = useLocalStorage<ThemeConstant | null>('theme', null)
+	const theme = useLocalStorage<ThemeConstant | ''>('theme', '')
 
 	function setTheme(value: ThemeConstant | null): void {
-		theme.value = value
+		theme.value = value ?? ''
 	}
 
 	return {
-		theme: computed<ThemeConstant | null>(() => theme.value),
+		theme: computed<ThemeConstant | null>(() => theme.value || null),
 		setTheme,
 	}
 }

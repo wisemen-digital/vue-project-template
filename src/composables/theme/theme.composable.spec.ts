@@ -13,8 +13,8 @@ describe('useTheme', () => {
 	it('theme be set when setting the theme', () => {
 		const { theme, setTheme } = useTheme()
 
-		setTheme(themeConstantSchema.Values['custom-theme'])
+		setTheme(themeConstantSchema.Values.dark)
 
-		expect(theme.value).toBe(themeConstantSchema.Values['custom-theme'])
+		expect(theme.value).toBe(themeConstantSchema.Values.dark)
 	})
 })
