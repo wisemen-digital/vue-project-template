@@ -95,6 +95,58 @@
     --font-line-height-subtext: 1.25rem;
     --font-line-height-caption: 1rem;
   }
+
+  .dark {
+    --background: 16, 24, 40;
+    --foreground: 255, 255, 255;
+
+    --primary: 127, 86, 217;
+    --primary-foreground: 255, 255, 255;
+
+    --secondary: 187, 242, 249;
+    --secondary-foreground: 71, 84, 103;
+
+    --accent: 240, 238, 217;
+    --accent-foreground: 57, 27, 27;
+
+    --destructive: 245, 108, 108;
+    --destructive-foreground: 255, 255, 255;
+
+    --success: 67, 181, 129;
+    --success-foreground: 255, 255, 255;
+
+    --warning: 247, 178, 51;
+    --warning-foreground: 255, 255, 255;
+
+    --muted: 240, 240, 255;
+    --muted-foreground: 102, 112, 133;
+    --muted-background: 32, 48, 80;
+
+    --input-border: 112, 128, 144;
+
+    --popover: 16, 24, 40;
+    --popover-foreground: 255, 255, 255;
+
+    --card: 16, 24, 40;
+    --card-foreground: 255, 255, 255;
+
+    --border: 112, 128, 144;
+    --input: 16, 24, 40;
+
+    --neutral-100: 245, 245, 245;
+    --neutral-200: 229, 229, 229;
+    --neutral-300: 212, 212, 212;
+    --neutral-400: 163, 163, 163;
+    --neutral-500: 115, 115, 115;
+    --neutral-600: 82, 82, 82;
+    --neutral-700: 64, 64, 64;
+    --neutral-800: 38, 38, 38;
+    --neutral-900: 23, 23, 23;
+
+    --input-foreground: 255, 255, 255;
+    --input-placeholder: 192, 196, 204;
+    --input-disabled: 253, 253,
+  }
 }
 
 @layer base {
@@ -115,5 +167,9 @@
   img,
   video {
     @apply w-full h-full object-cover;
+  }
+
+  .dark {
+    @apply bg-background text-foreground;
   }
 }

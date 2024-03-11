@@ -63,7 +63,7 @@ const paddingRightWidth = computed<string>(() => {
 </script>
 
 <template>
-	<div class="relative w-full bg-background">
+	<div class="relative w-full">
 		<div
 			v-if="props.prefixIcon"
 			ref="prefixElementRef"
@@ -88,7 +88,7 @@ const paddingRightWidth = computed<string>(() => {
 			v-model="model"
 			:class="
 				cn(
-					'flex h-10 w-full rounded-md border border-input-border px-3 py-2 text-sm ring-offset-background duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+					'flex h-10 w-full rounded-md border border-input-border bg-background px-3 py-2 text-sm ring-offset-background duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
 					{
 						'border-destructive': props.isInvalid,
 					},
