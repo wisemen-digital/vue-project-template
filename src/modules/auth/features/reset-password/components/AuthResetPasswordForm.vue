@@ -3,7 +3,7 @@ import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import AppForm from '@/components/form/form/AppForm.vue'
-import AppFormInput from '@/components/form/input/FormInput.vue'
+import FormInput from '@/components/form/input/FormInput.vue'
 import type { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 
@@ -18,7 +18,7 @@ const password = props.form.register('password')
 
 <template>
 	<AppForm :form="form">
-		<AppFormInput
+		<FormInput
 			v-bind="password"
 			:label="t('common.password')"
 			type="password"
