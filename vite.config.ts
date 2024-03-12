@@ -70,12 +70,4 @@ export default defineConfig({
 			},
 		],
 	},
-	server: {
-		port: 3000,
-		hmr: {
-			host: 'localhost',
-			protocol: 'ws',
-			clientPort: 3000,
-		},
-	},
 })
