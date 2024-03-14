@@ -49,9 +49,9 @@ async function handleToast(): Promise<void> {
 	try {
 		promiseData.value = await promise?.action
 		promiseStatus.value = 'resolved'
-	} catch (e: Error) {
+	} catch (error) {
 		promiseStatus.value = 'rejected'
-		promiseError.value = e.message
+		promiseError.value = (error as Error).message
 	} finally {
 		setTimeout(() => {
 			handleClose()

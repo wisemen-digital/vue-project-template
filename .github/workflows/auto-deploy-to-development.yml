@@ -1,0 +1,20 @@
+---
+name: Auto-deploy to development
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    uses: wisemen-digital/devops-github-actions/.github/workflows/workflow-build-and-deploy-scaleway.yml@main
+    with:
+      environment: development
+      scaleway-container-registry: ${{ vars.CONTAINER_REGISTRY_ENDPOINT }}
+      scaleway-organization-id: ${{ vars.SCALEWAY_ORGANIZATION_ID }}
+      scaleway-project-id: ${{ vars.SCALEWAY_PROJECT_ID }}
+      scaleway-region: ${{ vars.SCALEWAY_REGION }}
+      scaleway-cluster-id: ${{ vars.K8S_CLUSTER_ID }}
+      cluster-deployments: ${{ vars.K8S_DEPLOYMENTS }}
+    secrets: inherit

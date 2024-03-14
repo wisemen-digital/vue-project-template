@@ -61,7 +61,7 @@ function handleRowClick(row: TSchema): void {
 			:is="rowComponent"
 			v-for="(row, index) in props.data"
 			:key="index"
-			class="group grid items-center rounded-none border-b border-solid border-border last:border-none"
+			class="group grid items-center rounded-none border-b border-solid border-border last:border-none hover:bg-muted-background"
 			:class="[props.isHorizontallyScrollable ? 'w-fit' : 'w-full']"
 			:style="{
 				gridTemplateColumns: props.gridTemplateColumns,

@@ -1,13 +1,11 @@
-<script setup lang="ts" generic="TInputType extends InputType">
-import { computed } from 'vue'
-import { useAttrs } from 'vue'
+<script setup lang="ts">
+import { computed, useAttrs } from 'vue'
 
 import AppInput from '@/components/app/input/AppInput.vue'
 import FormGroup from '@/components/form/group/FormGroup.vue'
 import FormLabel from '@/components/form/label/FormLabel.vue'
 import { useIsFormInvalid } from '@/composables/form/form.composable.ts'
 import type { FormErrors } from '@/types/form/formErrors.type.ts'
-import type { InputType } from '@/types/input.type.ts'
 import { generateUuid } from '@/utils/uuid/generateUuid.util.ts'
 
 const props = withDefaults(
@@ -17,6 +15,7 @@ const props = withDefaults(
 		label: string
 		placeholder?: string | null
 		isRequired?: boolean
+		modelValue: string | null
 		errors?: FormErrors
 		class?: string | null
 	}>(),
@@ -30,13 +29,17 @@ const props = withDefaults(
 	}
 )
 
-const model = defineModel<string | null>({
-	required: true,
-})
-
-const emits = defineEmits<{
-	blur: []
+const emit = defineEmits<{
+	'blur': []
+	'update:modelValue': [value: string]
 }>()
+
+const model = computed<string | null>({
+	get: () => props.modelValue,
+	set: (value) => {
+		emit('update:modelValue', value ?? '')
+	},
+})
 
 const attrs = useAttrs()
 
@@ -47,7 +50,7 @@ const isTouched = computed<boolean>(() => props.isTouched ?? false)
 const isFormInvalid = useIsFormInvalid(errors, isTouched)
 
 function onBlur(): void {
-	emits('blur')
+	emit('blur')
 }
 </script>
 

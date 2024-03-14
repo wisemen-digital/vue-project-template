@@ -3,7 +3,7 @@ import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import AppForm from '@/components/form/form/AppForm.vue'
-import AppFormInput from '@/components/form/input/FormInput.vue'
+import FormInput from '@/components/form/input/FormInput.vue'
 import type { forgotPasswordFormSchema } from '@/models/auth/forgot-password/forgotPasswordForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 
@@ -19,7 +19,7 @@ const email = props.form.register('email', props.lastLoginAttemptEmail ?? undefi
 
 <template>
 	<AppForm :form="form">
-		<AppFormInput
+		<FormInput
 			v-bind="email"
 			icon-left="mail"
 			:is-required="true"
