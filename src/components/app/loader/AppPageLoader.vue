@@ -9,61 +9,61 @@ const { isLoading, setIsLoading } = usePageLoader()
 let startLoadingTimeout: ReturnType<typeof setTimeout> | null = null
 
 router.beforeEach(() => {
-	if (startLoadingTimeout !== null) {
-		clearTimeout(startLoadingTimeout)
-	}
+  if (startLoadingTimeout !== null) {
+    clearTimeout(startLoadingTimeout)
+  }
 
-	startLoadingTimeout = setTimeout(() => {
-		setIsLoading(true)
-	}, 100)
+  startLoadingTimeout = setTimeout(() => {
+    setIsLoading(true)
+  }, 100)
 })
 
 router.afterEach(() => {
-	if (startLoadingTimeout !== null) {
-		clearTimeout(startLoadingTimeout)
-	}
+  if (startLoadingTimeout !== null) {
+    clearTimeout(startLoadingTimeout)
+  }
 
-	setIsLoading(false)
+  setIsLoading(false)
 })
 </script>
 
 <template>
-	<Transition
-		enter-active-class="duration-500"
-		leave-active-class="duration-500"
-		leave-to-class="opacity-0"
-	>
-		<div
-			v-if="isLoading"
-			class="fixed left-0 top-0 z-30 h-[2px] w-full"
-		>
-			<!-- eslint-disable-next-line tailwindcss/no-custom-classname -->
-			<div class="loader h-full w-1/2 bg-primary" />
-		</div>
-	</Transition>
+  <Transition
+    enter-active-class="duration-500"
+    leave-active-class="duration-500"
+    leave-to-class="opacity-0"
+  >
+    <div
+      v-if="isLoading"
+      class="fixed left-0 top-0 z-30 h-[2px] w-full"
+    >
+      <!-- eslint-disable-next-line tailwindcss/no-custom-classname -->
+      <div class="loader h-full w-1/2 bg-primary" />
+    </div>
+  </Transition>
 </template>
 
 <style scoped lang="scss">
 @keyframes loader {
-	0% {
-		transform: scaleX(0);
-		transform-origin: left;
-	}
-	25% {
-		transform: scaleX(1);
-		transform-origin: left;
-	}
-	50% {
-		transform: translateX(100%) scaleX(1);
-		transform-origin: right;
-	}
-	100% {
-		transform: translateX(100%) scaleX(0);
-		transform-origin: right;
-	}
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  25% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  50% {
+    transform: translateX(100%) scaleX(1);
+    transform-origin: right;
+  }
+  100% {
+    transform: translateX(100%) scaleX(0);
+    transform-origin: right;
+  }
 }
 
 .loader {
-	animation: loader 1s linear infinite;
+  animation: loader 1s linear infinite;
 }
 </style>

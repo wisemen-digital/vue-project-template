@@ -15,44 +15,43 @@ const { t } = useI18n()
 const router = useTypedRouter()
 
 const paginationOptions = useTablePagination<UserIndexFilters>({
-	id: 'users',
+  id: 'users',
 })
 
 const { data: paginatedUsers, isLoading: isLoadingUsers } = useUsersIndexQuery(paginationOptions.paginationOptions)
 
 function onNavigateToUserDetail(userUuid: UserUuid): void {
-	router.push({
-		name: 'users-detail',
-		params: {
-			userUuid,
-		},
-	})
+  void router.push({
+    name: 'users-detail',
+    params: {
+      userUuid,
+    },
+  })
 }
 
-function onSearch(search: string | null): void {
-	paginationOptions.handleFilterChange({
-		// eslint-disable-next-line camelcase
-		beer_name: search,
-	})
+function onSearch(search: null | string): void {
+  paginationOptions.handleFilterChange({
+    beer_name: search,
+  })
 }
 </script>
 
 <template>
-	<AppTablePage :title="t('shared.users')">
-		<template #header-actions>
-			<UsersOverviewHeaderActions
-				:pagination="paginationOptions"
-				@search="onSearch"
-			/>
-		</template>
+  <AppTablePage :title="t('shared.users')">
+    <template #header-actions>
+      <UsersOverviewHeaderActions
+        :pagination="paginationOptions"
+        @search="onSearch"
+      />
+    </template>
 
-		<template #default>
-			<UsersOverviewTable
-				:data="paginatedUsers"
-				:is-loading="isLoadingUsers"
-				:pagination="paginationOptions"
-				@navigate-to-user-detail="onNavigateToUserDetail"
-			/>
-		</template>
-	</AppTablePage>
+    <template #default>
+      <UsersOverviewTable
+        :data="paginatedUsers"
+        :is-loading="isLoadingUsers"
+        :pagination="paginationOptions"
+        @navigate-to-user-detail="onNavigateToUserDetail"
+      />
+    </template>
+  </AppTablePage>
 </template>

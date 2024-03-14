@@ -7,20 +7,20 @@ const { modals } = useModalsContainer()
 const isMounted = ref<boolean>(false)
 
 onMounted(() => {
-	isMounted.value = true
+  isMounted.value = true
 })
 </script>
 
 <template>
-	<Teleport
-		v-if="isMounted"
-		to="body"
-	>
-		<Component
-			:is="modal.component"
-			v-for="modal of modals"
-			:key="modal.id"
-			v-model:is-open="modal.isOpen"
-		/>
-	</Teleport>
+  <Teleport
+    v-if="isMounted"
+    to="body"
+  >
+    <Component
+      :is="modal.component"
+      v-for="modal of modals"
+      :key="modal.id"
+      v-model:is-open="modal.isOpen"
+    />
+  </Teleport>
 </template>

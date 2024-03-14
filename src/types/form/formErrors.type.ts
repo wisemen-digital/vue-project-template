@@ -1,3 +1,3 @@
 import type { z } from 'zod'
 
-export type FormErrors = z.ZodFormattedError<string> | null | undefined
+export type FormErrors = null | undefined | z.ZodFormattedError<string>

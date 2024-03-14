@@ -8,138 +8,138 @@ import AppIconButton from '../button/AppIconButton.vue'
 import AppText from '../text/AppText.vue'
 
 const props = defineProps<{
-	paginationOptions: PaginationOptions<unknown>
-	total: number
+  paginationOptions: PaginationOptions<unknown>
+  total: number
 }>()
 
 const emit = defineEmits<{
-	page: [event: PageChangeEvent]
+  page: [event: PageChangeEvent]
 }>()
 
 const pageControls = computed<(number | string)[]>(() => {
-	const { page, perPage } = props.paginationOptions.pagination
+  const { page, perPage } = props.paginationOptions.pagination
 
-	const totalPages = Math.ceil(props.total / perPage)
+  const totalPages = Math.ceil(props.total / perPage)
 
-	const activePage = page + 1
+  const activePage = page + 1
 
-	if (totalPages <= 5) {
-		return Array.from({ length: totalPages }, (_, index) => index + 1)
-	}
+  if (totalPages <= 5) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1)
+  }
 
-	if (activePage < 3) {
-		return [1, 2, 3, '...', totalPages]
-	}
+  if (activePage < 3) {
+    return [1, 2, 3, '...', totalPages]
+  }
 
-	if (activePage === 3) {
-		return [1, 2, 3, 4, '...', totalPages]
-	}
+  if (activePage === 3) {
+    return [1, 2, 3, 4, '...', totalPages]
+  }
 
-	if (activePage > 2 && activePage < totalPages - 1) {
-		return [1, '...', activePage - 1, activePage, activePage + 1, '...', totalPages]
-	}
+  if (activePage > 2 && activePage < totalPages - 1) {
+    return [1, '...', activePage - 1, activePage, activePage + 1, '...', totalPages]
+  }
 
-	return [1, '...', totalPages - 2, totalPages - 1, totalPages]
+  return [1, '...', totalPages - 2, totalPages - 1, totalPages]
 })
 
 const isFirstPage = computed<boolean>(() => {
-	return props.paginationOptions.pagination.page === 0
+  return props.paginationOptions.pagination.page === 0
 })
 
 const isLastPage = computed<boolean>(() => {
-	const { page, perPage } = props.paginationOptions.pagination
+  const { page, perPage } = props.paginationOptions.pagination
 
-	const totalPages = Math.ceil(props.total / perPage)
+  const totalPages = Math.ceil(props.total / perPage)
 
-	return page === totalPages - 1
+  return page === totalPages - 1
 })
 
 const hasMoreThanOnePage = computed<boolean>(() => {
-	return props.total > props.paginationOptions.pagination.perPage
+  return props.total > props.paginationOptions.pagination.perPage
 })
 
 function setPage(page: number): void {
-	const updatedPaginationOptions = {
-		...props.paginationOptions.pagination,
-		page,
-	} as PageChangeEvent
+  const updatedPaginationOptions = {
+    ...props.paginationOptions.pagination,
+    page,
+  } as PageChangeEvent
 
-	emit('page', updatedPaginationOptions)
+  emit('page', updatedPaginationOptions)
 }
 
 function handlePrevPage(): void {
-	const { page } = props.paginationOptions.pagination
+  const { page } = props.paginationOptions.pagination
 
-	if (page === 0) {
-		return
-	}
+  if (page === 0) {
+    return
+  }
 
-	setPage(page - 1)
+  setPage(page - 1)
 }
 
 function handleNextPage(): void {
-	const { page, perPage } = props.paginationOptions.pagination
+  const { page, perPage } = props.paginationOptions.pagination
 
-	const totalPages = Math.ceil(props.total / perPage)
+  const totalPages = Math.ceil(props.total / perPage)
 
-	if (page === totalPages) {
-		return
-	}
+  if (page === totalPages) {
+    return
+  }
 
-	setPage(page + 1)
+  setPage(page + 1)
 }
 
 function handlePrevPageButtonClick(): void {
-	handlePrevPage()
+  handlePrevPage()
 }
 
 function handleNextPageButtonClick(): void {
-	handleNextPage()
+  handleNextPage()
 }
 
 function handlePageButtonClick(page: number): void {
-	setPage(page)
+  setPage(page)
 }
 
 function pageControlButtonVariant(page: number): 'ghost' | 'secondary' {
-	return page === props.paginationOptions.pagination.page ? 'secondary' : 'ghost'
+  return page === props.paginationOptions.pagination.page ? 'secondary' : 'ghost'
 }
 </script>
 
 <template>
-	<div class="flex h-10 items-center rounded-md border">
-		<AppIconButton
-			v-if="!isFirstPage"
-			icon="arrowLeft"
-			@click="handlePrevPageButtonClick"
-		/>
+  <div class="flex h-10 items-center rounded-md border">
+    <AppIconButton
+      v-if="!isFirstPage"
+      icon="arrowLeft"
+      @click="handlePrevPageButtonClick"
+    />
 
-		<div
-			v-for="(page, index) of pageControls"
-			:key="index"
-		>
-			<AppButton
-				v-if="typeof page === 'number'"
-				class="duration-0"
-				:variant="pageControlButtonVariant(page - 1)"
-				@click="handlePageButtonClick(page - 1)"
-			>
-				{{ page }}
-			</AppButton>
+    <div
+      v-for="(page, index) of pageControls"
+      :key="index"
+    >
+      <AppButton
+        v-if="typeof page === 'number'"
+        :variant="pageControlButtonVariant(page - 1)"
+        class="duration-0"
+        @click="handlePageButtonClick(page - 1)"
+      >
+        {{ page }}
+      </AppButton>
 
-			<AppText
-				v-else
-				class="cursor-default px-2 text-muted-foreground"
-				variant="subtext"
-			>
-				{{ page }}
-			</AppText>
-		</div>
+      <AppText
+        v-else
+        class="cursor-default px-2 text-muted-foreground"
+        variant="subtext"
+      >
+        {{ page }}
+      </AppText>
+    </div>
 
-		<AppIconButton
-			v-if="!isLastPage && hasMoreThanOnePage"
-			icon="arrowRight"
-			@click="handleNextPageButtonClick"
-		/>
-	</div>
+    <AppIconButton
+      v-if="!isLastPage && hasMoreThanOnePage"
+      icon="arrowRight"
+      @click="handleNextPageButtonClick"
+    />
+  </div>
 </template>

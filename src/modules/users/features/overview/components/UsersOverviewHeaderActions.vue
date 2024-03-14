@@ -9,39 +9,42 @@ import type { UserIndexFilters } from '@/models/users/index/userIndexFilters.mod
 import type { Pagination } from '@/types/table/table.type'
 
 const props = defineProps<{
-	pagination: Pagination<UserIndexFilters>
+  pagination: Pagination<UserIndexFilters>
 }>()
 
 const emit = defineEmits<{
-	search: [value: string | null]
+  search: [value: null | string]
 }>()
 
 const { t } = useI18n()
 
-const { search, debouncedSearch } = useDebouncedSearch(
-	props.pagination.paginationOptions.value.filters?.beer_name ?? ''
+const {
+  debouncedSearch,
+  search,
+} = useDebouncedSearch(
+  props.pagination.paginationOptions.value.filters?.beer_name ?? '',
 )
 
-function onDebouncedSearchChange(search: string | null): void {
-	emit('search', search)
+function onDebouncedSearchChange(search: null | string): void {
+  emit('search', search)
 }
 
 watch(debouncedSearch, onDebouncedSearchChange)
 </script>
 
 <template>
-	<div class="flex gap-x-2">
-		<AppInput
-			id="TODO"
-			v-model="search"
-		/>
+  <div class="flex gap-x-2">
+    <AppInput
+      id="TODO"
+      v-model="search"
+    />
 
-		<AppButton
-			:to="{
-				name: 'users-create',
-			}"
-		>
-			{{ t('users.overview.new_user') }}
-		</AppButton>
-	</div>
+    <AppButton
+      :to="{
+        name: 'users-create',
+      }"
+    >
+      {{ t('users.overview.new_user') }}
+    </AppButton>
+  </div>
 </template>

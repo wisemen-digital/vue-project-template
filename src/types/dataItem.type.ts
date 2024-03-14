@@ -1,4 +1,4 @@
 export interface DataItem<T> {
-	value: T
-	label: string
+  label: string
+  value: T
 }

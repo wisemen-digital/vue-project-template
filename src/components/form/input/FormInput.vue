@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="TInputType extends InputType">
-import { computed } from 'vue'
-import { useAttrs } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 import AppInput from '@/components/app/input/AppInput.vue'
 import FormGroup from '@/components/form/group/FormGroup.vue'
@@ -11,32 +10,32 @@ import type { InputType } from '@/types/input.type.ts'
 import { generateUuid } from '@/utils/uuid/generateUuid.util.ts'
 
 const props = withDefaults(
-	defineProps<{
-		isDisabled?: boolean
-		isTouched?: boolean
-		label: string
-		placeholder?: string | null
-		isRequired?: boolean
-		errors?: FormErrors
-		class?: string | null
-	}>(),
-	{
-		placeholder: null,
-		isDisabled: false,
-		isTouched: false,
-		isRequired: false,
-		errors: undefined,
-		class: null,
-	}
+  defineProps<{
+    class?: null | string
+    errors?: FormErrors
+    isDisabled?: boolean
+    isRequired?: boolean
+    isTouched?: boolean
+    label: string
+    placeholder?: null | string
+  }>(),
+  {
+    class: null,
+    errors: undefined,
+    isDisabled: false,
+    isRequired: false,
+    isTouched: false,
+    placeholder: null,
+  },
 )
 
-const model = defineModel<string | null>({
-	required: true,
-})
-
 const emits = defineEmits<{
-	blur: []
+  blur: []
 }>()
+
+const model = defineModel<null | string>({
+  required: true,
+})
 
 const attrs = useAttrs()
 
@@ -47,34 +46,34 @@ const isTouched = computed<boolean>(() => props.isTouched ?? false)
 const isFormInvalid = useIsFormInvalid(errors, isTouched)
 
 function onBlur(): void {
-	emits('blur')
+  emits('blur')
 }
 </script>
 
 <template>
-	<FormGroup>
-		<FormLabel
-			v-if="label"
-			:id="formId"
-			:is-disabled="props.isDisabled"
-			:is-invalid="isFormInvalid"
-			:is-required="props.isRequired"
-			:label="props.label"
-		/>
+  <FormGroup>
+    <FormLabel
+      v-if="label"
+      :id="formId"
+      :is-disabled="props.isDisabled"
+      :is-invalid="isFormInvalid"
+      :is-required="props.isRequired"
+      :label="props.label"
+    />
 
-		<AppInput
-			:id="formId"
-			v-bind="attrs"
-			v-model="model"
-			:class="props.class"
-			:is-disabled="props.isDisabled"
-			:is-invalid="isFormInvalid"
-			:placeholder="props.placeholder"
-			@blur="onBlur"
-		>
-			<template #right>
-				<slot name="right" />
-			</template>
-		</AppInput>
-	</FormGroup>
+    <AppInput
+      :id="formId"
+      v-bind="attrs"
+      v-model="model"
+      :class="props.class"
+      :is-disabled="props.isDisabled"
+      :is-invalid="isFormInvalid"
+      :placeholder="props.placeholder"
+      @blur="onBlur"
+    >
+      <template #right>
+        <slot name="right" />
+      </template>
+    </AppInput>
+  </FormGroup>
 </template>

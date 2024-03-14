@@ -5,10 +5,10 @@ import type { ResetPasswordForm } from '@/models/auth/reset-password/resetPasswo
 import { authService } from '../services/auth.service.ts'
 
 export function useAuthResetPasswordMutation(): UseMutationReturnType<ResetPasswordForm, void> {
-	return useMutation<ResetPasswordForm, void>({
-		queryFn: async ({ body }) => {
-			await authService.resetPassword(body)
-		},
-		queryKeysToInvalidate: [],
-	})
+  return useMutation<ResetPasswordForm, void>({
+    queryFn: async ({ body }) => {
+      await authService.resetPassword(body)
+    },
+    queryKeysToInvalidate: [],
+  })
 }

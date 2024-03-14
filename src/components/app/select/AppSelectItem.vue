@@ -5,36 +5,36 @@ import AppIcon from '@/components/app/icon/AppIcon.vue'
 import AppText from '@/components/app/text/AppText.vue'
 
 const props = withDefaults(
-	defineProps<{
-		value: string
-		isDisabled?: boolean
-	}>(),
-	{
-		isDisabled: false,
-	}
+  defineProps<{
+    isDisabled?: boolean
+    value: string
+  }>(),
+  {
+    isDisabled: false,
+  },
 )
 </script>
 
 <template>
-	<SelectItem
-		class="cursor-default rounded-md px-2 py-1.5 outline-none hover:bg-muted-background focus:bg-muted-background data-[disabled]:cursor-not-allowed data-[disabled]:bg-background data-[disabled]:opacity-50"
-		:disabled="isDisabled"
-		:value="props.value"
-	>
-		<div class="flex items-center gap-x-3">
-			<div class="w-4">
-				<SelectItemIndicator>
-					<AppIcon
-						class="text-muted-foreground"
-						icon="checkmark"
-						size="default"
-					/>
-				</SelectItemIndicator>
-			</div>
+  <SelectItem
+    :disabled="isDisabled"
+    :value="props.value"
+    class="cursor-default rounded-md px-2 py-1.5 outline-none hover:bg-muted-background focus:bg-muted-background data-[disabled]:cursor-not-allowed data-[disabled]:bg-background data-[disabled]:opacity-50"
+  >
+    <div class="flex items-center gap-x-3">
+      <div class="w-4">
+        <SelectItemIndicator>
+          <AppIcon
+            class="text-muted-foreground"
+            icon="checkmark"
+            size="default"
+          />
+        </SelectItemIndicator>
+      </div>
 
-			<AppText variant="subtext">
-				<slot />
-			</AppText>
-		</div>
-	</SelectItem>
+      <AppText variant="subtext">
+        <slot />
+      </AppText>
+    </div>
+  </SelectItem>
 </template>

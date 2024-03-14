@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import {
-	//
-	VueQueryDevtools,
-} from '@tanstack/vue-query-devtools'
 import { RouterView } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
@@ -18,11 +14,10 @@ setTemplate('{title} | App')
 </script>
 
 <template>
-	<ThemeProvider>
-		<RouterView />
-		<AppPageLoader />
-		<AppModalsContainer />
-		<AppToastContainer />
-	</ThemeProvider>
-	<VueQueryDevtools />
+  <ThemeProvider>
+    <RouterView />
+    <AppPageLoader />
+    <AppModalsContainer />
+    <AppToastContainer />
+  </ThemeProvider>
 </template>

@@ -8,33 +8,33 @@ import type { ResetPasswordDto } from './reset-password/resetPasswordDto.model'
 import type { ResetPasswordForm } from './reset-password/resetPasswordForm.model'
 
 export function transformLoginFormToLoginDto(data: LoginForm): LoginDto {
-	return {
-		username: data.email,
-		password: data.password,
-	}
+  return {
+    password: data.password,
+    username: data.email,
+  }
 }
 
 export function transformForgotPasswordFormToForgotPasswordDto(data: ForgotPasswordForm): ForgotPasswordDto {
-	return {
-		email: data.email,
-	}
+  return {
+    email: data.email,
+  }
 }
 
 export function transformResetPasswordFormToResetPasswordDto(data: ResetPasswordForm): ResetPasswordDto {
-	return {
-		token: data.token,
-		email: data.email,
-		password: data.password,
-		passwordConfirmation: data.password,
-	}
+  return {
+    email: data.email,
+    password: data.password,
+    passwordConfirmation: data.password,
+    token: data.token,
+  }
 }
 
 export function transformCurrentUserDtoToCurrentUser(data: CurrentUserDto): CurrentUser {
-	return {
-		uuid: data.uuid,
-		email: data.email,
-		firstName: data.firstName,
-		lastName: data.lastName,
-		fullName: `${data.firstName} ${data.lastName}`,
-	}
+  return {
+    email: data.email,
+    firstName: data.firstName,
+    fullName: `${data.firstName} ${data.lastName}`,
+    lastName: data.lastName,
+    uuid: data.uuid,
+  }
 }

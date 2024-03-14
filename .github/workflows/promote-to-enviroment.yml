@@ -1,0 +1,28 @@
+---
+name: Promote to enviroment
+
+on: # yamllint disable-line rule:truthy
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment to deploy TO
+        type: environment
+        required: true
+      source-tag:
+        description: Source tag (defaults to previous environment)
+        type: string
+        required: false
+
+jobs:
+  promote-to-env:
+    uses: wisemen-digital/devops-github-actions/.github/workflows/workflow-promote-to-environment-scaleway.yml@main
+    with:
+      environment-source: ${{ inputs.source-tag }}
+      environment-target: ${{ inputs.environment }}
+      scaleway-container-registry: ${{ vars.CONTAINER_REGISTRY_ENDPOINT }}
+      scaleway-organization-id: ${{ vars.SCALEWAY_ORGANIZATION_ID }}
+      scaleway-project-id: ${{ vars.SCALEWAY_PROJECT_ID }}
+      scaleway-region: ${{ vars.SCALEWAY_REGION }}
+      scaleway-cluster-id: ${{ vars.K8S_CLUSTER_ID }}
+      cluster-deployments: ${{ vars.K8S_DEPLOYMENTS }}
+    secrets: inherit

@@ -1,5 +1,10 @@
-import type { ComputedRef } from 'vue'
-import { computed, onMounted, onUnmounted, type Ref, ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  ref,
+} from 'vue'
 import type { RouteLocationNormalized } from 'vue-router'
 import { onBeforeRouteLeave, useRouter } from 'vue-router'
 
@@ -8,97 +13,98 @@ import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
 import { deepClone } from '@/utils/object.util.ts'
 
 interface UnsavedChanges<T> {
-	setSnapshot: (object: T | null) => void
-	isChanged: Ref<boolean>
-	handleUnsavedClose: (callback: () => void) => void
+  handleUnsavedClose: (callback: () => void) => void
+  isChanged: Ref<boolean>
+  setSnapshot: (object: T | null) => void
 }
 
 export function useUnsavedChanges<T>(currentObject: ComputedRef<T>): UnsavedChanges<T> {
-	const objectSnapshot = ref<T>()
-	const router = useRouter()
+  const objectSnapshot = ref<T>()
+  const router = useRouter()
 
-	const confirmModal = useModal({
-		component: () => import('@/components/app/AppConfirmModal.vue'),
-	})
+  const confirmModal = useModal({
+    component: () => import('@/components/app/AppConfirmModal.vue'),
+  })
 
-	const isChanged = computed<boolean>(() => {
-		if (!objectSnapshot.value) {
-			return false
-		}
+  const isChanged = computed<boolean>(() => {
+    if (objectSnapshot.value === undefined) {
+      return false
+    }
 
-		const currentObjectString = JSON.stringify(currentObject.value)?.replace(/""/g, 'null')
-		const snapshotString = JSON.stringify(objectSnapshot.value)?.replace(/""/g, 'null')
-		return currentObjectString !== snapshotString
-	})
+    const currentObjectString = JSON.stringify(currentObject.value)?.replace(/""/g, 'null')
+    const snapshotString = JSON.stringify(objectSnapshot.value)?.replace(/""/g, 'null')
 
-	function setSnapshot(object: T | null): void {
-		if (!object) {
-			return
-		}
+    return currentObjectString !== snapshotString
+  })
 
-		objectSnapshot.value = deepClone(object)
-	}
+  function setSnapshot(object: T | null): void {
+    if (object === undefined || object === null) {
+      return
+    }
 
-	function handleUnsavedClose(callback: () => void): void {
-		if (isChanged.value) {
-			confirmModal.openModal({
-				description: i18nPlugin.global.t('shared.unsaved_changes_description'),
-				onConfirm: () => {
-					confirmModal.closeModal()
-					objectSnapshot.value = undefined
-					callback()
-				},
-				title: i18nPlugin.global.t('shared.unsaved_changes_title'),
-			})
-			return
-		}
+    objectSnapshot.value = deepClone(object)
+  }
 
-		callback()
-	}
+  function handleUnsavedClose(callback: () => void): void {
+    if (isChanged.value) {
+      void confirmModal.openModal({
+        description: i18nPlugin.global.t('shared.unsaved_changes_description'),
+        onConfirm: () => {
+          confirmModal.closeModal()
+          objectSnapshot.value = undefined
+          callback()
+        },
+        title: i18nPlugin.global.t('shared.unsaved_changes_title'),
+      })
+      return
+    }
 
-	function handleRouteLeave(to: RouteLocationNormalized): void {
-		handleUnsavedClose(async () => {
-			objectSnapshot.value = undefined
-			await router.push({
-				name: to.name ?? undefined,
-				params: to.params,
-				query: to.query,
-			})
-		})
-	}
+    callback()
+  }
 
-	onBeforeRouteLeave((to, _, next) => {
-		if (isChanged.value) {
-			handleRouteLeave(to)
-			return
-		}
+  function handleRouteLeave(to: RouteLocationNormalized): void {
+    handleUnsavedClose(async () => {
+      objectSnapshot.value = undefined
+      await router.push({
+        name: to.name ?? undefined,
+        params: to.params,
+        query: to.query,
+      })
+    })
+  }
 
-		next()
-	})
+  onBeforeRouteLeave((to, _, next) => {
+    if (isChanged.value) {
+      handleRouteLeave(to)
+      return
+    }
 
-	onUnmounted(() => {
-		window.onbeforeunload = null
-	})
+    next()
+  })
 
-	onMounted(() => {
-		window.onbeforeunload = (e): string | null => {
-			if (isChanged.value) {
-				e = e || window.event
+  onUnmounted(() => {
+    window.onbeforeunload = null
+  })
 
-				if (e) {
-					e.returnValue = i18nPlugin.global.t('shared.unsaved_changes_description')
-				}
+  onMounted(() => {
+    window.onbeforeunload = (e): null | string => {
+      if (isChanged.value) {
+        e = e ?? window.event
 
-				return i18nPlugin.global.t('shared.unsaved_changes_description')
-			}
+        if (e !== undefined && e !== null) {
+          e.returnValue = i18nPlugin.global.t('shared.unsaved_changes_description')
+        }
 
-			return null
-		}
-	})
+        return i18nPlugin.global.t('shared.unsaved_changes_description')
+      }
 
-	return {
-		handleUnsavedClose,
-		isChanged,
-		setSnapshot,
-	}
+      return null
+    }
+  })
+
+  return {
+    handleUnsavedClose,
+    isChanged,
+    setSnapshot,
+  }
 }

@@ -6,27 +6,28 @@ import { logError } from '@/utils/logger.util'
 import { createMiddleware } from '@/utils/middleware.util'
 
 export const authMiddleware = createMiddleware(async () => {
-	const authStore = useAuthStore()
+  const authStore = useAuthStore()
 
-	const hasTokens = oAuthClient.isLoggedIn()
+  const hasTokens = oAuthClient.isLoggedIn()
 
-	if (!hasTokens) {
-		return {
-			name: 'login',
-		}
-	}
+  if (!hasTokens) {
+    return {
+      name: 'login',
+    }
+  }
 
-	try {
-		await authStore.getCurrentUser()
-	} catch (error) {
-		if (isAxiosError(error)) {
-			authStore.logout()
-		}
+  try {
+    await authStore.getCurrentUser()
+  }
+  catch (error) {
+    if (isAxiosError(error)) {
+      authStore.logout()
+    }
 
-		logError(error)
+    logError(error)
 
-		return {
-			name: 'login',
-		}
-	}
+    return {
+      name: 'login',
+    }
+  }
 })

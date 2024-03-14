@@ -9,15 +9,28 @@ export const personTitleConstantSchema = z.enum(['mr', 'mrs', 'miss', 'ms', 'dr'
 export type PersonTitleConstant = z.infer<typeof personTitleConstantSchema>
 
 export const PERSON_TITLE_ITEMS = computed<DataItem<PersonTitleConstant>[]>(() => {
-	const { t } = i18nPlugin.global
+  const { t } = i18nPlugin.global
 
-	return [
-		{ value: 'mr', label: t('shared.mr') },
-		{ value: 'mrs', label: t('shared.mrs') },
-		{ value: 'miss', label: t('shared.miss') },
-		{ value: 'ms', label: t('shared.ms') },
-		{ value: 'dr', label: t('shared.dr') },
-		{ value: 'prof', label: t('shared.prof') },
-		{ value: 'other', label: t('shared.other') },
-	]
+  return [{
+    label: t('shared.mr'),
+    value: 'mr',
+  }, {
+    label: t('shared.mrs'),
+    value: 'mrs',
+  }, {
+    label: t('shared.miss'),
+    value: 'miss',
+  }, {
+    label: t('shared.ms'),
+    value: 'ms',
+  }, {
+    label: t('shared.dr'),
+    value: 'dr',
+  }, {
+    label: t('shared.prof'),
+    value: 'prof',
+  }, {
+    label: t('shared.other'),
+    value: 'other',
+  }]
 })

@@ -17,7 +17,7 @@ const hasPasswordBeenReset = ref<boolean>(false)
 const { t } = useI18n()
 
 const { form, onSubmitForm } = useForm({
-	schema: resetPasswordFormSchema,
+  schema: resetPasswordFormSchema,
 })
 
 const { token } = useTypedRouteParams('reset-password')
@@ -29,34 +29,35 @@ form.register('email', email)
 const { execute: resetPassword } = useAuthResetPasswordMutation()
 
 const description = computed<string>(() => {
-	if (hasPasswordBeenReset.value) {
-		return t('auth.features.your_password_has_been_reset_you_can')
-	}
+  if (hasPasswordBeenReset.value) {
+    return t('auth.features.your_password_has_been_reset_you_can')
+  }
 
-	return t('auth.features.enter_your_new_password_below')
+  return t('auth.features.enter_your_new_password_below')
 })
 
 onSubmitForm(async (values) => {
-	try {
-		await resetPassword({
-			body: values,
-		})
+  try {
+    await resetPassword({
+      body: values,
+    })
 
-		hasPasswordBeenReset.value = true
-	} catch (error) {
-		useHandleApiError(error, form)
-	}
+    hasPasswordBeenReset.value = true
+  }
+  catch (error) {
+    useHandleApiError(error, form)
+  }
 })
 </script>
 
 <template>
-	<AuthPage
-		:description="description"
-		:title="t('common.reset_password')"
-	>
-		<ResetPasswordForm
-			v-if="!hasPasswordBeenReset"
-			:form="form"
-		/>
-	</AuthPage>
+  <AuthPage
+    :description="description"
+    :title="t('common.reset_password')"
+  >
+    <ResetPasswordForm
+      v-if="!hasPasswordBeenReset"
+      :form="form"
+    />
+  </AuthPage>
 </template>

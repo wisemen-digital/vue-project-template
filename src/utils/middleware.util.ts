@@ -10,5 +10,5 @@ type Middleware = Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
  * @returns The middleware function.
  */
 export function createMiddleware(middlewareFn: MiddlewareFn): () => Middleware {
-	return middlewareFn
+  return middlewareFn
 }

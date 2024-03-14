@@ -1,105 +1,113 @@
 {
-	"auth": {
-		"back_to_login": "Back to login",
-		"check_your_email": "Check your email",
-		"enter_your_email": "Enter your email",
-		"forgot_password": "Forgot password?",
-		"forgot_password_message": "Don't worry, we'll send you a reset link",
-		"instruction_email_sent_to": "We sent an email with further instructions to {email}",
-		"login": {
-			"forgot_password": "Forgot password?",
-			"invalid_email_or_password": "Invalid email or password",
-			"log_in": "Log in",
-			"sign_in_to_continue": "Sign in to continue",
-			"welcome_back_name": "Welcome back, {name}"
-		},
-		"reset_password": "Reset password"
-	},
-	"components": {
-		"image": {
-			"open_in_new_tab": "Open in new tab"
-		}
-	},
-	"error": {
-		"bad_request": "Bad request",
-		"default_error": "Something went wrong. Please try again later.",
-		"forbidden": "Forbidden",
-		"internal_server_error": "Internal server error",
-		"resource_not_found": "Resource not found",
-		"unauthorized": "Unauthorized",
-		"validation_error": "One or more fields have errors. Please check and try again."
-	},
-	"form": {
-		"fields": {
-			"email": "Email",
-			"password": "Password"
-		},
-		"save_changes": "Save changes"
-	},
-	"shared": {
-		"add_contact": "Add contact",
-		"address": "Address",
-		"b2b": "B2B",
-		"b2g": "B2G",
-		"billing_email": "Billing email",
-		"billing_information": "Billing information",
-		"cancel": "Cancel",
-		"client_type": "Client type",
-		"clients": "Clients",
-		"company": "Company",
-		"company_information": "Company information",
-		"company_name": "Company name",
-		"confirm": "Confirm",
-		"contact": "Contact",
-		"contact_person": "Contact person",
-		"delete": "Delete",
-		"edit": "Edit",
-		"email": "Email",
-		"first_name": "First name",
-		"function": "Function",
-		"information": "Information",
-		"invoice_information": "Invoice information",
-		"last_name": "Last name",
-		"matching": "Matching",
-		"name": "Name",
-		"next": "Next",
-		"phoneNumber": "Phonenumber",
-		"phone_number": "Phonenumber",
-		"previous": "Previous",
-		"primary_contact_person": "Primary contact person",
-		"sales_consultant": "Salesconsultant",
-		"select": "Select",
-		"students": "Students",
-		"submit": "Submit",
-		"title": "Title",
-		"unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
-		"unsaved_changes_title": "Unsaved changes",
-		"users": "Users",
-		"vacancies": "Vacancies",
-		"vat_number": "VAT-number",
-		"website": "Website"
-	},
-	"users": {
-		"create": {
-			"create_user": "Create User",
-			"title": "New user"
-		},
-		"detail": {
-			"edit_user": "Edit user"
-		},
-		"form": {
-			"section": {
-				"name": {
-					"description": "First and last name of the user."
-				}
-			}
-		},
-		"overview": {
-			"empty": "No users found.",
-			"new_user": "New user"
-		}
-	},
-	"validation": {
-		"required": "Required"
-	}
+  "auth": {
+    "back_to_login": "Back to login",
+    "enter_your_email": "Enter your email",
+    "forgot_password": "Forgot password?",
+    "check_your_email": "Check your email",
+    "forgot_password_message": "Don't worry, we'll send you a reset link",
+    "instruction_email_sent_to": "We sent an email with further instructions to {email}",
+    "login": {
+      "forgot_password": "Forgot password?",
+      "invalid_email_or_password": "Invalid email or password",
+      "log_in": "Log in",
+      "sign_in_to_continue": "Sign in to continue",
+      "welcome_back_name": "Welcome back, {name}"
+    },
+    "reset_password": "Reset password"
+  },
+  "components": {
+    "combobox": {
+      "empty": "No items found"
+    },
+    "image": {
+      "open_in_new_tab": "Open in new tab"
+    },
+    "password_input": {
+      "show_password": "Show password",
+      "hide_password": "Hide password"
+    }
+  },
+  "error": {
+    "bad_request": "Bad request",
+    "default_error": "Something went wrong. Please try again later.",
+    "forbidden": "Forbidden",
+    "internal_server_error": "Internal server error",
+    "resource_not_found": "Resource not found",
+    "unauthorized": "Unauthorized",
+    "validation_error": "One or more fields have errors. Please check and try again."
+  },
+  "form": {
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "save_changes": "Save changes"
+  },
+  "shared": {
+    "close": "Close",
+    "add_contact": "Add contact",
+    "address": "Address",
+    "b2b": "B2B",
+    "b2g": "B2G",
+    "billing_email": "Billing email",
+    "billing_information": "Billing information",
+    "cancel": "Cancel",
+    "client_type": "Client type",
+    "clients": "Clients",
+    "company": "Company",
+    "company_information": "Company information",
+    "company_name": "Company name",
+    "confirm": "Confirm",
+    "contact": "Contact",
+    "contact_person": "Contact person",
+    "delete": "Delete",
+    "edit": "Edit",
+    "email": "Email",
+    "first_name": "First name",
+    "function": "Function",
+    "information": "Information",
+    "invoice_information": "Invoice information",
+    "last_name": "Last name",
+    "matching": "Matching",
+    "name": "Name",
+    "next": "Next",
+    "phoneNumber": "Phonenumber",
+    "phone_number": "Phonenumber",
+    "previous": "Previous",
+    "primary_contact_person": "Primary contact person",
+    "sales_consultant": "Salesconsultant",
+    "select": "Select",
+    "students": "Students",
+    "submit": "Submit",
+    "title": "Title",
+    "unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
+    "unsaved_changes_title": "Unsaved changes",
+    "users": "Users",
+    "vacancies": "Vacancies",
+    "vat_number": "VAT-number",
+    "website": "Website"
+  },
+  "users": {
+    "create": {
+      "create_user": "Create User",
+      "title": "New user"
+    },
+    "detail": {
+      "edit_user": "Edit user"
+    },
+    "form": {
+      "section": {
+        "name": {
+          "description": "First and last name of the user."
+        }
+      }
+    },
+    "overview": {
+      "empty": "No users found.",
+      "new_user": "New user"
+    }
+  },
+  "validation": {
+    "required": "Required"
+  }
 }

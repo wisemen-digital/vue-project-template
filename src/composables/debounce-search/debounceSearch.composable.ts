@@ -3,30 +3,30 @@ import type { Ref } from 'vue'
 import { computed, ref } from 'vue'
 
 interface useDebounceSearchReturnType {
-	search: Ref<string | null>
-	debouncedSearch: Ref<string | null>
+  debouncedSearch: Ref<null | string>
+  search: Ref<null | string>
 }
 
 export function useDebouncedSearch(defaultValue: string): useDebounceSearchReturnType {
-	const search = ref<string>(defaultValue)
+  const search = ref<string>(defaultValue)
 
-	const nullableSearch = computed<string | null>({
-		get: () => {
-			if (search.value.trim() === '') {
-				return null
-			}
+  const nullableSearch = computed<null | string>({
+    get: () => {
+      if (search.value.trim() === '') {
+        return null
+      }
 
-			return search.value
-		},
-		set: (value) => {
-			search.value = value ?? ''
-		},
-	})
+      return search.value
+    },
+    set: (value) => {
+      search.value = value ?? ''
+    },
+  })
 
-	const debouncedSearch = useDebounce(nullableSearch, 300)
+  const debouncedSearch = useDebounce(nullableSearch, 300)
 
-	return {
-		search: nullableSearch,
-		debouncedSearch,
-	}
+  return {
+    debouncedSearch,
+    search: nullableSearch,
+  }
 }

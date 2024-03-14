@@ -1,4 +1,4 @@
-import { type ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 import { z } from 'zod'
 
 import { usePaginationOptionsToApiParams } from '@/composables/table-pagination/pagination.composable'
@@ -14,74 +14,76 @@ import type { UserUuid } from '@/models/users/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
 
 interface UserService {
-	getAll: (paginationOptions: ComputedRef<PaginationOptions<UserIndexFilters>>) => Promise<PaginatedData<UserIndex>>
-	get: (userUuid: UserUuid) => Promise<User>
-	create: (form: UserCreateForm) => Promise<User>
-	update: (userUuid: UserUuid, form: UserUpdateForm) => Promise<User>
+  create: (form: UserCreateForm) => Promise<User>
+  get: (userUuid: UserUuid) => Promise<User>
+  getAll: (paginationOptions: ComputedRef<PaginationOptions<UserIndexFilters>>) => Promise<PaginatedData<UserIndex>>
+  update: (userUuid: UserUuid, form: UserUpdateForm) => Promise<User>
 }
 
 export const userService: UserService = {
-	getAll: async (paginationOptions) => {
-		const data = await httpClient.get({
-			url: '/v2/beers',
-			responseSchema: z.array(
-				z.object({
-					id: z.number(),
-					name: z.string(),
-				})
-			),
-			config: {
-				baseURL: 'https://api.punkapi.com',
-				params: usePaginationOptionsToApiParams(paginationOptions),
-			},
-		})
+  // eslint-disable-next-line require-await -- This is a placeholder for the actual implementation
+  create: async (form) => {
+    // TODO: Implement
 
-		const testData = data.map((item) => ({
-			uuid: `${item.id}` as UserUuid,
-			firstName: item.name,
-			lastName: 'Doe',
-		}))
+    return transformUserDtoToUser({
+      firstName: form.firstName,
+      lastName: form.lastName,
+      uuid: '2203' as UserUuid,
+    })
+  },
+  get: async (userUuid) => {
+    const data = await httpClient.get({
+      config: {
+        baseURL: 'https://api.punkapi.com',
+      },
+      responseSchema: z
+        .object({
+          id: z.number(),
+          name: z.string(),
+        })
+        .array(),
+      url: `/v2/beers/${userUuid}`,
+    })
 
-		return {
-			// total: data.total,
-			total: 200,
-			data: testData.map(transformUserIndexDtoToUserIndex),
-		}
-	},
-	get: async (userUuid) => {
-		const data = await httpClient.get({
-			url: `/v2/beers/${userUuid}`,
-			responseSchema: z
-				.object({
-					id: z.number(),
-					name: z.string(),
-				})
-				.array(),
-			config: {
-				baseURL: 'https://api.punkapi.com',
-			},
-		})
+    return transformUserDtoToUser({
+      firstName: data[0].name,
+      lastName: 'Doe',
+      uuid: `${data[0].id}` as UserUuid,
+    })
+  },
+  getAll: async (paginationOptions) => {
+    const data = await httpClient.get({
+      config: {
+        baseURL: 'https://api.punkapi.com',
+        params: usePaginationOptionsToApiParams(paginationOptions),
+      },
+      responseSchema: z.array(
+        z.object({
+          id: z.number(),
+          name: z.string(),
+        }),
+      ),
+      url: '/v2/beers',
+    })
 
-		return transformUserDtoToUser({
-			uuid: `${data[0].id}` as UserUuid,
-			firstName: data[0].name,
-			lastName: 'Doe',
-		})
-	},
-	create: async (form) => {
-		// TODO: Implement
+    const testData = data.map(item => ({
+      firstName: item.name,
+      lastName: 'Doe',
+      uuid: `${item.id}` as UserUuid,
+    }))
 
-		return transformUserDtoToUser({
-			uuid: '2203' as UserUuid,
-			firstName: form.firstName,
-			lastName: form.lastName,
-		})
-	},
-	update: async (userUuid, form) => {
-		return transformUserDtoToUser({
-			uuid: userUuid,
-			firstName: form.firstName,
-			lastName: form.lastName,
-		})
-	},
+    return {
+      data: testData.map(transformUserIndexDtoToUserIndex),
+      // total: data.total,
+      total: 200,
+    }
+  },
+  // eslint-disable-next-line require-await -- This is a placeholder for the actual implementation
+  update: async (userUuid, form) => {
+    return transformUserDtoToUser({
+      firstName: form.firstName,
+      lastName: form.lastName,
+      uuid: userUuid,
+    })
+  },
 }

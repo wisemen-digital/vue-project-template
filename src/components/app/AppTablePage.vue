@@ -2,26 +2,26 @@
 import AppPage from './AppPage.vue'
 
 const props = withDefaults(
-	defineProps<{
-		title: string
-		subtitle?: string | null
-	}>(),
-	{
-		subtitle: null,
-	}
+  defineProps<{
+    subtitle?: null | string
+    title: string
+  }>(),
+  {
+    subtitle: null,
+  },
 )
 </script>
 
 <template>
-	<AppPage
-		class="h-screen overflow-hidden"
-		:subtitle="props.subtitle"
-		:title="props.title"
-	>
-		<template #header-actions>
-			<slot name="header-actions" />
-		</template>
+  <AppPage
+    :subtitle="props.subtitle"
+    :title="props.title"
+    class="h-screen overflow-hidden"
+  >
+    <template #header-actions>
+      <slot name="header-actions" />
+    </template>
 
-		<slot />
-	</AppPage>
+    <slot />
+  </AppPage>
 </template>

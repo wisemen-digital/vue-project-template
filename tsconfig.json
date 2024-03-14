@@ -1,44 +1,44 @@
 {
-	"compilerOptions": {
-		"target": "ESNext",
-		"jsx": "preserve",
-		"lib": ["ESNext", "DOM", "DOM.Iterable"],
-		"useDefineForClassFields": true,
+  "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "preserve",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "useDefineForClassFields": true,
 
-		"baseUrl": ".",
-		"module": "ESNext",
+    "baseUrl": ".",
+    "module": "ESNext",
 
-		/* Bundler mode */
-		"moduleResolution": "bundler",
-		"paths": {
-			"@/*": ["src/*"]
-		},
-		"resolveJsonModule": true,
-		"types": ["vite-plugin-pwa/client"],
-		"allowImportingTsExtensions": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "resolveJsonModule": true,
+    "types": ["vite-plugin-pwa/client"],
+    "allowImportingTsExtensions": true,
 
-		/* Linting */
-		"strict": true,
-		"noFallthroughCasesInSwitch": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noEmit": true,
-		"isolatedModules": true,
-		"skipLibCheck": true
-	},
-	"references": [{ "path": "./tsconfig.node.json" }],
-	"include": [
-		"env.d.ts",
-		"eslint.config.js",
-		"src/**/*.ts",
-		"src/**/*.d.ts",
-		"src/**/*.tsx",
-		"src/**/*.vue",
-		"auto-imports.d.ts",
-		"components.d.ts",
-		"vite.config.ts",
-		"vitest.config.ts",
-		"tailwind.config.ts",
-		"postcss.config.js"
-	]
+    /* Linting */
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "include": [
+    "env.d.ts",
+    "eslint.config.js",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "auto-imports.d.ts",
+    "components.d.ts",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "tailwind.config.ts",
+    "postcss.config.js"
+  ]
 }

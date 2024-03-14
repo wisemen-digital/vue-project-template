@@ -2,23 +2,23 @@ import type { VariantProps } from '@/libs/cva.lib'
 import { cva } from '@/libs/cva.lib'
 
 export const variantOptions = {
-	hero: 'text-hero',
-	title: 'text-title',
-	subtitle: 'text-subtitle',
-	heading: 'text-heading',
-	body: 'text-body',
-	subtext: 'text-subtext',
-	caption: 'text-caption',
+  body: 'text-body',
+  caption: 'text-caption',
+  heading: 'text-heading',
+  hero: 'text-hero',
+  subtext: 'text-subtext',
+  subtitle: 'text-subtitle',
+  title: 'text-title',
 }
 
 export const textVariants = cva({
-	base: null,
-	variants: {
-		variant: variantOptions,
-	},
-	defaultVariants: {
-		variant: 'body',
-	},
+  base: null,
+  defaultVariants: {
+    variant: 'body',
+  },
+  variants: {
+    variant: variantOptions,
+  },
 })
 
 export type TextProps = VariantProps<typeof textVariants>

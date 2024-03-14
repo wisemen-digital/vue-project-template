@@ -5,7 +5,7 @@ const { theme } = useTheme()
 </script>
 
 <template>
-	<div :class="theme">
-		<slot />
-	</div>
+  <div :class="theme">
+    <slot />
+  </div>
 </template>

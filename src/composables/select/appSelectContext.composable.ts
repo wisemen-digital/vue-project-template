@@ -1,28 +1,31 @@
-import type { ComputedRef, InjectionKey, Ref } from 'vue'
+import type {
+  ComputedRef,
+  InjectionKey,
+  Ref,
+} from 'vue'
 import { inject, provide } from 'vue'
 
 export interface AppSelectContext<T> {
-	getDisplayValue: (value: T) => string
-	value: Ref<T>
-	search: Ref<string>
-	isFilterable: ComputedRef<boolean>
-	isInvalid: ComputedRef<boolean>
-	isDisabled: ComputedRef<boolean>
+  getDisplayValue: (value: T) => string
+  isDisabled: ComputedRef<boolean>
+  isFilterable: ComputedRef<boolean>
+  isInvalid: ComputedRef<boolean>
+  search: Ref<string>
+  value: Ref<T>
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const appSelectContext = Symbol('AppSelectContext') as InjectionKey<AppSelectContext<any>>
 
 export function useAppSelectContext<T>(): AppSelectContext<T> {
-	const context = inject(appSelectContext, null)
+  const context = inject(appSelectContext, null)
 
-	if (!context) {
-		throw new Error('AppSelectContext not provided')
-	}
+  if (context === null) {
+    throw new Error('AppSelectContext not provided')
+  }
 
-	return context
+  return context
 }
 
 export function useProvideAppSelectContext<T>(context: AppSelectContext<T>): void {
-	provide(appSelectContext, context)
+  provide(appSelectContext, context)
 }

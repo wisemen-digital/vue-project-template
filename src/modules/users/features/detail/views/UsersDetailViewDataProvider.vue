@@ -9,8 +9,8 @@ const { data: user } = useGetUsersDetailQuery(userUuid)
 </script>
 
 <template>
-	<UsersDetailView
-		v-if="user !== null"
-		:user="user"
-	/>
+  <UsersDetailView
+    v-if="user !== null"
+    :user="user"
+  />
 </template>
