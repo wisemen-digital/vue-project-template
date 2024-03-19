@@ -119,8 +119,8 @@ devDependencies:
     specifier: 2.4.3
     version: 2.4.3(vue@3.4.14)
   '@wisemen/eslint-config-vue':
-    specifier: 0.0.9
-    version: 0.0.9(@vue/compiler-sfc@3.4.21)(eslint@8.57.0)(putout@35.7.5)(tailwindcss@3.4.1)(typescript@5.3.3)(vitest@1.2.0)
+    specifier: 0.0.10
+    version: 0.0.10(@vue/compiler-sfc@3.4.21)(eslint@8.57.0)(putout@35.7.5)(tailwindcss@3.4.1)(typescript@5.3.3)(vitest@1.2.0)
   autoprefixer:
     specifier: 10.4.16
     version: 10.4.16(postcss@8.4.33)
@@ -4928,8 +4928,8 @@ packages:
       - vue
     dev: false
 
-  /@wisemen/eslint-config-vue@0.0.9(@vue/compiler-sfc@3.4.21)(eslint@8.57.0)(putout@35.7.5)(tailwindcss@3.4.1)(typescript@5.3.3)(vitest@1.2.0):
-    resolution: {integrity: sha512-DingVaK9YwR3St98+dWkHIMLHIMHbyWWb5VforH7+o1khEa8RpmXgqLPhavIsHWXmAAz8jAjpgV0xNbnOFT6+g==}
+  /@wisemen/eslint-config-vue@0.0.10(@vue/compiler-sfc@3.4.21)(eslint@8.57.0)(putout@35.7.5)(tailwindcss@3.4.1)(typescript@5.3.3)(vitest@1.2.0):
+    resolution: {integrity: sha512-7funz4XkjVLOVxm68Tz8Spt4FJn5mvxS2JMkuWm4H1py5qEAv01hfZwn1wm9FBBuwvUzwyrA136oTS395zuPgw==}
     peerDependencies:
       eslint: '>= 8.57'
     dependencies:
