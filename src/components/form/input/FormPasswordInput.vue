@@ -9,10 +9,18 @@ import FormInput from './FormInput.vue'
 
 const props = defineProps<{
   label: string
+  modelValue: null | string
 }>()
 
-const value = defineModel<null | string>({
-  required: true,
+const emit = defineEmits<{
+  'update:modelValue': [value: string]
+}>()
+
+const value = computed<null | string>({
+  get: () => props.modelValue,
+  set: (value) => {
+    emit('update:modelValue', value ?? '')
+  },
 })
 
 const isPasswordVisible = ref<boolean>(false)

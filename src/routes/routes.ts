@@ -42,7 +42,7 @@ export const routes: RouteRecordTyped[] = [
    */
   ...authRoutes,
   {
-    name: '404',
+    name: 404,
     path: '/:catchAll(.*)',
     redirect: {
       name: 'index',

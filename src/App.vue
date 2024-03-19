@@ -3,6 +3,7 @@ import { RouterView } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
 import AppModalsContainer from '@/components/app/modal/AppModalsContainer.vue'
+import AppRefreshPrompt from '@/components/app/refresh-prompt/AppRefreshPrompt.vue'
 import ThemeProvider from '@/components/layout/ThemeProvider.vue'
 
 import AppToastContainer from './components/app/toast/AppToastContainer.vue'
@@ -19,5 +20,6 @@ setTemplate('{title} | App')
     <AppPageLoader />
     <AppModalsContainer />
     <AppToastContainer />
+    <AppRefreshPrompt />
   </ThemeProvider>
 </template>

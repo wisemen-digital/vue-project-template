@@ -24,7 +24,6 @@ const email = props.form.register('email', props.lastLoginAttemptEmail ?? undefi
       :is-required="true"
       :label="t('form.fields.email')"
       :placeholder="t('auth.enter_your_email')"
-      icon-left="mail"
       type="email"
     />
 
