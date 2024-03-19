@@ -24,7 +24,8 @@ export function useModalsContainer(): UseModalsContainerReturnType {
   }
 }
 
-export function useModal<TComponent extends Record<string, unknown>>(options: UseModalOptions<TComponent>,
+export function useModal<TComponent extends Record<string, unknown>>(
+  options: UseModalOptions<TComponent>,
 ): UseModalReturnType<TComponent> {
   const modalId = `modal-${generateUuid()}`
 

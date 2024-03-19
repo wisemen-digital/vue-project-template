@@ -9,7 +9,8 @@ import type { PaginationApiParams } from '@/types/pagination.type'
 
 import type { PaginationOptions } from './tablePagination.composable'
 
-export function usePaginationOptionsToApiParams(paginationOptions: ComputedRef<PaginationOptions<unknown>>,
+export function usePaginationOptionsToApiParams(
+  paginationOptions: ComputedRef<PaginationOptions<unknown>>,
 ): PaginationApiParams {
   const apiParams = reactive<PaginationApiParams>({
     page: computed<number>(() => paginationOptions.value.pagination.page + 1), // Test API is 1-based, we are 0-based
@@ -19,7 +20,10 @@ export function usePaginationOptionsToApiParams(paginationOptions: ComputedRef<P
   watch(
     () => paginationOptions.value.filters,
     () => {
-      Object.entries(paginationOptions.value.filters ?? {}).forEach(([key, value]) => {
+      Object.entries(paginationOptions.value.filters ?? {}).forEach(([
+        key,
+        value,
+      ]) => {
         apiParams[key] = value
       })
     },
@@ -35,7 +39,10 @@ export function usePaginationOptionsToApiParams(paginationOptions: ComputedRef<P
         return
       }
 
-      const [key, direction] = Object.entries(sortState)[0] ?? []
+      const [
+        key,
+        direction,
+      ] = Object.entries(sortState)[0] ?? []
 
       apiParams.orderBy = key
       apiParams.orderDirection = direction

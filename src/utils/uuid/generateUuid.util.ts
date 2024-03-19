@@ -1,8 +1,9 @@
 export function generateUuid<T extends string>(): T {
   // Public Domain/MIT
   let d = new Date().getTime() // Timestamp
+  // Time in microseconds since page-load or 0 if unsupported
   // eslint-disable-next-line ts/strict-boolean-expressions
-  let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0 // Time in microseconds since page-load or 0 if unsupported
+  let d2 = (typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0
   const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     let r = Math.random() * 16 // random number between 0 and 16
 

@@ -19,23 +19,31 @@ export interface AuthRoutes {
   }
 }
 
-export const authRoutes: RouteRecordTyped[] = [{
-  children: [{
-    component: async () => await import('../features/login/views/AuthLoginView.vue'),
-    name: 'login',
-    path: 'login',
-  }, {
-    component: async () => await import('../features/forgot-password/views/AuthForgotPasswordView.vue'),
-    name: 'forgot-password',
-    path: 'forgot-password',
-  }, {
-    component: async () => await import('../features/reset-password/views/AuthResetPasswordView.vue'),
-    name: 'reset-password',
-    path: 'reset-password/:token',
-  }],
-  component: () => import('../components/AuthLayout.vue'),
-  meta: {
-    middleware: [guest],
+export const authRoutes: RouteRecordTyped[] = [
+  {
+    children: [
+      {
+        component: async () => await import('../features/login/views/AuthLoginView.vue'),
+        name: 'login',
+        path: 'login',
+      },
+      {
+        component: async () => await import('../features/forgot-password/views/AuthForgotPasswordView.vue'),
+        name: 'forgot-password',
+        path: 'forgot-password',
+      },
+      {
+        component: async () => await import('../features/reset-password/views/AuthResetPasswordView.vue'),
+        name: 'reset-password',
+        path: 'reset-password/:token',
+      },
+    ],
+    component: () => import('../components/AuthLayout.vue'),
+    meta: {
+      middleware: [
+        guest,
+      ],
+    },
+    path: '',
   },
-  path: '',
-}]
+]

@@ -18,8 +18,7 @@ const props = defineProps<{
 const buttonIconClasses = computed<string>(() =>
   buttonIcon({
     size: props.size,
-  }),
-)
+  }))
 </script>
 
 <template>

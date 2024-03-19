@@ -20,13 +20,15 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 
-const columns: TableColumn<UserIndex>[] = [{
-  id: 'name',
-  isSortable: true,
-  label: t('shared.name'),
-  size: '1fr',
-  value: (row: UserIndex) => row.fullName,
-}]
+const columns: TableColumn<UserIndex>[] = [
+  {
+    id: 'name',
+    isSortable: true,
+    label: t('shared.name'),
+    size: '1fr',
+    value: (row: UserIndex) => row.fullName,
+  },
+]
 
 function onRowClick(user: UserIndex): void {
   emit('navigateToUserDetail', user.uuid)

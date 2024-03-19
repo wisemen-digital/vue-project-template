@@ -23,20 +23,26 @@ export default defineConfig({
     viteCompression(),
     // VueDevTools(),
     VitePWA({
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+      includeAssets: [
+        'favicon.ico',
+        'apple-touch-icon.png',
+      ],
       injectRegister: 'auto',
       manifest: {
         background_color: '#ffffff',
         display: 'fullscreen',
-        icons: [{
-          sizes: '512x512',
-          src: 'favicon_512x512.png',
-          type: 'image/png',
-        }, {
-          sizes: '192x192',
-          src: 'favicon_192x192.png',
-          type: 'image/png',
-        }],
+        icons: [
+          {
+            sizes: '512x512',
+            src: 'favicon_512x512.png',
+            type: 'image/png',
+          },
+          {
+            sizes: '192x192',
+            src: 'favicon_192x192.png',
+            type: 'image/png',
+          },
+        ],
         name: 'Project template',
         short_name: 'Project template',
         theme_color: '#113662',
@@ -44,7 +50,9 @@ export default defineConfig({
       registerType: 'prompt',
       strategies: 'generateSW',
       workbox: {
-        navigateFallbackDenylist: [/api/],
+        navigateFallbackDenylist: [
+          /api/,
+        ],
       },
     }),
     vue({
@@ -61,10 +69,12 @@ export default defineConfig({
     }),
   ],
   resolve: {
-    alias: [{
-      find: '@',
-      replacement: '/src',
-    }],
+    alias: [
+      {
+        find: '@',
+        replacement: '/src',
+      },
+    ],
   },
   server: {
     hmr: {

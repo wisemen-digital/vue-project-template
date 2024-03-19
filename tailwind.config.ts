@@ -3,8 +3,13 @@ import { tailwindcssOriginSafelist } from '@headlessui-float/vue'
 import containerQueries from '@tailwindcss/container-queries'
 
 export default {
-  content: ['./index.html', './src/**/*.{vue,ts}'],
-  plugins: [containerQueries],
+  content: [
+    './index.html',
+    './src/**/*.{vue,ts}',
+  ],
+  plugins: [
+    containerQueries,
+  ],
   safelist: tailwindcssOriginSafelist.slice(),
   theme: {
     extend: {
@@ -107,8 +112,13 @@ export default {
       },
 
       fontFamily: {
-        mono: ['DM Mono'],
-        sans: ['DM Sans', 'sans-serif'],
+        mono: [
+          'DM Mono',
+        ],
+        sans: [
+          'DM Sans',
+          'sans-serif',
+        ],
       },
 
       fontSize: {

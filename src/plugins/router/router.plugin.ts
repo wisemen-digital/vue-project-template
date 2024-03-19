@@ -19,7 +19,10 @@ function setupRouteMiddlewareInterceptor(router: Router): void {
     return to.meta.middleware != null
   }
 
-  async function handleRouteMiddlewares(to: RouteLocationNormalized, from: RouteLocationNormalized): Promise<RouteLocationRaw | undefined> {
+  async function handleRouteMiddlewares(
+    to: RouteLocationNormalized,
+    from: RouteLocationNormalized,
+  ): Promise<RouteLocationRaw | undefined> {
     const middlewares = to.matched.filter(hasMiddleware).flatMap(({ meta }) => meta.middleware)
 
     for (const middleware of middlewares) {

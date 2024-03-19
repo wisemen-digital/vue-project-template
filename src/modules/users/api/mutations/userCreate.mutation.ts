@@ -12,9 +12,11 @@ export function useUserCreateMutation(): UseMutationReturnType<UserCreateForm, U
     queryFn: async ({ body }: { body: UserCreateForm }) => {
       return await userService.create(body)
     },
-    queryKeysToInvalidate: [{
-      exact: false,
-      key: QueryKey.USERS,
-    }],
+    queryKeysToInvalidate: [
+      {
+        exact: false,
+        key: QueryKey.USERS,
+      },
+    ],
   })
 }

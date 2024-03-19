@@ -10,8 +10,10 @@ export function useAuthForgotPasswordMutation(): UseMutationReturnType<ForgotPas
     queryFn: async ({ body }) => {
       await authService.forgotPassword(body)
     },
-    queryKeysToInvalidate: [{
-      key: QueryKey.CURRENT_USER,
-    }],
+    queryKeysToInvalidate: [
+      {
+        key: QueryKey.CURRENT_USER,
+      },
+    ],
   })
 }

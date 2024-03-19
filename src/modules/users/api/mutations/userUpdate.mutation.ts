@@ -16,15 +16,18 @@ export function useUserUpdateMutation(): UseMutationReturnType<UserUpdateForm, U
     queryFn: async ({ body, params }) => {
       return await userService.update(params.userUuid, body)
     },
-    queryKeysToInvalidate: [{
-      exact: false,
-      key: QueryKey.USERS,
-    }, {
-      exact: true,
-      key: QueryKey.USERS_DETAIL,
-      params: {
-        userUuid: user => user.uuid,
+    queryKeysToInvalidate: [
+      {
+        exact: false,
+        key: QueryKey.USERS,
       },
-    }],
+      {
+        exact: true,
+        key: QueryKey.USERS_DETAIL,
+        params: {
+          userUuid: user => user.uuid,
+        },
+      },
+    ],
   })
 }

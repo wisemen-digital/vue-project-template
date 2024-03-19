@@ -12,14 +12,17 @@ const props = defineProps<{
 
 const { t } = useI18n()
 
-const breadcrumbs: Breadcrumb[] = [{
-  label: t('shared.users'),
-  to: {
-    name: 'users-overview',
+const breadcrumbs: Breadcrumb[] = [
+  {
+    label: t('shared.users'),
+    to: {
+      name: 'users-overview',
+    },
   },
-}, {
-  label: props.user.fullName,
-}]
+  {
+    label: props.user.fullName,
+  },
+]
 </script>
 
 <template>

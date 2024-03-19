@@ -28,18 +28,45 @@ const pageControls = computed<(number | string)[]>(() => {
   }
 
   if (activePage < 3) {
-    return [1, 2, 3, '...', totalPages]
+    return [
+      1,
+      2,
+      3,
+      '...',
+      totalPages,
+    ]
   }
 
   if (activePage === 3) {
-    return [1, 2, 3, 4, '...', totalPages]
+    return [
+      1,
+      2,
+      3,
+      4,
+      '...',
+      totalPages,
+    ]
   }
 
   if (activePage > 2 && activePage < totalPages - 1) {
-    return [1, '...', activePage - 1, activePage, activePage + 1, '...', totalPages]
+    return [
+      1,
+      '...',
+      activePage - 1,
+      activePage,
+      activePage + 1,
+      '...',
+      totalPages,
+    ]
   }
 
-  return [1, '...', totalPages - 2, totalPages - 1, totalPages]
+  return [
+    1,
+    '...',
+    totalPages - 2,
+    totalPages - 1,
+    totalPages,
+  ]
 })
 
 const isFirstPage = computed<boolean>(() => {

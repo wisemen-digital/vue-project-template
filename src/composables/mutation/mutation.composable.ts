@@ -101,7 +101,9 @@ export function useMutation<
             // eslint-disable-next-line no-console
             console.log(`[CACHE] Invalidating \`${queryKey.key}\``)
             return queryClient.invalidateQueries({
-              queryKey: [queryKey.key],
+              queryKey: [
+                queryKey.key,
+              ],
               refetchType: 'active',
             })
           }
@@ -113,7 +115,10 @@ export function useMutation<
               }
               return param
             })
-            const queryKeyArray = [queryKey.key, ...Object.values(params)]
+            const queryKeyArray = [
+              queryKey.key,
+              ...Object.values(params),
+            ]
             // eslint-disable-next-line no-console
             console.log(`[CACHE] Invalidating \`${queryKeyArray}\``)
 

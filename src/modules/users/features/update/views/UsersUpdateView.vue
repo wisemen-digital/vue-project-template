@@ -23,22 +23,26 @@ const router = useTypedRouter()
 const { t } = useI18n()
 const { execute: userUpdateMutation } = useUserUpdateMutation()
 
-const breadcrumbs: Breadcrumb[] = [{
-  label: t('shared.users'),
-  to: {
-    name: 'users-overview',
-  },
-}, {
-  label: props.user.fullName,
-  to: {
-    name: 'users-detail',
-    params: {
-      userUuid: props.user.uuid,
+const breadcrumbs: Breadcrumb[] = [
+  {
+    label: t('shared.users'),
+    to: {
+      name: 'users-overview',
     },
   },
-}, {
-  label: t('shared.edit'),
-}]
+  {
+    label: props.user.fullName,
+    to: {
+      name: 'users-detail',
+      params: {
+        userUuid: props.user.uuid,
+      },
+    },
+  },
+  {
+    label: t('shared.edit'),
+  },
+]
 
 const { form, onSubmitForm } = useForm({
   initialState: computed<UserUpdateForm>(() => transformUserToUpdateUserForm(props.user)),

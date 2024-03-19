@@ -15,14 +15,17 @@ const router = useTypedRouter()
 const { t } = useI18n()
 const { execute: userCreateMutation } = useUserCreateMutation()
 
-const breadcrumbs: Breadcrumb[] = [{
-  label: t('shared.users'),
-  to: {
-    name: 'users-overview',
+const breadcrumbs: Breadcrumb[] = [
+  {
+    label: t('shared.users'),
+    to: {
+      name: 'users-overview',
+    },
   },
-}, {
-  label: t('users.create.title'),
-}]
+  {
+    label: t('users.create.title'),
+  },
+]
 
 const { form, onSubmitForm } = useForm({
   schema: userCreateFormSchema,

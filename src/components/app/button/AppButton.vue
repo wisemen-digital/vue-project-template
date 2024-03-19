@@ -91,8 +91,7 @@ const buttonClasses = computed<string>(() =>
     isLoading,
     size,
     variant,
-  }),
-)
+  }))
 
 const componentType = computed<string | typeof AppTypedRouterLink>(() => {
   if (to !== null) {

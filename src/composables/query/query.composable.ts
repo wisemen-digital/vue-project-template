@@ -90,10 +90,15 @@ export function useQuery<TResData>({
 
   function getQueryKey(): string[] {
     if (typeof queryKey === 'object' && 'params' in queryKey) {
-      return [queryKey.key, ...Object.values(queryKey.params)]
+      return [
+        queryKey.key,
+        ...Object.values(queryKey.params),
+      ]
     }
 
-    return [queryKey.key]
+    return [
+      queryKey.key,
+    ]
   }
 
   async function susp(): Promise<void> {

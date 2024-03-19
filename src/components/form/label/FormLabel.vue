@@ -21,8 +21,7 @@ const formLabelClasses = computed<string>(() =>
   formLabel({
     isDisabled: props.isDisabled,
     isInvalid: props.isInvalid,
-  }),
-)
+  }))
 
 const computedLabel = computed<null | string>(() => {
   return props.isRequired ? `${props.label} *` : props.label

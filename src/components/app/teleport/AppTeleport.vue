@@ -10,8 +10,14 @@ const props = defineProps<{
 }>()
 
 const targetMap = new Map<TeleportTarget, string>([
-  ['body', 'body'],
-  ['header-actions', '#header-actions'],
+  [
+    'body',
+    'body',
+  ],
+  [
+    'header-actions',
+    '#header-actions',
+  ],
 ])
 
 const isMounted = useIsMounted()

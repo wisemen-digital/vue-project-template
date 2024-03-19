@@ -31,7 +31,9 @@ export const routes: RouteRecordTyped[] = [
     ],
     component: () => import('@/components/layout/AppLayout.vue'),
     meta: {
-      middleware: [authMiddleware],
+      middleware: [
+        authMiddleware,
+      ],
     },
     path: '',
   },

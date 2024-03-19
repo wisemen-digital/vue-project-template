@@ -65,7 +65,10 @@ export function useTablePagination<TFilters>({
   const routeQuery = useRouteQuery<string | undefined>(id)
   const paginationOptions = shallowRef<PaginationOptions<TFilters>>(getDefaultPaginationOptions())
 
-  function mergePaginationOptions(userOptions: PaginationOptions<TFilters>, currentOptions: PaginationOptions<TFilters>): PaginationOptions<TFilters> {
+  function mergePaginationOptions(
+    userOptions: PaginationOptions<TFilters>,
+    currentOptions: PaginationOptions<TFilters>,
+  ): PaginationOptions<TFilters> {
     return {
       filters: {
         ...currentOptions.filters,
