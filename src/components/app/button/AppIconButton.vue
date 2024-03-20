@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import type { Icon } from '@/icons/icons'
+import type { Icon } from '@wisemen/vue-core'
 
 import AppIcon from '../icon/AppIcon.vue'
 import AppButton from './AppButton.vue'
 
 const props = defineProps<{
-	icon: Icon
+  icon: Icon
 }>()
 </script>
 
 <template>
-	<AppButton
-		size="icon"
-		variant="ghost"
-	>
-		<AppIcon
-			:icon="props.icon"
-			size="sm"
-		/>
-	</AppButton>
+  <AppButton
+    size="icon"
+    variant="ghost"
+  >
+    <AppIcon
+      :icon="props.icon"
+      size="sm"
+    />
+  </AppButton>
 </template>

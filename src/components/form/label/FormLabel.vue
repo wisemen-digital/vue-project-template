@@ -4,36 +4,35 @@ import { computed } from 'vue'
 import { formLabel } from './formLabel.style'
 
 const props = withDefaults(
-	defineProps<{
-		label: string
-		id: string
-		isDisabled?: boolean
-		isInvalid?: boolean
-		isRequired: boolean
-	}>(),
-	{
-		isDisabled: false,
-		isRequired: false,
-	}
+  defineProps<{
+    id: string
+    isDisabled?: boolean
+    isInvalid?: boolean
+    isRequired: boolean
+    label: string
+  }>(),
+  {
+    isDisabled: false,
+    isRequired: false,
+  },
 )
 
 const formLabelClasses = computed<string>(() =>
-	formLabel({
-		isInvalid: props.isInvalid,
-		isDisabled: props.isDisabled,
-	})
-)
+  formLabel({
+    isDisabled: props.isDisabled,
+    isInvalid: props.isInvalid,
+  }))
 
-const computedLabel = computed<string | null>(() => {
-	return props.isRequired ? `${props.label} *` : props.label
+const computedLabel = computed<null | string>(() => {
+  return props.isRequired ? `${props.label} *` : props.label
 })
 </script>
 
 <template>
-	<label
-		:class="formLabelClasses"
-		:for="props.id"
-	>
-		{{ computedLabel }}
-	</label>
+  <label
+    :class="formLabelClasses"
+    :for="props.id"
+  >
+    {{ computedLabel }}
+  </label>
 </template>

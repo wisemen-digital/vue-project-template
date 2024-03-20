@@ -2,18 +2,18 @@
 import AppText from '@/components/app/text/AppText.vue'
 
 const props = defineProps<{
-	label: string
-	value: string
+  label: string
+  value: string
 }>()
 </script>
 
 <template>
-	<div>
-		<AppText variant="subtext">
-			{{ props.label }}
-		</AppText>
-		<AppText variant="caption">
-			{{ props.value }}
-		</AppText>
-	</div>
+  <div>
+    <AppText variant="subtext">
+      {{ props.label }}
+    </AppText>
+    <AppText variant="caption">
+      {{ props.value }}
+    </AppText>
+  </div>
 </template>

@@ -1,4 +1,4 @@
-import { type ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 
 import type { UseQueryReturnType } from '@/composables/query/query.composable'
 import { useQuery } from '@/composables/query/query.composable'
@@ -13,16 +13,16 @@ import { QueryKey } from '@/types/query/queryKey.type'
 import { userService } from '../services/user.service'
 
 export function useUsersIndexQuery(
-	paginationOptions: ComputedRef<PaginationOptions<UserIndexFilters>>
+  paginationOptions: ComputedRef<PaginationOptions<UserIndexFilters>>,
 ): UseQueryReturnType<PaginatedData<UserIndex>> {
-	return useQuery<PaginatedData<UserIndex>>({
-		staleTime: TIME.FIVE_MINUTES,
-		queryKey: {
-			key: QueryKey.USERS,
-			params: usePaginationOptionsToApiParams(paginationOptions),
-		},
-		queryFn: () => {
-			return userService.getAll(paginationOptions)
-		},
-	})
+  return useQuery<PaginatedData<UserIndex>>({
+    queryFn: () => {
+      return userService.getAll(paginationOptions)
+    },
+    queryKey: {
+      key: QueryKey.USERS,
+      params: usePaginationOptionsToApiParams(paginationOptions),
+    },
+    staleTime: TIME.FIVE_MINUTES,
+  })
 }

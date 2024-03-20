@@ -7,13 +7,13 @@ import { QueryKey } from '@/types/query/queryKey.type'
 import { userService } from '../services/user.service'
 
 export function useGetUsersDetailQuery(userUuid: UserUuid): UseQueryReturnType<User> {
-	return useQuery<User>({
-		queryKey: {
-			key: QueryKey.USERS_DETAIL,
-			params: {
-				userUuid,
-			},
-		},
-		queryFn: () => userService.get(userUuid),
-	})
+  return useQuery<User>({
+    queryFn: () => userService.get(userUuid),
+    queryKey: {
+      key: QueryKey.USERS_DETAIL,
+      params: {
+        userUuid,
+      },
+    },
+  })
 }

@@ -12,29 +12,29 @@ import FormGroup from '../group/FormGroup.vue'
 import FormLabel from '../label/FormLabel.vue'
 
 const props = withDefaults(
-	defineProps<{
-		options: DataItem<T>[]
-		isTouched: boolean
-		errors: FormErrors
-		label: string
-		isInvalid?: boolean
-		placeholder?: string | null
-		emptyText?: string | null
-	}>(),
-	{
-		isInvalid: false,
-		placeholder: null,
-		emptyText: null,
-	}
+  defineProps<{
+    emptyText?: null | string
+    errors: FormErrors
+    isInvalid?: boolean
+    isTouched: boolean
+    label: string
+    options: DataItem<T>[]
+    placeholder?: null | string
+  }>(),
+  {
+    emptyText: null,
+    isInvalid: false,
+    placeholder: null,
+  },
 )
 
-const model = defineModel<T | T[] | null>({
-	required: true,
-})
-
 const emit = defineEmits<{
-	blur: []
+  blur: []
 }>()
+
+const model = defineModel<T | T[] | null>({
+  required: true,
+})
 
 const id = generateUuid()
 
@@ -44,31 +44,31 @@ const isTouched = computed<boolean>(() => props.isTouched)
 const isFormInvalid = useIsFormInvalid(errors, isTouched)
 
 function onBlur(): void {
-	emit('blur')
+  emit('blur')
 }
 </script>
 
 <template>
-	<FormGroup>
-		<FormLabel
-			:id="id"
-			:is-required="true"
-			:label="props.label"
-		/>
+  <FormGroup>
+    <FormLabel
+      :id="id"
+      :is-required="true"
+      :label="props.label"
+    />
 
-		<AppCombobox
-			:id="id"
-			v-model="model"
-			:empty-text="props.emptyText"
-			:is-invalid="isFormInvalid"
-			:options="props.options"
-			:placeholder="props.placeholder"
-			@blur="onBlur"
-		/>
+    <AppCombobox
+      :id="id"
+      v-model="model"
+      :empty-text="props.emptyText"
+      :is-invalid="isFormInvalid"
+      :options="props.options"
+      :placeholder="props.placeholder"
+      @blur="onBlur"
+    />
 
-		<FormError
-			:errors="errors"
-			:is-touched="isTouched"
-		/>
-	</FormGroup>
+    <FormError
+      :errors="errors"
+      :is-touched="isTouched"
+    />
+  </FormGroup>
 </template>

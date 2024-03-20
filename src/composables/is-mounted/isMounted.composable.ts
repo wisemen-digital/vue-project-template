@@ -1,4 +1,11 @@
-import { computed, type ComputedRef, onMounted, ref } from 'vue'
+import type {
+  ComputedRef,
+} from 'vue'
+import {
+  computed,
+  onMounted,
+  ref,
+} from 'vue'
 
 type UseIsMountedReturnType = ComputedRef<boolean>
 
@@ -7,11 +14,11 @@ type UseIsMountedReturnType = ComputedRef<boolean>
  * @returns {UseIsMountedReturnType} isMounted - A boolean computedRef that is true when the component is mounted.
  */
 export function useIsMounted(): UseIsMountedReturnType {
-	const isMounted = ref<boolean>(false)
+  const isMounted = ref<boolean>(false)
 
-	onMounted(() => {
-		isMounted.value = true
-	})
+  onMounted(() => {
+    isMounted.value = true
+  })
 
-	return computed<boolean>(() => isMounted.value)
+  return computed<boolean>(() => isMounted.value)
 }

@@ -4,18 +4,18 @@ import { SelectGroup, SelectLabel } from 'radix-vue'
 import AppText from '@/components/app/text/AppText.vue'
 
 const props = defineProps<{
-	label: string
+  label: string
 }>()
 </script>
 
 <template>
-	<SelectGroup>
-		<SelectLabel class="px-2 py-1">
-			<AppText variant="subtext">
-				{{ props.label }}
-			</AppText>
-		</SelectLabel>
+  <SelectGroup>
+    <SelectLabel class="px-2 py-1">
+      <AppText variant="subtext">
+        {{ props.label }}
+      </AppText>
+    </SelectLabel>
 
-		<slot />
-	</SelectGroup>
+    <slot />
+  </SelectGroup>
 </template>

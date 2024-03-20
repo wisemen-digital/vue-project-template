@@ -3,5 +3,5 @@ import { Toaster } from 'vue-sonner'
 </script>
 
 <template>
-	<Toaster />
+  <Toaster />
 </template>

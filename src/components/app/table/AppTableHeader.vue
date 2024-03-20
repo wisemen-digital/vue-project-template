@@ -2,9 +2,9 @@
 import { computed } from 'vue'
 
 import type {
-	PaginationOptions,
-	SortChangeEvent,
-	SortDirection,
+  PaginationOptions,
+  SortChangeEvent,
+  SortDirection,
 } from '@/composables/table-pagination/tablePagination.composable'
 import type { Icon } from '@/icons/icons'
 import type { TableColumn } from '@/types/table/table.type'
@@ -13,151 +13,152 @@ import AppIcon from '../icon/AppIcon.vue'
 import AppText from '../text/AppText.vue'
 
 const props = defineProps<{
-	gridTemplateColumns: string
-	paginationOptions: PaginationOptions<unknown>
-	columns: TableColumn<TSchema>[]
-	pinFirstColumn: boolean
-	pinLastColumn: boolean
-	isHorizontallyScrollable: boolean
-	isScrolledToRight: boolean
-	hasReachedHorizontalScrollEnd: boolean
+  columns: TableColumn<TSchema>[]
+  gridTemplateColumns: string
+  hasReachedHorizontalScrollEnd: boolean
+  isHorizontallyScrollable: boolean
+  isScrolledToRight: boolean
+  paginationOptions: PaginationOptions<unknown>
+  pinFirstColumn: boolean
+  pinLastColumn: boolean
 }>()
 
 const emit = defineEmits<{
-	sort: [event: SortChangeEvent]
+  sort: [event: SortChangeEvent]
 }>()
 
 const currentSortDirection = computed<SortDirection>(() => {
-	const { sort } = props.paginationOptions
+  const { sort } = props.paginationOptions
 
-	const columnId = Object.keys(sort ?? {})[0]
+  const columnId = Object.keys(sort ?? {})[0]
 
-	return getCurrentSortDirection(sort ?? null, columnId)
+  return getCurrentSortDirection(sort ?? null, columnId)
 })
 
 function getCurrentSortDirection(sort: SortChangeEvent | null, columnId: string): SortDirection {
-	return sort?.[columnId] ?? 'asc'
+  return sort?.[columnId] ?? 'asc'
 }
 
 function toggleSortDirection(direction: SortDirection): SortDirection {
-	return direction === 'asc' ? 'desc' : 'asc'
+  return direction === 'asc' ? 'desc' : 'asc'
 }
 
 function isColumnSorted(columnId: string): boolean {
-	const isSameColumn = Object.keys(props.paginationOptions.sort ?? {})[0] === columnId
+  const isSameColumn = Object.keys(props.paginationOptions.sort ?? {})[0] === columnId
 
-	return isSameColumn
+  return isSameColumn
 }
 
 function handleSortChange(columnId: string): void {
-	const isSameColumn = isColumnSorted(columnId)
+  const isSameColumn = isColumnSorted(columnId)
 
-	let direction = getCurrentSortDirection(props.paginationOptions.sort ?? null, columnId)
+  let direction = getCurrentSortDirection(props.paginationOptions.sort ?? null, columnId)
 
-	if (shouldRemoveSort(isSameColumn, direction)) {
-		removeSort()
-		return
-	}
+  if (shouldRemoveSort(isSameColumn, direction)) {
+    removeSort()
+    return
+  }
 
-	if (isSameColumn) {
-		direction = toggleSortDirection(direction)
-	} else {
-		direction = 'asc'
-	}
+  if (isSameColumn) {
+    direction = toggleSortDirection(direction)
+  }
+  else {
+    direction = 'asc'
+  }
 
-	updateSort(columnId, direction)
+  updateSort(columnId, direction)
 }
 
 function shouldRemoveSort(isSameColumn: boolean, direction: 'asc' | 'desc'): boolean {
-	return isSameColumn && direction === 'desc'
+  return isSameColumn && direction === 'desc'
 }
 
 function removeSort(): void {
-	const updatedSort = {} as SortChangeEvent
-	emit('sort', updatedSort)
+  const updatedSort = {} as SortChangeEvent
+  emit('sort', updatedSort)
 }
 
 function updateSort(columnId: string, direction: 'asc' | 'desc'): void {
-	const updatedSort = {
-		[columnId]: direction,
-	} as SortChangeEvent
+  const updatedSort = {
+    [columnId]: direction,
+  } as SortChangeEvent
 
-	emit('sort', updatedSort)
+  emit('sort', updatedSort)
 }
 
 function getComponent(isSortable: boolean): string {
-	return isSortable ? 'button' : 'AppText'
+  return isSortable ? 'button' : 'AppText'
 }
 
 function handleSortColumnButtonClick(column: TableColumn<TSchema>): void {
-	const isSortable = column.isSortable ?? false
+  const isSortable = column.isSortable ?? false
 
-	if (!isSortable) {
-		return
-	}
+  if (!isSortable) {
+    return
+  }
 
-	handleSortChange(column.id)
+  handleSortChange(column.id)
 }
 
 function getColumnIcon(columnId: string): Icon {
-	const isColumnCurrentlySorted = isColumnSorted(columnId)
+  const isColumnCurrentlySorted = isColumnSorted(columnId)
 
-	if (isColumnCurrentlySorted && currentSortDirection.value === 'asc') {
-		return 'arrowUp'
-	}
+  if (isColumnCurrentlySorted && currentSortDirection.value === 'asc') {
+    return 'arrowUp'
+  }
 
-	if (isColumnCurrentlySorted && currentSortDirection.value === 'desc') {
-		return 'arrowDown'
-	}
+  if (isColumnCurrentlySorted && currentSortDirection.value === 'desc') {
+    return 'arrowDown'
+  }
 
-	return 'arrowUpArrowDown'
+  return 'arrowUpArrowDown'
 }
 </script>
 
 <template>
-	<div
-		class="sticky top-0 z-20 grid border-y border-solid border-border bg-muted-background"
-		:class="[props.isHorizontallyScrollable ? 'w-fit' : 'w-full']"
-		:style="{
-			gridTemplateColumns: props.gridTemplateColumns,
-		}"
-	>
-		<Component
-			:is="getComponent(column.isSortable ?? false)"
-			v-for="column in columns"
-			:key="column.id"
-			class="group flex items-center gap-x-2 rounded-none px-6 py-3 outline-none focus-visible:bg-neutral-100"
-			:class="[
-				isScrolledToRight ? 'first:border-r-border' : 'first:border-r-transparent',
-				hasReachedHorizontalScrollEnd ? 'last:border-l-transparent' : 'last:border-l-border',
-				{
-					'left-0 bg-muted-background first:sticky first:z-10 first:border-r first:border-solid': props.pinFirstColumn,
-				},
-				{
-					'right-0 bg-muted-background last:sticky last:z-10 last:border-l last:border-solid':
-						props.pinLastColumn && props.isHorizontallyScrollable,
-				},
-			]"
-			@click="handleSortColumnButtonClick(column)"
-		>
-			<AppText
-				class="truncate"
-				variant="subtext"
-			>
-				{{ column.label }}
-			</AppText>
+  <div
+    :class="[props.isHorizontallyScrollable ? 'w-fit' : 'w-full']"
+    :style="{
+      gridTemplateColumns: props.gridTemplateColumns,
+    }"
+    class="sticky top-0 z-20 grid border-y border-solid border-border bg-muted-background"
+  >
+    <Component
+      :is="getComponent(column.isSortable ?? false)"
+      v-for="column in columns"
+      :key="column.id"
+      :class="[
+        isScrolledToRight ? 'first:border-r-border' : 'first:border-r-transparent',
+        hasReachedHorizontalScrollEnd ? 'last:border-l-transparent' : 'last:border-l-border',
+        {
+          'left-0 bg-muted-background first:sticky first:z-10 first:border-r first:border-solid': props.pinFirstColumn,
+        },
+        {
+          'right-0 bg-muted-background last:sticky last:z-10 last:border-l last:border-solid':
+            props.pinLastColumn && props.isHorizontallyScrollable,
+        },
+      ]"
+      class="group flex items-center gap-x-2 rounded-none px-6 py-3 outline-none focus-visible:bg-neutral-100"
+      @click="handleSortColumnButtonClick(column)"
+    >
+      <AppText
+        class="truncate"
+        variant="subtext"
+      >
+        {{ column.label }}
+      </AppText>
 
-			<AppIcon
-				v-if="column.isSortable ?? false"
-				class="duration-200"
-				:class="[
-					isColumnSorted(column.id)
-						? 'text-muted-foreground'
-						: 'text-muted-foreground/25 group-hover:text-muted-foreground/50 group-focus-visible:text-muted-foreground/50',
-				]"
-				:icon="getColumnIcon(column.id)"
-				size="xs"
-			/>
-		</Component>
-	</div>
+      <AppIcon
+        v-if="column.isSortable ?? false"
+        :class="[
+          isColumnSorted(column.id)
+            ? 'text-muted-foreground'
+            : 'text-muted-foreground/25 group-hover:text-muted-foreground/50 group-focus-visible:text-muted-foreground/50',
+        ]"
+        :icon="getColumnIcon(column.id)"
+        class="duration-200"
+        size="xs"
+      />
+    </Component>
+  </div>
 </template>

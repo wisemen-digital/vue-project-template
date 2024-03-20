@@ -9,33 +9,33 @@ import { icons } from '@/icons/icons'
 import { cn } from '@/utils/style.util'
 
 const props = withDefaults(
-	defineProps<{
-		icon: Icon
-		size?: IconProps['size']
-	}>(),
-	{
-		size: 'default',
-	}
+  defineProps<{
+    icon: Icon
+    size?: IconProps['size']
+  }>(),
+  {
+    size: 'default',
+  },
 )
 
 const svgComponent = shallowRef<Component | null>(null)
 
 watch(
-	() => props.icon,
-	async () => {
-		const resolvedComponent = await icons[props.icon]
-		svgComponent.value = resolvedComponent.default
-	},
-	{
-		immediate: true,
-	}
+  () => props.icon,
+  async () => {
+    const resolvedComponent = await icons[props.icon]
+    svgComponent.value = resolvedComponent.default
+  },
+  {
+    immediate: true,
+  },
 )
 </script>
 
 <template>
-	<Component
-		:is="svgComponent"
-		v-if="svgComponent !== null"
-		:class="cn(iconVariants({ size }))"
-	/>
+  <Component
+    :is="svgComponent"
+    v-if="svgComponent !== null"
+    :class="cn(iconVariants({ size }))"
+  />
 </template>

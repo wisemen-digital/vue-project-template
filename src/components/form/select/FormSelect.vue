@@ -12,25 +12,25 @@ import FormGroup from '../group/FormGroup.vue'
 import FormLabel from '../label/FormLabel.vue'
 
 const props = withDefaults(
-	defineProps<{
-		options: DataItem<T>[]
-		isInvalid?: boolean
-		isTouched: boolean
-		errors: FormErrors
-		label: string
-	}>(),
-	{
-		isInvalid: false,
-	}
+  defineProps<{
+    errors: FormErrors
+    isInvalid?: boolean
+    isTouched: boolean
+    label: string
+    options: DataItem<T>[]
+  }>(),
+  {
+    isInvalid: false,
+  },
 )
 
-const model = defineModel<T | null>({
-	required: true,
-})
-
 const emit = defineEmits<{
-	blur: []
+  blur: []
 }>()
+
+const model = defineModel<T | null>({
+  required: true,
+})
 
 const id = generateUuid()
 
@@ -40,29 +40,29 @@ const isTouched = computed<boolean>(() => props.isTouched)
 const isFormInvalid = useIsFormInvalid(errors, isTouched)
 
 function onBlur(): void {
-	emit('blur')
+  emit('blur')
 }
 </script>
 
 <template>
-	<FormGroup>
-		<FormLabel
-			:id="id"
-			:is-required="true"
-			:label="props.label"
-		/>
+  <FormGroup>
+    <FormLabel
+      :id="id"
+      :is-required="true"
+      :label="props.label"
+    />
 
-		<AppSelect
-			:id="id"
-			v-model="model"
-			:is-invalid="isFormInvalid"
-			:options="props.options"
-			@blur="onBlur"
-		/>
+    <AppSelect
+      :id="id"
+      v-model="model"
+      :is-invalid="isFormInvalid"
+      :options="props.options"
+      @blur="onBlur"
+    />
 
-		<FormError
-			:errors="errors"
-			:is-touched="isTouched"
-		/>
-	</FormGroup>
+    <FormError
+      :errors="errors"
+      :is-touched="isTouched"
+    />
+  </FormGroup>
 </template>

@@ -7,40 +7,40 @@ import type { User } from '@/models/users/detail/user.model'
 import type { Breadcrumb } from '@/types/breadcrumb.type'
 
 const props = defineProps<{
-	user: User
+  user: User
 }>()
 
 const { t } = useI18n()
 
 const breadcrumbs: Breadcrumb[] = [
-	{
-		label: t('shared.users'),
-		to: {
-			name: 'users-overview',
-		},
-	},
-	{
-		label: props.user.fullName,
-	},
+  {
+    label: t('shared.users'),
+    to: {
+      name: 'users-overview',
+    },
+  },
+  {
+    label: props.user.fullName,
+  },
 ]
 </script>
 
 <template>
-	<AppPage
-		:breadcrumbs="breadcrumbs"
-		:title="props.user.fullName"
-	>
-		<template #header-actions>
-			<AppButton
-				:to="{
-					name: 'users-update',
-					params: {
-						userUuid: props.user.uuid,
-					},
-				}"
-			>
-				{{ t('users.detail.edit_user') }}
-			</AppButton>
-		</template>
-	</AppPage>
+  <AppPage
+    :breadcrumbs="breadcrumbs"
+    :title="props.user.fullName"
+  >
+    <template #header-actions>
+      <AppButton
+        :to="{
+          name: 'users-update',
+          params: {
+            userUuid: props.user.uuid,
+          },
+        }"
+      >
+        {{ t('users.detail.edit_user') }}
+      </AppButton>
+    </template>
+  </AppPage>
 </template>

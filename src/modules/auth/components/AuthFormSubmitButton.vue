@@ -5,15 +5,15 @@ import type { z } from 'zod'
 import AppFormSubmitButton from '@/components/form/form/AppFormSubmitButton.vue'
 
 const props = defineProps<{
-	form: Form<TFormType>
+  form: Form<TFormType>
 }>()
 </script>
 
 <template>
-	<AppFormSubmitButton
-		class="mt-4"
-		:form="props.form"
-	>
-		<slot />
-	</AppFormSubmitButton>
+  <AppFormSubmitButton
+    :form="props.form"
+    class="mt-4"
+  >
+    <slot />
+  </AppFormSubmitButton>
 </template>

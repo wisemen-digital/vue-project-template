@@ -1,3 +1,4 @@
+import '@wisemen/vue-core/style.css'
 import '@/assets/styles/index.scss'
 import '@fontsource-variable/inter'
 

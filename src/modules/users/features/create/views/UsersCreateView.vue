@@ -16,41 +16,42 @@ const { t } = useI18n()
 const { execute: userCreateMutation } = useUserCreateMutation()
 
 const breadcrumbs: Breadcrumb[] = [
-	{
-		label: t('shared.users'),
-		to: {
-			name: 'users-overview',
-		},
-	},
-	{
-		label: t('users.create.title'),
-	},
+  {
+    label: t('shared.users'),
+    to: {
+      name: 'users-overview',
+    },
+  },
+  {
+    label: t('users.create.title'),
+  },
 ]
 
 const { form, onSubmitForm } = useForm({
-	schema: userCreateFormSchema,
+  schema: userCreateFormSchema,
 })
 
 onSubmitForm(async (values) => {
-	try {
-		await userCreateMutation({
-			body: values,
-		})
+  try {
+    await userCreateMutation({
+      body: values,
+    })
 
-		await router.push({
-			name: 'users-overview',
-		})
-	} catch (error) {
-		useHandleApiError(error)
-	}
+    await router.push({
+      name: 'users-overview',
+    })
+  }
+  catch (error) {
+    useHandleApiError(error)
+  }
 })
 </script>
 
 <template>
-	<AppPage
-		:breadcrumbs="breadcrumbs"
-		:title="t('users.create.title')"
-	>
-		<UsersCreateForm :form="form" />
-	</AppPage>
+  <AppPage
+    :breadcrumbs="breadcrumbs"
+    :title="t('users.create.title')"
+  >
+    <UsersCreateForm :form="form" />
+  </AppPage>
 </template>

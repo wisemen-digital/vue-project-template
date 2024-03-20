@@ -3,5 +3,5 @@ import { SelectSeparator } from 'radix-vue'
 </script>
 
 <template>
-	<SelectSeparator class="my-1 h-[1px] bg-border" />
+  <SelectSeparator class="my-1 h-px bg-border" />
 </template>

@@ -1,9 +1,9 @@
 ---
 name: Auto-deploy to development
 
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   push:
-    branches: ['main']
+    branches: [main]
   workflow_dispatch:
 
 jobs:

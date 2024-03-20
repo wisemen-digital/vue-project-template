@@ -2,88 +2,88 @@
 import { computed } from 'vue'
 
 interface Props {
-	/**
-	 * The duration of the transition in seconds.
-	 */
-	duration?: number
+  /**
+   * The duration of the transition in seconds.
+   */
+  duration?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	duration: 0.5,
+  duration: 0.5,
 })
 
 const durationString = computed<string>(() => `${props.duration}s`)
 
 function enter(element: Element): void {
-	const htmlElement: HTMLElement = element as HTMLElement
-	const width = getComputedStyle(htmlElement).width
+  const htmlElement: HTMLElement = element as HTMLElement
+  const width = getComputedStyle(htmlElement).width
 
-	htmlElement.style.width = width
-	htmlElement.style.position = 'absolute'
-	htmlElement.style.visibility = 'hidden'
-	htmlElement.style.height = 'auto'
+  htmlElement.style.width = width
+  htmlElement.style.position = 'absolute'
+  htmlElement.style.visibility = 'hidden'
+  htmlElement.style.height = 'auto'
 
-	const height = getComputedStyle(htmlElement).height
+  const height = getComputedStyle(htmlElement).height
 
-	htmlElement.style.width = ''
-	htmlElement.style.position = ''
-	htmlElement.style.visibility = ''
-	htmlElement.style.height = ''
+  htmlElement.style.width = ''
+  htmlElement.style.position = ''
+  htmlElement.style.visibility = ''
+  htmlElement.style.height = ''
 
-	getComputedStyle(htmlElement)
+  getComputedStyle(htmlElement)
 
-	requestAnimationFrame(() => {
-		htmlElement.style.height = height
-	})
+  requestAnimationFrame(() => {
+    htmlElement.style.height = height
+  })
 }
 
 function afterEnter(element: Element): void {
-	const htmlElement: HTMLElement = element as HTMLElement
-	htmlElement.style.height = 'auto'
+  const htmlElement: HTMLElement = element as HTMLElement
+  htmlElement.style.height = 'auto'
 }
 
 function leave(element: Element): void {
-	const htmlElement: HTMLElement = element as HTMLElement
-	const height = getComputedStyle(htmlElement).height
+  const htmlElement: HTMLElement = element as HTMLElement
+  const height = getComputedStyle(htmlElement).height
 
-	htmlElement.style.height = height
-	getComputedStyle(htmlElement)
+  htmlElement.style.height = height
+  getComputedStyle(htmlElement)
 
-	requestAnimationFrame(() => {
-		htmlElement.style.height = '0'
-	})
+  requestAnimationFrame(() => {
+    htmlElement.style.height = '0'
+  })
 }
 </script>
 
 <template>
-	<transition
-		name="expand"
-		@after-enter="afterEnter"
-		@enter="enter"
-		@leave="leave"
-	>
-		<slot />
-	</transition>
+  <transition
+    name="expand"
+    @after-enter="afterEnter"
+    @enter="enter"
+    @leave="leave"
+  >
+    <slot />
+  </transition>
 </template>
 
 <style scoped>
 .expand-enter-active,
 .expand-leave-active {
-	transition:
-		height v-bind(durationString) cubic-bezier(0.645, 0.045, 0.355, 1),
-		opacity v-bind(durationString);
-	overflow: hidden;
+  transition:
+    height v-bind(durationString) cubic-bezier(0.645, 0.045, 0.355, 1),
+    opacity v-bind(durationString);
+  overflow: hidden;
 }
 
 .expand-enter-from,
 .expand-leave-to {
-	opacity: 0;
-	height: 0;
+  opacity: 0;
+  height: 0;
 }
 
 * {
-	will-change: height;
-	transform: translateZ(0);
-	backface-visibility: hidden;
+  will-change: height;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 </style>

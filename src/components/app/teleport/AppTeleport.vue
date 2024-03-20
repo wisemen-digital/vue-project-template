@@ -6,32 +6,38 @@ import { useIsMounted } from '@/composables/is-mounted/isMounted.composable'
 type TeleportTarget = 'body' | 'header-actions'
 
 const props = defineProps<{
-	target: TeleportTarget
+  target: TeleportTarget
 }>()
 
 const targetMap = new Map<TeleportTarget, string>([
-	['body', 'body'],
-	['header-actions', '#header-actions'],
+  [
+    'body',
+    'body',
+  ],
+  [
+    'header-actions',
+    '#header-actions',
+  ],
 ])
 
 const isMounted = useIsMounted()
 
 const teleportTarget = computed<string>(() => {
-	const selectedTarget = targetMap.get(props.target) ?? null
+  const selectedTarget = targetMap.get(props.target) ?? null
 
-	if (selectedTarget === null) {
-		throw new Error(`Invalid teleport target: ${props.target}`)
-	}
+  if (selectedTarget === null) {
+    throw new Error(`Invalid teleport target: ${props.target}`)
+  }
 
-	return selectedTarget
+  return selectedTarget
 })
 </script>
 
 <template>
-	<Teleport
-		v-if="isMounted"
-		:to="teleportTarget"
-	>
-		<slot />
-	</Teleport>
+  <Teleport
+    v-if="isMounted"
+    :to="teleportTarget"
+  >
+    <slot />
+  </Teleport>
 </template>

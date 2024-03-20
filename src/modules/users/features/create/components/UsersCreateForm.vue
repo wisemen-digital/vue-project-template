@@ -9,7 +9,7 @@ import type { userCreateFormSchema } from '@/models/users/create/userCreateForm.
 import UsersFormName from '@/modules/users/components/user-form/UsersFormName.vue'
 
 const props = defineProps<{
-	form: Form<typeof userCreateFormSchema>
+  form: Form<typeof userCreateFormSchema>
 }>()
 
 const { t } = useI18n()
@@ -19,16 +19,16 @@ const lastName = props.form.register('lastName')
 </script>
 
 <template>
-	<AppForm :form="form">
-		<AppTeleport target="header-actions">
-			<AppFormSubmitButton :form="form">
-				{{ t('users.create.create_user') }}
-			</AppFormSubmitButton>
-		</AppTeleport>
+  <AppForm :form="form">
+    <AppTeleport target="header-actions">
+      <AppFormSubmitButton :form="form">
+        {{ t('users.create.create_user') }}
+      </AppFormSubmitButton>
+    </AppTeleport>
 
-		<UsersFormName
-			:first-name="firstName"
-			:last-name="lastName"
-		/>
-	</AppForm>
+    <UsersFormName
+      :first-name="firstName"
+      :last-name="lastName"
+    />
+  </AppForm>
 </template>

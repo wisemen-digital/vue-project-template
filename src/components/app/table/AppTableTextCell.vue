@@ -3,10 +3,10 @@ import AppText from '../text/AppText.vue'
 </script>
 
 <template>
-	<AppText
-		class="truncate"
-		variant="subtext"
-	>
-		<slot />
-	</AppText>
+  <AppText
+    class="truncate"
+    variant="subtext"
+  >
+    <slot />
+  </AppText>
 </template>

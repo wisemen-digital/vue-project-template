@@ -7,28 +7,28 @@ import FormSection from '@/components/form/form/FormSection.vue'
 import FormInput from '@/components/form/input/FormInput.vue'
 
 const props = defineProps<{
-	firstName: Field<string>
-	lastName: Field<string>
+  firstName: Field<string>
+  lastName: Field<string>
 }>()
 
 const { t } = useI18n()
 </script>
 
 <template>
-	<FormSection
-		:description="t('users.form.section.name.description')"
-		:title="t('shared.name')"
-	>
-		<FormGrid :cols="2">
-			<FormInput
-				v-bind="props.firstName"
-				:label="t('shared.first_name')"
-			/>
+  <FormSection
+    :description="t('users.form.section.name.description')"
+    :title="t('shared.name')"
+  >
+    <FormGrid :cols="2">
+      <FormInput
+        v-bind="props.firstName"
+        :label="t('shared.first_name')"
+      />
 
-			<FormInput
-				v-bind="props.lastName"
-				:label="t('shared.last_name')"
-			/>
-		</FormGrid>
-	</FormSection>
+      <FormInput
+        v-bind="props.lastName"
+        :label="t('shared.last_name')"
+      />
+    </FormGrid>
+  </FormSection>
 </template>

@@ -16,7 +16,7 @@ import type { Breadcrumb } from '@/types/breadcrumb.type'
 import UsersUpdateForm from '../components/UsersUpdateForm.vue'
 
 const props = defineProps<{
-	user: User
+  user: User
 }>()
 
 const router = useTypedRouter()
@@ -24,57 +24,58 @@ const { t } = useI18n()
 const { execute: userUpdateMutation } = useUserUpdateMutation()
 
 const breadcrumbs: Breadcrumb[] = [
-	{
-		label: t('shared.users'),
-		to: {
-			name: 'users-overview',
-		},
-	},
-	{
-		label: props.user.fullName,
-		to: {
-			name: 'users-detail',
-			params: {
-				userUuid: props.user.uuid,
-			},
-		},
-	},
-	{
-		label: t('shared.edit'),
-	},
+  {
+    label: t('shared.users'),
+    to: {
+      name: 'users-overview',
+    },
+  },
+  {
+    label: props.user.fullName,
+    to: {
+      name: 'users-detail',
+      params: {
+        userUuid: props.user.uuid,
+      },
+    },
+  },
+  {
+    label: t('shared.edit'),
+  },
 ]
 
 const { form, onSubmitForm } = useForm({
-	schema: userUpdateFormSchema,
-	initialState: computed<UserUpdateForm>(() => transformUserToUpdateUserForm(props.user)),
+  initialState: computed<UserUpdateForm>(() => transformUserToUpdateUserForm(props.user)),
+  schema: userUpdateFormSchema,
 })
 
 onSubmitForm(async (values) => {
-	try {
-		await userUpdateMutation({
-			params: {
-				userUuid: props.user.uuid,
-			},
-			body: values,
-		})
+  try {
+    await userUpdateMutation({
+      body: values,
+      params: {
+        userUuid: props.user.uuid,
+      },
+    })
 
-		await router.push({
-			name: 'users-detail',
-			params: {
-				userUuid: props.user.uuid,
-			},
-		})
-	} catch (error) {
-		useHandleApiError(error, form)
-	}
+    await router.push({
+      name: 'users-detail',
+      params: {
+        userUuid: props.user.uuid,
+      },
+    })
+  }
+  catch (error) {
+    useHandleApiError(error, form)
+  }
 })
 </script>
 
 <template>
-	<AppPage
-		:breadcrumbs="breadcrumbs"
-		:title="props.user.fullName"
-	>
-		<UsersUpdateForm :form="form" />
-	</AppPage>
+  <AppPage
+    :breadcrumbs="breadcrumbs"
+    :title="props.user.fullName"
+  >
+    <UsersUpdateForm :form="form" />
+  </AppPage>
 </template>

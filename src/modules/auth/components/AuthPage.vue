@@ -2,29 +2,29 @@
 import AppText from '@/components/app/text/AppText.vue'
 
 const props = defineProps<{
-	title: string
-	description: string
+  description: string
+  title: string
 }>()
 </script>
 
 <template>
-	<div class="flex w-full flex-col items-center justify-center pb-24">
-		<AppText
-			class="font-medium text-foreground"
-			variant="title"
-		>
-			{{ props.title }}
-		</AppText>
+  <div class="flex w-full flex-col items-center justify-center pb-24">
+    <AppText
+      class="font-medium text-foreground"
+      variant="title"
+    >
+      {{ props.title }}
+    </AppText>
 
-		<AppText
-			class="mt-2"
-			variant="subtext"
-		>
-			{{ props.description }}
-		</AppText>
+    <AppText
+      class="mt-2"
+      variant="subtext"
+    >
+      {{ props.description }}
+    </AppText>
 
-		<div class="mt-6 w-full">
-			<slot />
-		</div>
-	</div>
+    <div class="mt-6 w-full">
+      <slot />
+    </div>
+  </div>
 </template>

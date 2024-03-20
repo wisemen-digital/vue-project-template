@@ -6,29 +6,29 @@ import type { z } from 'zod'
 import { usePageLoader } from '@/composables/page-loader/pageLoader.composable'
 
 const props = defineProps<{
-	form: Form<TFormType>
+  form: Form<TFormType>
 }>()
 
 const { setIsLoading } = usePageLoader()
 
 watch(
-	() => props.form.isSubmitting,
-	(isSubmitting) => {
-		setIsLoading(isSubmitting)
-	}
+  () => props.form.isSubmitting,
+  (isSubmitting) => {
+    setIsLoading(isSubmitting)
+  },
 )
 
 onUnmounted(() => {
-	setIsLoading(false)
+  setIsLoading(false)
 })
 </script>
 
 <template>
-	<form
-		class="flex size-full flex-1 flex-col @container/form-layout"
-		novalidate
-		@submit.prevent="props.form.submit"
-	>
-		<slot />
-	</form>
+  <form
+    class="flex size-full flex-1 flex-col @container/form-layout"
+    novalidate
+    @submit.prevent="props.form.submit"
+  >
+    <slot />
+  </form>
 </template>
