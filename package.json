@@ -9,6 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint:fix": "eslint . --fix",
+    "lint": "eslint .",
     "test:unit": "vitest --run",
     "prepare": "husky install",
     "type-check": "vue-tsc --noEmit",
