@@ -6,8 +6,6 @@ import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 
-// import VueDevTools from 'vite-plugin-vue-devtools'
-
 export default defineConfig({
   define: {
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
@@ -21,7 +19,6 @@ export default defineConfig({
       example: '.env.example',
     }),
     viteCompression(),
-    // VueDevTools(),
     VitePWA({
       includeAssets: [
         'favicon.ico',

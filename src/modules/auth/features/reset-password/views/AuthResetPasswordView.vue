@@ -20,25 +20,25 @@ const { form, onSubmitForm } = useForm({
   schema: resetPasswordFormSchema,
 })
 
-const { token } = useTypedRouteParams('reset-password')
-const { email } = useTypedRouteQuery('reset-password')
+const routeParams = useTypedRouteParams('reset-password')
+const queryParams = useTypedRouteQuery('reset-password')
 
-form.register('token', token)
-form.register('email', email)
+form.register('token', routeParams.token)
+form.register('email', queryParams.email)
 
-const { execute: resetPassword } = useAuthResetPasswordMutation()
+const resetPasswordMutation = useAuthResetPasswordMutation()
 
 const description = computed<string>(() => {
   if (hasPasswordBeenReset.value) {
     return t('auth.features.your_password_has_been_reset_you_can')
   }
 
-  return t('auth.features.enter_your_new_password_below')
+  return t('auth.reset_password.description')
 })
 
 onSubmitForm(async (values) => {
   try {
-    await resetPassword({
+    await resetPasswordMutation.execute({
       body: values,
     })
 
@@ -53,7 +53,7 @@ onSubmitForm(async (values) => {
 <template>
   <AuthPage
     :description="description"
-    :title="t('common.reset_password')"
+    :title="t('auth.reset_password.title')"
   >
     <ResetPasswordForm
       v-if="!hasPasswordBeenReset"

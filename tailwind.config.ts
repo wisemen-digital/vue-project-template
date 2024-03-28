@@ -1,28 +1,23 @@
-/** @type {import('tailwindcss').Config} */
-import { tailwindcssOriginSafelist } from '@headlessui-float/vue'
 import containerQueries from '@tailwindcss/container-queries'
+import type { Config } from 'tailwindcss'
 
 export default {
   content: [
     './index.html',
     './src/**/*.{vue,ts}',
+    './node_modules/@wisemen/vue-core/**/*.js',
   ],
   plugins: [
     containerQueries,
   ],
-  safelist: tailwindcssOriginSafelist.slice(),
   theme: {
     extend: {
-      animation: {
-        'to-full-width': 'toFullWidth 5s linear',
-      },
-
       borderRadius: {
         button: 'var(--radius-button)',
         card: 'var(--radius-card)',
+        dialog: 'var(--radius-dialog)',
         full: 'var(--radius-full)',
         input: 'var(--radius-input)',
-        modal: 'var(--radius-modal)',
         popover: 'var(--radius-popover)',
       },
 
@@ -32,12 +27,13 @@ export default {
         'button-shadow': 'var(--shadow-button);',
         'card-hover-shadow': 'var(--shadow-card-hover);',
         'card-shadow': 'var(--shadow-card);',
+        'dialog-shadow': 'var(--shadow-dialog);',
         'input-shadow': '0px 1px 2px 0px #1018280D',
         'jobs-table-header-shadow': '0px 1px 2px 0px #1018280F, 0px 2px 3px 0px #1018281A',
-        'modal-shadow': 'var(--shadow-modal);',
         'popover-shadow': 'var(--shadow-popover);',
         'table-header': '0px 2px 3px 0px #1018281A',
         'table-shadow': '0px 1px 2px 0px #1018280F',
+        'toast-shadow': '0 4px 12px #0000000a',
       },
 
       colors: {
@@ -47,19 +43,18 @@ export default {
         },
         background: 'rgba(var(--background), <alpha-value>)',
         black: 'rgba(var(--black), <alpha-value>)',
-
         border: 'rgba(var(--border), <alpha-value>)',
+
         card: {
           DEFAULT: 'rgba(var(--card), <alpha-value>)',
           foreground: 'rgba(var(--card-foreground), <alpha-value>)',
         },
-
         destructive: {
           DEFAULT: 'rgba(var(--destructive), <alpha-value>)',
           foreground: 'rgba(var(--destructive-foreground), <alpha-value>)',
         },
-        foreground: 'rgba(var(--foreground), <alpha-value>)',
 
+        foreground: 'rgba(var(--foreground), <alpha-value>)',
         input: {
           DEFAULT: 'rgba(var(--input), <alpha-value>)',
           border: 'rgba(var(--input-border), <alpha-value>)',
@@ -68,6 +63,7 @@ export default {
           placeholder: 'rgba(var(--input-placeholder), <alpha-value>)',
           ring: 'rgba(var(--input-ring), <alpha-value>)',
         },
+
         muted: {
           DEFAULT: 'rgba(var(--muted), <alpha-value>)',
           background: 'rgba(var(--muted-background), <alpha-value>)',
@@ -100,6 +96,10 @@ export default {
         success: {
           DEFAULT: 'rgba(var(--success), <alpha-value>)',
           foreground: 'rgba(var(--success-foreground), <alpha-value>)',
+        },
+        switch: {
+          background: 'rgba(var(--switch-background), <alpha-value>)',
+          foreground: 'rgba(var(--switch-foreground), <alpha-value>)',
         },
         transparent: 'transparent',
 
@@ -171,33 +171,26 @@ export default {
         'table-skeleton': '1fr 4fr 2fr 1fr',
       },
 
-      keyframes: {
-        toFullWidth: {
-          '0%': { width: '0%' },
-          '100%': { width: '100%' },
-        },
-      },
-
       maxWidth: {
         container: '70rem',
       },
 
       transitionTimingFunction: {
-        'modal': 'cubic-bezier(0.22, 0.68, 0, 1.51)',
-        'modal-overlay': 'cubic-bezier(0.17, 0.67, 0.16, 0.99)',
+        'dialog': 'cubic-bezier(0.22, 0.68, 0, 1.51)',
+        'dialog-overlay': 'cubic-bezier(0.17, 0.67, 0.16, 0.99)',
       },
 
       width: {
-        modal: '28rem',
+        dialog: '28rem',
       },
 
       zIndex: {
-        'aboveEverything': 9999,
-        'dialog': 40,
-        'dialog-overlay': 39,
-        'navbar': 30,
-        'popover': 50,
+        'above-everything': '9999',
+        'dialog': '40',
+        'dialog-overlay': '39',
+        'navbar': '30',
+        'popover': '50',
       },
     },
   },
-}
+} satisfies Config

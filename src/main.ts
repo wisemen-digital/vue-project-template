@@ -2,6 +2,7 @@ import '@wisemen/vue-core/style.css'
 import '@/assets/styles/index.scss'
 import '@fontsource-variable/inter'
 
+import { extendIcons } from '@wisemen/vue-core'
 import { createApp as createVueApp } from 'vue'
 
 import App from '@/App.vue'
@@ -13,6 +14,9 @@ import { routerPlugin } from '@/plugins/router/router.plugin.ts'
 import { configureSentry } from '@/plugins/sentry/sentry.plugin.ts'
 import { vueQueryPlugin } from '@/plugins/vue-query/vueQuery.plugin.ts'
 
+import { icons } from './icons/icons'
+
+extendIcons(icons)
 configureDayjs()
 configureZod()
 

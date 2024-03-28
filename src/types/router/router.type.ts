@@ -11,7 +11,9 @@ export type RouteLocationTyped<T extends keyof Routes> = RouteLocationNamedRaw &
     ? P extends undefined
       ? object
       : {
-          params: P
+          params: {
+            [K in keyof P]: P[K]
+          }
         }
     : object) & {
       name: T

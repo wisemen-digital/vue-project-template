@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { FormInput, FormPasswordInput } from '@wisemen/vue-core'
+import {
+  AppText,
+  FormInput,
+  FormPasswordInput,
+} from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElementSpacer.vue'
 import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
-import AppText from '@/components/app/text/AppText.vue'
 import AppForm from '@/components/form/form/AppForm.vue'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import type { loginFormSchema } from '@/models/auth/login/loginForm.model'

@@ -21,7 +21,7 @@ const props = defineProps<{
 
 const router = useTypedRouter()
 const { t } = useI18n()
-const { execute: userUpdateMutation } = useUserUpdateMutation()
+const userUpdateMutation = useUserUpdateMutation()
 
 const breadcrumbs: Breadcrumb[] = [
   {
@@ -51,7 +51,7 @@ const { form, onSubmitForm } = useForm({
 
 onSubmitForm(async (values) => {
   try {
-    await userUpdateMutation({
+    await userUpdateMutation.execute({
       body: values,
       params: {
         userUuid: props.user.uuid,

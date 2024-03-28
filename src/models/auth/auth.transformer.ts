@@ -31,7 +31,7 @@ export function transformResetPasswordFormToResetPasswordDto(data: ResetPassword
 
 export function transformCurrentUserDtoToCurrentUser(data: CurrentUserDto): CurrentUser {
   return {
-    email: data.email,
+    email: data.mail,
     firstName: data.firstName,
     fullName: `${data.firstName} ${data.lastName}`,
     lastName: data.lastName,

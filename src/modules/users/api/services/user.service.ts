@@ -1,89 +1,102 @@
+import { PaginationOptions } from '@wisemen/vue-core'
 import type { ComputedRef } from 'vue'
-import { z } from 'zod'
 
-import { usePaginationOptionsToApiParams } from '@/composables/table-pagination/pagination.composable'
-import type { PaginationOptions } from '@/composables/table-pagination/tablePagination.composable'
 import { httpClient } from '@/libs/http.lib'
+import { paginatedDataSchema } from '@/models/paginated-data/paginatedData.model'
 import type { UserCreateForm } from '@/models/users/create/userCreateForm.model'
 import type { User } from '@/models/users/detail/user.model'
+import { userDtoSchema } from '@/models/users/detail/userDto.model'
 import type { UserIndex } from '@/models/users/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/users/index/userIndexFilters.model'
 import type { UserUpdateForm } from '@/models/users/update/userUpdateForm.model'
-import { transformUserDtoToUser, transformUserIndexDtoToUserIndex } from '@/models/users/user.transformer'
+import {
+  transformUserCreateFormToUserCreateDto,
+  transformUserDtoToUser,
+  transformUserIndexDtoToUserIndex,
+  transformUserUpdateFormToUserUpdateDto,
+} from '@/models/users/user.transformer'
 import type { UserUuid } from '@/models/users/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
 
 interface UserService {
   create: (form: UserCreateForm) => Promise<User>
-  get: (userUuid: UserUuid) => Promise<User>
   getAll: (paginationOptions: ComputedRef<PaginationOptions<UserIndexFilters>>) => Promise<PaginatedData<UserIndex>>
+  getByUuid: (userUuid: UserUuid) => Promise<User>
   update: (userUuid: UserUuid, form: UserUpdateForm) => Promise<User>
 }
 
 export const userService: UserService = {
-  // eslint-disable-next-line require-await -- This is a placeholder for the actual implementation
   create: async (form) => {
-    // TODO: Implement
+    const formData = new FormData()
 
-    return transformUserDtoToUser({
-      firstName: form.firstName,
-      lastName: form.lastName,
-      uuid: '2203' as UserUuid,
+    const dto = transformUserCreateFormToUserCreateDto(form)
+
+    Object.entries(dto).forEach(([
+      key,
+      value,
+    ]) => {
+      formData.append(key, value)
     })
+
+    const data = await httpClient.post({
+      body: formData,
+      config: {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+      responseSchema: userDtoSchema,
+      url: '/users',
+    })
+
+    return transformUserDtoToUser(data)
   },
-  get: async (userUuid) => {
+  // TODO: Implement pagination builder
+  getAll: async (_paginationOptions) => {
     const data = await httpClient.get({
       config: {
-        baseURL: 'https://api.punkapi.com',
+        // params: usePaginationOptionsToApiParams(paginationOptions),
       },
-      responseSchema: z
-        .object({
-          id: z.number(),
-          name: z.string(),
-        })
-        .array(),
-      url: `/v2/beers/${userUuid}`,
+      responseSchema: paginatedDataSchema(userDtoSchema),
+      url: '/users',
     })
-
-    return transformUserDtoToUser({
-      firstName: data[0].name,
-      lastName: 'Doe',
-      uuid: `${data[0].id}` as UserUuid,
-    })
-  },
-  getAll: async (paginationOptions) => {
-    const data = await httpClient.get({
-      config: {
-        baseURL: 'https://api.punkapi.com',
-        params: usePaginationOptionsToApiParams(paginationOptions),
-      },
-      responseSchema: z.array(
-        z.object({
-          id: z.number(),
-          name: z.string(),
-        }),
-      ),
-      url: '/v2/beers',
-    })
-
-    const testData = data.map(item => ({
-      firstName: item.name,
-      lastName: 'Doe',
-      uuid: `${item.id}` as UserUuid,
-    }))
 
     return {
-      data: testData.map(transformUserIndexDtoToUserIndex),
-      // total: data.total,
-      total: 200,
+      data: data.items.map(transformUserIndexDtoToUserIndex),
+      total: data.meta.total,
     }
   },
-  // eslint-disable-next-line require-await -- This is a placeholder for the actual implementation
-  update: async (userUuid, form) => {
-    return transformUserDtoToUser({
-      firstName: form.firstName,
-      lastName: form.lastName,
-      uuid: userUuid,
+  getByUuid: async (userUuid) => {
+    const data = await httpClient.get({
+      responseSchema: userDtoSchema,
+      url: `/users/${userUuid}`,
     })
+
+    return transformUserDtoToUser(data)
+  },
+  update: async (userUuid, form) => {
+    const formData = new FormData()
+
+    const dto = transformUserUpdateFormToUserUpdateDto(form)
+
+    Object.entries(dto).forEach(([
+      key,
+      value,
+    ]) => {
+      formData.append(key, value)
+    })
+
+    const data = await httpClient.post({
+      body: formData,
+      config: {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+      responseSchema: userDtoSchema,
+      url: `/users/${userUuid}`,
+    })
+
+    return transformUserDtoToUser(data)
   },
 }

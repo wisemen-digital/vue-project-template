@@ -2,9 +2,9 @@ import { z } from 'zod'
 
 // GET /users/me
 export const currentUserDtoSchema = z.object({
-  email: z.string().email(),
   firstName: z.string(),
   lastName: z.string(),
+  mail: z.string().email(),
   uuid: z.string().uuid(),
 })
 

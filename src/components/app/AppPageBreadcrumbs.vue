@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import { AppIcon, AppText } from '@wisemen/vue-core'
 import type { Component } from 'vue'
 
 import type { Breadcrumb } from '@/types/breadcrumb.type'
 import { cn } from '@/utils/style.util'
 
-import AppIcon from './icon/AppIcon.vue'
 import AppTypedRouterLink from './link/AppTypedRouterLink.vue'
-import AppText from './text/AppText.vue'
 
 const props = defineProps<{
   breadcrumbs: Breadcrumb[]

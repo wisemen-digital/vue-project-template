@@ -1,9 +1,8 @@
 <script setup lang="ts">
+import { AppText } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import { logError } from '@/utils/logger.util'
-
-import AppText from '../text/AppText.vue'
 
 const props = defineProps<{
   message: null | string

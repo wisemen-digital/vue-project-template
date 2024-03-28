@@ -1,11 +1,10 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
+import { AppIcon, AppText } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import type { z } from 'zod'
 
-import AppIcon from '@/components/app/icon/AppIcon.vue'
-import AppText from '@/components/app/text/AppText.vue'
 import AppHeightTransition from '@/components/app/transitions/AppHeightTransition.vue'
 
 const props = defineProps<{

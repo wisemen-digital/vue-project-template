@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import { AppDialogContainer, AppToastContainer } from '@wisemen/vue-core'
 import { RouterView } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
-import AppModalsContainer from '@/components/app/modal/AppModalsContainer.vue'
-import AppRefreshPrompt from '@/components/app/refresh-prompt/AppRefreshPrompt.vue'
 import ThemeProvider from '@/components/layout/ThemeProvider.vue'
 
-import AppToastContainer from './components/app/toast/AppToastContainer.vue'
 import { useDocumentTitle } from './composables/document-title/documentTitle.composable'
+import { useRefreshPrompt } from './composables/refresh-prompt/refreshPrompt.composable'
 
 const { setTemplate } = useDocumentTitle()
+useRefreshPrompt()
 
 setTemplate('{title} | App')
 </script>
@@ -18,8 +18,7 @@ setTemplate('{title} | App')
   <ThemeProvider>
     <RouterView />
     <AppPageLoader />
-    <AppModalsContainer />
+    <AppDialogContainer />
     <AppToastContainer />
-    <AppRefreshPrompt />
   </ThemeProvider>
 </template>

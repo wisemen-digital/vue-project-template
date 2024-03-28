@@ -1,6 +1,5 @@
 import { createHttpZodClient } from '@appwise/zod-http-client'
-
-import { useToast } from '@/composables/toast/toast.composable'
+import { useToast } from '@wisemen/vue-core'
 
 import { axios, unauthorizedAxios } from './axios.lib'
 
@@ -13,11 +12,12 @@ interface ZodError {
 const ENVIRONMENT = import.meta.env.ENVIRONMENT
 
 function onZodError({ error, method, url }: ZodError): void {
-  const { showToast } = useToast()
+  const toast = useToast()
 
   if (ENVIRONMENT !== 'production') {
-    showToast({
-      title: `${method.toUpperCase()} ${url} returned a malformed response.`,
+    toast.showErrorToast({
+      description: `${method.toUpperCase()} ${url} returned a malformed response.`,
+      title: 'Something went wrong',
     })
   }
 

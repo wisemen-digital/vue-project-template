@@ -1,19 +1,30 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
-import { AppButton } from '@wisemen/vue-core'
+import {
+  AppButton,
+  AppKeyboardCommand,
+  AppTooltip,
+  useKeyboardCommand,
+} from '@wisemen/vue-core'
 import type { Form } from 'formango'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import type { z } from 'zod'
 
+import { onCreated } from '@/utils/createdHook.util'
+
 interface Props {
+  disabledKeyboardCommand?: boolean
   form: Form<TFormType>
   isAlwaysEnabled?: boolean
   isDisabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  disabledKeyboardCommand: false,
   isAlwaysEnabled: false,
   isDisabled: false,
 })
+
+const buttonRef = ref<InstanceType<typeof AppButton> | null>(null)
 
 const isButtonDisabled = computed<boolean>(() => {
   if (props.isDisabled) {
@@ -26,15 +37,53 @@ const isButtonDisabled = computed<boolean>(() => {
 
   return false
 })
+
+onCreated(() => {
+  if (!props.disabledKeyboardCommand) {
+    useKeyboardCommand({
+      command: {
+        keys: [
+          'ctrl',
+          's',
+        ],
+        onPressed: () => {
+          if (props.form.isDirty) {
+            buttonRef.value?.$el.click()
+          }
+        },
+        type: 'combination',
+      },
+      scope: 'global',
+    })
+  }
+})
 </script>
 
 <template>
-  <AppButton
-    :is-disabled="isButtonDisabled"
-    :is-loading="props.form.isSubmitting"
-    type="submit"
-    @click="props.form.submit"
-  >
-    <slot />
-  </AppButton>
-</template>
+  <div class="w-full">
+    <AppTooltip
+      :is-hidden="props.disabledKeyboardCommand"
+      side="bottom"
+    >
+      <AppButton
+        ref="buttonRef"
+        :is-disabled="isButtonDisabled"
+        :is-loading="props.form.isSubmitting"
+        type="submit"
+        class="w-full"
+        @click="props.form.submit"
+      >
+        <slot />
+      </AppButton>
+
+      <template #content>
+        <AppKeyboardCommand
+          v-if="!props.disabledKeyboardCommand"
+          :keys="['ctrl', 's']"
+          :has-border="true"
+          command-type="combination"
+        />
+      </template>
+    </AppTooltip>
+  </div>
+</template>,

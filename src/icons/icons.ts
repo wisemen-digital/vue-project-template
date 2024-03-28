@@ -1,4 +1,3 @@
-import { extendIcons } from '@wisemen/vue-core'
 import type { Component } from 'vue'
 
 export const icons = {
@@ -28,6 +27,7 @@ export const icons = {
   mail: import('./MailIcon.vue'),
   minus: import('./MinusIcon.vue'),
   plus: import('./PlusIcon.vue'),
+  refresh: import('./RefreshIcon.vue'),
   search: import('./SearchIcon.vue'),
   settings: import('./SettingsIcon.vue'),
   sort: import('./SortIcon.vue'),
@@ -35,17 +35,14 @@ export const icons = {
   sortDescending: import('./SortDescendingIcon.vue'),
   test: import('./CreditCardIcon.vue'),
   threeDots: import('./ThreeDotsIcon.vue'),
+  updateCloud: import('./UpdateCloudIcon.vue'),
   upload: import('./UploadIcon.vue'),
   warning: import('./WarningIcon.vue'),
 } satisfies Record<string, Component>
 
-extendIcons(icons)
-
 type CustomIcons = {
   [K in keyof typeof icons]: Component
 }
-
-export type Icon = keyof CustomIcons
 
 declare module '@wisemen/vue-core' {
   interface Icons extends CustomIcons {}

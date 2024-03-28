@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AppContainer from '@/components/app/AppContainer.vue'
-import AppText from '@/components/app/text/AppText.vue'
+import { AppContainer, AppText } from '@wisemen/vue-core'
+
 import type { Breadcrumb } from '@/types/breadcrumb.type'
 
 import AppPageBreadcrumbs from './AppPageBreadcrumbs.vue'

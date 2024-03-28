@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { AppButton } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import AppPage from '@/components/app/AppPage.vue'
-import AppButton from '@/components/app/button/AppButton.vue'
 import type { User } from '@/models/users/detail/user.model'
 import type { Breadcrumb } from '@/types/breadcrumb.type'
 
