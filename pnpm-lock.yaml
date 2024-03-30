@@ -62,6 +62,9 @@ dependencies:
   formango:
     specifier: 2.0.11
     version: 2.0.11(vue@3.4.21)(zod@3.22.4)
+  libphonenumber-js:
+    specifier: ^1.10.59
+    version: 1.10.59
   maska:
     specifier: ^2.1.11
     version: 2.1.11
@@ -8148,6 +8151,10 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /libphonenumber-js@1.10.59:
+    resolution: {integrity: sha512-HeTsOrDF/hWhEiKqZVwg9Cqlep5x2T+IYDENvT2VRj3iX8JQ7Y+omENv+AIn0vC8m6GYhivfCed5Cgfw27r5SA==}
+    dev: false
 
   /lie@3.1.1:
     resolution: {integrity: sha512-RiNhHysUjhrDQntfYSfY4MU24coXXdEOgw9WGcKHNeEwffDYbF//u87M1EWaMGzuFoSbqW0C9C6lEEhDOAswfw==}
