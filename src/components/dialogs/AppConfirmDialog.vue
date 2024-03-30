@@ -8,6 +8,7 @@ import {
 } from '@wisemen/vue-core'
 
 const props = defineProps<{
+  confirmText: string
   description: string
   title: string
 }>()
@@ -35,12 +36,12 @@ function onConfirm(): void {
 
       <AppDialogDescription>
         <AppText variant="body">
-          This action cannot be undone.
+          {{ props.description }}
         </AppText>
       </AppDialogDescription>
 
       <AppButton @click="onConfirm">
-        Ok
+        {{ props.confirmText }}
       </AppButton>
     </div>
   </AppDialog>

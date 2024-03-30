@@ -1,9 +1,16 @@
 <script lang="ts" setup>
-import { AppButton, AppIcon } from '@wisemen/vue-core'
+import {
+  AppButton,
+  AppIcon,
+  Icon,
+} from '@wisemen/vue-core'
+import { computed } from 'vue'
 
 const props = defineProps<{
   isDarkMode: boolean
 }>()
+
+const icon = computed<Icon>(() => props.isDarkMode ? 'eyeSlash' : 'eye')
 </script>
 
 <template>
@@ -13,9 +20,7 @@ const props = defineProps<{
     size="icon"
   >
     <AppIcon
-      :icon="props.isDarkMode
-        ? 'eyeSlash'
-        : 'eye'"
+      :icon="icon"
     />
   </AppButton>
 </template>

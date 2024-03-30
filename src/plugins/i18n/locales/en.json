@@ -33,6 +33,10 @@
     "keyboard_command": {
       "then": "then"
     },
+    "search_input": {
+      "clear": "Clear",
+      "placeholder": "Search..."
+    },
     "table": {
       "next": "Next",
       "previous": "Previous"
@@ -125,6 +129,7 @@
     "title": "Title",
     "unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
     "unsaved_changes_title": "Unsaved changes",
+    "save": "Save",
     "users": "Users",
     "vacancies": "Vacancies",
     "vat_number": "VAT-number",
