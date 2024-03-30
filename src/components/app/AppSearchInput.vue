@@ -6,10 +6,19 @@ import {
   useKeyboardCommand,
 } from '@wisemen/vue-core'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const props = withDefaults(defineProps<{
+  placeholder?: null | string
+}>(), {
+  placeholder: null,
+})
 
 const model = defineModel<null | string>({
   required: true,
 })
+
+const { t } = useI18n()
 
 const appInputRef = ref<InstanceType<typeof AppInput> | null>(null)
 
@@ -36,7 +45,7 @@ function onClearInput(): void {
   <AppInput
     ref="appInputRef"
     v-model="model"
-    placeholder="Search..."
+    :placeholder="props.placeholder ?? t('components.search_input.placeholder')"
     type="search"
   >
     <template #right>
@@ -53,7 +62,7 @@ function onClearInput(): void {
           size="xs"
           @click="onClearInput"
         >
-          Clear
+          {{ t('components.search_input.clear') }}
         </AppButton>
       </div>
     </template>
