@@ -18,14 +18,17 @@ export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChan
   })
 
   function handleUnsavedClose(callback: () => void): void {
+    const { t } = i18nPlugin.global
+
     if (isDirty.value) {
       void confirmDialog.openDialog({
-        description: i18nPlugin.global.t('shared.unsaved_changes_description'),
+        confirmText: t('shared.save'),
+        description: t('shared.unsaved_changes_description'),
         onConfirm: () => {
           confirmDialog.closeDialog()
           callback()
         },
-        title: i18nPlugin.global.t('shared.unsaved_changes_title'),
+        title: t('shared.unsaved_changes_title'),
       })
 
       return
