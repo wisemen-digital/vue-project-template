@@ -39,8 +39,8 @@ dependencies:
     specifier: ^10.7.2
     version: 10.9.0(vue-router@4.2.5)(vue@3.4.21)
   '@wisemen/vue-core':
-    specifier: file:/Users/wouter/Documents/Wisemen/Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-0.0.30.tgz
-    version: file:../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-0.0.30.tgz
+    specifier: ^0.0.30
+    version: 0.0.30
   axios:
     specifier: 1.6.5
     version: 1.6.5
@@ -5100,6 +5100,10 @@ packages:
       - vitest
       - vue-eslint-parser
     dev: true
+
+  /@wisemen/vue-core@0.0.30:
+    resolution: {integrity: sha512-OLEC1ENj5RcVJ+jRUCNgm/2KjT30d3LFz2vUuxqEW+cwXWSyyVyKn2mvACHuZ6110EKCtp9HfM5AF1k8labtsA==}
+    dev: false
 
   /abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -11950,9 +11954,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-  file:../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-0.0.30.tgz:
-    resolution: {integrity: sha512-xfvWYzQozhZOldE8px8Kqc7TgGkYA0WWFQMqf8AtJa1QuGGSqjICrANoglUncuveio8WR2TuKmv0x05hYT9/ww==, tarball: file:../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-0.0.30.tgz}
-    name: '@wisemen/vue-core'
-    version: 0.0.30
-    dev: false
