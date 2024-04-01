@@ -7,34 +7,36 @@ import type { LoginForm } from './login/loginForm.model'
 import type { ResetPasswordDto } from './reset-password/resetPasswordDto.model'
 import type { ResetPasswordForm } from './reset-password/resetPasswordForm.model'
 
-export function transformLoginFormToLoginDto(data: LoginForm): LoginDto {
-  return {
-    password: data.password,
-    username: data.email,
+export class AuthTransformer {
+  static toCurrentUser(dto: CurrentUserDto): CurrentUser {
+    return {
+      email: dto.mail,
+      firstName: dto.firstName,
+      fullName: `${dto.firstName} ${dto.lastName}`,
+      lastName: dto.lastName,
+      uuid: dto.uuid,
+    }
   }
-}
 
-export function transformForgotPasswordFormToForgotPasswordDto(data: ForgotPasswordForm): ForgotPasswordDto {
-  return {
-    email: data.email,
+  static toForgotPasswordDto(form: ForgotPasswordForm): ForgotPasswordDto {
+    return {
+      email: form.email,
+    }
   }
-}
 
-export function transformResetPasswordFormToResetPasswordDto(data: ResetPasswordForm): ResetPasswordDto {
-  return {
-    email: data.email,
-    password: data.password,
-    passwordConfirmation: data.password,
-    token: data.token,
+  static toLoginDto(form: LoginForm): LoginDto {
+    return {
+      password: form.password,
+      username: form.email,
+    }
   }
-}
 
-export function transformCurrentUserDtoToCurrentUser(data: CurrentUserDto): CurrentUser {
-  return {
-    email: data.mail,
-    firstName: data.firstName,
-    fullName: `${data.firstName} ${data.lastName}`,
-    lastName: data.lastName,
-    uuid: data.uuid,
+  static toResetPasswordDto(form: ResetPasswordForm): ResetPasswordDto {
+    return {
+      email: form.email,
+      password: form.password,
+      passwordConfirmation: form.password,
+      token: form.token,
+    }
   }
 }
