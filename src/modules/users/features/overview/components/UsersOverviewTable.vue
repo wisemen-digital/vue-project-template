@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import type {
+  PaginatedData,
+  Pagination,
+  TableColumn,
+} from '@wisemen/vue-core'
+import { AppTable } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import AppTable from '@/components/app/table/AppTable.vue'
 import type { UserIndex } from '@/models/users/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/users/index/userIndexFilters.model'
-import type { UserUuid } from '@/models/users/userUuid.model'
-import type { PaginatedData } from '@/types/pagination.type'
-import type { Pagination, TableColumn } from '@/types/table/table.type'
 
 const props = defineProps<{
   data: PaginatedData<UserIndex> | null
@@ -14,25 +16,24 @@ const props = defineProps<{
   pagination: Pagination<UserIndexFilters>
 }>()
 
-const emit = defineEmits<{
-  navigateToUserDetail: [userUuid: UserUuid]
-}>()
-
 const { t } = useI18n()
 
 const columns: TableColumn<UserIndex>[] = [
   {
+    id: 'uuid',
+    isSortable: true,
+    label: 'UUID',
+    size: 'minmax(400px, 500px)',
+    value: (row: UserIndex) => row.uuid,
+  },
+  {
     id: 'name',
     isSortable: true,
     label: t('shared.name'),
-    size: '1fr',
+    size: '500px',
     value: (row: UserIndex) => row.fullName,
   },
 ]
-
-function onRowClick(user: UserIndex): void {
-  emit('navigateToUserDetail', user.uuid)
-}
 </script>
 
 <template>
@@ -40,14 +41,20 @@ function onRowClick(user: UserIndex): void {
     :columns="columns"
     :data="props.data"
     :empty-message="t('users.overview.empty')"
+    :row-to="(row) => ({
+      name: 'users-detail',
+      params: {
+        userUuid: row.uuid,
+      },
+    })"
     :filters="[]"
+    :pin-first-column="true"
     :is-loading="props.isLoading"
     :is-row-clickable="true"
-    :pagination-options="props.pagination.paginationOptions.value"
+    :pagination="props.pagination"
     :title="t('shared.users')"
     @filter="props.pagination.handleFilterChange"
     @page="props.pagination.handlePageChange"
-    @row:click="onRowClick"
     @sort="props.pagination.handleSortChange"
   />
 </template>

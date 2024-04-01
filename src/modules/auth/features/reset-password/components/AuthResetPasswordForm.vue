@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { FormPasswordInput } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import AppForm from '@/components/form/form/AppForm.vue'
-import FormInput from '@/components/form/input/FormInput.vue'
 import type { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 
@@ -18,14 +18,14 @@ const password = props.form.register('password')
 
 <template>
   <AppForm :form="form">
-    <FormInput
+    <FormPasswordInput
       v-bind="password"
-      :label="t('common.password')"
+      :label="t('form.fields.password')"
       type="password"
     />
 
     <AuthFormSubmitButton :form="form">
-      {{ t('common.reset_password') }}
+      {{ t('auth.reset_password.action') }}
     </AuthFormSubmitButton>
   </AppForm>
 </template>

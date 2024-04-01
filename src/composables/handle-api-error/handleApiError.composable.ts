@@ -1,11 +1,10 @@
+import { useToast } from '@wisemen/vue-core'
 import { AxiosError } from 'axios'
 import type { Form } from 'formango'
 import type { z } from 'zod'
 
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin'
 import { logError, logInfo } from '@/utils/logger.util'
-
-import { useToast } from '../toast/toast.composable'
 
 /**
  * TODO
@@ -21,7 +20,7 @@ function mapApiErrorsToFormErrors(errors: unknown): z.ZodFormattedError<unknown>
 
 function handleAxiosError<T extends z.ZodType>(error: AxiosError, form?: Form<T>): void {
   const { t } = i18nPlugin.global
-  const { showToast } = useToast()
+  const { showErrorToast } = useToast()
 
   const { response } = error
   const { status } = response ?? {}
@@ -30,26 +29,30 @@ function handleAxiosError<T extends z.ZodType>(error: AxiosError, form?: Form<T>
 
   switch (status) {
     case 403:
-      showToast({
-        title: t('error.forbidden'),
+      showErrorToast({
+        description: t('error.forbidden.description'),
+        title: t('error.forbidden.title'),
       })
       break
     case 422:
-      showToast({
-        title: t('error.validation_error'),
+      showErrorToast({
+        description: t('error.validation_error.description'),
+        title: t('error.validation_error.title'),
       })
 
       form?.addErrors(mappedErrors as any)
       break
     case 500:
-      showToast({
-        title: t('error.internal_server_error'),
+      showErrorToast({
+        description: t('error.internal_server_error.description'),
+        title: t('error.internal_server_error.title'),
       })
       logError(error)
       break
     default:
-      showToast({
-        title: t('error.default_error'),
+      showErrorToast({
+        description: t('error.default_error.description'),
+        title: t('error.default_error.title'),
       })
       logError(error)
       break

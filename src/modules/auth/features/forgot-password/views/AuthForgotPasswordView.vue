@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { AppButton } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppButton from '@/components/app/button/AppButton.vue'
 import { useHandleApiError } from '@/composables/handle-api-error/handleApiError.composable'
 import { forgotPasswordFormSchema } from '@/models/auth/forgot-password/forgotPasswordForm.model'
 import { useAuthForgotPasswordMutation } from '@/modules/auth/api/mutations/authForgotPassword.mutation.ts'

@@ -1,19 +1,27 @@
 {
   "auth": {
     "back_to_login": "Back to login",
+    "check_your_email": "Check your email",
     "enter_your_email": "Enter your email",
     "forgot_password": "Forgot password?",
-    "check_your_email": "Check your email",
     "forgot_password_message": "Don't worry, we'll send you a reset link",
     "instruction_email_sent_to": "We sent an email with further instructions to {email}",
     "login": {
+      "error_toast": {
+        "description": "Please check your email and password and try again.",
+        "title": "Invalid credentials"
+      },
       "forgot_password": "Forgot password?",
       "invalid_email_or_password": "Invalid email or password",
       "log_in": "Log in",
       "sign_in_to_continue": "Sign in to continue",
       "welcome_back_name": "Welcome back, {name}"
     },
-    "reset_password": "Reset password"
+    "reset_password": {
+      "action": "Reset password",
+      "description": "Enter your new password below",
+      "title": "Reset password"
+    }
   },
   "components": {
     "combobox": {
@@ -22,19 +30,58 @@
     "image": {
       "open_in_new_tab": "Open in new tab"
     },
+    "keyboard_command": {
+      "then": "then"
+    },
+    "search_input": {
+      "clear": "Clear",
+      "placeholder": "Search..."
+    },
+    "table": {
+      "next": "Next",
+      "previous": "Previous"
+    },
     "password_input": {
-      "show_password": "Show password",
-      "hide_password": "Hide password"
+      "hide_password": "Hide password",
+      "show_password": "Show password"
+    },
+    "refresh_prompt": {
+      "new_version": {
+        "title": "New version available!",
+        "description": "Click refresh to reload your application and receive the latest functionality.",
+        "action": "Refresh page"
+      }
     }
   },
   "error": {
-    "bad_request": "Bad request",
-    "default_error": "Something went wrong. Please try again later.",
-    "forbidden": "Forbidden",
-    "internal_server_error": "Internal server error",
-    "resource_not_found": "Resource not found",
-    "unauthorized": "Unauthorized",
-    "validation_error": "One or more fields have errors. Please check and try again."
+    "bad_request": {
+      "description": "Something went wrong. Please try again.",
+      "title": "Bad request"
+    },
+    "default_error": {
+      "description": "Please try again later.",
+      "title": "Something went wrong"
+    },
+    "forbidden": {
+      "description": "You don't have permission to access this resource.",
+      "title": "Forbidden"
+    },
+    "internal_server_error": {
+      "description": "Please try again later.",
+      "title": "Internal server error"
+    },
+    "resource_not_found": {
+      "description": "The requested resource could not be found.",
+      "title": "Resource not found"
+    },
+    "unauthorized": {
+      "description": "You are not authorized to access this resource.",
+      "title": "Unauthorized"
+    },
+    "validation_error": {
+      "description": "Please check the form for errors.",
+      "title": "Validation error"
+    }
   },
   "form": {
     "fields": {
@@ -44,7 +91,6 @@
     "save_changes": "Save changes"
   },
   "shared": {
-    "close": "Close",
     "add_contact": "Add contact",
     "address": "Address",
     "b2b": "B2B",
@@ -54,6 +100,7 @@
     "cancel": "Cancel",
     "client_type": "Client type",
     "clients": "Clients",
+    "close": "Close",
     "company": "Company",
     "company_information": "Company information",
     "company_name": "Company name",
@@ -82,6 +129,7 @@
     "title": "Title",
     "unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
     "unsaved_changes_title": "Unsaved changes",
+    "save": "Save",
     "users": "Users",
     "vacancies": "Vacancies",
     "vat_number": "VAT-number",

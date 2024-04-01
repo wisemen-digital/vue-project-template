@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { FormInput } from '@wisemen/vue-core'
 import type { Field } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import FormGrid from '@/components/app/grid/FormGrid.vue'
 import FormSection from '@/components/form/form/FormSection.vue'
-import FormInput from '@/components/form/input/FormInput.vue'
 
 const props = defineProps<{
   firstName: Field<string>

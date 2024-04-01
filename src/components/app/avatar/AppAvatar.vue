@@ -1,7 +1,6 @@
 <script setup lang="ts">
+import { AppButton } from '@wisemen/vue-core'
 import { computed } from 'vue'
-
-import AppButton from '@/components/app/button/AppButton.vue'
 
 const props = defineProps<{
   firstName: string

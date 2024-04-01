@@ -12,6 +12,7 @@ const props = defineProps<{
 <template>
   <AppFormSubmitButton
     :form="props.form"
+    :disabled-keyboard-command="true"
     class="mt-4"
   >
     <slot />

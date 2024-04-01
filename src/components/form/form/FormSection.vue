@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppText from '@/components/app/text/AppText.vue'
+import { AppText } from '@wisemen/vue-core'
 
 const props = withDefaults(
   defineProps<{

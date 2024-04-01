@@ -1,9 +1,8 @@
+import { PaginationOptions } from '@wisemen/vue-core'
 import type { ComputedRef } from 'vue'
 
 import type { UseQueryReturnType } from '@/composables/query/query.composable'
 import { useQuery } from '@/composables/query/query.composable'
-import { usePaginationOptionsToApiParams } from '@/composables/table-pagination/pagination.composable'
-import type { PaginationOptions } from '@/composables/table-pagination/tablePagination.composable'
 import { TIME } from '@/constants/time.constant'
 import type { UserIndex } from '@/models/users/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/users/index/userIndexFilters.model'
@@ -21,7 +20,9 @@ export function useUsersIndexQuery(
     },
     queryKey: {
       key: QueryKey.USERS,
-      params: usePaginationOptionsToApiParams(paginationOptions),
+      // params: usePaginationOptionsToApiParams(paginationOptions),
+      // TODO: Implement pagination builder
+      params: {} as any,
     },
     staleTime: TIME.FIVE_MINUTES,
   })

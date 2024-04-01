@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import type { Pagination } from '@wisemen/vue-core'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppButton from '@/components/app/button/AppButton.vue'
-import AppInput from '@/components/app/input/AppInput.vue'
+import AppNewItemButton from '@/components/app/AppNewItemButton.vue'
+import AppSearchInput from '@/components/app/AppSearchInput.vue'
 import { useDebouncedSearch } from '@/composables/debounce-search/debounceSearch.composable'
 import type { UserIndexFilters } from '@/models/users/index/userIndexFilters.model'
-import type { Pagination } from '@/types/table/table.type'
 
 const props = defineProps<{
   pagination: Pagination<UserIndexFilters>
@@ -22,29 +22,26 @@ const {
   debouncedSearch,
   search,
 } = useDebouncedSearch(
-  props.pagination.paginationOptions.value.filters?.beer_name ?? '',
+  props.pagination.paginationOptions.value.filters?.search ?? '',
 )
 
-function onDebouncedSearchChange(search: null | string): void {
-  emit('search', search)
-}
-
-watch(debouncedSearch, onDebouncedSearchChange)
+watch(debouncedSearch, () => {
+  emit('search', debouncedSearch.value)
+})
 </script>
 
 <template>
   <div class="flex gap-x-2">
-    <AppInput
-      id="TODO"
+    <AppSearchInput
       v-model="search"
+      class="w-60"
     />
 
-    <AppButton
+    <AppNewItemButton
       :to="{
         name: 'users-create',
       }"
-    >
-      {{ t('users.overview.new_user') }}
-    </AppButton>
+      :label="t('users.overview.new_user')"
+    />
   </div>
 </template>

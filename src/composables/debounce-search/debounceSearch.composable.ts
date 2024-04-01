@@ -7,8 +7,8 @@ interface useDebounceSearchReturnType {
   search: Ref<null | string>
 }
 
-export function useDebouncedSearch(defaultValue: string): useDebounceSearchReturnType {
-  const search = ref<string>(defaultValue)
+export function useDebouncedSearch(defaultValue?: string): useDebounceSearchReturnType {
+  const search = ref<string>(defaultValue ?? '')
 
   const nullableSearch = computed<null | string>({
     get: () => {
