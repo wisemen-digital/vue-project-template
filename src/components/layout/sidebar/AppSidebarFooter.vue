@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import AppDivider from '@/components/app/AppDivider.vue'
 import AppAvatar from '@/components/app/avatar/AppAvatar.vue'
@@ -14,6 +15,7 @@ import { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import { useAuthStore } from '@/stores/auth.store'
 import { CURRENT_ENVIRONMENT, VERSION_NUMBER } from '@/utils/environment.util'
 
+const { t } = useI18n()
 const authStore = useAuthStore()
 const router = useTypedRouter()
 
@@ -24,7 +26,7 @@ const dropdownMenuItems: DropdownMenuItem[] = [
     items: [
       {
         icon: 'logout',
-        label: 'Sign out',
+        label: t('components.sidebar.footer.sign_out'),
         onSelect: signOut,
         type: 'option',
       },
@@ -78,14 +80,14 @@ function signOut(): void {
               variant="subtext"
               class="text-muted-foreground"
             >
-              Version: {{ VERSION_NUMBER ?? '-' }}
+              {{ t('components.sidebar.footer.version') }}: {{ VERSION_NUMBER ?? '-' }}
             </AppText>
 
             <AppText
               variant="subtext"
               class="mt-1 text-muted-foreground"
             >
-              Environment: {{ CURRENT_ENVIRONMENT }}
+              {{ t('components.sidebar.footer.environment') }} : {{ CURRENT_ENVIRONMENT }}
             </AppText>
           </div>
 

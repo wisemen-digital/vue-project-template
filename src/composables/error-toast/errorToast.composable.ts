@@ -1,5 +1,5 @@
 import { useToast } from '@wisemen/vue-core'
-import { AxiosError } from 'axios'
+import Axios from 'axios'
 import { useI18n } from 'vue-i18n'
 
 interface UserErrorToastReturnType {
@@ -11,7 +11,7 @@ export function useErrorToast(): UserErrorToastReturnType {
   const toast = useToast()
 
   function show(error: unknown): void {
-    if (error instanceof AxiosError) {
+    if (Axios.isAxiosError(error)) {
       const { response } = error
 
       toast.showErrorToast({

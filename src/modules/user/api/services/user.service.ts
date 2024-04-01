@@ -1,3 +1,5 @@
+import { PaginationOptions } from '@wisemen/vue-core'
+
 import { httpClient } from '@/libs/http.lib'
 import { paginatedDataSchema } from '@/models/paginated-data/paginatedData.model'
 import type { UserCreateForm } from '@/models/user/create/userCreateForm.model'
@@ -9,7 +11,7 @@ import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import { UserTransformer } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
-import { PaginationParams } from '@/utils/paginationBuilder.util'
+import { PaginationParamsBuilder } from '@/utils/paginationBuilder.util'
 
 export class UserService {
   static async create(form: UserCreateForm): Promise<User> {
@@ -22,10 +24,10 @@ export class UserService {
     return UserTransformer.toUser(data)
   }
 
-  static async getAll(params: PaginationParams<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
+  static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
     const data = await httpClient.get({
       config: {
-        params,
+        params: new PaginationParamsBuilder<UserIndexFilters>(paginationOptions).build(),
       },
       responseSchema: paginatedDataSchema(userDtoSchema),
       url: '/users',

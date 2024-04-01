@@ -38,24 +38,30 @@ const isButtonDisabled = computed<boolean>(() => {
   return false
 })
 
-onCreated(() => {
-  if (!props.isKeyboardCommandDisabled) {
-    useKeyboardCommand({
-      command: {
-        keys: [
-          'ctrl',
-          's',
-        ],
-        onPressed: () => {
-          if (props.form.isDirty) {
-            buttonRef.value?.$el.click()
-          }
-        },
-        type: 'combination',
-      },
-      scope: 'global',
-    })
+function initKeyboardCommand(): void {
+  if (props.isKeyboardCommandDisabled) {
+    return
   }
+
+  useKeyboardCommand({
+    command: {
+      keys: [
+        'ctrl',
+        's',
+      ],
+      onPressed: () => {
+        if (props.form.isDirty) {
+          buttonRef.value?.$el.click()
+        }
+      },
+      type: 'combination',
+    },
+    scope: 'global',
+  })
+}
+
+onCreated(() => {
+  initKeyboardCommand()
 })
 </script>
 

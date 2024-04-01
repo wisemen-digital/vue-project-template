@@ -50,7 +50,6 @@ const columns: TableColumn<UserIndex>[] = [
     :filters="[]"
     :pin-first-column="true"
     :is-loading="props.isLoading"
-    :is-row-clickable="true"
     :pagination="props.pagination"
     :title="t('shared.users')"
     @filter="props.pagination.handleFilterChange"

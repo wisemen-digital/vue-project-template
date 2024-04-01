@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { Pagination } from '@wisemen/vue-core'
-import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppNewItemButton from '@/components/app/AppNewItemButton.vue'
 import AppSearchInput from '@/components/app/AppSearchInput.vue'
-import { useDebouncedSearch } from '@/composables/debounce-search/debounceSearch.composable'
+import { useDebounceSearch } from '@/composables/debounce-search/debounceSearch.composable'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 
 const props = defineProps<{
@@ -22,13 +21,13 @@ const { t } = useI18n()
 const defaultSearchValue = props.pagination.paginationOptions.value.filters?.search ?? ''
 
 const {
-  debouncedSearch,
   isDebouncing,
   search,
-} = useDebouncedSearch(defaultSearchValue)
-
-watch(debouncedSearch, () => {
-  emit('search', debouncedSearch.value)
+} = useDebounceSearch({
+  defaultValue: defaultSearchValue,
+  onDebounceSearch: (value) => {
+    emit('search', value)
+  },
 })
 </script>
 

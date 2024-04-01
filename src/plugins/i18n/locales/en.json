@@ -24,6 +24,13 @@
     }
   },
   "components": {
+    "sidebar": {
+      "footer": {
+        "version": "Version",
+        "invironment": "Environment",
+        "sign_out": "Sign out"
+      }
+    },
     "combobox": {
       "empty": "No items found"
     },
