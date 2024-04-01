@@ -10,9 +10,13 @@ const userDetailQuery = useUserDetailQuery(routeParams.userUuid)
 </script>
 
 <template>
-  <AppDataProviderView :query="userDetailQuery">
+  <AppDataProviderView
+    :queries="{
+      user: userDetailQuery,
+    }"
+  >
     <template #default="{ data }">
-      <UserDetailView :user="data" />
+      <UserDetailView :user="data.user" />
     </template>
   </AppDataProviderView>
 </template>

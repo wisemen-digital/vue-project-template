@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
+import AppDataProviderView from '@/components/app/AppDataProviderView.vue'
 import { useTypedRouteParams } from '@/composables/router/typedRouteParams.composable'
-import type { User } from '@/models/user/detail/user.model'
 import { useUserDetailQuery } from '@/modules/user/api/queries/userDetail.query'
 
-import UsersUpdateView from './UserUpdateView.vue'
+import UserUpdateView from './UserUpdateView.vue'
 
-const routeParams = useTypedRouteParams('user-detail')
-const usersDetailQuery = useUserDetailQuery(routeParams.userUuid)
-
-const user = computed<User | null>(() => usersDetailQuery.data.value)
+const routeParams = useTypedRouteParams('user-update')
+const userDetailQuery = useUserDetailQuery(routeParams.userUuid)
 </script>
 
 <template>
-  <UsersUpdateView
-    v-if="user !== null"
-    :user="user"
-  />
+  <AppDataProviderView
+    :queries="{
+      user: userDetailQuery,
+    }"
+  >
+    <template #default="{ data }">
+      <UserUpdateView :user="data.user" />
+    </template>
+  </AppDataProviderView>
 </template>

@@ -8,26 +8,47 @@ import { UseQueryReturnType } from '@/composables/query/query.composable'
 import AppErrorState from './error-state/AppErrorState.vue'
 
 const props = defineProps<{
-  query: UseQueryReturnType<T>
+  queries: {
+    [K in keyof T]: UseQueryReturnType<T[K]>
+  }
 }>()
 
-const data = computed<T | null>(() => props.query.data.value)
-
-const error = computed<AxiosError | null>(() => {
-  const error = props.query.error.value
-
-  if (error === null) {
-    return null
+const isLoading = computed<boolean>(() => {
+  for (const key in props.queries) {
+    if (props.queries[key].isLoading.value as boolean) {
+      return true
+    }
   }
 
-  if (error instanceof AxiosError) {
-    return error
-  }
-
-  throw error
+  return false
 })
 
-const isLoading = computed<boolean>(() => props.query.isLoading.value)
+const error = computed<AxiosError | null>(() => {
+  for (const key in props.queries) {
+    const error = props.queries[key].error.value
+
+    if (error !== null && error instanceof AxiosError) {
+      return error
+    }
+    else if (error !== null) {
+      throw error
+    }
+  }
+
+  return null
+})
+
+const data = computed<{
+  [K in keyof T]: T[K]
+}>(() => {
+  const data = {} as any
+
+  for (const key in props.queries) {
+    data[key] = props.queries[key].data.value
+  }
+
+  return data
+})
 </script>
 
 <template>
@@ -37,13 +58,10 @@ const isLoading = computed<boolean>(() => props.query.isLoading.value)
     v-else-if="error !== null"
     class="flex flex-1 items-center justify-center"
   >
-    <AppErrorState
-      :error="error"
-    />
+    <AppErrorState :error="error" />
   </div>
 
-  <slot
-    v-else-if="data !== null"
-    :data="data"
-  />
+  <template v-else>
+    <slot :data="data" />
+  </template>
 </template>
