@@ -50,7 +50,7 @@ export function useRefreshPrompt(): void {
   onMounted(() => {
     watch(needRefresh, (needRefresh) => {
       if (needRefresh) {
-        toast.showToast({
+        toast.custom({
           action: {
             icon: 'refresh',
             isLoading,

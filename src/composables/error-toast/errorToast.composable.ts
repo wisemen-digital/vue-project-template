@@ -14,7 +14,7 @@ export function useErrorToast(): UserErrorToastReturnType {
     if (Axios.isAxiosError(error)) {
       const { response } = error
 
-      toast.showErrorToast({
+      toast.error({
         description: response?.data?.message ?? t('error.default_error.description'),
         title: t('error.default_error.title'),
       })

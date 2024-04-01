@@ -45,7 +45,7 @@ onSubmitForm(async (values) => {
       body: values,
     })
 
-    toast.showSuccessToast({
+    toast.success({
       title: t('users.create.success'),
     })
 

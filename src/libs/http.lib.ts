@@ -15,7 +15,7 @@ function onZodError({ error, method, url }: ZodError): void {
   const toast = useToast()
 
   if (ENVIRONMENT !== 'production') {
-    toast.showErrorToast({
+    toast.error({
       description: `${method.toUpperCase()} ${url} returned a malformed response.`,
       title: 'Something went wrong',
     })

@@ -62,7 +62,7 @@ onSubmitForm(async (values) => {
       },
     })
 
-    toast.showSuccessToast({
+    toast.success({
       title: t('users.update.success'),
     })
 
