@@ -27,7 +27,7 @@
     "sidebar": {
       "footer": {
         "version": "Version",
-        "invironment": "Environment",
+        "environment": "Environment",
         "sign_out": "Sign out"
       }
     },

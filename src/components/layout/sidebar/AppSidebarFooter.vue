@@ -87,7 +87,7 @@ function signOut(): void {
               variant="subtext"
               class="mt-1 text-muted-foreground"
             >
-              {{ t('components.sidebar.footer.environment') }} : {{ CURRENT_ENVIRONMENT }}
+              {{ t('components.sidebar.footer.environment') }}: {{ CURRENT_ENVIRONMENT }}
             </AppText>
           </div>
 
