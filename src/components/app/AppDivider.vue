@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<{
         { 'h-[1px] w-full': props.direction === 'horizontal' },
       )
     "
+    role="presentation"
     class="bg-muted"
   />
 </template>
