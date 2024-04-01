@@ -11,14 +11,14 @@ import type { z } from 'zod'
 
 import { onCreated } from '@/utils/createdHook.util'
 
-interface Props {
+const props = withDefaults(defineProps<{
   form: Form<TFormType>
+  formId?: null | string
   isAlwaysEnabled?: boolean
   isDisabled?: boolean
   isKeyboardCommandDisabled?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+}>(), {
+  formId: null,
   isAlwaysEnabled: false,
   isDisabled: false,
   isKeyboardCommandDisabled: false,
@@ -38,24 +38,30 @@ const isButtonDisabled = computed<boolean>(() => {
   return false
 })
 
-onCreated(() => {
-  if (!props.isKeyboardCommandDisabled) {
-    useKeyboardCommand({
-      command: {
-        keys: [
-          'ctrl',
-          's',
-        ],
-        onPressed: () => {
-          if (props.form.isDirty) {
-            buttonRef.value?.$el.click()
-          }
-        },
-        type: 'combination',
-      },
-      scope: 'global',
-    })
+function initKeyboardCommand(): void {
+  if (props.isKeyboardCommandDisabled) {
+    return
   }
+
+  useKeyboardCommand({
+    command: {
+      keys: [
+        'ctrl',
+        's',
+      ],
+      onPressed: () => {
+        if (props.form.isDirty) {
+          buttonRef.value?.$el.click()
+        }
+      },
+      type: 'combination',
+    },
+    scope: 'global',
+  })
+}
+
+onCreated(() => {
+  initKeyboardCommand()
 })
 </script>
 
@@ -63,26 +69,30 @@ onCreated(() => {
   <div class="w-full">
     <AppTooltip
       :is-hidden="props.isKeyboardCommandDisabled"
+      :disable-hoverable-content="true"
+      :delay-duration="300"
       side="bottom"
     >
       <AppButton
         ref="buttonRef"
+        :form="props.formId"
         :is-disabled="isButtonDisabled"
         :is-loading="props.form.isSubmitting"
         type="submit"
         class="w-full"
-        @click="props.form.submit"
       >
         <slot />
       </AppButton>
 
       <template #content>
-        <AppKeyboardCommand
-          v-if="!props.isKeyboardCommandDisabled"
-          :keys="['ctrl', 's']"
-          :has-border="true"
-          command-type="combination"
-        />
+        <div class="px-3 py-2">
+          <AppKeyboardCommand
+            v-if="!props.isKeyboardCommandDisabled"
+            :keys="['ctrl', 's']"
+            :has-border="true"
+            command-type="combination"
+          />
+        </div>
       </template>
     </AppTooltip>
   </div>

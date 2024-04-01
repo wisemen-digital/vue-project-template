@@ -3,12 +3,12 @@ import { useMutation } from '@/composables/mutation/mutation.composable.ts'
 import type { ForgotPasswordForm } from '@/models/auth/forgot-password/forgotPasswordForm.model.ts'
 import { QueryKey } from '@/types/query/queryKey.type'
 
-import { authService } from '../services/auth.service.ts'
+import { AuthService } from '../services/auth.service.ts'
 
 export function useAuthForgotPasswordMutation(): UseMutationReturnType<ForgotPasswordForm, void> {
   return useMutation<ForgotPasswordForm, void>({
     queryFn: async ({ body }) => {
-      await authService.forgotPassword(body)
+      await AuthService.forgotPassword(body)
     },
     queryKeysToInvalidate: [
       {

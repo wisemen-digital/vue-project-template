@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { cn } from '@/utils/style.util.ts'
 
-const props = defineProps<{
-  direction: 'horizontal' | 'vertical'
-}>()
+const props = withDefaults(defineProps<{
+  direction?: 'horizontal' | 'vertical'
+}>(), {
+  direction: 'horizontal',
+})
 </script>
 
 <template>
@@ -16,6 +18,7 @@ const props = defineProps<{
         { 'h-[1px] w-full': props.direction === 'horizontal' },
       )
     "
+    role="presentation"
     class="bg-muted"
   />
 </template>

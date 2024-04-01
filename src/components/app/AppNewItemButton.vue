@@ -38,7 +38,11 @@ useKeyboardCommand({
 </script>
 
 <template>
-  <AppTooltip side="bottom">
+  <AppTooltip
+    :disable-hoverable-content="true"
+    :delay-duration="300"
+    side="bottom"
+  >
     <AppRouterLinkButton
       :to="props.to"
       icon-left="plus"
@@ -47,11 +51,13 @@ useKeyboardCommand({
     </AppRouterLinkButton>
 
     <template #content>
-      <AppKeyboardCommand
-        :keys="keys"
-        :has-border="true"
-        command-type="combination"
-      />
+      <div class="px-3 py-2">
+        <AppKeyboardCommand
+          :keys="keys"
+          :has-border="true"
+          command-type="combination"
+        />
+      </div>
     </template>
   </AppTooltip>
 </template>

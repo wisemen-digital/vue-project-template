@@ -54,7 +54,7 @@ function handleLoginError(error: unknown): void {
       },
     })
 
-    toast.showErrorToast({
+    toast.error({
       description: t('auth.login.error_toast.description'),
       title: t('auth.login.error_toast.title'),
     })

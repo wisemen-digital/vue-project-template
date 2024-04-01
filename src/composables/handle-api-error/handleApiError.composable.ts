@@ -20,7 +20,7 @@ function mapApiErrorsToFormErrors(errors: unknown): z.ZodFormattedError<unknown>
 
 function handleAxiosError<T extends z.ZodType>(error: AxiosError, form?: Form<T>): void {
   const { t } = i18nPlugin.global
-  const { showErrorToast } = useToast()
+  const toast = useToast()
 
   const { response } = error
   const { status } = response ?? {}
@@ -29,13 +29,13 @@ function handleAxiosError<T extends z.ZodType>(error: AxiosError, form?: Form<T>
 
   switch (status) {
     case 403:
-      showErrorToast({
+      toast.error({
         description: t('error.forbidden.description'),
         title: t('error.forbidden.title'),
       })
       break
     case 422:
-      showErrorToast({
+      toast.error({
         description: t('error.validation_error.description'),
         title: t('error.validation_error.title'),
       })
@@ -43,14 +43,14 @@ function handleAxiosError<T extends z.ZodType>(error: AxiosError, form?: Form<T>
       form?.addErrors(mappedErrors as any)
       break
     case 500:
-      showErrorToast({
+      toast.error({
         description: t('error.internal_server_error.description'),
         title: t('error.internal_server_error.title'),
       })
       logError(error)
       break
     default:
-      showErrorToast({
+      toast.error({
         description: t('error.default_error.description'),
         title: t('error.default_error.title'),
       })

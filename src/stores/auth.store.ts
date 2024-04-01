@@ -7,10 +7,10 @@ import {
 } from 'vue'
 
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import { transformLoginFormToLoginDto } from '@/models/auth/auth.transformer'
+import { AuthTransformer } from '@/models/auth/auth.transformer'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import type { LoginForm } from '@/models/auth/login/loginForm.model'
-import { authService } from '@/modules/auth/api/services/auth.service'
+import { AuthService } from '@/modules/auth/api/services/auth.service'
 
 export const useAuthStore = defineStore('auth', () => {
   const lastLoginAttemptEmail = ref<null | string>(null)
@@ -38,7 +38,7 @@ export const useAuthStore = defineStore('auth', () => {
       return currentUser.value
     }
 
-    currentUser.value = await authService.getCurrentUser()
+    currentUser.value = await AuthService.getCurrentUser()
 
     return currentUser.value
   }
@@ -48,7 +48,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function login(data: LoginForm): Promise<void> {
-    const { password, username } = transformLoginFormToLoginDto(data)
+    const { password, username } = AuthTransformer.toLoginDto(data)
     await oAuthClient.login(username, password)
   }
 

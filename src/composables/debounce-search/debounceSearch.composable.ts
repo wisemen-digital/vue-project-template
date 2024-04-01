@@ -1,14 +1,24 @@
 import { useDebounce } from '@vueuse/core'
-import type { Ref } from 'vue'
-import { computed, ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import {
+  computed,
+  ref,
+  watch,
+} from 'vue'
+
+interface UseDebounceSearchOptions {
+  defaultValue?: string
+  onDebounceSearch: (value: null | string) => void
+}
 
 interface useDebounceSearchReturnType {
   debouncedSearch: Ref<null | string>
+  isDebouncing: ComputedRef<boolean>
   search: Ref<null | string>
 }
 
-export function useDebouncedSearch(defaultValue?: string): useDebounceSearchReturnType {
-  const search = ref<string>(defaultValue ?? '')
+export function useDebounceSearch(options: UseDebounceSearchOptions): useDebounceSearchReturnType {
+  const search = ref<string>(options.defaultValue ?? '')
 
   const nullableSearch = computed<null | string>({
     get: () => {
@@ -25,8 +35,15 @@ export function useDebouncedSearch(defaultValue?: string): useDebounceSearchRetu
 
   const debouncedSearch = useDebounce(nullableSearch, 300)
 
+  const isDebouncing = computed<boolean>(() => debouncedSearch.value !== nullableSearch.value)
+
+  watch(debouncedSearch, (value) => {
+    options.onDebounceSearch(value)
+  })
+
   return {
     debouncedSearch,
+    isDebouncing,
     search: nullableSearch,
   }
 }

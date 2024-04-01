@@ -12,7 +12,10 @@ import { logError, logInfo } from '@/utils/logger.util.ts'
 
 export function useRefreshPrompt(): void {
   const { t } = useI18n()
-  const { setLoadingState } = useLoading()
+  const {
+    isLoading,
+    setLoadingState,
+  } = useLoading()
   const toast = useToast()
 
   const {
@@ -38,17 +41,19 @@ export function useRefreshPrompt(): void {
     },
   })
 
-  async function onRefreshButtonClick(): Promise<void> {
+  async function onRefreshButtonClick(closeToast: () => void): Promise<void> {
     setLoadingState(true)
     await updateServiceWorker(true)
+    closeToast()
   }
 
   onMounted(() => {
     watch(needRefresh, (needRefresh) => {
       if (needRefresh) {
-        toast.showToast({
+        toast.custom({
           action: {
             icon: 'refresh',
+            isLoading,
             label: t('components.refresh_prompt.new_version.action'),
             onClick: onRefreshButtonClick,
           },

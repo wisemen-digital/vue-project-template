@@ -24,6 +24,13 @@
     }
   },
   "components": {
+    "sidebar": {
+      "footer": {
+        "version": "Version",
+        "environment": "Environment",
+        "sign_out": "Sign out"
+      }
+    },
     "combobox": {
       "empty": "No items found"
     },
@@ -138,7 +145,11 @@
   "users": {
     "create": {
       "create_user": "Create User",
-      "title": "New user"
+      "title": "New user",
+      "success": "User created successfully"
+    },
+    "update": {
+      "success": "User updated successfully"
     },
     "detail": {
       "edit_user": "Edit user"

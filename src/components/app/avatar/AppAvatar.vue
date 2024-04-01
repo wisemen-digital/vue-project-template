@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AppButton } from '@wisemen/vue-core'
+import { AppText } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
 const props = defineProps<{
@@ -8,18 +8,21 @@ const props = defineProps<{
 }>()
 
 const userInitials = computed<string>(() => {
-  const firstNameLetter = props.firstName.charAt(0)
-  const lastNameLetter = props.lastName.charAt(0)
+  const firstNameLetter = props.firstName[0]
+  const lastNameLetter = props.lastName[0]
 
   return `${firstNameLetter}${lastNameLetter}`
 })
 </script>
 
 <template>
-  <AppButton
-    class="flex aspect-square items-center justify-center rounded-full bg-primary text-background"
-    size="sm"
-  >
-    {{ userInitials }}
-  </AppButton>
+  <div class="flex aspect-square size-8 items-center justify-center rounded-full bg-primary">
+    <AppText
+      variant="caption"
+      as="span"
+      class="font-medium text-primary-foreground"
+    >
+      {{ userInitials }}
+    </AppText>
+  </div>
 </template>
