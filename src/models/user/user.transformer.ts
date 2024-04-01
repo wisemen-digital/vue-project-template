@@ -7,43 +7,47 @@ import type { UserIndexDto } from './index/userIndexDto.model'
 import type { UserUpdateDto } from './update/userUpdateDto.model'
 import type { UserUpdateForm } from './update/userUpdateForm.model'
 
-export class UserTransformer {
-  static toUpdateUserForm(user: User): UserUpdateForm {
+export class UserIndexTransformer {
+  static fromDto(dto: UserIndexDto): UserIndex {
+    return {
+      firstName: dto.firstName,
+      fullName: `${dto.firstName} ${dto.lastName}`,
+      lastName: dto.lastName,
+      uuid: dto.uuid,
+    }
+  }
+}
+
+export class UserDetailTransformer {
+  static fromDto(dto: UserDto): User {
+    return {
+      firstName: dto.firstName,
+      fullName: `${dto.firstName} ${dto.lastName}`,
+      lastName: dto.lastName,
+      uuid: dto.uuid,
+    }
+  }
+}
+
+export class UserFormTransformer {
+  static toCreateDto(form: UserCreateForm): UserCreateDto {
+    return {
+      firstName: form.firstName,
+      lastName: form.lastName,
+    }
+  }
+
+  static toUpdateDto(form: UserUpdateForm): UserUpdateDto {
+    return {
+      firstName: form.firstName,
+      lastName: form.lastName,
+    }
+  }
+
+  static toUpdateForm(user: User): UserUpdateForm {
     return {
       firstName: user.firstName,
       lastName: user.lastName,
-    }
-  }
-
-  static toUser(dto: UserDto): User {
-    return {
-      firstName: dto.firstName,
-      fullName: `${dto.firstName} ${dto.lastName}`,
-      lastName: dto.lastName,
-      uuid: dto.uuid,
-    }
-  }
-
-  static toUserCreateDto(form: UserCreateForm): UserCreateDto {
-    return {
-      firstName: form.firstName,
-      lastName: form.lastName,
-    }
-  }
-
-  static toUserIndex(dto: UserIndexDto): UserIndex {
-    return {
-      firstName: dto.firstName,
-      fullName: `${dto.firstName} ${dto.lastName}`,
-      lastName: dto.lastName,
-      uuid: dto.uuid,
-    }
-  }
-
-  static toUserUpdateDto(form: UserUpdateForm): UserUpdateDto {
-    return {
-      firstName: form.firstName,
-      lastName: form.lastName,
     }
   }
 }

@@ -9,7 +9,7 @@ import { useErrorToast } from '@/composables/error-toast/errorToast.composable'
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import type { User } from '@/models/user/detail/user.model'
 import { UserUpdateForm as UserUpdateFormType, userUpdateFormSchema } from '@/models/user/update/userUpdateForm.model'
-import { UserTransformer } from '@/models/user/user.transformer'
+import { UserFormTransformer } from '@/models/user/user.transformer'
 import { useUserUpdateMutation } from '@/modules/user/api/mutations/userUpdate.mutation'
 
 import UserUpdateForm from '../components/UserUpdateForm.vue'
@@ -49,7 +49,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 ]
 
 const { form, onSubmitForm } = useForm({
-  initialState: computed<UserUpdateFormType>(() => UserTransformer.toUpdateUserForm(props.user)),
+  initialState: computed<UserUpdateFormType>(() => UserFormTransformer.toUpdateForm(props.user)),
   schema: userUpdateFormSchema,
 })
 

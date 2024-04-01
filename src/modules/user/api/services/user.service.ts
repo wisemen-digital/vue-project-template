@@ -8,7 +8,11 @@ import { userDtoSchema } from '@/models/user/detail/userDto.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
-import { UserTransformer } from '@/models/user/user.transformer'
+import {
+  UserDetailTransformer,
+  UserFormTransformer,
+  UserIndexTransformer,
+} from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
 import { PaginationParamsBuilder } from '@/utils/paginationBuilder.util'
@@ -16,12 +20,12 @@ import { PaginationParamsBuilder } from '@/utils/paginationBuilder.util'
 export class UserService {
   static async create(form: UserCreateForm): Promise<User> {
     const data = await httpClient.post({
-      body: UserTransformer.toUserCreateDto(form),
+      body: UserFormTransformer.toCreateDto(form),
       responseSchema: userDtoSchema,
       url: '/users',
     })
 
-    return UserTransformer.toUser(data)
+    return UserDetailTransformer.fromDto(data)
   }
 
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
@@ -34,7 +38,7 @@ export class UserService {
     })
 
     return {
-      data: data.items.map(UserTransformer.toUserIndex),
+      data: data.items.map(UserIndexTransformer.fromDto),
       total: data.meta.total,
     }
   }
@@ -45,16 +49,16 @@ export class UserService {
       url: `/users/${userUuid}`,
     })
 
-    return UserTransformer.toUser(data)
+    return UserDetailTransformer.fromDto(data)
   }
 
   static async update(userUuid: UserUuid, form: UserUpdateForm): Promise<User> {
     const data = await httpClient.post({
-      body: UserTransformer.toUserUpdateDto(form),
+      body: UserFormTransformer.toUpdateDto(form),
       responseSchema: userDtoSchema,
       url: `/users/${userUuid}`,
     })
 
-    return UserTransformer.toUser(data)
+    return UserDetailTransformer.fromDto(data)
   }
 }
