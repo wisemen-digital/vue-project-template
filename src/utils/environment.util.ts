@@ -15,7 +15,7 @@ export interface Environment {
 
 export const IS_DEVELOPMENT = import.meta.env.MODE === EnvironmentMode.DEVELOPMENT
 export const CURRENT_ENVIRONMENT = import.meta.env.MODE as EnvironmentMode
-export const VERSION = import.meta.env.VITE_APP_VERSION as string
+export const VERSION_NUMBER = import.meta.env.VITE_APP_VERSION as null | string
 
 export function isAllowed(environmentMode: EnvironmentMode[]): boolean {
   return environmentMode.includes(import.meta.env.MODE as EnvironmentMode)

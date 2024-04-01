@@ -24,6 +24,7 @@ export const icons = {
   info: import('./InfoIcon.vue'),
   link: import('./LinkIcon.vue'),
   logo: import('./LogoIcon.vue'),
+  logout: import('./LogoutIcon.vue'),
   mail: import('./MailIcon.vue'),
   minus: import('./MinusIcon.vue'),
   plus: import('./PlusIcon.vue'),

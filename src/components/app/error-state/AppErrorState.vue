@@ -1,40 +1,46 @@
 <script setup lang="ts">
 import { AppText } from '@wisemen/vue-core'
+import { AxiosError } from 'axios'
 import { useI18n } from 'vue-i18n'
 
-import { logError } from '@/utils/logger.util'
+import GridBackgroundPattern from '@/assets/svgs/GridBackgroundPattern.vue'
 
 const props = defineProps<{
-  message: null | string
-  status: number
+  error: AxiosError
 }>()
 
 const { t } = useI18n()
 
+const status = props.error.response?.status ?? 500
+
 const httpErrorMap = new Map<string, string>(
   Object.entries({
-    400: t('error.bad_request'),
-    401: t('error.unauthorized'),
-    403: t('error.forbidden'),
-    404: t('error.resource_not_found'),
-    500: t('error.internal_server_error'),
+    400: t('error.bad_request.title'),
+    401: t('error.unauthorized.title'),
+    403: t('error.forbidden.title'),
+    404: t('error.resource_not_found.title'),
+    500: t('error.internal_server_error.title'),
   }),
 )
-
-logError(props.message)
 </script>
 
 <template>
-  <AppText
-    class="flex items-center p-4"
-    variant="subtext"
-  >
-    <span class="border-r border-solid border-neutral-200 px-4 tracking-wider text-muted-foreground/75">
-      {{ props.status }}
-    </span>
+  <div class="relative flex size-96 items-center justify-center overflow-hidden">
+    <GridBackgroundPattern class="absolute size-full scale-125 text-muted" />
 
-    <span class="px-4 uppercase tracking-wider text-muted-foreground/75">
-      {{ httpErrorMap.get(`${status}`) ?? t('suspense.something_went_wrong') }}
-    </span>
-  </AppText>
+    <div class="relative z-10">
+      <AppText
+        class="flex items-center p-4 font-medium"
+        variant="subtext"
+      >
+        <span class="border-r border-solid border-muted-foreground/75 px-5 tracking-wider text-muted-foreground/75">
+          {{ status }}
+        </span>
+
+        <span class="px-4 font-medium uppercase tracking-wider text-muted-foreground/75">
+          {{ httpErrorMap.get(`${status}`) ?? t('suspense.something_went_wrong') }}
+        </span>
+      </AppText>
+    </div>
+  </div>
 </template>

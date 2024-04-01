@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useHandleApiError } from '@/composables/handle-api-error/handleApiError.composable'
+import { useErrorToast } from '@/composables/error-toast/errorToast.composable'
 import { forgotPasswordFormSchema } from '@/models/auth/forgot-password/forgotPasswordForm.model'
 import { useAuthForgotPasswordMutation } from '@/modules/auth/api/mutations/authForgotPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
@@ -19,6 +19,7 @@ const { lastLoginAttemptEmail } = storeToRefs(authStore)
 const hasResetPassword = ref<boolean>(false)
 
 const { t } = useI18n()
+const errorToast = useErrorToast()
 
 const resetEmail = ref<string>('')
 
@@ -54,7 +55,7 @@ onSubmitForm(async (values) => {
     resetEmail.value = values.email
   }
   catch (error) {
-    useHandleApiError(error, form)
+    errorToast.show(error)
   }
 })
 </script>

@@ -12,7 +12,7 @@
     --background: 255, 255, 255;
     --foreground: 16, 24, 40;
 
-    --primary: 127, 86, 217;
+    --primary: 23, 23, 23;
     --primary-foreground: 255, 255, 255;
 
     --secondary: 187, 242, 249;
@@ -43,17 +43,17 @@
     --border: 229, 233, 240;
     --input: 255, 255, 255;
 
-    --neutral-100: 245, 245, 245;
-    --neutral-200: 229, 229, 229;
-    --neutral-300: 212, 212, 212;
-    --neutral-400: 163, 163, 163;
-    --neutral-500: 115, 115, 115;
-    --neutral-600: 82, 82, 82;
-    --neutral-700: 64, 64, 64;
-    --neutral-800: 38, 38, 38;
-    --neutral-900: 23, 23, 23;
+    --neutral-100: 245, 245, 250;
+    --neutral-200: 229, 229, 234;
+    --neutral-300: 212, 212, 217;
+    --neutral-400: 163, 163, 168;
+    --neutral-500: 115, 115, 120;
+    --neutral-600: 82, 82, 87;
+    --neutral-700: 64, 64, 69;
+    --neutral-800: 38, 38, 43;
+    --neutral-900: 23, 23, 28;
 
-    --ring: 127, 86, 217;
+    --ring: 23, 23, 23;
 
     --input-foreground: 0, 0, 56;
     --input-placeholder: 192, 196, 204;
@@ -101,13 +101,13 @@
 
   .dark {
     --background: 16, 16, 20;
-    --foreground: 255, 255, 255;
+    --foreground: 245, 245, 250;
 
-    --primary: 127, 86, 217;
-    --primary-foreground: 255, 255, 255;
+    --primary: 202, 222, 252;
+    --primary-foreground: 0, 0, 0;
 
     --secondary: 187, 242, 249;
-    --secondary-foreground: 71, 84, 103;
+    --secondary-foreground: 71, 71, 76;
 
     --accent: 240, 238, 217;
     --accent-foreground: 57, 27, 27;
@@ -121,11 +121,11 @@
     --warning: 247, 178, 51;
     --warning-foreground: 255, 255, 255;
 
-    --muted: 240, 240, 255;
-    --muted-foreground: 102, 112, 133;
-    --muted-background: 25, 25, 28;
+    --muted: 28, 28, 33;
+    --muted-foreground: 152, 152, 167;
+    --muted-background: 20, 20, 25;
 
-    --popover: 16, 24, 40;
+    --popover: 13, 13, 18;
     --popover-foreground: 255, 255, 255;
 
     --card: 16, 24, 40;
@@ -134,20 +134,20 @@
     --border: 50, 50, 50;
     --input: 24, 24, 28;
 
-    --neutral-900: 245, 245, 245;
-    --neutral-800: 229, 229, 229;
-    --neutral-700: 212, 212, 212;
-    --neutral-600: 163, 163, 163;
-    --neutral-500: 115, 115, 115;
-    --neutral-400: 82, 82, 82;
-    --neutral-300: 64, 64, 64;
-    --neutral-200: 38, 38, 38;
-    --neutral-100: 23, 23, 23;
+    --neutral-900: 245, 245, 250;
+    --neutral-800: 229, 229, 234;
+    --neutral-700: 212, 212, 217;
+    --neutral-600: 163, 163, 168;
+    --neutral-500: 115, 115, 120;
+    --neutral-400: 82, 82, 87;
+    --neutral-300: 64, 64, 69;
+    --neutral-200: 38, 38, 43;
+    --neutral-100: 23, 23, 28;
 
-    --ring: 127, 86, 217;
+    --ring: 202, 222, 252;
 
     --input-foreground: 255, 255, 255;
-    --input-placeholder: 192, 196, 204;
+    --input-placeholder: 152, 156, 164;
     --input-disabled: 40, 44, 53;
     --input-border: 56, 61, 70;
     --input-ring: 172, 180, 219;

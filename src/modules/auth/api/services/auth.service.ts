@@ -1,31 +1,22 @@
 import { z } from 'zod'
 
 import { httpClient, unauthorizedHttpClient } from '@/libs/http.lib'
-import {
-  transformCurrentUserDtoToCurrentUser,
-  transformForgotPasswordFormToForgotPasswordDto,
-  transformResetPasswordFormToResetPasswordDto,
-} from '@/models/auth/auth.transformer'
+import { AuthTransformer } from '@/models/auth/auth.transformer'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import { currentUserDtoSchema } from '@/models/auth/current-user/currentUserDto.model'
 import type { ForgotPasswordForm } from '@/models/auth/forgot-password/forgotPasswordForm.model'
 import type { ResetPasswordForm } from '@/models/auth/reset-password/resetPasswordForm.model'
 
-interface AuthService {
-  forgotPassword: (body: ForgotPasswordForm) => Promise<void>
-  getCurrentUser: () => Promise<CurrentUser>
-  resetPassword: (body: ResetPasswordForm) => Promise<void>
-}
-
-export const authService: AuthService = {
-  forgotPassword: async (form) => {
+export class AuthService {
+  static async forgotPassword(form: ForgotPasswordForm): Promise<void> {
     await unauthorizedHttpClient.post({
-      body: transformForgotPasswordFormToForgotPasswordDto(form),
+      body: AuthTransformer.toForgotPasswordDto(form),
       responseSchema: z.unknown(),
       url: '/forgot-password',
     })
-  },
-  getCurrentUser: async () => {
+  }
+
+  static async getCurrentUser(): Promise<CurrentUser> {
     const data = await httpClient.get({
       config: {
         baseURL: import.meta.env.API_BASE_URL,
@@ -34,13 +25,14 @@ export const authService: AuthService = {
       url: '/api/auth/userinfo',
     })
 
-    return transformCurrentUserDtoToCurrentUser(data)
-  },
-  resetPassword: async (form) => {
+    return AuthTransformer.toCurrentUser(data)
+  }
+
+  static async resetPassword(form: ResetPasswordForm): Promise<void> {
     await unauthorizedHttpClient.post({
-      body: transformResetPasswordFormToResetPasswordDto(form),
+      body: AuthTransformer.toResetPasswordDto(form),
       responseSchema: z.unknown(),
       url: '/reset-password',
     })
-  },
+  }
 }

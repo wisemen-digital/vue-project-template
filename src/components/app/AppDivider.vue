@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { cn } from '@/utils/style.util.ts'
 
-const props = defineProps<{
-  direction: 'horizontal' | 'vertical'
-}>()
+const props = withDefaults(defineProps<{
+  direction?: 'horizontal' | 'vertical'
+}>(), {
+  direction: 'horizontal',
+})
 </script>
 
 <template>

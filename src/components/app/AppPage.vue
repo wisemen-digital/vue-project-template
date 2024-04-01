@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { AppContainer, AppText } from '@wisemen/vue-core'
-
-import type { Breadcrumb } from '@/types/breadcrumb.type'
-
-import AppPageBreadcrumbs from './AppPageBreadcrumbs.vue'
+import {
+  AppBreadcrumbs,
+  AppContainer,
+  AppText,
+  BreadcrumbItem,
+} from '@wisemen/vue-core'
 
 const props = withDefaults(
   defineProps<{
-    breadcrumbs?: Breadcrumb[] | null
+    breadcrumbs?: BreadcrumbItem[] | null
     subtitle?: null | string
     title: string
   }>(),
@@ -21,9 +22,9 @@ const props = withDefaults(
 <template>
   <div class="flex w-full flex-1 flex-col bg-background">
     <AppContainer class="py-10">
-      <AppPageBreadcrumbs
+      <AppBreadcrumbs
         v-if="props.breadcrumbs !== null"
-        :breadcrumbs="props.breadcrumbs"
+        :items="props.breadcrumbs"
         class="mb-1"
       />
 

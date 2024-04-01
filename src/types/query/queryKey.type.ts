@@ -1,21 +1,22 @@
 import type { MaybeRefOrGetter } from 'vue'
 
-import type { PaginationApiParams } from '../pagination.type'
+import { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import { PaginationParams } from '@/utils/paginationBuilder.util'
 
 export enum QueryKey {
   CURRENT_USER = 'currentUser',
 
   // Users
+  USER_DETAIL = 'user-detail',
   USERS = 'users',
-  USERS_DETAIL = 'user-detail',
 }
 
 export interface QueryKeys {
   [QueryKey.CURRENT_USER]: void
 
   // Users
-  [QueryKey.USERS]: PaginationApiParams
-  [QueryKey.USERS_DETAIL]: {
+  [QueryKey.USER_DETAIL]: {
     userUuid: MaybeRefOrGetter<string>
   }
+  [QueryKey.USERS]: PaginationParams<UserIndexFilters>
 }
