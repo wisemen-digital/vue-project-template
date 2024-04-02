@@ -1,11 +1,12 @@
 ## [1.0.0] (2024-04-01)
 
 ### Features
-- **Models:** add `date`, `datetime`, `currency`, and `phoneNumber` models.
-- **Services:** change from objects to classes for improved structure.
-- **Transformers:** change from objects to classes for better organization.
+- **models:** add `date`, `datetime`, `currency`, and `phoneNumber` models.
+- **services:** change from objects to classes for improved structure.
+- **transformers:** change from objects to classes for better organization.
 - **DataProviderView:** add a view to manage loading and error states during data fetching.
 
 ### Improvements
-- **useErrorToast:** added as a replacement for `useHandleApiError`.
-- **Pagination:** implement `PaginationBuilder` as a preferred alternative to `usePaginationOptionsToApiParams`.
+- **useErrorToast:** use in favor `useHandleApiError`.
+- **pagination:** implement `PaginationBuilder` as a preferred alternative to `usePaginationOptionsToApiParams`.
+- **architecture** rename plural folder and files to singular. E.g. `UsersCreateForm.vue` -> `UserCreateForm.vue`
