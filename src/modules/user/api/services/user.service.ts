@@ -15,7 +15,7 @@ import {
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
-import { PaginationParamsBuilder } from '@/utils/paginationBuilder.util'
+import { PaginationParamsBuilder } from '@/utils/paginationParamsBuilder.util.ts'
 
 export class UserService {
   static async create(form: UserCreateForm): Promise<User> {
