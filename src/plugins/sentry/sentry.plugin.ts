@@ -25,6 +25,6 @@ export function configureSentry(app: App<Element>): void {
     replaysOnErrorSampleRate: 1.0,
     replaysSessionSampleRate: 0.1,
     sampleRate: 1,
-    tracesSampleRate: import.meta.env.SENTRY_SAMPLE_RATE ?? 1,
+    tracesSampleRate: 1,
   })
 }
