@@ -11,9 +11,9 @@ import { useI18n } from 'vue-i18n'
 import AppDivider from '@/components/app/AppDivider.vue'
 import AppAvatar from '@/components/app/avatar/AppAvatar.vue'
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
+import { CURRENT_BUILD_NUMBER, CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 import { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import { useAuthStore } from '@/stores/auth.store'
-import { CURRENT_ENVIRONMENT, VERSION_NUMBER } from '@/utils/environment.util'
 
 const { t } = useI18n()
 const authStore = useAuthStore()
@@ -80,7 +80,7 @@ function signOut(): void {
               variant="subtext"
               class="text-muted-foreground"
             >
-              {{ t('components.sidebar.footer.version') }}: {{ VERSION_NUMBER ?? '-' }}
+              {{ t('components.sidebar.footer.version') }}: {{ CURRENT_BUILD_NUMBER ?? '-' }}
             </AppText>
 
             <AppText

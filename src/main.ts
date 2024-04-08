@@ -27,4 +27,4 @@ app.use(piniaPlugin)
 app.use(routerPlugin)
 app.use(vueQueryPlugin).mount('#app')
 
-configureSentry(app, routerPlugin)
+configureSentry(app)

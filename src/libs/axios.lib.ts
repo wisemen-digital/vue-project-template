@@ -2,13 +2,11 @@ import { addAuthorizationHeader } from '@appwise/oauth2-vue-client'
 import type { CreateAxiosDefaults } from 'axios'
 import Axios from 'axios'
 
+import { API_BASE_URL, API_ENDPOINT } from '@/constants/environment.constant.ts'
 import { routerPlugin } from '@/plugins/router/router.plugin.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 import { oAuthClient } from './oAuth.lib'
-
-const API_BASE_URL = import.meta.env.API_BASE_URL
-const API_ENDPOINT = import.meta.env.API_ENDPOINT
 
 const axiosConfig: CreateAxiosDefaults = {
   baseURL: `${API_BASE_URL}${API_ENDPOINT}`,
