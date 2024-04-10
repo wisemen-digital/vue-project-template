@@ -1,9 +1,11 @@
 import { OAuth2VueClient } from '@appwise/oauth2-vue-client'
 import axios from 'axios'
 
-const API_CLIENT_ID = import.meta.env.API_CLIENT_ID
-const API_CLIENT_SECRET = import.meta.env.API_CLIENT_SECRET
-const API_BASE_URL = import.meta.env.API_BASE_URL
+import {
+  API_BASE_URL,
+  API_CLIENT_ID,
+  API_CLIENT_SECRET,
+} from '@/constants/environment.constant.ts'
 
 export const oAuthClient = new OAuth2VueClient({
   axios,

@@ -1,33 +1,30 @@
 import * as Sentry from '@sentry/vue'
 import type { App } from 'vue'
-import type { Router } from 'vue-router'
 
-import { EnvironmentMode } from '@/utils/environment.util'
+import {
+  CURRENT_BUILD_NUMBER,
+  CURRENT_ENVIRONMENT,
+  SENTRY_DSN,
+} from '@/constants/environment.constant.ts'
 
-export function configureSentry(app: App<Element>, router: Router): void {
-  if (import.meta.env.SENTRY_DSN === undefined) {
+export function configureSentry(app: App<Element>): void {
+  if (SENTRY_DSN === undefined) {
     return
   }
 
-  if (import.meta.env.MODE === EnvironmentMode.DEVELOPMENT) {
+  if (CURRENT_ENVIRONMENT === 'development') {
     return
   }
 
   return Sentry.init({
     app,
     attachStacktrace: true,
-    dsn: import.meta.env.SENTRY_DSN,
-    environment: import.meta.env.ENVIRONMENT,
-    integrations: [
-      new Sentry.BrowserTracing({
-        routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-      }),
-      new Sentry.Replay(),
-    ],
-    release: import.meta.env.APP_VERSION,
+    dsn: SENTRY_DSN,
+    environment: CURRENT_ENVIRONMENT,
+    release: CURRENT_BUILD_NUMBER,
     replaysOnErrorSampleRate: 1.0,
     replaysSessionSampleRate: 0.1,
     sampleRate: 1,
-    tracesSampleRate: import.meta.env.SENTRY_SAMPLE_RATE ?? 1,
+    tracesSampleRate: 1,
   })
 }
