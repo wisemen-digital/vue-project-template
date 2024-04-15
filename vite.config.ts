@@ -60,6 +60,9 @@ export default defineConfig({
     }),
     sentryVitePlugin({
       authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+      errorHandler(error) {
+        console.error('SentryVitePlugin error:', error)
+      },
       org: process.env.VITE_SENTRY_ORG,
       project: process.env.VITE_SENTRY_PROJECT,
       url: process.env.VITE_SENTRY_URL,
