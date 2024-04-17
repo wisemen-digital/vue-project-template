@@ -1,4 +1,5 @@
 ## [1.1.1] (2024-04-15)
+
 ### Feature
 - **sentry:** add errorHandler to sentry so that it doesn't block the build when sentry initialization fails.
 
