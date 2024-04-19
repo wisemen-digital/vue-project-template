@@ -9,7 +9,7 @@ import { useI18n } from 'vue-i18n'
 
 import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElementSpacer.vue'
 import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
-import AppForm from '@/components/form/form/AppForm.vue'
+import AppForm from '@/components/form/AppForm.vue'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import type { loginFormSchema } from '@/models/auth/login/loginForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'

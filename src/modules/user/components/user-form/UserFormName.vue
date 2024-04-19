@@ -4,7 +4,7 @@ import type { Field } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import FormGrid from '@/components/app/grid/FormGrid.vue'
-import FormSection from '@/components/form/form/FormSection.vue'
+import FormSection from '@/components/form/FormSection.vue'
 
 const props = defineProps<{
   firstName: Field<string>
