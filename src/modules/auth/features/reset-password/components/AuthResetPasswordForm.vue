@@ -3,7 +3,7 @@ import { FormPasswordInput } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
-import AppForm from '@/components/form/form/AppForm.vue'
+import AppForm from '@/components/form/AppForm.vue'
 import type { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
 

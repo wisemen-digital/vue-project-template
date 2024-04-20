@@ -3,8 +3,8 @@ import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import AppTeleport from '@/components/app/teleport/AppTeleport.vue'
-import AppForm from '@/components/form/form/AppForm.vue'
-import AppFormSubmitButton from '@/components/form/form/AppFormSubmitButton.vue'
+import AppForm from '@/components/form/AppForm.vue'
+import AppFormSubmitButton from '@/components/form/AppFormSubmitButton.vue'
 import type { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
 import UserFormName from '@/modules/user/components/user-form/UserFormName.vue'
 

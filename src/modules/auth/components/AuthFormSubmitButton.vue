@@ -2,7 +2,7 @@
 import type { Form } from 'formango'
 import type { z } from 'zod'
 
-import AppFormSubmitButton from '@/components/form/form/AppFormSubmitButton.vue'
+import AppFormSubmitButton from '@/components/form/AppFormSubmitButton.vue'
 
 const props = defineProps<{
   form: Form<TFormType>
