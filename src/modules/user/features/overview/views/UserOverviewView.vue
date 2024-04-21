@@ -7,8 +7,8 @@ import AppTablePage from '@/components/app/AppTablePage.vue'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 
-import UsersOverviewHeaderActions from '../components/UserOverviewHeaderActions.vue'
-import UsersOverviewTable from '../components/UserOverviewTable.vue'
+import UserOverviewHeaderActions from '../components/UserOverviewHeaderActions.vue'
+import UserOverviewTable from '../components/UserOverviewTable.vue'
 
 const { t } = useI18n()
 
@@ -30,7 +30,7 @@ function onSearch(search: null | string): void {
 <template>
   <AppTablePage :title="t('shared.users')">
     <template #header-actions>
-      <UsersOverviewHeaderActions
+      <UserOverviewHeaderActions
         :pagination="paginationOptions"
         :is-loading="isLoading"
         @search="onSearch"
@@ -38,9 +38,9 @@ function onSearch(search: null | string): void {
     </template>
 
     <template #default>
-      <UsersOverviewTable
+      <UserOverviewTable
         :data="userIndexQuery.data.value"
-        :is-loading="userIndexQuery.isLoading.value"
+        :is-loading="isLoading"
         :pagination="paginationOptions"
       />
     </template>

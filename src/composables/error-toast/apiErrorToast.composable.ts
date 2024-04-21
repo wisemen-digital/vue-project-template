@@ -6,7 +6,7 @@ interface UserErrorToastReturnType {
   show: (error: unknown) => void
 }
 
-export function useErrorToast(): UserErrorToastReturnType {
+export function useApiErrorToast(): UserErrorToastReturnType {
   const { t } = useI18n()
   const toast = useToast()
 

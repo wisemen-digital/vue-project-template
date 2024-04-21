@@ -3,7 +3,7 @@ import { useForm } from 'formango'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useErrorToast } from '@/composables/error-toast/errorToast.composable'
+import { useApiErrorToast } from '@/composables/error-toast/apiErrorToast.composable'
 import { useTypedRouteParams } from '@/composables/router/typedRouteParams.composable'
 import { useTypedRouteQuery } from '@/composables/router/typedRouteQuery.composable'
 import { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
@@ -15,7 +15,7 @@ import ResetPasswordForm from '../components/AuthResetPasswordForm.vue'
 const hasPasswordBeenReset = ref<boolean>(false)
 
 const { t } = useI18n()
-const errorToast = useErrorToast()
+const errorToast = useApiErrorToast()
 
 const { form, onSubmitForm } = useForm({
   schema: resetPasswordFormSchema,
@@ -24,8 +24,8 @@ const { form, onSubmitForm } = useForm({
 const routeParams = useTypedRouteParams('reset-password')
 const queryParams = useTypedRouteQuery('reset-password')
 
-form.register('token', routeParams.token)
-form.register('email', queryParams.email)
+form.register('token', routeParams.token.value)
+form.register('email', queryParams.email.value)
 
 const resetPasswordMutation = useAuthResetPasswordMutation()
 
