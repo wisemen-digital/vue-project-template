@@ -30,8 +30,7 @@ const email = props.form.register('email', props.lastLoginAttemptEmail ?? undefi
     <AuthFormSubmitButton
       :form="form"
       :is-always-enabled="true"
-    >
-      {{ t('auth.reset_password') }}
-    </AuthFormSubmitButton>
+      :label="t('auth.reset_password')"
+    />
   </AppForm>
 </template>
