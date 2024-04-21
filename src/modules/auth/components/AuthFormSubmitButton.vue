@@ -2,19 +2,21 @@
 import type { Form } from 'formango'
 import type { z } from 'zod'
 
-import AppFormSubmitButton from '@/components/form/AppFormSubmitButton.vue'
+import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 
 const props = defineProps<{
   form: Form<TFormType>
+  label: string
 }>()
 </script>
 
 <template>
-  <AppFormSubmitButton
+  <FormSubmitButton
     :form="props.form"
+    :label="props.label"
     :is-keyboard-command-disabled="true"
-    class="mt-4"
+    class="mt-6"
   >
     <slot />
-  </AppFormSubmitButton>
+  </FormSubmitButton>
 </template>
