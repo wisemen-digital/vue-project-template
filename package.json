@@ -38,7 +38,7 @@
     "libphonenumber-js": "^1.10.59",
     "maska": "^2.1.11",
     "pinia": "2.1.7",
-    "radix-vue": "^1.6.1",
+    "radix-vue": "^1.7.1",
     "tailwind-merge": "2.2.2",
     "vue": "3.4.21",
     "vue-i18n": "9.10.2",
