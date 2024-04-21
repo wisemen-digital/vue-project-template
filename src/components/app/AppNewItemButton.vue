@@ -1,13 +1,12 @@
 <script setup lang="ts" generic="TRoute extends keyof Routes">
 import type { KeyboardKey } from '@wisemen/vue-core'
 import {
-  AppKeyboardCommand,
+  AppKeyboardKey,
   AppRouterLinkButton,
-  AppTooltip,
   useKeyboardCommand,
 } from '@wisemen/vue-core'
+import { ref } from 'vue'
 
-import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import type { Routes } from '@/routes/routes'
 import type { RouteLocationTyped } from '@/types/router/router.type'
 
@@ -16,21 +15,18 @@ const props = defineProps<{
   to: RouteLocationTyped<TRoute>
 }>()
 
+const routerLinkButtonRef = ref<InstanceType<typeof AppRouterLinkButton> | null>(null)
+
 const keys: KeyboardKey[] = [
-  'ctrl',
   'n',
 ]
-
-const router = useTypedRouter()
-
-function navigate(): void {
-  void router.push(props.to)
-}
 
 useKeyboardCommand({
   command: {
     keys,
-    onPressed: navigate,
+    onPressed: () => {
+      routerLinkButtonRef.value?.$el.click()
+    },
     type: 'combination',
   },
   scope: 'global',
@@ -38,26 +34,18 @@ useKeyboardCommand({
 </script>
 
 <template>
-  <AppTooltip
-    :disable-hoverable-content="true"
-    :delay-duration="300"
-    side="bottom"
+  <AppRouterLinkButton
+    ref="routerLinkButtonRef"
+    :to="props.to"
+    icon-left="plus"
   >
-    <AppRouterLinkButton
-      :to="props.to"
-      icon-left="plus"
-    >
+    <div class="flex items-center gap-x-2">
       {{ props.label }}
-    </AppRouterLinkButton>
 
-    <template #content>
-      <div class="px-3 py-2">
-        <AppKeyboardCommand
-          :keys="keys"
-          :has-border="true"
-          command-type="combination"
-        />
-      </div>
-    </template>
-  </AppTooltip>
+      <AppKeyboardKey
+        keyboard-key="n"
+        class="ml-1 bg-primary-foreground/20 !text-primary-foreground"
+      />
+    </div>
+  </AppRouterLinkButton>
 </template>

@@ -5,7 +5,7 @@ import AppSidebar from './sidebar/AppSidebar.vue'
 </script>
 
 <template>
-  <div class="flex size-full min-h-screen">
+  <div class="flex size-full flex-1">
     <AppSidebar />
 
     <div class="flex flex-1 flex-col overflow-hidden">
