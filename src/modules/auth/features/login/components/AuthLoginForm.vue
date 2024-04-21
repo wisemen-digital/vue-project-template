@@ -58,8 +58,9 @@ const password = props.form.register('password')
       </AppTypedRouterLink>
     </AppVerticalFormElementSpacer>
 
-    <AuthFormSubmitButton :form="form">
-      {{ t('auth.login.log_in') }}
-    </AuthFormSubmitButton>
+    <AuthFormSubmitButton
+      :label="t('auth.login.log_in')"
+      :form="form"
+    />
   </AppForm>
 </template>
