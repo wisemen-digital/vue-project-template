@@ -1,7 +1,7 @@
 /* eslint-disable simple-import-sort/imports */
 import { useQueryClient, useMutation as useTanstackMutation } from '@tanstack/vue-query'
 import type { AxiosError } from 'axios'
-import type { ComputedRef } from 'vue'
+import type { ComputedRef, UnwrapRef } from 'vue'
 import { computed } from 'vue'
 
 import type { QueryKeys } from '@/types/query/queryKey.type'
@@ -18,7 +18,7 @@ interface QueryKeyWithParams<K extends keyof QueryKeys, TResData> {
   exact: true
   key: K
   params: {
-    [P in keyof QueryKeys[K]]: ((params: TResData) => QueryKeys[K][P]) | QueryKeys[K][P]
+    [P in keyof QueryKeys[K]]: ((params: TResData) => UnwrapRef<QueryKeys[K][P]>) | UnwrapRef<QueryKeys[K][P]>
   }
 }
 

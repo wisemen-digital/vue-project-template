@@ -6,7 +6,7 @@ import { useUserDetailQuery } from '@/modules/user/api/queries/userDetail.query'
 import UserDetailView from './UserDetailView.vue'
 
 const routeParams = useTypedRouteParams('user-detail')
-const userDetailQuery = useUserDetailQuery(routeParams.userUuid.value)
+const userDetailQuery = useUserDetailQuery(routeParams.userUuid)
 </script>
 
 <template>
