@@ -1,7 +1,8 @@
 import { PaginationOptions } from '@wisemen/vue-core'
-import type { MaybeRefOrGetter } from 'vue'
+import type { Ref } from 'vue'
 
 import { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import { UserUuid } from '@/models/user/userUuid.model'
 
 export enum QueryKey {
   CURRENT_USER = 'currentUser',
@@ -16,7 +17,7 @@ export interface QueryKeys {
 
   // Users
   [QueryKey.USER_DETAIL]: {
-    userUuid: MaybeRefOrGetter<string>
+    userUuid: Ref<UserUuid>
   }
   [QueryKey.USERS]: PaginationOptions<UserIndexFilters>
 }

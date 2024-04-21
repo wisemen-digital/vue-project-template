@@ -12,10 +12,12 @@ import { logError, logInfo } from '@/utils/logger.util.ts'
 
 export function useRefreshPrompt(): void {
   const { t } = useI18n()
+
   const {
     isLoading,
     setLoadingState,
   } = useLoading()
+
   const toast = useToast()
 
   const {
@@ -52,7 +54,6 @@ export function useRefreshPrompt(): void {
       if (needRefresh) {
         toast.custom({
           action: {
-            icon: 'refresh',
             isLoading,
             label: t('components.refresh_prompt.new_version.action'),
             onClick: onRefreshButtonClick,
