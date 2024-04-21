@@ -29,7 +29,8 @@
         "version": "Version",
         "environment": "Environment",
         "sign_out": "Sign out"
-      }
+      },
+      "go_to": "Go to"
     },
     "combobox": {
       "empty": "No items found"
