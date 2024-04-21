@@ -19,6 +19,6 @@ const props = withDefaults(defineProps<{
       )
     "
     role="presentation"
-    class="bg-muted"
+    class="bg-border"
   />
 </template>

@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import {
   AppIcon,
+  AppKeyboardCommand,
+  AppText,
   AppTooltip,
 } from '@wisemen/vue-core'
+import { useI18n } from 'vue-i18n'
 
 import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
-import { MenuItem } from '@/types/menuItem.type'
+import { NavigationItem } from '@/types/navigationItem.type'
 
 const props = defineProps<{
-  items: MenuItem[]
+  items: NavigationItem[]
 }>()
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -20,8 +25,8 @@ const props = defineProps<{
         :key="item.label"
       >
         <AppTooltip
-          :content="item.label"
           :disable-close-on-trigger-click="true"
+          :hide-arrow="true"
           side="right"
         >
           <AppTypedRouterLink
@@ -41,6 +46,24 @@ const props = defineProps<{
               />
             </div>
           </AppTypedRouterLink>
+
+          <template #content>
+            <div class="flex items-center gap-x-2 px-2 py-1.5">
+              <AppText
+                variant="caption"
+                class="text-muted-foreground"
+              >
+                {{ t('components.sidebar.go_to') }} <span class="lowercase">{{ item.label }}</span>
+              </AppText>
+
+              <AppKeyboardCommand
+                v-if="item.command"
+                :keys="item.command.keys"
+                :has-border="true"
+                :command-type="item.command.type"
+              />
+            </div>
+          </template>
         </AppTooltip>
       </li>
     </ul>
