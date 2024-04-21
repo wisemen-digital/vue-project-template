@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n'
 import AppTeleport from '@/components/app/teleport/AppTeleport.vue'
 import AppForm from '@/components/form/AppForm.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
+import FormLayout from '@/components/form/FormLayout.vue'
 import type { userUpdateFormSchema } from '@/models/user/update/userUpdateForm.model'
 import UserFormName from '@/modules/user/components/user-form/UserFormName.vue'
 
@@ -29,10 +30,12 @@ const lastName = props.form.register('lastName')
         />
       </AppTeleport>
 
-      <UserFormName
-        :first-name="firstName"
-        :last-name="lastName"
-      />
+      <FormLayout>
+        <UserFormName
+          :first-name="firstName"
+          :last-name="lastName"
+        />
+      </FormLayout>
     </template>
   </AppForm>
 </template>
