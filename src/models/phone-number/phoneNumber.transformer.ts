@@ -1,4 +1,4 @@
-import { parsePhoneNumber } from 'libphonenumber-js'
+import { formatNumber, parsePhoneNumber } from 'libphonenumber-js'
 
 import type { PhoneNumberDto } from '@/models/phone-number/phoneNumberDto.model.ts'
 
@@ -6,7 +6,7 @@ import { PhoneNumber } from './phoneNumber.model'
 
 export class PhoneNumberTransformer {
   static fromDto(dto: PhoneNumberDto): PhoneNumber {
-    return `${dto.dialCode} ${dto.number}`
+    return formatNumber(dto, 'INTERNATIONAL')
   }
 
   static fromNullableDto(dto: PhoneNumberDto | null): PhoneNumber | null {
@@ -23,10 +23,7 @@ export class PhoneNumberTransformer {
       nationalNumber,
     } = parsePhoneNumber(phoneNumber)
 
-    return {
-      dialCode: countryCallingCode,
-      number: nationalNumber,
-    }
+    return `+${countryCallingCode} ${nationalNumber}`
   }
 
   static toNullableDto(phoneNumber: PhoneNumber | null): PhoneNumberDto | null {
