@@ -22,8 +22,10 @@ export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChan
 
     if (isDirty.value) {
       void confirmDialog.open({
-        confirmText: t('shared.save'),
-        description: t('shared.unsaved_changes_description'),
+        cancelText: t('components.unsaved_changes_dialog.cancel'),
+        confirmText: t('components.unsaved_changes_dialog.confirm'),
+        description: t('components.unsaved_changes_dialog.description'),
+        isDestructive: true,
         onConfirm: () => {
           confirmDialog.close()
           callback()

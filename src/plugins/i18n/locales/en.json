@@ -58,6 +58,11 @@
         "description": "Click refresh to reload your application and receive the latest functionality.",
         "action": "Refresh page"
       }
+    },
+    "unsaved_changes_dialog": {
+      "description": "All unsaved changes will be lost. Are you sure you want to continue?",
+      "confirm": "Yes, I'm sure",
+      "cancel": "No, cancel"
     }
   },
   "error": {
