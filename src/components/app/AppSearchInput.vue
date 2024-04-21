@@ -9,12 +9,14 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const props = withDefaults(defineProps<{
+  disableKeyboardCommand?: boolean
   placeholder?: null | string
 }>(), {
+  disableKeyboardCommand: false,
   placeholder: null,
 })
 
-const model = defineModel<null | string>({
+const model = defineModel<string>({
   required: true,
 })
 
@@ -22,22 +24,25 @@ const { t } = useI18n()
 
 const appInputRef = ref<InstanceType<typeof AppInput> | null>(null)
 
-useKeyboardCommand({
-  command: {
-    keys: [
-      'meta',
-      'f',
-    ],
-    onPressed: () => {
-      appInputRef.value?.$el.focus()
+if (!props.disableKeyboardCommand) {
+  useKeyboardCommand({
+    command: {
+      keys: [
+        'meta',
+        'f',
+      ],
+      onPressed: (e) => {
+        appInputRef.value?.$el.focus()
+        e.preventDefault()
+      },
+      type: 'combination',
     },
-    type: 'combination',
-  },
-  scope: 'global',
-})
+    scope: 'global',
+  })
+}
 
 function onClearInput(): void {
-  model.value = null
+  model.value = ''
 }
 </script>
 
@@ -47,17 +52,18 @@ function onClearInput(): void {
     v-model="model"
     :placeholder="props.placeholder ?? t('components.search_input.placeholder')"
     type="search"
+    class="w-72"
   >
     <template #right>
       <div class="mr-2">
         <AppKeyboardCommand
-          v-if="model === null || model === ''"
+          v-if="(model === null || model === '') && !props.disableKeyboardCommand"
           :keys="['meta', 'f']"
           command-type="combination"
         />
 
         <AppButton
-          v-else
+          v-else-if="model !== null && model !== ''"
           variant="secondary"
           size="xs"
           @click="onClearInput"

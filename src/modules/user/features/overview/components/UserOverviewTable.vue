@@ -52,8 +52,5 @@ const columns: TableColumn<UserIndex>[] = [
     :is-loading="props.isLoading"
     :pagination="props.pagination"
     :title="t('shared.users')"
-    @filter="props.pagination.handleFilterChange"
-    @page="props.pagination.handlePageChange"
-    @sort="props.pagination.handleSortChange"
   />
 </template>
