@@ -13,7 +13,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <div class="grid gap-x-8 gap-y-4 lg:grid-cols-3">
+  <div class="grid gap-x-12 gap-y-4 md:grid-cols-3">
     <div>
       <AppText
         class="font-medium"

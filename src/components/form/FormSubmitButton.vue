@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
 import {
   AppButton,
-  AppKeyboardCommand,
-  AppTooltip,
+  AppKeyboardKey,
   useKeyboardCommand,
 } from '@wisemen/vue-core'
 import type { Form } from 'formango'
@@ -17,6 +16,7 @@ const props = withDefaults(defineProps<{
   isAlwaysEnabled?: boolean
   isDisabled?: boolean
   isKeyboardCommandDisabled?: boolean
+  label: string
 }>(), {
   formId: null,
   isAlwaysEnabled: false,
@@ -61,39 +61,38 @@ function initKeyboardCommand(): void {
 }
 
 onCreated(() => {
-  initKeyboardCommand()
+  if (!props.isKeyboardCommandDisabled) {
+    initKeyboardCommand()
+  }
 })
 </script>
 
 <template>
-  <div class="w-full">
-    <AppTooltip
-      :is-hidden="props.isKeyboardCommandDisabled"
-      :disable-hoverable-content="true"
-      :delay-duration="300"
-      side="bottom"
-    >
-      <AppButton
-        ref="buttonRef"
-        :form="props.formId"
-        :is-disabled="isButtonDisabled"
-        :is-loading="props.form.isSubmitting"
-        type="submit"
-        class="w-full"
-      >
-        <slot />
-      </AppButton>
+  <AppButton
+    ref="buttonRef"
+    :form="props.formId"
+    :is-disabled="isButtonDisabled"
+    :is-loading="props.form.isSubmitting"
+    type="submit"
+    class="w-full"
+  >
+    <div class="flex items-center gap-x-2">
+      {{ props.label }}
 
-      <template #content>
-        <div class="px-3 py-2">
-          <AppKeyboardCommand
-            v-if="!props.isKeyboardCommandDisabled"
-            :keys="['ctrl', 's']"
-            :has-border="true"
-            command-type="combination"
-          />
-        </div>
-      </template>
-    </AppTooltip>
-  </div>
+      <div
+        v-if="!props.isKeyboardCommandDisabled"
+        class="flex"
+      >
+        <AppKeyboardKey
+          keyboard-key="ctrl"
+          class="ml-1 bg-primary-foreground/20 !text-primary-foreground"
+        />
+
+        <AppKeyboardKey
+          keyboard-key="s"
+          class="ml-1 bg-primary-foreground/20 !text-primary-foreground"
+        />
+      </div>
+    </div>
+  </AppButton>
 </template>,
