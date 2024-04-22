@@ -26,6 +26,10 @@ const dropdownMenuItems: DropdownMenuItem[] = [
     items: [
       {
         icon: 'logout',
+        keyboardShortcutKeys: [
+          's',
+          'o',
+        ],
         label: t('components.sidebar.footer.sign_out'),
         onSelect: signOut,
         type: 'option',
@@ -48,6 +52,7 @@ function signOut(): void {
   <div v-if="currentUser !== null">
     <AppDropdownMenu
       :items="dropdownMenuItems"
+      :enable-global-keyboard-shortcuts="true"
       side="top"
       align="start"
     >

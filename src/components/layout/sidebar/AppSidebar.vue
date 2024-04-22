@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { useKeyboardCommand } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useTypedRouter } from '@/composables/router/typedRouter.composable'
+import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
 import { NavigationItem } from '@/types/navigationItem.type'
 
 import AppSidebarFooter from './AppSidebarFooter.vue'
@@ -11,18 +10,11 @@ import AppSidebarHeader from './AppSidebarHeader.vue'
 import AppSidebarMenu from './AppSidebarMenu.vue'
 
 const { t } = useI18n()
-const router = useTypedRouter()
 
 const navigationItems = computed<NavigationItem[]>(() => [
   {
-    command: {
-      keys: [
-        'g',
-        'u',
-      ],
-      type: 'sequence',
-    },
     icon: 'building',
+    keyboardShortcut: KEYBOARD_SHORTCUT.USER_OVERVIEW,
     label: t('shared.users'),
     to: {
       name: 'user-overview',
@@ -43,22 +35,6 @@ const navigationItems = computed<NavigationItem[]>(() => [
     },
   },
 ])
-
-navigationItems.value.forEach((item) => {
-  if (item.command === undefined) {
-    return
-  }
-
-  useKeyboardCommand({
-    command: {
-      ...item.command,
-      onPressed: () => {
-        void router.push(item.to)
-      },
-    },
-    scope: 'global',
-  })
-})
 </script>
 
 <template>

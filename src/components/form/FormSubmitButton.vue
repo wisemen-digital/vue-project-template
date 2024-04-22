@@ -1,14 +1,13 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
-import {
-  AppButton,
-  AppKeyboardKey,
-  useKeyboardCommand,
-} from '@wisemen/vue-core'
+import { AppButton } from '@wisemen/vue-core'
 import type { Form } from 'formango'
-import { computed, ref } from 'vue'
+import {
+  computed,
+  ref,
+} from 'vue'
 import type { z } from 'zod'
 
-import { onCreated } from '@/utils/createdHook.util'
+import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
 
 const props = withDefaults(defineProps<{
   form: Form<TFormType>
@@ -37,34 +36,6 @@ const isButtonDisabled = computed<boolean>(() => {
 
   return false
 })
-
-function initKeyboardCommand(): void {
-  if (props.isKeyboardCommandDisabled) {
-    return
-  }
-
-  useKeyboardCommand({
-    command: {
-      keys: [
-        'ctrl',
-        's',
-      ],
-      onPressed: () => {
-        if (props.form.isDirty) {
-          buttonRef.value?.$el.click()
-        }
-      },
-      type: 'combination',
-    },
-    scope: 'global',
-  })
-}
-
-onCreated(() => {
-  if (!props.isKeyboardCommandDisabled) {
-    initKeyboardCommand()
-  }
-})
 </script>
 
 <template>
@@ -73,26 +44,10 @@ onCreated(() => {
     :form="props.formId"
     :is-disabled="isButtonDisabled"
     :is-loading="props.form.isSubmitting"
+    :keyboard-shortcut="isKeyboardCommandDisabled ? null : KEYBOARD_SHORTCUT.SAVE"
     type="submit"
     class="w-full"
   >
-    <div class="flex items-center gap-x-2">
-      {{ props.label }}
-
-      <div
-        v-if="!props.isKeyboardCommandDisabled"
-        class="flex"
-      >
-        <AppKeyboardKey
-          keyboard-key="ctrl"
-          class="ml-1 bg-primary-foreground/20 !text-primary-foreground"
-        />
-
-        <AppKeyboardKey
-          keyboard-key="s"
-          class="ml-1 bg-primary-foreground/20 !text-primary-foreground"
-        />
-      </div>
-    </div>
+    {{ props.label }}
   </AppButton>
-</template>,
+</template>

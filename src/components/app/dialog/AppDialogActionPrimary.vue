@@ -1,11 +1,10 @@
 <script setup lang="ts">
+import { AppButton } from '@wisemen/vue-core'
 import {
-  AppButton,
-  AppKeyboardKey,
-  useKeyboardCommand,
-} from '@wisemen/vue-core'
-
-import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
+  computed,
+  onMounted,
+  ref,
+} from 'vue'
 
 const props = withDefaults(defineProps<{
   isDestructive?: boolean
@@ -24,25 +23,19 @@ function onConfirm(): void {
   emit('confirm')
 }
 
-useKeyboardCommand({
-  command: {
-    keys: [
-      'enter',
-    ],
-    onPressed: () => {
-      if (document.activeElement instanceof HTMLButtonElement) {
-        return
-      }
+const focusedElement = ref<HTMLElement | null>(null)
 
-      if (props.isLoading) {
-        return
-      }
+const isFocusedElementAButton = computed<boolean>(() => {
+  return focusedElement.value instanceof HTMLButtonElement
+})
 
-      onConfirm()
-    },
-    type: 'combination',
-  },
-  scope: 'global',
+onMounted(() => {
+  focusedElement.value = document.activeElement as HTMLElement
+
+  document.addEventListener('focusin', (event) => {
+    const target = event.target as HTMLElement
+    focusedElement.value = target
+  })
 })
 </script>
 
@@ -50,15 +43,12 @@ useKeyboardCommand({
   <AppButton
     :is-loading="props.isLoading"
     :variant="props.isDestructive ? 'destructive' : 'default'"
+    :keyboard-shortcut="{
+      keys: ['enter'],
+      isDisabled: computed<boolean>(() => isFocusedElementAButton),
+    }"
     @click="onConfirm"
   >
-    <AppButtonGroup>
-      {{ props.label }}
-
-      <AppKeyboardKey
-        keyboard-key="enter"
-        class="bg-primary-foreground/20 !text-primary-foreground"
-      />
-    </AppButtonGroup>
+    {{ props.label }}
   </AppButton>
 </template>

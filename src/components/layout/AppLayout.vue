@@ -8,7 +8,7 @@ import AppSidebar from './sidebar/AppSidebar.vue'
   <div class="flex size-full flex-1">
     <AppSidebar />
 
-    <div class="flex flex-1 flex-col overflow-hidden">
+    <div class="flex flex-1 overflow-hidden">
       <RouterView />
     </div>
   </div>

@@ -39,8 +39,8 @@ dependencies:
     specifier: ^10.9.0
     version: 10.9.0(vue-router@4.3.0)(vue@3.4.21)
   '@wisemen/vue-core':
-    specifier: ^0.0.56
-    version: 0.0.56
+    specifier: ^0.0.58
+    version: 0.0.58
   axios:
     specifier: 1.6.8
     version: 1.6.8
@@ -4819,8 +4819,8 @@ packages:
       - vue-eslint-parser
     dev: true
 
-  /@wisemen/vue-core@0.0.56:
-    resolution: {integrity: sha512-F/eIVryhaMmvjs6pBQNZgpiq8rd6fV+AlMtK8BCr7beqAyuf3Mk5S3gYhVedzIMyGBhsW78Vi0QkFVLU1UfNsQ==}
+  /@wisemen/vue-core@0.0.58:
+    resolution: {integrity: sha512-lflv0oF4i+gBQPdj1XVeYGTccnrO/iIgNumTS8EQ6367CNNg50s/zRgwkECe+U17ZfTf4HHF/s8VPLI8QhWMKg==}
     dev: false
 
   /abbrev@2.0.0:
