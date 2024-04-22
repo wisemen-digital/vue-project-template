@@ -47,7 +47,6 @@ const password = props.form.register('password')
         :to="{
           name: 'forgot-password',
         }"
-        class="py-2"
       >
         <AppText
           class="font-medium text-primary"
