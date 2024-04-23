@@ -5,13 +5,15 @@ import {
   AppKeyboardShortcut,
   AppKeyboardShortcutProvider,
 } from '@wisemen/vue-core'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useDebounceSearch } from '@/composables/debounce-search/debounceSearch.composable'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
 
 const props = withDefaults(defineProps<{
   disableKeyboardCommand?: boolean
+  isLoading: boolean
   placeholder?: null | string
 }>(), {
   disableKeyboardCommand: false,
@@ -24,11 +26,22 @@ const model = defineModel<string>({
 
 const { t } = useI18n()
 
+const { isDebouncing, search } = useDebounceSearch({
+  defaultValue: model.value,
+  onDebounceSearch: (search) => {
+    model.value = search
+  },
+})
+
 const appInputRef = ref<InstanceType<typeof AppInput> | null>(null)
 
 function onClearInput(): void {
   model.value = ''
 }
+
+watch(() => model.value, (value) => {
+  search.value = value
+})
 </script>
 
 <template>
@@ -38,8 +51,10 @@ function onClearInput(): void {
   >
     <AppInput
       ref="appInputRef"
-      v-model="model"
+      v-model="search"
       :placeholder="props.placeholder ?? t('components.search_input.placeholder')"
+      :is-loading="props.isLoading || isDebouncing"
+      icon-left="search"
       type="search"
     >
       <template #right>

@@ -11,6 +11,7 @@ export const KEYBOARD_SHORTCUT = {
       'meta',
       's',
     ],
+    preventDefault: true,
   },
   SEARCH: {
     keys: [

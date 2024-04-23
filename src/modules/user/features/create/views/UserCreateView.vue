@@ -4,7 +4,7 @@ import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppPage from '@/components/app/AppPage.vue'
+import FormPage from '@/components/form/FormPage.vue'
 import { useApiErrorToast } from '@/composables/error-toast/apiErrorToast.composable'
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
@@ -43,7 +43,8 @@ onSubmitForm(async (values) => {
     })
 
     toast.success({
-      title: t('users.create.success'),
+      description: t('users.create.success.description'),
+      title: t('users.create.success.title'),
     })
 
     await router.push({
@@ -57,10 +58,10 @@ onSubmitForm(async (values) => {
 </script>
 
 <template>
-  <AppPage
+  <FormPage
     :breadcrumbs="breadcrumbs"
     :title="t('users.create.title')"
   >
     <UserCreateForm :form="form" />
-  </AppPage>
+  </FormPage>
 </template>

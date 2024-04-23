@@ -6,6 +6,7 @@ import type { UserCreateForm } from '@/models/user/create/userCreateForm.model'
 import type { User } from '@/models/user/detail/user.model'
 import { userDtoSchema } from '@/models/user/detail/userDto.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
+import { userIndexDtoSchema } from '@/models/user/index/userIndexDto.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import {
@@ -31,9 +32,11 @@ export class UserService {
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
     const data = await httpClient.get({
       config: {
-        params: new PaginationParamsBuilder<UserIndexFilters>(paginationOptions).build(),
+        params: new PaginationParamsBuilder<UserIndexFilters>(paginationOptions)
+          .withFilter('search', paginationOptions.filters?.search)
+          .build(),
       },
-      responseSchema: paginatedDataSchema(userDtoSchema),
+      responseSchema: paginatedDataSchema(userIndexDtoSchema),
       url: '/users',
     })
 

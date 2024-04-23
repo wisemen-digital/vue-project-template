@@ -172,7 +172,8 @@ export default {
       },
 
       maxWidth: {
-        container: '70rem',
+        'container': '70rem',
+        'table-empty-state': '26rem',
       },
 
       transitionTimingFunction: {

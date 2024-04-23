@@ -1,43 +1,31 @@
 <script setup lang="ts">
 import { BreadcrumbItem } from '@wisemen/vue-core'
-import { computed, useSlots } from 'vue'
 
-import AppPage from './AppPage.vue'
+import AppPage from '../app/AppPage.vue'
 
 const props = withDefaults(
   defineProps<{
-    breadcrumbs?: BreadcrumbItem[]
+    breadcrumbs?: BreadcrumbItem[] | null
     subtitle?: null | string
     title: string
   }>(),
   {
-    breadcrumbs: () => [],
+    breadcrumbs: null,
     subtitle: null,
   },
 )
-
-const slots = useSlots()
-
-const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
 </script>
 
 <template>
   <AppPage
+    :title="props.title"
     :subtitle="props.subtitle"
     :breadcrumbs="props.breadcrumbs"
-    :title="props.title"
-    class="h-screen overflow-hidden"
+    class="pb-12"
   >
     <template #header-actions>
       <slot name="header-actions" />
     </template>
-
-    <div
-      v-if="hasTabsSlot"
-      class="mb-6"
-    >
-      <slot name="tabs" />
-    </div>
 
     <slot />
   </AppPage>

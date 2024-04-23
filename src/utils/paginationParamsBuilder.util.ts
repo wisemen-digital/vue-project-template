@@ -2,32 +2,26 @@ import { PaginationOptions } from '@wisemen/vue-core'
 
 import { base64Encode } from '@/utils/base64.util.ts'
 
-type LikeKey<TFilterSchema> = keyof TFilterSchema
-type LikeValue<TFilterSchema> = TFilterSchema[LikeKey<TFilterSchema>]
-
 type SortKey<TFilterSchema> = keyof TFilterSchema
 type SortOrder = 'asc' | 'desc'
 
 export const DEFAULT_PAGE = 0
 export const DEFAULT_LIMIT = 10
 
-export interface PaginationParams<TFilterSchema> {
-  like?: {
-    key: LikeKey<TFilterSchema>
-    value: LikeValue<TFilterSchema>
-  }
+export type PaginationParams<TFilterSchema> = {
   limit: number
   page: number
   sort?: Record<SortKey<TFilterSchema>, SortOrder>
+} & {
+  [key in keyof TFilterSchema]?: TFilterSchema[key]
 }
 
 export class PaginationParamsBuilder<TFilter> {
-  private options: PaginationParams<TFilter> = {
-    like: undefined,
+  private options = {
     limit: DEFAULT_LIMIT,
     page: DEFAULT_PAGE,
     sort: undefined,
-  }
+  } as PaginationParams<TFilter>
 
   constructor(paginationOptions?: PaginationOptions<TFilter>) {
     if (paginationOptions === undefined) {
@@ -37,7 +31,7 @@ export class PaginationParamsBuilder<TFilter> {
     this.options = {
       limit: paginationOptions.pagination.perPage ?? DEFAULT_LIMIT,
       page: paginationOptions.pagination.page ?? DEFAULT_PAGE,
-    }
+    } as PaginationParams<TFilter>
   }
 
   public build(): PaginationParams<TFilter> {
@@ -48,11 +42,14 @@ export class PaginationParamsBuilder<TFilter> {
     return base64Encode(JSON.stringify(this.build()))
   }
 
-  public withLike(key: LikeKey<TFilter>, value: LikeValue<TFilter>): PaginationParamsBuilder<TFilter> {
-    this.options.like = {
-      key,
-      value,
+  public withFilter<TKey extends keyof TFilter>(
+    key: TKey,
+    value: PaginationParams<TFilter>[TKey],
+  ): PaginationParamsBuilder<TFilter> {
+    if (value !== null && value !== '') {
+      this.options[key] = value
     }
+
     return this
   }
 
