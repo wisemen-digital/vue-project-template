@@ -13,7 +13,7 @@
     "test:unit": "vitest --run",
     "prepare": "husky install",
     "type-check": "vue-tsc --noEmit",
-    "precommit": "npm run type-check && npm run lint:fix && npm run test:unit && npm run build"
+    "precommit": "npm run type-check && npm run lint && npm run test:unit && npm run build"
   },
   "dependencies": {
     "@appwise/oauth2-vue-client": "0.0.3",
@@ -27,7 +27,7 @@
     "@tanstack/vue-query": "5.28.9",
     "@vueuse/core": "10.9.0",
     "@vueuse/router": "^10.9.0",
-    "@wisemen/vue-core": "^0.0.59",
+    "@wisemen/vue-core": "^0.0.61",
     "axios": "1.6.8",
     "clsx": "^2.1.0",
     "cva": "1.0.0-beta.1",
