@@ -24,8 +24,9 @@ const password = props.form.register('password')
       type="password"
     />
 
-    <AuthFormSubmitButton :form="form">
-      {{ t('auth.reset_password.action') }}
-    </AuthFormSubmitButton>
+    <AuthFormSubmitButton
+      :form="form"
+      :label="t('auth.reset_password.action')"
+    />
   </AppForm>
 </template>

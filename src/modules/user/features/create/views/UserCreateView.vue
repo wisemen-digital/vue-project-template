@@ -5,9 +5,8 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppPage from '@/components/app/AppPage.vue'
-import { useErrorToast } from '@/composables/error-toast/errorToast.composable'
+import { useApiErrorToast } from '@/composables/error-toast/apiErrorToast.composable'
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
-import { useUnsavedChanges } from '@/composables/unsaved-changes/unsavedChanges.composable'
 import { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
 import { useUserCreateMutation } from '@/modules/user/api/mutations/userCreate.mutation'
 
@@ -16,10 +15,10 @@ import UserCreateForm from '../components/UserCreateForm.vue'
 const { t } = useI18n()
 const router = useTypedRouter()
 const toast = useToast()
-const errorToast = useErrorToast()
+const errorToast = useApiErrorToast()
 const userCreateMutation = useUserCreateMutation()
 
-const breadcrumbs: BreadcrumbItem[] = [
+const breadcrumbs = computed<BreadcrumbItem[]>(() => [
   {
     label: t('shared.users'),
     to: {
@@ -31,13 +30,11 @@ const breadcrumbs: BreadcrumbItem[] = [
     label: t('users.create.title'),
     type: 'page',
   },
-]
+])
 
 const { form, onSubmitForm } = useForm({
   schema: userCreateFormSchema,
 })
-
-useUnsavedChanges(computed<boolean>(() => form.isDirty))
 
 onSubmitForm(async (values) => {
   try {

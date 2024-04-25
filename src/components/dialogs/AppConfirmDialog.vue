@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import {
-  AppButton,
-  AppDialog,
-  AppDialogDescription,
-  AppDialogTitle,
-  AppText,
-} from '@wisemen/vue-core'
+import { AppDialog } from '@wisemen/vue-core'
 
-const props = defineProps<{
+import AppDialogActionCancel from '@/components/app/dialog/AppDialogActionCancel.vue'
+import AppDialogActionPrimary from '@/components/app/dialog/AppDialogActionPrimary.vue'
+import AppDialogActions from '@/components/app/dialog/AppDialogActions.vue'
+import AppDialogContent from '@/components/app/dialog/AppDialogContent.vue'
+import AppDialogHeader from '@/components/app/dialog/AppDialogHeader.vue'
+
+const props = withDefaults(defineProps<{
+  cancelText: string
   confirmText: string
   description: string
+  isDestructive: boolean
+  isLoading?: boolean
   title: string
-}>()
+}>(), {
+  isLoading: false,
+})
 
 const emit = defineEmits<{
   confirm: []
@@ -24,25 +29,26 @@ function onConfirm(): void {
 
 <template>
   <AppDialog>
-    <div class="w-dialog p-6">
-      <AppDialogTitle>
-        <AppText
-          variant="title"
-          as="h1"
-        >
-          {{ props.title }}
-        </AppText>
-      </AppDialogTitle>
+    <AppDialogContent class="w-dialog-sm">
+      <AppDialogHeader
+        :title="props.title"
+        :description="props.description"
+        icon="alertCircle"
+      />
 
-      <AppDialogDescription>
-        <AppText variant="body">
-          {{ props.description }}
-        </AppText>
-      </AppDialogDescription>
+      <AppDialogActions>
+        <AppDialogActionCancel
+          :label="props.cancelText"
+          :is-disabled="props.isLoading"
+        />
 
-      <AppButton @click="onConfirm">
-        {{ props.confirmText }}
-      </AppButton>
-    </div>
+        <AppDialogActionPrimary
+          :label="props.confirmText"
+          :is-destructive="props.isDestructive"
+          :is-loading="props.isLoading"
+          @confirm="onConfirm"
+        />
+      </AppDialogActions>
+    </AppDialogContent>
   </AppDialog>
 </template>

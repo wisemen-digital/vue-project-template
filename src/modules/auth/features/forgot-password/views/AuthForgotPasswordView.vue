@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { AppButton } from '@wisemen/vue-core'
+import { AppRouterLinkButton } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useErrorToast } from '@/composables/error-toast/errorToast.composable'
+import { useApiErrorToast } from '@/composables/error-toast/apiErrorToast.composable'
 import { forgotPasswordFormSchema } from '@/models/auth/forgot-password/forgotPasswordForm.model'
 import { useAuthForgotPasswordMutation } from '@/modules/auth/api/mutations/authForgotPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
@@ -19,7 +19,7 @@ const { lastLoginAttemptEmail } = storeToRefs(authStore)
 const hasResetPassword = ref<boolean>(false)
 
 const { t } = useI18n()
-const errorToast = useErrorToast()
+const errorToast = useApiErrorToast()
 
 const resetEmail = ref<string>('')
 
@@ -31,18 +31,18 @@ const forgotPasswordMutation = useAuthForgotPasswordMutation()
 
 const title = computed<string>(() => {
   if (hasResetPassword.value) {
-    return t('auth.check_your_email')
+    return t('auth.forgot_password.success_title')
   }
 
-  return t('auth.forgot_password')
+  return t('auth.forgot_password.title')
 })
 
 const description = computed<string>(() => {
   if (hasResetPassword.value) {
-    return t('auth.instruction_email_sent_to', { email: resetEmail.value })
+    return t('auth.forgot_password.success_description', { email: resetEmail.value })
   }
 
-  return t('auth.forgot_password_message')
+  return t('auth.forgot_password.description')
 })
 
 onSubmitForm(async (values) => {
@@ -71,14 +71,13 @@ onSubmitForm(async (values) => {
       :last-login-attempt-email="lastLoginAttemptEmail"
     />
 
-    <div class="mt-4 flex justify-center">
-      <AppButton
+    <div class="mt-2 flex justify-center">
+      <AppRouterLinkButton
         :to="{ name: 'login' }"
-        icon-left="arrowLeft"
         variant="ghost"
       >
-        {{ t('auth.back_to_login') }}
-      </AppButton>
+        {{ t('auth.forgot_password.return_to_login') }}
+      </AppRouterLinkButton>
     </div>
   </AuthPage>
 </template>

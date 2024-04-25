@@ -181,7 +181,8 @@ export default {
       },
 
       width: {
-        dialog: '28rem',
+        'dialog': '28rem',
+        'dialog-sm': '26rem',
       },
 
       zIndex: {

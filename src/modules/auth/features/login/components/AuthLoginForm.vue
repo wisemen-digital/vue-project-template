@@ -47,7 +47,6 @@ const password = props.form.register('password')
         :to="{
           name: 'forgot-password',
         }"
-        class="py-2"
       >
         <AppText
           class="font-medium text-primary"
@@ -58,8 +57,9 @@ const password = props.form.register('password')
       </AppTypedRouterLink>
     </AppVerticalFormElementSpacer>
 
-    <AuthFormSubmitButton :form="form">
-      {{ t('auth.login.log_in') }}
-    </AuthFormSubmitButton>
+    <AuthFormSubmitButton
+      :label="t('auth.login.log_in')"
+      :form="form"
+    />
   </AppForm>
 </template>

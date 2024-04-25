@@ -23,15 +23,14 @@ const email = props.form.register('email', props.lastLoginAttemptEmail ?? undefi
       v-bind="email"
       :is-required="true"
       :label="t('form.fields.email')"
-      :placeholder="t('auth.enter_your_email')"
+      :placeholder="t('auth.forgot_password.email_placeholder')"
       type="email"
     />
 
     <AuthFormSubmitButton
       :form="form"
       :is-always-enabled="true"
-    >
-      {{ t('auth.reset_password') }}
-    </AuthFormSubmitButton>
+      :label="t('auth.forgot_password.action')"
+    />
   </AppForm>
 </template>

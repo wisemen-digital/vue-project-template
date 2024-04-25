@@ -5,7 +5,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppPage from '@/components/app/AppPage.vue'
-import { useErrorToast } from '@/composables/error-toast/errorToast.composable'
+import { useApiErrorToast } from '@/composables/error-toast/apiErrorToast.composable'
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import type { User } from '@/models/user/detail/user.model'
 import { UserUpdateForm as UserUpdateFormType, userUpdateFormSchema } from '@/models/user/update/userUpdateForm.model'
@@ -21,7 +21,7 @@ const props = defineProps<{
 const { t } = useI18n()
 const router = useTypedRouter()
 const toast = useToast()
-const errorToast = useErrorToast()
+const errorToast = useApiErrorToast()
 const userUpdateMutation = useUserUpdateMutation()
 
 const breadcrumbs: BreadcrumbItem[] = [
