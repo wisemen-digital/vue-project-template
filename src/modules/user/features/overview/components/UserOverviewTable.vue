@@ -5,6 +5,7 @@ import type {
   TableColumn,
 } from '@wisemen/vue-core'
 import { AppTable } from '@wisemen/vue-core'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import type { UserIndex } from '@/models/user/index/userIndex.model'
@@ -18,22 +19,22 @@ const props = defineProps<{
 
 const { t } = useI18n()
 
-const columns: TableColumn<UserIndex>[] = [
+const columns = computed<TableColumn<UserIndex>[]>(() => [
   {
     id: 'uuid',
     isSortable: true,
     label: 'UUID',
     size: 'minmax(400px, 500px)',
-    value: (row: UserIndex) => row.uuid,
+    value: row => row.uuid,
   },
   {
     id: 'name',
     isSortable: true,
     label: t('shared.name'),
     size: '500px',
-    value: (row: UserIndex) => row.fullName,
+    value: row => row.fullName,
   },
-]
+])
 </script>
 
 <template>

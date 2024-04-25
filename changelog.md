@@ -1,3 +1,7 @@
+## [1.1.3] (2024-04-25)
+### Improvements
+- **table** change table columns array to a computed value
+
 ## [1.1.2] (2024-04-21)
 ### Fixes
 - **breadcrumbs** change breadcrumbs implementation to return a computed value to support proper locale switching.
