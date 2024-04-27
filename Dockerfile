@@ -1,8 +1,11 @@
+# Command line arguments, such as Node version
+ARG NODE_VERSION=lts
+
 #
 # --- Stage 1: Build ---
 #
 
-FROM node:lts as build
+FROM node:${NODE_VERSION} as build
 RUN corepack enable
 
 ARG BUILD_COMMIT
