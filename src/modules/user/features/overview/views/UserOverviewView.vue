@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { BreadcrumbItem, useTablePagination } from '@wisemen/vue-core'
+import {
+  BreadcrumbItem,
+  useTablePagination,
+} from '@wisemen/vue-core'
 import {
   computed,
   ref,

@@ -8,10 +8,9 @@ export const KEYBOARD_SHORTCUT = {
   },
   SAVE: {
     keys: [
-      'meta',
+      'ctrl',
       's',
     ],
-    preventDefault: true,
   },
   SEARCH: {
     keys: [

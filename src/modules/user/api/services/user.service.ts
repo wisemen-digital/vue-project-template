@@ -49,7 +49,7 @@ export class UserService {
   static async getByUuid(userUuid: UserUuid): Promise<User> {
     const data = await httpClient.get({
       responseSchema: userDtoSchema,
-      url: `/users/${userUuid}`,
+      url: `/employees/${userUuid}`,
     })
 
     return UserDetailTransformer.fromDto(data)
@@ -57,9 +57,12 @@ export class UserService {
 
   static async update(userUuid: UserUuid, form: UserUpdateForm): Promise<User> {
     const data = await httpClient.post({
-      body: UserFormTransformer.toUpdateDto(form),
+      body: {
+        ...UserFormTransformer.toUpdateDto(form),
+        language: 'nl',
+      },
       responseSchema: userDtoSchema,
-      url: `/users/${userUuid}`,
+      url: `/employees/${userUuid}`,
     })
 
     return UserDetailTransformer.fromDto(data)

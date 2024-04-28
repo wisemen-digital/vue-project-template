@@ -27,8 +27,8 @@ const columns: TableColumn<UserIndex>[] = [
     id: 'uuid',
     isSortable: true,
     label: 'UUID',
-    size: 'minmax(400px, 500px)',
-    value: user => user.uuid,
+    size: '400px',
+    value: (row: UserIndex) => row.uuid,
   },
   {
     id: 'name',

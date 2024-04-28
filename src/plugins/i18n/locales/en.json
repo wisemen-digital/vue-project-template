@@ -60,14 +60,14 @@
       "go_to": "Go to"
     },
     "table": {
-      "clear_filters": "Clear filters",
       "clear_filter_filters": "Clear filter | Clear {count} filters",
+      "clear_filters": "Clear filters",
       "next": "Next",
-      "previous": "Previous",
-      "results_might_be_hidden_because_of_active_filters": "Results might be hidden because of {count} active filter | Results might be hidden because of {count} active filters",
+      "no_data": "There is no data to display",
       "no_query_match": "Your query did not match any results. Try changing your filters or clearing them.",
       "no_results_found": "No results found",
-      "no_data": "There is no data to display"
+      "previous": "Previous",
+      "results_might_be_hidden_because_of_active_filters": "Results might be hidden because of {count} active filter | Results might be hidden because of {count} active filters"
     },
     "unsaved_changes_dialog": {
       "cancel": "Keep editing",
@@ -134,6 +134,7 @@
     "email": "Email",
     "first_name": "First name",
     "function": "Function",
+    "go_to_detail": "Go to detail",
     "information": "Information",
     "invoice_information": "Invoice information",
     "last_name": "Last name",

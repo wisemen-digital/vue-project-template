@@ -37,6 +37,18 @@ export class UserFormTransformer {
     }
   }
 
+  static toDetail(
+    user: UserUpdateForm,
+    other: Omit<User, keyof UserUpdateForm>,
+  ): User {
+    return {
+      ...other,
+      firstName: user.firstName,
+      fullName: `${user.firstName} ${user.lastName}`,
+      lastName: user.lastName,
+    }
+  }
+
   static toUpdateDto(form: UserUpdateForm): UserUpdateDto {
     return {
       firstName: form.firstName,

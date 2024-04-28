@@ -6,7 +6,7 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useLoading } from '@/composables/loading/loading.composable.ts'
+import { useLoading } from '@/composables/loading/loading.composable'
 import { TIME } from '@/constants/time.constant'
 import { logError, logInfo } from '@/utils/logger.util.ts'
 

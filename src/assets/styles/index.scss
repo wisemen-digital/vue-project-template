@@ -164,7 +164,7 @@
   }
 
   body {
-    @apply bg-background font-sans flex flex-col min-h-screen;
+    @apply bg-background font-sans flex flex-col min-h-dvh;
     font-family: 'Inter Variable', sans-serif;
   }
 
