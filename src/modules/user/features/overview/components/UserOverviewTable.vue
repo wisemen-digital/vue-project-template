@@ -29,15 +29,16 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     isSortable: true,
     label: 'UUID',
     size: '400px',
-    value: (row: UserIndex) => row.uuid,
+    value: row => row.uuid,
   },
   {
     id: 'name',
     isSortable: true,
     label: t('shared.name'),
     size: '500px',
-  }
-]
+    value: row => row.fullName,
+  },
+])
 
 function onClearFilters(): void {
   emit('clearFilters')
