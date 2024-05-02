@@ -5,6 +5,7 @@ import type {
   TableColumn,
 } from '@wisemen/vue-core'
 import { AppTable } from '@wisemen/vue-core'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import type { UserIndex } from '@/models/user/index/userIndex.model'
@@ -22,7 +23,7 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 
-const columns: TableColumn<UserIndex>[] = [
+const columns = computed<TableColumn<UserIndex>[]>(() => [
   {
     id: 'uuid',
     isSortable: true,
@@ -35,8 +36,7 @@ const columns: TableColumn<UserIndex>[] = [
     isSortable: true,
     label: t('shared.name'),
     size: '500px',
-    value: user => user.fullName,
-  },
+  }
 ]
 
 function onClearFilters(): void {
