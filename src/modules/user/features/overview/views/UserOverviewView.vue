@@ -35,7 +35,7 @@ const paginationOptions = useTablePagination<UserIndexFilters>({
   id: 'users',
 })
 
-const search = ref<string>(paginationOptions.paginationOptions.value.filters?.search ?? '')
+const search = ref<string>(paginationOptions.paginationOptions.value.filters?.name ?? '')
 
 const userIndexQuery = useUserIndexQuery(paginationOptions.paginationOptions)
 
@@ -43,7 +43,7 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
 
 function onSearch(search: null | string): void {
   paginationOptions.handleFilterChange({
-    search,
+    name: search,
   })
 }
 

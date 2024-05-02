@@ -16,7 +16,7 @@ import {
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
-import { PaginationParamsBuilder } from '@/utils/paginationParamsBuilder.util.ts'
+import { PaginationDtoBuilder } from '@/utils/paginationDtoBuilder.util'
 
 export class UserService {
   static async create(form: UserCreateForm): Promise<User> {
@@ -32,12 +32,10 @@ export class UserService {
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
     const data = await httpClient.get({
       config: {
-        params: new PaginationParamsBuilder<UserIndexFilters>(paginationOptions)
-          .withFilter('search', paginationOptions.filters?.search)
-          .build(),
+        params: new PaginationDtoBuilder<UserIndexFilters>(paginationOptions).build(),
       },
       responseSchema: paginatedDataSchema(userIndexDtoSchema),
-      url: '/users',
+      url: '/employees',
     })
 
     return {
