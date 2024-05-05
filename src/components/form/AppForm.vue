@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<{
 })
 
 const formId = useId()
-const { setIsLoading } = usePageLoader()
+const pageLoader = usePageLoader()
 
 if (!props.canExitWhenDirty) {
   useUnsavedChanges(computed<boolean>(() => props.form.isDirty && !props.form.isSubmitting))
@@ -33,12 +33,12 @@ if (!props.canExitWhenDirty) {
 watch(
   () => props.form.isSubmitting,
   (isSubmitting) => {
-    setIsLoading(isSubmitting)
+    pageLoader.setIsLoading(isSubmitting)
   },
 )
 
 onUnmounted(() => {
-  setIsLoading(false)
+  pageLoader.setIsLoading(false)
 })
 </script>
 
