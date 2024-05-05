@@ -4,8 +4,8 @@ import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppPage from '@/components/app/AppPage.vue'
-import { useApiErrorToast } from '@/composables/error-toast/apiErrorToast.composable'
+import FormPage from '@/components/form/FormPage.vue'
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
 import { useUserCreateMutation } from '@/modules/user/api/mutations/userCreate.mutation'
@@ -38,12 +38,26 @@ const { form, onSubmitForm } = useForm({
 
 onSubmitForm(async (values) => {
   try {
-    await userCreateMutation.execute({
+    const user = await userCreateMutation.execute({
       body: values,
     })
 
-    toast.success({
-      title: t('users.create.success'),
+    toast.custom({
+      action: {
+        label: t('shared.go_to_detail'),
+        onClick: () => {
+          void router.push({
+            name: 'user-detail',
+            params: {
+              userUuid: user.uuid,
+            },
+          })
+        },
+      },
+      description: t('users.create.success.description'),
+      icon: 'checkmarkCircle',
+      title: t('users.create.success.title'),
+      type: 'success',
     })
 
     await router.push({
@@ -57,10 +71,10 @@ onSubmitForm(async (values) => {
 </script>
 
 <template>
-  <AppPage
+  <FormPage
     :breadcrumbs="breadcrumbs"
     :title="t('users.create.title')"
   >
     <UserCreateForm :form="form" />
-  </AppPage>
+  </FormPage>
 </template>

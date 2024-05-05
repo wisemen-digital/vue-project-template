@@ -17,6 +17,10 @@ const props = defineProps<{
   pagination: Pagination<UserIndexFilters>
 }>()
 
+const emit = defineEmits<{
+  clearFilters: []
+}>()
+
 const { t } = useI18n()
 
 const columns = computed<TableColumn<UserIndex>[]>(() => [
@@ -24,7 +28,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     id: 'uuid',
     isSortable: true,
     label: 'UUID',
-    size: 'minmax(400px, 500px)',
+    size: '400px',
     value: row => row.uuid,
   },
   {
@@ -35,13 +39,16 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     value: row => row.fullName,
   },
 ])
+
+function onClearFilters(): void {
+  emit('clearFilters')
+}
 </script>
 
 <template>
   <AppTable
     :columns="columns"
     :data="props.data"
-    :empty-message="t('users.overview.empty')"
     :row-to="(row) => ({
       name: 'user-detail',
       params: {
@@ -53,5 +60,6 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     :is-loading="props.isLoading"
     :pagination="props.pagination"
     :title="t('shared.users')"
+    @clear-filters="onClearFilters"
   />
 </template>

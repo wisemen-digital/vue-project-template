@@ -4,9 +4,8 @@ import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppPage from '@/components/app/AppPage.vue'
-import { useApiErrorToast } from '@/composables/error-toast/apiErrorToast.composable'
-import { useTypedRouter } from '@/composables/router/typedRouter.composable'
+import FormPage from '@/components/form/FormPage.vue'
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import type { User } from '@/models/user/detail/user.model'
 import { UserUpdateForm as UserUpdateFormType, userUpdateFormSchema } from '@/models/user/update/userUpdateForm.model'
 import { UserFormTransformer } from '@/models/user/user.transformer'
@@ -19,7 +18,6 @@ const props = defineProps<{
 }>()
 
 const { t } = useI18n()
-const router = useTypedRouter()
 const toast = useToast()
 const errorToast = useApiErrorToast()
 const userUpdateMutation = useUserUpdateMutation()
@@ -63,14 +61,8 @@ onSubmitForm(async (values) => {
     })
 
     toast.success({
-      title: t('users.update.success'),
-    })
-
-    await router.push({
-      name: 'user-detail',
-      params: {
-        userUuid: props.user.uuid,
-      },
+      description: t('users.update.success.description'),
+      title: t('users.update.success.title'),
     })
   }
   catch (error) {
@@ -80,10 +72,10 @@ onSubmitForm(async (values) => {
 </script>
 
 <template>
-  <AppPage
+  <FormPage
     :breadcrumbs="breadcrumbs"
     :title="props.user.fullName"
   >
     <UserUpdateForm :form="form" />
-  </AppPage>
+  </FormPage>
 </template>

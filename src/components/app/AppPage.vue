@@ -9,38 +9,27 @@ import {
 const props = withDefaults(
   defineProps<{
     breadcrumbs?: BreadcrumbItem[] | null
-    subtitle?: null | string
     title: string
   }>(),
   {
     breadcrumbs: null,
-    subtitle: null,
   },
 )
 </script>
 
 <template>
   <div class="flex w-full flex-1 flex-col bg-background">
-    <AppContainer class="py-10">
+    <AppContainer class="pb-2 pt-10">
       <AppBreadcrumbs
         v-if="props.breadcrumbs !== null"
         :items="props.breadcrumbs"
         class="mb-1"
       />
 
-      <div class="flex items-center justify-between">
-        <div class="mr-auto space-y-2">
-          <AppText variant="title">
-            {{ props.title }}
-          </AppText>
-
-          <AppText
-            v-if="props.subtitle !== null"
-            variant="subtitle"
-          >
-            {{ props.subtitle }}
-          </AppText>
-        </div>
+      <div class="flex h-10 items-center justify-between">
+        <AppText variant="title">
+          {{ props.title }}
+        </AppText>
 
         <div
           id="header-actions"

@@ -6,6 +6,7 @@ import type { UserCreateForm } from '@/models/user/create/userCreateForm.model'
 import type { User } from '@/models/user/detail/user.model'
 import { userDtoSchema } from '@/models/user/detail/userDto.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
+import { userIndexDtoSchema } from '@/models/user/index/userIndexDto.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import {
@@ -15,7 +16,7 @@ import {
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
-import { PaginationParamsBuilder } from '@/utils/paginationParamsBuilder.util.ts'
+import { PaginationDtoBuilder } from '@/utils/paginationDtoBuilder.util'
 
 export class UserService {
   static async create(form: UserCreateForm): Promise<User> {
@@ -31,10 +32,10 @@ export class UserService {
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
     const data = await httpClient.get({
       config: {
-        params: new PaginationParamsBuilder<UserIndexFilters>(paginationOptions).build(),
+        params: new PaginationDtoBuilder<UserIndexFilters>(paginationOptions).build(),
       },
-      responseSchema: paginatedDataSchema(userDtoSchema),
-      url: '/users',
+      responseSchema: paginatedDataSchema(userIndexDtoSchema),
+      url: '/employees',
     })
 
     return {
@@ -46,7 +47,7 @@ export class UserService {
   static async getByUuid(userUuid: UserUuid): Promise<User> {
     const data = await httpClient.get({
       responseSchema: userDtoSchema,
-      url: `/users/${userUuid}`,
+      url: `/employees/${userUuid}`,
     })
 
     return UserDetailTransformer.fromDto(data)
@@ -54,9 +55,12 @@ export class UserService {
 
   static async update(userUuid: UserUuid, form: UserUpdateForm): Promise<User> {
     const data = await httpClient.post({
-      body: UserFormTransformer.toUpdateDto(form),
+      body: {
+        ...UserFormTransformer.toUpdateDto(form),
+        language: 'nl',
+      },
       responseSchema: userDtoSchema,
-      url: `/users/${userUuid}`,
+      url: `/employees/${userUuid}`,
     })
 
     return UserDetailTransformer.fromDto(data)

@@ -1,27 +1,44 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
 import type { Form } from 'formango'
 import { useId } from 'radix-vue'
-import { onUnmounted, watch } from 'vue'
+import {
+  computed,
+  onUnmounted,
+  watch,
+} from 'vue'
 import type { z } from 'zod'
 
 import { usePageLoader } from '@/composables/page-loader/pageLoader.composable'
+import { useUnsavedChanges } from '@/composables/unsaved-changes/unsavedChanges.composable'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
+  /**
+   * When `true`, the user can exit the form when it has unsaved changes
+   * instead of showing a confirmation dialog.
+   * @default false
+   */
+  canExitWhenDirty?: boolean
   form: Form<TFormType>
-}>()
+}>(), {
+  canExitWhenDirty: false,
+})
 
 const formId = useId()
-const { setIsLoading } = usePageLoader()
+const pageLoader = usePageLoader()
+
+if (!props.canExitWhenDirty) {
+  useUnsavedChanges(computed<boolean>(() => props.form.isDirty && !props.form.isSubmitting))
+}
 
 watch(
   () => props.form.isSubmitting,
   (isSubmitting) => {
-    setIsLoading(isSubmitting)
+    pageLoader.setIsLoading(isSubmitting)
   },
 )
 
 onUnmounted(() => {
-  setIsLoading(false)
+  pageLoader.setIsLoading(false)
 })
 </script>
 

@@ -1,6 +1,6 @@
 import { useQuery as useTanstackQuery } from '@tanstack/vue-query'
 import type { ComputedRef, MaybeRefOrGetter } from 'vue'
-import { computed, toValue } from 'vue'
+import { computed } from 'vue'
 
 import type { QueryKeys } from '@/types/query/queryKey.type'
 
@@ -92,7 +92,7 @@ export function useQuery<TResData>({
     if (typeof queryKey === 'object' && 'params' in queryKey) {
       return [
         queryKey.key,
-        ...Object.values(toValue(queryKey.params)),
+        ...Object.values(queryKey.params),
       ]
     }
 

@@ -8,7 +8,7 @@ export const KEYBOARD_SHORTCUT = {
   },
   SAVE: {
     keys: [
-      'meta',
+      'ctrl',
       's',
     ],
   },

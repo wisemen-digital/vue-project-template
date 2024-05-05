@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-export function logError(...data: unknown[]): void {
-  console.error(data)
+export function logError(message?: any, ...optionalParams: any[]): void {
+  console.error(message, ...optionalParams)
 }
 
-export function logInfo(...data: unknown[]): void {
-  console.log(data)
+export function logInfo(message?: any, ...optionalParams: any[]): void {
+  console.log(message, ...optionalParams)
 }

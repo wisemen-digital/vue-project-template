@@ -42,7 +42,7 @@ export default defineConfig({
         ],
         name: 'Project template',
         short_name: 'Project template',
-        theme_color: '#113662',
+        theme_color: 'rgb(23, 23, 23)',
       },
       registerType: 'prompt',
       strategies: 'generateSW',

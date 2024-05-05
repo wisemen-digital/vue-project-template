@@ -3,7 +3,7 @@ import { useForm } from 'formango'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useApiErrorToast } from '@/composables/error-toast/apiErrorToast.composable'
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { useTypedRouteParams } from '@/composables/router/typedRouteParams.composable'
 import { useTypedRouteQuery } from '@/composables/router/typedRouteQuery.composable'
 import { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
