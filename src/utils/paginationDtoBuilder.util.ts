@@ -55,7 +55,7 @@ export class PaginationDtoBuilder<TFilterSchema> {
     return this
   }
 
-  public withPerPage(perPage: number): PaginationDtoBuilder<TFilterSchema> {
+  public withSize(perPage: number): PaginationDtoBuilder<TFilterSchema> {
     this.paginationOptions.limit = perPage
     return this
   }
