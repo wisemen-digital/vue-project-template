@@ -2,7 +2,6 @@ import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import {
   computed,
-  readonly,
   ref,
 } from 'vue'
 
@@ -49,7 +48,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function login(data: LoginForm): Promise<void> {
     const { password, username } = AuthTransformer.toLoginDto(data)
-    await oAuthClient.login(username, password)
+    await oAuthClient.loginPassword(username, password)
   }
 
   function logout(): void {
@@ -61,11 +60,10 @@ export const useAuthStore = defineStore('auth', () => {
     currentUser,
     getCurrentUser,
     isAuthenticated,
-    lastLoggedInUser: readonly(lastLoggedInUser),
-    lastLoginAttemptEmail: readonly(lastLoginAttemptEmail),
+    lastLoggedInUser: computed<CurrentUser | null>(() => lastLoggedInUser.value),
+    lastLoginAttemptEmail: computed<null | string>(() => lastLoginAttemptEmail.value),
     login,
     logout,
-    setCurrentUser,
     setLastLoggedInUser,
     setLastLoginAttemptEmail,
   }

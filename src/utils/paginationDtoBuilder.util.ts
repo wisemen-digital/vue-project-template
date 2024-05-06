@@ -6,12 +6,12 @@ const DEFAULT_PAGE = 0
 const DEFAULT_PER_PAGE = 20
 
 type PaginationParams<TFilterSchema> = {
-  limit: number
-  page: number
-} & Partial<TFilterSchema> & {
   column?: string
   direction?: 'asc' | 'desc'
-}
+} & {
+  limit: number
+  page: number
+} & Partial<TFilterSchema>
 
 interface PaginationSort {
   direction: 'asc' | 'desc'

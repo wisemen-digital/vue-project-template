@@ -11,11 +11,11 @@ import { routes } from '@/routes/routes'
 import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type'
 
 function setupRouteMiddlewareInterceptor(router: Router): void {
-  function hasMiddleware(to: RouteRecordNormalized): to is RouteRecordNormalized & {
+  function hasMiddleware(to: RouteRecordNormalized): to is {
     meta: {
       middleware: ((to: RouteLocationNormalized, from: RouteLocationNormalized) => RouteMiddlewareReturnType)[]
     }
-  } {
+  } & RouteRecordNormalized {
     return to.meta.middleware != null
   }
 
