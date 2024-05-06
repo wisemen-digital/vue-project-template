@@ -1,9 +1,9 @@
 import type { ComputedRef } from 'vue'
 
-export type PaginationApiParams = Record<string, ComputedRef<unknown> | unknown> & {
+export type PaginationApiParams = {
   limit: ComputedRef<number>
   page: ComputedRef<number>
-}
+} & Record<string, ComputedRef<unknown> | unknown>
 
 export interface PaginatedData<TSchema> {
   data: TSchema[]

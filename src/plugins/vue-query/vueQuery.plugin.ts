@@ -1,4 +1,7 @@
-import { VueQueryPlugin, type VueQueryPluginOptions } from '@tanstack/vue-query'
+import {
+  VueQueryPlugin,
+  type VueQueryPluginOptions,
+} from '@tanstack/vue-query'
 import type { App } from 'vue'
 
 const vueQueryPluginOptions: VueQueryPluginOptions = {

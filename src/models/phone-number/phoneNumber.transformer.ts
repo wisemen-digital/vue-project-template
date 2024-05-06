@@ -1,4 +1,7 @@
-import { formatNumber, parsePhoneNumber } from 'libphonenumber-js'
+import {
+  formatNumber,
+  parsePhoneNumber,
+} from 'libphonenumber-js'
 
 import type { PhoneNumberDto } from '@/models/phone-number/phoneNumberDto.model.ts'
 

@@ -32,8 +32,19 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
   },
 ])
 
-const { form, onSubmitForm } = useForm({
+const {
+  form,
+  onSubmitForm,
+  onSubmitFormError,
+} = useForm({
   schema: userCreateFormSchema,
+})
+
+onSubmitFormError(() => {
+  toast.error({
+    description: t('error.invalid_form_input.description'),
+    title: t('error.invalid_form_input.title'),
+  })
 })
 
 onSubmitForm(async (values) => {
