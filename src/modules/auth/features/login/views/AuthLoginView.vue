@@ -21,7 +21,11 @@ const { t } = useI18n()
 const toast = useToast()
 const router = useTypedRouter()
 
-const { form, onSubmitForm } = useForm({
+const {
+  form,
+  onSubmitForm,
+  onSubmitFormError,
+} = useForm({
   schema: loginFormSchema,
 })
 
@@ -63,6 +67,13 @@ function handleLoginError(error: unknown): void {
     throw error
   }
 }
+
+onSubmitFormError(() => {
+  toast.error({
+    description: t('error.invalid_form_input.description'),
+    title: t('error.invalid_form_input.title'),
+  })
+})
 
 onSubmitForm(async (data) => {
   try {

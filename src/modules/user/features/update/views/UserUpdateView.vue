@@ -7,7 +7,10 @@ import { useI18n } from 'vue-i18n'
 import FormPage from '@/components/form/FormPage.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import type { User } from '@/models/user/detail/user.model'
-import { UserUpdateForm as UserUpdateFormType, userUpdateFormSchema } from '@/models/user/update/userUpdateForm.model'
+import {
+  UserUpdateForm as UserUpdateFormType,
+  userUpdateFormSchema,
+} from '@/models/user/update/userUpdateForm.model'
 import { UserFormTransformer } from '@/models/user/user.transformer'
 import { useUserUpdateMutation } from '@/modules/user/api/mutations/userUpdate.mutation'
 
@@ -46,9 +49,20 @@ const breadcrumbs: BreadcrumbItem[] = [
   },
 ]
 
-const { form, onSubmitForm } = useForm({
+const {
+  form,
+  onSubmitForm,
+  onSubmitFormError,
+} = useForm({
   initialState: computed<UserUpdateFormType>(() => UserFormTransformer.toUpdateForm(props.user)),
   schema: userUpdateFormSchema,
+})
+
+onSubmitFormError(() => {
+  toast.error({
+    description: t('error.invalid_form_input.description'),
+    title: t('error.invalid_form_input.title'),
+  })
 })
 
 onSubmitForm(async (values) => {

@@ -1,4 +1,7 @@
-import type { RouteLocationNamedRaw, RouteRecordRaw } from 'vue-router'
+import type {
+  RouteLocationNamedRaw,
+  RouteRecordRaw,
+} from 'vue-router'
 
 import type { Routes } from '@/routes/routes'
 
@@ -6,31 +9,31 @@ import type { RouteMiddlewareReturnType } from './routeMiddleware.type.ts'
 
 type MaybePromise<T> = Promise<T> | T
 
-export type RouteLocationTyped<T extends keyof Routes> = RouteLocationNamedRaw &
-  (Routes[T] extends { params: infer P }
-    ? P extends undefined
-      ? object
-      : {
-          params: {
-            [K in keyof P]: P[K]
-          }
+export type RouteLocationTyped<T extends keyof Routes> = {
+  name: T
+} &
+RouteLocationNamedRaw & (Routes[T] extends { params: infer P }
+  ? P extends undefined
+    ? object
+    : {
+        params: {
+          [K in keyof P]: P[K]
         }
-    : object) & {
-      name: T
-    }
+      }
+  : object)
 
 export type RouteRecordTyped =
+  | ({
+    children: RouteRecordTyped[]
+  } & Omit<RouteRecordRaw, 'children' | 'name'>)
   | {
     children?: RouteRecordTyped[]
     name: keyof Routes
     path: string
-    redirect?: RouteRecordRaw['redirect'] & {
+    redirect?: {
       name: keyof Routes
-    }
+    } & RouteRecordRaw['redirect']
   }
-  | (Omit<RouteRecordRaw, 'children' | 'name'> & {
-    children: RouteRecordTyped[]
-  })
 
 declare module 'vue-router' {
   interface RouteMeta {
