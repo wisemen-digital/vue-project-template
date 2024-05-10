@@ -11,7 +11,6 @@ import { useI18n } from 'vue-i18n'
 import AppDivider from '@/components/app/AppDivider.vue'
 import AppAvatar from '@/components/app/avatar/AppAvatar.vue'
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
-import { CURRENT_BUILD_NUMBER, CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 import { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import { useAuthStore } from '@/stores/auth.store'
 
@@ -77,24 +76,6 @@ function signOut(): void {
           >
             {{ currentUser.fullName }}
           </AppText>
-
-          <AppDivider />
-
-          <div class="p-3">
-            <AppText
-              variant="subtext"
-              class="text-muted-foreground"
-            >
-              {{ t('components.sidebar.footer.version') }}: {{ CURRENT_BUILD_NUMBER ?? '-' }}
-            </AppText>
-
-            <AppText
-              variant="subtext"
-              class="mt-1 text-muted-foreground"
-            >
-              {{ t('components.sidebar.footer.environment') }}: {{ CURRENT_ENVIRONMENT }}
-            </AppText>
-          </div>
 
           <AppDivider />
         </div>
