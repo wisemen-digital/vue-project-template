@@ -8,7 +8,7 @@ type PaginationParams<TFilterSchema> = {
   direction?: 'asc' | 'desc'
 } & {
   limit: number
-  page: number
+  offset: number
 } & Partial<TFilterSchema>
 
 interface PaginationSort {
@@ -22,7 +22,7 @@ export class PaginationDtoBuilder<TFilterSchema> {
   constructor(paginationOptions?: PaginationOptions<TFilterSchema>) {
     this.paginationOptions = {
       limit: paginationOptions?.pagination.perPage ?? DEFAULT_PER_PAGE,
-      page: paginationOptions?.pagination.page ?? DEFAULT_PAGE,
+      offset: paginationOptions?.pagination.page ?? DEFAULT_PAGE,
     } as PaginationParams<TFilterSchema>
 
     for (const key in paginationOptions?.filters) {
@@ -44,13 +44,13 @@ export class PaginationDtoBuilder<TFilterSchema> {
     return this
   }
 
-  public withLimit(perPage: number): PaginationDtoBuilder<TFilterSchema> {
-    this.paginationOptions.limit = perPage
+  public withLimit(limit: number): PaginationDtoBuilder<TFilterSchema> {
+    this.paginationOptions.limit = limit
     return this
   }
 
-  public withPage(page: number): PaginationDtoBuilder<TFilterSchema> {
-    this.paginationOptions.page = page
+  public withOffset(offset: number): PaginationDtoBuilder<TFilterSchema> {
+    this.paginationOptions.offset = offset
     return this
   }
 
