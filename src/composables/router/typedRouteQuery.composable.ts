@@ -17,7 +17,7 @@ export function useTypedRouteQuery<T extends keyof Routes>(_routeName: T): UseTy
   return Object.keys(route.query).reduce((acc, key) => {
     return {
       ...acc,
-      [key]: computed<string>(() => route.params[key] as string),
+      [key]: computed<string>(() => route.query[key] as string),
     }
   }, {}) as UseTypedRouteQuery<T>
 }

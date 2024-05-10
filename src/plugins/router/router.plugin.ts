@@ -5,7 +5,10 @@ import type {
   RouteRecordNormalized,
   RouteRecordRaw,
 } from 'vue-router'
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+} from 'vue-router'
 
 import { routes } from '@/routes/routes'
 import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type'

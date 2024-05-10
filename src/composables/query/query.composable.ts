@@ -1,5 +1,8 @@
 import { useQuery as useTanstackQuery } from '@tanstack/vue-query'
-import type { ComputedRef, MaybeRefOrGetter } from 'vue'
+import type {
+  ComputedRef,
+  MaybeRefOrGetter,
+} from 'vue'
 import { computed } from 'vue'
 
 import type { QueryKeys } from '@/types/query/queryKey.type'

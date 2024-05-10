@@ -23,7 +23,11 @@
     "reset_password": {
       "action": "Reset password",
       "description": "Enter your new password below",
-      "title": "Reset password"
+      "title": "Reset password",
+      "success": {
+        "action": "Log in",
+        "description": "Your password has been reset successfully. You can now log in with your new password."
+      }
     }
   },
   "components": {
@@ -103,6 +107,10 @@
     "validation_error": {
       "description": "Please check the form for errors.",
       "title": "Validation error"
+    },
+    "invalid_form_input": {
+      "description": "Please check the highlighted fields and try again.",
+      "title": "Invalid form"
     }
   },
   "form": {
