@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+import { API_BASE_URL } from '@/constants/environment.constant.ts'
 import {
   httpClient,
   unauthorizedHttpClient,
@@ -15,7 +16,7 @@ export class AuthService {
     await unauthorizedHttpClient.post({
       body: AuthTransformer.toForgotPasswordDto(form),
       config: {
-        baseURL: import.meta.env.API_BASE_URL,
+        baseURL: API_BASE_URL,
       },
       responseSchema: z.unknown(),
       url: 'api/auth/forgot-password',
@@ -25,7 +26,7 @@ export class AuthService {
   static async getCurrentUser(): Promise<CurrentUser> {
     const data = await httpClient.get({
       config: {
-        baseURL: import.meta.env.API_BASE_URL,
+        baseURL: API_BASE_URL,
       },
       responseSchema: currentUserDtoSchema,
       url: '/api/auth/userinfo',
@@ -38,7 +39,7 @@ export class AuthService {
     await unauthorizedHttpClient.post({
       body: AuthTransformer.toResetPasswordDto(form),
       config: {
-        baseURL: import.meta.env.API_BASE_URL,
+        baseURL: API_BASE_URL,
       },
       responseSchema: z.unknown(),
       url: 'api/auth/reset-password',
