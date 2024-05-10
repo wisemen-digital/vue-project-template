@@ -3,7 +3,10 @@ import { useToast } from '@wisemen/vue-core'
 
 import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 
-import { axios, unauthorizedAxios } from './axios.lib'
+import {
+  axios,
+  unauthorizedAxios,
+} from './axios.lib'
 
 interface ZodError {
   error: unknown

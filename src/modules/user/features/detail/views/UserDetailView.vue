@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { AppRouterLinkButton, BreadcrumbItem } from '@wisemen/vue-core'
+import {
+  AppRouterLinkButton,
+  BreadcrumbItem,
+} from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import AppPage from '@/components/app/AppPage.vue'

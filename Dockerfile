@@ -27,7 +27,7 @@ RUN pnpm run production
 # --- Stage 2: Run ---
 #
 
-FROM ghcr.io/wisemen-digital/vue-base:latest as final
+FROM ghcr.io/wisemen-digital/web-base:latest as final
 
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /app/www
 COPY --from=build /app/.env.example /etc/import-meta-env/example

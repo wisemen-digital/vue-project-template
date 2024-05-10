@@ -1,6 +1,9 @@
 import { z } from 'zod'
 
-import { httpClient, unauthorizedHttpClient } from '@/libs/http.lib'
+import {
+  httpClient,
+  unauthorizedHttpClient,
+} from '@/libs/http.lib'
 import { AuthTransformer } from '@/models/auth/auth.transformer'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import { currentUserDtoSchema } from '@/models/auth/current-user/currentUserDto.model'

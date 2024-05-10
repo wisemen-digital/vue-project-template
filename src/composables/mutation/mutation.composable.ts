@@ -4,7 +4,10 @@ import type { AxiosError } from 'axios'
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 
-import type { QueryKeyToInvalidate, QueryKeysToInvalidate } from '@/types/query/queryKey.type'
+import type {
+  QueryKeyToInvalidate,
+  QueryKeysToInvalidate,
+} from '@/types/query/queryKey.type'
 import { generateQueryKey } from '@/utils/queryKey.util'
 import { logInfo } from '@/utils/logger.util'
 

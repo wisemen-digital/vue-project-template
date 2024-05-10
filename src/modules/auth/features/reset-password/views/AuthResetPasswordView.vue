@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import {
+  AppRouterLinkButton,
+  useToast,
+} from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -12,12 +16,17 @@ import AuthPage from '@/modules/auth/components/AuthPage.vue'
 
 import ResetPasswordForm from '../components/AuthResetPasswordForm.vue'
 
-const hasPasswordBeenReset = ref<boolean>(false)
+const hasPasswordBeenReset = ref<boolean>(true)
 
 const { t } = useI18n()
+const toast = useToast()
 const errorToast = useApiErrorToast()
 
-const { form, onSubmitForm } = useForm({
+const {
+  form,
+  onSubmitForm,
+  onSubmitFormError,
+} = useForm({
   schema: resetPasswordFormSchema,
 })
 
@@ -31,10 +40,17 @@ const resetPasswordMutation = useAuthResetPasswordMutation()
 
 const description = computed<string>(() => {
   if (hasPasswordBeenReset.value) {
-    return t('auth.features.your_password_has_been_reset_you_can')
+    return t('auth.reset_password.success.description')
   }
 
   return t('auth.reset_password.description')
+})
+
+onSubmitFormError(() => {
+  toast.error({
+    description: t('error.invalid_form_input.description'),
+    title: t('error.invalid_form_input.title'),
+  })
 })
 
 onSubmitForm(async (values) => {
@@ -60,5 +76,14 @@ onSubmitForm(async (values) => {
       v-if="!hasPasswordBeenReset"
       :form="form"
     />
+
+    <AppRouterLinkButton
+      v-else
+      :to="{
+        name: 'login',
+      }"
+    >
+      {{ t('auth.reset_password.success.action') }}
+    </AppRouterLinkButton>
   </AuthPage>
 </template>

@@ -1,4 +1,7 @@
-import type { ErrorMapCtx, ZodIssueOptionalMessage } from 'zod'
+import type {
+  ErrorMapCtx,
+  ZodIssueOptionalMessage,
+} from 'zod'
 import { z } from 'zod'
 
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
