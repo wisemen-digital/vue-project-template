@@ -21,9 +21,6 @@ export class AuthService {
 
   static async getCurrentUser(): Promise<CurrentUser> {
     const data = await httpClient.get({
-      config: {
-        baseURL: import.meta.env.API_BASE_URL,
-      },
       responseSchema: currentUserDtoSchema,
       url: '/api/auth/userinfo',
     })

@@ -1,7 +1,5 @@
 import { PaginationOptions } from '@wisemen/vue-core'
 
-import { base64Encode } from '@/utils/base64.util'
-
 const DEFAULT_PAGE = 0
 const DEFAULT_PER_PAGE = 20
 
@@ -36,10 +34,6 @@ export class PaginationDtoBuilder<TFilterSchema> {
     return this.paginationOptions
   }
 
-  public buildEncoded(): string {
-    return base64Encode(JSON.stringify(this.build()))
-  }
-
   public withFilter<TKey extends keyof TFilterSchema>(
     key: TKey,
     value: TFilterSchema[TKey] | null | undefined,
@@ -50,13 +44,13 @@ export class PaginationDtoBuilder<TFilterSchema> {
     return this
   }
 
-  public withPage(page: number): PaginationDtoBuilder<TFilterSchema> {
-    this.paginationOptions.page = page
+  public withLimit(perPage: number): PaginationDtoBuilder<TFilterSchema> {
+    this.paginationOptions.limit = perPage
     return this
   }
 
-  public withSize(perPage: number): PaginationDtoBuilder<TFilterSchema> {
-    this.paginationOptions.limit = perPage
+  public withPage(page: number): PaginationDtoBuilder<TFilterSchema> {
+    this.paginationOptions.page = page
     return this
   }
 

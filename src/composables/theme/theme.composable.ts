@@ -5,25 +5,25 @@ import { computed } from 'vue'
 import type { ThemeConstant } from '@/constants/theme.constant.ts'
 
 export interface UseThemeReturnType {
-  setTheme: (value: ThemeConstant | null) => void
-  theme: ComputedRef<ThemeConstant | null>
+  current: ComputedRef<ThemeConstant | null>
+  set: (value: ThemeConstant | null) => void
 }
 
 export function useTheme(): UseThemeReturnType {
   const theme = useLocalStorage<'' | ThemeConstant>('theme', '')
 
-  function setTheme(value: ThemeConstant | null): void {
+  function set(value: ThemeConstant | null): void {
     theme.value = value ?? ''
   }
 
   return {
-    setTheme,
-    theme: computed<ThemeConstant | null>(() => {
+    current: computed<ThemeConstant | null>(() => {
       if (theme.value === '') {
         return null
       }
 
       return theme.value
     }),
+    set,
   }
 }

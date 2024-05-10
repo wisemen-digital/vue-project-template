@@ -1,11 +1,16 @@
 <script lang="ts" setup>
-import { useTheme } from '@/composables/theme/theme.composable.ts'
+import { computed } from 'vue'
 
-const { theme } = useTheme()
+import { useTheme } from '@/composables/theme/theme.composable.ts'
+import type { ThemeConstant } from '@/constants/theme.constant.ts'
+
+const theme = useTheme()
+
+const currentTheme = computed<ThemeConstant | null>(() => theme.current.value)
 </script>
 
 <template>
-  <div :class="theme">
+  <div :class="currentTheme">
     <slot />
   </div>
 </template>
