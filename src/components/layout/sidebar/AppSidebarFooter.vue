@@ -34,7 +34,7 @@ const dropdownMenuItems: DropdownMenuItem[] = [
           'o',
         ],
         label: t('components.sidebar.footer.sign_out'),
-        onSelect: signOut,
+        onSelect: onSignOutButtonClick,
         type: 'option',
       },
     ],
@@ -42,7 +42,7 @@ const dropdownMenuItems: DropdownMenuItem[] = [
   },
 ]
 
-function signOut(): void {
+function onSignOutButtonClick(): void {
   authStore.logout()
 
   void router.replace({
@@ -88,14 +88,14 @@ function signOut(): void {
               variant="subtext"
               class="text-muted-foreground"
             >
-              {{ t('components.sidebar.footer.version') }}: {{ CURRENT_BUILD_NUMBER ?? '-' }}
+              {{ `${t('components.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
             </AppText>
 
             <AppText
               variant="subtext"
               class="mt-1 text-muted-foreground"
             >
-              {{ t('components.sidebar.footer.environment') }}: {{ CURRENT_ENVIRONMENT }}
+              {{ `${t('components.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
             </AppText>
           </div>
 
