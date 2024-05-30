@@ -1,6 +1,7 @@
+/* eslint-disable check-file/filename-naming-convention */
+
 /// <reference types="vite/client" />
 
-// eslint-disable-next-line check-file/filename-naming-convention
 interface ImportMetaEnv {
   readonly API_AUTH_URL: string
   readonly API_BASE_URL: string
@@ -8,7 +9,7 @@ interface ImportMetaEnv {
   readonly API_CLIENT_SECRET: string
   readonly ENVIRONMENT: 'development' | 'production' | 'staging' | 'test'
   readonly SENTRY_DSN: string
-  readonly SENTRY_TRACING_ORIGIN: string
+  readonly SENTRY_SAMPLE_RATE: number
 }
 
 interface ImportMeta {
