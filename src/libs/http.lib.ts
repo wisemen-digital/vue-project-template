@@ -4,8 +4,8 @@ import { useToast } from '@wisemen/vue-core'
 import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 
 import {
+  authAxios,
   axios,
-  unauthorizedAxios,
 } from './axios.lib'
 
 interface ZodError {
@@ -32,7 +32,7 @@ export const httpClient = createHttpZodClient({
   onZodError,
 })
 
-export const unauthorizedHttpClient = createHttpZodClient({
-  axios: unauthorizedAxios,
+export const authHttpClient = createHttpZodClient({
+  axios: authAxios,
   onZodError,
 })

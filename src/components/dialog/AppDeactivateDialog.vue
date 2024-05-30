@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppConfirmDialog from '@/components/dialogs/AppConfirmDialog.vue'
+import AppConfirmDialog from '@/components/dialog/AppConfirmDialog.vue'
 
 const props = defineProps<{
   cancelText: string

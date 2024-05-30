@@ -9,16 +9,16 @@ import { themeConstantSchema } from '@/constants/theme.constant.ts'
 
 describe('useTheme', () => {
   it('theme default be null', () => {
-    const { theme } = useTheme()
+    const theme = useTheme()
 
-    expect(theme.value).toBe(null)
+    expect(theme.current.value).toBe(null)
   })
 
   it('theme be set when setting the theme', () => {
-    const { setTheme, theme } = useTheme()
+    const theme = useTheme()
 
-    setTheme(themeConstantSchema.Values.dark)
+    theme.set(themeConstantSchema.Values.dark)
 
-    expect(theme.value).toBe(themeConstantSchema.Values.dark)
+    expect(theme.current.value).toBe(themeConstantSchema.Values.dark)
   })
 })

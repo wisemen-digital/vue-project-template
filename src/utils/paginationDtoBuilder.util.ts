@@ -1,16 +1,14 @@
 import { PaginationOptions } from '@wisemen/vue-core'
 
-import { base64Encode } from '@/utils/base64.util'
-
-const DEFAULT_PAGE = 0
-const DEFAULT_PER_PAGE = 20
+const DEFAULT_OFFSET = 10
+const DEFAULT_LIMIT = 10
 
 type PaginationParams<TFilterSchema> = {
   column?: string
   direction?: 'asc' | 'desc'
 } & {
   limit: number
-  page: number
+  offset: number
 } & Partial<TFilterSchema>
 
 interface PaginationSort {
@@ -23,8 +21,8 @@ export class PaginationDtoBuilder<TFilterSchema> {
 
   constructor(paginationOptions?: PaginationOptions<TFilterSchema>) {
     this.paginationOptions = {
-      limit: paginationOptions?.pagination.perPage ?? DEFAULT_PER_PAGE,
-      page: paginationOptions?.pagination.page ?? DEFAULT_PAGE,
+      limit: paginationOptions?.pagination.perPage ?? DEFAULT_LIMIT,
+      offset: paginationOptions?.pagination.page ?? DEFAULT_OFFSET,
     } as PaginationParams<TFilterSchema>
 
     for (const key in paginationOptions?.filters) {
@@ -34,10 +32,6 @@ export class PaginationDtoBuilder<TFilterSchema> {
 
   public build(): PaginationParams<TFilterSchema> {
     return this.paginationOptions
-  }
-
-  public buildEncoded(): string {
-    return base64Encode(JSON.stringify(this.build()))
   }
 
   public withFilter<TKey extends keyof TFilterSchema>(
@@ -50,13 +44,13 @@ export class PaginationDtoBuilder<TFilterSchema> {
     return this
   }
 
-  public withPage(page: number): PaginationDtoBuilder<TFilterSchema> {
-    this.paginationOptions.page = page
+  public withLimit(limit: number): PaginationDtoBuilder<TFilterSchema> {
+    this.paginationOptions.limit = limit
     return this
   }
 
-  public withSize(perPage: number): PaginationDtoBuilder<TFilterSchema> {
-    this.paginationOptions.limit = perPage
+  public withOffset(offset: number): PaginationDtoBuilder<TFilterSchema> {
+    this.paginationOptions.offset = offset
     return this
   }
 

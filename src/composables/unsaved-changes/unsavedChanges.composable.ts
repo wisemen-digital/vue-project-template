@@ -14,7 +14,7 @@ interface UseUnsavedChangesReturnType {
 
 export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChangesReturnType {
   const confirmDialog = useDialog({
-    component: () => import('@/components/dialogs/AppConfirmDialog.vue'),
+    component: () => import('@/components/dialog/AppConfirmDialog.vue'),
   })
 
   function handleUnsavedClose(callback: () => void): void {
