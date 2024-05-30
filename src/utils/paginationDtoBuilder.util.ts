@@ -1,7 +1,7 @@
 import { PaginationOptions } from '@wisemen/vue-core'
 
-const DEFAULT_PAGE = 0
-const DEFAULT_PER_PAGE = 20
+const DEFAULT_OFFSET = 10
+const DEFAULT_LIMIT = 10
 
 type PaginationParams<TFilterSchema> = {
   column?: string
@@ -21,8 +21,8 @@ export class PaginationDtoBuilder<TFilterSchema> {
 
   constructor(paginationOptions?: PaginationOptions<TFilterSchema>) {
     this.paginationOptions = {
-      limit: paginationOptions?.pagination.perPage ?? DEFAULT_PER_PAGE,
-      offset: paginationOptions?.pagination.page ?? DEFAULT_PAGE,
+      limit: paginationOptions?.pagination.perPage ?? DEFAULT_LIMIT,
+      offset: paginationOptions?.pagination.page ?? DEFAULT_OFFSET,
     } as PaginationParams<TFilterSchema>
 
     for (const key in paginationOptions?.filters) {

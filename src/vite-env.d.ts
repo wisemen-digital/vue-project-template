@@ -2,10 +2,10 @@
 
 // eslint-disable-next-line check-file/filename-naming-convention
 interface ImportMetaEnv {
+  readonly API_AUTH_URL: string
   readonly API_BASE_URL: string
   readonly API_CLIENT_ID: string
   readonly API_CLIENT_SECRET: string
-  readonly API_ENDPOINT: string
   readonly ENVIRONMENT: 'development' | 'production' | 'staging' | 'test'
   readonly SENTRY_DSN: string
   readonly SENTRY_TRACING_ORIGIN: string
