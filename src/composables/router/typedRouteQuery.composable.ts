@@ -11,8 +11,12 @@ type UseTypedRouteQuery<T extends keyof Routes> = {
     : never)]: ComputedRef<string>
 }
 
-export function useTypedRouteQuery<T extends keyof Routes>(_routeName: T): UseTypedRouteQuery<T> {
+export function useTypedRouteQuery<T extends keyof Routes>(routeName: T): UseTypedRouteQuery<T> {
   const route = useRoute()
+
+  if (route.name !== routeName) {
+    throw new Error(`Route name ${routeName} does not match current route name ${route.name as string}. This probably means that you passed the wrong route name to the \`useTypedRouteQuery\``)
+  }
 
   return Object.keys(route.query).reduce((acc, key) => {
     return {
