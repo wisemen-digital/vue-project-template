@@ -3,30 +3,22 @@ import { computed } from 'vue'
 
 import { useIsMounted } from '@/composables/is-mounted/isMounted.composable'
 
-type TeleportTarget = 'body' | 'header-actions'
-
 const props = defineProps<{
-  target: TeleportTarget
+  to: keyof typeof targets
 }>()
 
-const targetMap = new Map<TeleportTarget, string>([
-  [
-    'body',
-    'body',
-  ],
-  [
-    'header-actions',
-    '#header-actions',
-  ],
-])
+const targets = {
+  body: 'body',
+  headerActions: '#header-actions',
+} as const
 
 const isMounted = useIsMounted()
 
 const teleportTarget = computed<string>(() => {
-  const selectedTarget = targetMap.get(props.target) ?? null
+  const selectedTarget = targets[props.to]
 
   if (selectedTarget === null) {
-    throw new Error(`Invalid teleport target: ${props.target}`)
+    throw new Error(`Invalid teleport target: ${props.to}`)
   }
 
   return selectedTarget
