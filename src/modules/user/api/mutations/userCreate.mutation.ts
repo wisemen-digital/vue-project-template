@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service'
 
 export function useUserCreateMutation(): UseMutationReturnType<UserCreateForm, User> {
   return useMutation<UserCreateForm, User>({
-    queryFn: async ({ body }: { body: UserCreateForm }) => {
+    queryFn: async ({ body }) => {
       return await UserService.create(body)
     },
     queryKeysToInvalidate: [

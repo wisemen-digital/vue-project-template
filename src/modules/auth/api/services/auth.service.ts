@@ -15,14 +15,14 @@ export class AuthService {
     await authHttpClient.post({
       body: AuthTransformer.toForgotPasswordDto(form),
       responseSchema: z.unknown(),
-      url: 'forgot-password',
+      url: '/forgot-password',
     })
   }
 
   static async getCurrentUser(): Promise<CurrentUser> {
     const data = await httpClient.get({
       responseSchema: currentUserDtoSchema,
-      url: 'userinfo',
+      url: '/userinfo',
     })
 
     return AuthTransformer.toCurrentUser(data)
@@ -32,7 +32,7 @@ export class AuthService {
     await authHttpClient.post({
       body: AuthTransformer.toResetPasswordDto(form),
       responseSchema: z.unknown(),
-      url: 'reset-password',
+      url: '/reset-password',
     })
   }
 }

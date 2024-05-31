@@ -1,6 +1,12 @@
+import { RouteLocationNormalized } from 'vue-router'
+
 import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type'
 
-type MiddlewareFn = () => Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
+type MiddlewareFn = (
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+) => Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
+
 type Middleware = Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
 
 /**
@@ -10,5 +16,5 @@ type Middleware = Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
  * @returns The middleware function.
  */
 export function createMiddleware(middlewareFn: MiddlewareFn): () => Middleware {
-  return middlewareFn
+  return middlewareFn as () => Middleware
 }

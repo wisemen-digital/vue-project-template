@@ -17,7 +17,10 @@ const password = props.form.register('password')
 </script>
 
 <template>
-  <AppForm :form="form">
+  <AppForm
+    :form="form"
+    :can-exit-when-dirty="true"
+  >
     <FormPasswordInput
       v-bind="password"
       :label="t('form.fields.password')"

@@ -16,7 +16,10 @@ import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.t
 function setupRouteMiddlewareInterceptor(router: Router): void {
   function hasMiddleware(to: RouteRecordNormalized): to is {
     meta: {
-      middleware: ((to: RouteLocationNormalized, from: RouteLocationNormalized) => RouteMiddlewareReturnType)[]
+      middleware: ((
+        to: RouteLocationNormalized,
+        from: RouteLocationNormalized,
+      ) => RouteMiddlewareReturnType)[]
     }
   } & RouteRecordNormalized {
     return to.meta.middleware != null

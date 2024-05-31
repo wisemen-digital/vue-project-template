@@ -25,7 +25,7 @@
       "description": "Enter your new password below",
       "title": "Reset password",
       "success": {
-        "action": "Log in",
+        "action": "Return to login",
         "description": "Your password has been reset successfully. You can now log in with your new password."
       }
     }

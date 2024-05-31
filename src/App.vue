@@ -25,6 +25,10 @@ useRefreshPrompt()
 setTemplate('{title} | App')
 
 onCreated(() => {
+  if (CURRENT_BUILD_COMMIT === 'undefined') {
+    return
+  }
+
   logInfo('Application started', {
     COMMIT: CURRENT_BUILD_COMMIT,
     ENVIRONMENT: CURRENT_ENVIRONMENT,
