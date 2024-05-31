@@ -1,1 +1,0 @@
-A collection of util functions. All util function should be pure.

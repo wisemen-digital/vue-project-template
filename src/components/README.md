@@ -1,1 +1,0 @@
-Collection of vue components which are reused throughout the application.
