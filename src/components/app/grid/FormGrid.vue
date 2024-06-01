@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { StyleUtil } from '@/utils/style.util'
+import { StyleUtil } from '@/utils/style.util.ts'
 
 const props = defineProps<{
   cols: 1 | 2 | 3 | 4 | 5
