@@ -11,8 +11,10 @@ import updateLocale from 'dayjs/plugin/updateLocale'
 import utc from 'dayjs/plugin/utc'
 import weekOfYear from 'dayjs/plugin/weekOfYear'
 
+import { LocaleUtil } from '@/utils/locale.util'
+
 dayjs.extend(updateLocale)
-dayjs.updateLocale('nl', { weekStart: 1 })
+dayjs.updateLocale(LocaleUtil.getLocale(), { weekStart: 1 })
 
 dayjs.extend(weekOfYear)
 dayjs.extend(localeData)
