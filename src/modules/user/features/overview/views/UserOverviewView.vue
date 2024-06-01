@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {
   BreadcrumbItem,
-  useTablePagination,
+  usePagination,
 } from '@wisemen/vue-core'
 import {
   computed,
@@ -31,18 +31,18 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
   },
 ])
 
-const paginationOptions = useTablePagination<UserIndexFilters>({
+const pagination = usePagination<UserIndexFilters>({
   id: 'users',
 })
 
-const search = ref<string>(paginationOptions.paginationOptions.value.filters?.name ?? '')
+const search = ref<string>(pagination.paginationOptions.value.filters?.name ?? '')
 
-const userIndexQuery = useUserIndexQuery(paginationOptions.paginationOptions)
+const userIndexQuery = useUserIndexQuery(pagination.paginationOptions)
 
 const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
 
 function onSearch(search: null | string): void {
-  paginationOptions.handleFilterChange({
+  pagination.handleFilterChange({
     name: search,
   })
 }
@@ -77,7 +77,7 @@ watch(search, onSearch)
       <UserOverviewTable
         :data="userIndexQuery.data.value"
         :is-loading="isLoading"
-        :pagination="paginationOptions"
+        :pagination="pagination"
         @clear-filters="onClearFilters"
       />
     </template>

@@ -28,15 +28,15 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     id: 'uuid',
     isSortable: true,
     label: 'UUID',
-    size: '400px',
     value: row => row.uuid,
+    width: 'auto',
   },
   {
     id: 'name',
     isSortable: true,
     label: t('shared.name'),
-    size: '500px',
     value: row => row.fullName,
+    width: '500px',
   },
 ])
 

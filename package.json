@@ -28,7 +28,7 @@
     "@tanstack/vue-query": "5.35.1",
     "@vueuse/core": "10.9.0",
     "@vueuse/router": "10.9.0",
-    "@wisemen/vue-core": "0.0.64",
+    "@wisemen/vue-core": "^0.0.68",
     "axios": "1.6.8",
     "clsx": "2.1.1",
     "cva": "1.0.0-beta.1",

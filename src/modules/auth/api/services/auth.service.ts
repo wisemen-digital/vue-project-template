@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+import { API_AUTH_URL } from '@/constants/environment.constant'
 import {
   authHttpClient,
   httpClient,
@@ -21,6 +22,9 @@ export class AuthService {
 
   static async getCurrentUser(): Promise<CurrentUser> {
     const data = await httpClient.get({
+      config: {
+        baseURL: API_AUTH_URL,
+      },
       responseSchema: currentUserDtoSchema,
       url: '/userinfo',
     })
