@@ -3,11 +3,7 @@ import {
   BreadcrumbItem,
   usePagination,
 } from '@wisemen/vue-core'
-import {
-  computed,
-  ref,
-  watch,
-} from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppSearchInput from '@/components/app/AppSearchInput.vue'
@@ -35,23 +31,18 @@ const pagination = usePagination<UserIndexFilters>({
   id: 'users',
 })
 
-const search = ref<string>(pagination.paginationOptions.value.filters?.name ?? '')
+const search = computed<string>({
+  get: () => pagination.paginationOptions.value.filters?.name ?? '',
+  set: (value) => {
+    pagination.handleFilterChange({
+      name: value,
+    })
+  },
+})
 
 const userIndexQuery = useUserIndexQuery(pagination.paginationOptions)
 
 const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
-
-function onSearch(search: null | string): void {
-  pagination.handleFilterChange({
-    name: search,
-  })
-}
-
-function onClearFilters(): void {
-  search.value = ''
-}
-
-watch(search, onSearch)
 </script>
 
 <template>
@@ -78,7 +69,6 @@ watch(search, onSearch)
         :data="userIndexQuery.data.value"
         :is-loading="isLoading"
         :pagination="pagination"
-        @clear-filters="onClearFilters"
       />
     </template>
   </AppTablePage>

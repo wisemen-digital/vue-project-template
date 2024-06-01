@@ -23,6 +23,8 @@ interface Constructor<P = any> {
   new (...args: any[]): { $props: P }
 }
 
-export function createComponent<TProps>(component: Constructor<TProps>, props: Omit<TProps, IgnoredKeys>): VNode {
-  return h(component, props as any)
+export class ComponentUtil {
+  static createComponent<TProps>(component: Constructor<TProps>, props: Omit<TProps, IgnoredKeys>): VNode {
+    return h(component, props as any)
+  }
 }
