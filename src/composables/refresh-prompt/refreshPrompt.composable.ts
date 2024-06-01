@@ -8,7 +8,7 @@ import { useI18n } from 'vue-i18n'
 
 import { useLoading } from '@/composables/loading/loading.composable'
 import { TIME } from '@/constants/time.constant'
-import { logError, logInfo } from '@/utils/logger.util.ts'
+import { LoggerUtil } from '@/utils/logger.util'
 
 export function useRefreshPrompt(): void {
   const { t } = useI18n()
@@ -26,10 +26,10 @@ export function useRefreshPrompt(): void {
   } = useRegisterSW({
     immediate: true,
     async onRegisteredSW(swUrl, serviceWorkerRegistration) {
-      logInfo('Service Worker at', swUrl)
+      LoggerUtil.logInfo('Service Worker at', swUrl)
 
       if (serviceWorkerRegistration === undefined) {
-        logError('Service Worker not registered')
+        LoggerUtil.logError('Service Worker not registered')
         return
       }
 
@@ -39,7 +39,7 @@ export function useRefreshPrompt(): void {
         await serviceWorkerRegistration.update()
       }, TIME.ONE_MINUTE)
 
-      logInfo('SW Registered', serviceWorkerRegistration)
+      LoggerUtil.logInfo('SW Registered', serviceWorkerRegistration)
     },
   })
 

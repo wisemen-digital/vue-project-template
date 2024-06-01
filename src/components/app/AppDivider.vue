@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn } from '@/utils/style.util.ts'
+import { StyleUtil } from '@/utils/style.util'
 
 const props = withDefaults(defineProps<{
   direction?: 'horizontal' | 'vertical'
@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<{
 <template>
   <div
     :class="
-      cn(
+      StyleUtil.cn(
         {
           'h-full w-[1px]': props.direction === 'vertical',
         },
