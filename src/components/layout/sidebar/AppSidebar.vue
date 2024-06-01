@@ -38,12 +38,14 @@ const navigationItems = computed<NavigationItem[]>(() => [
 </script>
 
 <template>
-  <div class="sticky left-0 top-0 flex h-dvh w-20 flex-col items-center justify-between border-r border-solid border-border py-6">
-    <div>
-      <AppSidebarHeader />
-      <AppSidebarMenu :items="navigationItems" />
-    </div>
+  <div class="sticky left-0 top-0 h-dvh p-4">
+    <div class="flex h-full w-20 flex-col items-center justify-between rounded-xl border border-solid border-border bg-muted-background py-6">
+      <div>
+        <AppSidebarHeader />
+        <AppSidebarMenu :items="navigationItems" />
+      </div>
 
-    <AppSidebarFooter />
+      <AppSidebarFooter />
+    </div>
   </div>
 </template>

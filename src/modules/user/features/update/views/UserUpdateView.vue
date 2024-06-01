@@ -11,7 +11,7 @@ import {
   UserUpdateForm as UserUpdateFormType,
   userUpdateFormSchema,
 } from '@/models/user/update/userUpdateForm.model'
-import { UserFormTransformer } from '@/models/user/user.transformer'
+import { UserUpdateTransformer } from '@/models/user/user.transformer'
 import { useUserUpdateMutation } from '@/modules/user/api/mutations/userUpdate.mutation'
 
 import UserUpdateForm from '../components/UserUpdateForm.vue'
@@ -54,7 +54,7 @@ const {
   onSubmitForm,
   onSubmitFormError,
 } = useForm({
-  initialState: computed<UserUpdateFormType>(() => UserFormTransformer.toUpdateForm(props.user)),
+  initialState: computed<UserUpdateFormType>(() => UserUpdateTransformer.toForm(props.user)),
   schema: userUpdateFormSchema,
 })
 

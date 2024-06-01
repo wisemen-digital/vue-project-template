@@ -9,7 +9,7 @@ import type { UserUuid } from '@/models/user/userUuid.model'
 
 import { UserService } from '../services/user.service'
 
-interface Params extends Record<string, string> {
+interface Params {
   userUuid: UserUuid
 }
 
