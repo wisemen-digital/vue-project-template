@@ -1,7 +1,9 @@
-import type { UseMutationReturnType } from '@/composables/mutation/mutation.composable.ts'
-import { useMutation } from '@/composables/mutation/mutation.composable.ts'
+import {
+  useMutation,
+  UseMutationReturnType,
+} from '@wisemen/vue-core'
+
 import type { ForgotPasswordForm } from '@/models/auth/forgot-password/forgotPasswordForm.model.ts'
-import { QueryKey } from '@/types/query/queryKey.type'
 
 import { AuthService } from '../services/auth.service.ts'
 
@@ -10,10 +12,6 @@ export function useAuthForgotPasswordMutation(): UseMutationReturnType<ForgotPas
     queryFn: async ({ body }) => {
       await AuthService.forgotPassword(body)
     },
-    queryKeysToInvalidate: [
-      {
-        key: QueryKey.CURRENT_USER,
-      },
-    ],
+    queryKeysToInvalidate: {},
   })
 }

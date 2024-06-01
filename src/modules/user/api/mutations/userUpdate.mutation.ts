@@ -1,9 +1,11 @@
-import type { UseMutationReturnType } from '@/composables/mutation/mutation.composable'
-import { useMutation } from '@/composables/mutation/mutation.composable'
+import {
+  useMutation,
+  UseMutationReturnType,
+} from '@wisemen/vue-core'
+
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import type { UserUuid } from '@/models/user/userUuid.model'
-import { QueryKey } from '@/types/query/queryKey.type'
 
 import { UserService } from '../services/user.service'
 
@@ -16,18 +18,11 @@ export function useUserUpdateMutation(): UseMutationReturnType<UserUpdateForm, U
     queryFn: async ({ body, params }) => {
       return await UserService.update(params.userUuid, body)
     },
-    queryKeysToInvalidate: [
-      {
-        exact: false,
-        key: QueryKey.USERS,
+    queryKeysToInvalidate: {
+      userDetail: {
+        userUuid: params => params.userUuid,
       },
-      {
-        exact: true,
-        key: QueryKey.USER_DETAIL,
-        params: {
-          userUuid: user => user.uuid,
-        },
-      },
-    ],
+      userIndex: {},
+    },
   })
 }

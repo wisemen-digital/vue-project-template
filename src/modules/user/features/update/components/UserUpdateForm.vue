@@ -22,7 +22,7 @@ const lastName = props.form.register('lastName')
 <template>
   <AppForm :form="props.form">
     <template #default="{ formId }">
-      <AppTeleport target="header-actions">
+      <AppTeleport to="headerActions">
         <FormSubmitButton
           :form-id="formId"
           :form="props.form"

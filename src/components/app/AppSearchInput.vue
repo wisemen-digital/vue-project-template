@@ -67,7 +67,7 @@ watch(() => model.value, (value) => {
 
           <AppButton
             v-else-if="model !== null && model !== ''"
-            variant="secondary"
+            variant="muted"
             size="xs"
             @click="onClearInput"
           >

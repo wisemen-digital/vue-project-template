@@ -1,5 +1,7 @@
 import { createHttpZodClient } from '@appwise/zod-http-client'
+import { useClipboard } from '@vueuse/core'
 import { useToast } from '@wisemen/vue-core'
+import { computed } from 'vue'
 
 import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 
@@ -16,15 +18,27 @@ interface ZodError {
 
 function onZodError({ error, method, url }: ZodError): void {
   const toast = useToast()
+  const clipboard = useClipboard({
+    copiedDuring: 2000,
+  })
 
   if (CURRENT_ENVIRONMENT !== 'production') {
-    toast.error({
+    toast.custom({
+      action: {
+        label: computed<string>(() => clipboard.copied.value ? 'Copied!' : 'Copy error'),
+        onClick: () => {
+          void clipboard.copy(`${method.toUpperCase()} ${url} returned a malformed response.\n\n${JSON.stringify(error, null, 2)}`)
+        },
+      },
       description: `${method.toUpperCase()} ${url} returned a malformed response.`,
-      title: 'Something went wrong',
+      duration: 20000,
+      icon: 'alertCircle',
+      title: 'Malformed response',
+      type: 'error',
     })
   }
 
-  console.error(`${method.toUpperCase()} ${url} returned a malformed response\n\n`, error)
+  console.error(`${method.toUpperCase()} ${url} returned a malformed response\n\n`, JSON.stringify(error, null, 2))
 }
 
 export const httpClient = createHttpZodClient({

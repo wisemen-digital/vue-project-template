@@ -11,8 +11,12 @@ export type UseTypedRouteParamsReturnType<T extends keyof Routes> = Routes[T] ex
     }
   : never
 
-export function useTypedRouteParams<T extends keyof Routes>(_routeName: T): UseTypedRouteParamsReturnType<T> {
+export function useTypedRouteParams<T extends keyof Routes>(routeName: T): UseTypedRouteParamsReturnType<T> {
   const route = useRoute()
+
+  if (route.name !== routeName) {
+    throw new Error(`Route name ${routeName} does not match current route name ${route.name as string}. This probably means that you passed the wrong route name to the \`useTypedRouteParams\``)
+  }
 
   return Object.keys(route.params).reduce((acc, key) => {
     return {

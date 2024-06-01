@@ -1,7 +1,7 @@
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import { createMiddleware } from '@/utils/middleware.util'
+import { MiddlewareUtil } from '@/utils/middleware.util'
 
-export const guest = createMiddleware(() => {
+export const guest = MiddlewareUtil.createMiddleware(() => {
   const isLoggedIn = oAuthClient.isLoggedIn()
 
   if (!isLoggedIn) {

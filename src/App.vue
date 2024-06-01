@@ -16,16 +16,20 @@ import {
   CURRENT_BUILD_TIMESTAMP,
   CURRENT_ENVIRONMENT,
 } from '@/constants/environment.constant.ts'
-import { logInfo } from '@/utils/logger.util.ts'
+import { LoggerUtil } from '@/utils/logger.util.ts'
 
 const { setTemplate } = useDocumentTitle()
 
-useRefreshPrompt()
-
 setTemplate('{title} | App')
 
+useRefreshPrompt()
+
 onCreated(() => {
-  logInfo('Application started', {
+  if (CURRENT_BUILD_COMMIT === 'undefined') {
+    return
+  }
+
+  LoggerUtil.logInfo('Application started', {
     COMMIT: CURRENT_BUILD_COMMIT,
     ENVIRONMENT: CURRENT_ENVIRONMENT,
     NUMBER: CURRENT_BUILD_NUMBER,

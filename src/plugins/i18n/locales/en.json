@@ -25,7 +25,7 @@
       "description": "Enter your new password below",
       "title": "Reset password",
       "success": {
-        "action": "Log in",
+        "action": "Return to login",
         "description": "Your password has been reset successfully. You can now log in with your new password."
       }
     }
@@ -33,6 +33,10 @@
   "components": {
     "combobox": {
       "empty": "No items found"
+    },
+    "dark_mode_toggle": {
+      "enable_dark_mode": "Enable dark mode",
+      "enable_light_mode": "Enable light mode"
     },
     "image": {
       "open_in_new_tab": "Open in new tab"
@@ -121,51 +125,26 @@
     "save_changes": "Save changes"
   },
   "shared": {
-    "add_contact": "Add contact",
     "address": "Address",
-    "b2b": "B2B",
-    "b2g": "B2G",
-    "billing_email": "Billing email",
-    "billing_information": "Billing information",
     "cancel": "Cancel",
-    "client_type": "Client type",
-    "clients": "Clients",
     "close": "Close",
-    "company": "Company",
-    "company_information": "Company information",
-    "company_name": "Company name",
     "confirm": "Confirm",
     "contact": "Contact",
-    "contact_person": "Contact person",
     "delete": "Delete",
     "edit": "Edit",
     "email": "Email",
     "first_name": "First name",
-    "function": "Function",
     "go_to_detail": "Go to detail",
-    "information": "Information",
-    "invoice_information": "Invoice information",
     "last_name": "Last name",
-    "matching": "Matching",
     "name": "Name",
-    "next": "Next",
     "overview": "Overview",
-    "phoneNumber": "Phonenumber",
     "phone_number": "Phonenumber",
-    "previous": "Previous",
-    "primary_contact_person": "Primary contact person",
-    "sales_consultant": "Salesconsultant",
-    "save": "Save",
     "select": "Select",
-    "students": "Students",
     "submit": "Submit",
     "title": "Title",
     "unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
     "unsaved_changes_title": "Unsaved changes",
-    "users": "Users",
-    "vacancies": "Vacancies",
-    "vat_number": "VAT-number",
-    "website": "Website"
+    "users": "Users"
   },
   "users": {
     "create": {

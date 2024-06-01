@@ -1,7 +1,12 @@
 import { KeyboardShortcutConfig } from '@wisemen/vue-core'
 
 export const KEYBOARD_SHORTCUT = {
-  NEW_ENTITY: {
+  EDIT: {
+    keys: [
+      'e',
+    ],
+  },
+  NEW: {
     keys: [
       'n',
     ],

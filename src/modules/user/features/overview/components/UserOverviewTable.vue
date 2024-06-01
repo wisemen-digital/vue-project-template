@@ -17,10 +17,6 @@ const props = defineProps<{
   pagination: Pagination<UserIndexFilters>
 }>()
 
-const emit = defineEmits<{
-  clearFilters: []
-}>()
-
 const { t } = useI18n()
 
 const columns = computed<TableColumn<UserIndex>[]>(() => [
@@ -28,21 +24,17 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     id: 'uuid',
     isSortable: true,
     label: 'UUID',
-    size: '400px',
     value: row => row.uuid,
+    width: 'auto',
   },
   {
     id: 'name',
     isSortable: true,
     label: t('shared.name'),
-    size: '500px',
     value: row => row.fullName,
+    width: '500px',
   },
 ])
-
-function onClearFilters(): void {
-  emit('clearFilters')
-}
 </script>
 
 <template>
@@ -60,6 +52,5 @@ function onClearFilters(): void {
     :is-loading="props.isLoading"
     :pagination="props.pagination"
     :title="t('shared.users')"
-    @clear-filters="onClearFilters"
   />
 </template>

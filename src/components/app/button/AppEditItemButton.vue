@@ -14,8 +14,8 @@ const props = defineProps<{
 <template>
   <AppRouterLinkButton
     :to="props.to"
-    :keyboard-shortcut="KEYBOARD_SHORTCUT.NEW_ENTITY"
-    icon-left="plus"
+    :keyboard-shortcut="KEYBOARD_SHORTCUT.EDIT"
+    icon-left="edit"
   >
     {{ props.label }}
   </AppRouterLinkButton>

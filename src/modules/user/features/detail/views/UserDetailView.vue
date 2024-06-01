@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import {
-  AppRouterLinkButton,
-  BreadcrumbItem,
-} from '@wisemen/vue-core'
+import { BreadcrumbItem } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import AppPage from '@/components/app/AppPage.vue'
+import AppEditItemButton from '@/components/app/button/AppEditItemButton.vue'
+import AppPage from '@/components/layout/AppPage.vue'
 import type { User } from '@/models/user/detail/user.model'
 
 const props = defineProps<{
@@ -35,16 +33,15 @@ const breadcrumbs: BreadcrumbItem[] = [
     :title="props.user.fullName"
   >
     <template #header-actions>
-      <AppRouterLinkButton
+      <AppEditItemButton
         :to="{
           name: 'user-update',
           params: {
             userUuid: props.user.uuid,
           },
         }"
-      >
-        {{ t('users.detail.edit_user') }}
-      </AppRouterLinkButton>
+        :label="t('users.detail.edit_user')"
+      />
     </template>
   </AppPage>
 </template>

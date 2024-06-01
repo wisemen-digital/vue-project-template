@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+import { API_AUTH_URL } from '@/constants/environment.constant'
 import {
   authHttpClient,
   httpClient,
@@ -15,14 +16,17 @@ export class AuthService {
     await authHttpClient.post({
       body: AuthTransformer.toForgotPasswordDto(form),
       responseSchema: z.unknown(),
-      url: 'forgot-password',
+      url: '/forgot-password',
     })
   }
 
   static async getCurrentUser(): Promise<CurrentUser> {
     const data = await httpClient.get({
+      config: {
+        baseURL: API_AUTH_URL,
+      },
       responseSchema: currentUserDtoSchema,
-      url: 'userinfo',
+      url: '/userinfo',
     })
 
     return AuthTransformer.toCurrentUser(data)
@@ -32,7 +36,7 @@ export class AuthService {
     await authHttpClient.post({
       body: AuthTransformer.toResetPasswordDto(form),
       responseSchema: z.unknown(),
-      url: 'reset-password',
+      url: '/reset-password',
     })
   }
 }

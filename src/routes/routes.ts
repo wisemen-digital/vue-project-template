@@ -19,7 +19,6 @@ export const routes: RouteRecordTyped[] = [
       {
         name: 'index',
         path: '',
-        props: {},
         redirect: {
           name: 'user-overview',
         },

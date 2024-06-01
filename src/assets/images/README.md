@@ -1,1 +1,0 @@
-A collection of images. Names should be in kebab case. Make sure the files are not too large

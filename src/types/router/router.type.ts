@@ -42,7 +42,7 @@ declare module 'vue-router' {
      */
     middleware?: ((
       to: RouteLocationNormalized,
-      from: RouteLocationNormalized
+      from: RouteLocationNormalized,
     ) => MaybePromise<RouteMiddlewareReturnType>)[]
   }
 }

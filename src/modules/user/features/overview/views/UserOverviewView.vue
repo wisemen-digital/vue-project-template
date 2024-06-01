@@ -1,18 +1,14 @@
 <script setup lang="ts">
 import {
   BreadcrumbItem,
-  useTablePagination,
+  usePagination,
 } from '@wisemen/vue-core'
-import {
-  computed,
-  ref,
-  watch,
-} from 'vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppNewItemButton from '@/components/app/AppNewItemButton.vue'
 import AppSearchInput from '@/components/app/AppSearchInput.vue'
-import AppTablePage from '@/components/app/AppTablePage.vue'
+import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
+import AppTablePage from '@/components/layout/AppTablePage.vue'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 
@@ -31,27 +27,22 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
   },
 ])
 
-const paginationOptions = useTablePagination<UserIndexFilters>({
+const pagination = usePagination<UserIndexFilters>({
   id: 'users',
 })
 
-const search = ref<string>(paginationOptions.paginationOptions.value.filters?.name ?? '')
+const search = computed<string>({
+  get: () => pagination.paginationOptions.value.filters?.name ?? '',
+  set: (value) => {
+    pagination.handleFilterChange({
+      name: value,
+    })
+  },
+})
 
-const userIndexQuery = useUserIndexQuery(paginationOptions.paginationOptions)
+const userIndexQuery = useUserIndexQuery(pagination.paginationOptions)
 
 const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
-
-function onSearch(search: null | string): void {
-  paginationOptions.handleFilterChange({
-    name: search,
-  })
-}
-
-function onClearFilters(): void {
-  search.value = ''
-}
-
-watch(search, onSearch)
 </script>
 
 <template>
@@ -77,8 +68,7 @@ watch(search, onSearch)
       <UserOverviewTable
         :data="userIndexQuery.data.value"
         :is-loading="isLoading"
-        :pagination="paginationOptions"
-        @clear-filters="onClearFilters"
+        :pagination="pagination"
       />
     </template>
   </AppTablePage>

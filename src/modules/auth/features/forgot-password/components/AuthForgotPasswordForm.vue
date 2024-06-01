@@ -18,7 +18,10 @@ const email = props.form.register('email', props.lastLoginAttemptEmail ?? undefi
 </script>
 
 <template>
-  <AppForm :form="form">
+  <AppForm
+    :form="form"
+    :can-exit-when-dirty="true"
+  >
     <FormInput
       v-bind="email"
       :is-required="true"
