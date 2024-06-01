@@ -10,9 +10,9 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppNewItemButton from '@/components/app/AppNewItemButton.vue'
 import AppSearchInput from '@/components/app/AppSearchInput.vue'
-import AppTablePage from '@/components/app/AppTablePage.vue'
+import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
+import AppTablePage from '@/components/layout/AppTablePage.vue'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 

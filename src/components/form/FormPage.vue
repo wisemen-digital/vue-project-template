@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { BreadcrumbItem } from '@wisemen/vue-core'
 
-import AppPage from '../app/AppPage.vue'
+import AppPage from '@/components/layout/AppPage.vue'
 
 const props = withDefaults(
   defineProps<{

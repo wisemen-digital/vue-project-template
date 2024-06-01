@@ -63,7 +63,7 @@ dependencies:
     specifier: 4.0.3
     version: 4.0.3(focus-trap@7.5.4)(vue@3.4.26)
   formango:
-    specifier: ^2.0.31
+    specifier: ^2.0.35
     version: 2.0.35(vue@3.4.26)(zod@3.23.6)
   libphonenumber-js:
     specifier: 1.10.62

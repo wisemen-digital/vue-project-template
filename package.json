@@ -35,7 +35,7 @@
     "dayjs": "1.11.11",
     "focus-trap": "7.5.4",
     "focus-trap-vue": "4.0.3",
-    "formango": "^2.0.31",
+    "formango": "^2.0.35",
     "libphonenumber-js": "1.10.62",
     "maska": "2.1.11",
     "pinia": "2.1.7",
