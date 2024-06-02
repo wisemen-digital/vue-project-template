@@ -7,7 +7,7 @@ import AppForm from '@/components/form/AppForm.vue'
 import FormLayout from '@/components/form/FormLayout.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import type { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
-import UserFormName from '@/modules/user/components/user-form/UserFormName.vue'
+import UserFormNameSection from '@/modules/user/components/user-form/UserFormNameSection.vue'
 
 const props = defineProps<{
   form: Form<typeof userCreateFormSchema>
@@ -31,7 +31,7 @@ const lastName = props.form.register('lastName')
       </AppTeleport>
 
       <FormLayout>
-        <UserFormName
+        <UserFormNameSection
           :first-name="firstName"
           :last-name="lastName"
         />
