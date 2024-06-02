@@ -41,16 +41,19 @@ export class PaginationDtoBuilder<TFilterSchema> {
     if (value !== null && value !== '') {
       this.paginationOptions[key] = value as PaginationParams<TFilterSchema>[TKey]
     }
+
     return this
   }
 
   public withLimit(limit: number): PaginationDtoBuilder<TFilterSchema> {
     this.paginationOptions.limit = limit
+
     return this
   }
 
   public withOffset(offset: number): PaginationDtoBuilder<TFilterSchema> {
     this.paginationOptions.offset = offset
+
     return this
   }
 

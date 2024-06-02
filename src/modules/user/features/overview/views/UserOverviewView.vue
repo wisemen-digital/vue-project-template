@@ -11,8 +11,7 @@ import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
-
-import UserOverviewTable from '../components/UserOverviewTable.vue'
+import UserOverviewTable from '@/modules/user/features/overview/components/UserOverviewTable.vue'
 
 const { t } = useI18n()
 

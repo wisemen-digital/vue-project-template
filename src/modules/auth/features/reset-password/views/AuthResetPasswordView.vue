@@ -13,8 +13,7 @@ import { useTypedRouteQuery } from '@/composables/router/typedRouteQuery.composa
 import { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
 import { useAuthResetPasswordMutation } from '@/modules/auth/api/mutations/authResetPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
-
-import ResetPasswordForm from '../components/AuthResetPasswordForm.vue'
+import ResetPasswordForm from '@/modules/auth/features/reset-password/components/AuthResetPasswordForm.vue'
 
 const hasPasswordBeenReset = ref<boolean>(true)
 

@@ -27,12 +27,12 @@ export type RouteRecordTyped =
     children: RouteRecordTyped[]
   } & Omit<RouteRecordRaw, 'children' | 'name'>)
   | {
-    children?: RouteRecordTyped[]
-    name: keyof Routes
     path: string
+    name: keyof Routes
     redirect?: {
       name: keyof Routes
     } & RouteRecordRaw['redirect']
+    children?: RouteRecordTyped[]
   }
 
 declare module 'vue-router' {

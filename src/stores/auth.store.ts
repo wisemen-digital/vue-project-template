@@ -17,8 +17,8 @@ export const useAuthStore = defineStore('auth', () => {
 
   const lastLoggedInUser = useLocalStorage<CurrentUser | null>('lastLoggedInUser', null, {
     serializer: {
-      read: value => JSON.parse(value),
-      write: value => JSON.stringify(value),
+      read: (value) => JSON.parse(value),
+      write: (value) => JSON.stringify(value),
     },
   })
 
@@ -48,6 +48,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function login(data: LoginForm): Promise<void> {
     const { password, username } = AuthTransformer.toLoginDto(data)
+
     await oAuthClient.loginPassword(username, password)
   }
 
@@ -57,9 +58,9 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   return {
+    isAuthenticated,
     currentUser,
     getCurrentUser,
-    isAuthenticated,
     lastLoggedInUser: computed<CurrentUser | null>(() => lastLoggedInUser.value),
     lastLoginAttemptEmail: computed<null | string>(() => lastLoginAttemptEmail.value),
     login,

@@ -30,6 +30,7 @@ export function useRefreshPrompt(): void {
 
       if (serviceWorkerRegistration === undefined) {
         LoggerUtil.logError('Service Worker not registered')
+
         return
       }
 

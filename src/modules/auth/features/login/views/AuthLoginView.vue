@@ -78,6 +78,7 @@ onSubmitFormError(() => {
 onSubmitForm(async (data) => {
   try {
     await authStore.login(data)
+
     const currentUser = await authStore.getCurrentUser()
 
     await handleLoggedIn(currentUser)

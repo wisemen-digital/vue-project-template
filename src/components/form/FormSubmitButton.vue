@@ -10,11 +10,11 @@ import type { z } from 'zod'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
 
 const props = withDefaults(defineProps<{
-  form: Form<TFormType>
   formId?: null | string
   isAlwaysEnabled?: boolean
   isDisabled?: boolean
   isKeyboardCommandDisabled?: boolean
+  form: Form<TFormType>
   label: string
 }>(), {
   formId: null,

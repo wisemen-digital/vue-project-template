@@ -9,8 +9,8 @@ import { useDebounceSearch } from '@/composables/debounce-search/debounceSearch.
 describe('useDebounceSearch', () => {
   it('should be at the default state', () => {
     const {
-      debouncedSearch,
       isDebouncing,
+      debouncedSearch,
       search,
     } = useDebounceSearch({
       onDebounceSearch: () => {},
@@ -25,8 +25,8 @@ describe('useDebounceSearch', () => {
     let isCallbackCalled = false
 
     const {
-      debouncedSearch,
       isDebouncing,
+      debouncedSearch,
       search,
     } = useDebounceSearch({
       onDebounceSearch: () => {

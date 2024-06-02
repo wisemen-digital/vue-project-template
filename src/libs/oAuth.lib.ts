@@ -8,8 +8,8 @@ import {
 } from '@/constants/environment.constant.ts'
 
 export const oAuthClient = new OAuth2VueClient({
-  axios,
   clientId: API_CLIENT_ID,
+  axios,
   clientSecret: API_CLIENT_SECRET,
   tokenEndpoint: `${API_AUTH_URL}/token`,
 })

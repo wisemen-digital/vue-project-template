@@ -5,8 +5,8 @@ import { S3FileUuid } from './s3FileUuid.model'
 export class S3FileTransformer {
   static fromDto(dto: S3FileDto): S3File {
     return {
-      url: dto.url,
       uuid: dto.uuid,
+      url: dto.url,
     }
   }
 

@@ -9,6 +9,7 @@ import { usePageLoader } from '@/composables/page-loader/pageLoader.composable'
 describe('usePageLoader', () => {
   it('isLoading is default false', () => {
     const { isLoading } = usePageLoader()
+
     expect(isLoading.value).toBe(false)
   })
 

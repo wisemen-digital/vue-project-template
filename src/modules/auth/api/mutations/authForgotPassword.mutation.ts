@@ -4,8 +4,7 @@ import {
 } from '@wisemen/vue-core'
 
 import type { ForgotPasswordForm } from '@/models/auth/forgot-password/forgotPasswordForm.model.ts'
-
-import { AuthService } from '../services/auth.service.ts'
+import { AuthService } from '@/modules/auth/api/services/auth.service.ts'
 
 export function useAuthForgotPasswordMutation(): UseMutationReturnType<ForgotPasswordForm, void> {
   return useMutation<ForgotPasswordForm, void>({

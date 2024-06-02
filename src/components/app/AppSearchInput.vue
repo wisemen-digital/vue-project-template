@@ -12,8 +12,8 @@ import { useDebounceSearch } from '@/composables/debounce-search/debounceSearch.
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
 
 const props = withDefaults(defineProps<{
-  disableKeyboardCommand?: boolean
   isLoading: boolean
+  disableKeyboardCommand?: boolean
   placeholder?: null | string
 }>(), {
   disableKeyboardCommand: false,

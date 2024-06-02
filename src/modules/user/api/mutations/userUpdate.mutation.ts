@@ -6,8 +6,7 @@ import {
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import type { UserUuid } from '@/models/user/userUuid.model'
-
-import { UserService } from '../services/user.service'
+import { UserService } from '@/modules/user/api/services/user.service'
 
 interface Params {
   userUuid: UserUuid
@@ -20,7 +19,7 @@ export function useUserUpdateMutation(): UseMutationReturnType<UserUpdateForm, U
     },
     queryKeysToInvalidate: {
       userDetail: {
-        userUuid: params => params.userUuid,
+        userUuid: (params) => params.userUuid,
       },
       userIndex: {},
     },
