@@ -61,7 +61,6 @@ export default {
           disabled: 'rgba(var(--input-disabled), <alpha-value>)',
           foreground: 'rgba(var(--input-foreground), <alpha-value>)',
           placeholder: 'rgba(var(--input-placeholder), <alpha-value>)',
-          ring: 'rgba(var(--input-ring), <alpha-value>)',
         },
 
         muted: {
