@@ -177,6 +177,24 @@
     }
   },
   "validation": {
-    "required": "Required"
+    "required": "This field is required",
+    "invalid_date": "Invalid date",
+    "invalid_datetime": "Invalid date and time",
+    "invalid_email": "Invalid email address",
+    "invalid_regex": "Invalid format",
+    "invalid_string": "Invalid input",
+    "invalid_union": "Invalid input",
+    "invalid_url": "Invalid URL",
+    "invalid_uuid": "Invalid UUID",
+    "too_big": "Must be less than or equal to {count}",
+    "too_big_array": "Must contain a most {count} item | Must contain a most {count} items",
+    "too_big_date": "Must be before {count}",
+    "too_big_number": "Must be less than or equal to {count}",
+    "too_big_string": "Must be at most {count} character | Must be at most {count} characters",
+    "too_small": "Must be greater than or equal to {count}",
+    "too_small_array": "Must contain at least {count} item | Must contain at least {count} items",
+    "too_small_date": "Must be after {count}",
+    "too_small_number": "Must be greater than or equal to {count}",
+    "too_small_string": "Must be at least {count} character | Must be at least {count} characters"
   }
 }
