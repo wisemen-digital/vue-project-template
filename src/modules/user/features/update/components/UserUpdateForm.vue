@@ -7,7 +7,7 @@ import AppForm from '@/components/form/AppForm.vue'
 import FormLayout from '@/components/form/FormLayout.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import type { userUpdateFormSchema } from '@/models/user/update/userUpdateForm.model'
-import UserFormName from '@/modules/user/components/user-form/UserFormName.vue'
+import UserFormName from '@/modules/user/components/user-form/UserFormNameSection.vue'
 
 const props = defineProps<{
   form: Form<typeof userUpdateFormSchema>
