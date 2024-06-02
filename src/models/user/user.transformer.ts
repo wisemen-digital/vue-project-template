@@ -29,22 +29,24 @@ export class UserDetailTransformer {
   }
 }
 
-export class UserFormTransformer {
-  static toCreateDto(form: UserCreateForm): UserCreateDto {
+export class UserCreateTransformer {
+  static toDto(form: UserCreateForm): UserCreateDto {
+    return {
+      firstName: form.firstName,
+      lastName: form.lastName,
+    }
+  }
+}
+
+export class UserUpdateTransformer {
+  static toDto(form: UserUpdateForm): UserUpdateDto {
     return {
       firstName: form.firstName,
       lastName: form.lastName,
     }
   }
 
-  static toUpdateDto(form: UserUpdateForm): UserUpdateDto {
-    return {
-      firstName: form.firstName,
-      lastName: form.lastName,
-    }
-  }
-
-  static toUpdateForm(user: User): UserUpdateForm {
+  static toForm(user: User): UserUpdateForm {
     return {
       firstName: user.firstName,
       lastName: user.lastName,

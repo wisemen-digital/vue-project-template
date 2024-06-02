@@ -10,9 +10,10 @@ import { userIndexDtoSchema } from '@/models/user/index/userIndexDto.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import {
+  UserCreateTransformer,
   UserDetailTransformer,
-  UserFormTransformer,
   UserIndexTransformer,
+  UserUpdateTransformer,
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { PaginatedData } from '@/types/pagination.type'
@@ -21,7 +22,7 @@ import { PaginationDtoBuilder } from '@/utils/paginationDtoBuilder.util'
 export class UserService {
   static async create(form: UserCreateForm): Promise<User> {
     const data = await httpClient.post({
-      body: UserFormTransformer.toCreateDto(form),
+      body: UserCreateTransformer.toDto(form),
       responseSchema: userDtoSchema,
       url: '/users',
     })
@@ -55,10 +56,7 @@ export class UserService {
 
   static async update(userUuid: UserUuid, form: UserUpdateForm): Promise<User> {
     const data = await httpClient.post({
-      body: {
-        ...UserFormTransformer.toUpdateDto(form),
-        language: 'nl',
-      },
+      body: UserUpdateTransformer.toDto(form),
       responseSchema: userDtoSchema,
       url: `/employees/${userUuid}`,
     })
