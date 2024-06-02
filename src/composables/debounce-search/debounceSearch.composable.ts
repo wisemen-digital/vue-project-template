@@ -12,8 +12,8 @@ interface UseDebounceSearchOptions {
 }
 
 interface useDebounceSearchReturnType {
-  debouncedSearch: Ref<string>
   isDebouncing: ComputedRef<boolean>
+  debouncedSearch: Ref<string>
   search: Ref<string>
 }
 
@@ -28,8 +28,8 @@ export function useDebounceSearch(options: UseDebounceSearchOptions): useDebounc
   })
 
   return {
-    debouncedSearch,
     isDebouncing,
+    debouncedSearch,
     search,
   }
 }

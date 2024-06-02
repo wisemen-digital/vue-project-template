@@ -13,8 +13,7 @@ import {
 } from '@/models/user/update/userUpdateForm.model'
 import { UserUpdateTransformer } from '@/models/user/user.transformer'
 import { useUserUpdateMutation } from '@/modules/user/api/mutations/userUpdate.mutation'
-
-import UserUpdateForm from '../components/UserUpdateForm.vue'
+import UserUpdateForm from '@/modules/user/features/update/components/UserUpdateForm.vue'
 
 const props = defineProps<{
   user: User

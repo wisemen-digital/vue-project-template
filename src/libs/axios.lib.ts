@@ -25,10 +25,10 @@ const axiosAuthConfig: CreateAxiosDefaults = {
 export const axios = Axios.create(axiosConfig)
 export const authAxios = Axios.create(axiosAuthConfig)
 
-axios.interceptors.request.use(config => addAuthorizationHeader(oAuthClient, config))
+axios.interceptors.request.use((config) => addAuthorizationHeader(oAuthClient, config))
 
 axios.interceptors.response.use(
-  config => config,
+  (config) => config,
   async (error) => {
     if (!Axios.isAxiosError(error)) {
       return Promise.reject(error)
@@ -38,6 +38,7 @@ axios.interceptors.response.use(
 
     if (status === 401) {
       const authStore = useAuthStore()
+
       authStore.logout()
 
       await routerPlugin.replace({

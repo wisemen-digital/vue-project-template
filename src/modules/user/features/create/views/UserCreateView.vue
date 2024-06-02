@@ -9,8 +9,7 @@ import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.co
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
 import { useUserCreateMutation } from '@/modules/user/api/mutations/userCreate.mutation'
-
-import UserCreateForm from '../components/UserCreateForm.vue'
+import UserCreateForm from '@/modules/user/features/create/components/UserCreateForm.vue'
 
 const { t } = useI18n()
 const router = useTypedRouter()

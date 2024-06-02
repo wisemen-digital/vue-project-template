@@ -10,8 +10,8 @@ import {
   createWebHistory,
 } from 'vue-router'
 
-import { routes } from '@/routes/routes'
-import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type'
+import { routes } from '@/routes/routes.ts'
+import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type.ts'
 
 function setupRouteMiddlewareInterceptor(router: Router): void {
   function hasMiddleware(to: RouteRecordNormalized): to is {

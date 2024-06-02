@@ -7,9 +7,8 @@ import type { ComputedRef } from 'vue'
 
 import type { UserIndex } from '@/models/user/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import { UserService } from '@/modules/user/api/services/user.service'
 import type { PaginatedData } from '@/types/pagination.type'
-
-import { UserService } from '../services/user.service'
 
 export function useUserIndexQuery(
   paginationOptions: ComputedRef<PaginationOptions<UserIndexFilters>>,

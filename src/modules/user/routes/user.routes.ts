@@ -6,46 +6,46 @@ export interface UserRoutes {
     path: '/users/create'
   }
   'user-detail': {
+    path: '/users/:userUuid'
     params: {
       userUuid: UserUuid
     }
-    path: '/users/:userUuid'
   }
   'user-overview': {
     path: '/users'
   }
   'user-update': {
+    path: '/users/:userUuid/update'
     params: {
       userUuid: UserUuid
     }
-    path: '/users/:userUuid/update'
   }
 }
 
 export const userRoutes: RouteRecordTyped[] = [
   {
+    path: '/users',
     children: [
       {
-        component: () => import('../features/overview/views/UserOverviewView.vue'),
-        name: 'user-overview',
         path: '',
+        name: 'user-overview',
+        component: () => import('@/modules/user/features/overview/views/UserOverviewView.vue'),
       },
       {
-        component: () => import('../features/detail/views/UserDetailViewDataProvider.vue'),
-        name: 'user-detail',
         path: ':userUuid',
+        name: 'user-detail',
+        component: () => import('@/modules/user/features/detail/views/UserDetailViewDataProvider.vue'),
       },
       {
-        component: () => import('../features/create/views/UserCreateView.vue'),
-        name: 'user-create',
         path: 'create',
+        name: 'user-create',
+        component: () => import('@/modules/user/features/create/views/UserCreateView.vue'),
       },
       {
-        component: () => import('../features/update/views/UserUpdateViewDataProvider.vue'),
-        name: 'user-update',
         path: ':userUuid/update',
+        name: 'user-update',
+        component: () => import('@/modules/user/features/update/views/UserUpdateViewDataProvider.vue'),
       },
     ],
-    path: '/users',
   },
 ]

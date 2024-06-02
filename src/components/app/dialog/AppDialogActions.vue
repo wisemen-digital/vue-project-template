@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppButtonGroup from '../AppButtonGroup.vue'
+import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
 </script>
 
 <template>

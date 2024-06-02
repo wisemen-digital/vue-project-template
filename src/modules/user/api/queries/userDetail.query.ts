@@ -6,8 +6,7 @@ import { Ref } from 'vue'
 
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUuid } from '@/models/user/userUuid.model'
-
-import { UserService } from '../services/user.service'
+import { UserService } from '@/modules/user/api/services/user.service'
 
 export function useUserDetailQuery(userUuid: Ref<UserUuid>): UseQueryReturnType<User> {
   return useQuery<User>({

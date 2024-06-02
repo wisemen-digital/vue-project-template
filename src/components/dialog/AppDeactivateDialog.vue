@@ -2,10 +2,10 @@
 import AppConfirmDialog from '@/components/dialog/AppConfirmDialog.vue'
 
 const props = defineProps<{
+  isDeactivating: boolean
   cancelText: string
   confirmText: string
   description: string
-  isDeactivating: boolean
   title: string
 }>()
 

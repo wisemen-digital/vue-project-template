@@ -34,6 +34,7 @@ onMounted(() => {
 
   document.addEventListener('focusin', (event) => {
     const target = event.target as HTMLElement
+
     focusedElement.value = target
   })
 })

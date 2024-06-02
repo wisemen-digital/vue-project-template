@@ -8,12 +8,12 @@ import { AppTable } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import type { UserIndex } from '@/models/user/index/userIndex.model'
-import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
+import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'
 
 const props = defineProps<{
-  data: PaginatedData<UserIndex> | null
   isLoading: boolean
+  data: PaginatedData<UserIndex> | null
   pagination: Pagination<UserIndexFilters>
 }>()
 
@@ -24,14 +24,14 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     id: 'uuid',
     isSortable: true,
     label: 'UUID',
-    value: row => row.uuid,
+    value: (row): string => row.uuid,
     width: 'auto',
   },
   {
     id: 'name',
     isSortable: true,
     label: t('shared.name'),
-    value: row => row.fullName,
+    value: (row): string => row.fullName,
     width: '500px',
   },
 ])

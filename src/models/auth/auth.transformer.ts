@@ -10,11 +10,11 @@ import type { ResetPasswordForm } from './reset-password/resetPasswordForm.model
 export class AuthTransformer {
   static toCurrentUser(dto: CurrentUserDto): CurrentUser {
     return {
+      uuid: dto.uuid,
       email: dto.mail,
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,
-      uuid: dto.uuid,
     }
   }
 

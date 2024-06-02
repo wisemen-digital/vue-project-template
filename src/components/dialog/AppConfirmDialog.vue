@@ -8,11 +8,11 @@ import AppDialogContent from '@/components/app/dialog/AppDialogContent.vue'
 import AppDialogHeader from '@/components/app/dialog/AppDialogHeader.vue'
 
 const props = withDefaults(defineProps<{
+  isDestructive: boolean
+  isLoading?: boolean
   cancelText: string
   confirmText: string
   description: string
-  isDestructive: boolean
-  isLoading?: boolean
   title: string
 }>(), {
   isLoading: false,
