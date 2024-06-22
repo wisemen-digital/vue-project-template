@@ -20,6 +20,7 @@
     "@appwise/zod-http-client": "0.0.4",
     "@fontsource-variable/inter": "5.0.18",
     "@headlessui/vue": "1.7.22",
+    "@internationalized/date": "^3.5.4",
     "@lukemorales/query-key-factory": "1.3.4",
     "@sentry/integrations": "7.114.0",
     "@sentry/tracing": "7.114.0",

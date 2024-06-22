@@ -1,6 +1,6 @@
 import type { DateTimeDto } from '@/models/date/dateTimeDto.model.ts'
 
-export class DateTransformer {
+export class DateTimeTransformer {
   static fromDto(date: DateTimeDto): Date {
     return new Date(date)
   }
