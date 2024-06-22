@@ -6,8 +6,8 @@ import {
 } from '@wisemen/vue-core'
 
 const props = defineProps<{
-  description: string
   title: string
+  description: string
 }>()
 </script>
 

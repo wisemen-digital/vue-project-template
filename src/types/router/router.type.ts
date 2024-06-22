@@ -27,8 +27,8 @@ export type RouteRecordTyped =
     children: RouteRecordTyped[]
   } & Omit<RouteRecordRaw, 'children' | 'name'>)
   | {
-    path: string
     name: keyof Routes
+    path: string
     redirect?: {
       name: keyof Routes
     } & RouteRecordRaw['redirect']

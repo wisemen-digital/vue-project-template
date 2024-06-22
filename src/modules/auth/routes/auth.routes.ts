@@ -9,19 +9,20 @@ export interface AuthRoutes {
     path: '/login'
   }
   'reset-password': {
-    path: '/reset-password/:token'
     params: {
       token: string
     }
     queryParams: {
       email: string
     }
+    path: '/reset-password/:token'
   }
 }
 
 export const authRoutes: RouteRecordTyped[] = [
   {
     path: '',
+    component: () => import('@/modules/auth/components/AuthLayout.vue'),
     meta: {
       middleware: [
         guest,
@@ -29,21 +30,20 @@ export const authRoutes: RouteRecordTyped[] = [
     },
     children: [
       {
-        path: 'login',
         name: 'login',
+        path: 'login',
         component: async () => await import('@/modules/auth/features/login/views/AuthLoginView.vue'),
       },
       {
-        path: 'forgot-password',
         name: 'forgot-password',
+        path: 'forgot-password',
         component: async () => await import('@/modules/auth/features/forgot-password/views/AuthForgotPasswordView.vue'),
       },
       {
-        path: 'reset-password/:token',
         name: 'reset-password',
+        path: 'reset-password/:token',
         component: async () => await import('@/modules/auth/features/reset-password/views/AuthResetPasswordView.vue'),
       },
     ],
-    component: () => import('@/modules/auth/components/AuthLayout.vue'),
   },
 ]

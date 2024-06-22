@@ -5,9 +5,9 @@ import AppPage from '@/components/layout/AppPage.vue'
 
 const props = withDefaults(
   defineProps<{
+    title: string
     breadcrumbs?: BreadcrumbItem[] | null
     subtitle?: null | string
-    title: string
   }>(),
   {
     breadcrumbs: null,

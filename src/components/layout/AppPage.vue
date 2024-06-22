@@ -8,8 +8,8 @@ import {
 
 const props = withDefaults(
   defineProps<{
-    breadcrumbs?: BreadcrumbItem[] | null
     title: string
+    breadcrumbs?: BreadcrumbItem[] | null
   }>(),
   {
     breadcrumbs: null,

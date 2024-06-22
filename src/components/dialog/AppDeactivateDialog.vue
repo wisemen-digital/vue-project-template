@@ -2,11 +2,11 @@
 import AppConfirmDialog from '@/components/dialog/AppConfirmDialog.vue'
 
 const props = defineProps<{
+  title: string
   isDeactivating: boolean
   cancelText: string
   confirmText: string
   description: string
-  title: string
 }>()
 
 const emit = defineEmits<{

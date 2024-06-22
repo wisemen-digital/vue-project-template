@@ -59,8 +59,8 @@ const {
 
 onSubmitFormError(() => {
   toast.error({
-    description: t('error.invalid_form_input.description'),
     title: t('error.invalid_form_input.title'),
+    description: t('error.invalid_form_input.description'),
   })
 })
 
@@ -74,8 +74,8 @@ onSubmitForm(async (values) => {
     })
 
     toast.success({
-      description: t('users.update.success.description'),
       title: t('users.update.success.title'),
+      description: t('users.update.success.description'),
     })
   }
   catch (error) {

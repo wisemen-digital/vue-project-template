@@ -6,9 +6,9 @@ import AppPage from './AppPage.vue'
 
 const props = withDefaults(
   defineProps<{
+    title: string
     breadcrumbs?: BreadcrumbItem[]
     subtitle?: null | string
-    title: string
   }>(),
   {
     breadcrumbs: () => [],
