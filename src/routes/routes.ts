@@ -48,3 +48,9 @@ export const routes: RouteRecordTyped[] = [
     },
   },
 ]
+
+type ProjectRoutes = Routes
+
+declare module '@wisemen/vue-core' {
+  interface Routes extends ProjectRoutes {}
+}

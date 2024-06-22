@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {
-  BreadcrumbItem,
-  usePagination,
-} from '@wisemen/vue-core'
+import type { BreadcrumbItem } from '@wisemen/vue-core'
+import { usePagination } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 

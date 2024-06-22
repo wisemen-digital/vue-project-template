@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AppText } from '@wisemen/vue-core'
-import { AxiosError } from 'axios'
+import type { AxiosError } from 'axios'
 import { useI18n } from 'vue-i18n'
 
 import GridBackgroundPattern from '@/assets/svgs/GridBackgroundPattern.vue'

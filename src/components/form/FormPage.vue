@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BreadcrumbItem } from '@wisemen/vue-core'
+import type { BreadcrumbItem } from '@wisemen/vue-core'
 
 import AppPage from '@/components/layout/AppPage.vue'
 

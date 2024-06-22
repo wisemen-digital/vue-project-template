@@ -1,8 +1,6 @@
 <script setup lang="ts" generic="T">
-import {
-  AppPageSkeletonLoader,
-  UseQueryReturnType,
-} from '@wisemen/vue-core'
+import { AppPageSkeletonLoader } from '@wisemen/vue-core'
+import type { UseQueryReturnType } from '@wisemen/vue-core-query'
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
 

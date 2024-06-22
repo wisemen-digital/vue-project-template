@@ -26,6 +26,7 @@ export default defineConfig({
       ],
       injectRegister: 'auto',
       manifest: {
+        name: 'Project template',
         background_color: '#ffffff',
         display: 'fullscreen',
         icons: [
@@ -40,7 +41,6 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
-        name: 'Project template',
         short_name: 'Project template',
         theme_color: 'rgb(23, 23, 23)',
       },

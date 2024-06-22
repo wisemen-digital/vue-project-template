@@ -5,7 +5,7 @@ import {
 
 import type { PhoneNumberDto } from '@/models/phone-number/phoneNumberDto.model.ts'
 
-import { PhoneNumber } from './phoneNumber.model'
+import type { PhoneNumber } from './phoneNumber.model'
 
 export class PhoneNumberTransformer {
   static fromDto(dto: PhoneNumberDto): PhoneNumber {

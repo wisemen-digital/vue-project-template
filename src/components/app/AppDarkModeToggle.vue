@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import {
-  AppIconButton,
-  Icon,
-} from '@wisemen/vue-core'
+import type { Icon } from '@wisemen/vue-core'
+import { AppIconButton } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 

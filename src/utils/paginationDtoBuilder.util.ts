@@ -1,4 +1,4 @@
-import { PaginationOptions } from '@wisemen/vue-core'
+import type { PaginationOptions } from '@wisemen/vue-core'
 
 const DEFAULT_OFFSET = 10
 const DEFAULT_LIMIT = 10

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@wisemen/vue-core'
 import {
   AppButton,
   AppDropdownMenu,
   AppText,
-  DropdownMenuItem,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -15,7 +15,7 @@ import {
   CURRENT_BUILD_NUMBER,
   CURRENT_ENVIRONMENT,
 } from '@/constants/environment.constant.ts'
-import { CurrentUser } from '@/models/auth/current-user/currentUser.model'
+import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import { useAuthStore } from '@/stores/auth.store'
 
 const { t } = useI18n()

@@ -1,6 +1,6 @@
-import { S3File } from './s3File.model'
-import { S3FileDto } from './s3FileDto.model'
-import { S3FileUuid } from './s3FileUuid.model'
+import type { S3File } from './s3File.model'
+import type { S3FileDto } from './s3FileDto.model'
+import type { S3FileUuid } from './s3FileUuid.model'
 
 export class S3FileTransformer {
   static fromDto(dto: S3FileDto): S3File {

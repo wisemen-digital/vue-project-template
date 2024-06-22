@@ -1,7 +1,5 @@
-import {
-  useMutation,
-  UseMutationReturnType,
-} from '@wisemen/vue-core'
+import type { UseMutationReturnType } from '@wisemen/vue-core-query'
+import { useMutation } from '@wisemen/vue-core-query'
 
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
@@ -19,7 +17,7 @@ export function useUserUpdateMutation(): UseMutationReturnType<UserUpdateForm, U
     },
     queryKeysToInvalidate: {
       userDetail: {
-        userUuid: (params) => params.userUuid,
+        userUuid: (params: User) => params.uuid,
       },
       userIndex: {},
     },

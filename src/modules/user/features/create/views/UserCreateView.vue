@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { BreadcrumbItem, useToast } from '@wisemen/vue-core'
+import type { BreadcrumbItem } from '@wisemen/vue-core'
+import { useToast } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'

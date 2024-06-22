@@ -1,8 +1,8 @@
-import {
-  PaginationOptions,
-  useQuery,
+import type { PaginationOptions } from '@wisemen/vue-core'
+import type {
   UseQueryReturnType,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-query'
+import { useQuery } from '@wisemen/vue-core-query'
 import type { ComputedRef } from 'vue'
 
 import type { UserIndex } from '@/models/user/index/userIndex.model'
