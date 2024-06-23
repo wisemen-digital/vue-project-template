@@ -20,7 +20,16 @@ export class AuthService {
     })
   }
 
-  static async getCurrentUser(): Promise<CurrentUser> {
+  static async getCurrentUser(isMock?: boolean): Promise<CurrentUser> {
+    if (isMock === true) {
+      return Promise.resolve({
+        uuid: 'uuid',
+        email: 'example@email.com',
+        firstName: 'John',
+        fullName: 'John Doe',
+        lastName: 'Doe',
+      })
+    }
     const data = await httpClient.get({
       config: {
         baseURL: API_AUTH_URL,

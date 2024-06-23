@@ -37,7 +37,7 @@ export const useAuthStore = defineStore('auth', () => {
       return currentUser.value
     }
 
-    currentUser.value = await AuthService.getCurrentUser()
+    currentUser.value = await AuthService.getCurrentUser(true)
 
     return currentUser.value
   }

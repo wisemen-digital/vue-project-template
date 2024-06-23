@@ -1,4 +1,4 @@
-import { OAuth2VueClient } from '@appwise/oauth2-vue-client'
+import { OAuth2VueClient } from '@wisemen/oauth2-vue-client'
 import axios from 'axios'
 
 import {

@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@appwise/oauth2-vue-client':
-    specifier: 0.0.6
-    version: 0.0.6
   '@appwise/zod-http-client':
     specifier: 0.0.4
     version: 0.0.4
@@ -44,12 +41,15 @@ dependencies:
   '@vueuse/router':
     specifier: 10.11.0
     version: 10.11.0(vue-router@4.4.0)(vue@3.4.30)
+  '@wisemen/oauth2-vue-client':
+    specifier: 1.0.0
+    version: 1.0.0
   '@wisemen/vue-core':
     specifier: 0.0.76
     version: 0.0.76
   axios:
-    specifier: 1.6.8
-    version: 1.6.8
+    specifier: 1.7.2
+    version: 1.7.2
   clsx:
     specifier: 2.1.1
     version: 2.1.1
@@ -293,27 +293,10 @@ packages:
       leven: 3.1.0
     dev: true
 
-  /@appwise/oauth2-client@0.0.6:
-    resolution: {integrity: sha512-UVV23kwOnWznq+O+5Fk3mXKLiZbsBWArbhTqdoLkQG8w8rBXvRuBqmKs6og/qVLUhVcoIT72WKl4UKxqk7mfqA==}
-    dependencies:
-      axios: 1.6.8
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
-  /@appwise/oauth2-vue-client@0.0.6:
-    resolution: {integrity: sha512-xdUQ5u0M+ESpAOMR8JzJDJsodszzwb1/YuIRnW5101MJgcTUB+4rRZMBK11OGRIWYNgcz+IuRN7iCyq2H2pYVw==}
-    dependencies:
-      '@appwise/oauth2-client': 0.0.6
-      axios: 1.6.8
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /@appwise/zod-http-client@0.0.4:
     resolution: {integrity: sha512-FfRrAgFovDqUPnNsFyTMEwb9GBq7eaeW1b96MKa2xayWE3O5jNzhNcGJDFtNuE7Vb+sebtXPOuOJR4ucKO5vLg==}
     dependencies:
-      axios: 1.6.8
+      axios: 1.7.2
       zod: 3.23.8
     transitivePeerDependencies:
       - debug
@@ -4993,6 +4976,14 @@ packages:
       - vue-eslint-parser
     dev: true
 
+  /@wisemen/oauth2-vue-client@1.0.0:
+    resolution: {integrity: sha512-VaxYBl3jx13iSMXbqHMp7gdSu2I3IvObodK0cOzzPZkplJsZfC5z5CKXi1VxNPhGzRPQ48eM7jqzmIFmbrYujg==}
+    dependencies:
+      axios: 1.7.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /@wisemen/vue-core-query@0.0.1(vue@3.4.30):
     resolution: {integrity: sha512-NtC4pq/lxWTe1rdBpIs5ERWeEKlX6XMnhJrqIeXrMSCIoFryRb4+oHtAT4wgF826a/qC9DmZS+SIFsBbvbkPQw==}
     dependencies:
@@ -5288,8 +5279,8 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /axios@1.6.8:
-    resolution: {integrity: sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==}
+  /axios@1.7.2:
+    resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
     dependencies:
       follow-redirects: 1.15.6
       form-data: 4.0.0

@@ -16,7 +16,6 @@
     "precommit": "npm run type-check && npm run lint && npm run test:unit && npm run build"
   },
   "dependencies": {
-    "@appwise/oauth2-vue-client": "0.0.6",
     "@appwise/zod-http-client": "0.0.4",
     "@fontsource-variable/inter": "5.0.18",
     "@headlessui/vue": "1.7.22",
@@ -29,8 +28,9 @@
     "@tanstack/vue-query": "5.45.0",
     "@vueuse/core": "10.11.0",
     "@vueuse/router": "10.11.0",
+    "@wisemen/oauth2-vue-client": "1.0.0",
     "@wisemen/vue-core": "0.0.76",
-    "axios": "1.6.8",
+    "axios": "1.7.2",
     "clsx": "2.1.1",
     "cva": "1.0.0-beta.1",
     "dayjs": "1.11.11",
