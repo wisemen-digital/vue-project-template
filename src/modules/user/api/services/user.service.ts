@@ -1,4 +1,4 @@
-import { PaginationOptions } from '@wisemen/vue-core'
+import type { PaginationOptions } from '@wisemen/vue-core'
 
 import { httpClient } from '@/libs/http.lib'
 import { paginatedDataSchema } from '@/models/paginated-data/paginatedData.model'

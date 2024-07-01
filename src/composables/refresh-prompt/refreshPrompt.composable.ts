@@ -54,6 +54,7 @@ export function useRefreshPrompt(): void {
     watch(needRefresh, (needRefresh) => {
       if (needRefresh) {
         toast.custom({
+          title: t('components.refresh_prompt.new_version.title'),
           action: {
             isLoading,
             label: t('components.refresh_prompt.new_version.action'),
@@ -62,7 +63,6 @@ export function useRefreshPrompt(): void {
           description: t('components.refresh_prompt.new_version.description'),
           duration: TIME.FIVE_MINUTES,
           icon: 'download',
-          title: t('components.refresh_prompt.new_version.title'),
           type: 'info',
         })
       }

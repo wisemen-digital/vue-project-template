@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { BreadcrumbItem } from '@wisemen/vue-core'
+import type { BreadcrumbItem } from '@wisemen/vue-core'
 import { computed, useSlots } from 'vue'
 
 import AppPage from './AppPage.vue'
 
 const props = withDefaults(
   defineProps<{
+    title: string
     breadcrumbs?: BreadcrumbItem[]
     subtitle?: null | string
-    title: string
   }>(),
   {
     breadcrumbs: () => [],

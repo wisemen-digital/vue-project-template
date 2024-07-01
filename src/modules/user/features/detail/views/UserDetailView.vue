@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BreadcrumbItem } from '@wisemen/vue-core'
+import type { BreadcrumbItem } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import AppEditItemButton from '@/components/app/button/AppEditItemButton.vue'

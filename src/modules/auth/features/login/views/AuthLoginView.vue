@@ -59,8 +59,8 @@ function handleLoginError(error: unknown): void {
     })
 
     toast.error({
-      description: t('auth.login.error_toast.description'),
       title: t('auth.login.error_toast.title'),
+      description: t('auth.login.error_toast.description'),
     })
   }
   else {
@@ -70,8 +70,8 @@ function handleLoginError(error: unknown): void {
 
 onSubmitFormError(() => {
   toast.error({
-    description: t('error.invalid_form_input.description'),
     title: t('error.invalid_form_input.title'),
+    description: t('error.invalid_form_input.description'),
   })
 })
 

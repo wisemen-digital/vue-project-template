@@ -1,4 +1,4 @@
-import { OAuth2VueClient } from '@appwise/oauth2-vue-client'
+import { OAuth2VueClient } from '@wisemen/oauth2-vue-client'
 import axios from 'axios'
 
 import {
@@ -9,6 +9,7 @@ import {
 
 export const oAuthClient = new OAuth2VueClient({
   clientId: API_CLIENT_ID,
+  isMock: true,
   axios,
   clientSecret: API_CLIENT_SECRET,
   tokenEndpoint: `${API_AUTH_URL}/token`,

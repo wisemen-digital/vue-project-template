@@ -47,8 +47,8 @@ const description = computed<string>(() => {
 
 onSubmitFormError(() => {
   toast.error({
-    description: t('error.invalid_form_input.description'),
     title: t('error.invalid_form_input.title'),
+    description: t('error.invalid_form_input.description'),
   })
 })
 

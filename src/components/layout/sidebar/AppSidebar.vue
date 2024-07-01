@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
-import { NavigationItem } from '@/types/navigationItem.type'
+import type { NavigationItem } from '@/types/navigationItem.type'
 
 import AppSidebarFooter from './AppSidebarFooter.vue'
 import AppSidebarHeader from './AppSidebarHeader.vue'

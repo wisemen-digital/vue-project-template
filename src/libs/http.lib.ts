@@ -24,6 +24,7 @@ function onZodError({ error, method, url }: ZodError): void {
 
   if (CURRENT_ENVIRONMENT !== 'production') {
     toast.custom({
+      title: 'Malformed response',
       action: {
         label: computed<string>(() => clipboard.copied.value ? 'Copied!' : 'Copy error'),
         onClick: () => {
@@ -33,7 +34,6 @@ function onZodError({ error, method, url }: ZodError): void {
       description: `${method.toUpperCase()} ${url} returned a malformed response.`,
       duration: 20000,
       icon: 'alertCircle',
-      title: 'Malformed response',
       type: 'error',
     })
   }

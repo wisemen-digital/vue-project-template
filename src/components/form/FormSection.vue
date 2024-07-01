@@ -3,8 +3,8 @@ import { AppText } from '@wisemen/vue-core'
 
 const props = withDefaults(
   defineProps<{
-    description?: null | string
     title: string
+    description?: null | string
   }>(),
   {
     description: null,

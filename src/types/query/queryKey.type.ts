@@ -1,8 +1,8 @@
-import { PaginationOptions } from '@wisemen/vue-core'
-import { ComputedRef, Ref } from 'vue'
+import type { PaginationOptions } from '@wisemen/vue-core'
+import type { ComputedRef, Ref } from 'vue'
 
-import { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
-import { UserUuid } from '@/models/user/userUuid.model'
+import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import type { UserUuid } from '@/models/user/userUuid.model'
 
 interface ProjectQueryKeys {
   userDetail: {

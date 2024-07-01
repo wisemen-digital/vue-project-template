@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NavigationItem } from '@/types/navigationItem.type'
+import type { NavigationItem } from '@/types/navigationItem.type'
 
 import AppSidebarMenuItem from './AppSidebarMenuItem.vue'
 

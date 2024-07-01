@@ -16,6 +16,7 @@ export interface Routes extends AuthRoutes, UserRoutes {
 export const routes: RouteRecordTyped[] = [
   {
     path: '',
+    component: () => import('@/components/layout/AppLayout.vue'),
     meta: {
       middleware: [
         authMiddleware,
@@ -23,8 +24,8 @@ export const routes: RouteRecordTyped[] = [
     },
     children: [
       {
-        path: '',
         name: 'index',
+        path: '',
         redirect: {
           name: 'user-overview',
         },
@@ -34,17 +35,22 @@ export const routes: RouteRecordTyped[] = [
        */
       ...userRoutes,
     ],
-    component: () => import('@/components/layout/AppLayout.vue'),
   },
   /**
    * Unauthenticated routes
    */
   ...authRoutes,
   {
-    path: '/:catchAll(.*)',
     name: 404,
+    path: '/:catchAll(.*)',
     redirect: {
       name: 'index',
     },
   },
 ]
+
+type ProjectRoutes = Routes
+
+declare module '@wisemen/vue-core' {
+  interface Routes extends ProjectRoutes {}
+}

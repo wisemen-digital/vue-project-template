@@ -15,8 +15,8 @@ export function useApiErrorToast(): UserErrorToastReturnType {
       const { response } = error
 
       toast.error({
-        description: response?.data?.message ?? t('error.default_error.description'),
         title: t('error.default_error.title'),
+        description: response?.data?.message ?? t('error.default_error.description'),
       })
 
       return

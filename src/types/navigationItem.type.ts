@@ -1,11 +1,11 @@
-import {
+import type {
   Icon,
   KeyboardShortcut,
 } from '@wisemen/vue-core'
 
-import { Routes } from '@/routes/routes.ts'
+import type { Routes } from '@/routes/routes.ts'
 
-import { RouteLocationTyped } from './router/router.type.ts'
+import type { RouteLocationTyped } from './router/router.type.ts'
 
 export interface NavigationItem {
   icon: Icon

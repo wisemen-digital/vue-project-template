@@ -1,6 +1,6 @@
-import { RouteLocationNormalized } from 'vue-router'
+import type { RouteLocationNormalized } from 'vue-router'
 
-import { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type'
+import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type'
 
 type MiddlewareFn = (
   to: RouteLocationNormalized,

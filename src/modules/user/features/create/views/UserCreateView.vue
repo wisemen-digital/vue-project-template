@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { BreadcrumbItem, useToast } from '@wisemen/vue-core'
+import type { BreadcrumbItem } from '@wisemen/vue-core'
+import { useToast } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -41,8 +42,8 @@ const {
 
 onSubmitFormError(() => {
   toast.error({
-    description: t('error.invalid_form_input.description'),
     title: t('error.invalid_form_input.title'),
+    description: t('error.invalid_form_input.description'),
   })
 })
 
@@ -53,6 +54,7 @@ onSubmitForm(async (values) => {
     })
 
     toast.custom({
+      title: t('users.create.success.title'),
       action: {
         label: t('shared.go_to_detail'),
         onClick: () => {
@@ -66,7 +68,6 @@ onSubmitForm(async (values) => {
       },
       description: t('users.create.success.description'),
       icon: 'checkmarkCircle',
-      title: t('users.create.success.title'),
       type: 'success',
     })
 

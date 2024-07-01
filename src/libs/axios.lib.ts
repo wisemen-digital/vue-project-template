@@ -1,4 +1,4 @@
-import { addAuthorizationHeader } from '@appwise/oauth2-vue-client'
+import { addAuthorizationHeader } from '@wisemen/oauth2-vue-client'
 import type { CreateAxiosDefaults } from 'axios'
 import Axios from 'axios'
 

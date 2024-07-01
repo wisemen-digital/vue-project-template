@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import type { BreadcrumbItem } from '@wisemen/vue-core'
 import {
   AppBreadcrumbs,
   AppContainer,
   AppText,
-  BreadcrumbItem,
 } from '@wisemen/vue-core'
 
 const props = withDefaults(
   defineProps<{
-    breadcrumbs?: BreadcrumbItem[] | null
     title: string
+    breadcrumbs?: BreadcrumbItem[] | null
   }>(),
   {
     breadcrumbs: null,

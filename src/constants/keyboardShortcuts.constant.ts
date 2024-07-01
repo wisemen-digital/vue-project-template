@@ -1,4 +1,4 @@
-import { KeyboardShortcutConfig } from '@wisemen/vue-core'
+import type { KeyboardShortcutConfig } from '@wisemen/vue-core'
 
 export const KEYBOARD_SHORTCUT = {
   EDIT: {

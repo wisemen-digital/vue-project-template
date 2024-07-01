@@ -1,8 +1,6 @@
-import {
-  useQuery,
-  UseQueryReturnType,
-} from '@wisemen/vue-core'
-import { Ref } from 'vue'
+import type { UseQueryReturnType } from '@wisemen/vue-core-query'
+import { useQuery } from '@wisemen/vue-core-query'
+import type { Ref } from 'vue'
 
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUuid } from '@/models/user/userUuid.model'

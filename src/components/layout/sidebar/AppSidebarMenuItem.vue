@@ -9,7 +9,7 @@ import {
 import { useI18n } from 'vue-i18n'
 
 import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
-import { NavigationItem } from '@/types/navigationItem.type'
+import type { NavigationItem } from '@/types/navigationItem.type'
 
 const props = defineProps<{
   item: NavigationItem
