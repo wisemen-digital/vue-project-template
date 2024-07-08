@@ -1,4 +1,5 @@
 import { CalendarDateTransformer } from '@/models/date/calendarDate.transformer.ts'
+import { TimeTransformer } from '@/models/time/time.transformer.ts'
 
 import type { UserCreateDto } from './create/userCreateDto.model'
 import type { UserCreateForm } from './create/userCreateForm.model'
@@ -28,6 +29,10 @@ export class UserDetailTransformer {
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,
+      workingHours: {
+        end: TimeTransformer.fromDto(dto.workingHours.end),
+        start: TimeTransformer.fromDto(dto.workingHours.start),
+      },
     }
   }
 }

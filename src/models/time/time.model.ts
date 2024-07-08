@@ -7,4 +7,4 @@ export const timeSchema = z.custom<Time>((value) => {
   return value instanceof Time
 }, {
   message: i18nPlugin.global.t('validation.invalid_time'),
-}).brand('Time')
+})

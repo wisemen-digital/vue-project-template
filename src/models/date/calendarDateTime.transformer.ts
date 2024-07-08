@@ -1,11 +1,14 @@
 import type { CalendarDateTime } from '@internationalized/date'
-import { parseDateTime } from '@internationalized/date'
+import {
+  parseAbsoluteToLocal,
+  toCalendarDateTime,
+} from '@internationalized/date'
 
 import type { CalendarDateTimeDto } from '@/models/date/calendarDateTimeDto.model.ts'
 
 export class CalendarDateTimeTransformer {
   static fromDto(date: CalendarDateTimeDto): CalendarDateTime {
-    return parseDateTime(date)
+    return toCalendarDateTime(parseAbsoluteToLocal(date))
   }
 
   static fromNullableDto(date: CalendarDateTimeDto | null): CalendarDateTime | null {
