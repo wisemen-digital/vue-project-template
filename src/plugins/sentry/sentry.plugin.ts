@@ -17,7 +17,7 @@ export function configureSentry(app: App<Element>): void {
     return
   }
 
-  return Sentry.init({
+  Sentry.init({
     app,
     attachStacktrace: true,
     dsn: SENTRY_DSN,
