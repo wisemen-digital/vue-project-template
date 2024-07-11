@@ -1,30 +1,19 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "preserve",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "useDefineForClassFields": true,
-
     "baseUrl": ".",
-    "module": "ESNext",
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["src/*"]
     },
-    "resolveJsonModule": true,
     "types": ["vite-plugin-pwa/client"],
     "allowImportingTsExtensions": true,
 
     /* Linting */
-    "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noEmit": true,
-    "isolatedModules": true,
-    "skipLibCheck": true
+    "isolatedModules": true
   },
   "references": [{ "path": "./tsconfig.node.json" }],
   "include": [
@@ -39,6 +28,7 @@
     "vite.config.ts",
     "vitest.config.ts",
     "tailwind.config.ts",
+    "playwright.config.ts",
     "postcss.config.js"
   ]
 }

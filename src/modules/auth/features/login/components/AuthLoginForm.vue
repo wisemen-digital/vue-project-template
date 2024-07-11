@@ -10,6 +10,7 @@ import { useI18n } from 'vue-i18n'
 import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElementSpacer.vue'
 import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
 import AppForm from '@/components/form/AppForm.vue'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import type { loginFormSchema } from '@/models/auth/login/loginForm.model'
 import AuthFormSubmitButton from '@/modules/auth/components/AuthFormSubmitButton.vue'
@@ -33,6 +34,7 @@ const password = props.form.register('password')
     <AppVerticalFormElementSpacer>
       <FormInput
         v-bind="email"
+        :data-testid="TEST_ID.AUTH.LOGIN.EMAIL_INPUT"
         :is-required="true"
         :label="t('form.fields.email')"
         placeholder="email@example.com"
@@ -41,6 +43,7 @@ const password = props.form.register('password')
 
       <FormPasswordInput
         v-bind="password"
+        :data-testid="TEST_ID.AUTH.LOGIN.PASSWORD_INPUT"
         :is-required="true"
         :label="t('form.fields.password')"
         :placeholder="t('form.fields.password')"
@@ -61,6 +64,7 @@ const password = props.form.register('password')
     </AppVerticalFormElementSpacer>
 
     <AuthFormSubmitButton
+      :data-testid="TEST_ID.AUTH.LOGIN.SUBMIT_BUTTON"
       :label="t('auth.login.log_in')"
       :form="form"
     />
