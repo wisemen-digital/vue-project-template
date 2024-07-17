@@ -53,7 +53,7 @@ onSubmitForm(async (values) => {
       body: values,
     })
 
-    toast.custom({
+    toast.show({
       title: t('users.create.success.title'),
       action: {
         label: t('shared.go_to_detail'),

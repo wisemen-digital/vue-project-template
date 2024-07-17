@@ -23,7 +23,7 @@ function onZodError({ error, method, url }: ZodError): void {
   })
 
   if (CURRENT_ENVIRONMENT !== 'production') {
-    toast.custom({
+    toast.show({
       title: 'Malformed response',
       action: {
         label: computed<string>(() => clipboard.copied.value ? 'Copied!' : 'Copy error'),

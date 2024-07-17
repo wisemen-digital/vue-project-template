@@ -53,7 +53,7 @@ export function useRefreshPrompt(): void {
   onMounted(() => {
     watch(needRefresh, (needRefresh) => {
       if (needRefresh) {
-        toast.custom({
+        toast.show({
           title: t('components.refresh_prompt.new_version.title'),
           action: {
             isLoading,
