@@ -34,7 +34,7 @@ const dropdownMenuItems: DropdownMenuItem[] = [
           'o',
         ],
         label: t('components.sidebar.footer.sign_out'),
-        type: 'option',
+        type: 'selectOption',
         onSelect: onSignOutButtonClick,
       },
     ],
