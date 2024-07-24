@@ -27,7 +27,7 @@
     "@vueuse/core": "10.11.0",
     "@vueuse/router": "10.11.0",
     "@wisemen/oauth2-vue-client": "1.0.0",
-    "@wisemen/vue-core": "0.0.91",
+    "@wisemen/vue-core": "0.0.96",
     "axios": "1.7.2",
     "clsx": "2.1.1",
     "cva": "1.0.0-beta.1",

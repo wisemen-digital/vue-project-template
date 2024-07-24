@@ -1,10 +1,5 @@
-import { Time } from '@internationalized/date'
 import { z } from 'zod'
 
-import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
+export const timeSchema = z.string().regex(/^([01]?\d|2[0-3]):[0-5]\d$/).brand('Time')
 
-export const timeSchema = z.custom<Time>((value) => {
-  return value instanceof Time
-}, {
-  message: i18nPlugin.global.t('validation.invalid_time'),
-})
+export type Time = z.infer<typeof timeSchema>

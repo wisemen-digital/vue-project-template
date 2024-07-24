@@ -13,7 +13,7 @@ const { t } = useI18n()
 
 const navigationItems = computed<NavigationItem[]>(() => [
   {
-    icon: 'building',
+    icon: 'users',
     keyboardShortcut: KEYBOARD_SHORTCUT.USER_OVERVIEW,
     label: t('shared.users'),
     to: {

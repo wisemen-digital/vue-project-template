@@ -38,6 +38,7 @@ export const icons = {
   threeDots: import('./ThreeDotsIcon.vue'),
   updateCloud: import('./UpdateCloudIcon.vue'),
   upload: import('./UploadIcon.vue'),
+  users: import('./UsersIcon.vue'),
   warning: import('./WarningIcon.vue'),
 } satisfies Record<string, Component>
 
