@@ -10,6 +10,7 @@ import { useI18n } from 'vue-i18n'
 
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'
+import { DateUtil } from '@/utils/date.util.ts'
 
 const props = defineProps<{
   isLoading: boolean
@@ -34,6 +35,15 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     value: (row): string => row.fullName,
     width: '500px',
   },
+  {
+    id: 'birthDate',
+    isSortable: true,
+    label: t('shared.birth_date'),
+    value: (row): string => {
+      return DateUtil.toLocaleDate(row.birthDate)
+    },
+    width: '500px',
+  },
 ])
 </script>
 
@@ -47,6 +57,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
         userUuid: row.uuid,
       },
     })"
+    :is-top-hidden="true"
     :filters="[]"
     :pin-first-column="true"
     :is-loading="props.isLoading"

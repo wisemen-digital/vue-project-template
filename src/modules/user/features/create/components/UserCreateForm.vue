@@ -8,6 +8,7 @@ import FormLayout from '@/components/form/FormLayout.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import type { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
 import UserFormNameSection from '@/modules/user/components/user-form/UserFormNameSection.vue'
+import UserFormPersonalInfoSection from '@/modules/user/components/user-form/UserFormPersonalInfoSection.vue'
 
 const props = defineProps<{
   form: Form<typeof userCreateFormSchema>
@@ -17,6 +18,8 @@ const { t } = useI18n()
 
 const firstName = props.form.register('firstName')
 const lastName = props.form.register('lastName')
+
+const birthDate = props.form.register('birthDate')
 </script>
 
 <template>
@@ -35,6 +38,8 @@ const lastName = props.form.register('lastName')
           :first-name="firstName"
           :last-name="lastName"
         />
+
+        <UserFormPersonalInfoSection :birth-date="birthDate" />
       </FormLayout>
     </template>
   </AppForm>
