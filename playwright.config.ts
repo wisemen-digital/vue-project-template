@@ -69,7 +69,7 @@ export default defineConfig({
   webServer: {
     command: process.env.CI === undefined ? `vite dev --port ${PORT}` : `vite preview --port ${PORT}`,
     env: {
-      ENVIRONMENT: 'e2e',
+      ENVIRONMENT: 'test',
     },
     port: PORT,
     reuseExistingServer: process.env.CI === undefined,
