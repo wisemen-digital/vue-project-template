@@ -7,7 +7,7 @@ import { LoggerUtil } from '@/utils/logger.util'
 import { MiddlewareUtil } from '@/utils/middleware.util'
 
 export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
-  if (CURRENT_ENVIRONMENT === 'e2e') {
+  if (CURRENT_ENVIRONMENT === 'test') {
     return
   }
 
