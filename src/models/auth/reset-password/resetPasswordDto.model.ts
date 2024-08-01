@@ -2,9 +2,8 @@ import { z } from 'zod'
 
 // POST /reset-password
 export const resetPasswordDtoSchema = z.object({
-  email: z.string(),
   password: z.string(),
-  passwordConfirmation: z.string(),
+  secret: z.string(),
   token: z.string(),
 })
 

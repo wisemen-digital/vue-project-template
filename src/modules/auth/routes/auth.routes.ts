@@ -9,13 +9,11 @@ export interface AuthRoutes {
     path: '/login'
   }
   'reset-password': {
-    params: {
+    queryParams: {
+      secret: string
       token: string
     }
-    queryParams: {
-      email: string
-    }
-    path: '/reset-password/:token'
+    path: '/reset-password'
   }
 }
 
@@ -41,7 +39,7 @@ export const authRoutes: RouteRecordTyped[] = [
       },
       {
         name: 'reset-password',
-        path: 'reset-password/:token',
+        path: 'reset-password',
         component: async () => await import('@/modules/auth/features/reset-password/views/AuthResetPasswordView.vue'),
       },
     ],

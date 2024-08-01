@@ -8,7 +8,6 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
-import { useTypedRouteParams } from '@/composables/router/typedRouteParams.composable'
 import { useTypedRouteQuery } from '@/composables/router/typedRouteQuery.composable'
 import { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
 import { useAuthResetPasswordMutation } from '@/modules/auth/api/mutations/authResetPassword.mutation.ts'
@@ -29,11 +28,10 @@ const {
   schema: resetPasswordFormSchema,
 })
 
-const routeParams = useTypedRouteParams('reset-password')
 const queryParams = useTypedRouteQuery('reset-password')
 
-form.register('token', routeParams.token.value)
-form.register('email', queryParams.email.value)
+form.register('token', queryParams.token.value)
+form.register('secret', queryParams.secret.value)
 
 const resetPasswordMutation = useAuthResetPasswordMutation()
 
