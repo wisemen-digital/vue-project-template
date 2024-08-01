@@ -1,6 +1,7 @@
 /* eslint-disable check-file/filename-naming-convention */
 
 /// <reference types="vite/client" />
+/// <reference types="vite-plugin-pwa/client" />
 
 interface ImportMetaEnv {
   readonly API_AUTH_URL: string

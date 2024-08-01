@@ -7,6 +7,7 @@ import { useI18n } from 'vue-i18n'
 import AppSearchInput from '@/components/app/AppSearchInput.vue'
 import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 import UserOverviewTable from '@/modules/user/features/overview/components/UserOverviewTable.vue'
@@ -57,6 +58,7 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
         :to="{
           name: 'user-create',
         }"
+        :test-id="TEST_ID.USERS.OVERVIEW.CREATE_BUTTON"
         :label="t('users.overview.new_user')"
       />
     </template>

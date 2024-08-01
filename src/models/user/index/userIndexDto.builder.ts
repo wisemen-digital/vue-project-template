@@ -19,6 +19,12 @@ export class UserIndexDtoBuilder {
     return this.value
   }
 
+  withBirthDate(birthDate: CalendarDate): UserIndexDtoBuilder {
+    this.value.birthDate = CalendarDateTransformer.toDto(birthDate)
+
+    return this
+  }
+
   withFirstName(firstName: string): UserIndexDtoBuilder {
     this.value.firstName = firstName
 

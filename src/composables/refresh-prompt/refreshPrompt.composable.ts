@@ -25,7 +25,7 @@ export function useRefreshPrompt(): void {
     updateServiceWorker,
   } = useRegisterSW({
     immediate: true,
-    async onRegisteredSW(swUrl, serviceWorkerRegistration) {
+    async onRegisteredSW(swUrl: string, serviceWorkerRegistration: ServiceWorkerRegistration | undefined) {
       LoggerUtil.logInfo('Service Worker at', swUrl)
 
       if (serviceWorkerRegistration === undefined) {

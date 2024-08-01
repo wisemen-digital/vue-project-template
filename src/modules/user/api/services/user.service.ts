@@ -36,7 +36,7 @@ export class UserService {
         params: new PaginationDtoBuilder<UserIndexFilters>(paginationOptions).build(),
       },
       responseSchema: paginatedDataSchema(userIndexDtoSchema),
-      url: '/employees',
+      url: '/users',
     })
 
     return {
@@ -48,7 +48,7 @@ export class UserService {
   static async getByUuid(userUuid: UserUuid): Promise<User> {
     const data = await httpClient.get({
       responseSchema: userDtoSchema,
-      url: `/employees/${userUuid}`,
+      url: `/users/${userUuid}`,
     })
 
     return UserDetailTransformer.fromDto(data)
@@ -58,7 +58,7 @@ export class UserService {
     const data = await httpClient.post({
       body: UserUpdateTransformer.toDto(form),
       responseSchema: userDtoSchema,
-      url: `/employees/${userUuid}`,
+      url: `/users/${userUuid}`,
     })
 
     return UserDetailTransformer.fromDto(data)
