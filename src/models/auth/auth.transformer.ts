@@ -33,9 +33,8 @@ export class AuthTransformer {
 
   static toResetPasswordDto(form: ResetPasswordForm): ResetPasswordDto {
     return {
-      email: form.email,
       password: form.password,
-      passwordConfirmation: form.password,
+      secret: form.secret,
       token: form.token,
     }
   }
