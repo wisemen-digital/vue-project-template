@@ -22,8 +22,8 @@ const USER_INFO_RESPONSE = {
 }
 
 setup('authenticate', async ({ page }) => {
-  await RouteUtil.interceptData(page, '*/**/api/auth/token', MOCK_TOKEN_RESPONSE)
-  await RouteUtil.interceptData(page, '*/**/api/auth/userinfo', USER_INFO_RESPONSE)
+  await RouteUtil.interceptData('POST', page, '*/**/api/auth/token', MOCK_TOKEN_RESPONSE)
+  await RouteUtil.interceptData('GET', page, '*/**/api/auth/userinfo', USER_INFO_RESPONSE)
 
   await page.goto('login')
   await page.getByTestId(TEST_ID.AUTH.LOGIN.EMAIL_INPUT).fill('admin@wisemen.digital')

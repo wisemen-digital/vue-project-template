@@ -60,6 +60,7 @@ export default defineConfig({
     }),
     sentryVitePlugin({
       authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+      disable: process.env.VITE_SENTRY_AUTH_TOKEN === undefined,
       errorHandler(error) {
         console.error('SentryVitePlugin error:', error)
       },

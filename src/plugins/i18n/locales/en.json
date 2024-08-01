@@ -23,11 +23,11 @@
     "reset_password": {
       "action": "Reset password",
       "description": "Enter your new password below",
-      "title": "Reset password",
       "success": {
         "action": "Return to login",
         "description": "Your password has been reset successfully. You can now log in with your new password."
-      }
+      },
+      "title": "Reset password"
     }
   },
   "components": {
@@ -70,10 +70,19 @@
     "table": {
       "clear_filter_filters": "Clear filter | Clear {count} filters",
       "clear_filters": "Clear filters",
+      "empty_state": {
+        "no_data": {
+          "message": "There is no data to display.",
+          "title": "No data"
+        }
+      },
+      "items": "items",
       "next": "Next",
       "no_data": "There is no data to display",
       "no_query_match": "Your query did not match any results. Try changing your filters or clearing them.",
       "no_results_found": "No results found",
+      "of": "of",
+      "page": "Page",
       "previous": "Previous",
       "results_might_be_hidden_because_of_active_filters": "Results might be hidden because of {count} active filter | Results might be hidden because of {count} active filters"
     },
@@ -100,6 +109,10 @@
       "description": "Please try again later.",
       "title": "Internal server error"
     },
+    "invalid_form_input": {
+      "description": "Please check the highlighted fields and try again.",
+      "title": "Invalid form"
+    },
     "resource_not_found": {
       "description": "The requested resource could not be found.",
       "title": "Resource not found"
@@ -111,10 +124,6 @@
     "validation_error": {
       "description": "Please check the form for errors.",
       "title": "Validation error"
-    },
-    "invalid_form_input": {
-      "description": "Please check the highlighted fields and try again.",
-      "title": "Invalid form"
     }
   },
   "form": {
@@ -126,6 +135,7 @@
   },
   "shared": {
     "address": "Address",
+    "birth_date": "Birthdate",
     "cancel": "Cancel",
     "close": "Close",
     "confirm": "Confirm",
@@ -138,6 +148,7 @@
     "last_name": "Last name",
     "name": "Name",
     "overview": "Overview",
+    "personal_info": "Personal info",
     "phone_number": "Phonenumber",
     "select": "Select",
     "submit": "Submit",
@@ -162,7 +173,8 @@
       "section": {
         "name": {
           "description": "First and last name of the user."
-        }
+        },
+        "personal_info": "Enter some personal info"
       }
     },
     "overview": {
@@ -177,7 +189,6 @@
     }
   },
   "validation": {
-    "required": "This field is required",
     "invalid_date": "Invalid date",
     "invalid_datetime": "Invalid date and time",
     "invalid_email": "Invalid email address",
@@ -186,6 +197,7 @@
     "invalid_union": "Invalid input",
     "invalid_url": "Invalid URL",
     "invalid_uuid": "Invalid UUID",
+    "required": "This field is required",
     "too_big": "Must be less than or equal to {count}",
     "too_big_array": "Must contain a most {count} item | Must contain a most {count} items",
     "too_big_date": "Must be before {count}",
