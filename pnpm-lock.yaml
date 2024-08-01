@@ -42,8 +42,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@wisemen/vue-core':
-        specifier: 0.0.101
-        version: 0.0.101
+        specifier: /Users/kirylmaltsav/Workspace/wisemen/vue-core/packages/components/wisemen-vue-core-0.0.101.tgz
+        version: file:../vue-core/packages/components/wisemen-vue-core-0.0.101.tgz
       axios:
         specifier: 1.7.2
         version: 1.7.2
@@ -2798,8 +2798,9 @@ packages:
   '@wisemen/vue-core-query@0.0.2':
     resolution: {integrity: sha512-WSMymXyI6pBIxsFxJiwG8U+8oUjG4t6V325wkTwgquLn7CUCViut8DawtBDdnzXDYJ9ooLRcUj+pYdOrTCS9WQ==}
 
-  '@wisemen/vue-core@0.0.101':
-    resolution: {integrity: sha512-d3KXWpqgGDYrC8RXUsaLUQ5g+YoFdSRyF1fd3vZNDLKAIIwci/1x4I/h04QjNAi4yUTatyVQfTqzJQ+Vv+r64w==}
+  '@wisemen/vue-core@file:../vue-core/packages/components/wisemen-vue-core-0.0.101.tgz':
+    resolution: {integrity: sha512-sWnMADcWPc0cOGcSg7DhuEq3MtfXBIbhAcElhVLrfHa7u1C4awGzU2fNA4edjBq1Qodfxbx3HZ1brWKri+9QhA==, tarball: file:../vue-core/packages/components/wisemen-vue-core-0.0.101.tgz}
+    version: 0.0.101
 
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -9101,7 +9102,7 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
-  '@wisemen/vue-core@0.0.101':
+  '@wisemen/vue-core@file:../vue-core/packages/components/wisemen-vue-core-0.0.101.tgz':
     dependencies:
       '@internationalized/date': 3.5.5
 

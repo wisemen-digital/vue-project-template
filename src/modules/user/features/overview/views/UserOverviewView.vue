@@ -58,7 +58,7 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
         :to="{
           name: 'user-create',
         }"
-        :test-id="TEST_ID.USERS.OVERVIEW.CREATE_BUTTON"
+        :data-testid="TEST_ID.USERS.OVERVIEW.CREATE_BUTTON"
         :label="t('users.overview.new_user')"
       />
     </template>

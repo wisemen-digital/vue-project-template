@@ -25,8 +25,6 @@ const axiosAuthConfig: CreateAxiosDefaults = {
 export const axios = Axios.create(axiosConfig)
 export const authAxios = Axios.create(axiosAuthConfig)
 
-console.log('oAuthClient', oAuthClient.isLoggedIn())
-
 axios.interceptors.request.use((config) => addAuthorizationHeader(oAuthClient, config))
 
 axios.interceptors.response.use(

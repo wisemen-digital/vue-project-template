@@ -28,7 +28,7 @@ const { t } = useI18n()
       />
       <FormInput
         v-bind="props.lastName"
-        :test-id="TEST_ID.USERS.FORM.FIRST_NAME_INPUT"
+        :test-id="TEST_ID.USERS.FORM.LAST_NAME_INPUT"
         :label="t('shared.last_name')"
       />
     </FormGrid>

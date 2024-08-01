@@ -11,8 +11,8 @@ import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.mode
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import {
   UserCreateTransformer,
-  UserDetailTransformer,
   UserIndexTransformer,
+  UserTransformer,
   UserUpdateTransformer,
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
@@ -27,7 +27,7 @@ export class UserService {
       url: '/users',
     })
 
-    return UserDetailTransformer.fromDto(data)
+    return UserTransformer.fromDto(data)
   }
 
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
@@ -51,7 +51,7 @@ export class UserService {
       url: `/users/${userUuid}`,
     })
 
-    return UserDetailTransformer.fromDto(data)
+    return UserTransformer.fromDto(data)
   }
 
   static async update(userUuid: UserUuid, form: UserUpdateForm): Promise<User> {
@@ -61,6 +61,6 @@ export class UserService {
       url: `/users/${userUuid}`,
     })
 
-    return UserDetailTransformer.fromDto(data)
+    return UserTransformer.fromDto(data)
   }
 }

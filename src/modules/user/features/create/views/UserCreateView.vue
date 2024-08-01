@@ -8,6 +8,7 @@ import { useI18n } from 'vue-i18n'
 import FormPage from '@/components/form/FormPage.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { useTypedRouter } from '@/composables/router/typedRouter.composable'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
 import { useUserCreateMutation } from '@/modules/user/api/mutations/userCreate.mutation'
 import UserCreateForm from '@/modules/user/features/create/components/UserCreateForm.vue'
@@ -54,6 +55,7 @@ onSubmitForm(async (values) => {
     })
 
     toast.show({
+      testId: TEST_ID.USERS.CREATE.SUCCESS_TOAST,
       title: t('users.create.success.title'),
       action: {
         label: t('shared.go_to_detail'),

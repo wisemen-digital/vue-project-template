@@ -7,6 +7,7 @@ import { useI18n } from 'vue-i18n'
 
 import FormPage from '@/components/form/FormPage.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUpdateForm as UserUpdateFormType } from '@/models/user/update/userUpdateForm.model'
 import { userUpdateFormSchema } from '@/models/user/update/userUpdateForm.model'
@@ -73,6 +74,7 @@ onSubmitForm(async (values) => {
     })
 
     toast.success({
+      testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
       title: t('users.update.success.title'),
       description: t('users.update.success.description'),
     })

@@ -21,7 +21,7 @@ export class UserIndexTransformer {
   }
 }
 
-export class UserDetailTransformer {
+export class UserTransformer {
   static fromDto(dto: UserDto): User {
     return {
       uuid: dto.uuid,
@@ -36,7 +36,6 @@ export class UserDetailTransformer {
 export class UserCreateTransformer {
   static toDto(form: UserCreateForm): UserCreateDto {
     return {
-      birthDate: CalendarDateTransformer.toDto(form.birthDate),
       firstName: form.firstName,
       lastName: form.lastName,
     }
@@ -53,7 +52,6 @@ export class UserUpdateTransformer {
 
   static toForm(user: User): UserUpdateForm {
     return {
-      birthDate: user.birthDate,
       firstName: user.firstName,
       lastName: user.lastName,
     }
