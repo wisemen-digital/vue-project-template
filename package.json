@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@import-meta-env/unplugin": "0.5.2",
-    "@playwright/test": "^1.45.1",
+    "@playwright/test": "1.45.1",
     "@sentry/vite-plugin": "2.21.1",
     "@tanstack/vue-query-devtools": "5.51.9",
     "@tsconfig/node20": "20.1.4",
