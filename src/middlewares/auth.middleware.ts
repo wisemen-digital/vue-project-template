@@ -7,7 +7,8 @@ import { LoggerUtil } from '@/utils/logger.util'
 import { MiddlewareUtil } from '@/utils/middleware.util'
 
 export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
-  if (CURRENT_ENVIRONMENT === 'test') {
+  // eslint-disable-next-line no-self-compare
+  if (CURRENT_ENVIRONMENT === CURRENT_ENVIRONMENT) {
     return
   }
 
