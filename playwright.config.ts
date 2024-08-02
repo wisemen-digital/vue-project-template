@@ -24,6 +24,7 @@ export default defineConfig({
   },
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: Boolean(process.env.CI),
+  fullyParallel: true,
   /* Configure projects for major browsers */
   projects: [
     {
@@ -48,7 +49,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: 'html',
   /* Retry on CI only */
-  retries: process.env.CI === undefined ? 0 : 2,
+  retries: process.env.CI === undefined ? 0 : 0,
   testDir: './tests',
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
@@ -68,7 +69,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI === undefined ? `echo DEV && vite dev --port ${PORT}` : `echo PREVIEW && vite preview --port ${PORT}`,
+    command: process.env.CI === undefined ? `vite dev --port ${PORT}` : `vite preview --port ${PORT}`,
     env: {
       ENVIRONMENT,
     },
