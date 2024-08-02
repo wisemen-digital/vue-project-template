@@ -73,7 +73,7 @@ export default defineConfig({
       ENVIRONMENT,
     },
     port: PORT,
-    reuseExistingServer: process.env.CI === undefined,
+    // reuseExistingServer: process.env.CI === undefined,
     /**
      * Use the dev server by default for faster feedback loop.
      * Use the preview server on CI for more realistic testing.
