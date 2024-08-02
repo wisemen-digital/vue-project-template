@@ -15,7 +15,7 @@ test.describe('User Create', () => {
     await page.goto('/users')
 
     // eslint-disable-next-line no-console
-    console.log('page', page.url())
+    console.log('page', await page.innerHTML('#app-page'))
 
     await page.getByTestId(TEST_ID.USERS.OVERVIEW.CREATE_BUTTON).click()
 
