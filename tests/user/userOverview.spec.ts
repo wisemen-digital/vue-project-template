@@ -26,8 +26,10 @@ test.describe('User Overview', () => {
 
     await page.goto('/users')
 
+    await page.waitForTimeout(1000)
+
     // eslint-disable-next-line no-console
-    console.log('page', page.url())
+    console.log('page', await page.innerHTML('#app'))
 
     await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.UUID).nth(0)).toContainText(USER_1.uuid)
     await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME).nth(0)).toContainText('John Doe')
