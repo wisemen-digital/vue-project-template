@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { PaginationOptions } from '@wisemen/vue-core'
 
 import { httpClient } from '@/libs/http.lib'
@@ -31,6 +32,8 @@ export class UserService {
   }
 
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
+    console.log('[UserService] getAll')
+
     const data = await httpClient.get({
       config: {
         params: new PaginationDtoBuilder<UserIndexFilters>(paginationOptions).build(),
@@ -38,6 +41,8 @@ export class UserService {
       responseSchema: paginatedDataSchema(userIndexDtoSchema),
       url: '/users',
     })
+
+    console.log('[UserService] response', data)
 
     return {
       data: data.items.map(UserIndexTransformer.fromDto),
