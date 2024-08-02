@@ -67,7 +67,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI === undefined ? `vite dev --port ${PORT}` : `vite preview --port ${PORT}`,
+    command: process.env.CI === undefined ? `echo DEV && vite dev --port ${PORT}` : `echo PREVIEW && vite preview --port ${PORT}`,
     env: {
       ENVIRONMENT: 'test',
     },
