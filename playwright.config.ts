@@ -9,6 +9,7 @@ import { defineConfig, devices } from '@playwright/test'
 // require('dotenv').config();
 
 const PORT = 3000
+const ENVIRONMENT = 'e2e'
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -69,7 +70,7 @@ export default defineConfig({
   webServer: {
     command: process.env.CI === undefined ? `echo DEV && vite dev --port ${PORT}` : `echo PREVIEW && vite preview --port ${PORT}`,
     env: {
-      ENVIRONMENT: 'test',
+      ENVIRONMENT,
     },
     port: PORT,
     reuseExistingServer: process.env.CI === undefined,

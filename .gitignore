@@ -37,6 +37,7 @@ lerna-debug.log*
 .env.*
 !.env.test
 !.env.example
+!.env.e2e
 /test-results/
 /playwright-report/
 /blob-report/
