@@ -1,14 +1,12 @@
 import { isAxiosError } from 'axios'
 
-import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { LoggerUtil } from '@/utils/logger.util'
 import { MiddlewareUtil } from '@/utils/middleware.util'
 
 export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
-  // eslint-disable-next-line no-self-compare
-  if (CURRENT_ENVIRONMENT === CURRENT_ENVIRONMENT) {
+  if (true) {
     return
   }
 
