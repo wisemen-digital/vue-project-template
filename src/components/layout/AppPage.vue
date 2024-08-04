@@ -20,10 +20,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <div
-    id="app-page"
-    class="flex w-full flex-1 flex-col bg-background"
-  >
+  <div class="flex w-full flex-1 flex-col bg-background">
     <AppContainer class="pb-2 pt-10">
       <AppBreadcrumbs
         v-if="props.breadcrumbs !== null"

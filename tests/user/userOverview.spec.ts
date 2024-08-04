@@ -26,9 +26,6 @@ test.describe.skip('User Overview', () => {
 
     await page.goto('/users')
 
-    // eslint-disable-next-line no-console
-    console.log('content', await page.content())
-
     await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.UUID).nth(0)).toContainText(USER_1.uuid)
     await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME).nth(0)).toContainText('John Doe')
     await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.BIRTH_DATE).nth(0)).toContainText('01/01/2000')
