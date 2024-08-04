@@ -7,7 +7,7 @@
     "staging": "vue-tsc --noEmit && vite build --mode staging",
     "production": "vue-tsc --noEmit && vite build --mode production",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "cross-env API_BASE_URL=import-meta-env import-meta-env -x .env.test && vite preview",
     "lint:fix": "eslint . --fix",
     "lint": "eslint .",
     "test:unit": "vitest --run",
@@ -44,6 +44,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
+    "@import-meta-env/cli": "^0.6.9",
     "@import-meta-env/unplugin": "0.5.2",
     "@playwright/test": "1.45.1",
     "@sentry/vite-plugin": "2.21.1",
@@ -57,6 +58,7 @@
     "@wisemen/eslint-config-vue": "0.1.5",
     "@wisemen/vue-core-query": "0.0.2",
     "autoprefixer": "10.4.19",
+    "cross-env": "7.0.3",
     "eslint": "9.7.0",
     "eslint-plugin-playwright": "1.6.2",
     "husky": "9.1.1",

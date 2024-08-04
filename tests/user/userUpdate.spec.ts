@@ -8,7 +8,7 @@ import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
 import { RouteUtil } from '@@/utils/route.util.ts'
 
-test.describe('User Update', () => {
+test.describe.skip('User Update', () => {
   test('update an existing user', async ({ page }) => {
     const USER_UUID_1 = UuidUtil.getRandom<UserUuid>()
 

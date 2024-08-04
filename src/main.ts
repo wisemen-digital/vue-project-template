@@ -24,6 +24,8 @@ const app = createVueApp(App)
 app.use(i18nPlugin)
 app.use(piniaPlugin)
 app.use(routerPlugin)
-app.use(vueQueryPlugin).mount('#app')
+app.use(vueQueryPlugin)
+
+app.mount('#app')
 
 configureSentry(app)
