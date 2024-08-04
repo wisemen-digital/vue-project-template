@@ -7,7 +7,7 @@
     "staging": "vue-tsc --noEmit && vite build --mode staging",
     "production": "vue-tsc --noEmit && vite build --mode production",
     "build": "vite build",
-    "preview": "cross-env API_BASE_URL=import-meta-env import-meta-env -x .env.test && vite preview",
+    "preview": "cross-env API_BASE_URL=import-meta-env import-meta-env -x .env.e2e && vite preview",
     "lint:fix": "eslint . --fix",
     "lint": "eslint .",
     "test:unit": "vitest --run",
