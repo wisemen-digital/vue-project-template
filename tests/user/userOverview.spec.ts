@@ -5,7 +5,7 @@ import { TEST_ID } from '@/constants/testId.constant.ts'
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.js'
 import { RouteUtil } from '@@/utils/route.util.ts'
 
-test.describe.skip('User Overview', () => {
+test.describe('User Overview', () => {
   test('display users in the table', async ({ page }) => {
     const USER_1 = new UserIndexDtoBuilder()
       .withFirstName('John')
