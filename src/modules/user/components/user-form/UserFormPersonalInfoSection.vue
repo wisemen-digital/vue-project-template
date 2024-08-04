@@ -6,6 +6,7 @@ import { useI18n } from 'vue-i18n'
 
 import FormGrid from '@/components/app/grid/FormGrid.vue'
 import FormSection from '@/components/form/FormSection.vue'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 
 const props = defineProps<{
   birthDate: Field<CalendarDate>
@@ -21,6 +22,7 @@ const { t } = useI18n()
   >
     <FormGrid :cols="2">
       <FormDatePicker
+        :test-id="TEST_ID.USERS.FORM.BIRTH_DATE_INPUT"
         v-bind="props.birthDate"
         :label="t('shared.birth_date')"
       />

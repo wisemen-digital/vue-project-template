@@ -15,3 +15,5 @@ export function paginatedDataSchema<T extends z.ZodType>(
     }),
   })
 }
+
+export type PaginatedDtoData = z.infer<ReturnType<typeof paginatedDataSchema>>

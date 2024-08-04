@@ -6,9 +6,9 @@ import AppTeleport from '@/components/app/teleport/AppTeleport.vue'
 import AppForm from '@/components/form/AppForm.vue'
 import FormLayout from '@/components/form/FormLayout.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { userUpdateFormSchema } from '@/models/user/update/userUpdateForm.model'
 import UserFormNameSection from '@/modules/user/components/user-form/UserFormNameSection.vue'
-import UserFormPersonalInfoSection from '@/modules/user/components/user-form/UserFormPersonalInfoSection.vue'
 
 const props = defineProps<{
   form: Form<typeof userUpdateFormSchema>
@@ -18,8 +18,6 @@ const { t } = useI18n()
 
 const firstName = props.form.register('firstName')
 const lastName = props.form.register('lastName')
-
-const birthDate = props.form.register('birthDate')
 </script>
 
 <template>
@@ -29,6 +27,7 @@ const birthDate = props.form.register('birthDate')
         <FormSubmitButton
           :form-id="formId"
           :form="props.form"
+          :data-testid="TEST_ID.USERS.FORM.SUBMIT_BUTTON"
           :label="t('form.save_changes')"
         />
       </AppTeleport>
@@ -38,8 +37,6 @@ const birthDate = props.form.register('birthDate')
           :first-name="firstName"
           :last-name="lastName"
         />
-
-        <UserFormPersonalInfoSection :birth-date="birthDate" />
       </FormLayout>
     </template>
   </AppForm>

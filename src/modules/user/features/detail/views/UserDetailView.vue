@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 
 import AppEditItemButton from '@/components/app/button/AppEditItemButton.vue'
 import AppPage from '@/components/layout/AppPage.vue'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { User } from '@/models/user/detail/user.model'
 
 const props = defineProps<{
@@ -40,6 +41,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             userUuid: props.user.uuid,
           },
         }"
+        :data-testid="TEST_ID.USERS.DETAIL.EDIT_BUTTON"
         :label="t('users.detail.edit_user')"
       />
     </template>

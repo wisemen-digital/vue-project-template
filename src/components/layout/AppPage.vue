@@ -6,6 +6,8 @@ import {
   AppText,
 } from '@wisemen/vue-core'
 
+import { TEST_ID } from '@/constants/testId.constant.ts'
+
 const props = withDefaults(
   defineProps<{
     title: string
@@ -27,7 +29,10 @@ const props = withDefaults(
       />
 
       <div class="flex h-10 items-center justify-between">
-        <AppText variant="title">
+        <AppText
+          :data-testid="TEST_ID.APP_PAGE.TITLE"
+          variant="title"
+        >
           {{ props.title }}
         </AppText>
 

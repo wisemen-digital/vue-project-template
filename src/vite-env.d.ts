@@ -1,13 +1,14 @@
 /* eslint-disable check-file/filename-naming-convention */
 
 /// <reference types="vite/client" />
+/// <reference types="vite-plugin-pwa/client" />
 
 interface ImportMetaEnv {
   readonly API_AUTH_URL: string
   readonly API_BASE_URL: string
   readonly API_CLIENT_ID: string
   readonly API_CLIENT_SECRET: string
-  readonly ENVIRONMENT: 'development' | 'production' | 'staging' | 'test'
+  readonly ENVIRONMENT: 'development' | 'e2e' | 'production' | 'staging' | 'test'
   readonly SENTRY_DSN: string
   readonly SENTRY_SAMPLE_RATE: number
 }

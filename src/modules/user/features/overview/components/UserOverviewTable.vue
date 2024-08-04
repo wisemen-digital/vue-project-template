@@ -8,6 +8,7 @@ import { AppTable } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'
 import { DateUtil } from '@/utils/date.util.ts'
@@ -23,6 +24,7 @@ const { t } = useI18n()
 const columns = computed<TableColumn<UserIndex>[]>(() => [
   {
     id: 'uuid',
+    testId: TEST_ID.USERS.OVERVIEW.TABLE.UUID,
     isSortable: true,
     label: 'UUID',
     value: (row): string => row.uuid,
@@ -30,6 +32,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
   },
   {
     id: 'name',
+    testId: TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME,
     isSortable: true,
     label: t('shared.name'),
     value: (row): string => row.fullName,
@@ -37,6 +40,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
   },
   {
     id: 'birthDate',
+    testId: TEST_ID.USERS.OVERVIEW.TABLE.BIRTH_DATE,
     isSortable: true,
     label: t('shared.birth_date'),
     value: (row): string => {
@@ -59,6 +63,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     })"
     :is-top-hidden="true"
     :filters="[]"
+    :data-testid="TEST_ID.USERS.OVERVIEW.TABLE.CONTAINER"
     :pin-first-column="true"
     :is-loading="props.isLoading"
     :pagination="props.pagination"

@@ -11,8 +11,8 @@ import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.mode
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import {
   UserCreateTransformer,
-  UserDetailTransformer,
   UserIndexTransformer,
+  UserTransformer,
   UserUpdateTransformer,
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
@@ -27,7 +27,7 @@ export class UserService {
       url: '/users',
     })
 
-    return UserDetailTransformer.fromDto(data)
+    return UserTransformer.fromDto(data)
   }
 
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
@@ -36,7 +36,7 @@ export class UserService {
         params: new PaginationDtoBuilder<UserIndexFilters>(paginationOptions).build(),
       },
       responseSchema: paginatedDataSchema(userIndexDtoSchema),
-      url: '/employees',
+      url: '/users',
     })
 
     return {
@@ -48,19 +48,19 @@ export class UserService {
   static async getByUuid(userUuid: UserUuid): Promise<User> {
     const data = await httpClient.get({
       responseSchema: userDtoSchema,
-      url: `/employees/${userUuid}`,
+      url: `/users/${userUuid}`,
     })
 
-    return UserDetailTransformer.fromDto(data)
+    return UserTransformer.fromDto(data)
   }
 
   static async update(userUuid: UserUuid, form: UserUpdateForm): Promise<User> {
     const data = await httpClient.post({
       body: UserUpdateTransformer.toDto(form),
       responseSchema: userDtoSchema,
-      url: `/employees/${userUuid}`,
+      url: `/users/${userUuid}`,
     })
 
-    return UserDetailTransformer.fromDto(data)
+    return UserTransformer.fromDto(data)
   }
 }

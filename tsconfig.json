@@ -1,32 +1,14 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "compilerOptions": {
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
     },
-    "types": ["vite-plugin-pwa/client"],
-    "allowImportingTsExtensions": true,
-
-    /* Linting */
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "isolatedModules": true
-  },
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "include": [
-    "env.d.ts",
-    "eslint.config.js",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "auto-imports.d.ts",
-    "components.d.ts",
-    "tailwind.config.ts",
-    "playwright.config.ts",
-    "postcss.config.js"
-  ]
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ],
+  "files": []
 }
