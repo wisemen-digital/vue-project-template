@@ -45,8 +45,8 @@ importers:
         specifier: 0.0.102
         version: 0.0.102
       axios:
-        specifier: 1.7.3
-        version: 1.7.3
+        specifier: 1.7.4
+        version: 1.7.4
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -2987,8 +2987,8 @@ packages:
   axios@1.7.2:
     resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
 
-  axios@1.7.3:
-    resolution: {integrity: sha512-Ar7ND9pU99eJ9GpoGQKhKf58GpUOgnzuaB7ueNQ5BMi0p+LZ5oaEnfF999fAArcTIBwXTCHAmGcHOZJaWPq9Nw==}
+  axios@1.7.4:
+    resolution: {integrity: sha512-DukmaFRnY6AzAALSH4J2M3k6PkaC+MfaAGdEERRWcC9q3/TWQwLpHR8ZRLKTdQ3aBDL64EdluRDjJqKw+BPZEw==}
 
   babel-plugin-polyfill-corejs2@0.4.11:
     resolution: {integrity: sha512-sMEJ27L0gRHShOh5G54uAAPaiCOygY/5ratXuiyb2G46FmlSpc9eFCzYVyDiPxfNbwzA7mYahmjQc5q+CZQ09Q==}
@@ -6299,7 +6299,7 @@ snapshots:
 
   '@appwise/zod-http-client@0.0.4':
     dependencies:
-      axios: 1.7.3
+      axios: 1.7.4
       zod: 3.23.8
     transitivePeerDependencies:
       - debug
@@ -7593,8 +7593,6 @@ snapshots:
       putout: 35.36.2(typescript@5.5.4)
       try-catch: 3.0.1
       try-to-catch: 3.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@putout/engine-parser@10.8.0':
     dependencies:
@@ -7615,8 +7613,6 @@ snapshots:
       picomatch: 4.0.2
       putout: 35.36.2(typescript@5.5.4)
       try-to-catch: 3.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@putout/engine-reporter@1.0.2(putout@35.36.2(typescript@5.5.4))':
     dependencies:
@@ -7627,8 +7623,6 @@ snapshots:
       putout: 35.36.2(typescript@5.5.4)
       try-catch: 3.0.1
       try-to-catch: 3.0.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@putout/engine-runner@21.1.0(putout@35.36.2(typescript@5.5.4))':
     dependencies:
@@ -7779,8 +7773,6 @@ snapshots:
       '@putout/operator-filesystem': 4.1.0(putout@35.36.2(typescript@5.5.4))
       '@putout/operator-json': 2.2.0
       putout: 35.36.2(typescript@5.5.4)
-    transitivePeerDependencies:
-      - supports-color
 
   '@putout/operator-regexp@1.0.0(putout@35.36.2(typescript@5.5.4))':
     dependencies:
@@ -9405,7 +9397,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  axios@1.7.3:
+  axios@1.7.4:
     dependencies:
       follow-redirects: 1.15.6
       form-data: 4.0.0
