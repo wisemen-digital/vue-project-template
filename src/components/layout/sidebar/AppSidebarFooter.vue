@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@wisemen/vue-core'
 import {
+  AppAvatar,
   AppButton,
   AppDropdownMenu,
   AppText,
@@ -10,7 +11,6 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppDivider from '@/components/app/AppDivider.vue'
-import AppAvatar from '@/components/app/avatar/AppAvatar.vue'
 import {
   CURRENT_BUILD_NUMBER,
   CURRENT_ENVIRONMENT,
@@ -23,6 +23,13 @@ const authStore = useAuthStore()
 const router = useTypedRouter()
 
 const currentUser = computed<CurrentUser | null>(() => authStore.currentUser)
+const currentUserAvatarFallback = computed<string>(() => {
+  if (authStore.currentUser === null) {
+    return '-'
+  }
+
+  return authStore.currentUser?.firstName.slice(0, 1) + authStore.currentUser?.lastName.slice(0, 1)
+})
 
 const dropdownMenuItems: DropdownMenuItem[] = [
   {
@@ -66,8 +73,8 @@ function onSignOutButtonClick(): void {
           class="rounded-full ring-offset-0"
         >
           <AppAvatar
-            :first-name="currentUser.firstName"
-            :last-name="currentUser.lastName"
+            :src="null"
+            :fallback="currentUserAvatarFallback"
           />
         </AppButton>
       </template>
