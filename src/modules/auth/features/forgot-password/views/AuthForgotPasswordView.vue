@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { AppRouterLinkButton } from '@wisemen/vue-core'
+import {
+  AppRouterLinkButton,
+  useApiErrorToast,
+} from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { forgotPasswordFormSchema } from '@/models/auth/forgot-password/forgotPasswordForm.model'
 import { useAuthForgotPasswordMutation } from '@/modules/auth/api/mutations/authForgotPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'

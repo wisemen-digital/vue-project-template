@@ -4,13 +4,13 @@ import {
   AppButton,
   AppDropdownMenu,
   AppText,
+  useTypedRouter,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppDivider from '@/components/app/AppDivider.vue'
 import AppAvatar from '@/components/app/avatar/AppAvatar.vue'
-import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import {
   CURRENT_BUILD_NUMBER,
   CURRENT_ENVIRONMENT,

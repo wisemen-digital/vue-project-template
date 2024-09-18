@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
-import { useToast } from '@wisemen/vue-core'
+import {
+  useApiErrorToast,
+  useToast,
+} from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import FormPage from '@/components/form/FormPage.vue'
-import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUpdateForm as UserUpdateFormType } from '@/models/user/update/userUpdateForm.model'

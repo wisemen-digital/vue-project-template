@@ -42,8 +42,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@wisemen/vue-core':
-        specifier: 0.0.102
-        version: 0.0.102
+        specifier: 0.1.5
+        version: 0.1.5(vue-i18n@9.13.1(vue@3.4.35(typescript@5.5.4)))(vue@3.4.35(typescript@5.5.4))
       axios:
         specifier: 1.7.3
         version: 1.7.3
@@ -1163,6 +1163,9 @@ packages:
   '@fontsource-variable/inter@5.0.20':
     resolution: {integrity: sha512-dhzG4Zls/tIrf8h0FhTNi8jT/uFwNhdTY2vKe6DYqoXDYOfEcTVZDyh1hKml1rlLT44Y7OoKoGz8w7czDW7twQ==}
 
+  '@googlemaps/js-api-loader@1.16.8':
+    resolution: {integrity: sha512-CROqqwfKotdO6EBjZO/gQGVTbeDps5V7Mt9+8+5Q+jTg5CRMi3Ii/L9PmV3USROrt2uWxtGzJHORmByxyo9pSQ==}
+
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
     engines: {node: '>=12.22'}
@@ -1197,6 +1200,9 @@ packages:
     peerDependenciesMeta:
       '@import-meta-env/cli':
         optional: true
+
+  '@internationalized/date@3.5.4':
+    resolution: {integrity: sha512-qoVJVro+O0rBaw+8HPjUB1iH8Ihf8oziEnqMnvhJUSuVIrHOuZ6eNLHNvzXJKUvAtaDiqMnRlg8Z2mgh09BlUw==}
 
   '@internationalized/date@3.5.5':
     resolution: {integrity: sha512-H+CfYvOZ0LTJeeLOqm19E3uj/4YjrmOFtBufDHPfvtI80hFAMqtrp7oCACpe4Cil5l8S0Qu/9dYfZc/5lY8WQQ==}
@@ -2805,6 +2811,12 @@ packages:
   '@vue/tsconfig@0.5.1':
     resolution: {integrity: sha512-VcZK7MvpjuTPx2w6blwnwZAu5/LgBUtejFOi3pPGQFXQN5Ela03FUtd2Qtg4yWGGissVL0dr6Ro1LfOFh+PCuQ==}
 
+  '@vuepic/vue-datepicker@9.0.2':
+    resolution: {integrity: sha512-VDAexzBJSvpErld1cZdGsBc+W/iU+Z+I98YNtEEboSSHUKHRi1s/h8s5D+wciZHLxgQ6P/tj6loNi4W7DgkYSQ==}
+    engines: {node: '>=18.12.0'}
+    peerDependencies:
+      vue: '>=3.2.0'
+
   '@vueuse/core@10.11.0':
     resolution: {integrity: sha512-x3sD4Mkm7PJ+pcq3HX8PLPBadXCAlSDR/waK87dz0gQE+qJnaaFhc/dZVfJz+IUYzTMVGum2QlR7ImiJQN4s6g==}
 
@@ -2830,8 +2842,11 @@ packages:
   '@wisemen/vue-core-query@0.0.2':
     resolution: {integrity: sha512-WSMymXyI6pBIxsFxJiwG8U+8oUjG4t6V325wkTwgquLn7CUCViut8DawtBDdnzXDYJ9ooLRcUj+pYdOrTCS9WQ==}
 
-  '@wisemen/vue-core@0.0.102':
-    resolution: {integrity: sha512-IIopo8cO/XRp3skR2OJnRD7SzQCP9Jg77BOTVn8l/pLUpTLFtp2kEVNXhlFvdD5JzEEGnhj45auS9VQuaQWyaA==}
+  '@wisemen/vue-core@0.1.5':
+    resolution: {integrity: sha512-G44WEUBdLjLXO9iEINa5j+OgTjScXAyoGClakfhyF7eLesxXSAbyQyLZkmVl+R60eGSGFSG8Qzgeggq1bz3tAQ==}
+    peerDependencies:
+      vue: 3.4.35
+      vue-i18n: 9.13.1
 
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -3279,6 +3294,9 @@ packages:
   data-view-byte-offset@1.0.0:
     resolution: {integrity: sha512-t/Ygsytq+R995EJ5PZlD4Cu56sWa8InXySaViRzw9apusqsOO2bQP+SbYzAhR0pFKoB+43lYy8rWban9JSuXnA==}
     engines: {node: '>= 0.4'}
+
+  date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
   dayjs@1.11.12:
     resolution: {integrity: sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==}
@@ -7391,6 +7409,8 @@ snapshots:
 
   '@fontsource-variable/inter@5.0.20': {}
 
+  '@googlemaps/js-api-loader@1.16.8': {}
+
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.3.0': {}
@@ -7414,6 +7434,10 @@ snapshots:
       unplugin: 1.11.0
     optionalDependencies:
       '@import-meta-env/cli': 0.6.9(@import-meta-env/unplugin@0.5.2)(dotenv@16.4.5)
+
+  '@internationalized/date@3.5.4':
+    dependencies:
+      '@swc/helpers': 0.5.11
 
   '@internationalized/date@3.5.5':
     dependencies:
@@ -9145,6 +9169,11 @@ snapshots:
 
   '@vue/tsconfig@0.5.1': {}
 
+  '@vuepic/vue-datepicker@9.0.2(vue@3.4.35(typescript@5.5.4))':
+    dependencies:
+      date-fns: 3.6.0
+      vue: 3.4.35(typescript@5.5.4)
+
   '@vueuse/core@10.11.0(vue@3.4.35(typescript@5.5.4))':
     dependencies:
       '@types/web-bluetooth': 0.0.20
@@ -9227,9 +9256,17 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
-  '@wisemen/vue-core@0.0.102':
+  '@wisemen/vue-core@0.1.5(vue-i18n@9.13.1(vue@3.4.35(typescript@5.5.4)))(vue@3.4.35(typescript@5.5.4))':
     dependencies:
-      '@internationalized/date': 3.5.5
+      '@googlemaps/js-api-loader': 1.16.8
+      '@internationalized/date': 3.5.4
+      '@vuepic/vue-datepicker': 9.0.2(vue@3.4.35(typescript@5.5.4))
+      axios: 1.7.3
+      date-fns: 3.6.0
+      vue: 3.4.35(typescript@5.5.4)
+      vue-i18n: 9.13.1(vue@3.4.35(typescript@5.5.4))
+    transitivePeerDependencies:
+      - debug
 
   abbrev@2.0.0: {}
 
@@ -9690,6 +9727,8 @@ snapshots:
       call-bind: 1.0.7
       es-errors: 1.3.0
       is-data-view: 1.0.1
+
+  date-fns@3.6.0: {}
 
   dayjs@1.11.12: {}
 
