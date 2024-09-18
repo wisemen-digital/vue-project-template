@@ -1,4 +1,3 @@
-import { CalendarDate } from '@internationalized/date'
 import { expect, test } from '@playwright/test'
 
 import { TEST_ID } from '@/constants/testId.constant.ts'
@@ -10,13 +9,13 @@ test.describe('User Overview', () => {
     const USER_1 = new UserIndexDtoBuilder()
       .withFirstName('John')
       .withLastName('Doe')
-      .withBirthDate(new CalendarDate(2000, 1, 1))
+      .withBirthDate('1990-12-31')
       .build()
 
     const USER_2 = new UserIndexDtoBuilder()
       .withFirstName('Jane')
       .withLastName('Johnson')
-      .withBirthDate(new CalendarDate(2010, 1, 1))
+      .withBirthDate('1990-12-31')
       .build()
 
     await RouteUtil.interceptPaginatedData(page, 'users*', [

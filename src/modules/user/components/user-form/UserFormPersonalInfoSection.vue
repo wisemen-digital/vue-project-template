@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { CalendarDate } from '@internationalized/date'
 import { FormDatePicker } from '@wisemen/vue-core'
 import type { Field } from 'formango'
 import { useI18n } from 'vue-i18n'
@@ -7,6 +6,7 @@ import { useI18n } from 'vue-i18n'
 import FormGrid from '@/components/app/grid/FormGrid.vue'
 import FormSection from '@/components/form/FormSection.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
+import type { CalendarDate } from '@/models/date/calendarDate.model'
 
 const props = defineProps<{
   birthDate: Field<CalendarDate>

@@ -1,4 +1,3 @@
-import { CalendarDate } from '@internationalized/date'
 import { expect, test } from '@playwright/test'
 
 import { TEST_ID } from '@/constants/testId.constant.ts'
@@ -16,7 +15,7 @@ test.describe('User Update', () => {
       .withUuid(USER_UUID_1)
       .withFirstName('John')
       .withLastName('Doe')
-      .withBirthDate(new CalendarDate(2000, 1, 1))
+      .withBirthDate('1990-12-31')
       .build()
 
     const USER_1 = new UserDtoBuilder()

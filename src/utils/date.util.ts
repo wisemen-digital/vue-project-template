@@ -1,4 +1,3 @@
-import type { CalendarDate } from '@internationalized/date'
 import dayjs from 'dayjs'
 
 import { LocaleUtil } from '@/utils/locale.util'
@@ -42,14 +41,14 @@ export class DateUtil {
   }
 
   // E.g. 01/01/2024
-  static toLocaleDate(date: CalendarDate): string {
+  static toLocaleDate(date: Date): string {
     const formatter = new Intl.DateTimeFormat(LocaleUtil.getLocale(), {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
     })
 
-    return formatter.format(date.toDate('UTC'))
+    return formatter.format(date)
   }
 
   // E.g. Monday, 01 January 2024
