@@ -63,6 +63,8 @@ export default defineConfig({
     /* Only on CI systems run the tests headless */
     headless: true,
 
+    testIdAttribute: 'data-test-id',
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -88,5 +90,5 @@ export default defineConfig({
   // outputDir: 'test-results/',
 
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI === undefined ? 1 : 1,
+  // workers: process.env.CI === undefined ? 1 : 1,
 })

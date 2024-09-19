@@ -27,7 +27,7 @@ const lastName = props.form.register('lastName')
         <FormSubmitButton
           :form-id="formId"
           :form="form"
-          :data-testid="TEST_ID.USERS.FORM.SUBMIT_BUTTON"
+          :data-test-id="TEST_ID.USERS.FORM.SUBMIT_BUTTON"
           :label="t('users.create.create_user')"
         />
       </AppTeleport>
