@@ -11,8 +11,6 @@ const props = defineProps<{
   isOpen: boolean
   navigationItem: NavigationItemOption
 }>()
-
-// const { t } = useI18n()
 </script>
 
 <template>

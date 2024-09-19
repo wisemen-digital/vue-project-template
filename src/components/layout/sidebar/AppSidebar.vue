@@ -8,7 +8,6 @@ import AppSidebarMenuItem from '@/components/layout/sidebar/AppSidebarMenuItem.v
 import AppSidebarMenuTooltipContent from '@/components/layout/sidebar/AppSidebarMenuTooltipContent.vue'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
 
-// import type { NavigationItem } from '@/types/navigationItem.type'
 import AppSidebarFooter from './AppSidebarFooter.vue'
 import AppSidebarHeader from './AppSidebarHeader.vue'
 
