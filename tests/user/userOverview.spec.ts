@@ -9,13 +9,13 @@ test.describe('User Overview', () => {
     const USER_1 = new UserIndexDtoBuilder()
       .withFirstName('John')
       .withLastName('Doe')
-      .withBirthDate('1990-12-31')
+      .withBirthDate('2000-01-01')
       .build()
 
     const USER_2 = new UserIndexDtoBuilder()
       .withFirstName('Jane')
       .withLastName('Johnson')
-      .withBirthDate('1990-12-31')
+      .withBirthDate('2010-01-01')
       .build()
 
     await RouteUtil.interceptPaginatedData(page, 'users*', [
