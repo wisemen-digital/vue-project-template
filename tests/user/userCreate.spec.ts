@@ -2,15 +2,15 @@ import { expect, test } from '@playwright/test'
 
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { UserDtoBuilder } from '@/models/user/detail/userDto.builder.ts'
-import { RouteUtil } from '@@/utils/route.util.ts'
+import { InterceptorUtil } from '@@/utils/interceptor.util.ts'
 
 test.describe('User Create', () => {
   test('create a new user', async ({ page }) => {
-    await RouteUtil.interceptPaginatedData(page, 'users*', [])
+    await InterceptorUtil.getPaginated(page, 'users*', [])
 
     const USER_1 = new UserDtoBuilder().build()
 
-    await RouteUtil.interceptData('POST', page, 'users', USER_1)
+    await InterceptorUtil.post(page, 'users', USER_1)
 
     await page.goto('/users')
 
