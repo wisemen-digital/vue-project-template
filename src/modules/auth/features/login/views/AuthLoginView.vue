@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useToast } from '@wisemen/vue-core'
+import { useToast, useTypedRouter } from '@wisemen/vue-core'
 import { AxiosError } from 'axios'
 import { useForm } from 'formango'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useTypedRouter } from '@/composables/router/typedRouter.composable'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import { loginFormSchema } from '@/models/auth/login/loginForm.model'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'

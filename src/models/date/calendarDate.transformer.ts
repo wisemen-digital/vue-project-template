@@ -1,11 +1,15 @@
-import type { CalendarDate } from '@internationalized/date'
-import { parseDate } from '@internationalized/date'
+import dayjs from 'dayjs'
 
+import type { CalendarDate } from '@/models/date/calendarDate.model.ts'
 import type { CalendarDateDto } from '@/models/date/calendarDateDto.model.ts'
 
 export class CalendarDateTransformer {
+  static fromDate(date: Date): CalendarDate {
+    return new Date(date) as CalendarDate
+  }
+
   static fromDto(date: CalendarDateDto): CalendarDate {
-    return parseDate(date)
+    return new Date(date) as CalendarDate
   }
 
   static fromNullableDto(date: CalendarDateDto | null): CalendarDate | null {
@@ -13,7 +17,7 @@ export class CalendarDateTransformer {
   }
 
   static toDto(date: CalendarDate): CalendarDateDto {
-    return date.toString() as CalendarDateDto
+    return dayjs(date).format('YYYY-MM-DD') as CalendarDateDto
   }
 
   static toNullableDto(date: CalendarDate | null): CalendarDateDto | null {

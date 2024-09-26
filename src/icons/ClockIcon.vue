@@ -1,6 +1,6 @@
 <template>
   <svg
-    data-testid="geist-icon"
+    data-test-id="geist-icon"
     fill="none"
     shape-rendering="geometricPrecision"
     stroke="currentColor"

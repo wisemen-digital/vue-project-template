@@ -63,7 +63,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     })"
     :is-top-hidden="true"
     :filters="[]"
-    :data-testid="TEST_ID.USERS.OVERVIEW.TABLE.CONTAINER"
+    :data-test-id="TEST_ID.USERS.OVERVIEW.TABLE.CONTAINER"
     :pin-first-column="true"
     :is-loading="props.isLoading"
     :pagination="props.pagination"

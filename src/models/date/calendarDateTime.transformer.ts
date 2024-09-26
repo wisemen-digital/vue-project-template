@@ -1,22 +1,23 @@
-import type { CalendarDateTime } from '@internationalized/date'
-import {
-  parseAbsoluteToLocal,
-  toCalendarDateTime,
-} from '@internationalized/date'
+import dayjs from 'dayjs'
 
+import type { CalendarDateTime } from '@/models/date/calendarDateTime.model.ts'
 import type { CalendarDateTimeDto } from '@/models/date/calendarDateTimeDto.model.ts'
 
 export class CalendarDateTimeTransformer {
   static fromDto(date: CalendarDateTimeDto): CalendarDateTime {
-    return toCalendarDateTime(parseAbsoluteToLocal(date))
+    return new Date(date) as CalendarDateTime
   }
 
   static fromNullableDto(date: CalendarDateTimeDto | null): CalendarDateTime | null {
-    return date === null ? null : this.fromDto(date)
+    if (date === null) {
+      return null
+    }
+
+    return this.fromDto(date)
   }
 
   static toDto(date: CalendarDateTime): CalendarDateTimeDto {
-    return date.toString() as CalendarDateTimeDto
+    return dayjs(date).format('YYYY-MM-DD HH:mm') as CalendarDateTimeDto
   }
 
   static toNullableDto(date: CalendarDateTime | null): CalendarDateTimeDto | null {

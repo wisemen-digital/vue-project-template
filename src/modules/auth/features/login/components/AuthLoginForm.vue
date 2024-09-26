@@ -34,7 +34,7 @@ const password = props.form.register('password')
     <AppVerticalFormElementSpacer>
       <FormInput
         v-bind="email"
-        :data-testid="TEST_ID.AUTH.LOGIN.EMAIL_INPUT"
+        :data-test-id="TEST_ID.AUTH.LOGIN.EMAIL_INPUT"
         :is-required="true"
         :label="t('form.fields.email')"
         placeholder="email@example.com"
@@ -43,7 +43,7 @@ const password = props.form.register('password')
 
       <FormPasswordInput
         v-bind="password"
-        :data-testid="TEST_ID.AUTH.LOGIN.PASSWORD_INPUT"
+        :data-test-id="TEST_ID.AUTH.LOGIN.PASSWORD_INPUT"
         :is-required="true"
         :label="t('form.fields.password')"
         :placeholder="t('form.fields.password')"
@@ -64,7 +64,7 @@ const password = props.form.register('password')
     </AppVerticalFormElementSpacer>
 
     <AuthFormSubmitButton
-      :data-testid="TEST_ID.AUTH.LOGIN.SUBMIT_BUTTON"
+      :data-test-id="TEST_ID.AUTH.LOGIN.SUBMIT_BUTTON"
       :label="t('auth.login.log_in')"
       :form="form"
     />

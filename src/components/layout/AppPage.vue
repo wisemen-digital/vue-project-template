@@ -30,7 +30,7 @@ const props = withDefaults(
 
       <div class="flex h-10 items-center justify-between">
         <AppText
-          :data-testid="TEST_ID.APP_PAGE.TITLE"
+          :data-test-id="TEST_ID.APP_PAGE.TITLE"
           variant="title"
         >
           {{ props.title }}

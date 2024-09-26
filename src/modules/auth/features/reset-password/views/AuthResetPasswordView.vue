@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import {
   AppRouterLinkButton,
+  useApiErrorToast,
   useToast,
+  useTypedRouteParams,
+  useTypedRouteQuery,
 } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
-import { useTypedRouteParams } from '@/composables/router/typedRouteParams.composable'
-import { useTypedRouteQuery } from '@/composables/router/typedRouteQuery.composable'
 import { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
 import { useAuthResetPasswordMutation } from '@/modules/auth/api/mutations/authResetPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'

@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import type { NavigationItem } from '@wisemen/vue-core'
+import { AppSidebarNavigation } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import AppSidebarMenuItem from '@/components/layout/sidebar/AppSidebarMenuItem.vue'
+import AppSidebarMenuTooltipContent from '@/components/layout/sidebar/AppSidebarMenuTooltipContent.vue'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
-import type { NavigationItem } from '@/types/navigationItem.type'
 
 import AppSidebarFooter from './AppSidebarFooter.vue'
 import AppSidebarHeader from './AppSidebarHeader.vue'
-import AppSidebarMenu from './AppSidebarMenu.vue'
 
 const { t } = useI18n()
 
@@ -19,6 +21,7 @@ const navigationItems = computed<NavigationItem[]>(() => [
     to: {
       name: 'user-overview',
     },
+    type: 'option',
   },
   {
     icon: 'creditCard',
@@ -26,6 +29,7 @@ const navigationItems = computed<NavigationItem[]>(() => [
     to: {
       name: 'login',
     },
+    type: 'option',
   },
   {
     icon: 'settings',
@@ -33,19 +37,31 @@ const navigationItems = computed<NavigationItem[]>(() => [
     to: {
       name: 'login',
     },
+    type: 'option',
   },
 ])
 </script>
 
 <template>
-  <div class="sticky left-0 top-0 h-dvh p-4">
-    <div class="flex h-full w-20 flex-col items-center justify-between rounded-xl border border-solid border-border bg-muted-background py-6">
-      <div>
-        <AppSidebarHeader />
-        <AppSidebarMenu :items="navigationItems" />
-      </div>
+  <AppSidebarNavigation :items="navigationItems">
+    <template #header>
+      <AppSidebarHeader />
+    </template>
 
+    <template #trigger="{ navigationItem, isOpen }">
+      <AppSidebarMenuItem
+        :is-open="isOpen"
+        :navigation-item="navigationItem"
+      />
+    </template>
+    <template #content="{ navigationItem, isOpen }">
+      <AppSidebarMenuTooltipContent
+        :navigation-item="navigationItem"
+        :is-open="isOpen"
+      />
+    </template>
+    <template #footer>
       <AppSidebarFooter />
-    </div>
-  </div>
+    </template>
+  </AppSidebarNavigation>
 </template>

@@ -41,7 +41,7 @@ const breadcrumbs: BreadcrumbItem[] = [
             userUuid: props.user.uuid,
           },
         }"
-        :data-testid="TEST_ID.USERS.DETAIL.EDIT_BUTTON"
+        :data-test-id="TEST_ID.USERS.DETAIL.EDIT_BUTTON"
         :label="t('users.detail.edit_user')"
       />
     </template>

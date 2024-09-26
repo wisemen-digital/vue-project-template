@@ -1,4 +1,4 @@
-import { useToast } from '@wisemen/vue-core'
+import { useLoading, useToast } from '@wisemen/vue-core'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 import {
   onMounted,
@@ -6,17 +6,13 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useLoading } from '@/composables/loading/loading.composable'
 import { TIME } from '@/constants/time.constant'
 import { LoggerUtil } from '@/utils/logger.util'
 
 export function useRefreshPrompt(): void {
   const { t } = useI18n()
 
-  const {
-    isLoading,
-    setLoadingState,
-  } = useLoading()
+  const loading = useLoading()
 
   const toast = useToast()
 
@@ -45,7 +41,7 @@ export function useRefreshPrompt(): void {
   })
 
   async function onRefreshButtonClick(closeToast: () => void): Promise<void> {
-    setLoadingState(true)
+    loading.setState(true)
     await updateServiceWorker(true)
     closeToast()
   }
@@ -56,7 +52,7 @@ export function useRefreshPrompt(): void {
         toast.show({
           title: t('components.refresh_prompt.new_version.title'),
           action: {
-            isLoading,
+            isLoading: loading.state,
             label: t('components.refresh_prompt.new_version.action'),
             onClick: onRefreshButtonClick,
           },

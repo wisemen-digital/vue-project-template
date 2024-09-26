@@ -1,8 +1,9 @@
 <script setup lang="ts" generic="TRoute extends keyof Routes">
+import type {
+  RouteLocationTyped,
+  Routes,
+} from '@wisemen/vue-core'
 import { RouterLink } from 'vue-router'
-
-import type { Routes } from '@/routes/routes'
-import type { RouteLocationTyped } from '@/types/router/router.type'
 
 const props = defineProps<{
   to: RouteLocationTyped<TRoute>

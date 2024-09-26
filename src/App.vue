@@ -2,12 +2,12 @@
 import {
   AppDialogContainer,
   AppToastContainer,
+  useDocumentTitle,
 } from '@wisemen/vue-core'
 import { RouterView } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
 import ThemeProvider from '@/components/app/ThemeProvider.vue'
-import { useDocumentTitle } from '@/composables/document-title/documentTitle.composable'
 import { useRefreshPrompt } from '@/composables/refresh-prompt/refreshPrompt.composable'
 import { logBuildInformation } from '@/constants/environment.constant.ts'
 
