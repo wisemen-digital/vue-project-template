@@ -8,13 +8,13 @@
     "production": "vue-tsc --noEmit && vite build --mode production",
     "build": "vite build",
     "preview": "import-meta-env -x .env.e2e && vite preview",
-    "lint:fix": "eslint . --fix",
-    "lint": "eslint .",
+    "lint:fix": "eslint . --fix --cache",
+    "lint": "eslint . --cache",
     "test:unit": "vitest --run",
     "test:e2e": "npx playwright test",
     "prepare": "husky install",
     "type-check": "vue-tsc --build --force",
-    "precommit": "npm run type-check && npm run lint && npm run test:unit && npm run test:e2e && npm run build"
+    "precommit": "pnpm type-check && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm build"
   },
   "dependencies": {
     "@appwise/zod-http-client": "0.0.4",

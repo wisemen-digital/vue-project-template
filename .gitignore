@@ -38,6 +38,9 @@ lerna-debug.log*
 !.env.test
 !.env.example
 !.env.e2e
+
+#generated files
+.eslintcache
 /test-results/
 /playwright-report/
 /blob-report/
