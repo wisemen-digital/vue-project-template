@@ -1,21 +1,24 @@
 <script setup lang="ts">
+import type { NavigationItem } from '@wisemen/vue-core'
 import {
   AppKeyboardShortcut,
   AppText,
 } from '@wisemen/vue-core'
-import type { NavigationItemOption } from 'node_modules/@wisemen/vue-core/dist/types/navigationItem.type'
 import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
   isOpen: boolean
-  navigationItem: NavigationItemOption
+  navigationItem: NavigationItem
 }>()
 
 const { t } = useI18n()
 </script>
 
 <template>
-  <div class="flex items-center gap-x-2 px-2 py-1.5">
+  <div
+    v-if="props.navigationItem.type === 'option'"
+    class="flex items-center gap-x-2 px-2 py-1.5"
+  >
     <AppText
       variant="caption"
       class="text-muted-foreground"

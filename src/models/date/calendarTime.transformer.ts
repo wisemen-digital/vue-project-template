@@ -12,10 +12,6 @@ export class CalendarTimeTransformer {
     return date === null ? null : this.fromDto(date)
   }
 
-  static fromTime(time: string): CalendarTime {
-    return time as CalendarTime
-  }
-
   static toDto(date: CalendarTime): CalendarTimeDto {
     return dayjs(date).format('YYYY-MM-DD') as CalendarTimeDto
   }

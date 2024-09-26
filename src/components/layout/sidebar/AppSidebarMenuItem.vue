@@ -1,20 +1,20 @@
 <script setup lang="ts">
+import type { NavigationItem } from '@wisemen/vue-core'
 import {
   AppIcon,
   AppText,
 } from '@wisemen/vue-core'
-import type { NavigationItemOption } from 'node_modules/@wisemen/vue-core/dist/types/navigationItem.type'
 
 import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
 
 const props = defineProps<{
   isOpen: boolean
-  navigationItem: NavigationItemOption
+  navigationItem: NavigationItem
 }>()
 </script>
 
 <template>
-  <div>
+  <div v-if="props.navigationItem.type === 'option'">
     <AppTypedRouterLink
       v-slot="{ isActive }"
       :to="props.navigationItem.to"
