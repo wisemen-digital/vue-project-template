@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.js'
-import { RouteUtil } from '@@/utils/route.util.ts'
+import { InterceptorUtil } from '@@/utils/interceptor.util.ts'
 
 test.describe('User Overview', () => {
   test('display users in the table', async ({ page }) => {
@@ -18,7 +18,7 @@ test.describe('User Overview', () => {
       .withBirthDate('2010-01-01')
       .build()
 
-    await RouteUtil.interceptPaginatedData(page, 'users*', [
+    await InterceptorUtil.getPaginated(page, 'users*', [
       USER_1,
       USER_2,
     ])

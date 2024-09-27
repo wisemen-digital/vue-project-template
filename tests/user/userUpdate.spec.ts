@@ -5,7 +5,7 @@ import { UserDtoBuilder } from '@/models/user/detail/userDto.builder.ts'
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
-import { RouteUtil } from '@@/utils/route.util.ts'
+import { InterceptorUtil } from '@@/utils/interceptor.util.ts'
 
 test.describe('User Update', () => {
   test('update an existing user', async ({ page }) => {
@@ -22,13 +22,13 @@ test.describe('User Update', () => {
       .withUuid(USER_UUID_1)
       .build()
 
-    await RouteUtil.interceptPaginatedData(page, 'users?limit=20&offset=0', [
+    await InterceptorUtil.getPaginated(page, 'users?limit=20&offset=0', [
       USER_INDEX_1,
     ])
 
-    await RouteUtil.interceptData('GET', page, `users/${USER_UUID_1}`, USER_1)
+    await InterceptorUtil.get(page, `users/${USER_UUID_1}`, USER_1)
 
-    await RouteUtil.interceptData('POST', page, `users/${USER_UUID_1}`, USER_1)
+    await InterceptorUtil.post(page, `users/${USER_UUID_1}`, USER_1)
 
     await page.goto('/users')
 
