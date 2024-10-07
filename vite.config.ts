@@ -7,6 +7,16 @@ import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern',
+        silenceDeprecations: [
+          'legacy-js-api',
+        ],
+      },
+    },
+  },
   define: {
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
     BUILD_COMMIT: JSON.stringify(process.env.BUILD_COMMIT ?? 'undefined'),

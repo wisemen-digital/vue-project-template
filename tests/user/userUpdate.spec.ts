@@ -1,10 +1,9 @@
-import { expect, test } from '@playwright/test'
-
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { UserDtoBuilder } from '@/models/user/detail/userDto.builder.ts'
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
+import { expect, test } from '@@/base.fixture'
 import { InterceptorUtil } from '@@/utils/interceptor.util.ts'
 
 test.describe('User Update', () => {

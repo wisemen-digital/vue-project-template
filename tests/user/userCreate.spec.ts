@@ -1,7 +1,6 @@
-import { expect, test } from '@playwright/test'
-
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { UserDtoBuilder } from '@/models/user/detail/userDto.builder.ts'
+import { expect, test } from '@@/base.fixture'
 import { InterceptorUtil } from '@@/utils/interceptor.util.ts'
 
 test.describe('User Create', () => {

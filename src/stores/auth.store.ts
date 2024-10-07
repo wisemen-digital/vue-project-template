@@ -5,11 +5,13 @@ import {
   ref,
 } from 'vue'
 
+import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { AuthTransformer } from '@/models/auth/auth.transformer'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import type { LoginForm } from '@/models/auth/login/loginForm.model'
 import { AuthService } from '@/modules/auth/api/services/auth.service'
+import { UuidUtil } from '@/utils/uuid.util.ts'
 
 export const useAuthStore = defineStore('auth', () => {
   const lastLoginAttemptEmail = ref<null | string>(null)
@@ -33,6 +35,16 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function getCurrentUser(): Promise<CurrentUser> {
+    if (CURRENT_ENVIRONMENT === 'e2e') {
+      return {
+        uuid: UuidUtil.getRandom(),
+        email: 'test@example.com',
+        firstName: 'Test',
+        fullName: 'Test User',
+        lastName: 'User',
+      }
+    }
+
     if (currentUser.value !== null) {
       return currentUser.value
     }
