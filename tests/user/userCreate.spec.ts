@@ -9,7 +9,7 @@ test.describe('User Create', () => {
 
     const USER_1 = new UserDtoBuilder().build()
 
-    await InterceptorUtil.post(page, 'users', USER_1)
+    const createRequest = await InterceptorUtil.post(page, 'users', USER_1)
 
     await page.goto('/users')
 
@@ -23,5 +23,6 @@ test.describe('User Create', () => {
 
     await expect(page.getByTestId(TEST_ID.USERS.CREATE.SUCCESS_TOAST)).toBeVisible()
     await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.CONTAINER)).toBeVisible()
+    expect(createRequest.getCount()).toBe(1)
   })
 })

@@ -26,14 +26,12 @@ export class DateTimePickerUtil {
 
   private static getMonthName(month: number): string {
     const monthNames = [
-
       'Jan',
       'Feb',
       'Mar',
       'Apr',
       'May',
       'Jun',
-
       'Jul',
       'Aug',
       'Sep',

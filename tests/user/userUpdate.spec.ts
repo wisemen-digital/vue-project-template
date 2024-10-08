@@ -27,7 +27,7 @@ test.describe('User Update', () => {
 
     await InterceptorUtil.get(page, `users/${USER_UUID_1}`, USER_1)
 
-    await InterceptorUtil.post(page, `users/${USER_UUID_1}`, USER_1)
+    const updateRequest = await InterceptorUtil.post(page, `users/${USER_UUID_1}`, USER_1)
 
     await page.goto('/users')
 
@@ -42,5 +42,6 @@ test.describe('User Update', () => {
     await page.getByTestId(TEST_ID.USERS.FORM.SUBMIT_BUTTON).click()
 
     await expect(page.getByTestId(TEST_ID.USERS.UPDATE.SUCCESS_TOAST)).toBeVisible()
+    expect(updateRequest.getCount()).toBe(1)
   })
 })
