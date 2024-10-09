@@ -1,10 +1,9 @@
-import { expect, test } from '@playwright/test'
-
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { UserDtoBuilder } from '@/models/user/detail/userDto.builder.ts'
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
+import { expect, test } from '@@/base.fixture'
 import { InterceptorUtil } from '@@/utils/interceptor.util.ts'
 
 test.describe('User Update', () => {
@@ -28,7 +27,7 @@ test.describe('User Update', () => {
 
     await InterceptorUtil.get(page, `users/${USER_UUID_1}`, USER_1)
 
-    await InterceptorUtil.post(page, `users/${USER_UUID_1}`, USER_1)
+    const updateRequest = await InterceptorUtil.post(page, `users/${USER_UUID_1}`, USER_1)
 
     await page.goto('/users')
 
@@ -43,5 +42,6 @@ test.describe('User Update', () => {
     await page.getByTestId(TEST_ID.USERS.FORM.SUBMIT_BUTTON).click()
 
     await expect(page.getByTestId(TEST_ID.USERS.UPDATE.SUCCESS_TOAST)).toBeVisible()
+    expect(updateRequest.getCount()).toBe(1)
   })
 })

@@ -15,9 +15,13 @@ function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
 
 type RequestMethod = 'DELETE' | 'GET' | 'POST' | 'PUT'
 
+interface InterceptorResult {
+  getCount: () => number
+};
+
 export class InterceptorUtil {
-  static async delete<T>(page: Page, url: string, data: T): Promise<void> {
-    await this.interceptData('DELETE', page, url, data)
+  static async delete<T>(page: Page, url: string, data: T): Promise<InterceptorResult> {
+    return await this.interceptData('DELETE', page, url, data)
   }
 
   static async fileUpload(page: Page, file: S3FileDto): Promise<void> {
@@ -41,32 +45,50 @@ export class InterceptorUtil {
     await this.post(page, `files/${file.uuid}/confirm-upload`, file.uuid)
   }
 
-  static async get<T>(page: Page, url: string, data: T): Promise<void> {
-    await this.interceptData('GET', page, url, data)
+  static async get<T>(page: Page, url: string, data: T): Promise<InterceptorResult> {
+    return await this.interceptData('GET', page, url, data)
   }
 
-  static async getPaginated<T>(page: Page, url: string, data: T[]): Promise<void> {
-    await page.route(`*/**/api/v1/${url}`, async (route) => {
-      await route.fulfill({
-        json: getPaginatedJson(data),
-      })
-    })
+  static async getPaginated<T>(page: Page, url: string, data: T[]): Promise<InterceptorResult> {
+    return await this.interceptData('GET', page, url, getPaginatedJson(data))
   }
 
-  static async post<T>(page: Page, url: string, data: T): Promise<void> {
-    await this.interceptData('POST', page, url, data)
+  static async post<T>(page: Page, url: string, data: T): Promise<InterceptorResult> {
+    return await this.interceptData('POST', page, url, data)
   }
 
-  private static async interceptData<T>(method: RequestMethod, page: Page, url: string, data: T): Promise<void> {
-    await page.route(`*/**/api/v1/${url}`, async (route) => {
+  private static async interceptData<T>(
+    method: RequestMethod,
+    page: Page,
+    url: string,
+    data: T,
+  ): Promise<InterceptorResult> {
+    const interceptorId = `${method} ${url}`
+
+    const callCount: Map<string, number> = new Map()
+
+    await page.route(`*/**/api/v1/${url}`, async (route, request) => {
       await route.fulfill({
         contentType: 'application/json',
         headers: {
           method,
+          url,
         },
         json: data,
         status: 200,
       })
+
+      if (request.method() === method) {
+        callCount.set(interceptorId, (callCount.get(interceptorId) ?? 0) + 1)
+      }
     })
+
+    function getCount(): number {
+      return callCount.get(interceptorId) ?? 0
+    }
+
+    return {
+      getCount,
+    }
   }
 }

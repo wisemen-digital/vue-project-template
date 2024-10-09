@@ -9,6 +9,9 @@ export const TEST_ID = {
       SUBMIT_BUTTON: 'login-form-submit-button',
     },
   },
+  SHARED: {
+    MALFORMED_RESPONSE_TOAST: 'shared-malformed-response-toast',
+  },
   USERS: {
     CREATE: {
       SUCCESS_TOAST: 'users-create-success-toast',

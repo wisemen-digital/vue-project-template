@@ -1,12 +1,19 @@
+import path from 'node:path'
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
 
 import { defineConfig, devices } from '@playwright/test'
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 // require('dotenv').config();
+import dotenv from 'dotenv'
+
+const __filename = fileURLToPath(import.meta.url) // get the resolved path to the file
+const __dirname = path.dirname(__filename) // get the name of the directory
+
+dotenv.config({ path: path.resolve(__dirname, '.env.e2e') })
 
 const PORT = 3000
 const ENVIRONMENT = 'e2e'
@@ -62,7 +69,6 @@ export default defineConfig({
 
     /* Only on CI systems run the tests headless */
     headless: true,
-
     testIdAttribute: 'data-test-id',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
