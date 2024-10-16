@@ -8,6 +8,7 @@ import { AppTable } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'
@@ -16,6 +17,7 @@ import { DateUtil } from '@/utils/date.util.ts'
 const props = defineProps<{
   isLoading: boolean
   data: PaginatedData<UserIndex> | null
+  error: null | unknown
   pagination: Pagination<UserIndexFilters>
 }>()
 
@@ -52,7 +54,15 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
 </script>
 
 <template>
+  <div
+    v-if="props.error !== null"
+    class="flex size-full flex-1 items-center justify-center"
+  >
+    <AppErrorState :error="props.error" />
+  </div>
+
   <AppTable
+    v-else
     :columns="columns"
     :data="props.data"
     :row-to="(row) => ({

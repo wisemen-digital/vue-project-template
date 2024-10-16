@@ -1,6 +1,5 @@
 import { z } from 'zod'
 
-// GET /users/me
 export const currentUserDtoSchema = z.object({
   uuid: z.string().uuid(),
   firstName: z.string(),

@@ -7,7 +7,7 @@ import {
 } from 'vue'
 import type { z } from 'zod'
 
-import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
+import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 
 const props = withDefaults(defineProps<{
   formId?: null | string
@@ -45,6 +45,9 @@ const isButtonDisabled = computed<boolean>(() => {
     :is-disabled="isButtonDisabled"
     :is-loading="props.form.isSubmitting"
     :keyboard-shortcut="isKeyboardCommandDisabled ? null : KEYBOARD_SHORTCUT.SAVE"
+    :style="{
+      viewTransitionName: 'header-action-button',
+    }"
     type="submit"
     class="w-full"
   >

@@ -27,3 +27,43 @@ logBuildInformation()
     <AppToastContainer />
   </ThemeProvider>
 </template>
+
+<style lang="scss">
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.view-transition {
+  view-transition-name: title;
+}
+
+::view-transition-old(title) {
+  animation: 0.1s linear both fade-out;
+}
+
+::view-transition-new(title) {
+  animation: 0.3s linear both fade-in;
+}
+
+::view-transition-old(root) {
+  // animation: 0;
+}
+
+::view-transition-new(root) {
+  // animation: 0;
+}
+</style>

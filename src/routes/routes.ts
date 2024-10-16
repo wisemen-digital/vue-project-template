@@ -5,12 +5,8 @@ import { type UserRoutes, userRoutes } from '@/modules/user/routes/user.routes'
 import type { RouteRecordTyped } from '@/types/router/router.type'
 
 export interface Routes extends AuthRoutes, UserRoutes {
-  404: {
-    path: '/:catchAll(.*)'
-  }
-  index: {
-    path: '/'
-  }
+  404: void
+  index: void
 }
 
 export const routes: RouteRecordTyped[] = [

@@ -9,7 +9,7 @@ import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { useDebounceSearch } from '@/composables/debounce-search/debounceSearch.composable'
-import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
+import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 
 const props = withDefaults(defineProps<{
   isLoading: boolean

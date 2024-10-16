@@ -1,17 +1,28 @@
 <script setup lang="ts">
 import { AppText } from '@wisemen/vue-core'
-import type { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import GridBackgroundPattern from '@/assets/svgs/GridBackgroundPattern.vue'
 
 const props = defineProps<{
-  error: AxiosError
+  error: unknown
 }>()
 
 const { t } = useI18n()
 
-const status = props.error.response?.status ?? 500
+function isAxiosError(error: unknown): error is AxiosError {
+  return error instanceof AxiosError
+}
+
+const httpStatus = computed<null | number>(() => {
+  if (isAxiosError(props.error)) {
+    return props.error.response?.status ?? 500
+  }
+
+  return null
+})
 
 const httpErrorMap = new Map<string, string>(
   Object.entries({
@@ -22,10 +33,26 @@ const httpErrorMap = new Map<string, string>(
     500: t('error.internal_server_error.title'),
   }),
 )
+
+const title = computed<string>(() => {
+  if (httpStatus.value === null) {
+    return t('error.default_error.title')
+  }
+
+  return `${httpStatus.value}`
+})
+
+const description = computed<string>(() => {
+  if (httpStatus.value === null) {
+    return (props.error as Error).message
+  }
+
+  return httpErrorMap.get(`${httpStatus.value}`) ?? t('error.default_error.title')
+})
 </script>
 
 <template>
-  <div class="relative flex size-96 items-center justify-center overflow-hidden">
+  <div class="relative flex h-96 min-w-96 items-center justify-center overflow-hidden">
     <GridBackgroundPattern class="absolute size-full scale-125 text-muted" />
 
     <div class="relative z-10">
@@ -33,12 +60,12 @@ const httpErrorMap = new Map<string, string>(
         class="flex items-center p-4 font-medium"
         variant="subtext"
       >
-        <span class="border-r border-solid border-muted-foreground/75 px-5 tracking-wider text-muted-foreground/75">
-          {{ status }}
+        <span class="whitespace-nowrap border-r border-solid border-muted-foreground/75 px-5 tracking-wider text-muted-foreground/75">
+          {{ title }}
         </span>
 
-        <span class="px-4 font-medium uppercase tracking-wider text-muted-foreground/75">
-          {{ httpErrorMap.get(`${status}`) ?? t('suspense.something_went_wrong') }}
+        <span class="min-w-60 px-4 font-medium uppercase tracking-wider text-muted-foreground/75">
+          {{ description }}
         </span>
       </AppText>
     </div>

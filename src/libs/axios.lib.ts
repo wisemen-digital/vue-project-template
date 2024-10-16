@@ -5,20 +5,21 @@ import Axios from 'axios'
 import { API_AUTH_URL, API_BASE_URL } from '@/constants/environment.constant.ts'
 import { routerPlugin } from '@/plugins/router/router.plugin.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
+import { LocaleUtil } from '@/utils/locale.util'
 
 import { oAuthClient } from './oAuth.lib'
 
 const axiosConfig: CreateAxiosDefaults = {
   baseURL: API_BASE_URL,
   headers: {
-    'Accept-Language': navigator.language,
+    'Accept-Language': LocaleUtil.getLocale(),
   },
 }
 
 const axiosAuthConfig: CreateAxiosDefaults = {
   baseURL: API_AUTH_URL,
   headers: {
-    'Accept-Language': navigator.language,
+    'Accept-Language': LocaleUtil.getLocale(),
   },
 }
 
