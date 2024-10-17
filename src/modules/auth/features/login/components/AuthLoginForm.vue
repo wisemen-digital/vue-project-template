@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import {
-  AppText,
-  FormInput,
-  FormPasswordInput,
+  AppPasswordField,
+  AppTextField,
 } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
@@ -32,7 +31,7 @@ const password = props.form.register('password')
     :can-exit-when-dirty="true"
   >
     <AppVerticalFormElementSpacer>
-      <FormInput
+      <AppTextField
         v-bind="email"
         :data-test-id="TEST_ID.AUTH.LOGIN.EMAIL_INPUT"
         :is-required="true"
@@ -41,7 +40,7 @@ const password = props.form.register('password')
         type="email"
       />
 
-      <FormPasswordInput
+      <AppPasswordField
         v-bind="password"
         :data-test-id="TEST_ID.AUTH.LOGIN.PASSWORD_INPUT"
         :is-required="true"
@@ -54,16 +53,14 @@ const password = props.form.register('password')
           name: 'forgot-password',
         }"
       >
-        <AppText
-          class="font-medium text-primary"
-          variant="subtext"
-        >
+        <span class="text-subtext font-medium text-primary">
           {{ t('auth.login.forgot_password') }}
-        </AppText>
+        </span>
       </AppTypedRouterLink>
     </AppVerticalFormElementSpacer>
 
     <AuthFormSubmitButton
+      :is-always-enabled="true"
       :data-test-id="TEST_ID.AUTH.LOGIN.SUBMIT_BUTTON"
       :label="t('auth.login.log_in')"
       :form="form"

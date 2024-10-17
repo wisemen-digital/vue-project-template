@@ -19,14 +19,15 @@ const props = withDefaults(defineProps<{
   <AppDialogCloseButton>
     <AppButton
       :is-disabled="isDisabled"
-      variant="ghost"
+      variant="tertiary"
+      class="w-full"
     >
       <AppButtonGroup>
         {{ props.label }}
 
         <AppKeyboardKey
           keyboard-key="escape"
-          class="!bg-black/5"
+          class="border-tertiary bg-secondary text-tertiary"
         />
       </AppButtonGroup>
     </AppButton>

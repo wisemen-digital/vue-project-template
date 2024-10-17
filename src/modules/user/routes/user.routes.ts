@@ -2,18 +2,14 @@ import type { UserUuid } from '@/models/user/userUuid.model'
 import type { RouteRecordTyped } from '@/types/router/router.type'
 
 export interface UserRoutes {
-  'user-create': {
-    path: '/users/create'
-  }
+  'user-create': void
   'user-detail': {
     params: {
       userUuid: UserUuid
     }
     path: '/users/:userUuid'
   }
-  'user-overview': {
-    path: '/users'
-  }
+  'user-overview': void
   'user-update': {
     params: {
       userUuid: UserUuid
