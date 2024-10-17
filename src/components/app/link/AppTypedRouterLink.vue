@@ -14,7 +14,7 @@ const props = defineProps<{
   <RouterLink
     v-slot="{ isActive, isExactActive }"
     :to="props.to"
-    class="rounded text-left ring-ring ring-offset-background duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed"
+    class="rounded text-left ring-brand-primary-500 duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed"
   >
     <slot
       :is-active="isActive"

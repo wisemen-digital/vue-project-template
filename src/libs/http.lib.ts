@@ -23,18 +23,16 @@ function onZodError({ error, method, url }: ZodError): void {
   })
 
   if (CURRENT_ENVIRONMENT !== 'production') {
-    toast.show({
-      title: 'Malformed response',
+    toast.error({
       action: {
         label: computed<string>(() => clipboard.copied.value ? 'Copied!' : 'Copy error'),
         onClick: () => {
           void clipboard.copy(`${method.toUpperCase()} ${url} returned a malformed response.\n\n${JSON.stringify(error, null, 2)}`)
         },
       },
-      description: `${method.toUpperCase()} ${url} returned a malformed response.`,
-      duration: 20000,
+      durationInMs: 20000,
       icon: 'alertCircle',
-      type: 'error',
+      message: `${method.toUpperCase()} ${url} returned a malformed response.`,
     })
   }
 

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { AppText } from '@wisemen/vue-core'
-
 const props = defineProps<{
   title: string
   description: string
@@ -9,19 +7,13 @@ const props = defineProps<{
 
 <template>
   <div class="flex w-full flex-col pb-24">
-    <AppText
-      class="font-medium text-foreground"
-      variant="title"
-    >
+    <h1 class="text-title font-semibold text-primary">
       {{ props.title }}
-    </AppText>
+    </h1>
 
-    <AppText
-      class="mt-2"
-      variant="subtext"
-    >
+    <p class="mt-2 text-subtext">
       {{ props.description }}
-    </AppText>
+    </p>
 
     <div class="mt-6 w-full">
       <slot />

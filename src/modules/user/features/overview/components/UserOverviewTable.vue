@@ -4,14 +4,19 @@ import type {
   Pagination,
   TableColumn,
 } from '@wisemen/vue-core'
-import { AppTable } from '@wisemen/vue-core'
-import { computed } from 'vue'
+import { AppTable, AppTableCell } from '@wisemen/vue-core'
+import {
+  computed,
+  h,
+  type VNode,
+} from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'
+import UserOverviewTableNameCell from '@/modules/user/features/overview/components/UserOverviewTableNameCell.vue'
 import { DateUtil } from '@/utils/date.util.ts'
 
 const props = defineProps<{
@@ -25,30 +30,18 @@ const { t } = useI18n()
 
 const columns = computed<TableColumn<UserIndex>[]>(() => [
   {
-    id: 'uuid',
-    testId: TEST_ID.USERS.OVERVIEW.TABLE.UUID,
-    isSortable: true,
-    label: 'UUID',
-    value: (row): string => row.uuid,
-    width: 'auto',
-  },
-  {
-    id: 'name',
     testId: TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME,
     isSortable: true,
-    label: t('shared.name'),
-    value: (row): string => row.fullName,
-    width: '500px',
+    cell: (user): VNode => h(UserOverviewTableNameCell, { user }),
+    headerLabel: t('shared.name'),
+    key: 'name',
   },
   {
-    id: 'birthDate',
     testId: TEST_ID.USERS.OVERVIEW.TABLE.BIRTH_DATE,
     isSortable: true,
-    label: t('shared.birth_date'),
-    value: (row): string => {
-      return DateUtil.toLocaleDate(row.birthDate)
-    },
-    width: '500px',
+    cell: (): VNode => h(AppTableCell, () => DateUtil.toLocaleDate(new Date())),
+    headerLabel: t('shared.birth_date'),
+    key: 'birthDate',
   },
 ])
 </script>
@@ -65,18 +58,9 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     v-else
     :columns="columns"
     :data="props.data"
-    :row-to="(row) => ({
-      name: 'user-detail',
-      params: {
-        userUuid: row.uuid,
-      },
-    })"
-    :is-top-hidden="true"
-    :filters="[]"
     :data-test-id="TEST_ID.USERS.OVERVIEW.TABLE.CONTAINER"
-    :pin-first-column="true"
+    :is-first-column-sticky="true"
     :is-loading="props.isLoading"
     :pagination="props.pagination"
-    :title="t('shared.users')"
   />
 </template>

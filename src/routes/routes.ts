@@ -12,7 +12,7 @@ export interface Routes extends AuthRoutes, UserRoutes {
 export const routes: RouteRecordTyped[] = [
   {
     path: '',
-    component: () => import('@/components/layout/AppLayout.vue'),
+    component: () => import('@/components/layout/dashboard/AppDashboardLayout.vue'),
     meta: {
       middleware: [
         authMiddleware,

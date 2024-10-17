@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
-import {
-  AppBreadcrumbs,
-  AppContainer,
-  AppText,
-} from '@wisemen/vue-core'
+import { AppBreadcrumbs } from '@wisemen/vue-core'
 
+import AppContainer from '@/components/layout/AppContainer.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 
 const props = withDefaults(
@@ -20,7 +17,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <div class="flex w-full flex-1 flex-col bg-background">
+  <div class="flex w-full flex-1 flex-col">
     <AppContainer class="pb-2 pt-10">
       <AppBreadcrumbs
         v-if="props.breadcrumbs !== null"
@@ -29,12 +26,12 @@ const props = withDefaults(
       />
 
       <div class="flex h-10 items-center justify-between">
-        <AppText
+        <div
           :data-test-id="TEST_ID.APP_PAGE.TITLE"
-          variant="title"
+          class="text-title font-semibold text-primary"
         >
           {{ props.title }}
-        </AppText>
+        </div>
 
         <div
           id="header-actions"
@@ -45,7 +42,7 @@ const props = withDefaults(
       </div>
     </AppContainer>
 
-    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-8 pt-6">
+    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-xl pt-2xl">
       <slot />
     </AppContainer>
   </div>

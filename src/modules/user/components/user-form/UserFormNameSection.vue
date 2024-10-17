@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FormInput } from '@wisemen/vue-core'
+import { AppTextField } from '@wisemen/vue-core'
 import type { Field } from 'formango'
 import { useI18n } from 'vue-i18n'
 
@@ -21,12 +21,12 @@ const { t } = useI18n()
     :title="t('shared.name')"
   >
     <FormGrid :cols="2">
-      <FormInput
+      <AppTextField
         :test-id="TEST_ID.USERS.FORM.FIRST_NAME_INPUT"
         v-bind="props.firstName"
         :label="t('shared.first_name')"
       />
-      <FormInput
+      <AppTextField
         v-bind="props.lastName"
         :test-id="TEST_ID.USERS.FORM.LAST_NAME_INPUT"
         :label="t('shared.last_name')"

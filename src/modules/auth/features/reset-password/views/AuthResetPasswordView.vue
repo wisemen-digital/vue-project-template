@@ -1,15 +1,14 @@
 <script setup lang="ts">
+import { useRouteParams, useRouteQuery } from '@vueuse/router'
 import {
   AppRouterLinkButton,
-  useApiErrorToast,
   useToast,
-  useTypedRouteParams,
-  useTypedRouteQuery,
 } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
 import { useAuthResetPasswordMutation } from '@/modules/auth/api/mutations/authResetPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
@@ -19,7 +18,6 @@ const hasPasswordBeenReset = ref<boolean>(true)
 
 const { t } = useI18n()
 const toast = useToast()
-const errorToast = useApiErrorToast()
 
 const {
   form,
@@ -29,11 +27,13 @@ const {
   schema: resetPasswordFormSchema,
 })
 
-const routeParams = useTypedRouteParams('reset-password')
-const queryParams = useTypedRouteQuery('reset-password')
+const token = useRouteParams('token')
+const email = useRouteQuery('email')
 
-form.register('token', routeParams.token.value)
-form.register('email', queryParams.email.value)
+const errorToast = useApiErrorToast()
+
+form.register('token', token.value as string)
+form.register('email', email.value as string)
 
 const resetPasswordMutation = useAuthResetPasswordMutation()
 
@@ -47,8 +47,7 @@ const description = computed<string>(() => {
 
 onSubmitFormError(() => {
   toast.error({
-    title: t('error.invalid_form_input.title'),
-    description: t('error.invalid_form_input.description'),
+    message: t('error.invalid_form_input.description'),
   })
 })
 

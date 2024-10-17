@@ -30,8 +30,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 <template>
   <AppPage
-    :breadcrumbs="breadcrumbs"
     :title="props.user.fullName"
+    :breadcrumbs="breadcrumbs"
   >
     <template #header-actions>
       <AppEditItemButton

@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
-import {
-  useApiErrorToast,
-  useToast,
-} from '@wisemen/vue-core'
+import { useToast } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import FormPage from '@/components/form/FormPage.vue'
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUpdateForm as UserUpdateFormType } from '@/models/user/update/userUpdateForm.model'
@@ -61,8 +59,7 @@ const {
 
 onSubmitFormError(() => {
   toast.error({
-    title: t('error.invalid_form_input.title'),
-    description: t('error.invalid_form_input.description'),
+    message: t('error.invalid_form_input.description'),
   })
 })
 
@@ -77,8 +74,7 @@ onSubmitForm(async (values) => {
 
     toast.success({
       testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
-      title: t('users.update.success.title'),
-      description: t('users.update.success.description'),
+      message: t('users.update.success.description'),
     })
   }
   catch (error) {

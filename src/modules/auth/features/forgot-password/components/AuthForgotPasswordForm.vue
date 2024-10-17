@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FormInput } from '@wisemen/vue-core'
+import { AppTextField } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
@@ -22,7 +22,7 @@ const email = props.form.register('email', props.lastLoginAttemptEmail ?? undefi
     :form="form"
     :can-exit-when-dirty="true"
   >
-    <FormInput
+    <AppTextField
       v-bind="email"
       :is-required="true"
       :label="t('form.fields.email')"

@@ -26,7 +26,7 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
     :subtitle="props.subtitle"
     :breadcrumbs="props.breadcrumbs"
     :title="props.title"
-    class="h-dvh overflow-hidden"
+    class="max-h-dvh overflow-hidden"
   >
     <template #header-actions>
       <slot name="header-actions" />

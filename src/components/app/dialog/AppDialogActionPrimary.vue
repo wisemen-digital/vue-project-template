@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { AppButton } from '@wisemen/vue-core'
+import {
+  AppButton,
+  AppKeyboardKey,
+  AppKeyboardShortcutProvider,
+} from '@wisemen/vue-core'
 import {
   computed,
   onMounted,
   ref,
 } from 'vue'
+
+import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
 
 const props = withDefaults(defineProps<{
   isDestructive?: boolean
@@ -41,15 +47,27 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppButton
-    :is-loading="props.isLoading"
-    :variant="props.isDestructive ? 'destructive' : 'default'"
-    :keyboard-shortcut="{
+  <AppKeyboardShortcutProvider
+    :config="{
       keys: ['enter'],
       isDisabled: computed<boolean>(() => isFocusedElementAButton),
     }"
-    @click="onConfirm"
+    class="w-full"
   >
-    {{ props.label }}
-  </AppButton>
+    <AppButton
+      :is-loading="props.isLoading"
+      :variant="props.isDestructive ? 'destructive-primary' : 'default'"
+      class="group w-full"
+      @click="onConfirm"
+    >
+      <AppButtonGroup>
+        {{ props.label }}
+
+        <AppKeyboardKey
+          keyboard-key="enter"
+          class="border-white/10 bg-white/10 duration-200"
+        />
+      </AppButtonGroup>
+    </AppButton>
+  </AppKeyboardShortcutProvider>
 </template>

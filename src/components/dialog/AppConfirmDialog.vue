@@ -33,7 +33,6 @@ function onConfirm(): void {
       <AppDialogHeader
         :title="props.title"
         :description="props.description"
-        icon="alertCircle"
       />
 
       <AppDialogActions>

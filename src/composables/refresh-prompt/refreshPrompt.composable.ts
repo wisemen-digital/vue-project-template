@@ -1,7 +1,8 @@
-import { useLoading, useToast } from '@wisemen/vue-core'
+import { useToast } from '@wisemen/vue-core'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 import {
   onMounted,
+  ref,
   watch,
 } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -12,7 +13,7 @@ import { LoggerUtil } from '@/utils/logger.util'
 export function useRefreshPrompt(): void {
   const { t } = useI18n()
 
-  const loading = useLoading()
+  const isLoading = ref<boolean>(false)
 
   const toast = useToast()
 
@@ -41,7 +42,7 @@ export function useRefreshPrompt(): void {
   })
 
   async function onRefreshButtonClick(closeToast: () => void): Promise<void> {
-    loading.setState(true)
+    isLoading.value = true
     await updateServiceWorker(true)
     closeToast()
   }
@@ -49,17 +50,14 @@ export function useRefreshPrompt(): void {
   onMounted(() => {
     watch(needRefresh, (needRefresh) => {
       if (needRefresh) {
-        toast.show({
-          title: t('components.refresh_prompt.new_version.title'),
+        toast.info({
           action: {
-            isLoading: loading.state,
             label: t('components.refresh_prompt.new_version.action'),
             onClick: onRefreshButtonClick,
           },
-          description: t('components.refresh_prompt.new_version.description'),
-          duration: TIME.FIVE_MINUTES,
-          icon: 'download',
-          type: 'info',
+          durationInMs: TIME.ONE_HOUR,
+          icon: 'stars02',
+          message: t('components.refresh_prompt.new_version.description'),
         })
       }
     }, {

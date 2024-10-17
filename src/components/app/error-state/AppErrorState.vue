@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { AppText } from '@wisemen/vue-core'
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -53,21 +52,20 @@ const description = computed<string>(() => {
 
 <template>
   <div class="relative flex h-96 min-w-96 items-center justify-center overflow-hidden">
-    <GridBackgroundPattern class="absolute size-full scale-125 text-muted" />
+    <GridBackgroundPattern class="absolute size-full scale-125 text-gray-200 dark:text-gray-900" />
 
     <div class="relative z-10">
-      <AppText
-        class="flex items-center p-4 font-medium"
-        variant="subtext"
+      <span
+        class="flex items-center p-4 text-subtext font-medium"
       >
-        <span class="whitespace-nowrap border-r border-solid border-muted-foreground/75 px-5 tracking-wider text-muted-foreground/75">
+        <span class="whitespace-nowrap border-r border-solid border-tertiary px-5 tracking-wider text-quaternary">
           {{ title }}
         </span>
 
-        <span class="min-w-60 px-4 font-medium uppercase tracking-wider text-muted-foreground/75">
+        <span class="min-w-60 px-4 font-medium uppercase tracking-wider text-quaternary">
           {{ description }}
         </span>
-      </AppText>
+      </span>
     </div>
   </div>
 </template>

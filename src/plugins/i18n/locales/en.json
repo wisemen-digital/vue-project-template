@@ -50,9 +50,8 @@
     },
     "refresh_prompt": {
       "new_version": {
-        "action": "Refresh page",
-        "description": "Click refresh to reload your application and receive the latest functionality.",
-        "title": "New version available!"
+        "action": "Refresh",
+        "description": "New version available! Reload to receive the latest functionality."
       }
     },
     "search_input": {
@@ -68,23 +67,7 @@
       "go_to": "Go to"
     },
     "table": {
-      "clear_filter_filters": "Clear filter | Clear {count} filters",
-      "clear_filters": "Clear filters",
-      "empty_state": {
-        "no_data": {
-          "message": "There is no data to display.",
-          "title": "No data"
-        }
-      },
-      "items": "items",
-      "next": "Next",
-      "no_data": "There is no data to display",
-      "no_query_match": "Your query did not match any results. Try changing your filters or clearing them.",
-      "no_results_found": "No results found",
-      "of": "of",
-      "page": "Page",
-      "previous": "Previous",
-      "results_might_be_hidden_because_of_active_filters": "Results might be hidden because of {count} active filter | Results might be hidden because of {count} active filters"
+      "page_count": "{startIndex} - {endIndex} of {totalItems}"
     },
     "unsaved_changes_dialog": {
       "cancel": "Keep editing",

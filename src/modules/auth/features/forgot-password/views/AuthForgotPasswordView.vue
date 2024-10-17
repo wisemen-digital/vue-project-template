@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import {
-  AppRouterLinkButton,
-  useApiErrorToast,
-} from '@wisemen/vue-core'
+import { AppRouterLinkButton } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { forgotPasswordFormSchema } from '@/models/auth/forgot-password/forgotPasswordForm.model'
 import { useAuthForgotPasswordMutation } from '@/modules/auth/api/mutations/authForgotPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
@@ -75,8 +73,11 @@ onSubmitForm(async (values) => {
 
     <div class="mt-2 flex justify-center">
       <AppRouterLinkButton
-        :to="{ name: 'login' }"
-        variant="ghost"
+        :to="{
+          name: 'login',
+        }"
+        :variant="hasResetPassword ? 'default' : 'tertiary'"
+        class="w-full"
       >
         {{ t('auth.forgot_password.return_to_login') }}
       </AppRouterLinkButton>

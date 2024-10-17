@@ -3,7 +3,7 @@ import { usePagination } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppSearchInput from '@/components/app/AppSearchInput.vue'
+import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
 import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
@@ -34,7 +34,7 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
 <template>
   <AppTablePage :title="t('shared.users')">
     <template #header-actions>
-      <AppSearchInput
+      <AppSearchInputField
         v-model="search"
         :is-loading="isLoading"
       />
