@@ -5,9 +5,9 @@
 
 interface ImportMetaEnv {
   readonly API_AUTH_URL: string
-  readonly API_BASE_URL: string
-  readonly API_CLIENT_ID: string
-  readonly API_CLIENT_SECRET: string
+  readonly AUTH_BASE_URL: string
+  readonly AUTH_CLIENT_ID: string
+  readonly AUTH_ORGANIZATION_ID: string
   readonly ENVIRONMENT: 'development' | 'e2e' | 'production' | 'staging' | 'test'
   readonly SENTRY_DSN: string
   readonly SENTRY_SAMPLE_RATE: number

@@ -1,102 +1,46 @@
 <script setup lang="ts">
-import { useToast, useTypedRouter } from '@wisemen/vue-core'
-import { AxiosError } from 'axios'
-import { useForm } from 'formango'
-import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
+import {
+  AppButton,
+  useLoading,
+  useToast,
+} from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
-import { loginFormSchema } from '@/models/auth/login/loginForm.model'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
-import AuthLoginForm from '@/modules/auth/features/login/components/AuthLoginForm.vue'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const authStore = useAuthStore()
 
-const { lastLoggedInUser } = storeToRefs(authStore)
+const i18n = useI18n()
 
-const { t } = useI18n()
 const toast = useToast()
-const router = useTypedRouter()
+const loading = useLoading()
 
-const {
-  form,
-  onSubmitForm,
-  onSubmitFormError,
-} = useForm({
-  schema: loginFormSchema,
-})
-
-const title = computed<string>(() => {
-  if (lastLoggedInUser.value === null) {
-    return t('auth.login.log_in')
-  }
-
-  return t('auth.login.welcome_back_name', {
-    name: lastLoggedInUser.value.firstName,
-  })
-})
-
-async function handleLoggedIn(user: CurrentUser): Promise<void> {
-  authStore.setLastLoginAttemptEmail(null)
-  authStore.setLastLoggedInUser(user)
-
-  await router.replace({
-    name: 'index',
-  })
-}
-
-function handleLoginError(error: unknown): void {
-  if (error instanceof AxiosError) {
-    form.addErrors({
-      password: {
-        _errors: [
-          t('auth.login.invalid_email_or_password'),
-        ],
-      },
-    })
-
-    toast.error({
-      title: t('auth.login.error_toast.title'),
-      description: t('auth.login.error_toast.description'),
-    })
-  }
-  else {
-    throw error
-  }
-}
-
-onSubmitFormError(() => {
-  toast.error({
-    title: t('error.invalid_form_input.title'),
-    description: t('error.invalid_form_input.description'),
-  })
-})
-
-onSubmitForm(async (data) => {
+async function onLoginButtonClick(): Promise<void> {
   try {
-    await authStore.login(data)
-
-    const currentUser = await authStore.getCurrentUser()
-
-    await handleLoggedIn(currentUser)
+    loading.setState(true)
+    window.location.href = await authStore.getLoginUrl()
   }
   catch (error) {
-    handleLoginError(error)
-    authStore.setLastLoginAttemptEmail(data.email)
+    loading.setState(false)
+    toast.error({
+      title: i18n.t('auth.callback.login_error.title'),
+      description: error?.toString(),
+    })
   }
-})
+}
 </script>
 
 <template>
   <AuthPage
-    :description="t('auth.login.sign_in_to_continue')"
-    :title="title"
+    :description="i18n.t('auth.login.sign_in_to_continue')"
+    :title="i18n.t('auth.login.log_in')"
   >
-    <AuthLoginForm
-      :form="form"
-      :last-logged-in-user="lastLoggedInUser"
-    />
+    <AppButton
+      :is-loading="loading.state.value"
+      @click="onLoginButtonClick"
+    >
+      {{ i18n.t('auth.login.sign_in_to_continue') }}
+    </AppButton>
   </AuthPage>
 </template>

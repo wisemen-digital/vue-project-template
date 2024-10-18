@@ -51,7 +51,7 @@ const password = props.form.register('password')
 
       <AppTypedRouterLink
         :to="{
-          name: 'forgot-password',
+          name: 'auth-forgot-password',
         }"
       >
         <AppText
