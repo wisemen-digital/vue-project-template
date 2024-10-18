@@ -1,4 +1,4 @@
-import { addAuthorizationHeader } from '@wisemen/oauth2-vue-client'
+import { OAuth2VueClient } from '@wisemen/oauth2-vue-client'
 import type { CreateAxiosDefaults } from 'axios'
 import Axios from 'axios'
 
@@ -25,7 +25,7 @@ const axiosAuthConfig: CreateAxiosDefaults = {
 export const axios = Axios.create(axiosConfig)
 export const authAxios = Axios.create(axiosAuthConfig)
 
-axios.interceptors.request.use((config) => addAuthorizationHeader(oAuthClient, config))
+axios.interceptors.request.use((config) => OAuth2VueClient.addAuthorizationHeader(oAuthClient, config))
 
 axios.interceptors.response.use(
   (config) => config,
