@@ -3,8 +3,6 @@ import type { PaginationOptions } from '@wisemen/vue-core'
 const DEFAULT_OFFSET = 0
 const DEFAULT_LIMIT = 20
 
-// @ts-expect-error TODO: change page back to offset
-
 type PaginationParams<TFilterSchema> = {
   filters: Partial<TFilterSchema>
   sort?: {
@@ -14,7 +12,7 @@ type PaginationParams<TFilterSchema> = {
 } & {
   pagination: {
     limit: number
-    page: number
+    offset: number
   }
 }
 
@@ -38,7 +36,7 @@ export class PaginationDtoBuilder<TFilterSchema> {
     this.paginationOptions = {
       pagination: {
         limit,
-        page: offset,
+        offset,
       },
     } as PaginationParams<TFilterSchema>
 
@@ -82,7 +80,7 @@ export class PaginationDtoBuilder<TFilterSchema> {
   }
 
   public withOffset(offset: number): PaginationDtoBuilder<TFilterSchema> {
-    this.paginationOptions.pagination.page = offset
+    this.paginationOptions.pagination.offset = offset
 
     return this
   }

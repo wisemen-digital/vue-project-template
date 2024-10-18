@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div>
+  <div class="py-md">
     <div class="relative h-4">
       <Transition
         enter-active-class="duration-300"

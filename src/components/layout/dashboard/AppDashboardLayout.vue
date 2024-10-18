@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { AppIcon } from '@wisemen/vue-core'
+import { computed } from 'vue'
 
 import AppDashboardLayoutFloating from '@/components/layout/dashboard/AppDashboardLayoutFloating.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
+import type { CurrentUser } from '@/models/auth/current-user/currentUser.model.ts'
+import { useAuthStore } from '@/stores/auth.store.ts'
+
+const authStore = useAuthStore()
+
+const currentUser = computed<CurrentUser | null>(() => authStore.currentUser)
 </script>
 
 <template>
-  <AppDashboardLayoutFloating>
+  <AppDashboardLayoutFloating v-if="currentUser !== null">
     <template #sidebar>
       <AppSidebar
         :logo="{
@@ -15,7 +21,7 @@ import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
         }"
         :main-items="[
           {
-            label: 'Header',
+            label: 'General',
             items: [
               {
                 to: {
@@ -24,52 +30,11 @@ import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
                 label: 'Users',
                 icon: 'barChartSquare02',
               },
-              {
-                to: '/test',
-                label: 'Orders',
-                icon: 'barChartSquare02',
-              },
-              {
-                to: '/test-1',
-                label: 'Shipments',
-                icon: 'barChartSquare02',
-                hasAlertDot: true,
-              },
-            ],
-          },
-          {
-            label: 'Header',
-            items: [
-              {
-                to: '/test-2',
-                label: 'Orders',
-                icon: 'barChartSquare02',
-              },
-              {
-                to: '/test-3',
-                label: 'Shipments',
-                icon: 'barChartSquare02',
-              },
             ],
           },
         ]"
-        :user="{
-          email: 'wouter.laermans@appwise.be',
-          fullName: 'Wouter Laermans',
-          profilePicture: {
-            alt: 'Profile picture',
-            src: 'https://picsum.photos/id/1003/200/200',
-          },
-        }"
         variant="floating-content"
-      >
-        <template #item-right="{ item }">
-          <AppIcon
-            v-if="item.to === '/test'"
-            icon="alertCircle"
-          />
-        </template>
-      </AppSidebar>
+      />
     </template>
   </AppDashboardLayoutFloating>
 </template>

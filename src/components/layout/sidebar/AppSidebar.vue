@@ -17,18 +17,13 @@ const props = withDefaults(defineProps<{
     src: string
   }
   mainItems: NavigationGroup[]
-  user: {
-    email: string
-    fullName: string
-    profilePicture?: {
-      alt: string
-      src: string
-    }
-  }
   variant: 'fixed-sidebar' | 'floating-content' | 'floating-sidebar'
 }>(), {
   bottomItems: () => [],
 })
+
+const logoSm = 'W'
+const logoLg = 'Wisemen'
 
 const isCollapsed = useLocalStorage<boolean>('isSidebarCollapsed', false)
 
@@ -65,24 +60,49 @@ const collapsedSidebarWidth = computed<string>(() => {
     >
       <AppSidebarCollapseToggle v-model="isCollapsed" />
 
-      <div class="overflow-y-auto p-xl pt-24">
-        <nav class="flex flex-col gap-y-xl">
-          <AppSidebarNavigationGroup
-            v-for="group of props.mainItems"
-            :key="group.label"
-            :group="group"
-            :is-collapsed="isCollapsed"
+      <div class="flex flex-col">
+        <div class="pointer-events-none relative flex h-20 items-center justify-center p-xl font-medium uppercase tracking-widest text-primary">
+          <Transition
+            enter-active-class="duration-300"
+            leave-active-class="duration-300"
+            enter-from-class="opacity-0"
+            leave-to-class="opacity-0"
           >
-            <template #item-right="{ item, isActive }">
-              <slot
-                :item="item"
-                :is-active="isActive"
-                :is-collapsed="isCollapsed"
-                name="item-right"
-              />
-            </template>
-          </AppSidebarNavigationGroup>
-        </nav>
+            <span
+              v-if="isCollapsed"
+              class="absolute left-1/2 -translate-x-1/2"
+            >
+              {{ logoSm }}
+            </span>
+
+            <span
+              v-else
+              class="absolute left-1/2 -translate-x-1/2"
+            >
+              {{ logoLg }}
+            </span>
+          </Transition>
+        </div>
+
+        <div class="overflow-y-auto p-xl">
+          <nav class="flex flex-col gap-y-xl">
+            <AppSidebarNavigationGroup
+              v-for="group of props.mainItems"
+              :key="group.label"
+              :group="group"
+              :is-collapsed="isCollapsed"
+            >
+              <template #item-right="{ item, isActive }">
+                <slot
+                  :item="item"
+                  :is-active="isActive"
+                  :is-collapsed="isCollapsed"
+                  name="item-right"
+                />
+              </template>
+            </AppSidebarNavigationGroup>
+          </nav>
+        </div>
       </div>
 
       <AppSidebarBottom :is-collapsed="isCollapsed" />
