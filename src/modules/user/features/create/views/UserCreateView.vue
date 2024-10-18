@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
 import {
-  useApiErrorToast,
   useToast,
   useTypedRouter,
 } from '@wisemen/vue-core'
@@ -10,6 +9,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import FormPage from '@/components/form/FormPage.vue'
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { userCreateFormSchema } from '@/models/user/create/userCreateForm.model'
 import { useUserCreateMutation } from '@/modules/user/api/mutations/userCreate.mutation'
@@ -45,8 +45,8 @@ const {
 
 onSubmitFormError(() => {
   toast.error({
-    title: t('error.invalid_form_input.title'),
-    description: t('error.invalid_form_input.description'),
+    // title: t('error.invalid_form_input.title'),
+    message: t('error.invalid_form_input.description'),
   })
 })
 
@@ -56,9 +56,9 @@ onSubmitForm(async (values) => {
       body: values,
     })
 
-    toast.show({
+    toast.success({
       testId: TEST_ID.USERS.CREATE.SUCCESS_TOAST,
-      title: t('users.create.success.title'),
+      // title: t('users.create.success.title'),
       action: {
         label: t('shared.go_to_detail'),
         onClick: () => {
@@ -70,9 +70,9 @@ onSubmitForm(async (values) => {
           })
         },
       },
-      description: t('users.create.success.description'),
-      icon: 'checkmarkCircle',
-      type: 'success',
+      message: t('users.create.success.description'),
+      // icon: 'checkmarkCircle',
+      // type: 'success',
     })
 
     await router.push({
@@ -87,8 +87,8 @@ onSubmitForm(async (values) => {
 
 <template>
   <FormPage
-    :breadcrumbs="breadcrumbs"
     :title="t('users.create.title')"
+    :breadcrumbs="breadcrumbs"
   >
     <UserCreateForm :form="form" />
   </FormPage>

@@ -7,7 +7,6 @@ import {
 import { RouterView } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
-import ThemeProvider from '@/components/app/ThemeProvider.vue'
 import { useRefreshPrompt } from '@/composables/refresh-prompt/refreshPrompt.composable'
 import { logBuildInformation } from '@/constants/environment.constant.ts'
 
@@ -20,10 +19,8 @@ logBuildInformation()
 </script>
 
 <template>
-  <ThemeProvider class="flex h-full flex-1 flex-col">
-    <RouterView />
-    <AppPageLoader />
-    <AppDialogContainer />
-    <AppToastContainer />
-  </ThemeProvider>
+  <RouterView />
+  <AppPageLoader />
+  <AppDialogContainer />
+  <AppToastContainer />
 </template>

@@ -4,7 +4,7 @@ import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
 
 <template>
   <AppButtonGroup
-    justify="end"
+    justify="center"
     class="mt-8"
   >
     <slot />

@@ -5,18 +5,14 @@ import { type UserRoutes, userRoutes } from '@/modules/user/routes/user.routes'
 import type { RouteRecordTyped } from '@/types/router/router.type'
 
 export interface Routes extends AuthRoutes, UserRoutes {
-  404: {
-    path: '/:catchAll(.*)'
-  }
-  index: {
-    path: '/'
-  }
+  404: void
+  index: void
 }
 
 export const routes: RouteRecordTyped[] = [
   {
     path: '',
-    component: () => import('@/components/layout/AppLayout.vue'),
+    component: () => import('@/components/layout/dashboard/AppDashboardLayout.vue'),
     meta: {
       middleware: [
         authMiddleware,

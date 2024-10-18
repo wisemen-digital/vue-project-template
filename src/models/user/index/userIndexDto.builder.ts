@@ -1,4 +1,3 @@
-import { CalendarDateTransformer } from '@/models/date/calendarDate.transformer.ts'
 import type { UserIndexDto } from '@/models/user/index/userIndexDto.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
@@ -6,7 +5,6 @@ import { UuidUtil } from '@/utils/uuid.util.ts'
 export class UserIndexDtoBuilder {
   value: UserIndexDto = {
     uuid: UuidUtil.getRandom<UserUuid>(),
-    birthDate: CalendarDateTransformer.toDto(CalendarDateTransformer.fromDate(new Date())),
     firstName: 'John',
     lastName: 'Doe',
   }
@@ -15,12 +13,6 @@ export class UserIndexDtoBuilder {
 
   build(): UserIndexDto {
     return this.value
-  }
-
-  withBirthDate(birthDate: string): UserIndexDtoBuilder {
-    this.value.birthDate = CalendarDateTransformer.toDto(CalendarDateTransformer.fromDate(new Date(birthDate)))
-
-    return this
   }
 
   withFirstName(firstName: string): UserIndexDtoBuilder {
