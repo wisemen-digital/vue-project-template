@@ -53,7 +53,7 @@ function onSignOutButtonClick(): void {
   authStore.logout()
 
   void router.replace({
-    name: 'login',
+    name: 'auth-login',
   })
 }
 </script>

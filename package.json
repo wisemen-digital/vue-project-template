@@ -10,6 +10,7 @@
     "preview": "import-meta-env -x .env.e2e && vite preview",
     "lint:fix": "eslint . --fix --cache",
     "lint": "eslint . --cache",
+    "openapi-ts": "openapi-ts -f openapi.config.ts",
     "test:unit": "vitest --run",
     "test:e2e": "npx playwright test",
     "prepare": "husky install",
@@ -17,8 +18,9 @@
     "precommit": "pnpm type-check && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm build"
   },
   "dependencies": {
-    "@appwise/zod-http-client": "0.0.5",
+    "@appwise/zod-http-client": "0.0.6",
     "@fontsource-variable/inter": "5.1.0",
+    "@hey-api/client-axios": "0.2.8",
     "@sentry/integrations": "7.114.0",
     "@sentry/tracing": "7.114.0",
     "@sentry/vue": "8.34.0",
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.0",
+    "@hey-api/openapi-ts": "0.53.10",
     "@import-meta-env/cli": "0.7.0",
     "@import-meta-env/unplugin": "0.6.0",
     "@playwright/test": "1.48.1",

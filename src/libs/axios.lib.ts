@@ -1,8 +1,7 @@
-import { OAuth2VueClient } from '@wisemen/oauth2-vue-client'
 import type { CreateAxiosDefaults } from 'axios'
 import Axios from 'axios'
 
-import { API_AUTH_URL, API_BASE_URL } from '@/constants/environment.constant.ts'
+import { API_BASE_URL } from '@/constants/environment.constant.ts'
 import { routerPlugin } from '@/plugins/router/router.plugin.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
@@ -15,17 +14,9 @@ const axiosConfig: CreateAxiosDefaults = {
   },
 }
 
-const axiosAuthConfig: CreateAxiosDefaults = {
-  baseURL: API_AUTH_URL,
-  headers: {
-    'Accept-Language': navigator.language,
-  },
-}
-
 export const axios = Axios.create(axiosConfig)
-export const authAxios = Axios.create(axiosAuthConfig)
 
-axios.interceptors.request.use((config) => OAuth2VueClient.addAuthorizationHeader(oAuthClient, config))
+axios.interceptors.request.use((config) => oAuthClient.addAuthorizationHeader(config))
 
 axios.interceptors.response.use(
   (config) => config,

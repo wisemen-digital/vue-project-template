@@ -1,4 +1,3 @@
-import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import {
   computed,
@@ -7,32 +6,15 @@ import {
 
 import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import { AuthTransformer } from '@/models/auth/auth.transformer'
+import { AuthTransformer } from '@/models/auth/auth.transformer.ts'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
-import type { LoginForm } from '@/models/auth/login/loginForm.model'
-import { AuthService } from '@/modules/auth/api/services/auth.service'
+import type { CurrentUserDto } from '@/models/auth/current-user/currentUserDto.model.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
 
 export const useAuthStore = defineStore('auth', () => {
-  const lastLoginAttemptEmail = ref<null | string>(null)
   const currentUser = ref<CurrentUser | null>(null)
 
-  const lastLoggedInUser = useLocalStorage<CurrentUser | null>('lastLoggedInUser', null, {
-    serializer: {
-      read: (value) => JSON.parse(value),
-      write: (value) => JSON.stringify(value),
-    },
-  })
-
   const isAuthenticated = computed<boolean>(() => currentUser.value === null)
-
-  function setLastLoginAttemptEmail(email: null | string): void {
-    lastLoginAttemptEmail.value = email
-  }
-
-  function setLastLoggedInUser(user: CurrentUser | null): void {
-    lastLoggedInUser.value = user
-  }
 
   async function getCurrentUser(): Promise<CurrentUser> {
     if (CURRENT_ENVIRONMENT === 'e2e') {
@@ -49,7 +31,9 @@ export const useAuthStore = defineStore('auth', () => {
       return currentUser.value
     }
 
-    currentUser.value = await AuthService.getCurrentUser()
+    const response = await oAuthClient.getUserInfo<CurrentUserDto>()
+
+    currentUser.value = AuthTransformer.toCurrentUser(response)
 
     return currentUser.value
   }
@@ -58,10 +42,16 @@ export const useAuthStore = defineStore('auth', () => {
     currentUser.value = user
   }
 
-  async function login(data: LoginForm): Promise<void> {
-    const { password, username } = AuthTransformer.toLoginDto(data)
+  async function getLoginUrl(): Promise<string> {
+    return await oAuthClient.getLoginUrl()
+  }
 
-    await oAuthClient.loginPassword(username, password)
+  function isLoggedIn(): boolean {
+    return oAuthClient.isLoggedIn()
+  }
+
+  async function login(code: string): Promise<void> {
+    await oAuthClient.loginAuthorization(code)
   }
 
   function logout(): void {
@@ -71,13 +61,11 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     isAuthenticated,
+    isLoggedIn,
     currentUser,
     getCurrentUser,
-    lastLoggedInUser: computed<CurrentUser | null>(() => lastLoggedInUser.value),
-    lastLoginAttemptEmail: computed<null | string>(() => lastLoginAttemptEmail.value),
+    getLoginUrl,
     login,
     logout,
-    setLastLoggedInUser,
-    setLastLoginAttemptEmail,
   }
 })
