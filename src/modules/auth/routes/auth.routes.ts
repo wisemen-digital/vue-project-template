@@ -8,23 +8,11 @@ export interface AuthRoutes {
     }
     path: '/auth/callback'
   }
-  'auth-forgot-password': {
-    path: '/auth/forgot-password'
-  }
   'auth-login': {
     path: '/auth/login'
   }
   'auth-logout': {
     path: '/auth/logout'
-  }
-  'auth-reset-password': {
-    params: {
-      token: string
-    }
-    queryParams: {
-      email: string
-    }
-    path: '/auth/reset-password/:token'
   }
 }
 
