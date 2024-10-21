@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const currentUserSchema = z.object({
+export const authUserSchema = z.object({
   uuid: z.string().uuid(),
   email: z.string().email(),
   firstName: z.string(),
@@ -8,4 +8,4 @@ export const currentUserSchema = z.object({
   lastName: z.string(),
 })
 
-export type CurrentUser = z.infer<typeof currentUserSchema>
+export type AuthUser = z.infer<typeof authUserSchema>

@@ -27,7 +27,7 @@ const navigationItems = computed<NavigationItem[]>(() => [
     icon: 'creditCard',
     label: 'Payments',
     to: {
-      name: 'login',
+      name: 'auth-login',
     },
     type: 'option',
   },
@@ -35,7 +35,7 @@ const navigationItems = computed<NavigationItem[]>(() => [
     icon: 'settings',
     label: 'Settings',
     to: {
-      name: 'login',
+      name: 'auth-login',
     },
     type: 'option',
   },
