@@ -19,7 +19,6 @@ export interface AuthRoutes {
 export const authRoutes: RouteRecordTyped[] = [
   {
     path: '/auth',
-    component: () => import('@/modules/auth/components/AuthLayout.vue'),
     meta: {
       middleware: [
         guest,

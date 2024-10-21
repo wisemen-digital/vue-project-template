@@ -40,7 +40,7 @@ async function onLoginButtonClick(): Promise<void> {
       :is-loading="loading.state.value"
       @click="onLoginButtonClick"
     >
-      {{ i18n.t('auth.login.sign_in_to_continue') }}
+      {{ i18n.t('auth.login.log_in') }}
     </AppButton>
   </AuthPage>
 </template>

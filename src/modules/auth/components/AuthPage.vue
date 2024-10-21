@@ -8,23 +8,27 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="flex w-full flex-col pb-24">
-    <AppText
-      class="font-medium text-foreground"
-      variant="title"
-    >
-      {{ props.title }}
-    </AppText>
+  <div class="grid h-screen grid-cols-1 lg:grid-cols-2">
+    <div class="flex w-full flex-col items-center justify-center">
+      <AppText
+        class="font-medium text-foreground"
+        variant="title"
+      >
+        {{ props.title }}
+      </AppText>
 
-    <AppText
-      class="mt-2"
-      variant="subtext"
-    >
-      {{ props.description }}
-    </AppText>
+      <AppText
+        class="mt-2"
+        variant="subtext"
+      >
+        {{ props.description }}
+      </AppText>
 
-    <div class="mt-6 w-full">
-      <slot />
+      <div class="mt-6 flex w-full flex-col items-center">
+        <slot />
+      </div>
     </div>
+
+    <div class="hidden bg-black lg:block" />
   </div>
 </template>
