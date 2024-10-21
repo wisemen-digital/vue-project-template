@@ -7,16 +7,16 @@ import {
 import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { AuthTransformer } from '@/models/auth/auth.transformer.ts'
-import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
-import type { CurrentUserDto } from '@/models/auth/current-user/currentUserDto.model.ts'
+import type { AuthUser } from '@/models/auth/current-user/currentUser.model'
+import type { AuthUserDto } from '@/models/auth/current-user/currentUserDto.model.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
 
 export const useAuthStore = defineStore('auth', () => {
-  const currentUser = ref<CurrentUser | null>(null)
+  const currentUser = ref<AuthUser | null>(null)
 
   const isAuthenticated = computed<boolean>(() => currentUser.value === null)
 
-  async function getCurrentUser(): Promise<CurrentUser> {
+  async function getCurrentUser(): Promise<AuthUser> {
     if (CURRENT_ENVIRONMENT === 'e2e') {
       return {
         uuid: UuidUtil.getRandom(),
@@ -31,14 +31,14 @@ export const useAuthStore = defineStore('auth', () => {
       return currentUser.value
     }
 
-    const response = await oAuthClient.getUserInfo<CurrentUserDto>()
+    const response = await oAuthClient.getUserInfo<AuthUserDto>()
 
     currentUser.value = AuthTransformer.toCurrentUser(response)
 
     return currentUser.value
   }
 
-  function setCurrentUser(user: CurrentUser | null): void {
+  function setCurrentUser(user: AuthUser | null): void {
     currentUser.value = user
   }
 
