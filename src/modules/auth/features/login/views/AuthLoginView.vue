@@ -14,15 +14,15 @@ const authStore = useAuthStore()
 const i18n = useI18n()
 
 const toast = useToast()
-const loading = useLoading()
+const loadingState = useLoading()
 
 async function onLoginButtonClick(): Promise<void> {
   try {
-    loading.setState(true)
+    loadingState.setState(true)
     window.location.href = await authStore.getLoginUrl()
   }
   catch (error) {
-    loading.setState(false)
+    loadingState.setState(false)
     toast.error({
       title: i18n.t('auth.callback.login_error.title'),
       description: error?.toString(),
@@ -37,7 +37,7 @@ async function onLoginButtonClick(): Promise<void> {
     :title="i18n.t('auth.login.log_in')"
   >
     <AppButton
-      :is-loading="loading.state.value"
+      :is-loading="loadingState.state.value"
       @click="onLoginButtonClick"
     >
       {{ i18n.t('auth.login.log_in') }}
