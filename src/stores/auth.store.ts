@@ -46,6 +46,10 @@ export const useAuthStore = defineStore('auth', () => {
     return await oAuthClient.getLoginUrl()
   }
 
+  function getLogoutUrl(): string {
+    return oAuthClient.getLogoutUrl()
+  }
+
   function isLoggedIn(): boolean {
     return oAuthClient.isLoggedIn()
   }
@@ -65,6 +69,7 @@ export const useAuthStore = defineStore('auth', () => {
     currentUser,
     getCurrentUser,
     getLoginUrl,
+    getLogoutUrl,
     login,
     logout,
   }
