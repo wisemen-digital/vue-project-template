@@ -8,14 +8,6 @@ import {
   CURRENT_ENVIRONMENT,
 } from '@/constants/environment.constant.ts'
 
-// export const oAuthClient = new OAuth2VueClient({
-//   clientId: API_CLIENT_ID,
-//   isMock: true,
-//   axios,
-//   clientSecret: API_CLIENT_SECRET,
-//   tokenEndpoint: `${API_AUTH_URL}/token`,
-// })
-
 export const oAuthClient = new OAuth2ZitadelClient({
   authorization: {
     clientId: AUTH_CLIENT_ID,
