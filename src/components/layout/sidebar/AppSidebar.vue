@@ -29,14 +29,14 @@ const isCollapsed = useLocalStorage<boolean>('isSidebarCollapsed', false)
 
 const collapsedSidebarWidth = computed<string>(() => {
   if (props.variant === 'fixed-sidebar') {
-    return 'w-[89px]'
+    return 'w-[105px]'
   }
 
   if (props.variant === 'floating-sidebar') {
-    return 'w-[82px]'
+    return 'w-[74px]'
   }
 
-  return 'w-[80px]'
+  return 'w-[72px]'
 })
 </script>
 
@@ -53,7 +53,7 @@ const collapsedSidebarWidth = computed<string>(() => {
         isCollapsed ? collapsedSidebarWidth : 'w-64',
         {
           'rounded-2xl border border-solid border-secondary': props.variant === 'floating-sidebar',
-          'border-r border-solid border-secondary px-2xl': props.variant === 'fixed-sidebar',
+          'border-r border-solid border-secondary px-xl': props.variant === 'fixed-sidebar',
         },
       ]"
       class="relative flex h-full flex-col justify-between bg-secondary duration-300 ease-in-out"

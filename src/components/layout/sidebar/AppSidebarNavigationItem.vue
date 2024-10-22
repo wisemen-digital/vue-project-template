@@ -27,7 +27,7 @@ const props = defineProps<{
           :class="[
             isActive ? 'bg-fg-brand-primary text-primary-on-brand hover:brightness-90' : 'bg-secondary text-quaternary group-hover:bg-secondary-hover',
           ]"
-          class="flex h-12 items-center overflow-hidden rounded-xl px-lg duration-300"
+          class="flex h-10 items-center overflow-hidden rounded-xl px-md duration-300"
         >
           <div class="relative">
             <AppIcon

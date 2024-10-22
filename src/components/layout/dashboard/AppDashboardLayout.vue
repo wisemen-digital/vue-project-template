@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import AppDashboardLayoutFloating from '@/components/layout/dashboard/AppDashboardLayoutFloating.vue'
+import AppDashboardLayoutClassic from '@/components/layout/dashboard/AppDashboardLayoutClassic.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
@@ -12,7 +12,7 @@ const currentUser = computed<CurrentUser | null>(() => authStore.currentUser)
 </script>
 
 <template>
-  <AppDashboardLayoutFloating v-if="currentUser !== null">
+  <AppDashboardLayoutClassic v-if="currentUser !== null">
     <template #sidebar>
       <AppSidebar
         :logo="{
@@ -33,8 +33,8 @@ const currentUser = computed<CurrentUser | null>(() => authStore.currentUser)
             ],
           },
         ]"
-        variant="floating-content"
+        variant="fixed-sidebar"
       />
     </template>
-  </AppDashboardLayoutFloating>
+  </AppDashboardLayoutClassic>
 </template>

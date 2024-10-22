@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   AppDropdownMenu,
+  AppThemeProvider,
   type DropdownMenuItem,
   useDarkMode,
   useTypedRouter,
@@ -65,68 +66,70 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
       <AppSeparator class="" />
     </div>
 
-    <AppDropdownMenu
-      :items="dropdownMenuItems"
-      :enable-global-keyboard-shortcuts="true"
-      :is-arrow-hidden="true"
-      :offset-in-px="-5"
-      side="right"
-      align="end"
-    >
-      <template #content-top>
-        <div class="min-w-56 pb-xs">
-          <span class="block px-lg py-md text-subtext text-primary">
-            {{ currentUser.fullName }}
-          </span>
+    <div class="p-xl">
+      <AppThemeProvider theme="dark">
+        <AppDropdownMenu
+          :items="dropdownMenuItems"
+          :enable-global-keyboard-shortcuts="true"
+          :is-arrow-hidden="true"
+          :offset-in-px="-5"
+          side="right"
+          align="end"
+        >
+          <template #content-top>
+            <div class="min-w-56 pb-xs">
+              <span class="block px-lg py-md text-subtext text-primary">
+                {{ currentUser.fullName }}
+              </span>
 
-          <AppSeparator />
+              <AppSeparator />
 
-          <div class="px-lg py-md">
-            <span class="block text-subtext text-tertiary">
-              {{ `${t('components.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
-            </span>
+              <div class="px-lg py-md">
+                <span class="block text-subtext text-tertiary">
+                  {{ `${t('components.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
+                </span>
 
-            <span class="mt-1 block text-subtext text-tertiary">
-              {{ `${t('components.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
-            </span>
-          </div>
+                <span class="mt-1 block text-subtext text-tertiary">
+                  {{ `${t('components.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
+                </span>
+              </div>
 
-          <AppSeparator />
-        </div>
-      </template>
-
-      <template #trigger>
-        <div class="p-xl">
-          <button
-            type="button"
-            class="flex w-full items-center gap-x-xl rounded-full p-none outline-none ring-brand-primary-500 ring-offset-1 duration-200 focus-visible:ring-2"
-          >
-            <div class="size-12 shrink-0 rounded-full bg-brand-primary" />
-
-            <div class="relative size-full">
-              <Transition
-                enter-active-class="duration-300"
-                leave-active-class="duration-300"
-                leave-to-class="opacity-0 -translate-x-4"
-                enter-from-class="opacity-0 -translate-x-4"
-              >
-                <div
-                  v-if="!props.isCollapsed"
-                  class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
-                >
-                  <span class="w-full truncate text-left text-subtext font-semibold text-primary">
-                    {{ currentUser.fullName }}
-                  </span>
-
-                  <span class="w-full truncate text-subtext text-secondary">
-                    {{ currentUser.email }}
-                  </span>
-                </div>
-              </Transition>
+              <AppSeparator />
             </div>
-          </button>
-        </div>
-      </template>
-    </AppDropdownMenu>
+          </template>
+
+          <template #trigger>
+            <button
+              type="button"
+              class="flex w-full items-center gap-x-xl rounded-full p-none outline-none ring-brand-primary-500 ring-offset-1 duration-200 focus-visible:ring-2"
+            >
+              <div class="size-12 shrink-0 rounded-full bg-brand-primary" />
+
+              <div class="relative size-full">
+                <Transition
+                  enter-active-class="duration-300"
+                  leave-active-class="duration-300"
+                  leave-to-class="opacity-0 -translate-x-4"
+                  enter-from-class="opacity-0 -translate-x-4"
+                >
+                  <div
+                    v-if="!props.isCollapsed"
+                    class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
+                  >
+                    <span class="w-full truncate text-left text-subtext font-semibold text-primary">
+                      {{ currentUser.fullName }}
+                    </span>
+
+                    <span class="w-full truncate text-subtext text-secondary">
+                      {{ currentUser.email }}
+                    </span>
+                  </div>
+                </Transition>
+              </div>
+            </button>
+          </template>
+        </AppDropdownMenu>
+      </AppThemeProvider>
+    </div>
   </div>
 </template>
