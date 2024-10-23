@@ -1,5 +1,4 @@
-import dayjs from 'dayjs'
-
+import dayjs from '@/plugins/dayjs/dayjs.plugin'
 import { LocaleUtil } from '@/utils/locale.util'
 
 export class DateUtil {

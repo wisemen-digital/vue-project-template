@@ -28,6 +28,7 @@ export default defineConfig({
       env: '.env',
       example: '.env.example',
     }),
+
     viteCompression(),
     VitePWA({
       includeAssets: [

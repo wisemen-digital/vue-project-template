@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FormPasswordInput } from '@wisemen/vue-core'
+import { AppPasswordField } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
 
@@ -21,7 +21,7 @@ const password = props.form.register('password')
     :form="form"
     :can-exit-when-dirty="true"
   >
-    <FormPasswordInput
+    <AppPasswordField
       v-bind="password"
       :label="t('form.fields.password')"
       type="password"

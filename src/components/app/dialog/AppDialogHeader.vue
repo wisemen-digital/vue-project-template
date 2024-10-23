@@ -2,7 +2,6 @@
 import {
   AppDialogDescription,
   AppDialogTitle,
-  AppText,
 } from '@wisemen/vue-core'
 
 const props = defineProps<{
@@ -14,21 +13,15 @@ const props = defineProps<{
 <template>
   <div class="flex flex-col">
     <AppDialogTitle>
-      <AppText
-        class="font-medium"
-        variant="heading"
-      >
+      <h1 class="text-heading font-semibold text-primary">
         {{ props.title }}
-      </AppText>
+      </h1>
     </AppDialogTitle>
 
     <AppDialogDescription>
-      <AppText
-        class="mt-4"
-        variant="body"
-      >
+      <p class="mt-4 text-secondary">
         {{ props.description }}
-      </AppText>
+      </p>
     </AppDialogDescription>
   </div>
 </template>

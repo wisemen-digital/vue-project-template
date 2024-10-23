@@ -2,12 +2,8 @@ import { guest } from '@/middlewares/guest.middleware.ts'
 import type { RouteRecordTyped } from '@/types/router/router.type'
 
 export interface AuthRoutes {
-  'forgot-password': {
-    path: '/forgot-password'
-  }
-  'login': {
-    path: '/login'
-  }
+  'forgot-password': void
+  'login': void
   'reset-password': {
     params: {
       token: string
