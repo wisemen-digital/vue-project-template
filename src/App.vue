@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import {
+  AppConfigProvider,
   AppDialogContainer,
+  AppThemeProvider,
   AppToastContainer,
   useDocumentTitle,
 } from '@wisemen/vue-core'
@@ -19,8 +21,12 @@ logBuildInformation()
 </script>
 
 <template>
-  <RouterView />
-  <AppPageLoader />
-  <AppDialogContainer />
-  <AppToastContainer />
+  <AppConfigProvider locale="en">
+    <AppThemeProvider theme="light">
+      <RouterView />
+      <AppPageLoader />
+      <AppDialogContainer />
+      <AppToastContainer />
+    </AppThemeProvider>
+  </AppConfigProvider>
 </template>

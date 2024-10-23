@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@appwise/zod-http-client':
-    specifier: 0.0.5
-    version: 0.0.5
+    specifier: 0.0.6
+    version: 0.0.6
   '@fontsource-variable/inter':
     specifier: 5.1.0
     version: 5.1.0
@@ -36,8 +36,8 @@ dependencies:
     specifier: 1.0.1
     version: 1.0.1
   '@wisemen/vue-core':
-    specifier: 1.0.0-alpha.0
-    version: 1.0.0-alpha.0(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.4.35)
+    specifier: 1.0.0-alpha.2
+    version: 1.0.0-alpha.2(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.4.35)
   axios:
     specifier: 1.7.7
     version: 1.7.7
@@ -114,7 +114,7 @@ devDependencies:
     version: 0.5.1
   '@wisemen/eslint-config-vue':
     specifier: 0.1.5
-    version: 0.1.5(@vue/compiler-sfc@3.5.12)(eslint@9.8.0)(putout@36.9.0)(tailwindcss@3.4.13)(typescript@5.5.4)(vitest@2.0.5)
+    version: 0.1.5(@vue/compiler-sfc@3.5.12)(eslint@9.8.0)(putout@36.10.0)(tailwindcss@3.4.13)(typescript@5.5.4)(vitest@2.0.5)
   '@wisemen/vue-core-query':
     specifier: 0.0.31
     version: 0.0.31(vue@3.4.35)
@@ -254,7 +254,7 @@ packages:
       eslint-plugin-unicorn: 54.0.0(eslint@9.8.0)
       eslint-plugin-unused-imports: 4.0.0(@typescript-eslint/eslint-plugin@8.0.0-alpha.40)(eslint@9.8.0)
       eslint-plugin-vitest: 0.5.4(@typescript-eslint/eslint-plugin@8.0.0-alpha.40)(eslint@9.8.0)(typescript@5.5.4)(vitest@2.0.5)
-      eslint-plugin-vue: 9.29.0(eslint@9.8.0)
+      eslint-plugin-vue: 9.29.1(eslint@9.8.0)
       eslint-plugin-yml: 1.14.0(eslint@9.8.0)
       eslint-processor-vue-blocks: 0.1.2(@vue/compiler-sfc@3.5.12)(eslint@9.8.0)
       globals: 15.11.0
@@ -296,8 +296,8 @@ packages:
       leven: 3.1.0
     dev: true
 
-  /@appwise/zod-http-client@0.0.5:
-    resolution: {integrity: sha512-776w9hGi8G1K0wT59csckCeSxJDFoSv9PZl+j5ANvlkNBWJrWz13AJ5azuviIjoTXMkCTJO/R7QD7H6E2Wktjw==}
+  /@appwise/zod-http-client@0.0.6:
+    resolution: {integrity: sha512-JeilGXv4ezbkrYUvDUGqrTX70XB/f3ExAu7/CJLF7tC1xteyZ+sPuLY4mvf2r1/cuUzzNNBKn+jWknLa6EEQtg==}
     dependencies:
       axios: 1.7.7
       zod: 3.23.8
@@ -438,7 +438,7 @@ packages:
     dependencies:
       '@babel/compat-data': 7.25.8
       '@babel/helper-validator-option': 7.25.7
-      browserslist: 4.24.0
+      browserslist: 4.24.2
       lru-cache: 5.1.1
       semver: 6.3.1
     dev: true
@@ -449,7 +449,7 @@ packages:
     dependencies:
       '@babel/compat-data': 8.0.0-alpha.12
       '@babel/helper-validator-option': 8.0.0-alpha.12
-      browserslist: 4.24.0
+      browserslist: 4.24.2
       lru-cache: 7.18.3
       semver: 7.6.3
     dev: true
@@ -1874,8 +1874,8 @@ packages:
       - supports-color
     dev: true
 
-  /@eslint/js@9.12.0:
-    resolution: {integrity: sha512-eohesHH8WFRUprDNyEREgqP6beG6htMeUYeCpkEgBCieCMme5r9zFWjzAJp//9S+Kub4rqE+jXe9Cp1a7IYIIA==}
+  /@eslint/js@9.13.0:
+    resolution: {integrity: sha512-IFLyoY4d72Z5y/6o/BazFBezupzI/taV8sGumxTAVw3lXG9A6md1Dc34T9s1FoD/an9pJH8RHbAxsaEbBed9lA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
 
@@ -2162,7 +2162,7 @@ packages:
       try-to-catch: 3.0.1
     dev: true
 
-  /@putout/cli-choose-formatter@4.0.0(putout@36.9.0):
+  /@putout/cli-choose-formatter@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-GEvHT5ifDKq5QP3Z96Xz4qs8CtmgxJQzGFUX79luF2o0+KLHyP9vUIK10bRorPoLHvHNSe3AHUIynsEg5TMn/Q==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2170,7 +2170,7 @@ packages:
     dependencies:
       '@putout/cli-choose': 2.0.0
       find-up: 7.0.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
   /@putout/cli-choose@2.0.0:
@@ -2241,7 +2241,7 @@ packages:
       - supports-color
     dev: true
 
-  /@putout/engine-loader@14.0.0(putout@36.9.0):
+  /@putout/engine-loader@14.0.0(putout@36.10.0):
     resolution: {integrity: sha512-pBYRDwuhJBKzCG1kW43dOA+L++WIdYdS7XmUooLpb20H+0HTkYxHdGJevgS3rR8F2VSsW27pCxwU4X+DeLiFFg==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2251,7 +2251,7 @@ packages:
       diff-match-patch: 1.0.5
       nano-memoize: 3.0.16
       once: 1.4.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       try-catch: 3.0.1
       try-to-catch: 3.0.1
     dev: true
@@ -2271,35 +2271,35 @@ packages:
       - supports-color
     dev: true
 
-  /@putout/engine-processor@12.0.0(putout@36.9.0):
+  /@putout/engine-processor@12.0.0(putout@36.10.0):
     resolution: {integrity: sha512-vyQFOeFzvmmWZXjDV+jnYJysLdckOmJXJFsizkrpUwDk0AqjENHWDIWu9uEf4+bcEdKvC2/ofww0TRgOWAZL6A==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '*'
     dependencies:
-      '@putout/engine-loader': 14.0.0(putout@36.9.0)
+      '@putout/engine-loader': 14.0.0(putout@36.10.0)
       once: 1.4.0
       picomatch: 4.0.2
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       try-to-catch: 3.0.1
     dev: true
 
-  /@putout/engine-reporter@2.0.0(putout@36.9.0):
+  /@putout/engine-reporter@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-1adi0ZaZsDDynNqw9Z3Um6Vc0+1rpead8TajwL3LhDb78UI5HtlKXGzFVNzYsovf1FbShFnictF5QmtkTAjCIA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '*'
     dependencies:
-      '@putout/cli-choose-formatter': 4.0.0(putout@36.9.0)
+      '@putout/cli-choose-formatter': 4.0.0(putout@36.10.0)
       '@putout/cli-keypress': 2.0.0
-      '@putout/engine-loader': 14.0.0(putout@36.9.0)
+      '@putout/engine-loader': 14.0.0(putout@36.10.0)
       fullstore: 3.0.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       try-catch: 3.0.1
       try-to-catch: 3.0.1
     dev: true
 
-  /@putout/engine-runner@21.2.0(putout@36.9.0):
+  /@putout/engine-runner@21.2.0(putout@36.10.0):
     resolution: {integrity: sha512-C9IVVlfflLOCoY9d7CdNQDA+6blP+7c580IApzD85XGIj/SSTeD3uj5zdf/qMuSLgL1MrBwpFb/gk62A5yYv3A==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2309,16 +2309,16 @@ packages:
       '@putout/compare': 14.7.2
       '@putout/engine-parser': 10.8.0
       '@putout/operate': 12.13.0
-      '@putout/operator-declare': 9.1.0(putout@36.9.0)
-      '@putout/operator-filesystem': 4.1.0(putout@36.9.0)
+      '@putout/operator-declare': 9.1.0(putout@36.10.0)
+      '@putout/operator-filesystem': 4.1.0(putout@36.10.0)
       '@putout/operator-json': 2.2.0
-      '@putout/plugin-filesystem': 5.3.0(putout@36.9.0)
+      '@putout/plugin-filesystem': 5.3.0(putout@36.10.0)
       debug: 4.3.7
       fullstore: 3.0.0
       jessy: 3.1.1
       nessy: 4.0.0
       once: 1.4.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       try-catch: 3.0.1
       wraptile: 3.0.0
     transitivePeerDependencies:
@@ -2331,7 +2331,7 @@ packages:
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
-      '@eslint/js': 9.12.0
+      '@eslint/js': 9.13.0
       '@stylistic/eslint-plugin-js': 2.9.0(eslint@9.8.0)
       eslint: 9.8.0
     dev: true
@@ -2347,121 +2347,121 @@ packages:
       try-to-catch: 3.0.1
     dev: true
 
-  /@putout/formatter-codeframe@7.0.0(putout@36.9.0):
+  /@putout/formatter-codeframe@7.0.0(putout@36.10.0):
     resolution: {integrity: sha512-4XxKDFnTCotdlBF7Ukd0xmAofuBZsGLvbFvjtTrCHKt4cZgO7xulV4RSx2TqREKfYa5MtwsFBBTZVH6gUxrgXg==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
       '@putout/babel': 2.8.0
-      '@putout/formatter-json': 2.0.0(putout@36.9.0)
+      '@putout/formatter-json': 2.0.0(putout@36.10.0)
       chalk: 5.3.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       table: 6.8.2
     dev: true
 
-  /@putout/formatter-dump@5.0.0(putout@36.9.0):
+  /@putout/formatter-dump@5.0.0(putout@36.10.0):
     resolution: {integrity: sha512-txlOnphn2pfvbkyYmKbw+zAc+T/Q01958zy0e5jR+AQcWCGyCgjBAeVMh+pUBZ7+Zyl/CAnou0zG87t7hTYA9Q==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      '@putout/formatter-json': 2.0.0(putout@36.9.0)
+      '@putout/formatter-json': 2.0.0(putout@36.10.0)
       chalk: 5.3.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       table: 6.8.2
     dev: true
 
-  /@putout/formatter-frame@6.0.0(putout@36.9.0):
+  /@putout/formatter-frame@6.0.0(putout@36.10.0):
     resolution: {integrity: sha512-fNnWeANLhE4GOOdOA9Who5tpPqYzzQLeONJkQ3KsgO6Zym6GYli6VGUz5Gf5d6m22DkMhbLPH+fPOfvhXW7KRw==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      '@putout/formatter-codeframe': 7.0.0(putout@36.9.0)
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      '@putout/formatter-codeframe': 7.0.0(putout@36.10.0)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/formatter-json-lines@3.0.0(putout@36.9.0):
+  /@putout/formatter-json-lines@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-Np+Zpm/FqQpjiIatTg6k8+KUq4JfnfXYcoUJ3s4wwNq+OQqc1T/b2fPkctddwTei/fsh7s7wXgcAUxu8B+J3Yw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=25'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/formatter-json@2.0.0(putout@36.9.0):
+  /@putout/formatter-json@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-g+mpOU/s+ciQDkukKwTg5WGmQKFlfca/cpdeYQmuVFsbabkcFAVA5QWMQiGvmXx4Cg9PuJXvhYKfGB0zCcGCiw==}
     engines: {node: '>=14'}
     peerDependencies:
       putout: '>=22.5'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/formatter-memory@4.0.1(putout@36.9.0):
+  /@putout/formatter-memory@4.0.1(putout@36.10.0):
     resolution: {integrity: sha512-S3ctALHkGQRbr6zJ4kPoo7ZNBnfxXZi66XTMc/Md8k5enS0H1ATNKcwDNdA06CB0QrC5P866VX6wPRB1PHr4Mg==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      '@putout/formatter-dump': 5.0.0(putout@36.9.0)
+      '@putout/formatter-dump': 5.0.0(putout@36.10.0)
       chalk: 5.3.0
       cli-progress: 3.12.0
       format-io: 2.0.0
       montag: 1.2.1
       once: 1.4.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/formatter-progress-bar@4.0.1(putout@36.9.0):
+  /@putout/formatter-progress-bar@4.0.1(putout@36.10.0):
     resolution: {integrity: sha512-sqnCwTPliKb4ln8Ss8h/KVx539u4qDc7cqCjSzQda2zQO+rfBAMhOS4Km4MUnbglOVw89JM5fbQ25x2tRjFpmQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      '@putout/formatter-dump': 5.0.0(putout@36.9.0)
+      '@putout/formatter-dump': 5.0.0(putout@36.10.0)
       chalk: 5.3.0
       cli-progress: 3.12.0
       once: 1.4.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/formatter-progress@5.0.0(putout@36.9.0):
+  /@putout/formatter-progress@5.0.0(putout@36.10.0):
     resolution: {integrity: sha512-sOmQ1xAW/3GgYKrz8NpPI341B3L1vG9RLSzbdgQqLQQLkPWIqvewnqzpukgFMKG2XVhT04/VZyzoMH+7rM2y+w==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      '@putout/formatter-dump': 5.0.0(putout@36.9.0)
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      '@putout/formatter-dump': 5.0.0(putout@36.10.0)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/formatter-stream@5.0.0(putout@36.9.0):
+  /@putout/formatter-stream@5.0.0(putout@36.10.0):
     resolution: {integrity: sha512-4uS8YHf9R+T1Qo7mQqDOA/BgedS7KcA0cMGNvafzm06L9QET1RcnbcHyJPAMhjpc23r8n2QJ9q/TGpE1185I/w==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
       chalk: 5.3.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       table: 6.8.2
     dev: true
 
-  /@putout/formatter-time@3.0.1(putout@36.9.0):
+  /@putout/formatter-time@3.0.1(putout@36.10.0):
     resolution: {integrity: sha512-qxxgiinxbf9BCdz7kSKiKZ/lJtfQtU1IpOB3iHCDSVfBn7gAJ2Tk5m6Dwc5wC6Cqe+1aO1pjR/JTp9skCXKf9A==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      '@putout/formatter-dump': 5.0.0(putout@36.9.0)
+      '@putout/formatter-dump': 5.0.0(putout@36.10.0)
       chalk: 5.3.0
       cli-progress: 3.12.0
       format-io: 2.0.0
       montag: 1.2.1
       once: 1.4.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       timer-node: 5.0.7
     dev: true
 
@@ -2477,7 +2477,7 @@ packages:
       '@putout/babel': 2.8.0
     dev: true
 
-  /@putout/operator-add-args@8.0.1(putout@36.9.0):
+  /@putout/operator-add-args@8.0.1(putout@36.10.0):
     resolution: {integrity: sha512-XVJuxmg9TtnbELsEnp8Bo4J87QiK06/i97rxFCxSyou+/dV6Vn2vsubtoizsFRMc4arfSuwflu4W9AXGg4N2UQ==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2486,12 +2486,12 @@ packages:
       '@putout/babel': 2.8.0
       '@putout/compare': 14.7.2
       '@putout/engine-parser': 10.8.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@putout/operator-declare@9.1.0(putout@36.9.0):
+  /@putout/operator-declare@9.1.0(putout@36.10.0):
     resolution: {integrity: sha512-SuxX88L4pFrwUznp4TNkwt+B+fKPMvKqQFKn+4Y7ob6QW8DTMWtQWTMxJrnmftY6zfjyaElCtzgElUkcZXhouQ==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2501,12 +2501,12 @@ packages:
       '@putout/compare': 14.7.2
       '@putout/engine-parser': 10.8.0
       '@putout/operate': 12.13.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@putout/operator-filesystem@4.1.0(putout@36.9.0):
+  /@putout/operator-filesystem@4.1.0(putout@36.10.0):
     resolution: {integrity: sha512-Fsuo+mJ09L3YsJehGIRZEKLnREzH2WeFEZisFPPQ0VPsjYlcdzIAK9HPP1MX0BKMM7pllORO1cCkilQ+wPNCXA==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2515,7 +2515,7 @@ packages:
       '@putout/babel': 2.8.0
       '@putout/operate': 12.13.0
       fullstore: 3.0.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       try-catch: 3.0.1
     dev: true
 
@@ -2534,7 +2534,7 @@ packages:
       remove-blank-lines: 1.4.1
     dev: true
 
-  /@putout/operator-match-files@3.5.0(putout@36.9.0):
+  /@putout/operator-match-files@3.5.0(putout@36.10.0):
     resolution: {integrity: sha512-RS0t7iXut40QtIYXMKnTMm0ph50oHErImFPCVlNx3ZIQtVEWSg0XD7hxTuUdieweYspYsm9qmgqmOiVThXn4Ag==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2542,329 +2542,329 @@ packages:
     dependencies:
       '@putout/babel': 2.8.0
       '@putout/engine-parser': 10.8.0
-      '@putout/operator-filesystem': 4.1.0(putout@36.9.0)
+      '@putout/operator-filesystem': 4.1.0(putout@36.10.0)
       '@putout/operator-json': 2.2.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/operator-regexp@1.0.0(putout@36.9.0):
+  /@putout/operator-regexp@1.0.0(putout@36.10.0):
     resolution: {integrity: sha512-ts9QqsrpPCcXH9uao8ZjgxjvhdhaT7rZYy0JDKkfv0tptC55LEN8b9/0G4ZfVTm39C+7V+WFrDR0bDccyPd0yw==}
     engines: {node: '>=14'}
     peerDependencies:
       putout: '>=20'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       regexp-tree: 0.1.27
     dev: true
 
-  /@putout/operator-rename-files@1.0.0(putout@36.9.0):
+  /@putout/operator-rename-files@1.0.0(putout@36.10.0):
     resolution: {integrity: sha512-arXIWGffDV1YDVGREdcB5a9WVFENQ5R6F0HTOwpTs0s9Uy9YVFvoLQETzczJ9M0PWVfFC0fv+sr/GxhMbAT4LA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      '@putout/operator-filesystem': 4.1.0(putout@36.9.0)
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      '@putout/operator-filesystem': 4.1.0(putout@36.10.0)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-at@2.0.0(putout@36.9.0):
+  /@putout/plugin-apply-at@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-wIQz42w+d+CugaLdNbksGAdL1CxfpHFb7Yr2bn2bqi+jI6Dr6AlrbvpN9irE1dcAY+5hbVmSfe8euix0trkR3w==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=32'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-destructuring@7.1.0(putout@36.9.0):
+  /@putout/plugin-apply-destructuring@7.1.0(putout@36.10.0):
     resolution: {integrity: sha512-b0VupXH7wPL94ks2wQzPVIf0PquL69a3c1AdpM8HjUiEeeBaIZG3BahPW3Vi4+88g6xWLPChtPOBOkLGg9VWkw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-dot-notation@2.0.0(putout@36.9.0):
+  /@putout/plugin-apply-dot-notation@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-Bo7MqwyFzH5FisSGsOP0rWjcebziKoaJkQhQXug27EmdCkEuuhacHgjv4k4j3E9/VuZMcJdsSM92i+vX2kR3Ag==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-early-return@3.0.0(putout@36.9.0):
+  /@putout/plugin-apply-early-return@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-LAixktLtQaEc7r2fwYuKpnsQ93GYK8/nsKa6AEMeuzxlTRc278D/eEs8P8m6ef5fSyjhQy+S1fYI0nfG+Kr/MA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-flat-map@2.0.0(putout@36.9.0):
+  /@putout/plugin-apply-flat-map@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-TH+Al9LJqKZeyrh1Yg2/lwmIXdpZx6yINTf6vtCa1cdd5ebCAe6hGbU7VttZMcQzFCWZwqJX2BCPKtSr+4RAwA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=28'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-optional-chaining@6.0.0(putout@36.9.0):
+  /@putout/plugin-apply-optional-chaining@6.0.0(putout@36.10.0):
     resolution: {integrity: sha512-+9h/L9gNLEoa9ELXrGiuF/JWxq1e8Sk3z4VzD585K2nKxSmjCWJCdqtCO0LTHzv8j8AZCpfIAZavXvAyn0P/OQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-overrides@2.1.0(putout@36.9.0):
+  /@putout/plugin-apply-overrides@2.1.0(putout@36.10.0):
     resolution: {integrity: sha512-uu/G5rJufqWj+qhaDBL0+NFejVrwb/JVdB//8jW74I3sLcYDKiTDU5z2+hNWMCE8ORae+gr6PCWJfiEC9v2ROw==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-starts-with@1.1.0(putout@36.9.0):
+  /@putout/plugin-apply-starts-with@1.1.0(putout@36.10.0):
     resolution: {integrity: sha512-DZrZyMslqpBiRtONNZXUXR1eeJwz57Arb+b4luWkgyIpaYJdMOU0umfzvEfbnMY7TT+LWKxKSpZx4AV3HIDZPw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=30'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-apply-template-literals@3.0.0(putout@36.9.0):
+  /@putout/plugin-apply-template-literals@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-U5APqEN3PIhK/xEUReCz0UrhXftaa/9i7GQYh8kRcd9reD4HaLys1S6+wyUBKljNSev2LqMW2lUzO2JWKGLywA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-browserlist@2.0.0(putout@36.9.0):
+  /@putout/plugin-browserlist@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-1wo8BQZuO7lrlQCR9HTG6OeUrHrC46iPlc5vPVewvHVK/ghfxprAHq/SpuUbwGU71rFPFTS/SoOfJ/OxCa5fxA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=33'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-conditions@5.0.0(putout@36.9.0):
+  /@putout/plugin-conditions@5.0.0(putout@36.10.0):
     resolution: {integrity: sha512-joqYYlN3dskMfxaon5Y/nNiR/H7/v8ZUZZ7groe9GrNCzi/DRVYhBNY2P9eoNJQNqiHY9ub8GIx8oKOo3kObQg==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-apply-to-spread@4.0.0(putout@36.9.0):
+  /@putout/plugin-convert-apply-to-spread@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-AHjlnPoEuYza/m5fOU/wRdSpsTggT2bI1Vo4g5A7NL/WXkA4IhRbbtw+uI4il8EOpzcZUmMOve/+O0kRfc6VXA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-arguments-to-rest@3.1.0(putout@36.9.0):
+  /@putout/plugin-convert-arguments-to-rest@3.1.0(putout@36.10.0):
     resolution: {integrity: sha512-DkjkCIc2ecbqvc8yhKWLDx2bGlNq5RMRlTfYd++nXi2iRnf5SyqcBfmr3/u/7BGoaoTN4QpDwPx9hyZXnK/PLw==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-array-copy-to-slice@3.0.0(putout@36.9.0):
+  /@putout/plugin-convert-array-copy-to-slice@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-rmUhado8IydOc+amBzBLiQ7j39TadIrDwyaEZmAcLG1LrQNQ8LGssvnKqE0EqRBy3t/D3y3r4PKKR2sklqz7+A==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-assignment-to-arrow-function@1.2.0(putout@36.9.0):
+  /@putout/plugin-convert-assignment-to-arrow-function@1.2.0(putout@36.10.0):
     resolution: {integrity: sha512-zLYy4hUDPx3CXw5OxWR0Opy8qQJ31W/VO6WLsbCz3NYVgjydoMuQM3UxIL2LuLkd2yEtTOW8bjudLX7a+sUcJg==}
     engines: {node: '>=14'}
     peerDependencies:
       putout: '>=15'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-assignment-to-comparison@2.0.0(putout@36.9.0):
+  /@putout/plugin-convert-assignment-to-comparison@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-8V9iefPoCugiJiyRM6+diwNLw0QuPEUBF/wyWgadNt26t5y4pUQIHyl+6zz+WkRc5ZxhkOcGMODXIhObb+CuSA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-assignment-to-declaration@1.0.1(putout@36.9.0):
+  /@putout/plugin-convert-assignment-to-declaration@1.0.1(putout@36.10.0):
     resolution: {integrity: sha512-Wy2SphR27qZdnwFc8iaroOIL8xk4LG0bifyAxXqbP0Ggk/kLzJe7Ht7ExYzDOmKw4pm96hUoP9JSIRzskafgrA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-concat-to-flat@1.0.0(putout@36.9.0):
+  /@putout/plugin-convert-concat-to-flat@1.0.0(putout@36.10.0):
     resolution: {integrity: sha512-5vpw+xZ+00xQW6Ql9Ku6MrARV/EPq1KrTAHYYaBTLyMZcpNaM3L+LYJ08/Cc1/mm64ufBa3LTaFJtr9PrzmuHA==}
     engines: {node: '>=14'}
     peerDependencies:
       putout: '>=16'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-const-to-let@3.0.0(putout@36.9.0):
+  /@putout/plugin-convert-const-to-let@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-/I8LBeMav8WQlR1MGXbuqq3BZxsX/3SGEk4p40ozvmoQmq5aHz8Hez9Nh9WyTcdIaps9D2FZx26Ot/uSvasC3A==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-index-of-to-includes@2.0.1(putout@36.9.0):
+  /@putout/plugin-convert-index-of-to-includes@2.0.1(putout@36.10.0):
     resolution: {integrity: sha512-l8OA1+5hzviySeGTYsKZFBLALIye0at/ewRnvXQI5bH3s2De7d8OdMn5x7wdHwTph1NyrCwo4sLHlQX6E/fG7g==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-object-assign-to-merge-spread@6.0.0(putout@36.9.0):
+  /@putout/plugin-convert-object-assign-to-merge-spread@6.0.0(putout@36.10.0):
     resolution: {integrity: sha512-EdEgVRhIXZq6bV0WVcUwz0Zm72eEeWrWcccuKYnmUgJ20rL0LpUmxdVuTvDEzDsX4WjQXku32ACfAn/nUEfwiA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=25'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-object-entries-to-array-entries@3.0.1(putout@36.9.0):
+  /@putout/plugin-convert-object-entries-to-array-entries@3.0.1(putout@36.10.0):
     resolution: {integrity: sha512-Pam9J1cgmvkCgmKo68D6chA1//oI1IWWblVb/C0/l38eJdOzvuB3Izg9YDguNzJrP/y1ELTg5nB4pLp4nzz15w==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=31'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-optional-to-logical@4.0.0(putout@36.9.0):
+  /@putout/plugin-convert-optional-to-logical@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-JsyKKafPH95ZzA2TTizY20vp1JdpnjByQM4ZvWycE9yeUVtRHflXieOjW9StUdz1ePrPn8ghLwebSSCGmaMFng==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-quotes-to-backticks@3.0.0(putout@36.9.0):
+  /@putout/plugin-convert-quotes-to-backticks@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-V8LdAwF7HSVB+bZIgk1JMK+zF+dBDU88EPXdrA1nEeFqMFtLWbJmsYiVHQgg1Msp4MVCkZY1haAAggVuws5Uog==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=33'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-template-to-string@2.0.0(putout@36.9.0):
+  /@putout/plugin-convert-template-to-string@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-+qlmSL5Clg51KFI+o9oQfeQxKkKsx9c2JuPjLsuejCn8rp9wFLh9f/7SzoL7PNaBwrG0atcQUlqN0a3W/aXU3A==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-convert-to-arrow-function@4.0.0(putout@36.9.0):
+  /@putout/plugin-convert-to-arrow-function@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-oE+jmjjrSxD9BtLEiHnqW0UA7wXPzNrt46iNbrGRT6EkoKcJogp1BedP6bMlvdJUsHZu/Lx1Ib1unPQ7dWk+Tg==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-coverage@1.0.0(putout@36.9.0):
+  /@putout/plugin-coverage@1.0.0(putout@36.10.0):
     resolution: {integrity: sha512-YX44zFIuSgWWxAVc0/uqKbqJDUBthya1QC/ov6H0GRX1vKVkqhCwcUzJ3i9DDyGLrzfhOGfzFagtZys9wRPx2Q==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-declare-before-reference@4.0.0(putout@36.9.0):
+  /@putout/plugin-declare-before-reference@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-F44TRsfGVkMO+iP7ETdnJeJa43opmHk8njhGQI06GDNiSx9oKasrjcXjOaAuuhoP3nbkZqmMTQ301CPcBmkV1g==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-declare-imports-first@2.1.0(putout@36.9.0):
+  /@putout/plugin-declare-imports-first@2.1.0(putout@36.10.0):
     resolution: {integrity: sha512-0L9XQ7wM09hOrokLm3IJhh300MkgIa+5XGbJ0JgHKtgY5zhk6hdEtcGefbzhRLbc0oiXFfEsad14z0nSbdvv4A==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=27'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-declare@4.0.0(putout@36.9.0):
+  /@putout/plugin-declare@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-t5PQ/BsUvSbEBEQQBgQ6Lyg8MVFzDgl7P3ycv6GGaJ4C6dmGOwa2qePxvnQ2Bgqa6ZXPfj9wsCraofXfjIH7tg==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-eslint@9.1.0(putout@36.9.0):
+  /@putout/plugin-eslint@9.1.0(putout@36.10.0):
     resolution: {integrity: sha512-eC5WZQVbtUxmH4uExCppbt/drhQghhnS7lQ0zrsmmVoOw6SqWnojJsqu7aLobGy436LrVB81dbJKHIa7JG/Ypw==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-extract-object-properties@9.0.0(putout@36.9.0):
+  /@putout/plugin-extract-object-properties@9.0.0(putout@36.10.0):
     resolution: {integrity: sha512-26RafMuaxdjJS9Y9TJC+uyxYU9VyprdQtpcL5xHbUA66DurUbY+7Gg3yxGfs2dNd+czd3gRB2TQ/3x9MSuFmjw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-extract-sequence-expressions@3.5.0(putout@36.9.0):
+  /@putout/plugin-extract-sequence-expressions@3.5.0(putout@36.10.0):
     resolution: {integrity: sha512-ywDbX0CpgweJrT7xiakwb2IEjzjQL4tdMXrBuW6OjVzOs6mNcuaFEHGMXnzFuNNCYOWpoUwr2oHdim++8QVuwg==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=25'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-filesystem@5.3.0(putout@36.9.0):
+  /@putout/plugin-filesystem@5.3.0(putout@36.10.0):
     resolution: {integrity: sha512-/XfKrIhKUQHHBVxGOIl9QXoD+Qt9nMlIYlXhLgD3wKCdFVtQkBzRZE5azOXGhc9m/oJ6oN5o6Ii1j6SgrRoXqw==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -2872,196 +2872,196 @@ packages:
     dependencies:
       '@putout/babel': 2.8.0
       '@putout/operate': 12.13.0
-      '@putout/operator-filesystem': 4.1.0(putout@36.9.0)
+      '@putout/operator-filesystem': 4.1.0(putout@36.10.0)
       '@putout/operator-json': 2.2.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-for-of@6.1.1(putout@36.9.0):
+  /@putout/plugin-for-of@6.1.1(putout@36.10.0):
     resolution: {integrity: sha512-ms8pJ0et3c2Hka8BuDHcw7cMokUP6z3vDWFlZppy5dYFitRXiJV8Jg1n9nfYNDnQ3wAVQmtxR1i8F1zl1/cgWA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-generators@1.0.0(putout@36.9.0):
+  /@putout/plugin-generators@1.0.0(putout@36.10.0):
     resolution: {integrity: sha512-5rETQ4xphQ3pH20AtoW9hn/jmTsVMS/8Sw0Uz0sa2cmSBRx/Nl9777ltrRx+dFZ1jj0f59uCT9mnHIe31Th44w==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
       fullstore: 3.0.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-github@12.3.0(putout@36.9.0):
-    resolution: {integrity: sha512-h67x8qbkBr8ET2W2DOTlud8iQWH7Y5MItxmhUBSSVmtfpb3q6hYEiczI1v1pxPPggsfBRRnIci3/WH22dPhSyA==}
+  /@putout/plugin-github@13.0.0(putout@36.10.0):
+    resolution: {integrity: sha512-/in04gzsE9X/a38DjeylNWgHpgMbrN+w5uFCOsgUCL3YC2Uc1Zw1sLDSuo0qdHwAiWWnkRxPFa6W1L7r+EwDYg==}
     engines: {node: '>=18'}
     peerDependencies:
-      putout: '>=35'
+      putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-gitignore@6.0.0(putout@36.9.0):
+  /@putout/plugin-gitignore@6.0.0(putout@36.10.0):
     resolution: {integrity: sha512-uiAfT/shB+gsAAdy1I2UBFt005W//wgadEnXIRvwSBiA77u/VkxMJdPO7st2J6bBLTn/4tIh1WAeSuAEGC63QQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-group-imports-by-source@1.0.0(putout@36.9.0):
-    resolution: {integrity: sha512-HVg4yugHtM2UlTc8as+saiBL/Zf5Kzm/YLxdLScBODkg8TVCoUeLhWwTKLeW11fP3paqOtQNT5b9vSgMMfd+1A==}
+  /@putout/plugin-group-imports-by-source@2.0.0(putout@36.10.0):
+    resolution: {integrity: sha512-aby3J00gso6vEWCzJsTdMb/vuV2GdkN1nNNdBvHj/EnS5Yllu4GH/bbTRDb9WxUbfF/rTl8XYRRVwTv9RVPpCw==}
     engines: {node: '>=18'}
     peerDependencies:
-      putout: '>=35'
+      putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-labels@1.0.0(putout@36.9.0):
+  /@putout/plugin-labels@1.0.0(putout@36.10.0):
     resolution: {integrity: sha512-kQ0R2cfmv+IiWUTZnCLZxmmxss5HiUPk6WA5lJTjbKMgRMUt6w3aZeeD23nbqqL8BXpT/OkQ242tmY7EXRCM7A==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
       fullstore: 3.0.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-logical-expressions@6.0.0(putout@36.9.0):
+  /@putout/plugin-logical-expressions@6.0.0(putout@36.10.0):
     resolution: {integrity: sha512-MSGeKSqELMTq+skt9zGACqlQh4SZj1Tkrxm3vn/37KaSOt4f31X7kRpkN6BNZels9wmenZ6Bpb9mY61RXFNwcA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-madrun@19.0.0(putout@36.9.0):
+  /@putout/plugin-madrun@19.0.0(putout@36.10.0):
     resolution: {integrity: sha512-zz6lxOYVCSsPNc4rJOAyWs1JCPstFlUXG/+HSJl495sg1SU5S5kCKviT7na0wZH8/YPBvUleltXycU3RvB6soA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-math@2.1.0(putout@36.9.0):
+  /@putout/plugin-math@2.1.0(putout@36.10.0):
     resolution: {integrity: sha512-HWx6Zv8cAr5fglBNqlaQyQ/CZApxSgM36aJFUTPzcTihgvLUBWkh5P+JrKE+tl0fIqFssRu0XtUUuRkOlrbouw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-maybe@2.0.1(putout@36.9.0):
+  /@putout/plugin-maybe@2.0.1(putout@36.10.0):
     resolution: {integrity: sha512-kIYRPXnYdLmWeFPy7ayiOHFMyb2N8IviZdlfHC6gihyynw2yCCXDXNr6l/gPMa85+zcLG9usn3B8iFQ3c5GB5g==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=32'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-merge-destructuring-properties@9.0.0(putout@36.9.0):
+  /@putout/plugin-merge-destructuring-properties@9.0.0(putout@36.10.0):
     resolution: {integrity: sha512-sPY2o/pkrY0vwfRSfVTuVJb9rtDceWuZFLZk/o3hjIaN4KDhwuF/SN2w5w2rcC46fUbTZsQ9vpGTUn/7RXP7rw==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-merge-duplicate-functions@2.0.0(putout@36.9.0):
+  /@putout/plugin-merge-duplicate-functions@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-FhhyFksBVRR7RfOUWrFgH+j7NvbRkWrKs1mKDWR7TzPbAs2STWmR45j6UeYoItbujWBo0Udk7UxhdUwR6ymRdw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=32'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-merge-duplicate-imports@11.0.0(putout@36.9.0):
+  /@putout/plugin-merge-duplicate-imports@11.0.0(putout@36.10.0):
     resolution: {integrity: sha512-pxG+dr1G+lLe3l0s8Ds7eKSX7/RXeNuCF+Egd/efV2MSdSkghWykkdmteI4q3m9tL2xRKmYQbLIgwTCivP4msw==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=34'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-montag@2.0.0(putout@36.9.0):
+  /@putout/plugin-montag@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-e0l8ZlxXbn+5Y+hmcrou0ubU3dBou2hDivSHRjL8RQdRlbS/miPVioe2UI5yiK4ogFavFnbd3GgGHkwQmcyd3g==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-new@3.0.1(putout@36.9.0):
+  /@putout/plugin-new@3.0.1(putout@36.10.0):
     resolution: {integrity: sha512-DXlkD30gfjd28Ef0Gs/sPjJTFFIaxXUygK7t6xb1xUeIqWlrqev9lPEkjHiV0dD+iPNEtswaiwCd2javrym+TQ==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=33'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-nodejs@12.0.1(putout@36.9.0):
+  /@putout/plugin-nodejs@12.0.1(putout@36.10.0):
     resolution: {integrity: sha512-UmeAPXr2txeA0AsdxzNGLINJK46vWmeRlxVbTpbyJ/4qsJ6Gs7pCWteZSgbKqvqxBKSAOkRZwRahBI5W76qGSA==}
     engines: {node: '>=18.6'}
     peerDependencies:
       putout: '>=36'
     dependencies:
       just-camel-case: 6.2.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-npmignore@5.0.0(putout@36.9.0):
+  /@putout/plugin-npmignore@5.0.0(putout@36.10.0):
     resolution: {integrity: sha512-k43d+6dCW9tiueQjyq1+h6GAcXuB79VJzBXE8sME5IPk31HVUlYfhWKHB5IaG1DT9F4+BVuyvZbIXYXdeLK+hg==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-package-json@8.3.0(putout@36.9.0):
+  /@putout/plugin-package-json@8.3.0(putout@36.10.0):
     resolution: {integrity: sha512-tnz9vlOdU28YtIbuAhTSh6AgDxhVOLiRDCN2VQtHEJIBtN+dExb9YaUuE7oB5au5wpCXilpdPwYnWDwUjzCbHA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-promises@15.2.0(putout@36.9.0):
+  /@putout/plugin-promises@15.2.0(putout@36.10.0):
     resolution: {integrity: sha512-KaqD5/GsR4TFcNAC787lAuSAAPh7hM3dm1Y34kDk+HG7CJ4gCqiJEe7ojXG/jHEvJfZQs5BD2NcD3/7YwtCo1A==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
       fullstore: 3.0.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-putout-config@6.9.3(putout@36.9.0):
+  /@putout/plugin-putout-config@6.9.3(putout@36.10.0):
     resolution: {integrity: sha512-/jImoMGZbeHnM37p9SQkHfq3vTxwM3Yzg8I/MPibDcD3dt+368R24fhYnqxCfe0Yfd4fZC1VNkVox0/nkcwwAA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-putout@21.4.0(putout@36.9.0):
+  /@putout/plugin-putout@21.4.0(putout@36.10.0):
     resolution: {integrity: sha512-C2I06vpmRGQmvQuDf9V/RyT8UfuIIUIXMlSEk8sar7NxU3rkYoZm4ZiFm3nkldixiKfJrEUZVW0/rZeNMtpBEQ==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -3070,445 +3070,445 @@ packages:
       fullstore: 3.0.0
       just-camel-case: 6.2.0
       parse-import-specifiers: 1.0.3
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       try-catch: 3.0.1
     dev: true
 
-  /@putout/plugin-regexp@9.0.0(putout@36.9.0):
+  /@putout/plugin-regexp@9.0.0(putout@36.10.0):
     resolution: {integrity: sha512-dH1eKO7mobHb6JTFmOzKfEuDNqbocWaAZmxcwu8t7b58dwi73gq6SmXhVf3ZzBDDU56IGcUKb4nvDlZC4xIXIQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       regexp-tree: 0.1.27
       try-catch: 3.0.1
     dev: true
 
-  /@putout/plugin-remove-console@6.0.0(putout@36.9.0):
+  /@putout/plugin-remove-console@6.0.0(putout@36.10.0):
     resolution: {integrity: sha512-MpnIc0JmB7z3VMcqJnBdzkg2NTOorLb6WKpt3PWlSh8HZ1lqz78CRW7styHYTtSg5fcp/zkPUk4nkbxMPuoOiw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-constant-conditions@4.0.2(putout@36.9.0):
+  /@putout/plugin-remove-constant-conditions@4.0.2(putout@36.10.0):
     resolution: {integrity: sha512-UN+SlFVkSFbKjA9aw9WT32SaKnfeBo+TX0fqDu/dAyoe7gp8GAXRnDr/Yw02kRkDHmAYEcoKd1EGpRhhWHX1Gg==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=25'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-debugger@7.0.0(putout@36.9.0):
+  /@putout/plugin-remove-debugger@7.0.0(putout@36.10.0):
     resolution: {integrity: sha512-dFjtdP1r6RITDZMb6JG4ddQo0K5p2pX3mL09VByCWy0LXDHZIGkbEqn5Q4C1ydkRy7iH8+qug3wRWnsI8Z7txA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-duplicate-case@3.0.0(putout@36.9.0):
+  /@putout/plugin-remove-duplicate-case@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-NLj45ob0RDk///SNTo3h+rJGbK3l22RkkRih2e7xg7ky6fKMtBCuMk0IYI8/mNNDR0Xm6UKwvBC9nFzqp9stTw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=30'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-duplicate-keys@5.1.0(putout@36.9.0):
+  /@putout/plugin-remove-duplicate-keys@5.1.0(putout@36.10.0):
     resolution: {integrity: sha512-nBwt4Y2j/80vHhjUCg9+lDairRMDQWrMDlvYAhUjvbDfiaZzcD45OBh8k/j+PFHYZF2j2IEY6GwFkP7o9ZG09A==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
       fullstore: 3.0.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-empty@12.1.0(putout@36.9.0):
+  /@putout/plugin-remove-empty@12.1.0(putout@36.10.0):
     resolution: {integrity: sha512-kUgGzVBKKe8mR1bQUtUjVzTIdlh9j7KlZtMKCx7Yt2uZNbwQnscbuVlEYQfc7YyqGnWops64Si2YyELoEwil/A==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-iife@4.1.0(putout@36.9.0):
+  /@putout/plugin-remove-iife@4.1.0(putout@36.10.0):
     resolution: {integrity: sha512-sprRQalN9BRJ28iz2LPhnz4bM6qjwlnRZoHZY7+a4Grqp/mFeKcnvfWsL/EUaeykHCnSk/tC6umLlCbme/I8OA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-nested-blocks@6.3.0(putout@36.9.0):
+  /@putout/plugin-remove-nested-blocks@6.3.0(putout@36.10.0):
     resolution: {integrity: sha512-H4acUrKSuqHAWLeIZNZ37LLqHDFrncdu2NxArBLkjZXSYl1e4LCVJbEmfjtk3gqsBax2bQO32H+ir/FOHQRgdw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=25'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-quotes-from-import-assertions@1.0.0(putout@36.9.0):
+  /@putout/plugin-remove-quotes-from-import-assertions@1.0.0(putout@36.10.0):
     resolution: {integrity: sha512-jV5vwffYOTHdXCZ9VWkV76dcgOuppV6xkz41SYYD6WhAARTeypqJY0El+qQnr8F1kWiS+aKC/X/IWgvT+s/2Aw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-unreachable-code@1.2.0(putout@36.9.0):
+  /@putout/plugin-remove-unreachable-code@1.2.0(putout@36.10.0):
     resolution: {integrity: sha512-3UkXYoeXVeSfcTrHENsRhbmsh4oxUgIpsAkFn7knKmi/WCVH7n0jQXUX+RRziX4E0sgs79mFodnMhQWtqMFXZg==}
     engines: {node: '>=8.3.0'}
     peerDependencies:
       putout: '>=4.31'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-unreferenced-variables@4.0.0(putout@36.9.0):
+  /@putout/plugin-remove-unreferenced-variables@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-tnnz/WTcxFg5pAt7VC5X0rNavkMKpCAPLjv1sF6b66KjB1sotr7V3QE0a4vqo2SwVriPH3/MeH1/AftcT58Cxg==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-unused-expressions@9.0.0(putout@36.9.0):
+  /@putout/plugin-remove-unused-expressions@9.0.0(putout@36.10.0):
     resolution: {integrity: sha512-vw8SVtr9E8c7sjuf6akAwhRYjxKIJt2K9qgUPaN5KtwGWwly0Q2h7Vuthf0ms/0YusEIfOhu4sjN2lqWYTsQfQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-unused-for-of-variables@3.0.1(putout@36.9.0):
+  /@putout/plugin-remove-unused-for-of-variables@3.0.1(putout@36.10.0):
     resolution: {integrity: sha512-nFsBnRYdvSEBvOmKOzqMaWSlimX6K6jLl3HRX0KlfyJI/EOQYqjqPBvTRq3XS0resZw4LZ2cSPduL/dYuR1juw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=25'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-unused-labels@1.0.2(putout@36.9.0):
+  /@putout/plugin-remove-unused-labels@1.0.2(putout@36.10.0):
     resolution: {integrity: sha512-cDyMWovbcPclTOJh9ZM0BTw4KyQndrzKwtOKNG1dhfStLWZrux95VgO6hFwdYM8yPGj3RsA3mJLn3W26+DwJJg==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-unused-private-fields@2.1.0(putout@36.9.0):
+  /@putout/plugin-remove-unused-private-fields@2.1.0(putout@36.10.0):
     resolution: {integrity: sha512-g+hZPUDuJMCSrN4r2pWD5vPLGBouD651gbD2n1furOzEXFbduzpbMZqmn2pEBvOLu2e+61m03nLX3AUZmSgEYQ==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=25'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-unused-variables@9.2.0(putout@36.9.0):
+  /@putout/plugin-remove-unused-variables@9.2.0(putout@36.10.0):
     resolution: {integrity: sha512-/vjbZ0jW0fl0GRGsMwzDEIZXwc0avykF8CC+OxU1mWfGZmrJbg6I6I/gkEDlZGsiUjF434L4bljSZhZ3D+5hZA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-arguments@9.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-arguments@9.0.0(putout@36.10.0):
     resolution: {integrity: sha512-+t52suTlLsmDx7p27voVch0MeQEy9himjB7hqgrab1BhSYigu88OQhNy6l7xGnIpkmvw1vu3Npn1aDudz3AEAg==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-array-constructor@2.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-array-constructor@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-R3GAHGeDoh916SSEFrPaiEu9BylOrIP07+Xh+v+hzZuw/tINiA94sdWZ4BPhOmIX3qbWe6LqqVQ4j8VikaaF9Q==}
     engines: {node: '>=14'}
     peerDependencies:
       putout: '>=30'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-array-entries@1.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-array-entries@1.0.0(putout@36.10.0):
     resolution: {integrity: sha512-ArLWIUXH1ajRPRe/6Pv4MhW3HAFoet4dy1fMlYVa+2i2ydjVYsKnwdJU70cI9B2Mo25JQXUY5yskkSaRQx339g==}
     engines: {node: '>=14'}
     peerDependencies:
       putout: '>=23'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-array@1.1.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-array@1.1.0(putout@36.10.0):
     resolution: {integrity: sha512-xWwGpvhtCiglwYjUZXOAple09QRnNZkCR8waoKxIlr8STSKB+6DGrdDCDw7A36fUNrTX96D4svGn1fHNAR6XIQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-assign@1.1.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-assign@1.1.0(putout@36.10.0):
     resolution: {integrity: sha512-lfTkCAVYKacsEuZRjVogH29FUH9xE3+7+15VEVzPPMiBdsACOJ9561yldXeqy6u/+9rwmmkYr8W1Bt7VyQEyvg==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=26'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-constructor@2.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-constructor@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-nssmppJkz2d0xTzmPKIMtFgAyicRff4q9VuwLRahnUZ8NPN6kVdMoXb73VGy7ZYd5nMlGg/rxaF0hgZPqQ2R8Q==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-continue@2.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-continue@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-OxG5fr4uIGSmITzX4pkYPBYnn1NaGu9ZSBCzcrNrG5/7mGNIO9YnC9yyVRjTXELdxJXL5sjxzoBCSsS33PMwFQ==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=28'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-delete@1.0.4(putout@36.9.0):
+  /@putout/plugin-remove-useless-delete@1.0.4(putout@36.10.0):
     resolution: {integrity: sha512-Gsq1UW8cOTwldLQHU6xEZHVNQQCEyM0diSyvufVxqMvAAVx5fvtbK/Kzosk56OB0lXn3SjiPg/EtGiZt0vwaLg==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-escape@6.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-escape@6.0.0(putout@36.10.0):
     resolution: {integrity: sha512-I6CRfw78PHnYTLzyJjbzRTp+OaJF9oyLAefEQOI6lr1XdRe62SStY2YROyTAbH2E6/zYjjRFqHxw1G6E222J2g==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
       emoji-regex: 10.4.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-functions@3.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-functions@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-50WsmBy0Kvdqj+uYmSyyUZuy0NptYk2GrvpyIzgmjiJaNtSLgUcTRViRki/0NTsbDt73q/cdBypPdomMKoYJiw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=30'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-map@1.1.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-map@1.1.0(putout@36.10.0):
     resolution: {integrity: sha512-/5VQNb1YkcTZ16FqFrSfoILgGqsMJ6zIaKP1LlhZa3Xt1svLoN2Y2NIve9mSn7NgxFWnR1eUZPaeXl+FT+ltog==}
     engines: {node: '>=14'}
     peerDependencies:
       putout: '>=18'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-operand@2.1.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-operand@2.1.0(putout@36.10.0):
     resolution: {integrity: sha512-Et+8ZHBRD1zTHjYu71lC22rRuwayI4r4yQw+kibvwIEgVvLBbJu8DhlTKKjWkH04BQWEtigSwd/kKQSL0bVo+Q==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=25'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-push@1.0.3(putout@36.9.0):
+  /@putout/plugin-remove-useless-push@1.0.3(putout@36.10.0):
     resolution: {integrity: sha512-G0e0QY6p9bd1HU5h8NoV/fMGI6+O2AWGXxQzkgPHiwtpklk4nIXkGtCLpZqNFpoa/bT9MvXUL9cgWfL5tIaoMQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-replace@1.0.4(putout@36.9.0):
+  /@putout/plugin-remove-useless-replace@1.0.4(putout@36.10.0):
     resolution: {integrity: sha512-w4TdcqM/9UOjv3YtyRldV49P95o32MIYyVe4aSxyAD4m29f/tnzD11RsCDC20mHZzSK3BIVpB72guK2U0ylqGQ==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=26'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-return@7.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-return@7.0.0(putout@36.10.0):
     resolution: {integrity: sha512-YXg8StDHppFkuOzivde33g4idADikbuJSmri/jrzp/bsSw3mA0OfHhsSDJs8QKTfAwTHX71Wg2zhVzoq4vV5hg==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-spread@11.1.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-spread@11.1.0(putout@36.10.0):
     resolution: {integrity: sha512-m/2X+HX+c2ybtYtkrh4ucvmvogSjY4NNPzK7H4mjP9EcbWqACntTN5BeuMFums86cUi6chSyQlp/w1Pj+sPFrw==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-template-expressions@2.0.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-template-expressions@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-1Dcnjc4h2Nd6eSvdTEhgtSbqvCMVxv6Mbvhj2yXjzNyP0vMi/CIUta23gM7Ie5Kzpkf/g9xhUUVqYVwYKjIkKw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-remove-useless-variables@12.5.0(putout@36.9.0):
+  /@putout/plugin-remove-useless-variables@12.5.0(putout@36.10.0):
     resolution: {integrity: sha512-GUS264h48H/FCxZVcSEDZtolB1Hei6Qv8uxkTDYiJeASbURh6iVsnHsAZq/jea4whR65lrp6B5QtoCWPRNjKmQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-reuse-duplicate-init@5.0.0(putout@36.9.0):
+  /@putout/plugin-reuse-duplicate-init@5.0.0(putout@36.10.0):
     resolution: {integrity: sha512-RdyWx7B9p2J6g0rsY5wCUIsCXVqn4NiZCF46tr//HCahJdVg6luCiT657qtY+JEbTkMBcCp6qQTRcIVcBGKa3Q==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-simplify-assignment@3.1.0(putout@36.9.0):
+  /@putout/plugin-simplify-assignment@3.1.0(putout@36.10.0):
     resolution: {integrity: sha512-pwYwK96USqM//E15/SAQ9x4DTzbMV3oBXCBDtliXQeVsDKGfm0Wn17LStl9yQ88M9hrplXFBGNHuQUAUOBAPeQ==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-simplify-boolean-return@2.0.0(putout@36.9.0):
+  /@putout/plugin-simplify-boolean-return@2.0.0(putout@36.10.0):
     resolution: {integrity: sha512-/KNrebqH/sRnk8cUqylR/uCTbI+AQ3Upag9qpozm+XkL/vCzyad5zSLqxet7qJOBwzS4dDFSzlRm2tjJAHS+SA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-simplify-ternary@7.0.0(putout@36.9.0):
+  /@putout/plugin-simplify-ternary@7.0.0(putout@36.10.0):
     resolution: {integrity: sha512-sSXTE4mOgkzVsVRv73DAEUBLRTouwW2ts0tDxOFqY0ipqjI9fNhHTl+ifF9b9DvNyi66MiAmhV4sVOuPFq4xUA==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=34'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-sort-imports-by-specifiers@1.1.0(putout@36.9.0):
+  /@putout/plugin-sort-imports-by-specifiers@1.1.0(putout@36.10.0):
     resolution: {integrity: sha512-4LUqfe7NIBjmZe7LzjlYBAyFjlgEPUYASFd+fV9oe/f5g3jF0A/uM3BrlqZI+twmNQNpkIlo9orVALVqps+K6Q==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
       parse-import-specifiers: 1.0.3
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-split-assignment-expressions@1.2.0(putout@36.9.0):
+  /@putout/plugin-split-assignment-expressions@1.2.0(putout@36.10.0):
     resolution: {integrity: sha512-mDS6l5R/Iu+7tfW3YL4NgpG5cX30ETxdDby42aDXh1Z+SpzapCK3LPseezQZWFwC4xKLGdQzOce1ZzrHydpe/w==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=35'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-split-nested-destructuring@3.0.0(putout@36.9.0):
+  /@putout/plugin-split-nested-destructuring@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-f0iLhhD2T2v1PMetc/KRoFU/46buGOhtuKDLWTmc1A9LAJSL1YLPOgrleTnZZb6virchPt09GKfJrrXAhjzsDA==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-split-variable-declarations@3.0.0(putout@36.9.0):
+  /@putout/plugin-split-variable-declarations@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-K8b958p3+5c+hB8YxqBgrUGV2W79lHnsokzFGSe1KqpSmYzoM1cIEiT7MxpcA+WJi3rAlQ2iPO6ehWUIM+9USQ==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-tape@15.1.0(putout@36.9.0):
+  /@putout/plugin-tape@15.1.0(putout@36.10.0):
     resolution: {integrity: sha512-c3pSvJ2LKGlEqsLyeYembhLHvXQwmrxEyrNWITPNhZAjeVAi1wwTr6YRKw41YclW2iAbe3fxZIgZK4jwjPnNeQ==}
     engines: {node: '>=18.6'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-try-catch@4.0.0(putout@36.9.0):
+  /@putout/plugin-try-catch@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-ucJ0Qo8imalzjHsW/TmiEo//gqA/J6kEQbLY6nRlLsD/GeK9GehtMRwJCmTHgofsjXWUTDL5q6b8Xq3c3X4D/g==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-types@5.1.0(putout@36.9.0):
+  /@putout/plugin-types@5.1.0(putout@36.10.0):
     resolution: {integrity: sha512-Oy4e2/P2w56TedzIk5rh/u2Yd3EovMhjxnrAjMFI6R/h7MM8kQSwI4RQFCWTgxQcDvLfw0FS7uOw09eNSJNOkQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-typescript@8.2.1(putout@36.9.0):
+  /@putout/plugin-typescript@8.2.1(putout@36.10.0):
     resolution: {integrity: sha512-96RI7ebINqeSIsXQ8614zzvPvJ6tiWF4yYNIBIBxceeuqs+PnUkCfPVRMZFyX2BbbGxnZzCXVgn0wCXLaxs+vQ==}
     engines: {node: '>=18'}
     peerDependencies:
       putout: '>=36'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
-  /@putout/plugin-webpack@3.0.0(putout@36.9.0):
+  /@putout/plugin-webpack@3.0.0(putout@36.10.0):
     resolution: {integrity: sha512-qYUUvasY7AuWYGVOSuSnxYOMBcbIFIt+MaesxLW5j3sE0I51BkyiA8RPS7nUTW3nuzRt4TnzSdHS66RC6VO7nw==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
   /@putout/printer@9.18.0:
@@ -3527,7 +3527,7 @@ packages:
       - supports-color
     dev: true
 
-  /@putout/processor-css@9.0.0(putout@36.9.0)(typescript@5.5.4):
+  /@putout/processor-css@9.0.0(putout@36.10.0)(typescript@5.5.4):
     resolution: {integrity: sha512-FUzUKBDLbzWSi8ZWi7Mr6qhuvdyk11/oI3zvz7rvbWOVgSQ1FwxfWoOuzz9M5WJE0DJPaF6rj+n1fl2WNncJdg==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -3537,7 +3537,7 @@ packages:
       cosmiconfig: 9.0.0(typescript@5.5.4)
       deepmerge: 4.3.1
       prettier: 3.3.3
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       stylelint: 16.10.0(typescript@5.5.4)
       stylelint-config-standard: 36.0.1(stylelint@16.10.0)
       stylelint-prettier: 5.0.2(prettier@3.3.3)(stylelint@16.10.0)
@@ -3546,12 +3546,12 @@ packages:
       - typescript
     dev: true
 
-  /@putout/processor-filesystem@4.0.0(putout@36.9.0):
+  /@putout/processor-filesystem@4.0.0(putout@36.10.0):
     resolution: {integrity: sha512-EhybKS0l5sl5Go7jXzo/zGer8sdknqVKPkRtwDTEo7CsFnF+k3jKlsEgGOwXkD25Nxau/hFShalVsnbwRIHUJw==}
     engines: {node: '>=18'}
     dependencies:
       '@putout/cli-filesystem': 2.0.1
-      '@putout/operator-filesystem': 4.1.0(putout@36.9.0)
+      '@putout/operator-filesystem': 4.1.0(putout@36.10.0)
       '@putout/operator-json': 2.2.0
     transitivePeerDependencies:
       - putout
@@ -3564,13 +3564,13 @@ packages:
       '@putout/operator-json': 2.2.0
     dev: true
 
-  /@putout/processor-javascript@5.0.0(putout@36.9.0):
+  /@putout/processor-javascript@5.0.0(putout@36.10.0):
     resolution: {integrity: sha512-0V2S2GTtzSXo1rLwCnEplVYZnAC2e2jdmSUig1p9qx9FjQj4MHCEHsmRjKkjh0NsajKUY5t2Z+ZLZ6GeagUlxg==}
     engines: {node: '>=16'}
     peerDependencies:
       putout: '>=29'
     dependencies:
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
     dev: true
 
   /@putout/processor-json@9.0.0:
@@ -4103,7 +4103,7 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
     dependencies:
-      '@typescript-eslint/utils': 8.10.0(eslint@9.8.0)(typescript@5.5.4)
+      '@typescript-eslint/utils': 8.11.0(eslint@9.8.0)(typescript@5.5.4)
       eslint: 9.8.0
       eslint-visitor-keys: 4.1.0
       espree: 10.2.0
@@ -4118,7 +4118,7 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
     dependencies:
-      '@typescript-eslint/utils': 8.10.0(eslint@9.8.0)(typescript@5.5.4)
+      '@typescript-eslint/utils': 8.11.0(eslint@9.8.0)(typescript@5.5.4)
       eslint: 9.8.0
       eslint-visitor-keys: 4.1.0
       espree: 10.2.0
@@ -4566,12 +4566,12 @@ packages:
       '@typescript-eslint/visitor-keys': 8.0.0-alpha.40
     dev: true
 
-  /@typescript-eslint/scope-manager@8.10.0:
-    resolution: {integrity: sha512-AgCaEjhfql9MDKjMUxWvH7HjLeBqMCBfIaBbzzIcBbQPZE7CPh1m6FF+L75NUMJFMLYhCywJXIDEMa3//1A0dw==}
+  /@typescript-eslint/scope-manager@8.11.0:
+    resolution: {integrity: sha512-Uholz7tWhXmA4r6epo+vaeV7yjdKy5QFCERMjs1kMVsLRKIrSdM6o21W2He9ftp5PP6aWOVpD5zvrvuHZC0bMQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dependencies:
-      '@typescript-eslint/types': 8.10.0
-      '@typescript-eslint/visitor-keys': 8.10.0
+      '@typescript-eslint/types': 8.11.0
+      '@typescript-eslint/visitor-keys': 8.11.0
     dev: true
 
   /@typescript-eslint/type-utils@7.18.0(eslint@9.8.0)(typescript@5.5.4):
@@ -4628,8 +4628,8 @@ packages:
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
 
-  /@typescript-eslint/types@8.10.0:
-    resolution: {integrity: sha512-k/E48uzsfJCRRbGLapdZgrX52csmWJ2rcowwPvOZ8lwPUv3xW6CcFeJAXgx4uJm+Ge4+a4tFOkdYvSpxhRhg1w==}
+  /@typescript-eslint/types@8.11.0:
+    resolution: {integrity: sha512-tn6sNMHf6EBAYMvmPUaKaVeYvhUsrE6x+bXQTxjQRp360h1giATU0WvgeEys1spbvb5R+VpNOZ+XJmjD8wOUHw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dev: true
 
@@ -4699,8 +4699,8 @@ packages:
       - supports-color
     dev: true
 
-  /@typescript-eslint/typescript-estree@8.10.0(typescript@5.5.4):
-    resolution: {integrity: sha512-3OE0nlcOHaMvQ8Xu5gAfME3/tWVDpb/HxtpUZ1WeOAksZ/h/gwrBzCklaGzwZT97/lBbbxJ16dMA98JMEngW4w==}
+  /@typescript-eslint/typescript-estree@8.11.0(typescript@5.5.4):
+    resolution: {integrity: sha512-yHC3s1z1RCHoCz5t06gf7jH24rr3vns08XXhfEqzYpd6Hll3z/3g23JRi0jM8A47UFKNc3u/y5KIMx8Ynbjohg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '*'
@@ -4708,8 +4708,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/types': 8.10.0
-      '@typescript-eslint/visitor-keys': 8.10.0
+      '@typescript-eslint/types': 8.11.0
+      '@typescript-eslint/visitor-keys': 8.11.0
       debug: 4.3.7
       fast-glob: 3.3.2
       is-glob: 4.0.3
@@ -4753,16 +4753,16 @@ packages:
       - typescript
     dev: true
 
-  /@typescript-eslint/utils@8.10.0(eslint@9.8.0)(typescript@5.5.4):
-    resolution: {integrity: sha512-Oq4uZ7JFr9d1ZunE/QKy5egcDRXT/FrS2z/nlxzPua2VHFtmMvFNDvpq1m/hq0ra+T52aUezfcjGRIB7vNJF9w==}
+  /@typescript-eslint/utils@8.11.0(eslint@9.8.0)(typescript@5.5.4):
+    resolution: {integrity: sha512-CYiX6WZcbXNJV7UNB4PLDIBtSdRmRI/nb0FMyqHPTQD1rMjA0foPLaPUV39C/MxkTd/QKSeX+Gb34PPsDVC35g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.8.0)
-      '@typescript-eslint/scope-manager': 8.10.0
-      '@typescript-eslint/types': 8.10.0
-      '@typescript-eslint/typescript-estree': 8.10.0(typescript@5.5.4)
+      '@typescript-eslint/scope-manager': 8.11.0
+      '@typescript-eslint/types': 8.11.0
+      '@typescript-eslint/typescript-estree': 8.11.0(typescript@5.5.4)
       eslint: 9.8.0
     transitivePeerDependencies:
       - supports-color
@@ -4793,11 +4793,11 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@typescript-eslint/visitor-keys@8.10.0:
-    resolution: {integrity: sha512-k8nekgqwr7FadWk548Lfph6V3r9OVqjzAIVskE7orMZR23cGJjAOVazsZSJW+ElyjfTM4wx/1g88Mi70DDtG9A==}
+  /@typescript-eslint/visitor-keys@8.11.0:
+    resolution: {integrity: sha512-EaewX6lxSjRJnc+99+dqzTeoDZUfyrA52d2/HRrkI830kgovWsmIiTfmr0NZorzqic7ga+1bS60lRBUgR3n/Bw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     dependencies:
-      '@typescript-eslint/types': 8.10.0
+      '@typescript-eslint/types': 8.11.0
       eslint-visitor-keys: 3.4.3
     dev: true
 
@@ -5177,7 +5177,7 @@ packages:
       - vue
     dev: false
 
-  /@wisemen/eslint-config-vue@0.1.5(@vue/compiler-sfc@3.5.12)(eslint@9.8.0)(putout@36.9.0)(tailwindcss@3.4.13)(typescript@5.5.4)(vitest@2.0.5):
+  /@wisemen/eslint-config-vue@0.1.5(@vue/compiler-sfc@3.5.12)(eslint@9.8.0)(putout@36.10.0)(tailwindcss@3.4.13)(typescript@5.5.4)(vitest@2.0.5):
     resolution: {integrity: sha512-zO2M8DtN8Qp+6ov4GXQO0os5LpAeLXgL4KFeB1IekiTuNJrSBic46e8Tycy0M39xEST2jWugecE9k4zrDoOfCA==}
     peerDependencies:
       eslint: 9.6.0
@@ -5191,7 +5191,7 @@ packages:
       eslint-plugin-cypress: 3.3.0(eslint@9.8.0)
       eslint-plugin-path: 1.3.0(eslint@9.8.0)
       eslint-plugin-perfectionist: 2.11.0(eslint@9.8.0)(typescript@5.5.4)(vue-eslint-parser@9.4.3)
-      eslint-plugin-putout: 22.10.0(eslint@9.8.0)(putout@36.9.0)
+      eslint-plugin-putout: 22.10.0(eslint@9.8.0)(putout@36.10.0)
       eslint-plugin-require-explicit-generics: 1.0.0
       eslint-plugin-simple-import-sort: 12.1.1(eslint@9.8.0)
       eslint-plugin-tailwindcss: 3.17.4(tailwindcss@3.4.13)
@@ -5239,8 +5239,8 @@ packages:
       - vue
     dev: true
 
-  /@wisemen/vue-core@1.0.0-alpha.0(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.4.35):
-    resolution: {integrity: sha512-tjMljrkmhRP9BwHHri/wtLQMsEwCue0oS1LJynZYW04kSXV69sFlWEUSEcyE7rgRywsoObNRBEAjVxJ+Sq3O1w==}
+  /@wisemen/vue-core@1.0.0-alpha.2(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.4.35):
+    resolution: {integrity: sha512-91zcPgSo0DOHrRVrYfmq5Kz+/cZJ9iMNt/5fEJTTpoZqQnSPrFMo2T4BLFPVEkXIDqTVaeM04oKy5jTqO6xPnA==}
     peerDependencies:
       vue: 3.4.35
       vue-i18n: 9.13.1
@@ -5510,7 +5510,7 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.24.0
+      browserslist: 4.24.2
       caniuse-lite: 1.0.30001669
       fraction.js: 4.3.7
       normalize-range: 0.1.2
@@ -5633,15 +5633,15 @@ packages:
     dependencies:
       fill-range: 7.1.1
 
-  /browserslist@4.24.0:
-    resolution: {integrity: sha512-Rmb62sR1Zpjql25eSanFGEhAxcFwfA1K0GuQcLoaJBAcENegrQut3hYdhXFF1obQfiDyqIW/cLM5HSJ/9k884A==}
+  /browserslist@4.24.2:
+    resolution: {integrity: sha512-ZIc+Q62revdMcqC6aChtW4jz3My3klmCO1fEmINZY/8J3EpBg5/A/D0AKmBveUh6pgoeycoMkVMko84tuYS+Gg==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001669
-      electron-to-chromium: 1.5.41
+      electron-to-chromium: 1.5.42
       node-releases: 2.0.18
-      update-browserslist-db: 1.1.1(browserslist@4.24.0)
+      update-browserslist-db: 1.1.1(browserslist@4.24.2)
     dev: true
 
   /buffer-from@1.1.2:
@@ -5908,7 +5908,7 @@ packages:
   /core-js-compat@3.38.1:
     resolution: {integrity: sha512-JRH6gfXxGmrzF3tZ57lFx97YARxCXPaMzPo6jELZhv88pBH5VXpQ+y0znKGlFnzuaihqhLbefxSJxWJMPtfDzw==}
     dependencies:
-      browserslist: 4.24.0
+      browserslist: 4.24.2
     dev: true
 
   /cosmiconfig@9.0.0(typescript@5.5.4):
@@ -6197,8 +6197,8 @@ packages:
       jake: 10.9.2
     dev: true
 
-  /electron-to-chromium@1.5.41:
-    resolution: {integrity: sha512-dfdv/2xNjX0P8Vzme4cfzHqnPm5xsZXwsolTYr0eyW18IUmNyG08vL+fttvinTfhKfIKdRoqkDIC9e9iWQCNYQ==}
+  /electron-to-chromium@1.5.42:
+    resolution: {integrity: sha512-gIfKavKDw1mhvic9nbzA5lZw8QSHpdMwLwXc0cWidQz9B15pDoDdDH4boIatuFfeoCatb3a/NGL6CYRVFxGZ9g==}
     dev: true
 
   /emoji-regex@10.4.0:
@@ -6658,7 +6658,7 @@ packages:
       globals: 13.24.0
     dev: true
 
-  /eslint-plugin-putout@22.10.0(eslint@9.8.0)(putout@36.9.0):
+  /eslint-plugin-putout@22.10.0(eslint@9.8.0)(putout@36.10.0):
     resolution: {integrity: sha512-STNI3hsdWYpSHSIRekRi+4dlEM5rk4MV9JkslF/m/9z4CMsHjN+/M6slpNA4fs2OlHFqjofl2wVNGaWzsOWChA==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -6680,7 +6680,7 @@ packages:
       eslint-plugin-n: 17.11.1(eslint@9.8.0)
       eslint-plugin-react: 7.37.1(eslint@9.8.0)
       parse-import-specifiers: 1.0.3
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       synckit: 0.9.2
       try-catch: 3.0.1
       try-to-catch: 3.0.1
@@ -6835,8 +6835,8 @@ packages:
       - typescript
     dev: true
 
-  /eslint-plugin-vue@9.29.0(eslint@9.8.0):
-    resolution: {integrity: sha512-hamyjrBhNH6Li6R1h1VF9KHfshJlKgKEg3ARbGTn72CMNDSMhWbgC7NdkRDEh25AFW+4SDATzyNM+3gWuZii8g==}
+  /eslint-plugin-vue@9.29.1(eslint@9.8.0):
+    resolution: {integrity: sha512-MH/MbVae4HV/tM8gKAVWMPJbYgW04CK7SuzYRrlNERpxbO0P3+Zdsa2oAcFBW6xNu7W6lIkGOsFAMCRTYmrlWQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -7482,15 +7482,15 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      '@putout/plugin-declare': 4.0.0(putout@36.9.0)
-      '@putout/plugin-logical-expressions': 6.0.0(putout@36.9.0)
-      '@putout/plugin-try-catch': 4.0.0(putout@36.9.0)
+      '@putout/plugin-declare': 4.0.0(putout@36.10.0)
+      '@putout/plugin-logical-expressions': 6.0.0(putout@36.10.0)
+      '@putout/plugin-try-catch': 4.0.0(putout@36.10.0)
       '@putout/printer': 9.18.0
       acorn: 8.13.0
       acorn-typescript: 1.4.13(acorn@8.13.0)
       estree-to-babel: 9.1.0
       estree-util-attach-comments: 3.0.0
-      putout: 36.9.0(eslint@9.8.0)(typescript@5.5.4)
+      putout: 36.10.0(eslint@9.8.0)(typescript@5.5.4)
       try-catch: 3.0.1
     transitivePeerDependencies:
       - eslint
@@ -9463,152 +9463,152 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /putout@36.9.0(eslint@9.8.0)(typescript@5.5.4):
-    resolution: {integrity: sha512-zIlL5Vv1/ZLia/qHbEc1F5mZxXlWnBSkdumYLvd5IeUvxDjnuSdwNJM19UADIJ4yRxlFrTwtbVqZF5704nAgAw==}
+  /putout@36.10.0(eslint@9.8.0)(typescript@5.5.4):
+    resolution: {integrity: sha512-6iBab6gnexpWCskKUB1XnKFlrKTAYY/rxdFobjTMyv+cFfvSYEbhL8jOe31r1Ou6XxMmLTQbBklBZP1qqk0RjA==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
       '@putout/babel': 2.8.0
       '@putout/cli-cache': 3.1.0
-      '@putout/cli-choose-formatter': 4.0.0(putout@36.9.0)
+      '@putout/cli-choose-formatter': 4.0.0(putout@36.10.0)
       '@putout/cli-keypress': 2.0.0
       '@putout/cli-match': 2.2.0
       '@putout/cli-ruler': 3.1.0
       '@putout/cli-staged': 1.1.0
       '@putout/cli-validate-args': 2.0.0
       '@putout/compare': 14.7.2
-      '@putout/engine-loader': 14.0.0(putout@36.9.0)
+      '@putout/engine-loader': 14.0.0(putout@36.10.0)
       '@putout/engine-parser': 10.8.0
-      '@putout/engine-processor': 12.0.0(putout@36.9.0)
-      '@putout/engine-reporter': 2.0.0(putout@36.9.0)
-      '@putout/engine-runner': 21.2.0(putout@36.9.0)
+      '@putout/engine-processor': 12.0.0(putout@36.10.0)
+      '@putout/engine-reporter': 2.0.0(putout@36.10.0)
+      '@putout/engine-runner': 21.2.0(putout@36.10.0)
       '@putout/eslint': 3.6.0(eslint@9.8.0)
-      '@putout/formatter-codeframe': 7.0.0(putout@36.9.0)
-      '@putout/formatter-dump': 5.0.0(putout@36.9.0)
-      '@putout/formatter-frame': 6.0.0(putout@36.9.0)
-      '@putout/formatter-json': 2.0.0(putout@36.9.0)
-      '@putout/formatter-json-lines': 3.0.0(putout@36.9.0)
-      '@putout/formatter-memory': 4.0.1(putout@36.9.0)
-      '@putout/formatter-progress': 5.0.0(putout@36.9.0)
-      '@putout/formatter-progress-bar': 4.0.1(putout@36.9.0)
-      '@putout/formatter-stream': 5.0.0(putout@36.9.0)
-      '@putout/formatter-time': 3.0.1(putout@36.9.0)
+      '@putout/formatter-codeframe': 7.0.0(putout@36.10.0)
+      '@putout/formatter-dump': 5.0.0(putout@36.10.0)
+      '@putout/formatter-frame': 6.0.0(putout@36.10.0)
+      '@putout/formatter-json': 2.0.0(putout@36.10.0)
+      '@putout/formatter-json-lines': 3.0.0(putout@36.10.0)
+      '@putout/formatter-memory': 4.0.1(putout@36.10.0)
+      '@putout/formatter-progress': 5.0.0(putout@36.10.0)
+      '@putout/formatter-progress-bar': 4.0.1(putout@36.10.0)
+      '@putout/formatter-stream': 5.0.0(putout@36.10.0)
+      '@putout/formatter-time': 3.0.1(putout@36.10.0)
       '@putout/operate': 12.13.0
-      '@putout/operator-add-args': 8.0.1(putout@36.9.0)
-      '@putout/operator-declare': 9.1.0(putout@36.9.0)
-      '@putout/operator-filesystem': 4.1.0(putout@36.9.0)
+      '@putout/operator-add-args': 8.0.1(putout@36.10.0)
+      '@putout/operator-declare': 9.1.0(putout@36.10.0)
+      '@putout/operator-filesystem': 4.1.0(putout@36.10.0)
       '@putout/operator-ignore': 1.2.0
       '@putout/operator-json': 2.2.0
-      '@putout/operator-match-files': 3.5.0(putout@36.9.0)
-      '@putout/operator-regexp': 1.0.0(putout@36.9.0)
-      '@putout/operator-rename-files': 1.0.0(putout@36.9.0)
-      '@putout/plugin-apply-at': 2.0.0(putout@36.9.0)
-      '@putout/plugin-apply-destructuring': 7.1.0(putout@36.9.0)
-      '@putout/plugin-apply-dot-notation': 2.0.0(putout@36.9.0)
-      '@putout/plugin-apply-early-return': 3.0.0(putout@36.9.0)
-      '@putout/plugin-apply-flat-map': 2.0.0(putout@36.9.0)
-      '@putout/plugin-apply-optional-chaining': 6.0.0(putout@36.9.0)
-      '@putout/plugin-apply-overrides': 2.1.0(putout@36.9.0)
-      '@putout/plugin-apply-starts-with': 1.1.0(putout@36.9.0)
-      '@putout/plugin-apply-template-literals': 3.0.0(putout@36.9.0)
-      '@putout/plugin-browserlist': 2.0.0(putout@36.9.0)
-      '@putout/plugin-conditions': 5.0.0(putout@36.9.0)
-      '@putout/plugin-convert-apply-to-spread': 4.0.0(putout@36.9.0)
-      '@putout/plugin-convert-arguments-to-rest': 3.1.0(putout@36.9.0)
-      '@putout/plugin-convert-array-copy-to-slice': 3.0.0(putout@36.9.0)
-      '@putout/plugin-convert-assignment-to-arrow-function': 1.2.0(putout@36.9.0)
-      '@putout/plugin-convert-assignment-to-comparison': 2.0.0(putout@36.9.0)
-      '@putout/plugin-convert-assignment-to-declaration': 1.0.1(putout@36.9.0)
-      '@putout/plugin-convert-concat-to-flat': 1.0.0(putout@36.9.0)
-      '@putout/plugin-convert-const-to-let': 3.0.0(putout@36.9.0)
-      '@putout/plugin-convert-index-of-to-includes': 2.0.1(putout@36.9.0)
-      '@putout/plugin-convert-object-assign-to-merge-spread': 6.0.0(putout@36.9.0)
-      '@putout/plugin-convert-object-entries-to-array-entries': 3.0.1(putout@36.9.0)
-      '@putout/plugin-convert-optional-to-logical': 4.0.0(putout@36.9.0)
-      '@putout/plugin-convert-quotes-to-backticks': 3.0.0(putout@36.9.0)
-      '@putout/plugin-convert-template-to-string': 2.0.0(putout@36.9.0)
-      '@putout/plugin-convert-to-arrow-function': 4.0.0(putout@36.9.0)
-      '@putout/plugin-coverage': 1.0.0(putout@36.9.0)
-      '@putout/plugin-declare': 4.0.0(putout@36.9.0)
-      '@putout/plugin-declare-before-reference': 4.0.0(putout@36.9.0)
-      '@putout/plugin-declare-imports-first': 2.1.0(putout@36.9.0)
-      '@putout/plugin-eslint': 9.1.0(putout@36.9.0)
-      '@putout/plugin-extract-object-properties': 9.0.0(putout@36.9.0)
-      '@putout/plugin-extract-sequence-expressions': 3.5.0(putout@36.9.0)
-      '@putout/plugin-filesystem': 5.3.0(putout@36.9.0)
-      '@putout/plugin-for-of': 6.1.1(putout@36.9.0)
-      '@putout/plugin-generators': 1.0.0(putout@36.9.0)
-      '@putout/plugin-github': 12.3.0(putout@36.9.0)
-      '@putout/plugin-gitignore': 6.0.0(putout@36.9.0)
-      '@putout/plugin-group-imports-by-source': 1.0.0(putout@36.9.0)
-      '@putout/plugin-labels': 1.0.0(putout@36.9.0)
-      '@putout/plugin-logical-expressions': 6.0.0(putout@36.9.0)
-      '@putout/plugin-madrun': 19.0.0(putout@36.9.0)
-      '@putout/plugin-math': 2.1.0(putout@36.9.0)
-      '@putout/plugin-maybe': 2.0.1(putout@36.9.0)
-      '@putout/plugin-merge-destructuring-properties': 9.0.0(putout@36.9.0)
-      '@putout/plugin-merge-duplicate-functions': 2.0.0(putout@36.9.0)
-      '@putout/plugin-merge-duplicate-imports': 11.0.0(putout@36.9.0)
-      '@putout/plugin-montag': 2.0.0(putout@36.9.0)
-      '@putout/plugin-new': 3.0.1(putout@36.9.0)
-      '@putout/plugin-nodejs': 12.0.1(putout@36.9.0)
-      '@putout/plugin-npmignore': 5.0.0(putout@36.9.0)
-      '@putout/plugin-package-json': 8.3.0(putout@36.9.0)
-      '@putout/plugin-promises': 15.2.0(putout@36.9.0)
-      '@putout/plugin-putout': 21.4.0(putout@36.9.0)
-      '@putout/plugin-putout-config': 6.9.3(putout@36.9.0)
-      '@putout/plugin-regexp': 9.0.0(putout@36.9.0)
-      '@putout/plugin-remove-console': 6.0.0(putout@36.9.0)
-      '@putout/plugin-remove-constant-conditions': 4.0.2(putout@36.9.0)
-      '@putout/plugin-remove-debugger': 7.0.0(putout@36.9.0)
-      '@putout/plugin-remove-duplicate-case': 3.0.0(putout@36.9.0)
-      '@putout/plugin-remove-duplicate-keys': 5.1.0(putout@36.9.0)
-      '@putout/plugin-remove-empty': 12.1.0(putout@36.9.0)
-      '@putout/plugin-remove-iife': 4.1.0(putout@36.9.0)
-      '@putout/plugin-remove-nested-blocks': 6.3.0(putout@36.9.0)
-      '@putout/plugin-remove-quotes-from-import-assertions': 1.0.0(putout@36.9.0)
-      '@putout/plugin-remove-unreachable-code': 1.2.0(putout@36.9.0)
-      '@putout/plugin-remove-unreferenced-variables': 4.0.0(putout@36.9.0)
-      '@putout/plugin-remove-unused-expressions': 9.0.0(putout@36.9.0)
-      '@putout/plugin-remove-unused-for-of-variables': 3.0.1(putout@36.9.0)
-      '@putout/plugin-remove-unused-labels': 1.0.2(putout@36.9.0)
-      '@putout/plugin-remove-unused-private-fields': 2.1.0(putout@36.9.0)
-      '@putout/plugin-remove-unused-variables': 9.2.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-arguments': 9.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-array': 1.1.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-array-constructor': 2.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-array-entries': 1.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-assign': 1.1.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-constructor': 2.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-continue': 2.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-delete': 1.0.4(putout@36.9.0)
-      '@putout/plugin-remove-useless-escape': 6.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-functions': 3.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-map': 1.1.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-operand': 2.1.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-push': 1.0.3(putout@36.9.0)
-      '@putout/plugin-remove-useless-replace': 1.0.4(putout@36.9.0)
-      '@putout/plugin-remove-useless-return': 7.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-spread': 11.1.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-template-expressions': 2.0.0(putout@36.9.0)
-      '@putout/plugin-remove-useless-variables': 12.5.0(putout@36.9.0)
-      '@putout/plugin-reuse-duplicate-init': 5.0.0(putout@36.9.0)
-      '@putout/plugin-simplify-assignment': 3.1.0(putout@36.9.0)
-      '@putout/plugin-simplify-boolean-return': 2.0.0(putout@36.9.0)
-      '@putout/plugin-simplify-ternary': 7.0.0(putout@36.9.0)
-      '@putout/plugin-sort-imports-by-specifiers': 1.1.0(putout@36.9.0)
-      '@putout/plugin-split-assignment-expressions': 1.2.0(putout@36.9.0)
-      '@putout/plugin-split-nested-destructuring': 3.0.0(putout@36.9.0)
-      '@putout/plugin-split-variable-declarations': 3.0.0(putout@36.9.0)
-      '@putout/plugin-tape': 15.1.0(putout@36.9.0)
-      '@putout/plugin-try-catch': 4.0.0(putout@36.9.0)
-      '@putout/plugin-types': 5.1.0(putout@36.9.0)
-      '@putout/plugin-typescript': 8.2.1(putout@36.9.0)
-      '@putout/plugin-webpack': 3.0.0(putout@36.9.0)
-      '@putout/processor-css': 9.0.0(putout@36.9.0)(typescript@5.5.4)
-      '@putout/processor-filesystem': 4.0.0(putout@36.9.0)
+      '@putout/operator-match-files': 3.5.0(putout@36.10.0)
+      '@putout/operator-regexp': 1.0.0(putout@36.10.0)
+      '@putout/operator-rename-files': 1.0.0(putout@36.10.0)
+      '@putout/plugin-apply-at': 2.0.0(putout@36.10.0)
+      '@putout/plugin-apply-destructuring': 7.1.0(putout@36.10.0)
+      '@putout/plugin-apply-dot-notation': 2.0.0(putout@36.10.0)
+      '@putout/plugin-apply-early-return': 3.0.0(putout@36.10.0)
+      '@putout/plugin-apply-flat-map': 2.0.0(putout@36.10.0)
+      '@putout/plugin-apply-optional-chaining': 6.0.0(putout@36.10.0)
+      '@putout/plugin-apply-overrides': 2.1.0(putout@36.10.0)
+      '@putout/plugin-apply-starts-with': 1.1.0(putout@36.10.0)
+      '@putout/plugin-apply-template-literals': 3.0.0(putout@36.10.0)
+      '@putout/plugin-browserlist': 2.0.0(putout@36.10.0)
+      '@putout/plugin-conditions': 5.0.0(putout@36.10.0)
+      '@putout/plugin-convert-apply-to-spread': 4.0.0(putout@36.10.0)
+      '@putout/plugin-convert-arguments-to-rest': 3.1.0(putout@36.10.0)
+      '@putout/plugin-convert-array-copy-to-slice': 3.0.0(putout@36.10.0)
+      '@putout/plugin-convert-assignment-to-arrow-function': 1.2.0(putout@36.10.0)
+      '@putout/plugin-convert-assignment-to-comparison': 2.0.0(putout@36.10.0)
+      '@putout/plugin-convert-assignment-to-declaration': 1.0.1(putout@36.10.0)
+      '@putout/plugin-convert-concat-to-flat': 1.0.0(putout@36.10.0)
+      '@putout/plugin-convert-const-to-let': 3.0.0(putout@36.10.0)
+      '@putout/plugin-convert-index-of-to-includes': 2.0.1(putout@36.10.0)
+      '@putout/plugin-convert-object-assign-to-merge-spread': 6.0.0(putout@36.10.0)
+      '@putout/plugin-convert-object-entries-to-array-entries': 3.0.1(putout@36.10.0)
+      '@putout/plugin-convert-optional-to-logical': 4.0.0(putout@36.10.0)
+      '@putout/plugin-convert-quotes-to-backticks': 3.0.0(putout@36.10.0)
+      '@putout/plugin-convert-template-to-string': 2.0.0(putout@36.10.0)
+      '@putout/plugin-convert-to-arrow-function': 4.0.0(putout@36.10.0)
+      '@putout/plugin-coverage': 1.0.0(putout@36.10.0)
+      '@putout/plugin-declare': 4.0.0(putout@36.10.0)
+      '@putout/plugin-declare-before-reference': 4.0.0(putout@36.10.0)
+      '@putout/plugin-declare-imports-first': 2.1.0(putout@36.10.0)
+      '@putout/plugin-eslint': 9.1.0(putout@36.10.0)
+      '@putout/plugin-extract-object-properties': 9.0.0(putout@36.10.0)
+      '@putout/plugin-extract-sequence-expressions': 3.5.0(putout@36.10.0)
+      '@putout/plugin-filesystem': 5.3.0(putout@36.10.0)
+      '@putout/plugin-for-of': 6.1.1(putout@36.10.0)
+      '@putout/plugin-generators': 1.0.0(putout@36.10.0)
+      '@putout/plugin-github': 13.0.0(putout@36.10.0)
+      '@putout/plugin-gitignore': 6.0.0(putout@36.10.0)
+      '@putout/plugin-group-imports-by-source': 2.0.0(putout@36.10.0)
+      '@putout/plugin-labels': 1.0.0(putout@36.10.0)
+      '@putout/plugin-logical-expressions': 6.0.0(putout@36.10.0)
+      '@putout/plugin-madrun': 19.0.0(putout@36.10.0)
+      '@putout/plugin-math': 2.1.0(putout@36.10.0)
+      '@putout/plugin-maybe': 2.0.1(putout@36.10.0)
+      '@putout/plugin-merge-destructuring-properties': 9.0.0(putout@36.10.0)
+      '@putout/plugin-merge-duplicate-functions': 2.0.0(putout@36.10.0)
+      '@putout/plugin-merge-duplicate-imports': 11.0.0(putout@36.10.0)
+      '@putout/plugin-montag': 2.0.0(putout@36.10.0)
+      '@putout/plugin-new': 3.0.1(putout@36.10.0)
+      '@putout/plugin-nodejs': 12.0.1(putout@36.10.0)
+      '@putout/plugin-npmignore': 5.0.0(putout@36.10.0)
+      '@putout/plugin-package-json': 8.3.0(putout@36.10.0)
+      '@putout/plugin-promises': 15.2.0(putout@36.10.0)
+      '@putout/plugin-putout': 21.4.0(putout@36.10.0)
+      '@putout/plugin-putout-config': 6.9.3(putout@36.10.0)
+      '@putout/plugin-regexp': 9.0.0(putout@36.10.0)
+      '@putout/plugin-remove-console': 6.0.0(putout@36.10.0)
+      '@putout/plugin-remove-constant-conditions': 4.0.2(putout@36.10.0)
+      '@putout/plugin-remove-debugger': 7.0.0(putout@36.10.0)
+      '@putout/plugin-remove-duplicate-case': 3.0.0(putout@36.10.0)
+      '@putout/plugin-remove-duplicate-keys': 5.1.0(putout@36.10.0)
+      '@putout/plugin-remove-empty': 12.1.0(putout@36.10.0)
+      '@putout/plugin-remove-iife': 4.1.0(putout@36.10.0)
+      '@putout/plugin-remove-nested-blocks': 6.3.0(putout@36.10.0)
+      '@putout/plugin-remove-quotes-from-import-assertions': 1.0.0(putout@36.10.0)
+      '@putout/plugin-remove-unreachable-code': 1.2.0(putout@36.10.0)
+      '@putout/plugin-remove-unreferenced-variables': 4.0.0(putout@36.10.0)
+      '@putout/plugin-remove-unused-expressions': 9.0.0(putout@36.10.0)
+      '@putout/plugin-remove-unused-for-of-variables': 3.0.1(putout@36.10.0)
+      '@putout/plugin-remove-unused-labels': 1.0.2(putout@36.10.0)
+      '@putout/plugin-remove-unused-private-fields': 2.1.0(putout@36.10.0)
+      '@putout/plugin-remove-unused-variables': 9.2.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-arguments': 9.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-array': 1.1.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-array-constructor': 2.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-array-entries': 1.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-assign': 1.1.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-constructor': 2.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-continue': 2.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-delete': 1.0.4(putout@36.10.0)
+      '@putout/plugin-remove-useless-escape': 6.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-functions': 3.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-map': 1.1.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-operand': 2.1.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-push': 1.0.3(putout@36.10.0)
+      '@putout/plugin-remove-useless-replace': 1.0.4(putout@36.10.0)
+      '@putout/plugin-remove-useless-return': 7.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-spread': 11.1.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-template-expressions': 2.0.0(putout@36.10.0)
+      '@putout/plugin-remove-useless-variables': 12.5.0(putout@36.10.0)
+      '@putout/plugin-reuse-duplicate-init': 5.0.0(putout@36.10.0)
+      '@putout/plugin-simplify-assignment': 3.1.0(putout@36.10.0)
+      '@putout/plugin-simplify-boolean-return': 2.0.0(putout@36.10.0)
+      '@putout/plugin-simplify-ternary': 7.0.0(putout@36.10.0)
+      '@putout/plugin-sort-imports-by-specifiers': 1.1.0(putout@36.10.0)
+      '@putout/plugin-split-assignment-expressions': 1.2.0(putout@36.10.0)
+      '@putout/plugin-split-nested-destructuring': 3.0.0(putout@36.10.0)
+      '@putout/plugin-split-variable-declarations': 3.0.0(putout@36.10.0)
+      '@putout/plugin-tape': 15.1.0(putout@36.10.0)
+      '@putout/plugin-try-catch': 4.0.0(putout@36.10.0)
+      '@putout/plugin-types': 5.1.0(putout@36.10.0)
+      '@putout/plugin-typescript': 8.2.1(putout@36.10.0)
+      '@putout/plugin-webpack': 3.0.0(putout@36.10.0)
+      '@putout/processor-css': 9.0.0(putout@36.10.0)(typescript@5.5.4)
+      '@putout/processor-filesystem': 4.0.0(putout@36.10.0)
       '@putout/processor-ignore': 6.0.1
-      '@putout/processor-javascript': 5.0.0(putout@36.9.0)
+      '@putout/processor-javascript': 5.0.0(putout@36.10.0)
       '@putout/processor-json': 9.0.0
       '@putout/processor-markdown': 12.1.0
       '@putout/processor-yaml': 8.1.0
@@ -11170,13 +11170,13 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /update-browserslist-db@1.1.1(browserslist@4.24.0):
+  /update-browserslist-db@1.1.1(browserslist@4.24.2):
     resolution: {integrity: sha512-R8UzCaa9Az+38REPiJ1tXlImTJXlVfgHZsglwBD/k6nj76ctsH1E3q4doGrukiLQd3sGQYu56r5+lo5r94l29A==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
     dependencies:
-      browserslist: 4.24.0
+      browserslist: 4.24.2
       escalade: 3.2.0
       picocolors: 1.1.1
     dev: true
