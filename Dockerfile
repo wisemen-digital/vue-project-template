@@ -5,7 +5,7 @@ ARG NODE_VERSION=lts
 # --- Stage 1: Build ---
 #
 
-FROM node:${NODE_VERSION} as build
+FROM node:${NODE_VERSION} AS build
 RUN corepack enable
 
 ARG BUILD_COMMIT
@@ -27,7 +27,7 @@ RUN pnpm run production
 # --- Stage 2: Run ---
 #
 
-FROM ghcr.io/wisemen-digital/web-base:latest as final
+FROM ghcr.io/wisemen-digital/web-base:latest AS final
 
 COPY --from=build /app/dist /app/www
 COPY --from=build /app/.env.example /etc/import-meta-env/example
