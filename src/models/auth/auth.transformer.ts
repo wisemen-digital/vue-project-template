@@ -1,5 +1,6 @@
+import type { ZitadelUser } from '@wisemen/oauth2-vue-client'
+
 import type { CurrentUser } from './current-user/currentUser.model'
-import type { CurrentUserDto } from './current-user/currentUserDto.model'
 import type { ForgotPasswordDto } from './forgot-password/forgotPasswordDto.model'
 import type { ForgotPasswordForm } from './forgot-password/forgotPasswordForm.model'
 import type { LoginDto } from './login/loginDto.model'
@@ -8,13 +9,13 @@ import type { ResetPasswordDto } from './reset-password/resetPasswordDto.model'
 import type { ResetPasswordForm } from './reset-password/resetPasswordForm.model'
 
 export class AuthTransformer {
-  static toCurrentUser(dto: CurrentUserDto): CurrentUser {
+  static toCurrentUser(dto: ZitadelUser): CurrentUser {
     return {
-      uuid: dto.uuid,
-      email: dto.mail,
-      firstName: dto.firstName,
-      fullName: `${dto.firstName} ${dto.lastName}`,
-      lastName: dto.lastName,
+      uuid: dto.sub,
+      email: dto.email,
+      firstName: dto.given_name,
+      fullName: dto.name,
+      lastName: dto.family_name,
     }
   }
 

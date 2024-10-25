@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import { useToast, useTypedRouter } from '@wisemen/vue-core'
-import { AxiosError } from 'axios'
+import {
+  AppButton,
+  useLoading,
+  useToast,
+  useTypedRouter,
+} from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import AppGrid from '@/components/app/AppGrid.vue'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
-import { loginFormSchema } from '@/models/auth/login/loginForm.model'
+import { loginStartSessionFormSchema } from '@/models/auth/login/loginStartSessionForm.model.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
-import AuthLoginForm from '@/modules/auth/features/login/components/AuthLoginForm.vue'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const authStore = useAuthStore()
@@ -20,12 +24,10 @@ const { t } = useI18n()
 const toast = useToast()
 const router = useTypedRouter()
 
-const {
-  form,
-  onSubmitForm,
-  onSubmitFormError,
-} = useForm({
-  schema: loginFormSchema,
+const loadingZitadel = useLoading()
+
+const form = useForm({
+  schema: loginStartSessionFormSchema,
 })
 
 const title = computed<string>(() => {
@@ -47,43 +49,59 @@ async function handleLoggedIn(user: CurrentUser): Promise<void> {
   })
 }
 
-function handleLoginError(error: unknown): void {
-  if (error instanceof AxiosError) {
-    form.addErrors({
-      password: {
-        _errors: [
-          t('auth.login.invalid_email_or_password'),
-        ],
-      },
-    })
+async function onLoginWithZitadelClick(): Promise<void> {
+  try {
+    loadingZitadel.setState(true)
 
+    const loginUrl = await authStore.getLoginUrl()
+
+    window.location.replace(loginUrl)
+  }
+  catch {
+    loadingZitadel.setState(false)
     toast.error({
       title: t('auth.login.error_toast.title'),
       description: t('auth.login.error_toast.description'),
     })
   }
-  else {
-    throw error
+}
+
+async function onLoginWithProviderClick(provider: 'apple' | 'google'): Promise<void> {
+  try {
+    loadingZitadel.setState(true)
+
+    window.location.href = await authStore.getIdentityProviderLoginUrl(provider)
+  }
+
+  catch (error) {
+    loadingZitadel.setState(false)
+    toast.error({
+      title: t('auth.login.error_toast.title'),
+      description: error?.toString() ?? t('auth.login.error_toast.description'),
+    })
   }
 }
 
-onSubmitFormError(() => {
+form.onSubmitFormError(() => {
   toast.error({
     title: t('error.invalid_form_input.title'),
     description: t('error.invalid_form_input.description'),
   })
 })
 
-onSubmitForm(async (data) => {
+form.onSubmitForm(async (data) => {
   try {
-    await authStore.login(data)
+    await authStore.startSession(data.email)
 
     const currentUser = await authStore.getCurrentUser()
 
     await handleLoggedIn(currentUser)
   }
   catch (error) {
-    handleLoginError(error)
+    toast.error({
+      title: t('auth.login.error_toast.title'),
+      description: error?.toString() ?? '',
+    })
     authStore.setLastLoginAttemptEmail(data.email)
   }
 })
@@ -94,9 +112,25 @@ onSubmitForm(async (data) => {
     :description="t('auth.login.sign_in_to_continue')"
     :title="title"
   >
-    <AuthLoginForm
-      :form="form"
-      :last-logged-in-user="lastLoggedInUser"
-    />
+    <AppGrid
+      :cols="1"
+      class="w-full"
+    >
+      <AppButton
+        @click="onLoginWithZitadelClick"
+      >
+        {{ t('auth.login.login_with_zitadel') }}
+      </AppButton>
+      <AppButton
+        @click="onLoginWithProviderClick('apple')"
+      >
+        {{ t('auth.login.login_with_apple') }}
+      </AppButton>
+      <AppButton
+        @click="onLoginWithProviderClick('google')"
+      >
+        {{ t('auth.login.login_with_google') }}
+      </AppButton>
+    </AppGrid>
   </AuthPage>
 </template>

@@ -17,6 +17,9 @@
       "forgot_password": "Forgot password?",
       "invalid_email_or_password": "Invalid email or password",
       "log_in": "Log in",
+      "login_with_apple": "Login with apple",
+      "login_with_google": "Login with google",
+      "login_with_zitadel": "Login with Zitadel",
       "sign_in_to_continue": "Sign in to continue",
       "welcome_back_name": "Welcome back, {name}"
     },
@@ -147,6 +150,7 @@
     "go_to_detail": "Go to detail",
     "last_name": "Last name",
     "name": "Name",
+    "next": "Next",
     "overview": "Overview",
     "personal_info": "Personal info",
     "phone_number": "Phonenumber",

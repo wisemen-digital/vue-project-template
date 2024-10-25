@@ -9,7 +9,6 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { forgotPasswordFormSchema } from '@/models/auth/forgot-password/forgotPasswordForm.model'
-import { useAuthForgotPasswordMutation } from '@/modules/auth/api/mutations/authForgotPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import AuthForgotPasswordForm from '@/modules/auth/features/forgot-password/components/AuthForgotPasswordForm.vue'
 import { useAuthStore } from '@/stores/auth.store.ts'
@@ -29,8 +28,6 @@ const { form, onSubmitForm } = useForm({
   schema: forgotPasswordFormSchema,
 })
 
-const forgotPasswordMutation = useAuthForgotPasswordMutation()
-
 const title = computed<string>(() => {
   if (hasResetPassword.value) {
     return t('auth.forgot_password.success_title')
@@ -47,11 +44,9 @@ const description = computed<string>(() => {
   return t('auth.forgot_password.description')
 })
 
-onSubmitForm(async (values) => {
+onSubmitForm((values) => {
   try {
-    await forgotPasswordMutation.execute({
-      body: values,
-    })
+    // TODO
 
     hasResetPassword.value = true
     resetEmail.value = values.email
@@ -75,7 +70,7 @@ onSubmitForm(async (values) => {
 
     <div class="mt-2 flex justify-center">
       <AppRouterLinkButton
-        :to="{ name: 'login' }"
+        :to="{ name: 'auth-login' }"
         variant="ghost"
       >
         {{ t('auth.forgot_password.return_to_login') }}

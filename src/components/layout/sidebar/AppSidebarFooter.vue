@@ -5,7 +5,6 @@ import {
   AppButton,
   AppDropdownMenu,
   AppText,
-  useTypedRouter,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -20,7 +19,6 @@ import { useAuthStore } from '@/stores/auth.store'
 
 const { t } = useI18n()
 const authStore = useAuthStore()
-const router = useTypedRouter()
 
 const currentUser = computed<CurrentUser | null>(() => authStore.currentUser)
 const currentUserAvatarFallback = computed<string>(() => {
@@ -50,11 +48,9 @@ const dropdownMenuItems: DropdownMenuItem[] = [
 ]
 
 function onSignOutButtonClick(): void {
-  authStore.logout()
+  const logoutUrl = authStore.getLogoutUrl()
 
-  void router.replace({
-    name: 'login',
-  })
+  window.location.replace(logoutUrl)
 }
 </script>
 
