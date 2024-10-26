@@ -22,7 +22,7 @@ export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
   }
 
   try {
-    await authStore.getCurrentUser()
+    await authStore.getAuthUser()
   }
   catch (error) {
     if (isAxiosError(error)) {

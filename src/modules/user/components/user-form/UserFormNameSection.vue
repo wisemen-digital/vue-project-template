@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { AppTextField } from '@wisemen/vue-core'
 import type { Field } from 'formango'
-import { useI18n } from 'vue-i18n'
 
 import FormGrid from '@/components/app/grid/FormGrid.vue'
 import FormSection from '@/components/form/FormSection.vue'
+import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 
 const props = defineProps<{
@@ -17,19 +17,19 @@ const { t } = useI18n()
 
 <template>
   <FormSection
-    :description="t('users.form.section.name.description')"
-    :title="t('shared.name')"
+    :description="t('module.user.form.section.name.description')"
+    :title="t('user.name')"
   >
     <FormGrid :cols="2">
       <AppTextField
         :test-id="TEST_ID.USERS.FORM.FIRST_NAME_INPUT"
         v-bind="props.firstName"
-        :label="t('shared.first_name')"
+        :label="t('user.first_name')"
       />
       <AppTextField
         v-bind="props.lastName"
         :test-id="TEST_ID.USERS.FORM.LAST_NAME_INPUT"
-        :label="t('shared.last_name')"
+        :label="t('user.last_name')"
       />
     </FormGrid>
   </FormSection>

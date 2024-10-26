@@ -5,8 +5,8 @@ import {
   ref,
   watch,
 } from 'vue'
-import { useI18n } from 'vue-i18n'
 
+import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TIME } from '@/constants/time.constant'
 import { LoggerUtil } from '@/utils/logger.util'
 
@@ -52,12 +52,12 @@ export function useRefreshPrompt(): void {
       if (needRefresh) {
         toast.info({
           action: {
-            label: t('components.refresh_prompt.new_version.action'),
+            label: t('component.refresh_prompt.new_version.action'),
             onClick: onRefreshButtonClick,
           },
           durationInMs: TIME.ONE_HOUR,
           icon: 'stars02',
-          message: t('components.refresh_prompt.new_version.description'),
+          message: t('component.refresh_prompt.new_version.description'),
         })
       }
     }, {

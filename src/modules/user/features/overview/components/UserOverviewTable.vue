@@ -10,9 +10,9 @@ import {
   h,
   type VNode,
 } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
+import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'
@@ -33,14 +33,14 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     testId: TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME,
     isSortable: true,
     cell: (user): VNode => h(UserOverviewTableNameCell, { user }),
-    headerLabel: t('shared.name'),
+    headerLabel: t('user.name'),
     key: 'name',
   },
   {
     testId: TEST_ID.USERS.OVERVIEW.TABLE.BIRTH_DATE,
     isSortable: true,
     cell: (): VNode => h(AppTableCell, () => DateUtil.toLocaleDate(new Date())),
-    headerLabel: t('shared.birth_date'),
+    headerLabel: t('user.birth_date'),
     key: 'birthDate',
   },
 ])

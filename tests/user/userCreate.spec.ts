@@ -1,7 +1,8 @@
-import { test } from '@@/base.fixture'
+import { expect, test } from '@@/base.fixture'
 
 test.describe('User Create', () => {
-  test('create a new user', async ({ page }) => {
+  test('create a new user', () => {
+    expect(true).toBe(true)
     // await InterceptorUtil.getPaginated(page, 'users*', [])
 
     // const USER_1 = new UserDtoBuilder().build()

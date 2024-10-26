@@ -1,4 +1,3 @@
-import { useLocalStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import {
   computed,
@@ -7,34 +6,16 @@ import {
 
 import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import { AuthTransformer } from '@/models/auth/auth.transformer'
-import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
-import type { LoginForm } from '@/models/auth/login/loginForm.model'
+import type { AuthUser } from '@/models/auth-user/authUser.model'
 import { AuthService } from '@/modules/auth/api/services/auth.service'
 import { UuidUtil } from '@/utils/uuid.util.ts'
 
 export const useAuthStore = defineStore('auth', () => {
-  const lastLoginAttemptEmail = ref<null | string>(null)
-  const currentUser = ref<CurrentUser | null>(null)
+  const authUser = ref<AuthUser | null>(null)
 
-  const lastLoggedInUser = useLocalStorage<CurrentUser | null>('lastLoggedInUser', null, {
-    serializer: {
-      read: (value) => JSON.parse(value),
-      write: (value) => JSON.stringify(value),
-    },
-  })
+  const isAuthenticated = computed<boolean>(() => authUser.value === null)
 
-  const isAuthenticated = computed<boolean>(() => currentUser.value === null)
-
-  function setLastLoginAttemptEmail(email: null | string): void {
-    lastLoginAttemptEmail.value = email
-  }
-
-  function setLastLoggedInUser(user: CurrentUser | null): void {
-    lastLoggedInUser.value = user
-  }
-
-  async function getCurrentUser(): Promise<CurrentUser> {
+  async function getAuthUser(): Promise<AuthUser> {
     if (CURRENT_ENVIRONMENT === 'e2e') {
       return {
         uuid: UuidUtil.getRandom(),
@@ -45,39 +26,28 @@ export const useAuthStore = defineStore('auth', () => {
       }
     }
 
-    if (currentUser.value !== null) {
-      return currentUser.value
+    if (authUser.value !== null) {
+      return authUser.value
     }
 
-    currentUser.value = await AuthService.getCurrentUser()
+    authUser.value = await AuthService.getAuthUser()
 
-    return currentUser.value
+    return authUser.value
   }
 
-  function setCurrentUser(user: CurrentUser | null): void {
-    currentUser.value = user
-  }
-
-  async function login(data: LoginForm): Promise<void> {
-    const { password, username } = AuthTransformer.toLoginDto(data)
-
-    await oAuthClient.loginPassword(username, password)
+  function setAuthUser(user: AuthUser | null): void {
+    authUser.value = user
   }
 
   function logout(): void {
     oAuthClient.logout()
-    setCurrentUser(null)
+    setAuthUser(null)
   }
 
   return {
     isAuthenticated,
-    currentUser,
-    getCurrentUser,
-    lastLoggedInUser: computed<CurrentUser | null>(() => lastLoggedInUser.value),
-    lastLoginAttemptEmail: computed<null | string>(() => lastLoginAttemptEmail.value),
-    login,
+    authUser,
+    getAuthUser,
     logout,
-    setLastLoggedInUser,
-    setLastLoginAttemptEmail,
   }
 })

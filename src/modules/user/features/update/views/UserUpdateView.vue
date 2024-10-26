@@ -3,10 +3,10 @@ import type { BreadcrumbItem } from '@wisemen/vue-core'
 import { useToast } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 import FormPage from '@/components/form/FormPage.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
+import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUpdateForm as UserUpdateFormType } from '@/models/user/update/userUpdateForm.model'
@@ -26,7 +26,7 @@ const userUpdateMutation = useUserUpdateMutation()
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    label: t('shared.users'),
+    label: t('user.label.plural'),
     to: {
       name: 'user-overview',
     },
@@ -74,7 +74,7 @@ onSubmitForm(async (values) => {
 
     toast.success({
       testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
-      message: t('users.update.success.description'),
+      message: t('module.user.update.success_toast.message'),
     })
   }
   catch (error) {

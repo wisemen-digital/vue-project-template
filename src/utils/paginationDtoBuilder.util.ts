@@ -3,8 +3,9 @@ import type { PaginationOptions } from '@wisemen/vue-core'
 const DEFAULT_OFFSET = 0
 const DEFAULT_LIMIT = 20
 
-type PaginationParams<TFilterSchema> = {
-  filters: Partial<TFilterSchema>
+export type PaginationParams<TFilterSchema> = {
+  filter: Partial<TFilterSchema>
+  search?: string
   sort?: {
     field: string
     order: 'asc' | 'desc'
@@ -21,12 +22,20 @@ interface PaginationSort {
   key: string
 }
 
+type FiltersDto<TFilter> = {
+  'pagination[limit]': number
+  'pagination[offset]': number
+  'search'?: string
+} & {
+  [K in keyof TFilter as `filters[${Extract<K, string>}]`]?: TFilter[K];
+}
+
 export class PaginationDtoBuilder<TFilterSchema> {
   private paginationOptions: PaginationParams<TFilterSchema>
 
   constructor(paginationOptions?: PaginationOptions<TFilterSchema>) {
-    const limit = (paginationOptions?.pagination.perPage ?? DEFAULT_LIMIT)
-    const offset = (paginationOptions?.pagination.page ?? DEFAULT_OFFSET) * limit
+    const limit = (paginationOptions?.pagination.limit ?? DEFAULT_LIMIT)
+    const offset = (paginationOptions?.pagination.offset ?? DEFAULT_OFFSET)
 
     const allFilters = {
       ...paginationOptions?.filters ?? {},
@@ -38,6 +47,7 @@ export class PaginationDtoBuilder<TFilterSchema> {
         limit,
         offset,
       },
+      search: paginationOptions?.search,
     } as PaginationParams<TFilterSchema>
 
     Object.entries(allFilters).forEach(([
@@ -55,8 +65,8 @@ export class PaginationDtoBuilder<TFilterSchema> {
     }
   }
 
-  public build(): PaginationParams<TFilterSchema> {
-    return this.paginationOptions
+  public build(): FiltersDto<TFilterSchema> {
+    return this.paginationOptions as unknown as FiltersDto<TFilterSchema>
   }
 
   public withFilter<TKey extends keyof TFilterSchema>(
@@ -64,8 +74,8 @@ export class PaginationDtoBuilder<TFilterSchema> {
     value: TFilterSchema[TKey] | null | undefined,
   ): PaginationDtoBuilder<TFilterSchema> {
     if (value !== null && value !== '') {
-      this.paginationOptions.filters = {
-        ...this.paginationOptions.filters,
+      this.paginationOptions.filter = {
+        ...this.paginationOptions.filter,
         [key]: value,
       }
     }
@@ -81,6 +91,12 @@ export class PaginationDtoBuilder<TFilterSchema> {
 
   public withOffset(offset: number): PaginationDtoBuilder<TFilterSchema> {
     this.paginationOptions.pagination.offset = offset
+
+    return this
+  }
+
+  public withSearch(search: string): PaginationDtoBuilder<TFilterSchema> {
+    this.paginationOptions.search = search
 
     return this
   }

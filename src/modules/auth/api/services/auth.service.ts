@@ -1,42 +1,19 @@
-import { z } from 'zod'
-
 import { API_AUTH_URL } from '@/constants/environment.constant'
-import {
-  authHttpClient,
-  httpClient,
-} from '@/libs/http.lib'
-import { AuthTransformer } from '@/models/auth/auth.transformer'
-import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
-import { currentUserDtoSchema } from '@/models/auth/current-user/currentUserDto.model'
-import type { ForgotPasswordForm } from '@/models/auth/forgot-password/forgotPasswordForm.model'
-import type { ResetPasswordForm } from '@/models/auth/reset-password/resetPasswordForm.model'
+import { httpClient } from '@/libs/http.lib'
+import { AuthUserTransformer } from '@/models/auth-user/auth.transformer'
+import type { AuthUser } from '@/models/auth-user/authUser.model'
+import { authUserDtoSchema } from '@/models/auth-user/authUserDto.model'
 
 export class AuthService {
-  static async forgotPassword(form: ForgotPasswordForm): Promise<void> {
-    await authHttpClient.post({
-      body: AuthTransformer.toForgotPasswordDto(form),
-      responseSchema: z.unknown(),
-      url: '/forgot-password',
-    })
-  }
-
-  static async getCurrentUser(): Promise<CurrentUser> {
+  static async getAuthUser(): Promise<AuthUser> {
     const data = await httpClient.get({
       config: {
         baseURL: API_AUTH_URL,
       },
-      responseSchema: currentUserDtoSchema,
+      responseSchema: authUserDtoSchema,
       url: '/userinfo',
     })
 
-    return AuthTransformer.toCurrentUser(data)
-  }
-
-  static async resetPassword(form: ResetPasswordForm): Promise<void> {
-    await authHttpClient.post({
-      body: AuthTransformer.toResetPasswordDto(form),
-      responseSchema: z.unknown(),
-      url: '/reset-password',
-    })
+    return AuthUserTransformer.fromDto(data)
   }
 }

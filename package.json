@@ -27,7 +27,7 @@
     "@vueuse/core": "11.1.0",
     "@vueuse/router": "11.1.0",
     "@wisemen/oauth2-vue-client": "1.0.1",
-    "@wisemen/vue-core": "1.0.0-alpha.2",
+    "@wisemen/vue-core": "file:/Users/wouter/Documents/Wisemen/Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz",
     "axios": "1.7.7",
     "clsx": "2.1.1",
     "cva": "1.0.0-beta.1",
@@ -37,7 +37,7 @@
     "pinia": "2.2.0",
     "radix-vue": "1.9.6",
     "tailwind-merge": "2.5.2",
-    "vue": "3.4.35",
+    "vue": "3.5.12",
     "vue-i18n": "9.14.1",
     "vue-router": "4.4.5",
     "zod": "3.23.8"

@@ -22,11 +22,11 @@ export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChan
 
     if (isDirty.value) {
       void confirmDialog.open({
-        title: t('shared.unsaved_changes_title'),
+        title: t('component.unsaved_changes_title'),
         isDestructive: true,
-        cancelText: t('components.unsaved_changes_dialog.cancel'),
-        confirmText: t('components.unsaved_changes_dialog.confirm'),
-        description: t('components.unsaved_changes_dialog.description'),
+        cancelText: t('component.unsaved_changes_dialog.cancel'),
+        confirmText: t('component.unsaved_changes_dialog.confirm'),
+        description: t('component.unsaved_changes_dialog.description'),
         onConfirm: () => {
           confirmDialog.close()
           callback()
@@ -58,7 +58,7 @@ export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChan
   onMounted(() => {
     window.onbeforeunload = (): null | string => {
       if (isDirty.value) {
-        return i18nPlugin.global.t('shared.unsaved_changes_description')
+        return i18nPlugin.global.t('component.unsaved_changes_description')
       }
 
       return null

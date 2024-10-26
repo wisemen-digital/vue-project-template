@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 import GridBackgroundPattern from '@/assets/svgs/GridBackgroundPattern.vue'
+import { useI18n } from '@/composables/i18n/i18n.composable'
 
 const props = defineProps<{
   error: unknown

@@ -1,6 +1,7 @@
 import { useToast } from '@wisemen/vue-core'
 import Axios from 'axios'
-import { useI18n } from 'vue-i18n'
+
+import { useI18n } from '@/composables/i18n/i18n.composable'
 
 interface UserErrorToastReturnType {
   show: (error: unknown) => void

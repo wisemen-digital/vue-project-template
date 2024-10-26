@@ -1,46 +1,6 @@
 {
-  "auth": {
-    "forgot_password": {
-      "action": "Send reset link",
-      "description": "Enter your email address and we'll send you a link to reset your password.",
-      "email_placeholder": "Enter your email",
-      "return_to_login": "Return to login",
-      "success_description": "We sent an email with further instructions to {email}",
-      "success_title": "Check your email",
-      "title": "Forgot password?"
-    },
-    "login": {
-      "error_toast": {
-        "description": "Please check your email and password and try again.",
-        "title": "Invalid credentials"
-      },
-      "forgot_password": "Forgot password?",
-      "invalid_email_or_password": "Invalid email or password",
-      "log_in": "Log in",
-      "sign_in_to_continue": "Sign in to continue",
-      "welcome_back_name": "Welcome back, {name}"
-    },
-    "reset_password": {
-      "action": "Reset password",
-      "description": "Enter your new password below",
-      "success": {
-        "action": "Return to login",
-        "description": "Your password has been reset successfully. You can now log in with your new password."
-      },
-      "title": "Reset password"
-    }
-  },
-  "components": {
-    "combobox": {
-      "empty": "No items found"
-    },
-    "dark_mode_toggle": {
-      "enable_dark_mode": "Enable dark mode",
-      "enable_light_mode": "Enable light mode"
-    },
-    "image": {
-      "open_in_new_tab": "Open in new tab"
-    },
+  "auth": {},
+  "component": {
     "keyboard_shortcut": {
       "then": "then"
     },
@@ -62,7 +22,9 @@
       "footer": {
         "environment": "Environment",
         "sign_out": "Sign out",
-        "version": "Version"
+        "version": "Version",
+        "switch_to_dark_mode": "Switch to dark mode",
+        "switch_to_light_mode": "Switch to light mode"
       },
       "go_to": "Go to"
     },
@@ -72,7 +34,12 @@
     "unsaved_changes_dialog": {
       "cancel": "Keep editing",
       "confirm": "Yes, I'm sure",
+      "title": "Unsaved changes",
       "description": "All unsaved changes will be lost. Are you sure you want to continue?"
+    },
+    "select": {
+      "empty_text": "No results found for '{searchTerm}'.",
+      "search_placeholder": "Search..."
     }
   },
   "error": {
@@ -116,61 +83,6 @@
     },
     "save_changes": "Save changes"
   },
-  "shared": {
-    "address": "Address",
-    "birth_date": "Birthdate",
-    "cancel": "Cancel",
-    "close": "Close",
-    "confirm": "Confirm",
-    "contact": "Contact",
-    "delete": "Delete",
-    "edit": "Edit",
-    "email": "Email",
-    "first_name": "First name",
-    "go_to_detail": "Go to detail",
-    "last_name": "Last name",
-    "name": "Name",
-    "overview": "Overview",
-    "personal_info": "Personal info",
-    "phone_number": "Phonenumber",
-    "select": "Select",
-    "submit": "Submit",
-    "title": "Title",
-    "unsaved_changes_description": "All unsaved changes will be lost. Are you sure you want to continue?",
-    "unsaved_changes_title": "Unsaved changes",
-    "users": "Users"
-  },
-  "users": {
-    "create": {
-      "create_user": "Create User",
-      "success": {
-        "description": "User has been created successfully.",
-        "title": "User created"
-      },
-      "title": "New user"
-    },
-    "detail": {
-      "edit_user": "Edit user"
-    },
-    "form": {
-      "section": {
-        "name": {
-          "description": "First and last name of the user."
-        },
-        "personal_info": "Enter some personal info"
-      }
-    },
-    "overview": {
-      "empty": "No users found.",
-      "new_user": "New user"
-    },
-    "update": {
-      "success": {
-        "description": "User has been updated successfully.",
-        "title": "User updated"
-      }
-    }
-  },
   "validation": {
     "invalid_date": "Invalid date",
     "invalid_datetime": "Invalid date and time",
@@ -191,5 +103,47 @@
     "too_small_date": "Must be after {count}",
     "too_small_number": "Must be greater than or equal to {count}",
     "too_small_string": "Must be at least {count} character | Must be at least {count} characters"
+  },
+  "module": {
+    "user": {
+      "create": {
+        "title": "New user",
+        "create_user": "Create User",
+        "success_toast": {
+          "message": "User has been created successfully."
+        }
+      },
+      "update": {
+        "success_toast": {
+          "message": "User has been updated successfully."
+        }
+      },
+      "detail": {
+        "title": "Edit user",
+        "edit_user": "Edit user"
+      },
+      "form": {
+        "section": {
+          "name": {
+            "description": "First and last name of the user."
+          }
+        }
+      }
+    }
+  },
+  "shared": {
+    "close": "Close",
+    "edit": "Edit"
+  },
+  "user": {
+    "label": {
+      "singular": "User",
+      "plural": "Users",
+      "user_with_count": "No users | {count} user | {count} users"
+    },
+    "first_name": "First name",
+    "last_name": "Last name",
+    "name": "Name",
+    "birth_date": "Birthdate"
   }
 }

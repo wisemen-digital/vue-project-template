@@ -14,7 +14,7 @@ import {
   CURRENT_BUILD_NUMBER,
   CURRENT_ENVIRONMENT,
 } from '@/constants/environment.constant.ts'
-import type { CurrentUser } from '@/models/auth/current-user/currentUser.model.ts'
+import type { AuthUser } from '@/models/auth-user/authUser.model'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const props = defineProps<{
@@ -24,18 +24,25 @@ const props = defineProps<{
 const authStore = useAuthStore()
 
 const { t } = useI18n()
-const { isDarkMode } = useDarkMode()
+const darkMode = useDarkMode()
 const router = useTypedRouter()
 
-const currentUser = computed<CurrentUser | null>(() => authStore.currentUser)
+const authUser = computed<AuthUser | null>(() => authStore.authUser)
 
 const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
   {
-    icon: isDarkMode.value ? 'sun' : 'moonStar',
-    label: isDarkMode.value ? 'Switch to light mode' : 'Switch to dark mode',
+    icon: darkMode.isEnabled.value ? 'sun' : 'moonStar',
+    label: darkMode.isEnabled.value
+      ? t('component.sidebar.footer.switch_to_light_mode')
+      : t('component.sidebar.footer.switch_to_dark_mode'),
     type: 'option',
     onSelect: (): void => {
-      isDarkMode.value = !isDarkMode.value
+      if (darkMode.isEnabled.value) {
+        darkMode.disable()
+      }
+      else {
+        darkMode.enable()
+      }
     },
   },
   {
@@ -47,7 +54,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
       's',
       'o',
     ],
-    label: t('components.sidebar.footer.sign_out'),
+    label: t('component.sidebar.footer.sign_out'),
     type: 'option',
     onSelect: (): void => {
       authStore.logout()
@@ -61,7 +68,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
 </script>
 
 <template>
-  <div v-if="currentUser !== null">
+  <div v-if="authUser !== null">
     <div class="px-xl">
       <AppSeparator class="" />
     </div>
@@ -79,18 +86,18 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
           <template #content-top>
             <div class="min-w-56 pb-xs">
               <span class="block px-lg py-md text-subtext text-primary">
-                {{ currentUser.fullName }}
+                {{ authUser.fullName }}
               </span>
 
               <AppSeparator />
 
               <div class="px-lg py-md">
                 <span class="block text-subtext text-tertiary">
-                  {{ `${t('components.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
+                  {{ `${t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
                 </span>
 
                 <span class="mt-1 block text-subtext text-tertiary">
-                  {{ `${t('components.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
+                  {{ `${t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
                 </span>
               </div>
 
@@ -117,11 +124,11 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
                     class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
                   >
                     <span class="w-full truncate text-left text-subtext font-semibold text-primary">
-                      {{ currentUser.fullName }}
+                      {{ authUser.fullName }}
                     </span>
 
                     <span class="w-full truncate text-subtext text-secondary">
-                      {{ currentUser.email }}
+                      {{ authUser.email }}
                     </span>
                   </div>
                 </Transition>

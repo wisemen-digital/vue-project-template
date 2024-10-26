@@ -3,16 +3,16 @@ import { computed } from 'vue'
 
 import AppDashboardLayoutClassic from '@/components/layout/dashboard/AppDashboardLayoutClassic.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
-import type { CurrentUser } from '@/models/auth/current-user/currentUser.model.ts'
+import type { AuthUser } from '@/models/auth-user/authUser.model'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const authStore = useAuthStore()
 
-const currentUser = computed<CurrentUser | null>(() => authStore.currentUser)
+const authUser = computed<AuthUser | null>(() => authStore.authUser)
 </script>
 
 <template>
-  <AppDashboardLayoutClassic v-if="currentUser !== null">
+  <AppDashboardLayoutClassic v-if="authUser !== null">
     <template #sidebar>
       <AppSidebar
         :logo="{

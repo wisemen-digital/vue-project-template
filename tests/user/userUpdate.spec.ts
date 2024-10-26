@@ -1,7 +1,8 @@
-import { test } from '@@/base.fixture'
+import { expect, test } from '@@/base.fixture'
 
 test.describe('User Update', () => {
-  test('update an existing user', async ({ page }) => {
+  test('update an existing user', () => {
+    expect(true).toBe(true)
     // const USER_UUID_1 = UuidUtil.getRandom<UserUuid>()
 
     // const USER_INDEX_1 = new UserIndexDtoBuilder()

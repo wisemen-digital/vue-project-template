@@ -6,9 +6,9 @@ import {
   AppTextField,
 } from '@wisemen/vue-core'
 import { ref, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 import { useDebounceSearch } from '@/composables/debounce-search/debounceSearch.composable'
+import { useI18n } from '@/composables/i18n/i18n.composable'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 
 const props = withDefaults(defineProps<{
@@ -52,7 +52,7 @@ watch(() => model.value, (value) => {
     <AppTextField
       ref="appTextFieldRef"
       v-model="search"
-      :placeholder="props.placeholder ?? t('components.search_input.placeholder')"
+      :placeholder="props.placeholder ?? t('component.search_input.placeholder')"
       :is-loading="props.isLoading || isDebouncing"
       icon-left="searchLg"
     >
@@ -75,7 +75,7 @@ watch(() => model.value, (value) => {
               '--button-bg-color-disabled': 'transparent',
               '--button-border-color-disabled': 'transparent',
             }"
-            :label="t('components.search_input.clear')"
+            :label="t('component.search_input.clear')"
             variant="tertiary"
             size="sm"
             icon="xClose"

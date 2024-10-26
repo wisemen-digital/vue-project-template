@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
-import { useI18n } from 'vue-i18n'
 
 import AppEditItemButton from '@/components/app/button/AppEditItemButton.vue'
 import AppPage from '@/components/layout/AppPage.vue'
+import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { User } from '@/models/user/detail/user.model'
 
@@ -15,7 +15,7 @@ const { t } = useI18n()
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    label: t('shared.users'),
+    label: t('user.label.plural'),
     to: {
       name: 'user-overview',
     },
@@ -42,7 +42,7 @@ const breadcrumbs: BreadcrumbItem[] = [
           },
         }"
         :data-test-id="TEST_ID.USERS.DETAIL.EDIT_BUTTON"
-        :label="t('users.detail.edit_user')"
+        :label="t('module.user.detail.edit_user')"
       />
     </template>
   </AppPage>
