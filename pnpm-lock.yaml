@@ -39,8 +39,8 @@ importers:
         specifier: 11.1.0
         version: 11.1.0(vue-router@4.4.5(vue@3.5.12(typescript@5.6.3)))(vue@3.5.12(typescript@5.6.3))
       '@wisemen/oauth2-vue-client':
-        specifier: /Users/kirylmaltsav/Workspace/wisemen/oauth-vue-client/wisemen-oauth2-vue-client-2.1.1.tgz
-        version: file:../oauth-vue-client/wisemen-oauth2-vue-client-2.1.1.tgz
+        specifier: 2.1.0
+        version: 2.1.0
       '@wisemen/vue-core':
         specifier: 0.1.13
         version: 0.1.13(vue-i18n@10.0.4(vue@3.5.12(typescript@5.6.3)))(vue@3.5.12(typescript@5.6.3))
@@ -2890,9 +2890,8 @@ packages:
     peerDependencies:
       eslint: 9.6.0
 
-  '@wisemen/oauth2-vue-client@file:../oauth-vue-client/wisemen-oauth2-vue-client-2.1.1.tgz':
-    resolution: {integrity: sha512-sEEw2yJk4uMfCiXQq2u6J1rUJ74jb2/0GpR87kDv3kUuWiOq8+EipaDcnWmHSRQ5WbA4yiZIjcyFlABXPFmrgQ==, tarball: file:../oauth-vue-client/wisemen-oauth2-vue-client-2.1.1.tgz}
-    version: 2.1.1
+  '@wisemen/oauth2-vue-client@2.1.0':
+    resolution: {integrity: sha512-ypwRCwcNlw6Da1cgOxXo6MbNQo6uLqDWLkjr3equ/GZ628wU32RwOC43XmvIW0BBazyG2SZ9kBhVZ5qUVquULQ==}
 
   '@wisemen/vue-core-query@0.0.31':
     resolution: {integrity: sha512-/x8qkKxH/V5KDnwe2LvA8zHnzTYKq6He/x5Qll7vQydJlAfPaaUFBHxPjSeobhqbsQllraqeH8O2CZyw3sYFrQ==}
@@ -9312,7 +9311,7 @@ snapshots:
       - vitest
       - vue-eslint-parser
 
-  '@wisemen/oauth2-vue-client@file:../oauth-vue-client/wisemen-oauth2-vue-client-2.1.1.tgz':
+  '@wisemen/oauth2-vue-client@2.1.0':
     dependencies:
       axios: 1.7.7
       pkce-challenge: 4.1.0

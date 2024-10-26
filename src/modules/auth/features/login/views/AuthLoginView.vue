@@ -91,8 +91,7 @@ form.onSubmitFormError(() => {
 
 form.onSubmitForm(async (data) => {
   try {
-    await authStore.startSession(data.email)
-
+    // TODO implement
     const currentUser = await authStore.getCurrentUser()
 
     await handleLoggedIn(currentUser)

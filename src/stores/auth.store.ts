@@ -1,8 +1,4 @@
 import { useLocalStorage } from '@vueuse/core'
-import type {
-  ZitadelCompleteSessionResponse,
-  ZitadelStartSessionResponse,
-} from '@wisemen/oauth2-vue-client'
 import { defineStore } from 'pinia'
 import {
   computed,
@@ -69,14 +65,6 @@ export const useAuthStore = defineStore('auth', () => {
     return currentUser.value
   }
 
-  async function startSession(loginName: string): Promise<ZitadelStartSessionResponse> {
-    return await oAuthClient.startSession(loginName)
-  }
-
-  async function completeSession(sessionId: string, password: string): Promise<ZitadelCompleteSessionResponse> {
-    return await oAuthClient.completeSession(sessionId, password)
-  }
-
   async function getIdentityProviderLoginUrl(provider: string): Promise<string> {
     if (provider === 'apple') {
       return await oAuthClient.getIdentityProviderLoginUrl(AUTH_APPLE_IDP_ID)
@@ -131,7 +119,6 @@ export const useAuthStore = defineStore('auth', () => {
   return {
     isAuthenticated,
     isLoggedIn,
-    completeSession,
     currentUser,
     getCurrentUser,
     getIdentityProviderLoginUrl,
@@ -144,6 +131,5 @@ export const useAuthStore = defineStore('auth', () => {
     resetPassword,
     setLastLoggedInUser,
     setLastLoginAttemptEmail,
-    startSession,
   }
 })
