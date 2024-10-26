@@ -19,14 +19,15 @@
       "placeholder": "Search..."
     },
     "sidebar": {
+      "open_sidebar": "Open sidebar",
+      "close_sidebar": "Close sidebar",
       "footer": {
         "environment": "Environment",
         "sign_out": "Sign out",
         "version": "Version",
         "switch_to_dark_mode": "Switch to dark mode",
         "switch_to_light_mode": "Switch to light mode"
-      },
-      "go_to": "Go to"
+      }
     },
     "table": {
       "page_count": "{startIndex} - {endIndex} of {totalItems}"

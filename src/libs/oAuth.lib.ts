@@ -9,7 +9,7 @@ import {
 
 export const oAuthClient = new OAuth2VueClient({
   clientId: API_CLIENT_ID,
-  isMock: false,
+  isMock: true,
   axios,
   clientSecret: API_CLIENT_SECRET,
   tokenEndpoint: `${API_AUTH_URL}/token`,

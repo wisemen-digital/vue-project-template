@@ -1,111 +1,116 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 import AppSidebarBottom from '@/components/layout/sidebar/AppSidebarBottom.vue'
 import AppSidebarCollapseToggle from '@/components/layout/sidebar/AppSidebarCollapseToggle.vue'
-import AppSidebarNavigationGroup from '@/components/layout/sidebar/AppSidebarNavigationGroup.vue'
+import AppSidebarTop from '@/components/layout/sidebar/AppSidebarTop.vue'
+import AppSidebarNavMenu from '@/components/layout/sidebar/navigation/AppSidebarNavMenu.vue'
+import { onCreated } from '@/composables/created/created.composable'
+import type { AuthUser } from '@/models/auth-user/authUser.model'
 import type {
   NavigationGroup,
   NavigationItem,
-} from '@/types/navigationItem.type.ts'
+} from '@/types/navigationItem.type'
 
 const props = withDefaults(defineProps<{
+  authUser: AuthUser
   bottomItems?: NavigationItem[]
-  logo: {
-    alt: string
-    src: string
-  }
   mainItems: NavigationGroup[]
   variant: 'fixed-sidebar' | 'floating-content' | 'floating-sidebar'
 }>(), {
   bottomItems: () => [],
 })
 
-const logoSm = 'W'
-const logoLg = 'Wisemen'
+const emit = defineEmits<{
+  signOut: []
+}>()
 
-const isCollapsed = useLocalStorage<boolean>('isSidebarCollapsed', false)
+const isSidebarCollapsed = useLocalStorage<boolean>('isSidebarCollapsed', false)
 
-const collapsedSidebarWidth = computed<string>(() => {
-  if (props.variant === 'fixed-sidebar') {
-    return 'w-[105px]'
+const sidebarWidthWhenCollapsedInPx = ref<number>(72)
+const sidebarWidthWhenExpandedInPx = ref<number>(256)
+const sidebarPaddingXInPx = ref<number>(16)
+const sidebarItemPaddingXInPx = ref<number>(8)
+const sidebarItemIconSizeInPx = ref<number>(24)
+
+const sidebarWidth = computed<string>(() => {
+  if (isSidebarCollapsed.value) {
+    return `${sidebarWidthWhenCollapsedInPx.value}px`
   }
 
-  if (props.variant === 'floating-sidebar') {
-    return 'w-[74px]'
-  }
+  return `${sidebarWidthWhenExpandedInPx.value}px`
+})
 
-  return 'w-[72px]'
+const sidebarItemHeightInPx = computed<number>(() => {
+  return sidebarWidthWhenCollapsedInPx.value - sidebarPaddingXInPx.value * 2
+})
+
+function onSignOut(): void {
+  emit('signOut')
+}
+
+onCreated(() => {
+  if (
+    sidebarPaddingXInPx.value * 2 + sidebarItemPaddingXInPx.value * 2 + sidebarItemIconSizeInPx.value
+    > sidebarWidthWhenCollapsedInPx.value
+  ) {
+    throw new Error('Invalid sidebar configuration. Please check the dimensions.')
+  }
 })
 </script>
 
 <template>
   <div
     :class="{
-      'p-4': props.variant === 'floating-sidebar' || props.variant === 'floating-content',
-      'bg-secondary': props.variant === 'floating-content',
+      'p-xl': props.variant === 'floating-sidebar' || props.variant === 'floating-content',
+      'border-r border-solid border-secondary': props.variant === 'fixed-sidebar',
     }"
-    class="group/sidebar sticky top-0 h-dvh"
+    class="sticky top-0 h-dvh"
   >
     <div
-      :class="[
-        isCollapsed ? collapsedSidebarWidth : 'w-64',
-        {
-          'rounded-2xl border border-solid border-secondary': props.variant === 'floating-sidebar',
-          'border-r border-solid border-secondary px-xl': props.variant === 'fixed-sidebar',
-        },
-      ]"
-      class="relative flex h-full flex-col justify-between bg-secondary duration-300 ease-in-out"
+      :class="{
+        'rounded-2xl border border-solid border-secondary': props.variant === 'floating-sidebar',
+        'px-lg': props.variant === 'fixed-sidebar',
+      }"
+      class="h-full bg-secondary"
     >
-      <AppSidebarCollapseToggle v-model="isCollapsed" />
+      <div
+        :style="{
+          width: sidebarWidth,
+          paddingLeft: `${sidebarPaddingXInPx}px`,
+          paddingRight: `${sidebarPaddingXInPx}px`,
+        }"
+        class="group/sidebar relative flex h-full flex-col justify-between duration-500 ease-sidebar-collapse"
+      >
+        <AppSidebarCollapseToggle v-model="isSidebarCollapsed" />
 
-      <div class="flex flex-col">
-        <div class="pointer-events-none relative flex h-20 items-center justify-center p-xl font-medium uppercase tracking-widest text-primary">
-          <Transition
-            enter-active-class="duration-300"
-            leave-active-class="duration-300"
-            enter-from-class="opacity-0"
-            leave-to-class="opacity-0"
-          >
-            <span
-              v-if="isCollapsed"
-              class="absolute left-1/2 -translate-x-1/2"
-            >
-              {{ logoSm }}
-            </span>
+        <div class="flex h-full flex-col">
+          <AppSidebarTop :is-collapsed="isSidebarCollapsed" />
 
-            <span
-              v-else
-              class="absolute left-1/2 -translate-x-1/2"
-            >
-              {{ logoLg }}
-            </span>
-          </Transition>
+          <AppSidebarNavMenu
+            :is-collapsed="isSidebarCollapsed"
+            :main-items="props.mainItems"
+            :sidebar-item-padding-x-in-px="sidebarItemPaddingXInPx"
+            :sidebar-item-icon-size-in-px="sidebarItemIconSizeInPx"
+            :sidebar-item-height-in-px="sidebarItemHeightInPx"
+            :bottom-items="props.bottomItems"
+          />
         </div>
 
-        <div class="overflow-y-auto p-xl">
-          <nav class="flex flex-col gap-y-xl">
-            <AppSidebarNavigationGroup
-              v-for="group of props.mainItems"
-              :key="group.label"
-              :group="group"
-              :is-collapsed="isCollapsed"
-            >
-              <template #item-right="{ item, isActive }">
-                <slot
-                  :item="item"
-                  :is-active="isActive"
-                  :is-collapsed="isCollapsed"
-                  name="item-right"
-                />
-              </template>
-            </AppSidebarNavigationGroup>
-          </nav>
-        </div>
+        <AppSidebarBottom
+          :is-collapsed="isSidebarCollapsed"
+          :sidebar-item-height-in-px="sidebarItemHeightInPx"
+          :auth-user="{
+            firstName: 'John',
+            fullName: 'John Doe',
+            lastName: 'Doe',
+            email: 'john@doe.com',
+            uuid: '1',
+          }"
+          @sign-out="onSignOut"
+        />
       </div>
-
-      <AppSidebarBottom :is-collapsed="isCollapsed" />
     </div>
   </div>
 </template>

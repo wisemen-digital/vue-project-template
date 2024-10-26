@@ -238,6 +238,9 @@ export default {
         'warning-primary': 'var(--text-warning-primary)',
         'white': 'var(--text-white)',
       },
+      transitionTimingFunction: {
+        'sidebar-collapse': 'cubic-bezier(0.25, 0.8, 0.25, 1)',
+      },
       width: {
         'dialog-sm': '26rem',
       },

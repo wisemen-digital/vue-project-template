@@ -4,6 +4,7 @@ import {
   AppDialogContainer,
   AppThemeProvider,
   AppToastContainer,
+  useDarkMode,
   useDocumentTitle,
 } from '@wisemen/vue-core'
 import { RouterView } from 'vue-router'
@@ -13,6 +14,7 @@ import { useRefreshPrompt } from '@/composables/refresh-prompt/refreshPrompt.com
 import { logBuildInformation } from '@/constants/environment.constant.ts'
 
 const { setTemplate } = useDocumentTitle()
+const darkMode = useDarkMode()
 
 setTemplate('{title} | App')
 
@@ -22,7 +24,7 @@ logBuildInformation()
 
 <template>
   <AppConfigProvider locale="en">
-    <AppThemeProvider theme="light">
+    <AppThemeProvider :theme="darkMode.isEnabled.value ? 'dark' : 'light'">
       <RouterView />
       <AppPageLoader />
       <AppDialogContainer />

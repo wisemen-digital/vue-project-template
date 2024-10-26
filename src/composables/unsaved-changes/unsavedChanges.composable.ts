@@ -22,7 +22,7 @@ export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChan
 
     if (isDirty.value) {
       void confirmDialog.open({
-        title: t('component.unsaved_changes_title'),
+        title: t('component.unsaved_changes_dialog.title'),
         isDestructive: true,
         cancelText: t('component.unsaved_changes_dialog.cancel'),
         confirmText: t('component.unsaved_changes_dialog.confirm'),

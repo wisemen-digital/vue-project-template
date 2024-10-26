@@ -1,24 +1,32 @@
 <script setup lang="ts">
+import { useTypedRouter } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
-import AppDashboardLayoutClassic from '@/components/layout/dashboard/AppDashboardLayoutClassic.vue'
+import AppDashboardLayoutFloating from '@/components/layout/dashboard/AppDashboardLayoutFloating.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
 import type { AuthUser } from '@/models/auth-user/authUser.model'
-import { useAuthStore } from '@/stores/auth.store.ts'
+import { useAuthStore } from '@/stores/auth.store'
 
 const authStore = useAuthStore()
 
+const router = useTypedRouter()
+
 const authUser = computed<AuthUser | null>(() => authStore.authUser)
+
+function onSignOut(): void {
+  authStore.logout()
+
+  void router.replace({
+    name: 'login',
+  })
+}
 </script>
 
 <template>
-  <AppDashboardLayoutClassic v-if="authUser !== null">
+  <AppDashboardLayoutFloating v-if="authUser !== null">
     <template #sidebar>
       <AppSidebar
-        :logo="{
-          alt: 'Logo',
-          src: 'https://picsum.photos/id/1003/200/200',
-        }"
+        :auth-user="authUser"
         :main-items="[
           {
             label: 'General',
@@ -33,8 +41,9 @@ const authUser = computed<AuthUser | null>(() => authStore.authUser)
             ],
           },
         ]"
-        variant="fixed-sidebar"
+        variant="floating-content"
+        @sign-out="onSignOut"
       />
     </template>
-  </AppDashboardLayoutClassic>
+  </AppDashboardLayoutFloating>
 </template>

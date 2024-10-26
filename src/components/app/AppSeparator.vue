@@ -19,6 +19,6 @@ const props = withDefaults(defineProps<{
       )
     "
     role="presentation"
-    class="bg-tertiary"
+    class="bg-quaternary"
   />
 </template>

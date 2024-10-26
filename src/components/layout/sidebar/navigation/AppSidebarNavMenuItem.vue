@@ -2,11 +2,14 @@
 import { AppIcon, AppTooltip } from '@wisemen/vue-core'
 
 import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
-import type { NavigationItem } from '@/types/navigationItem.type.ts'
+import type { NavigationItem } from '@/types/navigationItem.type'
 
 const props = defineProps<{
   isCollapsed: boolean
   item: NavigationItem
+  sidebarItemHeightInPx: number
+  sidebarItemIconSizeInPx: number
+  sidebarItemPaddingXInPx: number
 }>()
 </script>
 
@@ -21,32 +24,43 @@ const props = defineProps<{
       <AppTypedRouterLink
         v-slot="{ isActive }"
         :to="props.item.to"
-        class="group block rounded-xl ring-fg-brand-primary !ring-offset-1"
+        class="group block rounded-xl ring-fg-brand-primary"
       >
         <div
+          :style="{
+            paddingLeft: `${props.sidebarItemPaddingXInPx}px`,
+            paddingRight: `${props.sidebarItemPaddingXInPx}px`,
+            height: `${props.sidebarItemHeightInPx}px`,
+          }"
           :class="[
-            isActive ? 'bg-fg-brand-primary text-primary-on-brand hover:brightness-90' : 'bg-secondary text-quaternary group-hover:bg-secondary-hover',
+            isActive
+              ? 'bg-fg-brand-primary text-primary-on-brand hover:brightness-95'
+              : 'bg-secondary text-quaternary group-hover:bg-secondary-hover',
           ]"
-          class="flex h-10 items-center overflow-hidden rounded-xl px-md duration-300"
+          class="flex items-center overflow-hidden rounded-xl px-md duration-300"
         >
           <div class="relative">
             <AppIcon
+              :style="{
+                width: `${props.sidebarItemIconSizeInPx}px`,
+                height: `${props.sidebarItemIconSizeInPx}px`,
+              }"
               :icon="props.item.icon"
-              size="lg"
+              class="shrink-0"
             />
 
             <div
               v-if="props.item.hasAlertDot ?? false"
-              class="absolute right-[-5px] top-[-5px] size-[5px] rounded-full bg-fg-error-primary"
+              class="absolute right-[-4px] top-[-4px] size-[5px] rounded-full bg-fg-error-primary"
             />
           </div>
 
           <div class="relative size-full overflow-hidden">
             <Transition
-              enter-active-class="duration-300"
-              leave-active-class="duration-300"
-              enter-from-class="opacity-0 -translate-x-4"
-              leave-to-class="opacity-0 -translate-x-4"
+              enter-active-class="duration-500 ease-sidebar-collapse"
+              leave-active-class="duration-500 ease-sidebar-collapse"
+              enter-from-class="opacity-0 scale-[0.8] -translate-x-4"
+              leave-to-class="opacity-0 scale-[0.8] -translate-x-4"
             >
               <div
                 v-if="!props.isCollapsed"
