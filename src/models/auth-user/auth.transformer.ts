@@ -1,15 +1,15 @@
-import type { AuthUserDto } from '@/models/auth-user/authUserDto.model'
+import type { ZitadelUser } from '@wisemen/oauth2-vue-client'
 
-import type { AuthUser } from './authUser.model'
+import type { AuthUser } from '@/models/auth-user/authUser.model'
 
 export class AuthUserTransformer {
-  static fromDto(dto: AuthUserDto): AuthUser {
+  static fromDto(dto: ZitadelUser): AuthUser {
     return {
-      uuid: dto.uuid,
-      email: dto.mail,
-      firstName: dto.firstName,
-      fullName: `${dto.firstName} ${dto.lastName}`,
-      lastName: dto.lastName,
+      uuid: dto.sub,
+      email: dto.email,
+      firstName: dto.given_name,
+      fullName: dto.name,
+      lastName: dto.family_name,
     }
   }
 }

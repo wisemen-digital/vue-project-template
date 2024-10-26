@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useTypedRouter } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
 import AppDashboardLayoutFloating from '@/components/layout/dashboard/AppDashboardLayoutFloating.vue'
@@ -9,16 +8,12 @@ import { useAuthStore } from '@/stores/auth.store'
 
 const authStore = useAuthStore()
 
-const router = useTypedRouter()
-
 const authUser = computed<AuthUser | null>(() => authStore.authUser)
 
 function onSignOut(): void {
-  authStore.logout()
+  const logoutUrl = authStore.getLogoutUrl()
 
-  void router.replace({
-    name: 'login',
-  })
+  window.location.replace(logoutUrl)
 }
 </script>
 

@@ -1,5 +1,4 @@
 {
-  "auth": {},
   "component": {
     "keyboard_shortcut": {
       "then": "then"
@@ -129,6 +128,14 @@
             "description": "First and last name of the user."
           }
         }
+      }
+    },
+    "auth": {
+      "login": {
+        "error": "Something went wrong while logging in. Please try again.",
+        "sign_in_with_apple": "Sign in with apple",
+        "sign_in_with_google": "Sign in with google",
+        "sign_in_with_zitadel": "Sign in with Zitadel"
       }
     }
   },

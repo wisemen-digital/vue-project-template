@@ -33,8 +33,8 @@ dependencies:
     specifier: 11.1.0
     version: 11.1.0(vue-router@4.4.5)(vue@3.5.12)
   '@wisemen/oauth2-vue-client':
-    specifier: 1.0.1
-    version: 1.0.1
+    specifier: 2.1.0
+    version: 2.1.0
   '@wisemen/vue-core':
     specifier: file:/Users/wouter/Documents/Wisemen/Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz
     version: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.5.12)
@@ -5176,10 +5176,11 @@ packages:
       - vue-eslint-parser
     dev: true
 
-  /@wisemen/oauth2-vue-client@1.0.1:
-    resolution: {integrity: sha512-9UPFGH6dydeJAuThFYwdGwImYrPO23ZnF8d7mZWafzpww5rvhHZqF+DoGg/cPZneIc+N8vojuEZixJPRrC8ezg==}
+  /@wisemen/oauth2-vue-client@2.1.0:
+    resolution: {integrity: sha512-ypwRCwcNlw6Da1cgOxXo6MbNQo6uLqDWLkjr3equ/GZ628wU32RwOC43XmvIW0BBazyG2SZ9kBhVZ5qUVquULQ==}
     dependencies:
-      axios: 1.7.2
+      axios: 1.7.7
+      pkce-challenge: 4.1.0
     transitivePeerDependencies:
       - debug
     dev: false
@@ -5447,16 +5448,6 @@ packages:
     dependencies:
       possible-typed-array-names: 1.0.0
     dev: true
-
-  /axios@1.7.2:
-    resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
-    dependencies:
-      follow-redirects: 1.15.9
-      form-data: 4.0.1
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
 
   /axios@1.7.3:
     resolution: {integrity: sha512-Ar7ND9pU99eJ9GpoGQKhKf58GpUOgnzuaB7ueNQ5BMi0p+LZ5oaEnfF999fAArcTIBwXTCHAmGcHOZJaWPq9Nw==}
@@ -9177,6 +9168,11 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+
+  /pkce-challenge@4.1.0:
+    resolution: {integrity: sha512-ZBmhE1C9LcPoH9XZSdwiPtbPHZROwAnMy+kIFQVrnMCxY4Cudlz3gBOpzilgc0jOgRaiT3sIWfpMomW2ar2orQ==}
+    engines: {node: '>=16.20.0'}
+    dev: false
 
   /pkg-dir@7.0.0:
     resolution: {integrity: sha512-Ie9z/WINcxxLp27BKOCHGde4ITq9UklYKDzVo1nhk5sqGEXU3FpkwP5GM2voTGJkGd9B3Otl+Q4uwSOeSUtOBA==}

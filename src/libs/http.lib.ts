@@ -4,11 +4,7 @@ import { useToast } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
 import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
-
-import {
-  authAxios,
-  axios,
-} from './axios.lib'
+import { axios } from '@/libs/axios.lib'
 
 interface ZodError {
   error: unknown
@@ -41,10 +37,5 @@ function onZodError({ error, method, url }: ZodError): void {
 
 export const httpClient = createHttpZodClient({
   axios,
-  onZodError,
-})
-
-export const authHttpClient = createHttpZodClient({
-  axios: authAxios,
   onZodError,
 })

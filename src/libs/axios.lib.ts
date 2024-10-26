@@ -1,32 +1,21 @@
-import { addAuthorizationHeader } from '@wisemen/oauth2-vue-client'
 import type { CreateAxiosDefaults } from 'axios'
 import Axios from 'axios'
 
-import { API_AUTH_URL, API_BASE_URL } from '@/constants/environment.constant.ts'
+import { API_BASE_URL } from '@/constants/environment.constant.ts'
+import { oAuthClient } from '@/libs/oAuth.lib'
 import { routerPlugin } from '@/plugins/router/router.plugin.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
-import { LocaleUtil } from '@/utils/locale.util'
-
-import { oAuthClient } from './oAuth.lib'
 
 const axiosConfig: CreateAxiosDefaults = {
   baseURL: API_BASE_URL,
   headers: {
-    'Accept-Language': LocaleUtil.getLocale(),
-  },
-}
-
-const axiosAuthConfig: CreateAxiosDefaults = {
-  baseURL: API_AUTH_URL,
-  headers: {
-    'Accept-Language': LocaleUtil.getLocale(),
+    'Accept-Language': navigator.language,
   },
 }
 
 export const axios = Axios.create(axiosConfig)
-export const authAxios = Axios.create(axiosAuthConfig)
 
-axios.interceptors.request.use((config) => addAuthorizationHeader(oAuthClient, config))
+axios.interceptors.request.use((config) => oAuthClient.addAuthorizationHeader(config))
 
 axios.interceptors.response.use(
   (config) => config,
@@ -43,7 +32,7 @@ axios.interceptors.response.use(
       authStore.logout()
 
       await routerPlugin.replace({
-        name: 'login',
+        name: 'auth-login',
       })
     }
 
