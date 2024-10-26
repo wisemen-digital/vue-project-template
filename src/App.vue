@@ -18,6 +18,7 @@ const darkMode = useDarkMode()
 
 setTemplate('{title} | App')
 
+useDarkMode()
 useRefreshPrompt()
 logBuildInformation()
 </script>

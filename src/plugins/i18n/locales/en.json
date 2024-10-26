@@ -132,6 +132,8 @@
     },
     "auth": {
       "login": {
+        "title": "Sign in",
+        "description": "Sign in to your account to continue",
         "error": "Something went wrong while logging in. Please try again.",
         "sign_in_with_apple": "Sign in with apple",
         "sign_in_with_google": "Sign in with google",
