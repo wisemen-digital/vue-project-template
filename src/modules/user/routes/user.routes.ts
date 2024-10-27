@@ -12,6 +12,7 @@ export const userRoutes = [
       },
       {
         name: 'user-detail',
+        props: true,
         path: ':userUuid',
         component: (): Component => import('@/modules/user/features/detail/views/UserDetailViewDataProvider.vue'),
       },
