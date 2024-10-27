@@ -22,7 +22,7 @@ const props = withDefaults(
       <AppBreadcrumbs
         v-if="props.breadcrumbs !== null"
         :items="props.breadcrumbs"
-        class="mb-1"
+        class="mb-xl"
       />
 
       <div class="flex h-10 items-center  justify-between border-b border-solid border-secondary pb-10">

@@ -27,7 +27,7 @@
     "@vueuse/core": "11.1.0",
     "@vueuse/router": "11.1.0",
     "@wisemen/oauth2-vue-client": "2.1.0",
-    "@wisemen/vue-core": "file:/Users/kirylmaltsav/Workspace/wisemen/vue-core/packages/components",
+    "@wisemen/vue-core": "file:/Users/wouter/Documents/Wisemen/Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz",
     "axios": "1.7.7",
     "clsx": "2.1.1",
     "cva": "1.0.0-beta.1",

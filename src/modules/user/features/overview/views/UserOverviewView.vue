@@ -19,11 +19,9 @@ const pagination = usePagination<UserIndexFilters>({
 })
 
 const search = computed<string>({
-  get: () => pagination.paginationOptions.value.filters?.name ?? '',
+  get: () => pagination.paginationOptions.value.search ?? '',
   set: (value) => {
-    pagination.handleFilterChange({
-      name: value,
-    })
+    pagination.handleSearchChange(value)
   },
 })
 

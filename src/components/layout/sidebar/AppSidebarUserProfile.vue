@@ -58,6 +58,10 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
     },
   },
 ])
+
+const authUserInitials = computed<string>(() => (
+  `${props.authUser.firstName[0]}${props.authUser.lastName[0]}`
+))
 </script>
 
 <template>
@@ -102,8 +106,12 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
               :style="{
                 height: `${props.sidebarItemHeightInPx}px`,
               }"
-              class="aspect-square rounded-full bg-quaternary"
-            />
+              class="flex aspect-square items-center justify-center rounded-full bg-quaternary"
+            >
+              <span class="text-subtext font-medium text-primary">
+                {{ authUserInitials }}
+              </span>
+            </div>
 
             <div
               :style="{

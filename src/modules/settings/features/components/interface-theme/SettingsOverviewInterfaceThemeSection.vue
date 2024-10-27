@@ -63,7 +63,7 @@ function getTheme(value: ThemeValue): 'dark' | 'light' {
             class="group rounded-xl text-left !ring-0 !ring-offset-0"
           >
             <AppThemeProvider :theme="getTheme(item.value)">
-              <div class="relative h-40 overflow-hidden rounded-xl border-2 border-solid border-transparent bg-tertiary duration-200 group-data-[state=checked]:border-brand">
+              <div class="relative h-40 overflow-hidden rounded-xl border-2 border-solid border-transparent bg-tertiary ring-brand-primary-500 ring-offset-1 duration-200 group-focus-visible:ring-2 group-data-[state=checked]:border-brand">
                 <SettingsOverviewMiniDashboard class="absolute left-4 top-4" />
               </div>
             </AppThemeProvider>

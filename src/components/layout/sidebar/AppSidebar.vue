@@ -101,13 +101,7 @@ onCreated(() => {
         <AppSidebarBottom
           :is-collapsed="isSidebarCollapsed"
           :sidebar-item-height-in-px="sidebarItemHeightInPx"
-          :auth-user="{
-            firstName: 'John',
-            fullName: 'John Doe',
-            lastName: 'Doe',
-            email: 'john@doe.com',
-            uuid: '1',
-          }"
+          :auth-user="props.authUser"
           @sign-out="onSignOut"
         />
       </div>
