@@ -23,6 +23,7 @@ export const userRoutes = [
       },
       {
         name: 'user-update',
+        props: true,
         path: ':userUuid/update',
         component: (): Component => import('@/modules/user/features/update/views/UserUpdateViewDataProvider.vue'),
       },
