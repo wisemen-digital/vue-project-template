@@ -36,7 +36,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <template #header-actions>
       <AppEditItemButton
         :to="{
-          name: 'user-detail',
+          name: 'user-update',
           params: {
             userUuid: props.user.uuid,
           },
