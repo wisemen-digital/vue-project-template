@@ -66,42 +66,52 @@ async function onSignInWithGoogle(): Promise<void> {
 </script>
 
 <template>
-  <div>
-    <h1 class="text-center text-4xl font-bold text-primary">
-      {{ t('module.auth.login.title') }}
-    </h1>
+  <div
+    class="grid h-dvh grid-cols-1 md:grid-cols-2"
+  >
+    <div class="flex flex-col justify-center px-6 py-20">
+      <div class="mx-auto w-full max-w-80">
+        <div>
+          <h1 class="text-center text-4xl font-bold text-primary">
+            {{ t('module.auth.login.title') }}
+          </h1>
 
-    <p class="mt-2 text-center text-secondary">
-      {{ t('module.auth.login.description') }}
-    </p>
+          <p class="mt-2 text-center text-secondary">
+            {{ t('module.auth.login.description') }}
+          </p>
 
-    <div class="mt-8 flex flex-col gap-y-1">
-      <AppButton
-        :is-loading="isSigningInWithZitadel"
-        class="w-full"
-        variant="secondary"
-        @click="onSignInWithZitadel"
-      >
-        {{ t('module.auth.login.sign_in_with_zitadel') }}
-      </AppButton>
+          <div class="mt-8 flex flex-col gap-y-1">
+            <AppButton
+              :is-loading="isSigningInWithZitadel"
+              class="w-full"
+              variant="secondary"
+              @click="onSignInWithZitadel"
+            >
+              {{ t('module.auth.login.sign_in_with_zitadel') }}
+            </AppButton>
 
-      <AppButton
-        :is-loading="isSigningInWithGoogle"
-        icon-left="googleLogo"
-        variant="secondary"
-        @click="onSignInWithGoogle"
-      >
-        {{ t('module.auth.login.sign_in_with_google') }}
-      </AppButton>
+            <AppButton
+              :is-loading="isSigningInWithGoogle"
+              icon-left="googleLogo"
+              variant="secondary"
+              @click="onSignInWithGoogle"
+            >
+              {{ t('module.auth.login.sign_in_with_google') }}
+            </AppButton>
 
-      <AppButton
-        :is-loading="isSigningInWithApple"
-        icon-left="appleLogo"
-        variant="secondary"
-        @click="onSignInWithApple"
-      >
-        {{ t('module.auth.login.sign_in_with_apple') }}
-      </AppButton>
+            <AppButton
+              :is-loading="isSigningInWithApple"
+              icon-left="appleLogo"
+              variant="secondary"
+              @click="onSignInWithApple"
+            >
+              {{ t('module.auth.login.sign_in_with_apple') }}
+            </AppButton>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="bg-black" />
   </div>
 </template>

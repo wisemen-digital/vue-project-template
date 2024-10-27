@@ -1,4 +1,6 @@
-import type { Component } from 'vue'
+import type {
+  Component,
+} from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 
 import { authMiddleware } from '@/middlewares/auth.middleware'
