@@ -4,7 +4,6 @@ import { useToast } from '@wisemen/vue-core'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
-import AppFullPageLoader from '@/components/app/AppFullPageLoader.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
@@ -42,5 +41,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <AppFullPageLoader />
+  <div class="h-dvh bg-primary" />
 </template>

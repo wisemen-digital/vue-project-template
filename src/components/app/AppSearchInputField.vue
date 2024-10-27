@@ -54,7 +54,7 @@ watch(() => model.value, (value) => {
       v-model="search"
       :placeholder="props.placeholder ?? t('component.search_input.placeholder')"
       :is-loading="props.isLoading || isDebouncing"
-      icon-left="searchLg"
+      icon-left="search"
     >
       <template #right>
         <div>
@@ -78,7 +78,7 @@ watch(() => model.value, (value) => {
             :label="t('component.search_input.clear')"
             variant="tertiary"
             size="sm"
-            icon="xClose"
+            icon="close"
             class="mr-[3px]"
             @click="onClearInput"
           />

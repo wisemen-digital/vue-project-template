@@ -12,6 +12,9 @@ export const authRoutes = [
         guest,
       ],
     },
+    redirect: {
+      name: 'auth-login',
+    },
     children: [
       {
         name: 'auth-login',

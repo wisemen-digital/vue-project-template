@@ -56,7 +56,7 @@ export function useRefreshPrompt(): void {
             onClick: onRefreshButtonClick,
           },
           durationInMs: TIME.ONE_HOUR,
-          icon: 'stars02',
+          icon: 'stars',
           message: t('component.refresh_prompt.new_version.description'),
         })
       }

@@ -33,7 +33,7 @@ function onSignOut(): void {
                   name: 'user-overview',
                 },
                 label: t('user.label.plural'),
-                icon: 'barChartSquare02',
+                icon: 'barChartSquare',
               },
             ],
           },

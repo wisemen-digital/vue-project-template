@@ -25,7 +25,10 @@ logBuildInformation()
 
 <template>
   <AppConfigProvider locale="en">
-    <AppThemeProvider :theme="darkMode.isEnabled.value ? 'dark' : 'light'">
+    <AppThemeProvider
+      :theme="darkMode.isEnabled.value ? 'dark' : 'light'"
+      class="flex size-full flex-1 flex-col"
+    >
       <RouterView />
       <AppPageLoader />
       <AppDialogContainer />

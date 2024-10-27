@@ -31,7 +31,7 @@ const darkMode = useDarkMode()
 
 const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
   {
-    icon: 'settings01',
+    icon: 'settings',
     keyboardKeys: [
       'g',
       's',
@@ -46,7 +46,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
     type: 'separator',
   },
   {
-    icon: 'logOut01',
+    icon: 'logOut',
     keyboardKeys: [
       's',
       'o',

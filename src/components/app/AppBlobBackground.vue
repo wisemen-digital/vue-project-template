@@ -39,18 +39,14 @@ const elements = Array.from({ length: 10 }, (_, i) => ({
     transform: scale(1);
   }
   to {
-    transform: scale(3);
+    transform: scale(1);
   }
 }
 
 .custom-arc-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  z-index: -1;
   filter: blur(80px);
   background: var(--bg-primary);
 
@@ -142,24 +138,24 @@ const elements = Array.from({ length: 10 }, (_, i) => ({
 .custom-floating-element:nth-child(3n) {
   background: radial-gradient(
     circle at center,
-    rgba(244, 63, 94, 0.5),
-    rgba(239, 68, 68, 0.5)
+    var(--brand-primary-500),
+    var(--error-500)
   );
 }
 
 .custom-floating-element:nth-child(3n + 1) {
   background: radial-gradient(
     circle at center,
-    rgba(34, 211, 238, 0.5),
-    rgba(59, 130, 246, 0.5)
+    var(--brand-primary-300),
+    var(--brand-primary-700)
   );
 }
 
 .custom-floating-element:nth-child(3n + 2) {
   background: radial-gradient(
     circle at center,
-    rgba(168,  85, 247, 0.5),
-    rgba(217, 70, 239, 0.5)
+    var(--brand-primary-400),
+    var(--success-500)
   );
 }
 </style>
