@@ -17,7 +17,7 @@
     "precommit": "pnpm type-check && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm build"
   },
   "dependencies": {
-    "@appwise/zod-http-client": "0.0.4",
+    "@appwise/zod-http-client": "0.0.6",
     "@fontsource-variable/inter": "5.1.0",
     "@sentry/integrations": "7.114.0",
     "@sentry/tracing": "7.114.0",
@@ -26,8 +26,8 @@
     "@tanstack/vue-query": "5.56.2",
     "@vueuse/core": "11.1.0",
     "@vueuse/router": "11.1.0",
-    "@wisemen/oauth2-vue-client": "1.0.1",
-    "@wisemen/vue-core": "0.1.6",
+    "@wisemen/oauth2-vue-client": "2.1.0",
+    "@wisemen/vue-core": "file:/Users/kirylmaltsav/Workspace/wisemen/vue-core/packages/components",
     "axios": "1.7.7",
     "clsx": "2.1.1",
     "cva": "1.0.0-beta.1",
@@ -37,7 +37,7 @@
     "pinia": "2.2.0",
     "radix-vue": "1.9.6",
     "tailwind-merge": "2.5.2",
-    "vue": "3.4.35",
+    "vue": "3.5.12",
     "vue-i18n": "9.14.1",
     "vue-router": "4.4.5",
     "zod": "3.23.8"

@@ -1,102 +1,117 @@
 <script setup lang="ts">
-import { useToast, useTypedRouter } from '@wisemen/vue-core'
-import { AxiosError } from 'axios'
-import { useForm } from 'formango'
-import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { AppButton, useToast } from '@wisemen/vue-core'
+import { ref } from 'vue'
 
-import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
-import { loginFormSchema } from '@/models/auth/login/loginForm.model'
-import AuthPage from '@/modules/auth/components/AuthPage.vue'
-import AuthLoginForm from '@/modules/auth/features/login/components/AuthLoginForm.vue'
-import { useAuthStore } from '@/stores/auth.store.ts'
+import { useI18n } from '@/composables/i18n/i18n.composable'
+import { useAuthStore } from '@/stores/auth.store'
 
 const authStore = useAuthStore()
 
-const { lastLoggedInUser } = storeToRefs(authStore)
+const isSigningInWithZitadel = ref<boolean>(false)
+const isSigningInWithApple = ref<boolean>(false)
+const isSigningInWithGoogle = ref<boolean>(false)
 
 const { t } = useI18n()
 const toast = useToast()
-const router = useTypedRouter()
 
-const {
-  form,
-  onSubmitForm,
-  onSubmitFormError,
-} = useForm({
-  schema: loginFormSchema,
-})
+async function onSignInWithZitadel(): Promise<void> {
+  isSigningInWithZitadel.value = true
 
-const title = computed<string>(() => {
-  if (lastLoggedInUser.value === null) {
-    return t('auth.login.log_in')
+  try {
+    const loginUrl = await authStore.getLoginUrl()
+
+    window.location.replace(loginUrl)
   }
-
-  return t('auth.login.welcome_back_name', {
-    name: lastLoggedInUser.value.firstName,
-  })
-})
-
-async function handleLoggedIn(user: CurrentUser): Promise<void> {
-  authStore.setLastLoginAttemptEmail(null)
-  authStore.setLastLoggedInUser(user)
-
-  await router.replace({
-    name: 'index',
-  })
-}
-
-function handleLoginError(error: unknown): void {
-  if (error instanceof AxiosError) {
-    form.addErrors({
-      password: {
-        _errors: [
-          t('auth.login.invalid_email_or_password'),
-        ],
-      },
-    })
+  catch {
+    isSigningInWithZitadel.value = false
 
     toast.error({
-      title: t('auth.login.error_toast.title'),
-      description: t('auth.login.error_toast.description'),
+      message: t('module.auth.login.error'),
     })
-  }
-  else {
-    throw error
   }
 }
 
-onSubmitFormError(() => {
-  toast.error({
-    title: t('error.invalid_form_input.title'),
-    description: t('error.invalid_form_input.description'),
-  })
-})
-
-onSubmitForm(async (data) => {
+async function onSignInWithProvider(provider: 'apple' | 'google'): Promise<void> {
   try {
-    await authStore.login(data)
-
-    const currentUser = await authStore.getCurrentUser()
-
-    await handleLoggedIn(currentUser)
+    window.location.href = await authStore.getIdentityProviderLoginUrl(provider)
   }
   catch (error) {
-    handleLoginError(error)
-    authStore.setLastLoginAttemptEmail(data.email)
+    toast.error({
+      message: error?.toString() ?? t('module.auth.login.error'),
+    })
   }
-})
+}
+
+async function onSignInWithApple(): Promise<void> {
+  isSigningInWithApple.value = true
+
+  try {
+    await onSignInWithProvider('apple')
+  }
+  catch {
+    isSigningInWithApple.value = false
+  }
+}
+
+async function onSignInWithGoogle(): Promise<void> {
+  isSigningInWithGoogle.value = true
+
+  try {
+    await onSignInWithProvider('google')
+  }
+  catch {
+    isSigningInWithGoogle.value = false
+  }
+}
 </script>
 
 <template>
-  <AuthPage
-    :description="t('auth.login.sign_in_to_continue')"
-    :title="title"
+  <div
+    class="grid h-dvh grid-cols-1 md:grid-cols-2"
   >
-    <AuthLoginForm
-      :form="form"
-      :last-logged-in-user="lastLoggedInUser"
-    />
-  </AuthPage>
+    <div class="flex flex-col justify-center px-6 py-20">
+      <div class="mx-auto w-full max-w-80">
+        <div>
+          <h1 class="text-center text-4xl font-bold text-primary">
+            {{ t('module.auth.login.title') }}
+          </h1>
+
+          <p class="mt-2 text-center text-secondary">
+            {{ t('module.auth.login.description') }}
+          </p>
+
+          <div class="mt-8 flex flex-col gap-y-1">
+            <AppButton
+              :is-loading="isSigningInWithZitadel"
+              class="w-full"
+              variant="secondary"
+              @click="onSignInWithZitadel"
+            >
+              {{ t('module.auth.login.sign_in_with_zitadel') }}
+            </AppButton>
+
+            <AppButton
+              :is-loading="isSigningInWithGoogle"
+              icon-left="googleLogo"
+              variant="secondary"
+              @click="onSignInWithGoogle"
+            >
+              {{ t('module.auth.login.sign_in_with_google') }}
+            </AppButton>
+
+            <AppButton
+              :is-loading="isSigningInWithApple"
+              icon-left="appleLogo"
+              variant="secondary"
+              @click="onSignInWithApple"
+            >
+              {{ t('module.auth.login.sign_in_with_apple') }}
+            </AppButton>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-black" />
+  </div>
 </template>

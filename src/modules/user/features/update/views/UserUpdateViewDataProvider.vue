@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { useTypedRouteParams } from '@wisemen/vue-core'
-
 import AppDataProviderView from '@/components/app/AppDataProviderView.vue'
+import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { useUserDetailQuery } from '@/modules/user/api/queries/userDetail.query'
 
 import UserUpdateView from './UserUpdateView.vue'
 
-const routeParams = useTypedRouteParams('user-update')
+const props = defineProps<{
+  userUuid: UserUuid
+}>()
 
-const userDetailQuery = useUserDetailQuery(routeParams.userUuid)
+const userDetailQuery = useUserDetailQuery(() => props.userUuid)
 </script>
 
 <template>

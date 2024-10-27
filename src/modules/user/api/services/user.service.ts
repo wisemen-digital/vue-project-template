@@ -1,4 +1,7 @@
-import type { PaginationOptions } from '@wisemen/vue-core'
+import type {
+  PaginatedData,
+  PaginationOptions,
+} from '@wisemen/vue-core'
 
 import { httpClient } from '@/libs/http.lib'
 import { paginatedDataSchema } from '@/models/paginated-data/paginatedData.model'
@@ -16,7 +19,6 @@ import {
   UserUpdateTransformer,
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
-import type { PaginatedData } from '@/types/pagination.type'
 import { PaginationDtoBuilder } from '@/utils/paginationDtoBuilder.util'
 
 export class UserService {
@@ -40,8 +42,12 @@ export class UserService {
     })
 
     return {
-      data: data.items.map(UserIndexTransformer.fromDto),
-      total: data.meta.total,
+      data: data.data.map(UserIndexTransformer.fromDto),
+      meta: {
+        limit: data.meta.limit,
+        offset: data.meta.offset,
+        total: data.meta.total,
+      },
     }
   }
 

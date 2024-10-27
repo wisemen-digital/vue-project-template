@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import type { BreadcrumbItem } from '@wisemen/vue-core'
 import { usePagination } from '@wisemen/vue-core'
 import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
 
-import AppSearchInput from '@/components/app/AppSearchInput.vue'
+import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
 import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
+import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
@@ -14,19 +13,9 @@ import UserOverviewTable from '@/modules/user/features/overview/components/UserO
 
 const { t } = useI18n()
 
-const breadcrumbs = computed<BreadcrumbItem[]>(() => [
-  {
-    label: t('shared.users'),
-    type: 'page',
-  },
-  {
-    label: t('shared.overview'),
-    type: 'page',
-  },
-])
-
 const pagination = usePagination<UserIndexFilters>({
-  id: 'users',
+  isRouteQueryEnabled: true,
+  key: 'users',
 })
 
 const search = computed<string>({
@@ -44,12 +33,9 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
 </script>
 
 <template>
-  <AppTablePage
-    :title="t('shared.users')"
-    :breadcrumbs="breadcrumbs"
-  >
+  <AppTablePage :title="t('user.label.plural')">
     <template #header-actions>
-      <AppSearchInput
+      <AppSearchInputField
         v-model="search"
         :is-loading="isLoading"
       />
@@ -59,7 +45,7 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
           name: 'user-create',
         }"
         :data-test-id="TEST_ID.USERS.OVERVIEW.CREATE_BUTTON"
-        :label="t('users.overview.new_user')"
+        :label="t('module.user.create.title')"
       />
     </template>
 
@@ -68,6 +54,7 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
         :data="userIndexQuery.data.value"
         :is-loading="isLoading"
         :pagination="pagination"
+        :error="userIndexQuery.error.value"
       />
     </template>
   </AppTablePage>

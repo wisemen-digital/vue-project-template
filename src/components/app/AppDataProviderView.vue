@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T">
-import { AppPageSkeletonLoader } from '@wisemen/vue-core'
+import { AppSkeletonItem } from '@wisemen/vue-core'
 import type { UseQueryReturnType } from '@wisemen/vue-core-query'
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
@@ -51,7 +51,8 @@ const data = computed<{
 </script>
 
 <template>
-  <AppPageSkeletonLoader v-if="isLoading" />
+  <!-- TODO: page skeleton -->
+  <AppSkeletonItem v-if="isLoading" />
 
   <div
     v-else-if="error !== null"

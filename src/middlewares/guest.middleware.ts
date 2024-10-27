@@ -1,10 +1,10 @@
-import { oAuthClient } from '@/libs/oAuth.lib.ts'
+import { useAuthStore } from '@/stores/auth.store'
 import { MiddlewareUtil } from '@/utils/middleware.util'
 
 export const guest = MiddlewareUtil.createMiddleware(() => {
-  const isLoggedIn = oAuthClient.isLoggedIn()
+  const authStore = useAuthStore()
 
-  if (!isLoggedIn) {
+  if (!authStore.isLoggedIn()) {
     return
   }
 

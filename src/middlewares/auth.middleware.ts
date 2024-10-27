@@ -1,7 +1,6 @@
 import { isAxiosError } from 'axios'
 
 import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
-import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { LoggerUtil } from '@/utils/logger.util'
 import { MiddlewareUtil } from '@/utils/middleware.util'
@@ -13,16 +12,14 @@ export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
 
   const authStore = useAuthStore()
 
-  const hasTokens = oAuthClient.isLoggedIn()
-
-  if (!hasTokens) {
+  if (!authStore.isLoggedIn()) {
     return {
-      name: 'login',
+      name: 'auth-login',
     }
   }
 
   try {
-    await authStore.getCurrentUser()
+    await authStore.getAuthUser()
   }
   catch (error) {
     if (isAxiosError(error)) {
@@ -32,7 +29,7 @@ export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
     LoggerUtil.logError(error)
 
     return {
-      name: 'login',
+      name: 'auth-login',
     }
   }
 })

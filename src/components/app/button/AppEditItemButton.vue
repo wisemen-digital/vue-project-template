@@ -1,13 +1,12 @@
-<script setup lang="ts" generic="TRoute extends keyof Routes">
+<script setup lang="ts">
 import { AppRouterLinkButton } from '@wisemen/vue-core'
 
-import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
-import type { Routes } from '@/routes/routes'
-import type { RouteLocationTyped } from '@/types/router/router.type'
+import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
+import type { RouteLocationCurrent } from '@/types/vueRouter'
 
 const props = defineProps<{
   label: string
-  to: RouteLocationTyped<TRoute>
+  to: RouteLocationCurrent
 }>()
 </script>
 
@@ -15,7 +14,7 @@ const props = defineProps<{
   <AppRouterLinkButton
     :to="props.to"
     :keyboard-shortcut="KEYBOARD_SHORTCUT.EDIT"
-    icon-left="edit"
+    icon-left="edit05"
   >
     {{ props.label }}
   </AppRouterLinkButton>

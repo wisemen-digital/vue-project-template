@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { AppText } from '@wisemen/vue-core'
-
 const props = withDefaults(
   defineProps<{
     title: string
@@ -15,20 +13,16 @@ const props = withDefaults(
 <template>
   <div class="grid gap-x-12 gap-y-4 md:grid-cols-3">
     <div>
-      <AppText
-        class="font-medium"
-        variant="body"
-      >
+      <h2 class="font-medium text-primary">
         {{ props.title }}
-      </AppText>
+      </h2>
 
-      <AppText
+      <p
         v-if="props.description !== null"
-        class="mt-1 text-muted-foreground"
-        variant="subtext"
+        class="mt-1 text-subtext text-secondary"
       >
         {{ props.description }}
-      </AppText>
+      </p>
     </div>
 
     <div class="col-span-2">
