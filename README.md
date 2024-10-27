@@ -2,7 +2,7 @@
 
 ### Environments
 
-- Dev: https://vue-node.project-template.development.appwi.se/login
+- Dev: https://vue-node.project-template.development.appwi.se
 - Test: /
 - Staging: /
 - Production: /
