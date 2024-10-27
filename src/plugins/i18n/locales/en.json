@@ -17,16 +17,18 @@
       "clear": "Clear",
       "placeholder": "Search..."
     },
+    "select": {
+      "empty_text": "No results found for '{searchTerm}'.",
+      "search_placeholder": "Search..."
+    },
     "sidebar": {
-      "open_sidebar": "Open sidebar",
       "close_sidebar": "Close sidebar",
       "footer": {
         "environment": "Environment",
         "sign_out": "Sign out",
-        "version": "Version",
-        "switch_to_dark_mode": "Switch to dark mode",
-        "switch_to_light_mode": "Switch to light mode"
-      }
+        "version": "Version"
+      },
+      "open_sidebar": "Open sidebar"
     },
     "table": {
       "page_count": "{startIndex} - {endIndex} of {totalItems}"
@@ -34,12 +36,8 @@
     "unsaved_changes_dialog": {
       "cancel": "Keep editing",
       "confirm": "Yes, I'm sure",
-      "title": "Unsaved changes",
-      "description": "All unsaved changes will be lost. Are you sure you want to continue?"
-    },
-    "select": {
-      "empty_text": "No results found for '{searchTerm}'.",
-      "search_placeholder": "Search..."
+      "description": "All unsaved changes will be lost. Are you sure you want to continue?",
+      "title": "Unsaved changes"
     }
   },
   "error": {
@@ -83,6 +81,68 @@
     },
     "save_changes": "Save changes"
   },
+  "module": {
+    "auth": {
+      "login": {
+        "description": "Sign in to your account to continue",
+        "error": "Something went wrong while logging in. Please try again.",
+        "sign_in_with_apple": "Sign in with apple",
+        "sign_in_with_google": "Sign in with google",
+        "sign_in_with_zitadel": "Sign in with Zitadel",
+        "title": "Sign in"
+      }
+    },
+    "settings": {
+      "interface_theme": {
+        "dark": "Dark",
+        "description": "Select or customize your UI theme.",
+        "light": "Light",
+        "system_preference": "System preference",
+        "title": "Interface theme"
+      },
+      "title": "Settings"
+    },
+    "user": {
+      "create": {
+        "create_user": "Create User",
+        "success_toast": {
+          "message": "User has been created successfully."
+        },
+        "title": "New user"
+      },
+      "detail": {
+        "edit_user": "Edit user",
+        "title": "Edit user"
+      },
+      "form": {
+        "section": {
+          "name": {
+            "description": "First and last name of the user."
+          }
+        }
+      },
+      "update": {
+        "success_toast": {
+          "message": "User has been updated successfully."
+        }
+      }
+    }
+  },
+  "shared": {
+    "close": "Close",
+    "edit": "Edit"
+  },
+  "user": {
+    "birth_date": "Birthdate",
+    "first_name": "First name",
+    "label": {
+      "plural": "Users",
+      "singular": "User",
+      "user_with_count": "No users | {count} user | {count} users"
+    },
+    "last_name": "Last name",
+    "name": "Name"
+  },
   "validation": {
     "invalid_date": "Invalid date",
     "invalid_datetime": "Invalid date and time",
@@ -103,57 +163,5 @@
     "too_small_date": "Must be after {count}",
     "too_small_number": "Must be greater than or equal to {count}",
     "too_small_string": "Must be at least {count} character | Must be at least {count} characters"
-  },
-  "module": {
-    "user": {
-      "create": {
-        "title": "New user",
-        "create_user": "Create User",
-        "success_toast": {
-          "message": "User has been created successfully."
-        }
-      },
-      "update": {
-        "success_toast": {
-          "message": "User has been updated successfully."
-        }
-      },
-      "detail": {
-        "title": "Edit user",
-        "edit_user": "Edit user"
-      },
-      "form": {
-        "section": {
-          "name": {
-            "description": "First and last name of the user."
-          }
-        }
-      }
-    },
-    "auth": {
-      "login": {
-        "title": "Sign in",
-        "description": "Sign in to your account to continue",
-        "error": "Something went wrong while logging in. Please try again.",
-        "sign_in_with_apple": "Sign in with apple",
-        "sign_in_with_google": "Sign in with google",
-        "sign_in_with_zitadel": "Sign in with Zitadel"
-      }
-    }
-  },
-  "shared": {
-    "close": "Close",
-    "edit": "Edit"
-  },
-  "user": {
-    "label": {
-      "singular": "User",
-      "plural": "Users",
-      "user_with_count": "No users | {count} user | {count} users"
-    },
-    "first_name": "First name",
-    "last_name": "Last name",
-    "name": "Name",
-    "birth_date": "Birthdate"
   }
 }

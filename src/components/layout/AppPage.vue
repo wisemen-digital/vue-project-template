@@ -18,17 +18,17 @@ const props = withDefaults(
 
 <template>
   <div class="flex w-full flex-1 flex-col">
-    <AppContainer class="pb-2 pt-10">
+    <AppContainer class="pt-12">
       <AppBreadcrumbs
         v-if="props.breadcrumbs !== null"
         :items="props.breadcrumbs"
         class="mb-1"
       />
 
-      <div class="flex h-10 items-center justify-between">
+      <div class="flex h-10 items-center  justify-between border-b border-solid border-secondary pb-10">
         <div
           :data-test-id="TEST_ID.APP_PAGE.TITLE"
-          class="text-title font-semibold text-primary"
+          class="text-2xl font-semibold text-primary"
         >
           {{ props.title }}
         </div>
@@ -42,7 +42,7 @@ const props = withDefaults(
       </div>
     </AppContainer>
 
-    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-xl pt-2xl">
+    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-xl pt-4xl">
       <slot />
     </AppContainer>
   </div>

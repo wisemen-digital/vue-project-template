@@ -31,19 +31,16 @@ const darkMode = useDarkMode()
 
 const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
   {
-    icon: darkMode.isEnabled.value ? 'sun' : 'moonStar',
-    label: darkMode.isEnabled.value
-      ? t('component.sidebar.footer.switch_to_light_mode')
-      : t('component.sidebar.footer.switch_to_dark_mode'),
-    type: 'option',
-    onSelect: (): void => {
-      if (darkMode.isEnabled.value) {
-        darkMode.disable()
-      }
-      else {
-        darkMode.enable()
-      }
+    icon: 'settings01',
+    keyboardKeys: [
+      'g',
+      's',
+    ],
+    label: t('module.settings.title'),
+    to: {
+      name: 'settings-overview',
     },
+    type: 'route',
   },
   {
     type: 'separator',
