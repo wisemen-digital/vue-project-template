@@ -12,6 +12,7 @@ export const userRoutes = [
       },
       {
         name: 'user-detail',
+        props: true,
         path: ':userUuid',
         component: (): Component => import('@/modules/user/features/detail/views/UserDetailViewDataProvider.vue'),
       },
@@ -22,6 +23,7 @@ export const userRoutes = [
       },
       {
         name: 'user-update',
+        props: true,
         path: ':userUuid/update',
         component: (): Component => import('@/modules/user/features/update/views/UserUpdateViewDataProvider.vue'),
       },
