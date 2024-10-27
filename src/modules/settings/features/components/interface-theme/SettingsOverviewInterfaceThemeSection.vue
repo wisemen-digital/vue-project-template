@@ -19,16 +19,16 @@ const darkMode = useDarkMode()
 
 const themes = computed<RadioGroupItem<ThemeValue>[]>(() => [
   {
-    label: t('module.settings.interface_theme.system_preference'),
-    value: 'system',
-  },
-  {
     label: t('module.settings.interface_theme.light'),
     value: 'light',
   },
   {
     label: t('module.settings.interface_theme.dark'),
     value: 'dark',
+  },
+  {
+    label: t('module.settings.interface_theme.system_preference'),
+    value: 'system',
   },
 ])
 
