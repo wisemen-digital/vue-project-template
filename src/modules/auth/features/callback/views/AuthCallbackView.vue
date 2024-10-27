@@ -11,12 +11,10 @@ const i18n = useI18n()
 const router = useRouter()
 const authStore = useAuthStore()
 const toast = useToast()
-const code = useRouteQuery<string | undefined>('code')
+const authorizationCode = useRouteQuery<null | string>('code', null)
 
 onMounted(async () => {
-  const authorizationCode = code.value ?? null
-
-  if (authorizationCode === null) {
+  if (authorizationCode.value === null) {
     toast.error({
       message: i18n.t('module.auth.login.error'),
     })
@@ -28,7 +26,7 @@ onMounted(async () => {
     return
   }
   try {
-    await authStore.loginWithCode(authorizationCode)
+    await authStore.loginWithCode(authorizationCode.value)
 
     await router.push({
       name: 'index',
