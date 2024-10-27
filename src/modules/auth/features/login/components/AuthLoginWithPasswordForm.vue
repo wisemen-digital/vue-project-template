@@ -2,6 +2,7 @@
 import {
   AppText,
   FormInput,
+  FormPasswordInput,
 } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { useI18n } from 'vue-i18n'
@@ -22,6 +23,7 @@ const props = defineProps<{
 const { t } = useI18n()
 
 const email = props.form.register('email', props.lastLoggedInUser?.email)
+const password = props.form.register('password')
 </script>
 
 <template>
@@ -37,6 +39,14 @@ const email = props.form.register('email', props.lastLoggedInUser?.email)
         :label="t('form.fields.email')"
         placeholder="email@example.com"
         type="email"
+      />
+
+      <FormPasswordInput
+        v-bind="password"
+        :data-test-id="TEST_ID.AUTH.LOGIN.PASSWORD_INPUT"
+        :is-required="true"
+        :label="t('form.fields.password')"
+        :placeholder="t('form.fields.password')"
       />
 
       <AppTypedRouterLink
@@ -55,7 +65,7 @@ const email = props.form.register('email', props.lastLoggedInUser?.email)
 
     <AuthFormSubmitButton
       :data-test-id="TEST_ID.AUTH.LOGIN.SUBMIT_BUTTON"
-      :label="t('shared.next')"
+      :label="t('auth.login.log_in')"
       :form="form"
     />
   </AppForm>

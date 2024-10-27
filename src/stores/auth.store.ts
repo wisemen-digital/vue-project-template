@@ -5,12 +5,17 @@ import {
   ref,
 } from 'vue'
 
-import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
+import {
+  AUTH_APPLE_IDP_ID,
+  AUTH_GOOGLE_IDP_ID,
+  CURRENT_ENVIRONMENT,
+} from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { AuthTransformer } from '@/models/auth/auth.transformer'
 import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
 import type { LoginForm } from '@/models/auth/login/loginForm.model'
-import { AuthService } from '@/modules/auth/api/services/auth.service'
+import type { ResetPasswordForm } from '@/models/auth/reset-password/resetPasswordForm.model.ts'
+import { LoggerUtil } from '@/utils/logger.util.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -34,6 +39,10 @@ export const useAuthStore = defineStore('auth', () => {
     lastLoggedInUser.value = user
   }
 
+  function isLoggedIn(): boolean {
+    return oAuthClient.isLoggedIn()
+  }
+
   async function getCurrentUser(): Promise<CurrentUser> {
     if (CURRENT_ENVIRONMENT === 'e2e') {
       return {
@@ -49,19 +58,57 @@ export const useAuthStore = defineStore('auth', () => {
       return currentUser.value
     }
 
-    currentUser.value = await AuthService.getCurrentUser()
+    const user = await oAuthClient.getUserInfo()
+
+    currentUser.value = AuthTransformer.toCurrentUser(user)
 
     return currentUser.value
+  }
+
+  async function getIdentityProviderLoginUrl(provider: string): Promise<string> {
+    if (provider === 'apple') {
+      return await oAuthClient.getIdentityProviderLoginUrl(AUTH_APPLE_IDP_ID)
+    }
+
+    if (provider === 'google') {
+      return await oAuthClient.getIdentityProviderLoginUrl(AUTH_GOOGLE_IDP_ID)
+    }
+
+    throw new Error('Unsupported identity provider')
+  }
+
+  async function getLoginUrl(): Promise<string> {
+    return await oAuthClient.getLoginUrl()
+  }
+
+  function getLogoutUrl(): string {
+    return oAuthClient.getLogoutUrl()
   }
 
   function setCurrentUser(user: CurrentUser | null): void {
     currentUser.value = user
   }
 
-  async function login(data: LoginForm): Promise<void> {
-    const { password, username } = AuthTransformer.toLoginDto(data)
+  async function loginWithCode(code: string): Promise<void> {
+    await oAuthClient.loginWithCode(code)
+  }
 
-    await oAuthClient.loginPassword(username, password)
+  // TODO implement login
+  async function login(data: LoginForm): Promise<void> {
+    // const { password, username } = AuthTransformer.toLoginDto(data)
+
+    // await oAuthClient.loginPassword(username, password)
+
+    LoggerUtil.logInfo('login', data)
+
+    return await Promise.resolve()
+  }
+
+  // TODO implement resetPassword
+  async function resetPassword(form: ResetPasswordForm): Promise<void> {
+    LoggerUtil.logInfo('resetPassword', form)
+
+    return await Promise.resolve()
   }
 
   function logout(): void {
@@ -71,12 +118,17 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     isAuthenticated,
+    isLoggedIn,
     currentUser,
     getCurrentUser,
+    getIdentityProviderLoginUrl,
+    getLoginUrl,
+    getLogoutUrl,
     lastLoggedInUser: computed<CurrentUser | null>(() => lastLoggedInUser.value),
     lastLoginAttemptEmail: computed<null | string>(() => lastLoginAttemptEmail.value),
     login,
-    logout,
+    loginWithCode, logout,
+    resetPassword,
     setLastLoggedInUser,
     setLastLoginAttemptEmail,
   }

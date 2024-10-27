@@ -4,6 +4,11 @@ import playwright from 'eslint-plugin-playwright'
 export default [
   ...(await eslintVueConfig),
   {
+    ignores: [
+      'src/client',
+    ],
+  },
+  {
     ...playwright.configs['flat/recommended'],
     files: [
       'tests/**',

@@ -11,15 +11,17 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { resetPasswordFormSchema } from '@/models/auth/reset-password/resetPasswordForm.model'
-import { useAuthResetPasswordMutation } from '@/modules/auth/api/mutations/authResetPassword.mutation.ts'
 import AuthPage from '@/modules/auth/components/AuthPage.vue'
 import ResetPasswordForm from '@/modules/auth/features/reset-password/components/AuthResetPasswordForm.vue'
+import { useAuthStore } from '@/stores/auth.store.ts'
 
 const hasPasswordBeenReset = ref<boolean>(true)
 
 const { t } = useI18n()
 const toast = useToast()
 const errorToast = useApiErrorToast()
+
+const authStore = useAuthStore()
 
 const {
   form,
@@ -29,13 +31,11 @@ const {
   schema: resetPasswordFormSchema,
 })
 
-const routeParams = useTypedRouteParams('reset-password')
-const queryParams = useTypedRouteQuery('reset-password')
+const routeParams = useTypedRouteParams('auth-reset-password')
+const queryParams = useTypedRouteQuery('auth-reset-password')
 
 form.register('token', routeParams.token.value)
 form.register('email', queryParams.email.value)
-
-const resetPasswordMutation = useAuthResetPasswordMutation()
 
 const description = computed<string>(() => {
   if (hasPasswordBeenReset.value) {
@@ -54,9 +54,7 @@ onSubmitFormError(() => {
 
 onSubmitForm(async (values) => {
   try {
-    await resetPasswordMutation.execute({
-      body: values,
-    })
+    await authStore.resetPassword(values)
 
     hasPasswordBeenReset.value = true
   }
@@ -79,7 +77,7 @@ onSubmitForm(async (values) => {
     <AppRouterLinkButton
       v-else
       :to="{
-        name: 'login',
+        name: 'auth-login',
       }"
     >
       {{ t('auth.reset_password.success.action') }}
