@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { AppIcon, AppTooltip } from '@wisemen/vue-core'
 
-import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
+import AppRouterLink from '@/components/app/link/AppRouterLink.vue'
 import type { NavigationItem } from '@/types/navigationItem.type'
 
 const props = defineProps<{
@@ -21,7 +21,7 @@ const props = defineProps<{
     side="right"
   >
     <template #trigger>
-      <AppTypedRouterLink
+      <AppRouterLink
         v-slot="{ isActive }"
         :to="props.item.to"
         class="group block rounded-xl ring-fg-brand-primary"
@@ -84,7 +84,7 @@ const props = defineProps<{
             </Transition>
           </div>
         </div>
-      </AppTypedRouterLink>
+      </AppRouterLink>
     </template>
 
     <template #content>

@@ -1,4 +1,10 @@
-import type { Routes } from '@/routes/routes'
-import type { RouteLocationTyped } from '@/types/router/router.type'
+import type { RouteLocationRaw } from 'vue-router'
 
-export type RouteMiddlewareReturnType = RouteLocationTyped<keyof Routes> | undefined
+type RouteMiddlewareReturnType = RouteLocationRaw | undefined
+
+export type MiddlewareFn = (
+  to: RouteLocationRaw,
+  from: RouteLocationRaw,
+) => Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
+
+export type Middleware = Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType

@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { useTypedRouter } from '@wisemen/vue-core'
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 import { useAuthStore } from '@/stores/auth.store.ts'
 
-const router = useTypedRouter()
+const router = useRouter()
 const authStore = useAuthStore()
 
 onMounted(() => {

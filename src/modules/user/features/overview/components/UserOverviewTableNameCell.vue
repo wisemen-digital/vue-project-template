@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { AppTableCell } from '@wisemen/vue-core'
 
-import AppTypedRouterLink from '@/components/app/link/AppTypedRouterLink.vue'
+import AppRouterLink from '@/components/app/link/AppRouterLink.vue'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 
 const props = defineProps<{
@@ -11,7 +11,7 @@ const props = defineProps<{
 
 <template>
   <AppTableCell>
-    <AppTypedRouterLink
+    <AppRouterLink
       :to="{
         name: 'user-detail',
         params: {
@@ -21,6 +21,6 @@ const props = defineProps<{
       class="hover:underline"
     >
       {{ props.user.fullName }}
-    </AppTypedRouterLink>
+    </AppRouterLink>
   </AppTableCell>
 </template>

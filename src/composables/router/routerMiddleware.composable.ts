@@ -5,15 +5,12 @@ import type {
   RouteRecordNormalized,
 } from 'vue-router'
 
-import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type'
+import type { MiddlewareFn } from '@/types/router/routeMiddleware.type'
 
 export function useRouterMiddleware(router: Router): void {
   function hasMiddleware(to: RouteRecordNormalized): to is {
     meta: {
-      middleware: ((
-        to: RouteLocationNormalized,
-        from: RouteLocationNormalized,
-      ) => RouteMiddlewareReturnType)[]
+      middleware: MiddlewareFn[]
     }
   } & RouteRecordNormalized {
     return to.meta.middleware != null
