@@ -1,11 +1,19 @@
-import type { PaginatedData } from '@wisemen/vue-core'
 import { z } from 'zod'
+
+interface PaginatedDataDto<TSchema> {
+  items: TSchema[]
+  meta: {
+    limit: number
+    offset: number
+    total: number
+  }
+}
 
 export function paginatedDataSchema<T extends z.ZodType>(
   schema: z.ZodType,
-): z.ZodType<PaginatedData<z.infer<T>>> {
+): z.ZodType<PaginatedDataDto<z.infer<T>>> {
   return z.object({
-    data: schema.array(),
+    items: schema.array(),
     meta: z.object({
       limit: z.number(),
       offset: z.number(),

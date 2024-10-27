@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="w-80 rounded-xl border border-solid border-secondary bg-primary">
+  <div class="w-full min-w-80 rounded-xl border border-solid border-secondary bg-primary">
     <!-- macOS top bar -->
     <div class="flex items-center gap-x-1 border-b border-solid border-secondary p-2">
       <div class="size-2.5 rounded-full bg-error-400" />

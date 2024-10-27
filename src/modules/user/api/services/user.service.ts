@@ -42,7 +42,7 @@ export class UserService {
     })
 
     return {
-      data: data.data.map(UserIndexTransformer.fromDto),
+      data: data.items.map(UserIndexTransformer.fromDto),
       meta: {
         limit: data.meta.limit,
         offset: data.meta.offset,
