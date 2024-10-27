@@ -27,7 +27,7 @@ RUN pnpm run production
 # --- Stage 2: Run ---
 #
 
-FROM ghcr.io/wisemen-digital/web-base:latest AS final
+FROM ghcr.io/wisemen-digital/web-base:latest-unsecured AS final
 
 COPY --from=build /app/dist /app/www
 COPY --from=build /app/.env.example /etc/import-meta-env/example
