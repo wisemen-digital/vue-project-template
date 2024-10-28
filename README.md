@@ -1,5 +1,12 @@
-# Wisemen Vue Project Template
+# Vue Project Template
 
-This template will help you to create great applications at Wisemen.
+### Environments
 
-For more information, please visit [the frontend bible](https://thefrontendbible.com/project-template)
+- Dev: https://vue-node.project-template.development.appwi.se
+- Test: /
+- Staging: /
+- Production: /
+
+### Links
+- Docs: https://vue-node.project-template.development.appwi.se/api/docs
+- Linear: /
