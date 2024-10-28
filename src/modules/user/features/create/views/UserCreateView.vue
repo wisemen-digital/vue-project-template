@@ -43,7 +43,6 @@ const {
 
 onSubmitFormError(() => {
   toast.error({
-    // title: t('error.invalid_form_input.title'),
     message: t('error.invalid_form_input.description'),
   })
 })

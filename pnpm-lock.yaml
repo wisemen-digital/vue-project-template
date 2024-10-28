@@ -36,8 +36,8 @@ dependencies:
     specifier: 2.1.0
     version: 2.1.0
   '@wisemen/vue-core':
-    specifier: file:/Users/wouter/Documents/Wisemen/Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz
-    version: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.5.12)
+    specifier: 1.0.0-alpha.3
+    version: 1.0.0-alpha.3(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.5.12)
   axios:
     specifier: 1.7.7
     version: 1.7.7
@@ -5296,6 +5296,31 @@ packages:
       - '@vue/composition-api'
       - vue
     dev: true
+
+  /@wisemen/vue-core@1.0.0-alpha.3(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.5.12):
+    resolution: {integrity: sha512-QKKc/JlcklwLCvzGoZyo7j64O96NLnIBVIMZbssrbv1HtZCTN2gfwCE8mHMFN8cuJV/DZXcAy8IxqNSi2RvRMw==}
+    peerDependencies:
+      vue: 3.5.12
+      vue-i18n: 9.13.1
+    dependencies:
+      '@googlemaps/js-api-loader': 1.16.8
+      '@internationalized/date': 3.5.4
+      '@tailwindcss/vite': 4.0.0-alpha.25(vite@5.3.5)
+      '@vuepic/vue-datepicker': 9.0.2(vue@3.5.12)
+      axios: 1.7.3
+      date-fns: 3.6.0
+      defu: 6.1.4
+      postcss: 8.4.38
+      reka-ui: 1.0.0-alpha.1(vue@3.5.12)
+      tailwindcss: 3.4.4
+      vue: 3.5.12(typescript@5.5.4)
+      vue-i18n: 9.14.1(vue@3.5.12)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - debug
+      - ts-node
+      - vite
+    dev: false
 
   /abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -11932,31 +11957,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-  file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz(vite@5.3.5)(vue-i18n@9.14.1)(vue@3.5.12):
-    resolution: {integrity: sha512-SvrRFrhQS5qFUh9OypCjv84O9gOmPZ3hwGYGtDG4LeZM4FMUUFqgMkY5uspanzcRGcDgD7O6x4sDorrtPWNSdA==, tarball: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz}
-    id: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.2.tgz
-    name: '@wisemen/vue-core'
-    version: 1.0.0-alpha.2
-    peerDependencies:
-      vue: 3.5.12
-      vue-i18n: 9.13.1
-    dependencies:
-      '@googlemaps/js-api-loader': 1.16.8
-      '@internationalized/date': 3.5.4
-      '@tailwindcss/vite': 4.0.0-alpha.25(vite@5.3.5)
-      '@vuepic/vue-datepicker': 9.0.2(vue@3.5.12)
-      axios: 1.7.3
-      date-fns: 3.6.0
-      defu: 6.1.4
-      postcss: 8.4.38
-      reka-ui: 1.0.0-alpha.1(vue@3.5.12)
-      tailwindcss: 3.4.4
-      vue: 3.5.12(typescript@5.5.4)
-      vue-i18n: 9.14.1(vue@3.5.12)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - debug
-      - ts-node
-      - vite
-    dev: false
