@@ -46,7 +46,6 @@
     "@import-meta-env/cli": "0.6.9",
     "@import-meta-env/unplugin": "0.5.2",
     "@playwright/test": "1.45.3",
-    "@sentry/vite-plugin": "2.21.1",
     "@tanstack/vue-query-devtools": "5.51.21",
     "@tsconfig/node20": "20.1.4",
     "@types/jsdom": "21.1.7",

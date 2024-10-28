@@ -1,6 +1,5 @@
 /* eslint-disable node/prefer-global/process */
 import ImportMetaEnvPlugin from '@import-meta-env/unplugin'
-import { sentryVitePlugin } from '@sentry/vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
@@ -67,16 +66,6 @@ export default defineConfig({
       script: {
         defineModel: true,
       },
-    }),
-    sentryVitePlugin({
-      authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
-      disable: process.env.VITE_SENTRY_AUTH_TOKEN === undefined,
-      errorHandler(error) {
-        console.error('SentryVitePlugin error:', error)
-      },
-      org: process.env.VITE_SENTRY_ORG,
-      project: process.env.VITE_SENTRY_PROJECT,
-      url: process.env.VITE_SENTRY_URL,
     }),
   ],
   resolve: {
