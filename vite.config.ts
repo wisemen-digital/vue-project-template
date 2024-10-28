@@ -6,9 +6,6 @@ import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  build: {
-    sourcemap: true,
-  },
   css: {
     preprocessorOptions: {
       scss: {
