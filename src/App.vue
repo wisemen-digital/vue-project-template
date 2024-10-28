@@ -7,20 +7,29 @@ import {
   useDarkMode,
   useDocumentTitle,
 } from '@wisemen/vue-core'
-import { RouterView } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
 import { useRefreshPrompt } from '@/composables/refresh-prompt/refreshPrompt.composable'
 import { logBuildInformation } from '@/constants/environment.constant.ts'
+import { useAuthStore } from '@/stores/auth.store.ts'
 
 const { setTemplate } = useDocumentTitle()
+const router = useRouter()
 const darkMode = useDarkMode()
+const authStore = useAuthStore()
 
 setTemplate('{title} | App')
 
 useDarkMode()
 useRefreshPrompt()
 logBuildInformation()
+
+authStore.onLogout(() => {
+  router.replace({
+    name: 'auth-login',
+  })
+})
 </script>
 
 <template>

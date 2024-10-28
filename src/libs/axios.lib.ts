@@ -3,7 +3,6 @@ import Axios from 'axios'
 
 import { API_BASE_URL } from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib'
-import { routerPlugin } from '@/plugins/router/router.plugin.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const axiosConfig: CreateAxiosDefaults = {
@@ -19,7 +18,7 @@ axios.interceptors.request.use((config) => oAuthClient.addAuthorizationHeader(co
 
 axios.interceptors.response.use(
   (config) => config,
-  async (error) => {
+  (error) => {
     if (!Axios.isAxiosError(error)) {
       return Promise.reject(error)
     }
@@ -30,10 +29,6 @@ axios.interceptors.response.use(
       const authStore = useAuthStore()
 
       authStore.logout()
-
-      await routerPlugin.replace({
-        name: 'auth-login',
-      })
     }
 
     return Promise.reject(error)

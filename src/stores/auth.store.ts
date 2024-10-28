@@ -19,6 +19,8 @@ export const useAuthStore = defineStore('auth', () => {
 
   const isAuthenticated = computed<boolean>(() => authUser.value === null)
 
+  const logoutCallback = ref<(() => void) | null>(null)
+
   async function getAuthUser(): Promise<AuthUser> {
     if (CURRENT_ENVIRONMENT === 'e2e') {
       return {
@@ -76,6 +78,11 @@ export const useAuthStore = defineStore('auth', () => {
   function logout(): void {
     oAuthClient.logout()
     setAuthUser(null)
+    logoutCallback.value?.()
+  }
+
+  function onLogout(callback: () => void): void {
+    logoutCallback.value = callback
   }
 
   return {
@@ -88,5 +95,6 @@ export const useAuthStore = defineStore('auth', () => {
     getLogoutUrl,
     loginWithCode,
     logout,
+    onLogout,
   }
 })
