@@ -9,6 +9,7 @@ const props = withDefaults(
   defineProps<{
     title: string
     breadcrumbs?: BreadcrumbItem[] | null
+    subtitle?: null | string
   }>(),
   {
     breadcrumbs: null,
@@ -25,12 +26,22 @@ const props = withDefaults(
         class="mb-xl"
       />
 
-      <div class="flex h-10 items-center  justify-between border-b border-solid border-secondary pb-10">
-        <div
-          :data-test-id="TEST_ID.APP_PAGE.TITLE"
-          class="text-2xl font-semibold text-primary"
-        >
-          {{ props.title }}
+      <div class="flex h-10 items-center justify-between">
+        <div>
+          <div
+            :data-test-id="TEST_ID.APP_PAGE.TITLE"
+            class="text-2xl font-semibold text-primary"
+          >
+            {{ props.title }}
+          </div>
+          <div>
+            <span
+              v-if="props.subtitle"
+              class="text-sm text-secondary"
+            >
+              {{ props.subtitle }}
+            </span>
+          </div>
         </div>
 
         <div

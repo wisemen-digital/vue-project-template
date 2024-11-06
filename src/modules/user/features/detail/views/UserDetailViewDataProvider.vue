@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useUserDetailQuery } from '@/api/queries/userDetail.query'
 import AppDataProviderView from '@/components/app/AppDataProviderView.vue'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
-import { useUserDetailQuery } from '@/modules/user/api/queries/userDetail.query'
 
 import UserDetailView from './UserDetailView.vue'
 

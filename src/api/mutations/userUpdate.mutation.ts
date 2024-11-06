@@ -1,10 +1,10 @@
 import type { UseMutationReturnType } from '@wisemen/vue-core-query'
 import { useMutation } from '@wisemen/vue-core-query'
 
-import type { User } from '@/models/user/detail/user.model'
-import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
-import type { UserUuid } from '@/models/user/userUuid.model'
-import { UserService } from '@/modules/user/api/services/user.service'
+import { UserService } from '@/api/services/user.service.ts'
+import type { User } from '@/models/user/detail/user.model.ts'
+import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model.ts'
+import type { UserUuid } from '@/models/user/userUuid.model.ts'
 
 interface Params {
   userUuid: UserUuid

@@ -10,7 +10,8 @@ import { computed } from 'vue'
 
 import FormSection from '@/components/form/FormSection.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable'
-import SettingsOverviewMiniDashboard from '@/modules/settings/features/components/interface-theme/SettingsOverviewMiniDashboard.vue'
+import UserSettingsOverviewMiniDashboard
+  from '@/modules/user-settings/features/components/interface-theme/UserSettingsOverviewMiniDashboard.vue'
 
 type ThemeValue = 'dark' | 'light' | 'system'
 
@@ -64,7 +65,7 @@ function getTheme(value: ThemeValue): 'dark' | 'light' {
           >
             <AppThemeProvider :theme="getTheme(item.value)">
               <div class="relative h-40 overflow-hidden rounded-xl border-2 border-solid border-transparent bg-tertiary ring-brand-primary-500 ring-offset-1 duration-200 group-focus-visible:ring-2 group-data-[state=checked]:border-brand">
-                <SettingsOverviewMiniDashboard class="absolute left-4 top-4" />
+                <UserSettingsOverviewMiniDashboard class="absolute left-4 top-4" />
               </div>
             </AppThemeProvider>
 

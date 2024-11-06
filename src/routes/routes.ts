@@ -5,8 +5,9 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import { authMiddleware } from '@/middlewares/auth.middleware'
 import { authRoutes } from '@/modules/auth/routes/auth.routes.ts'
-import { settingsRoutes } from '@/modules/settings/routes/settings.routes'
+import { settingsRoutes } from '@/modules/settings/routes/settings.routes.ts'
 import { userRoutes } from '@/modules/user/routes/user.routes'
+import { userSettingsRoutes } from '@/modules/user-settings/routes/userSettings.routes.ts'
 import type { RoutesProccessed } from '@/types/vueRouter'
 
 export const routes = [
@@ -31,6 +32,7 @@ export const routes = [
        */
       ...userRoutes,
       ...settingsRoutes,
+      ...userSettingsRoutes,
     ],
   },
   /**

@@ -2,13 +2,13 @@
 import { usePagination } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
+import { useUserIndexQuery } from '@/api/queries/userIndex.query'
 import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
 import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
-import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 import UserOverviewTable from '@/modules/user/features/overview/components/UserOverviewTable.vue'
 
 const { t } = useI18n()

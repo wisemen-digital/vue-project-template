@@ -93,6 +93,7 @@
       }
     },
     "settings": {
+      "description": "View and manage all settings",
       "interface_theme": {
         "dark": "Dark",
         "description": "Select or customize your UI theme.",
@@ -100,6 +101,7 @@
         "system_preference": "System preference",
         "title": "Interface theme"
       },
+      "roles_and_permissions_tab": "Roles and permissions",
       "title": "Settings"
     },
     "user": {
@@ -126,6 +128,9 @@
           "message": "User has been updated successfully."
         }
       }
+    },
+    "user-settings": {
+      "title": "User settings"
     }
   },
   "shared": {

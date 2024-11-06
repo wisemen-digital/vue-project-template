@@ -9,6 +9,21 @@ export const settingsRoutes = [
         name: 'settings-overview',
         path: '',
         component: (): Component => import('@/modules/settings/features/overview/SettingsOverviewView.vue'),
+        redirect: {
+          name: 'settings-users',
+        },
+        children: [
+          {
+            name: 'settings-users',
+            path: 'users',
+            component: (): Component => import('@/modules/settings/features/users/SettingsUsersOverviewView.vue'),
+          },
+          {
+            name: 'settings-roles-and-permissions',
+            path: 'roles-and-permissions',
+            component: (): Component => import('@/modules/settings/features/roles-and-permissions/SettingsRolesAndPermissionsView.vue'),
+          },
+        ],
       },
     ],
   },
