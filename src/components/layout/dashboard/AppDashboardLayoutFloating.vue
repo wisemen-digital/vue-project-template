@@ -6,8 +6,8 @@ import { RouterView } from 'vue-router'
   <div class="flex size-full flex-1 bg-secondary">
     <slot name="sidebar" />
 
-    <div class="z-[1] flex h-dvh flex-1 p-4 pl-1">
-      <div class="flex flex-1 rounded-2xl bg-primary shadow-lg">
+    <div class="z-[1] flex h-dvh flex-1 overflow-hidden p-4 pl-1">
+      <div class="flex flex-1 overflow-hidden rounded-2xl bg-primary shadow-lg">
         <RouterView />
       </div>
     </div>

@@ -7,6 +7,7 @@ import SettingsUsersOverviewTable from '@/modules/settings/features/users/compon
 
 const pagination = usePagination<UserIndexFilters>({
   isRouteQueryEnabled: true,
+  key: 'users',
 })
 const userIndexQuery = useUserIndexQuery(pagination.paginationOptions)
 </script>

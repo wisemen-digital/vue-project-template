@@ -19,7 +19,7 @@ function enter(element: Element): void {
   const width = getComputedStyle(htmlElement).width
 
   htmlElement.style.width = width
-  htmlElement.style.position = 'absolute'
+  // htmlElement.style.position = 'absolute'
   htmlElement.style.visibility = 'hidden'
   htmlElement.style.height = 'auto'
 
@@ -31,7 +31,6 @@ function enter(element: Element): void {
   htmlElement.style.height = ''
 
   getComputedStyle(htmlElement)
-
   requestAnimationFrame(() => {
     htmlElement.style.height = height
   })
@@ -73,7 +72,7 @@ function leave(element: Element): void {
   transition:
     height v-bind(durationString) cubic-bezier(0.645, 0.045, 0.355, 1),
     opacity v-bind(durationString);
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .expand-enter-from,

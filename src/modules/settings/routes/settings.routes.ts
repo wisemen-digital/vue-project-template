@@ -8,7 +8,7 @@ export const settingsRoutes = [
       {
         name: 'settings-overview',
         path: '',
-        component: (): Component => import('@/modules/settings/features/overview/SettingsOverviewView.vue'),
+        component: (): Component => import('@/modules/settings/features/overview/views/SettingsOverviewView.vue'),
         redirect: {
           name: 'settings-users',
         },
@@ -21,7 +21,7 @@ export const settingsRoutes = [
           {
             name: 'settings-roles-and-permissions',
             path: 'roles-and-permissions',
-            component: (): Component => import('@/modules/settings/features/roles-and-permissions/SettingsRolesAndPermissionsView.vue'),
+            component: (): Component => import('@/modules/settings/features/roles-and-permissions/views/SettingsRolesAndPermissionsView.vue'),
           },
         ],
       },
