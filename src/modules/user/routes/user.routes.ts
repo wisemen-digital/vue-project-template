@@ -9,6 +9,21 @@ export const userRoutes = [
         name: 'user-overview',
         path: '',
         component: (): Component => import('@/modules/user/features/overview/views/UserOverviewView.vue'),
+        redirect: {
+          name: 'user-list',
+        },
+        children: [
+          {
+            name: 'user-list',
+            path: 'all',
+            component: (): Component => import('@/modules/settings/features/users/SettingsUsersOverviewView.vue'),
+          },
+          {
+            name: 'user-roles-and-permissions',
+            path: 'roles-and-permissions',
+            component: (): Component => import('@/modules/settings/features/roles-and-permissions/views/SettingsRolesAndPermissionsView.vue'),
+          },
+        ],
       },
       {
         name: 'user-detail',

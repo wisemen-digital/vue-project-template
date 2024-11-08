@@ -117,6 +117,7 @@
         },
         "title": "New user"
       },
+      "description": "View and manage all users",
       "detail": {
         "edit_user": "Edit user",
         "title": "Edit user"
@@ -128,6 +129,7 @@
           }
         }
       },
+      "title": "Users",
       "update": {
         "success_toast": {
           "message": "User has been updated successfully."
@@ -136,6 +138,14 @@
     },
     "user-settings": {
       "title": "User settings"
+    },
+    "users": {
+      "overview_tab": {
+        "title": "Users"
+      },
+      "roles_and_permissions_tab": {
+        "title": "Roles and permissions"
+      }
     }
   },
   "shared": {
