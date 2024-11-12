@@ -24,7 +24,7 @@ function onClick(): void {
 
 <template>
   <AppUnstyledButton
-    class="flex w-full flex-col gap-2 rounded-lg border border-secondary bg-secondary p-4"
+    class="flex w-full flex-col gap-2 rounded-xl border border-secondary bg-secondary p-4"
     @click="onClick"
   >
     <span class="flex items-center justify-start gap-2">
