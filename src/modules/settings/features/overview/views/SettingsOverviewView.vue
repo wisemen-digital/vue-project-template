@@ -5,7 +5,7 @@ import { computed } from 'vue'
 import AppGrid from '@/components/app/AppGrid.vue'
 import AppPage from '@/components/layout/AppPage.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable.ts'
-import SettingsOverviewItemCard from '@/modules/settings/features/overview/views/SettingsOverviewItemCard.vue'
+import SettingsOverviewItemCard from '@/modules/settings/features/overview/components/SettingsOverviewItemCard.vue'
 
 const i18n = useI18n()
 
