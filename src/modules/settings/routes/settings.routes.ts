@@ -31,7 +31,7 @@ export const settingsRoutes = [
           {
             name: 'settings-users-roles-and-permissions',
             path: 'roles-and-permissions',
-            component: (): Component => import('@/modules/settings/features/users/views/SettingsRolesAndPermissionsView.vue'),
+            component: (): Component => import('@/modules/settings/features/users/views/SettingsRolesAndPermissionsDataProvider.vue'),
           },
         ],
       },

@@ -1,43 +1,29 @@
-import type { CalendarDateTime } from '@/models/date/calendarDateTime.model.ts'
-
-interface PermissionIndex {
-  id: string
-  actions: string[]
-}
-
-interface Role {
-  uuid: string
-  createdAt: CalendarDateTime
-  updatedAt: CalendarDateTime
-  name: string
-  permissions: {
-    id: string
-    actions: string[]
-  }[]
-}
+import type { Permission } from '@/models/permission/permission.model.ts'
+import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
+import type { Role } from '@/models/role/role.model.ts'
 
 export class RolesAndPermissionsTableUtil {
-  static createGrid(permissions: PermissionIndex[], roles: Role[]): Map<string, null | string[]> {
+  static createGrid(permissions: Permission[], roles: Role[]): Map<string, null | string[]> {
     const grid = new Map<string, null | string[]>()
 
     permissions.forEach((permission) => {
       roles.forEach((role) => {
         const value = role.permissions.find((rolePermission) => rolePermission.id === permission.id)
 
-        grid.set(`${permission.id}-${role.uuid}`, value !== undefined ? value.actions : null)
+        grid.set(`${permission.id}-${role.uuid}`, value !== undefined ? value.actions : [])
       })
     })
 
     return grid
   }
 
-  static mapGridToRoles(grid: Map<string, null | string[]>, permissions: PermissionIndex[], roles: Role[]): Role[] {
+  static mapGridToRoles(grid: Map<string, null | string[]>, permissions: Permission[], roles: Role[]): Role[] {
     const roleArray: Role[] = []
 
     permissions.forEach((permission) => {
       roles.forEach((roleIndex) => {
         const role = roleArray.find((role) => role.uuid === roleIndex.uuid)
-        const value = grid.get(`${permission.id}-${roleIndex.uuid}`)
+        const value = grid.get(`${permission.id}-${roleIndex.uuid}`) as PermissionAction[]
 
         if (!value) {
           return

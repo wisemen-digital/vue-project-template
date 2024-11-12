@@ -15,6 +15,7 @@ interface settingsItem {
   icon: Icon
   to: Routes[number]
 }
+
 const mySettingsItems = computed<settingsItem[]>(() => ([
   {
     title: i18n.t('module.settings.users.title'),
@@ -41,11 +42,11 @@ const mySettingsItems = computed<settingsItem[]>(() => ([
     :title="i18n.t('module.settings.title')"
   >
     <AppGrid :cols="1">
-      <h1
+      <h2
         class="font-semibold text-tertiary"
       >
         {{ i18n.t('module.settings.my_settings.title') }}
-      </h1>
+      </h2>
       <div class="grid grid-cols-3 gap-6">
         <SettingsOverviewItemCard
           v-for="item in mySettingsItems"

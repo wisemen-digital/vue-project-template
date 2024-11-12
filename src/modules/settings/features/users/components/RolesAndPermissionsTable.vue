@@ -42,11 +42,25 @@ function onUpdatePermissionCheckbox(value: boolean, permissionId: string, roleUu
 
   const permissionActions = props.permissions.find((permission) => permission.id === permissionId)?.actions ?? null
 
-  if (permissionActions === null) {
+  if (value) {
+    if (permissionActions !== null) {
+      rolesModelMap.value.set(key, permissionActions)
+
+      return
+    }
+
+    rolesModelMap.value.set(key, [])
+
     return
   }
 
-  rolesModelMap.value.set(key, value ? permissionActions : null)
+  if (permissionActions !== null) {
+    rolesModelMap.value.set(key, [])
+
+    return
+  }
+
+  rolesModelMap.value.set(key, null)
 }
 
 function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: RoleUuid, action: string): void {
@@ -66,7 +80,7 @@ function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: 
     valueArray.push(action)
   }
 
-  rolesModelMap.value.set(key, valueArray.length > 0 ? valueArray : null)
+  rolesModelMap.value.set(key, valueArray.length > 0 ? valueArray : [])
 }
 </script>
 

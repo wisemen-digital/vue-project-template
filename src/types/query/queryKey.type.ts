@@ -6,6 +6,8 @@ import type { UserUuid } from '@/models/user/userUuid.model'
 import type { RefOrGetter } from '@/types/reactivity.type.ts'
 
 interface ProjectQueryKeys {
+  permissions: void
+  roles: void
   userDetail: {
     userUuid: RefOrGetter<UserUuid>
   }

@@ -3,5 +3,5 @@ import type { PermissionId } from '@/models/permission/permissionId.model.ts'
 
 export interface Permission {
   id: PermissionId
-  actions: PermissionAction[]
+  actions: PermissionAction[] | null
 }

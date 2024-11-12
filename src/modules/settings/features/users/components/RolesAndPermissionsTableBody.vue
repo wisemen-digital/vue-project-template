@@ -40,8 +40,14 @@ function isPermissionCheckboxChecked(permissionId: string, roleUuid: RoleUuid): 
   const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key) ?? null
 
+  const permissionActions = props.permissions.find((permission) => permission.id === permissionId)?.actions ?? null
+
   if (value === null) {
     return false
+  }
+
+  if (permissionActions === null) {
+    return true
   }
 
   return value.length > 0
@@ -97,12 +103,13 @@ function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: 
       class="z-30 col-span-full grid grid-cols-subgrid"
     >
       <Component
-        :is="permission.actions.length > 0 ? AppUnstyledButton : 'div'"
+        :is="permission.actions ? AppUnstyledButton : 'div'"
         class="sticky left-0 flex items-center justify-between border-r border-solid border-secondary bg-primary p-3 px-6 text-left !ring-offset-0"
         @click="onTogglePermissionActionsClick(permission.id)"
       >
         {{ permission.id }}
         <AppIcon
+          v-if="permission.actions"
           :icon="isPermissionTabOpen(permission.id) ? 'chevronUp' : 'chevronDown'"
         />
       </Component>
