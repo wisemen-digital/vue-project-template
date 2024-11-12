@@ -8,9 +8,21 @@ export class RolesAndPermissionsTableUtil {
 
     permissions.forEach((permission) => {
       roles.forEach((role) => {
-        const value = role.permissions.find((rolePermission) => rolePermission.id === permission.id)
+        const rolePermission = role.permissions.find((rolePermission) => rolePermission.id === permission.id) ?? null
 
-        grid.set(`${permission.id}-${role.uuid}`, value !== undefined ? value.actions : [])
+        if (rolePermission === null) {
+          grid.set(`${permission.id}-${role.uuid}`, null)
+
+          return
+        }
+
+        if (rolePermission.actions === null) {
+          grid.set(`${permission.id}-${role.uuid}`, [])
+
+          return
+        }
+
+        grid.set(`${permission.id}-${role.uuid}`, rolePermission.actions)
       })
     })
 

@@ -60,7 +60,7 @@ const props = withDefaults(
       </div>
     </AppContainer>
 
-    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-xl pt-4xl">
+    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-xl">
       <slot />
     </AppContainer>
   </div>

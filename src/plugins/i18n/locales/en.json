@@ -160,9 +160,11 @@
     }
   },
   "shared": {
+    "add_item": "Add {item}",
     "admin": "Admin",
     "close": "Close",
     "edit": "Edit",
+    "role": "Role",
     "user": "User"
   },
   "user": {
