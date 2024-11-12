@@ -7,7 +7,7 @@ import { TEST_ID } from '@/constants/testId.constant.ts'
 
 const props = withDefaults(
   defineProps<{
-    title?: string
+    title: string
     breadcrumbs?: BreadcrumbItem[] | null
     subtitle?: null | string
   }>(),

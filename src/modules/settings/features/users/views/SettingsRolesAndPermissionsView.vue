@@ -10,7 +10,7 @@ import { RoleName } from '@/models/role/role.enum.ts'
 import type { Role } from '@/models/role/role.model.ts'
 import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
 import RolesAndPermissionsTable
-  from '@/modules/settings/features/roles-and-permissions/components/RolesAndPermissionsTable.vue'
+  from '@/modules/settings/features/users/components/RolesAndPermissionsTable.vue'
 import { RolesAndPermissionsTableUtil } from '@/utils/rolesAndPermissionsTable.util.ts'
 
 const permissionsDummy = ref<Permission[]>([

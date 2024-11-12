@@ -16,7 +16,7 @@ import { useI18n } from '@/composables/i18n/i18n.composable.ts'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'
-import UserOverviewTableNameCell from '@/modules/user/features/overview/components/UserOverviewTableNameCell.vue'
+import UserOverviewTableNameCell from '@/modules/settings/features/users/components/UserOverviewTableNameCell.vue'
 import { DateUtil } from '@/utils/date.util.ts'
 
 const props = defineProps<{

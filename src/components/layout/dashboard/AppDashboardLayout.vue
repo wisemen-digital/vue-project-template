@@ -38,13 +38,6 @@ function onSignOut(): void {
             ],
           },
         ]"
-        :bottom-items="[{
-          label: t('module.settings.title'),
-          icon: 'settings',
-          to: {
-            name: 'settings-overview',
-          },
-        }]"
         variant="floating-content"
         @sign-out="onSignOut"
       />

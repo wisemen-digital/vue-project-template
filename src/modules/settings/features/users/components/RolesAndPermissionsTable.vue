@@ -6,9 +6,9 @@ import type { Permission } from '@/models/permission/permission.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
 import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
 import RolesAndPermissionsTableBody
-  from '@/modules/settings/features/roles-and-permissions/components/RolesAndPermissionsTableBody.vue'
+  from '@/modules/settings/features/users/components/RolesAndPermissionsTableBody.vue'
 import RolesAndPermissionsTableHeader
-  from '@/modules/settings/features/roles-and-permissions/components/RolesAndPermissionsTableHeader.vue'
+  from '@/modules/settings/features/users/components/RolesAndPermissionsTableHeader.vue'
 import { ObjectUtil } from '@/utils/object.util.ts'
 
 const props = defineProps<{

@@ -9,9 +9,9 @@ import {
 import { computed } from 'vue'
 
 import FormSection from '@/components/form/FormSection.vue'
-import { useI18n } from '@/composables/i18n/i18n.composable'
+import { useI18n } from '@/composables/i18n/i18n.composable.ts'
 import UserSettingsOverviewMiniDashboard
-  from '@/modules/user-settings/features/components/interface-theme/UserSettingsOverviewMiniDashboard.vue'
+  from '@/modules/settings/features/theme/components/interface-theme/UserSettingsOverviewMiniDashboard.vue'
 
 type ThemeValue = 'dark' | 'light' | 'system'
 

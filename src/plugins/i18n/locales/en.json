@@ -101,13 +101,24 @@
         "system_preference": "System preference",
         "title": "Interface theme"
       },
+      "my_settings": {
+        "title": "My settings"
+      },
       "roles_and_permissions": {
         "table": {
           "permissions": "Permissions"
         }
       },
       "roles_and_permissions_tab": "Roles and permissions",
-      "title": "Settings"
+      "theme": {
+        "description": "Change the look and feel of your workspace",
+        "title": "Theme"
+      },
+      "title": "Settings",
+      "users": {
+        "description": "Manage your users",
+        "title": "User settings"
+      }
     },
     "user": {
       "create": {

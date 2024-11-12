@@ -1,24 +1,35 @@
 <script  lang="ts" setup="">
-import { AppRouteTabs, type RouteTabItem } from '@wisemen/vue-core'
+import type { Icon, Routes } from '@wisemen/vue-core'
 import { computed } from 'vue'
-import { RouterView } from 'vue-router'
 
+import AppGrid from '@/components/app/AppGrid.vue'
 import AppPage from '@/components/layout/AppPage.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable.ts'
+import SettingsOverviewItemCard from '@/modules/settings/features/overview/views/SettingsOverviewItemCard.vue'
 
 const i18n = useI18n()
 
-const tabs = computed<RouteTabItem[]>(() => ([
+interface settingsItem {
+  title: string
+  description: string
+  icon: Icon
+  to: Routes[number]
+}
+const mySettingsItems = computed<settingsItem[]>(() => ([
   {
-    label: i18n.t('module.settings.title'),
+    title: i18n.t('module.settings.users.title'),
+    description: i18n.t('module.settings.users.description'),
+    icon: 'barChartSquare',
     to: {
       name: 'settings-users',
     },
   },
   {
-    label: i18n.t('module.settings.roles_and_permissions_tab'),
+    title: i18n.t('module.settings.theme.title'),
+    description: i18n.t('module.settings.theme.description'),
+    icon: 'edit',
     to: {
-      name: 'settings-roles-and-permissions',
+      name: 'settings-theme',
     },
   },
 ]))
@@ -26,12 +37,25 @@ const tabs = computed<RouteTabItem[]>(() => ([
 
 <template>
   <AppPage
-    :title="i18n.t('module.settings.title')"
     :subtitle="i18n.t('module.settings.description')"
+    :title="i18n.t('module.settings.title')"
   >
-    <AppRouteTabs
-      :items="tabs"
-    />
-    <RouterView />
-  </AppPage>
+    <AppGrid :cols="1">
+      <h1
+        class="font-semibold text-tertiary"
+      >
+        {{ i18n.t('module.settings.my_settings.title') }}
+      </h1>
+      <div class="grid grid-cols-3 gap-6">
+        <SettingsOverviewItemCard
+          v-for="item in mySettingsItems"
+          :key="item.title"
+          :icon="item.icon"
+          :title="item.title"
+          :description="item.description"
+          :to="item.to"
+        />
+      </div>
+    </AppGrid>
+  </apppage>
 </template>

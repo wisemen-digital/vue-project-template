@@ -9,19 +9,29 @@ export const settingsRoutes = [
         name: 'settings-overview',
         path: '',
         component: (): Component => import('@/modules/settings/features/overview/views/SettingsOverviewView.vue'),
+      },
+      {
+        name: 'settings-theme',
+        path: 'theme',
+        component: (): Component => import('@/modules/settings/features/theme/views/SettingsThemeOverviewView.vue'),
+      },
+      {
+        name: 'settings-users',
+        path: 'users',
+        component: (): Component => import('@/modules/settings/features/users/views/SettingsUsersOverviewView.vue'),
         redirect: {
-          name: 'settings-users',
+          name: 'settings-users-list',
         },
         children: [
           {
-            name: 'settings-users',
-            path: 'users',
-            component: (): Component => import('@/modules/settings/features/users/SettingsUsersOverviewView.vue'),
+            name: 'settings-users-list',
+            path: '',
+            component: (): Component => import('@/modules/settings/features/users/views/SettingsUsersUsersOverviewView.vue'),
           },
           {
-            name: 'settings-roles-and-permissions',
+            name: 'settings-users-roles-and-permissions',
             path: 'roles-and-permissions',
-            component: (): Component => import('@/modules/settings/features/roles-and-permissions/views/SettingsRolesAndPermissionsView.vue'),
+            component: (): Component => import('@/modules/settings/features/users/views/SettingsRolesAndPermissionsView.vue'),
           },
         ],
       },
