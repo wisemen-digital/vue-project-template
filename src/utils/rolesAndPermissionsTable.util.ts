@@ -21,10 +21,10 @@ export class RolesAndPermissionsTableUtil {
     const grid = new Map<string, null | string[]>()
 
     permissions.forEach((permission) => {
-      roles.forEach((_role, index) => {
-        const value = roles[index].permissions.find((rolePermission) => rolePermission.id === permission.id)
+      roles.forEach((role) => {
+        const value = role.permissions.find((rolePermission) => rolePermission.id === permission.id)
 
-        grid.set(`${permission.id}-${index}`, value !== undefined ? value.actions : null)
+        grid.set(`${permission.id}-${role.uuid}`, value !== undefined ? value.actions : null)
       })
     })
 
@@ -35,9 +35,9 @@ export class RolesAndPermissionsTableUtil {
     const roleArray: Role[] = []
 
     permissions.forEach((permission) => {
-      roles.forEach((roleIndex, index) => {
+      roles.forEach((roleIndex) => {
         const role = roleArray.find((role) => role.uuid === roleIndex.uuid)
-        const value = grid.get(`${permission.id}-${index}`)
+        const value = grid.get(`${permission.id}-${roleIndex.uuid}`)
 
         if (!value) {
           return

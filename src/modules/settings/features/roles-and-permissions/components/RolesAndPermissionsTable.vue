@@ -4,6 +4,7 @@ import { computed, ref } from 'vue'
 
 import type { Permission } from '@/models/permission/permission.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
+import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
 import RolesAndPermissionsTableBody
   from '@/modules/settings/features/roles-and-permissions/components/RolesAndPermissionsTableBody.vue'
 import RolesAndPermissionsTableHeader
@@ -36,8 +37,8 @@ const gridColsStyle = computed<string>(() => {
   return `${firstColumn} ${props.roles.map(() => `minmax(200px, auto)`).join(' ')}`
 })
 
-function onUpdatePermissionCheckbox(value: boolean, permissionId: string, index: number): void {
-  const key = `${permissionId}-${index}`
+function onUpdatePermissionCheckbox(value: boolean, permissionId: string, roleUuid: RoleUuid): void {
+  const key = `${permissionId}-${roleUuid}`
 
   const permissionActions = props.permissions.find((permission) => permission.id === permissionId)?.actions ?? null
 
@@ -48,20 +49,21 @@ function onUpdatePermissionCheckbox(value: boolean, permissionId: string, index:
   rolesModelMap.value.set(key, value ? permissionActions : null)
 }
 
-function onUpdateActionCheckbox(value: boolean, permissionId: string, index: number, action: string): void {
-  const key = `${permissionId}-${index}`
+function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: RoleUuid, action: string): void {
+  const key = `${permissionId}-${roleUuid}`
 
   const valueArray = ObjectUtil.deepClone<null | string[] | undefined>(rolesModelMap.value.get(key)) ?? []
 
-  if (value) {
-    valueArray.push(action)
-  }
-  else {
+  if (!value) {
     const actionIndex = valueArray.indexOf(action)
 
     if (actionIndex !== -1) {
       valueArray.splice(actionIndex, 1)
     }
+  }
+
+  if (value) {
+    valueArray.push(action)
   }
 
   rolesModelMap.value.set(key, valueArray.length > 0 ? valueArray : null)

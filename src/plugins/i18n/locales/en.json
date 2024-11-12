@@ -149,8 +149,10 @@
     }
   },
   "shared": {
+    "admin": "Admin",
     "close": "Close",
-    "edit": "Edit"
+    "edit": "Edit",
+    "user": "User"
   },
   "user": {
     "birth_date": "Birthdate",

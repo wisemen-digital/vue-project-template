@@ -24,7 +24,7 @@ const toast = useToast()
 const errorToast = useApiErrorToast()
 const userUpdateMutation = useUserUpdateMutation()
 
-const breadcrumbs: BreadcrumbItem[] = [
+const breadcrumbs = computed<BreadcrumbItem[]>(() => ([
   {
     label: t('user.label.plural'),
     to: {
@@ -46,7 +46,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     label: t('shared.edit'),
     type: 'page',
   },
-]
+]))
 
 const {
   form,

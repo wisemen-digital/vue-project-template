@@ -3,6 +3,7 @@ import { AppIcon } from '@wisemen/vue-core'
 
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable.ts'
+import { RoleNameEnum } from '@/models/role/role.enum.ts'
 import type { Role } from '@/models/role/role.model.ts'
 
 const props = defineProps<{
@@ -33,7 +34,7 @@ const i18n = useI18n()
     >
       <div class="flex items-center justify-center gap-4 text-nowrap p-3 px-6 text-sm text-secondary">
         <span>
-          {{ role.name }}
+          {{ i18n.t(RoleNameEnum.getI18nKey(role.name)) }}
         </span>
         <AppUnstyledButton>
           <AppIcon
