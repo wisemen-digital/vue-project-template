@@ -6,6 +6,7 @@ import AppHeightTransition from '@/components/app/AppHeightTransition.vue'
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import type { Permission } from '@/models/permission/permission.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
+import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
 
 const props = defineProps<{
   isTableScrolledToBottom: boolean
@@ -16,8 +17,8 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   togglePermissionTab: [string]
-  updateActionCheckbox: [boolean, string, number, string]
-  updatePermissionCheckbox: [boolean, string, number]
+  updateActionCheckbox: [value: boolean, permissionId: string, roleUuid: RoleUuid, action: string]
+  updatePermissionCheckbox: [value: boolean, permissionId: string, roleUuid: RoleUuid]
 }>()
 
 const permissionsToggleStateMap = ref<Map<string, boolean>>(new Map(
@@ -35,8 +36,8 @@ function isPermissionTabOpen(permissionId: string): boolean {
   return permissionsToggleStateMap.value.get(permissionId)!
 }
 
-function isPermissionCheckboxChecked(permissionId: string, index: number): boolean {
-  const key = `${permissionId}-${index}`
+function isPermissionCheckboxChecked(permissionId: string, roleUuid: RoleUuid): boolean {
+  const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key) ?? null
 
   if (value === null) {
@@ -46,8 +47,8 @@ function isPermissionCheckboxChecked(permissionId: string, index: number): boole
   return value.length > 0
 }
 
-function isActionCheckboxChecked(permissionId: string, index: number, action: string): boolean {
-  const key = `${permissionId}-${index}`
+function isActionCheckboxChecked(permissionId: string, roleUuid: RoleUuid, action: string): boolean {
+  const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key) ?? null
 
   if (value === null) {
@@ -57,8 +58,8 @@ function isActionCheckboxChecked(permissionId: string, index: number, action: st
   return value.includes(action)
 }
 
-function isPermissionCheckboxIndeterminate(permissionId: string, index: number): boolean {
-  const key = `${permissionId}-${index}`
+function isPermissionCheckboxIndeterminate(permissionId: string, roleUuid: RoleUuid): boolean {
+  const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key)
 
   if (!value) {
@@ -74,12 +75,12 @@ function isPermissionCheckboxIndeterminate(permissionId: string, index: number):
   return value.length !== permissionActions.length && value.length !== 0
 }
 
-function onUpdatePermissionCheckbox(value: boolean, permissionId: string, roleIndex: number): void {
-  emit('updatePermissionCheckbox', value, permissionId, roleIndex)
+function onUpdatePermissionCheckbox(value: boolean, permissionId: string, roleUuid: RoleUuid): void {
+  emit('updatePermissionCheckbox', value, permissionId, roleUuid)
 }
 
-function onUpdateActionCheckbox(value: boolean, permissionId: string, roleIndex: number, action: string): void {
-  emit('updateActionCheckbox', value, permissionId, roleIndex, action)
+function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: RoleUuid, action: string): void {
+  emit('updateActionCheckbox', value, permissionId, roleUuid, action)
 }
 </script>
 
@@ -106,14 +107,14 @@ function onUpdateActionCheckbox(value: boolean, permissionId: string, roleIndex:
         />
       </Component>
       <div
-        v-for="(role, roleIndex) of props.roles"
+        v-for="(role) of props.roles"
         :key="role.uuid"
         class="flex items-center justify-center border-r border-solid p-3 last:border-none"
       >
         <AppCheckbox
-          :model-value="isPermissionCheckboxChecked(permission.id, roleIndex)"
-          :is-indeterminate="isPermissionCheckboxIndeterminate(permission.id, roleIndex)"
-          @update:model-value="(event) => onUpdatePermissionCheckbox(event, permission.id, roleIndex)"
+          :model-value="isPermissionCheckboxChecked(permission.id, role.uuid)"
+          :is-indeterminate="isPermissionCheckboxIndeterminate(permission.id, role.uuid)"
+          @update:model-value="(event) => onUpdatePermissionCheckbox(event, permission.id, role.uuid)"
         />
       </div>
     </div>
@@ -146,14 +147,14 @@ function onUpdateActionCheckbox(value: boolean, permissionId: string, roleIndex:
             </span>
           </div>
           <div
-            v-for="(role, roleActionIndex) of props.roles"
+            v-for="role of props.roles"
             :key="role.uuid"
             class="flex justify-center border-r border-solid p-3 last:border-none"
           >
             <AppCheckbox
-              :model-value="isActionCheckboxChecked(permission.id, roleActionIndex, action)"
+              :model-value="isActionCheckboxChecked(permission.id, role.uuid, action)"
               @update:model-value="
-                (event) => onUpdateActionCheckbox(event, permission.id, roleActionIndex, action)
+                (event) => onUpdateActionCheckbox(event, permission.id, role.uuid, action)
               "
             />
           </div>

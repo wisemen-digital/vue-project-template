@@ -7,11 +7,12 @@ import { TEST_ID } from '@/constants/testId.constant.ts'
 
 const props = withDefaults(
   defineProps<{
-    title: string
+    title?: string
     breadcrumbs?: BreadcrumbItem[] | null
     subtitle?: null | string
   }>(),
   {
+    hasNoPaddingTop: false,
     breadcrumbs: null,
   },
 )
@@ -19,16 +20,22 @@ const props = withDefaults(
 
 <template>
   <div class="flex w-full flex-1 flex-col">
-    <AppContainer class="pt-12">
+    <AppContainer
+      class="p-12"
+    >
       <AppBreadcrumbs
         v-if="props.breadcrumbs !== null"
         :items="props.breadcrumbs"
         class="mb-xl"
       />
 
-      <div class="flex h-10 items-center justify-between">
+      <div
+        v-if="props.title || props.subtitle"
+        class="flex h-10 items-center justify-between"
+      >
         <div>
           <div
+            v-if="props.title"
             :data-test-id="TEST_ID.APP_PAGE.TITLE"
             class="text-2xl font-semibold text-primary"
           >

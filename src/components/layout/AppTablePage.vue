@@ -6,11 +6,12 @@ import AppPage from './AppPage.vue'
 
 const props = withDefaults(
   defineProps<{
-    title: string
+    title?: string
     breadcrumbs?: BreadcrumbItem[]
     subtitle?: null | string
   }>(),
   {
+    hasNoPaddingTop: false,
     breadcrumbs: () => [],
     subtitle: null,
   },
