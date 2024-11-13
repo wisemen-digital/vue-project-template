@@ -105,7 +105,12 @@
         "title": "My settings"
       },
       "roles_and_permissions": {
+        "add_role_dialog": {
+          "description": "Add a new role",
+          "title": "Add Role"
+        },
         "table": {
+          "delete_role": "Delete role",
           "permissions": "Permissions"
         }
       },

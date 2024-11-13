@@ -1,15 +1,25 @@
 <script setup lang="ts">
 import { AppIcon } from '@wisemen/vue-core'
 
-import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable.ts'
 import type { Role } from '@/models/role/role.model.ts'
+import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
+import RolesAndPermissionsRoleHeaderCell
+  from '@/modules/settings/features/users/components/RolesAndPermissionsRoleHeaderCell.vue'
 
 const props = defineProps<{
   roles: Role[]
 }>()
 
+const emit = defineEmits<{
+  deleteRole: [RoleUuid]
+}>()
+
 const i18n = useI18n()
+
+function onDeleteRole(roleUuid: RoleUuid): void {
+  emit('deleteRole', roleUuid)
+}
 </script>
 
 <template>
@@ -31,16 +41,10 @@ const i18n = useI18n()
       :key="role.uuid"
       class="border-r border-solid border-secondary last:border-none"
     >
-      <div class="flex items-center justify-center gap-4 text-nowrap p-3 px-6 text-sm text-secondary">
-        <span>
-          {{ role.name }}
-        </span>
-        <AppUnstyledButton>
-          <AppIcon
-            icon="threeDots"
-          />
-        </AppUnstyledButton>
-      </div>
+      <RolesAndPermissionsRoleHeaderCell
+        :role="role"
+        @delete-role="onDeleteRole"
+      />
     </div>
   </div>
 </template>

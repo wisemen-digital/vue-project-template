@@ -16,6 +16,10 @@ const props = defineProps<{
   roles: Role[]
 }>()
 
+const emit = defineEmits<{
+  deleteRole: [RoleUuid]
+}>()
+
 const rolesModelMap = defineModel<Map<string, null | string[]>>({ required: true })
 const tableScrollContainerRef = ref<HTMLElement | null>(null)
 
@@ -63,6 +67,10 @@ function onUpdatePermissionCheckbox(value: boolean, permissionId: string, roleUu
   rolesModelMap.value.set(key, null)
 }
 
+function onDeleteRow(roleUuid: RoleUuid): void {
+  emit('deleteRole', roleUuid)
+}
+
 function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: RoleUuid, action: string): void {
   const key = `${permissionId}-${roleUuid}`
 
@@ -95,7 +103,10 @@ function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: 
       }"
       class="grid overflow-auto"
     >
-      <RolesAndPermissionsTableHeader :roles="props.roles" />
+      <RolesAndPermissionsTableHeader
+        :roles="props.roles"
+        @delete-role="onDeleteRow"
+      />
 
       <RolesAndPermissionsTableBody
         :roles="props.roles"

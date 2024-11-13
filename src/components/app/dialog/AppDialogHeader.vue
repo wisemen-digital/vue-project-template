@@ -6,7 +6,7 @@ import {
 
 const props = defineProps<{
   title: string
-  description: string
+  description?: string
 }>()
 </script>
 
@@ -18,7 +18,9 @@ const props = defineProps<{
       </h1>
     </AppDialogTitle>
 
-    <AppDialogDescription>
+    <AppDialogDescription
+      v-if="props.description"
+    >
       <p class="mt-4 text-secondary">
         {{ props.description }}
       </p>
