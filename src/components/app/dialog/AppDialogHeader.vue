@@ -19,7 +19,7 @@ const props = defineProps<{
     </AppDialogTitle>
 
     <AppDialogDescription
-      v-if="props.description"
+      v-if="props.description !== undefined"
     >
       <p class="mt-4 text-secondary">
         {{ props.description }}
