@@ -38,6 +38,7 @@ export class SettingsRolesService {
       body: {
         roles: roles.map((role) => ({
           uuid: role.uuid,
+          name: role.name,
           permissions: role.permissions,
         })),
       },

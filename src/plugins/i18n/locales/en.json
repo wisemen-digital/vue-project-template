@@ -112,6 +112,9 @@
         "table": {
           "delete_role": "Delete role",
           "permissions": "Permissions"
+        },
+        "toast": {
+          "save_success": "Changes saved successfully."
         }
       },
       "roles_and_permissions_tab": "Roles and permissions",

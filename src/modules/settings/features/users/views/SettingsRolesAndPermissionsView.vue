@@ -1,5 +1,9 @@
 <script  lang="ts" setup="">
-import { AppButton, useDialog } from '@wisemen/vue-core'
+import {
+  AppButton,
+  useDialog,
+  useToast,
+} from '@wisemen/vue-core'
 import { computed, ref } from 'vue'
 
 import AppTeleport from '@/components/app/teleport/AppTeleport.vue'
@@ -23,6 +27,7 @@ const props = defineProps<{
 
 const i18n = useI18n()
 const apiErrorToast = useApiErrorToast()
+const toast = useToast()
 
 const addRoleDialog = useDialog({
   component: () => import('@/modules/settings/features/users/components/RolesAndPermissionsAddRoleDialog.vue'),
@@ -63,10 +68,20 @@ async function onSaveChangesButtonClick(): Promise<void> {
     await settingsRolesBulkUpdateMutation.execute({
       body: RolesAndPermissionsTableUtil.mapGridToRoles(rolesModelMap.value, props.permissions, props.roles),
     })
+
+    toast.success({
+      message: i18n.t('module.settings.roles_and_permissions.toast.save_success'),
+    })
+
+    resetRolesModelMapSnapshot()
   }
   catch (error) {
     apiErrorToast.show(error)
   }
+}
+
+function resetRolesModelMapSnapshot(): void {
+  rolesModelMapSnapshot.value = new Map(rolesModelMap.value)
 }
 
 useUnsavedChanges(isRolesModelMapChanged)
@@ -83,6 +98,7 @@ useUnsavedChanges(isRolesModelMapChanged)
       </AppButton>
       <AppButton
         :is-disabled="!isRolesModelMapChanged"
+        :is-loading="settingsRolesBulkUpdateMutation.isLoading.value"
         @click="onSaveChangesButtonClick"
       >
         {{ i18n.t('form.save_changes') }}
