@@ -11,11 +11,8 @@ import {
   type VNode,
 } from 'vue'
 
-<<<<<<< Updated upstream
-import { useI18n } from '@/composables/i18n/i18n.composable'
-=======
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
->>>>>>> Stashed changes
+import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'

@@ -1,28 +1,7 @@
 import type { Component } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 
-<<<<<<< Updated upstream
 export const userRoutes = [
-=======
-export interface UserRoutes {
-  'user-create': void
-  'user-detail': {
-    params: {
-      userUuid: UserUuid
-    }
-    path: '/users/:userUuid'
-  }
-  'user-overview': void
-  'user-update': {
-    params: {
-      userUuid: UserUuid
-    }
-    path: '/users/:userUuid/update'
-  }
-}
-
-export const userRoutes: RouteRecordTyped[] = [
->>>>>>> Stashed changes
   {
     path: '/users',
     children: [

@@ -9,16 +9,7 @@ import { settingsRoutes } from '@/modules/settings/routes/settings.routes'
 import { userRoutes } from '@/modules/user/routes/user.routes'
 import type { RoutesProccessed } from '@/types/vueRouter'
 
-<<<<<<< Updated upstream
 export const routes = [
-=======
-export interface Routes extends AuthRoutes, UserRoutes {
-  404: void
-  index: void
-}
-
-export const routes: RouteRecordTyped[] = [
->>>>>>> Stashed changes
   {
     path: '',
     component: (): Component => import('@/components/layout/dashboard/AppDashboardLayout.vue'),

@@ -3,25 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 
 import { guest } from '@/middlewares/guest.middleware.ts'
 
-<<<<<<< Updated upstream
 export const authRoutes = [
-=======
-export interface AuthRoutes {
-  'forgot-password': void
-  'login': void
-  'reset-password': {
-    params: {
-      token: string
-    }
-    queryParams: {
-      email: string
-    }
-    path: '/reset-password/:token'
-  }
-}
-
-export const authRoutes: RouteRecordTyped[] = [
->>>>>>> Stashed changes
   {
     path: '/auth',
     component: (): Component => import('@/modules/auth/components/AuthLayout.vue'),

@@ -19,13 +19,6 @@ const pagination = usePagination<UserIndexFilters>({
   key: 'users',
 })
 
-const search = computed<string>({
-  get: () => pagination.paginationOptions.value.search ?? '',
-  set: (value) => {
-    pagination.handleSearchChange(value)
-  },
-})
-
 const userIndexQuery = useUserIndexQuery(pagination.paginationOptions)
 
 const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
@@ -33,15 +26,11 @@ const error = computed<unknown>(() => userIndexQuery.error.value)
 </script>
 
 <template>
-<<<<<<< Updated upstream
   <AppTablePage :title="t('user.label.plural')">
-=======
-  <AppTablePage :title="t('shared.users')">
->>>>>>> Stashed changes
     <template #header-actions>
       <AppSearchInputField
-        v-model="search"
         :is-loading="isLoading"
+        :pagination="pagination"
       />
 
       <AppNewItemButton

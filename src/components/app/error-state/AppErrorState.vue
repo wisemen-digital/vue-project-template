@@ -1,16 +1,9 @@
 <script setup lang="ts">
-<<<<<<< Updated upstream
-import { AxiosError } from 'axios'
-import { computed } from 'vue'
-=======
-import { AppText } from '@wisemen/vue-core'
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
->>>>>>> Stashed changes
 
 import GridBackgroundPattern from '@/assets/svgs/GridBackgroundPattern.vue'
-import { useI18n } from '@/composables/i18n/i18n.composable'
 
 const props = defineProps<{
   error: unknown
@@ -59,29 +52,17 @@ const description = computed<string>(() => {
 
 <template>
   <div class="relative flex h-96 min-w-96 items-center justify-center overflow-hidden">
-<<<<<<< Updated upstream
     <GridBackgroundPattern class="absolute size-full scale-125 text-gray-200 dark:text-gray-900" />
-=======
-    <GridBackgroundPattern class="absolute size-full scale-125 text-muted" />
->>>>>>> Stashed changes
 
     <div class="relative z-10">
       <span
-        class="flex items-center p-4 text-subtext font-medium"
+        class="flex items-center p-xl text-sm font-medium"
       >
-<<<<<<< Updated upstream
-        <span class="whitespace-nowrap border-r border-solid border-tertiary px-5 tracking-wider text-quaternary">
+        <span class="whitespace-nowrap border-r border-solid border-tertiary px-2xl tracking-wider text-quaternary">
           {{ title }}
         </span>
 
-        <span class="min-w-60 px-4 font-medium uppercase tracking-wider text-quaternary">
-=======
-        <span class="whitespace-nowrap border-r border-solid border-muted-foreground/75 px-5 tracking-wider text-muted-foreground/75">
-          {{ title }}
-        </span>
-
-        <span class="min-w-60 px-4 font-medium uppercase tracking-wider text-muted-foreground/75">
->>>>>>> Stashed changes
+        <span class="min-w-60 px-xl font-medium uppercase tracking-wider text-quaternary">
           {{ description }}
         </span>
       </span>

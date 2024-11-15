@@ -13,16 +13,6 @@ const axiosConfig: CreateAxiosDefaults = {
   },
 }
 
-<<<<<<< Updated upstream
-=======
-const axiosAuthConfig: CreateAxiosDefaults = {
-  baseURL: API_AUTH_URL,
-  headers: {
-    'Accept-Language': LocaleUtil.getLocale(),
-  },
-}
-
->>>>>>> Stashed changes
 export const axios = Axios.create(axiosConfig)
 
 axios.interceptors.request.use((config) => oAuthClient.addAuthorizationHeader(config))
