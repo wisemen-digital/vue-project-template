@@ -2,30 +2,23 @@
 import {
   AppIcon,
   type Icon,
-  type Routes,
 } from '@wisemen/vue-core'
-import { useRouter } from 'vue-router'
 
-import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
+import AppRouterLink from '@/components/app/link/AppRouterLink.vue'
+import type { RouteLocationCurrent } from '@/types/vueRouter'
 
 const props = defineProps<{
   title: string
   description: string
   icon: Icon
-  to: Routes[number]
+  to: RouteLocationCurrent
 }>()
-
-const router = useRouter()
-
-function onClick(): void {
-  router.push(props.to)
-}
 </script>
 
 <template>
-  <AppUnstyledButton
+  <AppRouterLink
+    :to="props.to"
     class="flex w-full flex-col gap-2 rounded-xl border border-secondary bg-secondary p-4 hover:bg-tertiary"
-    @click="onClick"
   >
     <span class="flex items-center justify-start gap-2">
       <AppIcon
@@ -38,5 +31,5 @@ function onClick(): void {
     <span class="text-sm text-tertiary">
       {{ props.description }}
     </span>
-  </AppUnstyledButton>
+  </AppRouterLink>
 </template>

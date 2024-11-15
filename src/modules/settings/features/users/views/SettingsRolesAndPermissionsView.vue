@@ -8,7 +8,7 @@ import type { Permission } from '@/models/permission/permission.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
 import RolesAndPermissionsTable
   from '@/modules/settings/features/users/components/RolesAndPermissionsTable.vue'
-import { RolesAndPermissionsTableUtil } from '@/utils/rolesAndPermissionsTable.util.ts'
+import { RolesAndPermissionsTableUtil } from '@/modules/settings/utils/rolesAndPermissionsTable.util.ts'
 
 const props = defineProps<{
   permissions: Permission[]

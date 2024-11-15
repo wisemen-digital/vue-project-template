@@ -49,10 +49,12 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
         :label="i18n.t('module.user.create.title')"
       />
     </template>
-    <SettingsUsersOverviewTable
-      :is-loading="userIndexQuery.isLoading.value"
-      :pagination="pagination"
-      :data="userIndexQuery.data.value"
-    />
+    <template #default>
+      <SettingsUsersOverviewTable
+        :is-loading="userIndexQuery.isLoading.value"
+        :pagination="pagination"
+        :data="userIndexQuery.data.value"
+      />
+    </template>
   </AppTablePage>
 </template>
