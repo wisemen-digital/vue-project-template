@@ -1,11 +1,12 @@
 <script  lang="ts" setup="">
-import type { Icon, Routes } from '@wisemen/vue-core'
+import type { Icon } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
 import AppGrid from '@/components/app/AppGrid.vue'
 import AppPage from '@/components/layout/AppPage.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable.ts'
 import SettingsOverviewItemCard from '@/modules/settings/features/overview/components/SettingsOverviewItemCard.vue'
+import type { RouteLocationCurrent } from '@/types/vueRouter'
 
 const i18n = useI18n()
 
@@ -13,7 +14,7 @@ interface settingsItem {
   title: string
   description: string
   icon: Icon
-  to: Routes[number]
+  to: RouteLocationCurrent
 }
 
 const mySettingsItems = computed<settingsItem[]>(() => ([

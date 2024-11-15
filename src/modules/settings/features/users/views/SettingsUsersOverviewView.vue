@@ -54,6 +54,8 @@ const tabs = computed<RouteTabItem[]>(() => ([
         :items="tabs"
       />
     </template>
-    <RouterView />
+    <template #default>
+      <RouterView />
+    </template>
   </AppTablePage>
 </template>

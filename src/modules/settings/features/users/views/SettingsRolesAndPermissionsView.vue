@@ -17,8 +17,8 @@ import { useSettingsRoleDeleteMutation } from '@/modules/settings/api/mutations/
 import { useSettingsRolesBulkUpdateMutation } from '@/modules/settings/api/mutations/settingsRolesBulkUpdate.mutation.ts'
 import RolesAndPermissionsTable
   from '@/modules/settings/features/users/components/RolesAndPermissionsTable.vue'
+import { RolesAndPermissionsTableUtil } from '@/modules/settings/utils/rolesAndPermissionsTable.util.ts'
 import { MapUtil } from '@/utils/map.util.ts'
-import { RolesAndPermissionsTableUtil } from '@/utils/rolesAndPermissionsTable.util.ts'
 
 const props = defineProps<{
   permissions: Permission[]
