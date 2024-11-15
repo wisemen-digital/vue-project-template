@@ -8,6 +8,8 @@ function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
   return {
     items: response,
     meta: {
+      limit: response.length,
+      offset: 0,
       total: response.length,
     },
   }
