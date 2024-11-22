@@ -55,10 +55,6 @@ export class InterceptorUtil {
     return await this.interceptData('GET', page, url, getPaginatedJson(data))
   }
 
-  static async post<T>(page: Page, url: string, data: T): Promise<InterceptorResult> {
-    return await this.interceptData('POST', page, url, data)
-  }
-
   private static async interceptData<T>(
     method: RequestMethod,
     page: Page,
@@ -92,5 +88,9 @@ export class InterceptorUtil {
     return {
       getCount,
     }
+  }
+
+  static async post<T>(page: Page, url: string, data: T): Promise<InterceptorResult> {
+    return await this.interceptData('POST', page, url, data)
   }
 }

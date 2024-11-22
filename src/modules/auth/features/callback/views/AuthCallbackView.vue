@@ -11,7 +11,7 @@ const i18n = useI18n()
 const router = useRouter()
 const authStore = useAuthStore()
 const toast = useToast()
-const authorizationCode = useRouteQuery<null | string>('code', null)
+const authorizationCode = useRouteQuery<string | null>('code', null)
 
 onMounted(async () => {
   if (authorizationCode.value === null) {
@@ -20,7 +20,7 @@ onMounted(async () => {
     })
 
     await router.push({
-      name: 'auth-login',
+      name: 'auth-logout',
     })
 
     return
@@ -35,6 +35,10 @@ onMounted(async () => {
   catch (error) {
     toast.error({
       message: error?.toString() ?? 'Unknown error',
+    })
+
+    await router.push({
+      name: 'auth-logout',
     })
   }
 })

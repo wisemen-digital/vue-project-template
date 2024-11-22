@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<{
   isLoading: boolean
   disableKeyboardCommand?: boolean
   pagination: Pagination<unknown>
-  placeholder?: null | string
+  placeholder?: string | null
 }>(), {
   isDisabled: false,
   disableKeyboardCommand: false,
