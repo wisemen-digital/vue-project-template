@@ -17,7 +17,7 @@ export function useUserUpdateMutation(): UseMutationReturnType<UserUpdateForm, U
     },
     queryKeysToInvalidate: {
       userDetail: {
-        userUuid: (params: User) => params.uuid,
+        userUuid: (params) => params.userUuid,
       },
       userIndex: {},
     },

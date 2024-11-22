@@ -18,13 +18,6 @@ const pagination = usePagination<UserIndexFilters>({
   key: 'users',
 })
 
-const search = computed<string>({
-  get: () => pagination.paginationOptions.value.search ?? '',
-  set: (value) => {
-    pagination.handleSearchChange(value)
-  },
-})
-
 const userIndexQuery = useUserIndexQuery(pagination.paginationOptions)
 
 const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
@@ -37,8 +30,8 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
   >
     <template #header-actions>
       <AppSearchInputField
-        v-model="search"
         :is-loading="isLoading"
+        :pagination="pagination"
       />
 
       <AppNewItemButton
