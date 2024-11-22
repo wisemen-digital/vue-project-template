@@ -15,7 +15,7 @@ function isAxiosError(error: unknown): error is AxiosError {
   return error instanceof AxiosError
 }
 
-const httpStatus = computed<null | number>(() => {
+const httpStatus = computed<number | null>(() => {
   if (isAxiosError(props.error)) {
     return props.error.response?.status ?? 500
   }

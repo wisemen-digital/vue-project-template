@@ -7,11 +7,6 @@ export const authRoutes = [
   {
     path: '/auth',
     component: (): Component => import('@/modules/auth/components/AuthLayout.vue'),
-    meta: {
-      middleware: [
-        guest,
-      ],
-    },
     redirect: {
       name: 'auth-login',
     },
@@ -20,6 +15,11 @@ export const authRoutes = [
         name: 'auth-login',
         path: 'login',
         component: (): Component => import('@/modules/auth/features/login/views/AuthLoginView.vue'),
+        meta: {
+          middleware: [
+            guest,
+          ],
+        },
       },
       {
         name: 'auth-callback',
