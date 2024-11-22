@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import GridBackgroundPattern from '@/assets/svgs/GridBackgroundPattern.vue'
-import { useI18n } from '@/composables/i18n/i18n.composable'
 
 const props = defineProps<{
   error: unknown
@@ -56,13 +56,13 @@ const description = computed<string>(() => {
 
     <div class="relative z-10">
       <span
-        class="flex items-center p-4 text-subtext font-medium"
+        class="flex items-center p-xl text-sm font-medium"
       >
-        <span class="whitespace-nowrap border-r border-solid border-tertiary px-5 tracking-wider text-quaternary">
+        <span class="whitespace-nowrap border-r border-solid border-tertiary px-2xl tracking-wider text-quaternary">
           {{ title }}
         </span>
 
-        <span class="min-w-60 px-4 font-medium uppercase tracking-wider text-quaternary">
+        <span class="min-w-60 px-xl font-medium uppercase tracking-wider text-quaternary">
           {{ description }}
         </span>
       </span>

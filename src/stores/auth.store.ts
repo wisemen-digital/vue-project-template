@@ -12,6 +12,7 @@ import {
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { AuthUserTransformer } from '@/models/auth-user/auth.transformer'
 import type { AuthUser } from '@/models/auth-user/authUser.model'
+import type { UserUuid } from '@/models/user/userUuid.model'
 import { UuidUtil } from '@/utils/uuid.util.ts'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -23,13 +24,17 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function getAuthUser(): Promise<AuthUser> {
     if (CURRENT_ENVIRONMENT === 'e2e') {
-      return {
-        uuid: UuidUtil.getRandom(),
+      const user = {
+        uuid: UuidUtil.getRandom<UserUuid>(),
         email: 'test@example.com',
         firstName: 'Test',
         fullName: 'Test User',
         lastName: 'User',
       }
+
+      authUser.value = user
+
+      return user
     }
 
     if (authUser.value !== null) {

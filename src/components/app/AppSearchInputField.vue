@@ -4,72 +4,79 @@ import {
   AppKeyboardShortcut,
   AppKeyboardShortcutProvider,
   AppTextField,
+  type Pagination,
 } from '@wisemen/vue-core'
-import { ref, watch } from 'vue'
+import {
+  computed,
+  ref,
+} from 'vue'
 
-import { useDebounceSearch } from '@/composables/debounce-search/debounceSearch.composable'
 import { useI18n } from '@/composables/i18n/i18n.composable'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 
 const props = withDefaults(defineProps<{
+  isDisabled?: boolean
   isLoading: boolean
   disableKeyboardCommand?: boolean
+  pagination: Pagination<unknown>
   placeholder?: null | string
 }>(), {
+  isDisabled: false,
   disableKeyboardCommand: false,
   placeholder: null,
 })
 
-const model = defineModel<string>({
-  required: true,
-})
-
 const { t } = useI18n()
 
-const { isDebouncing, search } = useDebounceSearch({
-  defaultValue: model.value,
-  onDebounceSearch: (search) => {
-    model.value = search
+let timeout: ReturnType<typeof setTimeout> | null = null
+
+const search = computed<string>({
+  get: () => props.pagination.paginationOptions.value.search ?? '',
+  set: (value) => {
+    if (timeout !== null) {
+      clearTimeout(timeout)
+    }
+
+    timeout = setTimeout(() => {
+      props.pagination.handleSearchChange(value)
+    }, 300)
   },
 })
 
 const appTextFieldRef = ref<InstanceType<typeof AppTextField> | null>(null)
 
 function onClearInput(): void {
-  model.value = ''
+  props.pagination.handleSearchChange('')
 }
-
-watch(() => model.value, (value) => {
-  search.value = value
-})
 </script>
 
 <template>
   <AppKeyboardShortcutProvider
     :config="KEYBOARD_SHORTCUT.SEARCH"
-    class="w-72"
+    class="w-64"
   >
     <AppTextField
       ref="appTextFieldRef"
       v-model="search"
+      :is-disabled="props.isDisabled"
       :placeholder="props.placeholder ?? t('component.search_input.placeholder')"
-      :is-loading="props.isLoading || isDebouncing"
+      :is-loading="props.isLoading"
       icon-left="search"
     >
       <template #right>
         <div>
           <AppKeyboardShortcut
-            v-if="(model === null || model === '') && !props.disableKeyboardCommand"
+            v-if="(search === null || search === '') && !props.disableKeyboardCommand"
             :keyboard-keys="KEYBOARD_SHORTCUT.SEARCH.keys"
             keyboard-classes="border-primary text-tertiary"
             class="mr-2"
           />
 
           <AppIconButton
-            v-else-if="model !== null && model !== ''"
+            v-else-if="search !== null && search !== ''"
             :style-config="{
-              '--icon-button-size-default': '32px',
-              '--icon-button-icon-size-default': '16px',
+              '--icon-button-size-default': '2rem',
+              '--icon-button-icon-size-default': '1rem',
               '--button-ring-color-focus': 'transparent',
               '--button-bg-color-focus': 'var(--bg-secondary-hover)',
               '--button-bg-color-disabled': 'transparent',
@@ -79,7 +86,7 @@ watch(() => model.value, (value) => {
             variant="tertiary"
             size="sm"
             icon="close"
-            class="mr-[3px]"
+            class="mr-[0.1875rem]"
             @click="onClearInput"
           />
         </div>
