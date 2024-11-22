@@ -25,7 +25,7 @@ test.skip('User Overview', () => {
     await page.goto('/users')
 
     await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME)).toBeVisible()
-    // await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME).nth(0)).toContainText('John Doe')
-    // await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME).nth(1)).toContainText('Jane Johnson')
+    await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME).nth(0)).toContainText('John Doe')
+    await expect(page.getByTestId(TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME).nth(1)).toContainText('Jane Johnson')
   })
 })
