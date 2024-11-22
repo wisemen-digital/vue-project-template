@@ -18,8 +18,8 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   togglePermissionTab: [string]
-  updateActionCheckbox: [value: boolean, permissionId: string, roleUuid: RoleUuid, action: string]
-  updatePermissionCheckbox: [value: boolean, permissionId: string, roleUuid: RoleUuid]
+  updateActionCheckbox: [value: boolean, permissionId: PermissionId, roleUuid: RoleUuid, action: string]
+  updatePermissionCheckbox: [value: boolean, permissionId: PermissionId, roleUuid: RoleUuid]
 }>()
 
 const permissionsToggleStateMap = ref<Map<string, boolean>>(new Map(
@@ -29,11 +29,11 @@ const permissionsToggleStateMap = ref<Map<string, boolean>>(new Map(
   ]),
 ))
 
-function onTogglePermissionActionsClick(permissionId: string): void {
+function onTogglePermissionActionsClick(permissionId: PermissionId): void {
   permissionsToggleStateMap.value.set(permissionId, !permissionsToggleStateMap.value.get(permissionId)!)
 }
 
-function isPermissionTabOpen(permissionId: string): boolean {
+function isPermissionTabOpen(permissionId: PermissionId): boolean {
   return permissionsToggleStateMap.value.get(permissionId)!
 }
 
