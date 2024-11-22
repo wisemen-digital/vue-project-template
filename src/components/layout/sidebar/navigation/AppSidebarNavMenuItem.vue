@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AppIcon, AppTooltip } from '@wisemen/vue-core'
+import { VcIcon, VcTooltip } from '@wisemen/vue-core'
 
 import AppRouterLink from '@/components/app/link/AppRouterLink.vue'
 import type { NavigationItem } from '@/types/navigationItem.type'
@@ -14,7 +14,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <AppTooltip
+  <VcTooltip
     :is-hidden="!props.isCollapsed && props.item.keyboardShortcut === undefined"
     :offset-in-px="10"
     :delay-duration="500"
@@ -40,7 +40,7 @@ const props = defineProps<{
           class="flex items-center overflow-hidden rounded-xl px-md duration-300"
         >
           <div class="relative">
-            <AppIcon
+            <VcIcon
               :style="{
                 width: `${props.sidebarItemIconSizeInPx}px`,
                 height: `${props.sidebarItemIconSizeInPx}px`,
@@ -94,5 +94,5 @@ const props = defineProps<{
         </span>
       </div>
     </template>
-  </AppTooltip>
+  </VcTooltip>
 </template>

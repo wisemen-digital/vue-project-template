@@ -35,7 +35,7 @@ export default defineConfig({
       ],
       injectRegister: 'auto',
       manifest: {
-        name: 'Project template',
+        name: '$projectName',
         background_color: '#ffffff',
         display: 'fullscreen',
         icons: [
@@ -50,7 +50,7 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
-        short_name: 'Project template',
+        short_name: '$projectName',
         theme_color: 'rgb(23, 23, 23)',
       },
       registerType: 'prompt',

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AppDialogCloseButton } from '@wisemen/vue-core'
+import { VcDialogCloseButton } from '@wisemen/vue-core'
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { AppDialogCloseButton } from '@wisemen/vue-core'
     <slot />
 
     <div class="absolute right-2 top-2">
-      <AppDialogCloseButton />
+      <VcDialogCloseButton />
     </div>
   </div>
 </template>

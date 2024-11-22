@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
-import { AppButton } from '@wisemen/vue-core'
+import { VcButton } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import {
   computed,
@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<{
   isKeyboardCommandDisabled: false,
 })
 
-const buttonRef = ref<InstanceType<typeof AppButton> | null>(null)
+const buttonRef = ref<InstanceType<typeof VcButton> | null>(null)
 
 const isButtonDisabled = computed<boolean>(() => {
   if (props.isDisabled) {
@@ -39,7 +39,7 @@ const isButtonDisabled = computed<boolean>(() => {
 </script>
 
 <template>
-  <AppButton
+  <VcButton
     ref="buttonRef"
     :form="props.formId"
     :is-disabled="isButtonDisabled"
@@ -52,5 +52,5 @@ const isButtonDisabled = computed<boolean>(() => {
     class="w-full"
   >
     {{ props.label }}
-  </AppButton>
+  </VcButton>
 </template>

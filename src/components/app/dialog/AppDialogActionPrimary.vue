@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {
-  AppButton,
-  AppKeyboardKey,
-  AppKeyboardShortcutProvider,
+  VcButton,
+  VcKeyboardKey,
+  VcKeyboardShortcutProvider,
 } from '@wisemen/vue-core'
 import {
   computed,
@@ -47,14 +47,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppKeyboardShortcutProvider
+  <VcKeyboardShortcutProvider
     :config="{
       keys: ['enter'],
       isDisabled: computed<boolean>(() => isFocusedElementAButton),
     }"
     class="w-full"
   >
-    <AppButton
+    <VcButton
       :is-loading="props.isLoading"
       :variant="props.isDestructive ? 'destructive-primary' : 'default'"
       class="group w-full"
@@ -63,11 +63,11 @@ onMounted(() => {
       <AppButtonGroup>
         {{ props.label }}
 
-        <AppKeyboardKey
+        <VcKeyboardKey
           keyboard-key="enter"
           class="border-white/10 bg-white/10 duration-200"
         />
       </AppButtonGroup>
-    </AppButton>
-  </AppKeyboardShortcutProvider>
+    </VcButton>
+  </VcKeyboardShortcutProvider>
 </template>

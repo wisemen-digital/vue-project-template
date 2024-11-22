@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {
-  AppDialogDescription,
-  AppDialogTitle,
+  VcDialogDescription,
+  VcDialogTitle,
 } from '@wisemen/vue-core'
 
 const props = defineProps<{
@@ -12,16 +12,16 @@ const props = defineProps<{
 
 <template>
   <div class="flex flex-col">
-    <AppDialogTitle>
+    <VcDialogTitle>
       <h1 class="text-heading font-semibold text-primary">
         {{ props.title }}
       </h1>
-    </AppDialogTitle>
+    </VcDialogTitle>
 
-    <AppDialogDescription>
+    <VcDialogDescription>
       <p class="mt-4 text-secondary">
         {{ props.description }}
       </p>
-    </AppDialogDescription>
+    </VcDialogDescription>
   </div>
 </template>

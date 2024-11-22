@@ -4,7 +4,7 @@ import type {
   Pagination,
   TableColumn,
 } from '@wisemen/vue-core'
-import { AppTable, AppTableCell } from '@wisemen/vue-core'
+import { VcTable, VcTableCell } from '@wisemen/vue-core'
 import {
   computed,
   h,
@@ -39,7 +39,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
   {
     testId: TEST_ID.USERS.OVERVIEW.TABLE.BIRTH_DATE,
     isSortable: true,
-    cell: (): VNode => h(AppTableCell, () => DateUtil.toLocaleDate(new Date())),
+    cell: (): VNode => h(VcTableCell, () => DateUtil.toLocaleDate(new Date())),
     headerLabel: t('user.birth_date'),
     key: 'birthDate',
   },
@@ -54,7 +54,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     <AppErrorState :error="props.error" />
   </div>
 
-  <AppTable
+  <VcTable
     v-else
     :columns="columns"
     :data="props.data"

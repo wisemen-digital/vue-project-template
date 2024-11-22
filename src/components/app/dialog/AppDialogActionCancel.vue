@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {
-  AppButton,
-  AppDialogCloseButton,
-  AppKeyboardKey,
+  VcButton,
+  VcDialogCloseButton,
+  VcKeyboardKey,
 } from '@wisemen/vue-core'
 
 import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
@@ -16,8 +16,8 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-  <AppDialogCloseButton>
-    <AppButton
+  <VcDialogCloseButton>
+    <VcButton
       :is-disabled="isDisabled"
       variant="tertiary"
       class="w-full"
@@ -25,11 +25,11 @@ const props = withDefaults(defineProps<{
       <AppButtonGroup>
         {{ props.label }}
 
-        <AppKeyboardKey
+        <VcKeyboardKey
           keyboard-key="escape"
           class="border-tertiary bg-secondary text-tertiary"
         />
       </AppButtonGroup>
-    </AppButton>
-  </AppDialogCloseButton>
+    </VcButton>
+  </VcDialogCloseButton>
 </template>

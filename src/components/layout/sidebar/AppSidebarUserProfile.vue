@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-  AppDropdownMenu,
-  AppDropdownMenuTrigger,
-  AppThemeProvider,
   type DropdownMenuItem,
   useDarkMode,
+  VcDropdownMenu,
+  VcDropdownMenuTrigger,
+  VcThemeProvider,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
@@ -65,8 +65,8 @@ const authUserInitials = computed<string>(() => (
 </script>
 
 <template>
-  <AppThemeProvider theme="dark">
-    <AppDropdownMenu
+  <VcThemeProvider theme="dark">
+    <VcDropdownMenu
       :items="dropdownMenuItems"
       :enable-global-keyboard-shortcuts="true"
       :is-arrow-hidden="true"
@@ -96,8 +96,8 @@ const authUserInitials = computed<string>(() => (
         </div>
       </template>
 
-      <AppThemeProvider :theme="darkMode.isEnabled.value ? 'dark' : 'light'">
-        <AppDropdownMenuTrigger>
+      <VcThemeProvider :theme="darkMode.isEnabled.value ? 'dark' : 'light'">
+        <VcDropdownMenuTrigger>
           <button
             type="button"
             class="flex w-full items-center gap-x-xl rounded-full text-left outline-none ring-brand-primary-500 ring-offset-1 duration-200 focus-visible:ring-2"
@@ -140,8 +140,8 @@ const authUserInitials = computed<string>(() => (
               </Transition>
             </div>
           </button>
-        </AppDropdownMenuTrigger>
-      </AppThemeProvider>
-    </AppDropdownMenu>
-  </AppThemeProvider>
+        </VcDropdownMenuTrigger>
+      </VcThemeProvider>
+    </VcDropdownMenu>
+  </VcThemeProvider>
 </template>

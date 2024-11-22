@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AppTableCell } from '@wisemen/vue-core'
+import { VcTableCell } from '@wisemen/vue-core'
 
 import AppRouterLink from '@/components/app/link/AppRouterLink.vue'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
@@ -10,7 +10,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <AppTableCell>
+  <VcTableCell>
     <AppRouterLink
       :to="{
         name: 'user-detail',
@@ -22,5 +22,5 @@ const props = defineProps<{
     >
       {{ props.user.fullName }}
     </AppRouterLink>
-  </AppTableCell>
+  </VcTableCell>
 </template>

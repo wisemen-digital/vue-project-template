@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-  AppRadioGroup,
-  AppRadioGroupItem,
-  AppThemeProvider,
   type RadioGroupItem,
   useDarkMode,
+  VcRadioGroup,
+  VcRadioGroupItem,
+  VcThemeProvider,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
@@ -50,30 +50,30 @@ function getTheme(value: ThemeValue): 'dark' | 'light' {
     :title="t('module.settings.interface_theme.title')"
     :description="t('module.settings.interface_theme.description')"
   >
-    <AppRadioGroup
+    <VcRadioGroup
       v-model="darkMode.value.value"
       :items="themes"
     >
       <template #items="{ items }">
         <div class="grid gap-lg lg:grid-cols-3">
-          <AppRadioGroupItem
+          <VcRadioGroupItem
             v-for="item of items"
             :key="item.value"
             :item="item"
             class="group rounded-xl text-left !ring-0 !ring-offset-0"
           >
-            <AppThemeProvider :theme="getTheme(item.value)">
+            <VcThemeProvider :theme="getTheme(item.value)">
               <div class="relative h-40 overflow-hidden rounded-xl border-2 border-solid border-transparent bg-tertiary ring-brand-primary-500 ring-offset-1 duration-200 group-focus-visible:ring-2 group-data-[state=checked]:border-brand">
                 <SettingsOverviewMiniDashboard class="absolute left-4 top-4" />
               </div>
-            </AppThemeProvider>
+            </VcThemeProvider>
 
             <span class="mt-md block text-sm text-primary">
               {{ item.label }}
             </span>
-          </AppRadioGroupItem>
+          </VcRadioGroupItem>
         </div>
       </template>
-    </AppRadioGroup>
+    </VcRadioGroup>
   </FormSection>
 </template>

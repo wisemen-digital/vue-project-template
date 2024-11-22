@@ -31,7 +31,15 @@
       "open_sidebar": "Open sidebar"
     },
     "table": {
-      "page_count": "{startIndex} - {endIndex} of {totalItems}"
+      "page_count": "{startIndex} - {endIndex} of {totalItems}",
+      "no_data": {
+        "description": "There is currently no data to display.",
+        "title": "No data"
+      },
+      "no_results": {
+        "description": "There are no results matching your search criteria.",
+        "title": "No results"
+      }
     },
     "unsaved_changes_dialog": {
       "cancel": "Keep editing",

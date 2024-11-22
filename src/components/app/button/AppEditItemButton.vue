@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AppRouterLinkButton } from '@wisemen/vue-core'
+import { VcRouterLinkButton } from '@wisemen/vue-core'
 
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 import type { RouteLocationCurrent } from '@/types/vueRouter'
@@ -11,11 +11,11 @@ const props = defineProps<{
 </script>
 
 <template>
-  <AppRouterLinkButton
+  <VcRouterLinkButton
     :to="props.to"
     :keyboard-shortcut="KEYBOARD_SHORTCUT.EDIT"
     icon-left="edit"
   >
     {{ props.label }}
-  </AppRouterLinkButton>
+  </VcRouterLinkButton>
 </template>

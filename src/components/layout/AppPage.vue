@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
-import { AppBreadcrumbs } from '@wisemen/vue-core'
+import { VcBreadcrumbs } from '@wisemen/vue-core'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
@@ -19,7 +19,7 @@ const props = withDefaults(
 <template>
   <div class="flex w-full flex-1 flex-col">
     <AppContainer class="pt-12">
-      <AppBreadcrumbs
+      <VcBreadcrumbs
         v-if="props.breadcrumbs !== null"
         :items="props.breadcrumbs"
         class="mb-xl"

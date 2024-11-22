@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-  AppIcon,
-  AppKeyboardShortcut,
-  AppKeyboardShortcutProvider,
-  AppToggle,
-  AppTooltip,
+  VcIcon,
+  VcKeyboardShortcut,
+  VcKeyboardShortcutProvider,
+  VcToggle,
+  VcTooltip,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
@@ -27,24 +27,24 @@ const toggleBtnLabel = computed<string>(() => {
 
 <template>
   <div class="absolute right-0 top-4">
-    <AppKeyboardShortcutProvider
+    <VcKeyboardShortcutProvider
       v-slot="{ keys }"
       :config="{
         keys: ['c'],
       }"
     >
-      <AppTooltip
+      <VcTooltip
         :is-arrow-hidden="true"
         :delay-duration="500"
         side="right"
       >
         <template #trigger>
-          <AppToggle v-model="isCollapsed">
+          <VcToggle v-model="isCollapsed">
             <button
               :aria-label="toggleBtnLabel"
               class="flex h-10 w-5 translate-x-1/2 items-center justify-center rounded-2xl border border-solid border-secondary bg-secondary text-fg-disabled opacity-0 outline-none ring-fg-tertiary ring-offset-1 duration-300 focus-visible:opacity-100 focus-visible:ring-2 group-hover/sidebar:opacity-100"
             >
-              <AppIcon
+              <VcIcon
                 :class="{
                   'rotate-180': isCollapsed,
                 }"
@@ -52,7 +52,7 @@ const toggleBtnLabel = computed<string>(() => {
                 icon="chevronLeft"
               />
             </button>
-          </AppToggle>
+          </VcToggle>
         </template>
 
         <template #content>
@@ -61,10 +61,10 @@ const toggleBtnLabel = computed<string>(() => {
               {{ toggleBtnLabel }}
             </span>
 
-            <AppKeyboardShortcut :keyboard-keys="keys" />
+            <VcKeyboardShortcut :keyboard-keys="keys" />
           </div>
         </template>
-      </AppTooltip>
-    </AppKeyboardShortcutProvider>
+      </VcTooltip>
+    </VcKeyboardShortcutProvider>
   </div>
 </template>

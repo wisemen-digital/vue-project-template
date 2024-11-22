@@ -1,7 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <div class="w-full min-w-80 rounded-xl border border-solid border-secondary bg-primary">
     <!-- macOS top bar -->

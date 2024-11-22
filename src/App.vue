@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import {
-  AppConfigProvider,
-  AppDialogContainer,
-  AppThemeProvider,
-  AppToastContainer,
   useDarkMode,
   useDocumentTitle,
+  VcConfigProvider,
+  VcDialogContainer,
+  VcThemeProvider,
+  VcToastContainer,
 } from '@wisemen/vue-core'
 import { RouterView, useRouter } from 'vue-router'
 
@@ -19,7 +19,7 @@ const router = useRouter()
 const darkMode = useDarkMode()
 const authStore = useAuthStore()
 
-setTemplate('{title} | App')
+setTemplate('{title} | $projectName')
 
 useRefreshPrompt()
 logBuildInformation()
@@ -32,55 +32,16 @@ authStore.onLogout(() => {
 </script>
 
 <template>
-  <AppConfigProvider locale="en">
-    <AppThemeProvider
-      :theme="darkMode.isEnabled.value ? 'dark' : 'light'"
+  <VcConfigProvider locale="en">
+    <VcThemeProvider
+      :is-dark-mode-enabled="darkMode.isEnabled.value"
+      theme="default"
       class="flex size-full flex-1 flex-col"
     >
       <RouterView />
       <AppPageLoader />
-      <AppDialogContainer />
-      <AppToastContainer />
-    </AppThemeProvider>
-  </AppConfigProvider>
+      <VcDialogContainer />
+      <VcToastContainer />
+    </VcThemeProvider>
+  </VcConfigProvider>
 </template>
-
-<style lang="scss">
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.view-transition {
-  view-transition-name: title;
-}
-
-::view-transition-old(title) {
-  animation: 0.1s linear both fade-out;
-}
-
-::view-transition-new(title) {
-  animation: 0.3s linear both fade-in;
-}
-
-::view-transition-old(root) {
-  // animation: 0;
-}
-
-::view-transition-new(root) {
-  // animation: 0;
-}
-</style>

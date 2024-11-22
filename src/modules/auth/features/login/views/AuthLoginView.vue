@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AppButton, useToast } from '@wisemen/vue-core'
+import { useToast, VcButton } from '@wisemen/vue-core'
 import { ref } from 'vue'
 
 import { useI18n } from '@/composables/i18n/i18n.composable'
@@ -87,36 +87,36 @@ async function onSignInWithGoogle(): Promise<void> {
 
           <div class="mt-8 flex flex-col gap-y-2">
             <AuthLoginElementTransition delay-class="delay-300">
-              <AppButton
+              <VcButton
                 :is-loading="isSigningInWithZitadel"
                 class="w-full"
                 variant="secondary"
                 @click="onSignInWithZitadel"
               >
                 {{ t('module.auth.login.sign_in_with_zitadel') }}
-              </AppButton>
+              </VcButton>
             </AuthLoginElementTransition>
 
             <AuthLoginElementTransition delay-class="delay-[450ms]">
-              <AppButton
+              <VcButton
                 :is-loading="isSigningInWithGoogle"
                 icon-left="googleLogo"
                 variant="secondary"
                 @click="onSignInWithGoogle"
               >
                 {{ t('module.auth.login.sign_in_with_google') }}
-              </AppButton>
+              </VcButton>
             </AuthLoginElementTransition>
 
             <AuthLoginElementTransition delay-class="delay-[600ms]">
-              <AppButton
+              <VcButton
                 :is-loading="isSigningInWithApple"
                 icon-left="appleLogo"
                 variant="secondary"
                 @click="onSignInWithApple"
               >
                 {{ t('module.auth.login.sign_in_with_apple') }}
-              </AppButton>
+              </VcButton>
             </AuthLoginElementTransition>
           </div>
         </div>

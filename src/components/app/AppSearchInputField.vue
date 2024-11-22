@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-  AppIconButton,
-  AppKeyboardShortcut,
-  AppKeyboardShortcutProvider,
-  AppTextField,
   type Pagination,
+  VcIconButton,
+  VcKeyboardShortcut,
+  VcKeyboardShortcutProvider,
+  VcTextField,
 } from '@wisemen/vue-core'
 import {
   computed,
@@ -43,7 +43,7 @@ const search = computed<string>({
   },
 })
 
-const appTextFieldRef = ref<InstanceType<typeof AppTextField> | null>(null)
+const VcTextFieldRef = ref<InstanceType<any> | null>(null)
 
 function onClearInput(): void {
   props.pagination.handleSearchChange('')
@@ -51,12 +51,12 @@ function onClearInput(): void {
 </script>
 
 <template>
-  <AppKeyboardShortcutProvider
+  <VcKeyboardShortcutProvider
     :config="KEYBOARD_SHORTCUT.SEARCH"
     class="w-64"
   >
-    <AppTextField
-      ref="appTextFieldRef"
+    <VcTextField
+      ref="VcTextFieldRef"
       v-model="search"
       :is-disabled="props.isDisabled"
       :placeholder="props.placeholder ?? t('component.search_input.placeholder')"
@@ -65,14 +65,14 @@ function onClearInput(): void {
     >
       <template #right>
         <div>
-          <AppKeyboardShortcut
+          <VcKeyboardShortcut
             v-if="(search === null || search === '') && !props.disableKeyboardCommand"
             :keyboard-keys="KEYBOARD_SHORTCUT.SEARCH.keys"
             keyboard-classes="border-primary text-tertiary"
             class="mr-2"
           />
 
-          <AppIconButton
+          <VcIconButton
             v-else-if="search !== null && search !== ''"
             :style-config="{
               '--icon-button-size-default': '2rem',
@@ -91,6 +91,6 @@ function onClearInput(): void {
           />
         </div>
       </template>
-    </AppTextField>
-  </AppKeyboardShortcutProvider>
+    </VcTextField>
+  </VcKeyboardShortcutProvider>
 </template>
