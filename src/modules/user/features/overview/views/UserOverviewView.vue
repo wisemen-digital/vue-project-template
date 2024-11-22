@@ -5,6 +5,7 @@ import { computed } from 'vue'
 import { useUserIndexQuery } from '@/api/queries/userIndex.query'
 import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
 import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
+import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
 import { useI18n } from '@/composables/i18n/i18n.composable'
 import { TEST_ID } from '@/constants/testId.constant.ts'
@@ -18,24 +19,18 @@ const pagination = usePagination<UserIndexFilters>({
   key: 'users',
 })
 
-const search = computed<string>({
-  get: () => pagination.paginationOptions.value.search ?? '',
-  set: (value) => {
-    pagination.handleSearchChange(value)
-  },
-})
-
 const userIndexQuery = useUserIndexQuery(pagination.paginationOptions)
 
 const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
+const error = computed<unknown>(() => userIndexQuery.error.value)
 </script>
 
 <template>
   <AppTablePage :title="t('user.label.plural')">
     <template #header-actions>
       <AppSearchInputField
-        v-model="search"
         :is-loading="isLoading"
+        :pagination="pagination"
       />
 
       <AppNewItemButton
@@ -48,7 +43,15 @@ const isLoading = computed<boolean>(() => userIndexQuery.isLoading.value)
     </template>
 
     <template #default>
+      <div
+        v-if="error !== null"
+        class="flex size-full flex-1 items-center justify-center"
+      >
+        <AppErrorState :error="error" />
+      </div>
+
       <UserOverviewTable
+        v-else
         :data="userIndexQuery.data.value"
         :is-loading="isLoading"
         :pagination="pagination"

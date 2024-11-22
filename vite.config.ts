@@ -27,7 +27,6 @@ export default defineConfig({
       env: '.env',
       example: '.env.example',
     }),
-
     viteCompression(),
     VitePWA({
       includeAssets: [
@@ -59,6 +58,27 @@ export default defineConfig({
       workbox: {
         navigateFallbackDenylist: [
           /api/,
+        ],
+        runtimeCaching: [
+          {
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 's3-images',
+              cacheableResponse: {
+                statuses: [
+                  0,
+                  200,
+                ], // cache responses with these statuses
+              },
+              expiration: {
+                maxAgeSeconds: 30 * 24 * 60 * 60, // cache for 30 days
+              },
+              matchOptions: {
+                ignoreSearch: true,
+              },
+            },
+            urlPattern: ({ url }): boolean => url.origin.includes('.s3.'),
+          },
         ],
       },
     }),
