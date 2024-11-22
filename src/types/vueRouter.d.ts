@@ -17,7 +17,7 @@ declare module 'vue-router' {
   }
 
   declare interface NavigationGuard {
-    (from: RouteLocationCurrentMatched, to: RouteLocationCurrentMatched, next: import('vue-router').NavigationGuardNext): Promise<import('vue-router').NavigationGuardReturn> | import('vue-router').NavigationGuardReturn
+    (from: RouteLocationCurrentMatched, to: RouteLocationCurrentMatched, next: import('vue-router').NavigationGuardNext): import('vue-router').NavigationGuardReturn | Promise<import('vue-router').NavigationGuardReturn>
   }
 
   interface TypesConfig {
@@ -150,7 +150,7 @@ interface RouterWithParams {
 
   replace: (to: NamelessRoute | RouteLocationCurrent) => ReturnType<import('vue-router').Router['replace']>
 
-  resolve: <T extends RouteLocationCurrent | string>(
+  resolve: <T extends string | RouteLocationCurrent>(
     to: T, currentLocation?: RouteLocationCurrentMatched
   ) => T extends { name: infer Name } ? GetRouteMatchedByName<Name> : RouteLocationCurrentMatched
 }
