@@ -1,5 +1,6 @@
 /* eslint-disable node/prefer-global/process */
 import ImportMetaEnvPlugin from '@import-meta-env/unplugin'
+import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
@@ -23,12 +24,16 @@ export default defineConfig({
     BUILD_TIMESTAMP: JSON.stringify(process.env.BUILD_TIMESTAMP ?? 'undefined'),
   },
   plugins: [
+    tailwindcss(),
     ImportMetaEnvPlugin.vite({
       env: '.env',
       example: '.env.example',
     }),
     viteCompression(),
     VitePWA({
+      devOptions: {
+        enabled: true,
+      },
       includeAssets: [
         'favicon.ico',
         'apple-touch-icon.png',
