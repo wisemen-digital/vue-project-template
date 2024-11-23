@@ -13,8 +13,7 @@ export const KEYBOARD_SHORTCUT = {
   },
   SAVE: {
     keys: [
-      'ctrl',
-      's',
+      'enter',
     ],
   },
   SEARCH: {

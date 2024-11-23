@@ -6,7 +6,7 @@ import type { AuthUser } from '@/models/auth-user/authUser.model'
 const props = defineProps<{
   isCollapsed: boolean
   authUser: AuthUser
-  sidebarItemHeightInPx: number
+  sidebarItemHeightInRem: number
 }>()
 
 const emit = defineEmits<{
@@ -24,7 +24,7 @@ function onSignOut(): void {
 
     <AppSidebarUserProfile
       :is-collapsed="props.isCollapsed"
-      :sidebar-item-height-in-px="props.sidebarItemHeightInPx"
+      :sidebar-item-height-in-rem="props.sidebarItemHeightInRem"
       :auth-user="props.authUser"
       @sign-out="onSignOut"
     />

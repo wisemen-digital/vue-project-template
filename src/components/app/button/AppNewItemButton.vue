@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { VcRouterLinkButton } from '@wisemen/vue-core'
+import {
+  VcKeyboardShortcut,
+  VcKeyboardShortcutProvider,
+  VcRouterLinkButton,
+} from '@wisemen/vue-core'
 
+import AppGroup from '@/components/app/AppGroup.vue'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 import type { RouteLocationCurrent } from '@/types/vueRouter'
 
@@ -11,11 +16,26 @@ const props = defineProps<{
 </script>
 
 <template>
-  <VcRouterLinkButton
-    :to="props.to"
-    :keyboard-shortcut="KEYBOARD_SHORTCUT.NEW"
-    icon-left="plus"
+  <VcKeyboardShortcutProvider
+    v-slot="{ keys }"
+    :config="{
+      keys: ['n'],
+    }"
   >
-    {{ props.label }}
-  </VcRouterLinkButton>
+    <VcRouterLinkButton
+      :to="props.to"
+      :keyboard-shortcut="KEYBOARD_SHORTCUT.NEW"
+      icon-left="plus"
+      size="sm"
+    >
+      <AppGroup>
+        {{ props.label }}
+
+        <VcKeyboardShortcut
+          :keyboard-keys="keys"
+          keyboard-classes="border-none bg-white/10"
+        />
+      </AppGroup>
+    </VcRouterLinkButton>
+  </VcKeyboardShortcutProvider>
 </template>

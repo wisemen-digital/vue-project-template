@@ -11,7 +11,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <div class="grid gap-x-12 gap-y-4 md:grid-cols-3">
+  <div class="grid gap-x-6xl gap-y-xl md:grid-cols-3">
     <div>
       <h2 class="font-medium text-primary">
         {{ props.title }}
@@ -19,7 +19,7 @@ const props = withDefaults(
 
       <p
         v-if="props.description !== null"
-        class="mt-1 text-subtext text-secondary"
+        class="mt-sm text-sm text-secondary"
       >
         {{ props.description }}
       </p>

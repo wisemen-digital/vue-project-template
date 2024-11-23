@@ -1,24 +1,98 @@
 /* eslint-disable no-console */
+
+import fs from 'node:fs'
+import path from 'node:path'
+import process from 'node:process'
+
 import chalk from 'chalk'
-import fs from 'fs-extra'
 import inquirer from 'inquirer'
 
+const pathsToIgnore = [
+  './setup.ts',
+  './src/modules',
+  'node_modules',
+  '.git',
+  'dist',
+]
+
+/**
+ * Recursively scan the project and replace all occurrences of `$projectName` with the new project name.
+ * @param projectName - The new project name to replace `$projectName`.
+ */
 function changeProjectName(projectName: string): void {
-  // Find all files and search for `$projectName` and replace it with the new project name
-  fs.readdirSync('.').forEach((file) => {
-    const filePath = `./${file}`
+  const rootDir = process.cwd() // Use the current working directory as the root.
 
-    if (fs.lstatSync(filePath).isDirectory()) {
-      return
+  // Function to determine if a path should be ignored
+  function shouldIgnore(filePath: string): boolean {
+    // Normalize paths to ensure consistent comparison across OS
+    const normalizedPath = path.resolve(filePath)
+
+    return pathsToIgnore.some((ignorePath) => {
+      const normalizedIgnorePath = path.resolve(ignorePath)
+
+      return normalizedPath.startsWith(normalizedIgnorePath)
+    })
+  }
+
+  // Function to process files and directories recursively
+  function processDirectory(dir: string): void {
+    const filesAndDirs = fs.readdirSync(dir)
+
+    for (const fileOrDir of filesAndDirs) {
+      const fullPath = path.join(dir, fileOrDir)
+
+      // Skip ignored paths
+      if (shouldIgnore(fullPath)) {
+        continue
+      }
+
+      // Check if the path is a directory
+      if (fs.statSync(fullPath).isDirectory()) {
+        processDirectory(fullPath) // Recursively process the directory
+      }
+      else {
+        // Process individual files
+        processFile(fullPath, projectName)
+      }
     }
+  }
 
+  // Function to replace occurrences of `$projectName` in a file
+  function processFile(filePath: string, projectName: string): void {
+    // Read the file contents
     const fileContent = fs.readFileSync(filePath, 'utf8')
 
-    fs.writeFileSync(filePath, fileContent.replace(/\$projectName/g, projectName))
-  })
+    // Check if the file contains `$projectName` to avoid unnecessary writes
+    if (fileContent.includes('$$projectName')) {
+      const updatedContent = fileContent.replace(/\$projectName/g, projectName)
+
+      // Write the updated content back to the file
+      fs.writeFileSync(filePath, updatedContent, 'utf8')
+      console.log(chalk.gray(`Updated project name in ${filePath}`))
+    }
+  }
+
+  // Start processing from the root directory
+  processDirectory(rootDir)
+
+  console.log(chalk.green(`✅ Finished changing project name to ${projectName}`))
+}
+
+/**
+ * Whether the setup has already been run.
+ * @returns {boolean} Whether the setup has already been run.
+ */
+function hasSetupBeenRun(): boolean {
+  const indexHtmlContent = fs.readFileSync('./index.html', 'utf8')
+
+  return !indexHtmlContent.includes('$projectName')
 }
 
 async function setup(): Promise<void> {
+  if (hasSetupBeenRun() || true) {
+    return
+  }
+
   console.log(chalk.blue('Setting up project...'))
 
   const answers = await inquirer.prompt([
@@ -31,6 +105,9 @@ async function setup(): Promise<void> {
   ])
 
   changeProjectName(answers.projectName)
+
+  console.log(chalk.green('------------------------------------------------'))
+  console.log(chalk.green('Project setup complete!'))
 }
 
 void setup()

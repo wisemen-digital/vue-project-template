@@ -8,15 +8,8 @@
 }
 
 @layer base {
-  * {
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    @apply box-border m-0 p-0;
-  }
-
   body {
-    /* @apply bg-background font-sans flex flex-col min-h-dvh; */
     @apply font-sans flex flex-col min-h-dvh bg-primary;
-    font-family: 'Inter Variable', sans-serif;
   }
 
   #app {

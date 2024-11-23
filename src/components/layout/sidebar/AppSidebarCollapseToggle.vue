@@ -57,7 +57,7 @@ const toggleBtnLabel = computed<string>(() => {
 
         <template #content>
           <div class="flex items-center gap-x-2 px-2 py-1">
-            <span class="text-caption text-white">
+            <span class="text-xs text-white">
               {{ toggleBtnLabel }}
             </span>
 

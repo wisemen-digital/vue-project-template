@@ -2,7 +2,6 @@
 import { usePagination } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
-import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
 import AppNewItemButton from '@/components/app/button/AppNewItemButton.vue'
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
@@ -28,14 +27,12 @@ const error = computed<unknown>(() => userIndexQuery.error.value)
 <template>
   <AppTablePage :title="t('user.label.plural')">
     <template #header-actions>
-      <AppSearchInputField
-        :is-loading="isLoading"
-        :pagination="pagination"
-      />
-
       <AppNewItemButton
         :to="{
           name: 'user-create',
+        }"
+        :style="{
+          viewTransitionName: 'header-action',
         }"
         :data-test-id="TEST_ID.USERS.OVERVIEW.CREATE_BUTTON"
         :label="t('module.user.create.title')"

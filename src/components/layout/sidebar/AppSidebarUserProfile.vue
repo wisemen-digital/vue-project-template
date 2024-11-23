@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import {
   type DropdownMenuItem,
-  useDarkMode,
   VcDropdownMenu,
   VcDropdownMenuTrigger,
-  VcThemeProvider,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
@@ -19,7 +17,7 @@ import type { AuthUser } from '@/models/auth-user/authUser.model'
 const props = defineProps<{
   isCollapsed: boolean
   authUser: AuthUser
-  sidebarItemHeightInPx: number
+  sidebarItemHeightInRem: number
 }>()
 
 const emit = defineEmits<{
@@ -27,7 +25,6 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
-const darkMode = useDarkMode()
 
 const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
   {
@@ -65,83 +62,79 @@ const authUserInitials = computed<string>(() => (
 </script>
 
 <template>
-  <VcThemeProvider theme="dark">
-    <VcDropdownMenu
-      :items="dropdownMenuItems"
-      :enable-global-keyboard-shortcuts="true"
-      :is-arrow-hidden="true"
-      :offset-in-px="10"
-      side="right"
-      align="end"
-    >
-      <template #content-top>
-        <div class="min-w-56 pb-xs">
-          <span class="block px-lg py-md text-subtext text-primary">
-            {{ props.authUser.fullName }}
+  <VcDropdownMenu
+    :items="dropdownMenuItems"
+    :enable-global-keyboard-shortcuts="true"
+    :is-arrow-hidden="true"
+    :popover-offset-in-px="10"
+    popover-side="right"
+    popover-align="end"
+  >
+    <template #content-top>
+      <div class="min-w-56 pb-xs">
+        <span class="block px-lg py-md text-sm text-primary">
+          {{ props.authUser.fullName }}
+        </span>
+
+        <AppSeparator />
+
+        <div class="px-lg py-md">
+          <span class="block text-sm text-tertiary">
+            {{ `${t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
           </span>
 
-          <AppSeparator />
-
-          <div class="px-lg py-md">
-            <span class="block text-subtext text-tertiary">
-              {{ `${t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
-            </span>
-
-            <span class="mt-1 block text-subtext text-tertiary">
-              {{ `${t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
-            </span>
-          </div>
-
-          <AppSeparator />
+          <span class="mt-1 block text-sm text-tertiary">
+            {{ `${t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
+          </span>
         </div>
-      </template>
 
-      <VcThemeProvider :theme="darkMode.isEnabled.value ? 'dark' : 'light'">
-        <VcDropdownMenuTrigger>
-          <button
-            type="button"
-            class="flex w-full items-center gap-x-xl rounded-full text-left outline-none ring-brand-primary-500 ring-offset-1 duration-200 focus-visible:ring-2"
+        <AppSeparator />
+      </div>
+    </template>
+
+    <VcDropdownMenuTrigger>
+      <button
+        type="button"
+        class="flex w-full items-center gap-x-xl rounded-full text-left outline-none ring-brand-primary-500 ring-offset-1 duration-200 focus-visible:ring-2"
+      >
+        <div
+          :style="{
+            height: `${props.sidebarItemHeightInRem}rem`,
+          }"
+          class="flex aspect-square items-center justify-center rounded-full bg-quaternary"
+        >
+          <span class="text-sm font-medium text-primary">
+            {{ authUserInitials }}
+          </span>
+        </div>
+
+        <div
+          :style="{
+            height: `${props.sidebarItemHeightInRem}rem`,
+          }"
+          class="relative size-full"
+        >
+          <Transition
+            enter-active-class="duration-500 ease-sidebar-collapse"
+            leave-active-class="duration-500 ease-sidebar-collapse"
+            leave-to-class="opacity-0 -translate-x-4 scale-90"
+            enter-from-class="opacity-0 -translate-x-4 scale-90"
           >
             <div
-              :style="{
-                height: `${props.sidebarItemHeightInPx}px`,
-              }"
-              class="flex aspect-square items-center justify-center rounded-full bg-quaternary"
+              v-if="!props.isCollapsed"
+              class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
             >
-              <span class="text-subtext font-medium text-primary">
-                {{ authUserInitials }}
+              <span class="w-full truncate text-left text-sm font-semibold leading-5 text-primary">
+                {{ props.authUser.fullName }}
+              </span>
+
+              <span class="w-full truncate text-sm leading-5 text-secondary">
+                {{ props.authUser.email }}
               </span>
             </div>
-
-            <div
-              :style="{
-                height: `${props.sidebarItemHeightInPx}px`,
-              }"
-              class="relative size-full"
-            >
-              <Transition
-                enter-active-class="duration-500 ease-sidebar-collapse"
-                leave-active-class="duration-500 ease-sidebar-collapse"
-                leave-to-class="opacity-0 -translate-x-4 scale-90"
-                enter-from-class="opacity-0 -translate-x-4 scale-90"
-              >
-                <div
-                  v-if="!props.isCollapsed"
-                  class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
-                >
-                  <span class="w-full truncate text-left text-subtext font-semibold leading-5 text-primary">
-                    {{ props.authUser.fullName }}
-                  </span>
-
-                  <span class="w-full truncate text-subtext leading-5 text-secondary">
-                    {{ props.authUser.email }}
-                  </span>
-                </div>
-              </Transition>
-            </div>
-          </button>
-        </VcDropdownMenuTrigger>
-      </VcThemeProvider>
-    </VcDropdownMenu>
-  </VcThemeProvider>
+          </Transition>
+        </div>
+      </button>
+    </VcDropdownMenuTrigger>
+  </VcDropdownMenu>
 </template>

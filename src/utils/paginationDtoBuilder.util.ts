@@ -22,20 +22,12 @@ interface PaginationSort {
   key: string
 }
 
-type FiltersDto<TFilter> = {
-  'pagination[limit]': number
-  'pagination[offset]': number
-  'search'?: string
-} & {
-  [K in keyof TFilter as `filters[${Extract<K, string>}]`]?: TFilter[K];
-}
-
 export class PaginationDtoBuilder<TFilterSchema> {
   private paginationOptions: PaginationParams<TFilterSchema>
 
   constructor(paginationOptions?: PaginationOptions<TFilterSchema>) {
     const limit = (paginationOptions?.pagination.limit ?? DEFAULT_LIMIT)
-    const offset = (paginationOptions?.pagination.offset ?? DEFAULT_OFFSET)
+    const offset = (paginationOptions?.pagination.offset ?? DEFAULT_OFFSET) * limit
 
     const allFilters = {
       ...paginationOptions?.filters ?? {},
@@ -65,8 +57,12 @@ export class PaginationDtoBuilder<TFilterSchema> {
     }
   }
 
-  public build(): FiltersDto<TFilterSchema> {
-    return this.paginationOptions as unknown as FiltersDto<TFilterSchema>
+  public build<TFilterSchemaDto>(transformer: (filters: TFilterSchema)
+  => TFilterSchemaDto): PaginationParams<TFilterSchemaDto> {
+    return {
+      ...this.paginationOptions,
+      filter: transformer(this.paginationOptions.filter as TFilterSchema),
+    }
   }
 
   public withFilter<TKey extends keyof TFilterSchema>(

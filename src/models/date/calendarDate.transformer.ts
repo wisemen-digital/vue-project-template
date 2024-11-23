@@ -2,6 +2,15 @@ import dayjs from 'dayjs'
 
 import type { CalendarDate } from '@/models/date/calendarDate.model.ts'
 import type { CalendarDateDto } from '@/models/date/calendarDateDto.model.ts'
+import type { CalendarDateForm } from '@/models/date/calendarDateForm.model'
+
+export class CalendarDateFormTransformer {
+  static toDateTimeDto(value: CalendarDateForm): CalendarDateDto {
+    return new Date(value).toISOString() as CalendarDateDto
+  }
+}
+
+// 2024-05-24
 
 export class CalendarDateTransformer {
   static fromDate(date: Date): CalendarDate {

@@ -12,6 +12,7 @@ import type {
   NavigationGroup,
   NavigationItem,
 } from '@/types/navigationItem.type'
+import { CssUnitUtil } from '@/utils/cssUnit.util'
 
 const props = withDefaults(defineProps<{
   authUser: AuthUser
@@ -28,22 +29,22 @@ const emit = defineEmits<{
 
 const isSidebarCollapsed = useLocalStorage<boolean>('isSidebarCollapsed', false)
 
-const sidebarWidthWhenCollapsedInPx = ref<number>(72)
-const sidebarWidthWhenExpandedInPx = ref<number>(256)
-const sidebarPaddingXInPx = ref<number>(16)
-const sidebarItemPaddingXInPx = ref<number>(8)
-const sidebarItemIconSizeInPx = ref<number>(24)
+const sidebarWidthWhenCollapsedInRem = ref<number>(CssUnitUtil.pxToRem(72))
+const sidebarWidthWhenExpandedInRem = ref<number>(CssUnitUtil.pxToRem(256))
+const sidebarPaddingXInRem = ref<number>(CssUnitUtil.pxToRem(16))
+const sidebarItemPaddingXInRem = ref<number>(CssUnitUtil.pxToRem(10))
+const sidebarItemIconSizeInRem = ref<number>(CssUnitUtil.pxToRem(20))
 
 const sidebarWidth = computed<string>(() => {
   if (isSidebarCollapsed.value) {
-    return `${sidebarWidthWhenCollapsedInPx.value}px`
+    return `${sidebarWidthWhenCollapsedInRem.value}rem`
   }
 
-  return `${sidebarWidthWhenExpandedInPx.value}px`
+  return `${sidebarWidthWhenExpandedInRem.value}rem`
 })
 
-const sidebarItemHeightInPx = computed<number>(() => {
-  return sidebarWidthWhenCollapsedInPx.value - sidebarPaddingXInPx.value * 2
+const sidebarItemHeightInRem = computed<number>(() => {
+  return sidebarWidthWhenCollapsedInRem.value - sidebarPaddingXInRem.value * 2
 })
 
 function onSignOut(): void {
@@ -52,8 +53,8 @@ function onSignOut(): void {
 
 onCreated(() => {
   if (
-    sidebarPaddingXInPx.value * 2 + sidebarItemPaddingXInPx.value * 2 + sidebarItemIconSizeInPx.value
-    > sidebarWidthWhenCollapsedInPx.value
+    sidebarPaddingXInRem.value * 2 + sidebarItemPaddingXInRem.value * 2 + sidebarItemIconSizeInRem.value
+    > sidebarWidthWhenCollapsedInRem.value
   ) {
     throw new Error('Invalid sidebar configuration. Please check the dimensions.')
   }
@@ -78,8 +79,8 @@ onCreated(() => {
       <div
         :style="{
           width: sidebarWidth,
-          paddingLeft: `${sidebarPaddingXInPx}px`,
-          paddingRight: `${sidebarPaddingXInPx}px`,
+          paddingLeft: `${sidebarPaddingXInRem}rem`,
+          paddingRight: `${sidebarPaddingXInRem}rem`,
         }"
         class="group/sidebar relative flex h-full flex-col justify-between duration-500 ease-sidebar-collapse"
       >
@@ -91,16 +92,16 @@ onCreated(() => {
           <AppSidebarNavMenu
             :is-collapsed="isSidebarCollapsed"
             :main-items="props.mainItems"
-            :sidebar-item-padding-x-in-px="sidebarItemPaddingXInPx"
-            :sidebar-item-icon-size-in-px="sidebarItemIconSizeInPx"
-            :sidebar-item-height-in-px="sidebarItemHeightInPx"
+            :sidebar-item-padding-x-in-rem="sidebarItemPaddingXInRem"
+            :sidebar-item-icon-size-in-rem="sidebarItemIconSizeInRem"
+            :sidebar-item-height-in-rem="sidebarItemHeightInRem"
             :bottom-items="props.bottomItems"
           />
         </div>
 
         <AppSidebarBottom
           :is-collapsed="isSidebarCollapsed"
-          :sidebar-item-height-in-px="sidebarItemHeightInPx"
+          :sidebar-item-height-in-rem="sidebarItemHeightInRem"
           :auth-user="props.authUser"
           @sign-out="onSignOut"
         />

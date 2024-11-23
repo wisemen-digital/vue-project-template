@@ -10,9 +10,9 @@ const props = defineProps<{
   isCollapsed: boolean
   bottomItems: NavigationItem[]
   mainItems: NavigationGroup[]
-  sidebarItemHeightInPx: number
-  sidebarItemIconSizeInPx: number
-  sidebarItemPaddingXInPx: number
+  sidebarItemHeightInRem: number
+  sidebarItemIconSizeInRem: number
+  sidebarItemPaddingXInRem: number
 }>()
 </script>
 
@@ -24,9 +24,9 @@ const props = defineProps<{
         :key="group.label"
         :group="group"
         :is-collapsed="props.isCollapsed"
-        :sidebar-item-icon-size-in-px="props.sidebarItemIconSizeInPx"
-        :sidebar-item-padding-x-in-px="props.sidebarItemPaddingXInPx"
-        :sidebar-item-height-in-px="props.sidebarItemHeightInPx"
+        :sidebar-item-icon-size-in-rem="props.sidebarItemIconSizeInRem"
+        :sidebar-item-padding-x-in-rem="props.sidebarItemPaddingXInRem"
+        :sidebar-item-height-in-rem="props.sidebarItemHeightInRem"
       >
         <template #item-right="{ item, isActive }">
           <slot
@@ -45,9 +45,9 @@ const props = defineProps<{
         :key="item.label"
         :item="item"
         :is-collapsed="props.isCollapsed"
-        :sidebar-item-icon-size-in-px="props.sidebarItemIconSizeInPx"
-        :sidebar-item-padding-x-in-px="props.sidebarItemPaddingXInPx"
-        :sidebar-item-height-in-px="props.sidebarItemHeightInPx"
+        :sidebar-item-icon-size-in-rem="props.sidebarItemIconSizeInRem"
+        :sidebar-item-padding-x-in-rem="props.sidebarItemPaddingXInRem"
+        :sidebar-item-height-in-rem="props.sidebarItemHeightInRem"
       >
         <template #item-right="{ isActive }">
           <slot

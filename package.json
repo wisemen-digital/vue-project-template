@@ -2,7 +2,7 @@
   "type": "module",
   "packageManager": "pnpm@9.6.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "pnpm project-setup && vite",
     "development": "vue-tsc --noEmit && vite build --mode development",
     "staging": "vue-tsc --noEmit && vite build --mode staging",
     "production": "vue-tsc --noEmit && vite build --mode production",
@@ -15,7 +15,7 @@
     "prepare": "husky install",
     "type-check": "vue-tsc --build --force",
     "precommit": "pnpm type-check && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm build",
-    "template": "npx tsx setup.ts"
+    "project-setup": "npx tsx setup.ts"
   },
   "dependencies": {
     "@appwise/zod-http-client": "0.0.6",
@@ -62,6 +62,7 @@
     "dotenv": "16.4.5",
     "eslint": "9.8.0",
     "eslint-plugin-playwright": "1.6.2",
+    "fs": "0.0.1-security",
     "fs-extra": "^11.2.0",
     "husky": "9.1.6",
     "inquirer": "^12.1.0",

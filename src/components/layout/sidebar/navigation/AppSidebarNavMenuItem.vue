@@ -7,18 +7,19 @@ import type { NavigationItem } from '@/types/navigationItem.type'
 const props = defineProps<{
   isCollapsed: boolean
   item: NavigationItem
-  sidebarItemHeightInPx: number
-  sidebarItemIconSizeInPx: number
-  sidebarItemPaddingXInPx: number
+  sidebarItemHeightInRem: number
+  sidebarItemIconSizeInRem: number
+  sidebarItemPaddingXInRem: number
 }>()
 </script>
 
 <template>
   <VcTooltip
     :is-hidden="!props.isCollapsed && props.item.keyboardShortcut === undefined"
-    :offset-in-px="10"
+    :popover-offset-in-px="10"
+    :is-arrow-hidden="true"
     :delay-duration="500"
-    side="right"
+    popover-side="right"
   >
     <template #trigger>
       <AppRouterLink
@@ -28,9 +29,9 @@ const props = defineProps<{
       >
         <div
           :style="{
-            paddingLeft: `${props.sidebarItemPaddingXInPx}px`,
-            paddingRight: `${props.sidebarItemPaddingXInPx}px`,
-            height: `${props.sidebarItemHeightInPx}px`,
+            paddingLeft: `${props.sidebarItemPaddingXInRem}rem`,
+            paddingRight: `${props.sidebarItemPaddingXInRem}rem`,
+            height: `${props.sidebarItemHeightInRem}rem`,
           }"
           :class="[
             isActive
@@ -42,8 +43,8 @@ const props = defineProps<{
           <div class="relative">
             <VcIcon
               :style="{
-                width: `${props.sidebarItemIconSizeInPx}px`,
-                height: `${props.sidebarItemIconSizeInPx}px`,
+                width: `${props.sidebarItemIconSizeInRem}rem`,
+                height: `${props.sidebarItemIconSizeInRem}rem`,
               }"
               :icon="props.item.icon"
               class="shrink-0"
@@ -88,7 +89,7 @@ const props = defineProps<{
     </template>
 
     <template #content>
-      <div class="flex items-center p-md">
+      <div class="flex items-center px-md py-sm">
         <span class="text-xs">
           {{ props.item.label }}
         </span>

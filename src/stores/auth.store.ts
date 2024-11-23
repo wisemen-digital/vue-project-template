@@ -4,11 +4,7 @@ import {
   ref,
 } from 'vue'
 
-import {
-  AUTH_APPLE_IDP_ID,
-  AUTH_GOOGLE_IDP_ID,
-  CURRENT_ENVIRONMENT,
-} from '@/constants/environment.constant.ts'
+import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { AuthUserTransformer } from '@/models/auth-user/auth.transformer'
 import type { AuthUser } from '@/models/auth-user/authUser.model'
@@ -56,18 +52,6 @@ export const useAuthStore = defineStore('auth', () => {
     authUser.value = user
   }
 
-  async function getIdentityProviderLoginUrl(provider: string): Promise<string> {
-    if (provider === 'apple') {
-      return await oAuthClient.getIdentityProviderLoginUrl(AUTH_APPLE_IDP_ID)
-    }
-
-    if (provider === 'google') {
-      return await oAuthClient.getIdentityProviderLoginUrl(AUTH_GOOGLE_IDP_ID)
-    }
-
-    throw new Error('Unsupported identity provider')
-  }
-
   async function getLoginUrl(): Promise<string> {
     return await oAuthClient.getLoginUrl()
   }
@@ -95,7 +79,6 @@ export const useAuthStore = defineStore('auth', () => {
     isLoggedIn,
     authUser,
     getAuthUser,
-    getIdentityProviderLoginUrl,
     getLoginUrl,
     getLogoutUrl,
     loginWithCode,

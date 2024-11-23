@@ -3,6 +3,7 @@ import nl from 'dayjs/locale/nl.js'
 import customParseFormat from 'dayjs/plugin/customParseFormat.js'
 import duration from 'dayjs/plugin/duration.js'
 import isBetween from 'dayjs/plugin/isBetween.js'
+import isoWeek from 'dayjs/plugin/isoWeek'
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js'
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js'
 import isToday from 'dayjs/plugin/isToday.js'
@@ -26,5 +27,6 @@ dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
 dayjs.extend(utc)
 dayjs.locale(nl)
+dayjs.extend(isoWeek)
 
 export default dayjs

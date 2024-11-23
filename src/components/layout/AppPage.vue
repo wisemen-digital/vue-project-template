@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
 import { VcBreadcrumbs } from '@wisemen/vue-core'
+import { useRouter } from 'vue-router'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
@@ -8,42 +9,108 @@ import { TEST_ID } from '@/constants/testId.constant.ts'
 const props = withDefaults(
   defineProps<{
     title: string
-    breadcrumbs?: BreadcrumbItem[] | null
+    breadcrumbs?: BreadcrumbItem[]
   }>(),
   {
-    breadcrumbs: null,
+    breadcrumbs: () => [],
   },
 )
+
+const router = useRouter()
+
+router.beforeResolve(() => {
+  let changeRoute: () => void
+  const ready = new Promise<void>((resolve) => (changeRoute = resolve))
+
+  document.startViewTransition(() => {
+    changeRoute()
+  })
+
+  return ready
+})
 </script>
 
 <template>
   <div class="flex w-full flex-1 flex-col">
-    <AppContainer class="pt-12">
+    <AppContainer>
       <VcBreadcrumbs
-        v-if="props.breadcrumbs !== null"
+        v-if="props.breadcrumbs.length > 0"
+        :style="{
+          viewTransitionName: 'page-breadcrumbs',
+        }"
         :items="props.breadcrumbs"
-        class="mb-xl"
+        class="-ml-xxs"
       />
 
-      <div class="flex h-10 items-center  justify-between border-b border-solid border-secondary pb-10">
-        <div
-          :data-test-id="TEST_ID.APP_PAGE.TITLE"
-          class="text-2xl font-semibold text-primary"
-        >
-          {{ props.title }}
-        </div>
+      <div class="border-b border-solid border-secondary pb-2xl">
+        <div class="flex min-h-10 items-center justify-between">
+          <div
+            :data-test-id="TEST_ID.APP_PAGE.TITLE"
+            :style="{
+              viewTransitionName: 'page-title',
+            }"
+            class="text-display-xs font-semibold text-primary"
+          >
+            {{ props.title }}
+          </div>
 
-        <div
-          id="header-actions"
-          class="flex items-center justify-end gap-4"
-        >
-          <slot name="header-actions" />
+          <div
+            id="header-actions"
+            class="flex items-center justify-end gap-xl"
+          >
+            <slot name="header-actions" />
+          </div>
         </div>
       </div>
     </AppContainer>
 
-    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-xl pt-4xl">
+    <AppContainer
+      :style="{
+        viewTransitionName: 'page-content',
+      }"
+      class="flex flex-1 flex-col overflow-hidden pb-xl pt-4xl"
+    >
       <slot />
     </AppContainer>
   </div>
 </template>
+
+<style>
+::view-transition-group(page-title) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-old(page-title) {
+  animation-duration: 0.2s;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+::view-transition-new(page-title) {
+  animation-duration: 0.2s;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+::view-transition-group(header-action) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-new(header-action) {
+  animation-duration: 0.2s;
+  mix-blend-mode: normal;
+  height: 100%;
+  width: 100%;
+  transform-origin: center;
+}
+
+::view-transition-old(header-action) {
+  animation-duration: 0.2s;
+  mix-blend-mode: normal;
+  height: 100%;
+  width: 100%;
+  transform-origin: center;
+}
+</style>

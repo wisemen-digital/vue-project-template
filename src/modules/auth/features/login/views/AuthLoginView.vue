@@ -9,8 +9,6 @@ import { useAuthStore } from '@/stores/auth.store'
 const authStore = useAuthStore()
 
 const isSigningInWithZitadel = ref<boolean>(false)
-const isSigningInWithApple = ref<boolean>(false)
-const isSigningInWithGoogle = ref<boolean>(false)
 
 const { t } = useI18n()
 const toast = useToast()
@@ -31,44 +29,11 @@ async function onSignInWithZitadel(): Promise<void> {
     })
   }
 }
-
-async function onSignInWithProvider(provider: 'apple' | 'google'): Promise<void> {
-  try {
-    window.location.href = await authStore.getIdentityProviderLoginUrl(provider)
-  }
-  catch (error) {
-    toast.error({
-      message: error?.toString() ?? t('module.auth.login.error'),
-    })
-  }
-}
-
-async function onSignInWithApple(): Promise<void> {
-  isSigningInWithApple.value = true
-
-  try {
-    await onSignInWithProvider('apple')
-  }
-  catch {
-    isSigningInWithApple.value = false
-  }
-}
-
-async function onSignInWithGoogle(): Promise<void> {
-  isSigningInWithGoogle.value = true
-
-  try {
-    await onSignInWithProvider('google')
-  }
-  catch {
-    isSigningInWithGoogle.value = false
-  }
-}
 </script>
 
 <template>
   <div class="grid h-dvh grid-cols-1 bg-primary md:grid-cols-2">
-    <div class="relative flex flex-col justify-center px-6 py-20">
+    <div class="relative flex flex-col justify-center px-3xl py-8xl">
       <div class="z-10 mx-auto w-full max-w-80">
         <div>
           <AuthLoginElementTransition delay-class="delay-0">
@@ -80,12 +45,12 @@ async function onSignInWithGoogle(): Promise<void> {
 
           <AuthLoginElementTransition delay-class="delay-150">
             <!-- Not sure why, but wihtout duration-100 the transition is bugged -->
-            <p class="relative mt-2 text-center text-secondary duration-100">
+            <p class="relative mt-md text-center text-secondary duration-100">
               {{ t('module.auth.login.description') }}
             </p>
           </AuthLoginElementTransition>
 
-          <div class="mt-8 flex flex-col gap-y-2">
+          <div class="mt-4xl flex flex-col gap-y-md">
             <AuthLoginElementTransition delay-class="delay-300">
               <VcButton
                 :is-loading="isSigningInWithZitadel"
@@ -94,28 +59,6 @@ async function onSignInWithGoogle(): Promise<void> {
                 @click="onSignInWithZitadel"
               >
                 {{ t('module.auth.login.sign_in_with_zitadel') }}
-              </VcButton>
-            </AuthLoginElementTransition>
-
-            <AuthLoginElementTransition delay-class="delay-[450ms]">
-              <VcButton
-                :is-loading="isSigningInWithGoogle"
-                icon-left="googleLogo"
-                variant="secondary"
-                @click="onSignInWithGoogle"
-              >
-                {{ t('module.auth.login.sign_in_with_google') }}
-              </VcButton>
-            </AuthLoginElementTransition>
-
-            <AuthLoginElementTransition delay-class="delay-[600ms]">
-              <VcButton
-                :is-loading="isSigningInWithApple"
-                icon-left="appleLogo"
-                variant="secondary"
-                @click="onSignInWithApple"
-              >
-                {{ t('module.auth.login.sign_in_with_apple') }}
               </VcButton>
             </AuthLoginElementTransition>
           </div>

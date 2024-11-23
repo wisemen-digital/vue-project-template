@@ -7,6 +7,7 @@ import {
   VcThemeProvider,
   VcToastContainer,
 } from '@wisemen/vue-core'
+import { useI18n } from 'vue-i18n'
 import { RouterView, useRouter } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
@@ -15,6 +16,7 @@ import { logBuildInformation } from '@/constants/environment.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const { setTemplate } = useDocumentTitle()
+const { locale } = useI18n()
 const router = useRouter()
 const darkMode = useDarkMode()
 const authStore = useAuthStore()
@@ -32,7 +34,7 @@ authStore.onLogout(() => {
 </script>
 
 <template>
-  <VcConfigProvider locale="en">
+  <VcConfigProvider :locale="locale">
     <VcThemeProvider
       :is-dark-mode-enabled="darkMode.isEnabled.value"
       theme="default"

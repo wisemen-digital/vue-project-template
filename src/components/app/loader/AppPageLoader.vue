@@ -15,7 +15,7 @@ router.beforeEach(() => {
 
   startLoadingTimeout = setTimeout(() => {
     setIsLoading(true)
-  }, 100)
+  }, 500)
 })
 
 router.afterEach(() => {

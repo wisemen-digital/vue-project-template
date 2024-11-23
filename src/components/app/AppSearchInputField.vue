@@ -69,7 +69,7 @@ function onClearInput(): void {
             v-if="(search === null || search === '') && !props.disableKeyboardCommand"
             :keyboard-keys="KEYBOARD_SHORTCUT.SEARCH.keys"
             keyboard-classes="border-primary text-tertiary"
-            class="mr-2"
+            class="mr-md"
           />
 
           <VcIconButton
