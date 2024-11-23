@@ -15,24 +15,24 @@ const pathsToIgnore = [
   'dist',
 ]
 
+// Function to determine if a path should be ignored
+function shouldIgnore(filePath: string): boolean {
+  // Normalize paths to ensure consistent comparison across OS
+  const normalizedPath = path.resolve(filePath)
+
+  return pathsToIgnore.some((ignorePath) => {
+    const normalizedIgnorePath = path.resolve(ignorePath)
+
+    return normalizedPath.startsWith(normalizedIgnorePath)
+  })
+}
+
 /**
  * Recursively scan the project and replace all occurrences of `$projectName` with the new project name.
  * @param projectName - The new project name to replace `$projectName`.
  */
 function changeProjectName(projectName: string): void {
   const rootDir = process.cwd() // Use the current working directory as the root.
-
-  // Function to determine if a path should be ignored
-  function shouldIgnore(filePath: string): boolean {
-    // Normalize paths to ensure consistent comparison across OS
-    const normalizedPath = path.resolve(filePath)
-
-    return pathsToIgnore.some((ignorePath) => {
-      const normalizedIgnorePath = path.resolve(ignorePath)
-
-      return normalizedPath.startsWith(normalizedIgnorePath)
-    })
-  }
 
   // Function to process files and directories recursively
   function processDirectory(dir: string): void {

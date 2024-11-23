@@ -83,7 +83,7 @@ const authUserInitials = computed<string>(() => (
             {{ `${t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
           </span>
 
-          <span class="mt-1 block text-sm text-tertiary">
+          <span class="mt-sm block text-sm text-tertiary">
             {{ `${t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
           </span>
         </div>
@@ -124,11 +124,11 @@ const authUserInitials = computed<string>(() => (
               v-if="!props.isCollapsed"
               class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
             >
-              <span class="w-full truncate text-left text-sm font-semibold leading-5 text-primary">
+              <span class="w-full truncate text-left text-sm font-semibold text-primary">
                 {{ props.authUser.fullName }}
               </span>
 
-              <span class="w-full truncate text-sm leading-5 text-secondary">
+              <span class="w-full truncate text-sm text-secondary">
                 {{ props.authUser.email }}
               </span>
             </div>

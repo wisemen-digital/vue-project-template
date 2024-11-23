@@ -1,9 +1,5 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
-import {
-  VcButton,
-  VcKeyboardShortcut,
-  VcKeyboardShortcutProvider,
-} from '@wisemen/vue-core'
+import { VcButton } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import {
   computed,
@@ -12,7 +8,6 @@ import {
 } from 'vue'
 import type { z } from 'zod'
 
-import AppGroup from '@/components/app/AppGroup.vue'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 
 const props = withDefaults(defineProps<{
@@ -43,10 +38,6 @@ const isButtonDisabled = computed<boolean>(() => {
   return false
 })
 
-const isFocusedElementAButton = computed<boolean>(() => {
-  return focusedElement.value instanceof HTMLButtonElement
-})
-
 onMounted(() => {
   focusedElement.value = document.activeElement as HTMLElement
 
@@ -59,35 +50,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <VcKeyboardShortcutProvider
-    v-slot="{ keys }"
-    :config="{
-      isDisabled: computed<boolean>(() => isFocusedElementAButton),
-      keys: KEYBOARD_SHORTCUT.SAVE.keys,
+  <VcButton
+    ref="buttonRef"
+    :form="props.formId"
+    :is-disabled="isButtonDisabled"
+    :is-loading="props.form.isSubmitting"
+    :keyboard-shortcut="KEYBOARD_SHORTCUT.SAVE"
+    :style="{
+      viewTransitionName: 'header-action',
     }"
+    type="submit"
     class="w-full"
+    size="sm"
   >
-    <VcButton
-      ref="buttonRef"
-      :form="props.formId"
-      :is-disabled="isButtonDisabled"
-      :is-loading="props.form.isSubmitting"
-      :keyboard-shortcut="KEYBOARD_SHORTCUT.SAVE"
-      :style="{
-        viewTransitionName: 'header-action',
-      }"
-      type="submit"
-      class="w-full"
-      size="sm"
-    >
-      <AppGroup>
-        {{ props.label }}qsdkjqdkqsj
-
-        <VcKeyboardShortcut
-          :keyboard-keys="keys"
-          keyboard-classes="border-white/10 bg-white/10"
-        />
-      </AppGroup>
-    </VcButton>
-  </VcKeyboardShortcutProvider>
+    {{ props.label }}
+  </VcButton>
 </template>

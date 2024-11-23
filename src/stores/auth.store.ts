@@ -11,6 +11,22 @@ import type { AuthUser } from '@/models/auth-user/authUser.model'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import { UuidUtil } from '@/utils/uuid.util.ts'
 
+async function getLoginUrl(): Promise<string> {
+  return await oAuthClient.getLoginUrl()
+}
+
+function getLogoutUrl(): string {
+  return oAuthClient.getLogoutUrl()
+}
+
+async function loginWithCode(code: string): Promise<void> {
+  await oAuthClient.loginWithCode(code)
+}
+
+async function isLoggedIn(): Promise<boolean> {
+  return await oAuthClient.isLoggedIn()
+}
+
 export const useAuthStore = defineStore('auth', () => {
   const authUser = ref<AuthUser | null>(null)
 
@@ -48,18 +64,6 @@ export const useAuthStore = defineStore('auth', () => {
     authUser.value = user
   }
 
-  async function getLoginUrl(): Promise<string> {
-    return await oAuthClient.getLoginUrl()
-  }
-
-  function getLogoutUrl(): string {
-    return oAuthClient.getLogoutUrl()
-  }
-
-  async function loginWithCode(code: string): Promise<void> {
-    await oAuthClient.loginWithCode(code)
-  }
-
   function logout(): void {
     oAuthClient.logout()
     setAuthUser(null)
@@ -68,10 +72,6 @@ export const useAuthStore = defineStore('auth', () => {
 
   function onLogout(callback: () => void): void {
     logoutCallback.value = callback
-  }
-
-  async function isLoggedIn(): Promise<boolean> {
-    return await oAuthClient.isLoggedIn()
   }
 
   return {

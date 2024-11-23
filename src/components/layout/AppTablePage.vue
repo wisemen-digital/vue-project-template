@@ -34,7 +34,7 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
 
     <div
       v-if="hasTabsSlot"
-      class="mb-6"
+      class="mb-3xl"
     >
       <slot name="tabs" />
     </div>
