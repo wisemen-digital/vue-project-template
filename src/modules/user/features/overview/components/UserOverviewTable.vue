@@ -22,7 +22,7 @@ import { DateUtil } from '@/utils/date.util.ts'
 const props = defineProps<{
   isLoading: boolean
   data: PaginatedData<UserIndex> | null
-  error: null | unknown
+  error: unknown | null
   pagination: Pagination<UserIndexFilters>
 }>()
 

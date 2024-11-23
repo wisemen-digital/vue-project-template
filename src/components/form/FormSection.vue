@@ -2,7 +2,7 @@
 const props = withDefaults(
   defineProps<{
     title: string
-    description?: null | string
+    description?: string | null
   }>(),
   {
     description: null,

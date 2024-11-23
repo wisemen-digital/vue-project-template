@@ -44,10 +44,6 @@ export const useAuthStore = defineStore('auth', () => {
     return authUser.value
   }
 
-  function isLoggedIn(): boolean {
-    return oAuthClient.isLoggedIn()
-  }
-
   function setAuthUser(user: AuthUser | null): void {
     authUser.value = user
   }
@@ -72,6 +68,10 @@ export const useAuthStore = defineStore('auth', () => {
 
   function onLogout(callback: () => void): void {
     logoutCallback.value = callback
+  }
+
+  async function isLoggedIn(): Promise<boolean> {
+    return await oAuthClient.isLoggedIn()
   }
 
   return {

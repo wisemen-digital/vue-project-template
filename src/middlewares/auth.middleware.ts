@@ -12,7 +12,9 @@ export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
 
   const authStore = useAuthStore()
 
-  if (!authStore.isLoggedIn()) {
+  const isLoggedIn = await authStore.isLoggedIn()
+
+  if (!isLoggedIn) {
     return {
       name: 'auth-login',
     }
