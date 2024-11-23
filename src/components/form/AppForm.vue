@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
 import type { Form } from 'formango'
-import { useId } from 'radix-vue'
 import {
   computed,
   onUnmounted,
+  useId,
   watch,
 } from 'vue'
 import type { z } from 'zod'

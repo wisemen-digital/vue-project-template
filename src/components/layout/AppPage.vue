@@ -33,18 +33,18 @@ router.beforeResolve(() => {
 <template>
   <div class="flex w-full flex-1 flex-col">
     <AppContainer>
-      <VcBreadcrumbs
-        v-if="props.breadcrumbs.length > 0"
-        :style="{
-          viewTransitionName: 'page-breadcrumbs',
-        }"
-        :items="props.breadcrumbs"
-        class="-ml-xxs"
-      />
+      <header class="border-b border-solid border-secondary pb-2xl">
+        <VcBreadcrumbs
+          v-if="props.breadcrumbs.length > 0"
+          :style="{
+            viewTransitionName: 'page-breadcrumbs',
+          }"
+          :items="props.breadcrumbs"
+          class="-ml-xxs"
+        />
 
-      <div class="border-b border-solid border-secondary pb-2xl">
         <div class="flex min-h-10 items-center justify-between">
-          <div
+          <h1
             :data-test-id="TEST_ID.APP_PAGE.TITLE"
             :style="{
               viewTransitionName: 'page-title',
@@ -52,7 +52,7 @@ router.beforeResolve(() => {
             class="text-display-xs font-semibold text-primary"
           >
             {{ props.title }}
-          </div>
+          </h1>
 
           <div
             id="header-actions"
@@ -61,7 +61,7 @@ router.beforeResolve(() => {
             <slot name="header-actions" />
           </div>
         </div>
-      </div>
+      </header>
     </AppContainer>
 
     <AppContainer

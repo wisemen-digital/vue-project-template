@@ -1,5 +1,5 @@
 import '@wisemen/vue-core/style.css'
-import '@/assets/styles/index.scss'
+import '@/assets/styles/index.css'
 import '@fontsource-variable/inter'
 import '@/component-styles'
 

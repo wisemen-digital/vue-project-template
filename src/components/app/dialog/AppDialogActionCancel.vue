@@ -5,7 +5,7 @@ import {
   VcKeyboardKey,
 } from '@wisemen/vue-core'
 
-import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
+import AppGroup from '@/components/app/AppGroup.vue'
 
 const props = withDefaults(defineProps<{
   isDisabled?: boolean
@@ -22,14 +22,14 @@ const props = withDefaults(defineProps<{
       variant="tertiary"
       class="w-full"
     >
-      <AppButtonGroup>
+      <AppGroup>
         {{ props.label }}
 
         <VcKeyboardKey
           keyboard-key="escape"
           class="border-tertiary bg-secondary text-tertiary"
         />
-      </AppButtonGroup>
+      </AppGroup>
     </VcButton>
   </VcDialogCloseButton>
 </template>

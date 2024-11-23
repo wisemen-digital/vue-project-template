@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
+import AppGroup from '@/components/app/AppGroup.vue'
 </script>
 
 <template>
-  <AppButtonGroup
+  <AppGroup
     justify="center"
-    class="mt-8"
+    class="mt-4xl"
   >
     <slot />
-  </AppButtonGroup>
+  </AppGroup>
 </template>

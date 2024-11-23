@@ -10,7 +10,7 @@ import {
   ref,
 } from 'vue'
 
-import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
+import AppGroup from '@/components/app/AppGroup.vue'
 
 const props = withDefaults(defineProps<{
   isDestructive?: boolean
@@ -60,14 +60,14 @@ onMounted(() => {
       class="group w-full"
       @click="onConfirm"
     >
-      <AppButtonGroup>
+      <AppGroup>
         {{ props.label }}
 
         <VcKeyboardKey
           keyboard-key="enter"
           class="border-white/10 bg-white/10 duration-200"
         />
-      </AppButtonGroup>
+      </AppGroup>
     </VcButton>
   </VcKeyboardShortcutProvider>
 </template>

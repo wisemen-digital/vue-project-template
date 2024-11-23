@@ -13,13 +13,7 @@ export default {
   ],
   theme: {
     extend: {
-      animation: {
-        'indeterminate-loader': 'indeterminate-loader 2s infinite',
-      },
       backgroundColor: {
-        'active': 'var(--bg-active)',
-        'auth': 'rgb(11, 32, 63)',
-        'auth-blur': 'rgba(106,170,225,1)',
         'brand-primary': 'var(--bg-brand-primary)',
         'brand-primary-alt': 'var(--bg-brand-primary-alt)',
         'brand-secondary': 'var(--bg-brand-secondary)',
@@ -63,10 +57,8 @@ export default {
         'tertiary': 'var(--border-tertiary)',
       },
       boxShadow: {
-        'button-primary': '0px 4px 16px 0px rgba(0, 96, 169, 0.30)',
-        'lg': 'var(--shadow-lg)',
-        'sidebar-item-active': '0px 4px 16px 0px #0060A94D',
-        'sm': 'var(--shadow-sm)',
+        lg: 'var(--shadow-lg)',
+        sm: 'var(--shadow-sm)',
       },
       colors: {
         'brand-primary-25': 'var(--brand-primary-25)',
@@ -81,8 +73,6 @@ export default {
         'brand-primary-800': 'var(--brand-primary-800)',
         'brand-primary-900': 'var(--brand-primary-900)',
         'brand-primary-950': 'var(--brand-primary-950)',
-        'brand-primary-gradient-from': '#103266',
-        'brand-primary-gradient-to': '#0A1F3E',
         'error-25': 'var(--error-25)',
         'error-50': 'var(--error-50)',
         'error-100': 'var(--error-100)',
@@ -133,21 +123,6 @@ export default {
         'gray-800': 'var(--gray-800)',
         'gray-900': 'var(--gray-900)',
         'gray-950': 'var(--gray-950)',
-        'icon-fg-brand-on-brand': 'var(--icon-fg-brand-on-brand)',
-        'icon-fg-on-brand': 'var(--icon-fg-on-brand)',
-
-        'purple-25': 'var(--purple-25)',
-        'purple-50': 'var(--purple-50)',
-        'purple-100': 'var(--purple-100)',
-        'purple-200': 'var(--purple-200)',
-        'purple-300': 'var(--purple-300)',
-        'purple-400': 'var(--purple-400)',
-        'purple-500': 'var(--purple-500)',
-        'purple-600': 'var(--purple-600)',
-        'purple-700': 'var(--purple-700)',
-        'purple-800': 'var(--purple-800)',
-        'purple-900': 'var(--purple-900)',
-        'purple-950': 'var(--purple-950)',
 
         'success-25': 'var(--success-25)',
         'success-50': 'var(--success-50)',
@@ -162,19 +137,6 @@ export default {
         'success-900': 'var(--success-900)',
         'success-950': 'var(--success-950)',
 
-        'utility-blue-dark-25': 'var(--utility-blue-dark-25)',
-        'utility-blue-dark-50': 'var(--utility-blue-dark-50)',
-        'utility-blue-dark-100': 'var(--utility-blue-dark-100)',
-        'utility-blue-dark-200': 'var(--utility-blue-dark-200)',
-        'utility-blue-dark-300': 'var(--utility-blue-dark-300)',
-        'utility-blue-dark-400': 'var(--utility-blue-dark-400)',
-        'utility-blue-dark-500': 'var(--utility-blue-dark-500)',
-        'utility-blue-dark-600': 'var(--utility-blue-dark-600)',
-        'utility-blue-dark-700': 'var(--utility-blue-dark-700)',
-        'utility-blue-dark-800': 'var(--utility-blue-dark-800)',
-        'utility-blue-dark-900': 'var(--utility-blue-dark-900)',
-        'utility-blue-dark-950': 'var(--utility-blue-dark-950)',
-
         'warning-25': 'var(--warning-25)',
         'warning-50': 'var(--warning-50)',
         'warning-100': 'var(--warning-100)',
@@ -187,22 +149,6 @@ export default {
         'warning-800': 'var(--warning-800)',
         'warning-900': 'var(--warning-900)',
         'warning-950': 'var(--warning-950)',
-      },
-      gradientColorStops: {
-        'auth-bg': 'rgb(11, 32, 63)',
-        'auth-bg-from': 'rgb(11, 32, 63, 0.4)',
-        'auth-bg-via': 'rgb(11, 32, 63, 0.9)',
-        'bg-primary': 'var(--bg-primary)',
-      },
-      keyframes: {
-        'indeterminate-loader': {
-          '0%': {
-            left: '-100%',
-          },
-          '100%': {
-            left: '100%',
-          },
-        },
       },
       ringOffsetColor: {
         DEFAULT: 'var(--bg-primary)',
