@@ -15,8 +15,8 @@ const props = defineProps<{
   <div class="py-md">
     <div class="relative h-4">
       <Transition
-        enter-active-class="duration-500 ease-sidebar-collapse"
-        leave-active-class="duration-500 ease-sidebar-collapse"
+        enter-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
+        leave-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
         enter-from-class="opacity-0 -translate-x-2  scale-[0.8]"
         leave-to-class="opacity-0 -translate-x-2 scale-[0.8]"
       >

@@ -58,8 +58,8 @@ const props = defineProps<{
 
           <div class="relative size-full overflow-hidden">
             <Transition
-              enter-active-class="duration-500 ease-sidebar-collapse"
-              leave-active-class="duration-500 ease-sidebar-collapse"
+              enter-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
+              leave-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
               enter-from-class="opacity-0 scale-[0.8] -translate-x-4"
               leave-to-class="opacity-0 scale-[0.8] -translate-x-4"
             >

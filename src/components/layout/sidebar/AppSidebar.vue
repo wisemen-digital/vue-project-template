@@ -82,7 +82,7 @@ onCreated(() => {
           paddingLeft: `${sidebarPaddingXInRem}rem`,
           paddingRight: `${sidebarPaddingXInRem}rem`,
         }"
-        class="group/sidebar relative flex h-full flex-col justify-between duration-500 ease-sidebar-collapse"
+        class="group/sidebar relative flex h-full flex-col justify-between not-motion-reduce:duration-500 ease-sidebar-collapse"
       >
         <AppSidebarCollapseToggle v-model="isSidebarCollapsed" />
 

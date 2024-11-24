@@ -115,8 +115,8 @@ const authUserInitials = computed<string>(() => (
           class="relative size-full"
         >
           <Transition
-            enter-active-class="duration-500 ease-sidebar-collapse"
-            leave-active-class="duration-500 ease-sidebar-collapse"
+            enter-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
+            leave-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
             leave-to-class="opacity-0 -translate-x-4 scale-90"
             enter-from-class="opacity-0 -translate-x-4 scale-90"
           >
