@@ -17,7 +17,7 @@ import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'
 import UserOverviewTableNameCell from '@/modules/user/features/overview/components/UserOverviewTableNameCell.vue'
-import { DateUtil } from '@/utils/date.util.ts'
+import { DateFormatUtil } from '@/utils/date.util.ts'
 
 const props = defineProps<{
   isLoading: boolean
@@ -39,7 +39,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
   {
     testId: TEST_ID.USERS.OVERVIEW.TABLE.BIRTH_DATE,
     isSortable: true,
-    cell: (): VNode => h(VcTableCell, () => DateUtil.toLocaleDate(new Date())),
+    cell: (): VNode => h(VcTableCell, () => DateFormatUtil.toNumericDate(new Date())),
     headerLabel: t('user.birth_date'),
     key: 'birthDate',
   },

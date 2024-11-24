@@ -87,7 +87,7 @@ export class DateUtil {
   }
 }
 
-export class DateFormatter {
+export class DateFormatUtil {
   // E.g. 01 January 2024
   static toLongDate(date: Date): string {
     return dayjs(date).format('D MMMM YYYY')

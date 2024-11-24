@@ -14,6 +14,7 @@ import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.mode
 import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import {
   UserCreateTransformer,
+  UserIndexFiltersTransformer,
   UserIndexTransformer,
   UserTransformer,
   UserUpdateTransformer,
@@ -35,7 +36,9 @@ export class UserService {
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
     const data = await httpClient.get({
       config: {
-        params: new PaginationDtoBuilder<UserIndexFilters>(paginationOptions).build(),
+        params: new PaginationDtoBuilder<UserIndexFilters>(
+          paginationOptions).build(UserIndexFiltersTransformer.fromDto
+        ),
       },
       responseSchema: paginatedDataSchema(userIndexDtoSchema),
       url: '/users',

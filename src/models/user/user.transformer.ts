@@ -1,3 +1,5 @@
+import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import type { UserIndexFiltersDto } from '@/models/user/index/userIndexFiltersDto.model'
 import type { UserCreateDto } from './create/userCreateDto.model'
 import type { UserCreateForm } from './create/userCreateForm.model'
 import type { User } from './detail/user.model'
@@ -14,6 +16,14 @@ export class UserIndexTransformer {
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,
+    }
+  }
+}
+
+export class UserIndexFiltersTransformer {
+  static fromDto(dto: UserIndexFiltersDto): UserIndexFilters {
+    return {
+      name: dto.name,
     }
   }
 }

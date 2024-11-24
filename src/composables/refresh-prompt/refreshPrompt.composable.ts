@@ -7,8 +7,8 @@ import {
 } from 'vue'
 
 import { useI18n } from '@/composables/i18n/i18n.composable'
-import { TIME } from '@/constants/time.constant'
 import { LoggerUtil } from '@/utils/logger.util'
+import { TimeUtil } from '@/utils/time.util'
 
 export function useRefreshPrompt(): void {
   const { t } = useI18n()
@@ -35,7 +35,7 @@ export function useRefreshPrompt(): void {
 
       setInterval(async () => {
         await serviceWorkerRegistration.update()
-      }, TIME.ONE_MINUTE)
+      }, TimeUtil.minutes(1))
 
       LoggerUtil.logInfo('SW Registered', serviceWorkerRegistration)
     },
@@ -55,7 +55,7 @@ export function useRefreshPrompt(): void {
             label: t('component.refresh_prompt.new_version.action'),
             onClick: onRefreshButtonClick,
           },
-          durationInMs: TIME.ONE_HOUR,
+          durationInMs: TimeUtil.hours(1),
           icon: 'stars',
           message: t('component.refresh_prompt.new_version.description'),
         })
