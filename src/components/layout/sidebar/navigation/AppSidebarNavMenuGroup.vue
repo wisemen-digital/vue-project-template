@@ -29,7 +29,7 @@ const props = defineProps<{
       </Transition>
     </div>
 
-    <ul class="my-md flex flex-col gap-y-md">
+    <ul class="py-md flex flex-col gap-y-md">
       <li
         v-for="item of props.group.items"
         :key="item.label"

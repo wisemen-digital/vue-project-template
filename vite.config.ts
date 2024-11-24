@@ -1,5 +1,6 @@
 /* eslint-disable node/prefer-global/process */
 import ImportMetaEnvPlugin from '@import-meta-env/unplugin'
+import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
@@ -27,6 +28,7 @@ export default defineConfig({
       env: '.env',
       example: '.env.example',
     }),
+    tailwindcss(),
     viteCompression(),
     VitePWA({
       devOptions: {

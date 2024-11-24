@@ -1,9 +1,7 @@
-@import './colors.css';
-@import './variables.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import '@wisemen/vue-core/style.css' layer(base);
+@import './colors.css'; 
+@import './themes/default.css';
+@import './tailwind.css';
 
 @layer base {
   body {

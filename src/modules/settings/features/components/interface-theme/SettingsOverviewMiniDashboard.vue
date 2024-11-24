@@ -7,7 +7,7 @@
       <div class="size-2.5 rounded-full bg-success-400" />
     </div>
 
-    <div class="grid grid-cols-[5rem,auto] p-md">
+    <div class="grid grid-cols-[5rem_auto] p-md">
       <div class="py-xs">
         <!-- Profile -->
         <div class="flex items-center gap-x-md">

@@ -13,12 +13,12 @@ const props = withDefaults(defineProps<{
     :class="
       StyleUtil.cn(
         {
-          'h-full w-[1px]': props.direction === 'vertical',
+          'h-full w-px': props.direction === 'vertical',
         },
-        { 'h-[1px] w-full': props.direction === 'horizontal' },
+        { 'h-px w-full': props.direction === 'horizontal' },
       )
     "
     role="presentation"
-    class="bg-quaternary"
+    class="bg-tertiary"
   />
 </template>
