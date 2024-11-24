@@ -9,6 +9,7 @@ import {
 import { useI18n } from 'vue-i18n'
 
 import { Locale } from '@/plugins/i18n/i18n.plugin'
+import { BrowserUtil } from '@/utils/browser.util'
 
 interface UseLanguageSelectReturnType {
   displayFn: (value: Locale) => string
@@ -56,7 +57,14 @@ export function useLanguage(): void {
   const locale = useLocalStorage<Locale>(LOCAL_STORAGE_KEY, i18n.locale.value as Locale)
 
   watch(locale, () => {
-    i18n.locale.value = locale.value
+    document.startViewTransition(() => {
+      if (!BrowserUtil.hasSupportForViewTransition()) {
+        i18n.locale.value = locale.value
+        return
+      }
+
+      i18n.locale.value = locale.value
+    })
   }, {
     immediate: true,
   })
