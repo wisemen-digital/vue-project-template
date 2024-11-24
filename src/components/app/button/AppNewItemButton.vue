@@ -33,7 +33,7 @@ const props = defineProps<{
 
         <VcKeyboardShortcut
           :keyboard-keys="keys"
-          keyboard-classes="border-none bg-white/10"
+          keyboard-classes="border-0 bg-white/10"
         />
       </AppGroup>
     </VcRouterLinkButton>

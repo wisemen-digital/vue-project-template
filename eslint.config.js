@@ -13,5 +13,8 @@ export default [
         tsconfigRootDir: 'tests',
       },
     },
+    rules: {
+      // Add or override rules here
+    }
   },
 ]
