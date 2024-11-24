@@ -3,7 +3,10 @@ import '@/assets/styles/index.css'
 import '@fontsource-variable/inter'
 import '@/component-styles'
 
-import { extendIcons } from '@wisemen/vue-core'
+import {
+  extendIcons,
+  setupDefaultStyles,
+} from '@wisemen/vue-core'
 import { createApp as createVueApp } from 'vue'
 
 import App from '@/App.vue'
@@ -16,6 +19,7 @@ import { vueQueryPlugin } from '@/plugins/vue-query/vueQuery.plugin.ts'
 
 extendIcons(icons)
 configureZod()
+setupDefaultStyles()
 
 const app = createVueApp(App)
 
