@@ -37,20 +37,14 @@ watch(() => props.data, (newdata) => {
   </div>
 </template>
 
-<style lang="scss">
+<style>
 ::view-transition-group(*) {
   animation-duration: 0.5s;
 }
 
-// ::view-transition-group(*) {
-//   animation-duration: 1s;
-// }
-
-// ::view-transition-old(*) {
-//   animation-duration: 1s;
-// }
-
-// ::view-transition-new(*) {
-//   animation-duration: 1s;
-// }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*) {
+    animation-duration: 0s;
+  }
+}
 </style>

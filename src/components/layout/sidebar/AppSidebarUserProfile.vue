@@ -7,7 +7,7 @@ import {
 import { computed } from 'vue'
 
 import AppSeparator from '@/components/app/AppSeparator.vue'
-import { useI18n } from '@/composables/i18n/i18n.composable'
+import { useI18n } from 'vue-i18n'
 import {
   CURRENT_BUILD_NUMBER,
   CURRENT_ENVIRONMENT,
@@ -33,7 +33,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
       'g',
       's',
     ],
-    label: t('module.settings.title'),
+    label: t('module.setting.title'),
     to: {
       name: 'settings-overview',
     },

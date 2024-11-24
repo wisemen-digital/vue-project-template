@@ -8,7 +8,7 @@ import {
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
-import { useI18n } from '@/composables/i18n/i18n.composable'
+import { useI18n } from 'vue-i18n'
 
 const isCollapsed = defineModel<boolean>({
   required: true,

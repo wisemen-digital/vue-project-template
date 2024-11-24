@@ -94,11 +94,20 @@
       "login": {
         "description": "Sign in to your account to continue",
         "error": "Something went wrong while logging in. Please try again.",
-        "sign_in_with_zitadel": "Sign in with Zitadel",
+        "sign_in": "Sign in",
         "title": "Sign in"
       }
     },
-    "settings": {
+    "setting": {
+      "font_size": {
+        "default": "Default",
+        "description": "Adjust your font size.",
+        "large": "Large",
+        "larger": "Larger",
+        "small": "Small",
+        "smaller": "Smaller",
+        "title": "Font size"
+      },
       "interface_theme": {
         "dark": "Dark",
         "description": "Select or customize your UI theme.",
@@ -106,6 +115,27 @@
         "system_preference": "System preference",
         "title": "Interface theme"
       },
+      "language": {
+        "description": "Change your language.",
+        "locales": {
+          "en_us": "English (United States)",
+          "nl_be": "Nederlands (België)"
+        },
+        "title": "Language"
+      },
+      "reduce_motion": {
+        "description": "Reduce the amount and intensity of animations, hover effects and other moving effects across the application.",
+        "title": "Reduce motion",
+        "enabled": {
+          "label": "Enabled",
+          "description": "You will see fewer animations and hover effects to reduce motion."
+        },
+        "disabled": {
+          "label": "Disabled",
+          "description": "All animations and hover effects are enabled for a full experience."
+        }
+      },
+      "subtitle": "Manage your app settings",
       "title": "Settings"
     },
     "user": {

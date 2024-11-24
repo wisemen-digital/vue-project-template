@@ -1,14 +1,14 @@
 import type { Component } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 
-export const settingsRoutes = [
+export const settingRoutes = [
   {
     path: '/settings',
     children: [
       {
         name: 'settings-overview',
         path: '',
-        component: (): Component => import('@/modules/settings/features/overview/SettingsOverviewView.vue'),
+        component: (): Component => import('@/modules/setting/features/overview/SettingOverviewView.vue'),
       },
     ],
   },

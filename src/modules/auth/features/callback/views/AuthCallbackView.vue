@@ -4,7 +4,7 @@ import { useToast } from '@wisemen/vue-core'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
-import { useI18n } from '@/composables/i18n/i18n.composable'
+import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const i18n = useI18n()

@@ -1,6 +1,6 @@
 import 'vue-router'
 
-import type { MiddlewareFn } from '@/types/router/routeMiddleware.type'
+import type { MiddlewareFn } from '@/types/routeMiddleware.type'
 
 declare type Split<Value extends string, Divider extends string> =
   Value extends `${infer Start}${Divider}${infer End}`

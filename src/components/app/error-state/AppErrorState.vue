@@ -1,9 +1,8 @@
 <script setup lang="ts">
+import GridDecorativeBackgroundPattern from '@/components/decorative/GridDecorativeBackgroundPattern.vue';
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-
-import GridBackgroundPattern from '@/assets/svgs/GridBackgroundPattern.vue'
 
 const props = defineProps<{
   error: unknown
@@ -52,7 +51,7 @@ const description = computed<string>(() => {
 
 <template>
   <div class="relative flex h-96 min-w-96 items-center justify-center overflow-hidden">
-    <GridBackgroundPattern class="absolute size-full scale-125 text-gray-200 dark:text-gray-900" />
+    <GridDecorativeBackgroundPattern class="absolute size-full scale-125 text-gray-200 dark:text-gray-900" />
 
     <div class="relative z-10">
       <span

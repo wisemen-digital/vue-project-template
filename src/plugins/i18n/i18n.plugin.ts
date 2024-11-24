@@ -1,6 +1,7 @@
 import { createI18n } from 'vue-i18n'
 
-import en from './locales/en.json'
+import enUs from '@/locales/en-US.json'
+import nlBe from '@/locales/nl-BE.json'
 
 type Flatten<T, P extends string = ''> = {
   [K in keyof T]: T[K] extends object
@@ -8,7 +9,7 @@ type Flatten<T, P extends string = ''> = {
     : `${P}${K & string}`
 }[keyof T]
 
-export type I18nKey = Flatten<typeof en>
+export type I18nKey = Flatten<typeof enUs>
 
 export enum Locale {
   EN_US = 'en-US',
@@ -16,8 +17,8 @@ export enum Locale {
 }
 
 const messages = {
-  [Locale.EN_US]: en,
-  [Locale.NL_BE]: en,
+  [Locale.EN_US]: enUs,
+  [Locale.NL_BE]: nlBe,
 }
 
 const defaultLocale = Locale.NL_BE

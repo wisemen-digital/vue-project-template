@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
+import { BrowserUtil } from '@/utils/browser.util'
 
 const props = withDefaults(
   defineProps<{
@@ -19,6 +20,10 @@ const props = withDefaults(
 const router = useRouter()
 
 router.beforeResolve(() => {
+  if (!BrowserUtil.hasSupportForViewTransition()) {
+    return
+  }
+
   let changeRoute: () => void
   const ready = new Promise<void>((resolve) => (changeRoute = resolve))
 

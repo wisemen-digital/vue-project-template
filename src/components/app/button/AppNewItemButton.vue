@@ -7,7 +7,7 @@ import {
 
 import AppGroup from '@/components/app/AppGroup.vue'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
-import type { RouteLocationCurrent } from '@/types/vueRouter'
+import type { RouteLocationCurrent } from '@/types/global/vueRouter'
 
 const props = defineProps<{
   label: string

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 
-import type { RouteLocationCurrent } from '@/types/vueRouter'
+import type { RouteLocationCurrent } from '@/types/global/vueRouter'
 
 const props = defineProps<{
   to: RouteLocationCurrent

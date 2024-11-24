@@ -9,8 +9,9 @@ import {
 import { computed } from 'vue'
 
 import FormSection from '@/components/form/FormSection.vue'
-import { useI18n } from '@/composables/i18n/i18n.composable'
-import SettingsOverviewMiniDashboard from '@/modules/settings/features/components/interface-theme/SettingsOverviewMiniDashboard.vue'
+import { useI18n } from 'vue-i18n'
+import SettingOverviewMiniDashboard from '@/modules/setting/features/components/interface-theme/SettingOverviewMiniDashboard.vue';
+import { BrowserUtil } from '@/utils/browser.util';
 
 type ThemeValue = 'dark' | 'light' | 'system'
 
@@ -19,15 +20,15 @@ const darkMode = useDarkMode()
 
 const themes = computed<RadioGroupItem<ThemeValue>[]>(() => [
   {
-    label: t('module.settings.interface_theme.light'),
+    label: t('module.setting.interface_theme.light'),
     value: 'light',
   },
   {
-    label: t('module.settings.interface_theme.dark'),
+    label: t('module.setting.interface_theme.dark'),
     value: 'dark',
   },
   {
-    label: t('module.settings.interface_theme.system_preference'),
+    label: t('module.setting.interface_theme.system_preference'),
     value: 'system',
   },
 ])
@@ -43,15 +44,29 @@ function getTheme(value: ThemeValue): 'dark' | 'light' {
 
   return 'light'
 }
+
+const test = computed({
+  get: () => darkMode.value.value,
+  set: (value) => {
+    if (!BrowserUtil.hasSupportForViewTransition()) {
+      darkMode.value.value = value
+      return
+    }
+
+    document.startViewTransition(() => {
+      darkMode.value.value = value
+    })
+  },
+})
 </script>
 
 <template>
   <FormSection
-    :title="t('module.settings.interface_theme.title')"
-    :description="t('module.settings.interface_theme.description')"
+    :title="t('module.setting.interface_theme.title')"
+    :description="t('module.setting.interface_theme.description')"
   >
     <VcRadioGroup
-      v-model="darkMode.value.value"
+      v-model="test"
       :items="themes"
     >
       <template #items="{ items }">
@@ -64,7 +79,7 @@ function getTheme(value: ThemeValue): 'dark' | 'light' {
           >
             <VcThemeProvider :theme="getTheme(item.value)">
               <div class="relative h-40 overflow-hidden rounded-xl border-2 border-solid border-transparent bg-tertiary ring-brand-primary-500 ring-offset-1 duration-200 group-focus-visible:ring-2 group-data-[state=checked]:border-brand">
-                <SettingsOverviewMiniDashboard class="absolute left-4 top-4" />
+                <SettingOverviewMiniDashboard class="absolute left-4 top-4" />
               </div>
             </VcThemeProvider>
 

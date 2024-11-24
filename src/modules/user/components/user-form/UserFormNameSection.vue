@@ -4,7 +4,7 @@ import type { Field } from 'formango'
 
 import FormGrid from '@/components/app/grid/FormGrid.vue'
 import FormSection from '@/components/form/FormSection.vue'
-import { useI18n } from '@/composables/i18n/i18n.composable'
+import { useI18n } from 'vue-i18n'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 
 const props = defineProps<{

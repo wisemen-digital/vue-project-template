@@ -1,7 +1,7 @@
 import type {
   Middleware,
   MiddlewareFn,
-} from '@/types/router/routeMiddleware.type'
+} from '@/types/routeMiddleware.type'
 
 /**
  * A simple wrapper for middleware functions so that you don't have to worry about the types

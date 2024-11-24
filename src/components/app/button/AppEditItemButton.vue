@@ -2,7 +2,7 @@
 import { VcRouterLinkButton } from '@wisemen/vue-core'
 
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
-import type { RouteLocationCurrent } from '@/types/vueRouter'
+import type { RouteLocationCurrent } from '@/types/global/vueRouter'
 
 const props = defineProps<{
   label: string

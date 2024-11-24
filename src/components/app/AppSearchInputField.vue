@@ -11,7 +11,7 @@ import {
   ref,
 } from 'vue'
 
-import { useI18n } from '@/composables/i18n/i18n.composable'
+import { useI18n } from 'vue-i18n'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 
 const props = withDefaults(defineProps<{

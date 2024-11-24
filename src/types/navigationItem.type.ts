@@ -3,7 +3,7 @@ import type {
   KeyboardShortcut,
 } from '@wisemen/vue-core'
 
-import type { RouteLocationCurrent } from '@/types/vueRouter'
+import type { RouteLocationCurrent } from '@/types/global/vueRouter'
 
 export interface NavigationItem {
   hasAlertDot?: boolean

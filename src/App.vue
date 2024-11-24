@@ -14,6 +14,9 @@ import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
 import { useRefreshPrompt } from '@/composables/refresh-prompt/refreshPrompt.composable'
 import { logBuildInformation } from '@/constants/environment.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
+import { useFontSize } from '@/composables/font-size/fontSize.composable'
+import { useLanguage } from '@/composables/language/language.composable'
+import { useReduceMotion } from '@/composables/reduce-motion/reduceMotion.composable'
 
 const { setTemplate } = useDocumentTitle()
 const { locale } = useI18n()
@@ -24,6 +27,11 @@ const authStore = useAuthStore()
 setTemplate('{title} | $projectName')
 
 useRefreshPrompt()
+
+useFontSize()
+useLanguage()
+useReduceMotion()
+
 logBuildInformation()
 
 authStore.onLogout(() => {

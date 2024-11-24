@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@variant motion-reduce (&:where(.reduce-motion, .reduce-motion *));
+
 @theme inline {
   --color-*: initial;
   --color-black: #000000;

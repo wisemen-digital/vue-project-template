@@ -5,7 +5,7 @@ import type {
   RouteRecordNormalized,
 } from 'vue-router'
 
-import type { MiddlewareFn } from '@/types/router/routeMiddleware.type'
+import type { MiddlewareFn } from '@/types/routeMiddleware.type'
 
 export function useRouterMiddleware(router: Router): void {
   router.beforeEach(handleRouteMiddlewares)

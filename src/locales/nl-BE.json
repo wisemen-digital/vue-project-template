@@ -1,0 +1,203 @@
+{
+  "component": {
+    "keyboard_shortcut": {
+      "then": "dan"
+    },
+    "password_input": {
+      "hide_password": "Wachtwoord verbergen",
+      "show_password": "Wachtwoord tonen"
+    },
+    "refresh_prompt": {
+      "new_version": {
+        "action": "Vernieuwen",
+        "description": "Nieuwe versie beschikbaar! Herladen om de nieuwste functionaliteit te ontvangen."
+      }
+    },
+    "search_input": {
+      "clear": "Wissen",
+      "placeholder": "Zoeken..."
+    },
+    "select": {
+      "empty_text": "Geen resultaten gevonden voor '{searchTerm}'.",
+      "search_placeholder": "Zoeken..."
+    },
+    "sidebar": {
+      "close_sidebar": "Zijbalk sluiten",
+      "footer": {
+        "environment": "Omgeving",
+        "sign_out": "Afmelden",
+        "version": "Versie"
+      },
+      "open_sidebar": "Zijbalk openen"
+    },
+    "table": {
+      "page_count": "{startIndex} - {endIndex} van {totalItems}",
+      "no_data": {
+        "description": "Er zijn momenteel geen gegevens om weer te geven.",
+        "title": "Geen gegevens"
+      },
+      "no_results": {
+        "description": "Er zijn geen resultaten die overeenkomen met de zoekcriteria.",
+        "title": "Geen resultaten"
+      }
+    },
+    "unsaved_changes_dialog": {
+      "cancel": "Blijven bewerken",
+      "confirm": "Ja, ik ben zeker",
+      "description": "Alle niet-opgeslagen wijzigingen gaan verloren. Weet je zeker dat je wilt doorgaan?",
+      "title": "Niet-opgeslagen wijzigingen"
+    }
+  },
+  "error": {
+    "bad_request": {
+      "description": "Er ging iets mis. Probeer het opnieuw.",
+      "title": "Ongeldig verzoek"
+    },
+    "default_error": {
+      "description": "Probeer het later opnieuw.",
+      "title": "Er ging iets mis"
+    },
+    "forbidden": {
+      "description": "U heeft geen toestemming om deze bron te bekijken.",
+      "title": "Verboden"
+    },
+    "internal_server_error": {
+      "description": "Probeer het later opnieuw.",
+      "title": "Interne serverfout"
+    },
+    "invalid_form_input": {
+      "description": "Controleer de gemarkeerde velden en probeer het opnieuw.",
+      "title": "Ongeldige invoer"
+    },
+    "resource_not_found": {
+      "description": "De gevraagde bron kon niet worden gevonden.",
+      "title": "Bron niet gevonden"
+    },
+    "unauthorized": {
+      "description": "U bent niet gemachtigd om deze bron te bekijken.",
+      "title": "Niet gemachtigd"
+    },
+    "validation_error": {
+      "description": "Controleer het formulier op fouten.",
+      "title": "Validatiefout"
+    }
+  },
+  "form": {
+    "fields": {
+      "email": "E-mailadres",
+      "password": "Wachtwoord"
+    },
+    "save_changes": "Wijzigingen opslaan"
+  },
+  "module": {
+    "auth": {
+      "login": {
+        "description": "Meld je aan om door te gaan",
+        "error": "Er is iets misgegaan bij het aanmelden. Probeer het opnieuw.",
+        "sign_in": "Aanmelden",
+        "title": "Aanmelden"
+      }
+    },
+    "setting": {
+      "font_size": {
+        "default": "Standaard",
+        "description": "Pas de lettergrootte aan.",
+        "large": "Groot",
+        "larger": "Groter",
+        "small": "Klein",
+        "smaller": "Kleiner",
+        "title": "Lettergrootte"
+      },
+      "interface_theme": {
+        "dark": "Donker",
+        "description": "Selecteer of pas het UI-thema aan.",
+        "light": "Licht",
+        "system_preference": "Systeemvoorkeur",
+        "title": "Interface-thema"
+      },
+      "language": {
+        "description": "Wijzig je taal.",
+        "locales": {
+          "en_us": "English (United States)",
+          "nl_be": "Nederlands (België)"
+        },
+        "title": "Taal"
+      },
+      "reduce_motion": {
+        "description": "Verminder het aantal en intensiteit van animaties, hovereffecten en andere bewegende effecten in de applicatie.",
+        "title": "Verminder beweging",
+        "enabled": {
+          "label": "Ingeschakeld",
+          "description": "Je zult minder animaties en hovereffecten zien om beweging te verminderen."
+        },
+        "disabled": {
+          "label": "Uitgeschakeld",
+          "description": "Alle animaties en hovereffecten zijn ingeschakeld voor een volledige ervaring."
+        }
+      },
+      "subtitle": "Beheer je app-instellingen",
+      "title": "Instellingen"
+    },
+    "user": {
+      "create": {
+        "create_user": "Gebruiker aanmaken",
+        "success_toast": {
+          "message": "Gebruiker is succesvol aangemaakt."
+        },
+        "title": "Nieuwe gebruiker"
+      },
+      "detail": {
+        "edit_user": "Gebruiker bewerken",
+        "title": "Gebruiker bewerken"
+      },
+      "form": {
+        "section": {
+          "name": {
+            "description": "Voor- en achternaam van de gebruiker."
+          }
+        }
+      },
+      "update": {
+        "success_toast": {
+          "message": "Gebruiker is succesvol bijgewerkt."
+        }
+      }
+    }
+  },
+  "shared": {
+    "close": "Sluiten",
+    "edit": "Bewerken"
+  },
+  "user": {
+    "birth_date": "Geboortedatum",
+    "first_name": "Voornaam",
+    "label": {
+      "plural": "Gebruikers",
+      "singular": "Gebruiker",
+      "user_with_count": "Geen gebruikers | {count} gebruiker | {count} gebruikers"
+    },
+    "last_name": "Achternaam",
+    "name": "Naam"
+  },
+  "validation": {
+    "invalid_date": "Ongeldige datum",
+    "invalid_datetime": "Ongeldige datum en tijd",
+    "invalid_email": "Ongeldig e-mailadres",
+    "invalid_regex": "Ongeldig formaat",
+    "invalid_string": "Ongeldige invoer",
+    "invalid_union": "Ongeldige invoer",
+    "invalid_url": "Ongeldige URL",
+    "invalid_uuid": "Ongeldige UUID",
+    "required": "Dit veld is verplicht",
+    "too_big": "Moet kleiner dan of gelijk aan {count} zijn",
+    "too_big_array": "Mag maximaal {count} item bevatten | Mag maximaal {count} items bevatten",
+    "too_big_date": "Moet voor {count} liggen",
+    "too_big_number": "Moet kleiner dan of gelijk aan {count} zijn",
+    "too_big_string": "Mag maximaal {count} teken bevatten | Mag maximaal {count} tekens bevatten",
+    "too_small": "Moet groter dan of gelijk aan {count} zijn",
+    "too_small_array": "Moet minstens {count} item bevatten | Moet minstens {count} items bevatten",
+    "too_small_date": "Moet na {count} liggen",
+    "too_small_number": "Moet groter dan of gelijk aan {count} zijn",
+    "too_small_string": "Moet minstens {count} teken bevatten | Moet minstens {count} tekens bevatten"
+  }
+}
