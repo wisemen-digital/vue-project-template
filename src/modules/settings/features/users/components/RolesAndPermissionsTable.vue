@@ -67,7 +67,7 @@ function onUpdatePermissionCheckbox(value: boolean, permissionId: string, roleUu
   rolesModelMap.value.set(key, null)
 }
 
-function onDeleteRow(roleUuid: RoleUuid): void {
+function onDeleteRole(roleUuid: RoleUuid): void {
   emit('deleteRole', roleUuid)
 }
 
@@ -105,7 +105,7 @@ function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: 
     >
       <RolesAndPermissionsTableHeader
         :roles="props.roles"
-        @delete-role="onDeleteRow"
+        @delete-role="onDeleteRole"
       />
 
       <RolesAndPermissionsTableBody

@@ -41,7 +41,10 @@ const rolesModelMap = ref<Map<string, null | string[]>>(
     ),
   ),
 )
+const settingsRolesBulkUpdateMutation = useSettingsRolesBulkUpdateMutation()
+
 const rolesModelMapSnapshot = ref<Map<string, null | string[]>>(new Map(rolesModelMap.value))
+
 const isRolesModelMapChanged = computed<boolean>(() => {
   return !MapUtil.areEqual(rolesModelMap.value, rolesModelMapSnapshot.value)
 })
@@ -60,8 +63,6 @@ async function onDeleteRow(roleUuid: RoleUuid): Promise<void> {
     apiErrorToast.show(error)
   }
 }
-
-const settingsRolesBulkUpdateMutation = useSettingsRolesBulkUpdateMutation()
 
 async function onSaveChangesButtonClick(): Promise<void> {
   try {

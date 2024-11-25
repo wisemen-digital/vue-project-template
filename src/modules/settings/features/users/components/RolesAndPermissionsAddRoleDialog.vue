@@ -21,6 +21,7 @@ const emit = defineEmits<{
   close: []
 }>()
 
+const i18n = useI18n()
 const apiErrorToast = useApiErrorToast()
 const settingsRoleCreateMutation = useSettingsRoleCreateMutation()
 
@@ -31,8 +32,6 @@ const { form, onSubmitForm } = useForm({
 })
 
 const name = form.register('name')
-
-const i18n = useI18n()
 
 function onClose(): void {
   emit('close')
@@ -57,7 +56,7 @@ onSubmitForm(async (formState) => {
     @close="onClose"
   >
     <AppDialogContent
-      class="w-[400px]"
+      size="sm"
     >
       <AppDialogHeader
         :title="i18n.t('module.settings.roles_and_permissions.add_role_dialog.title')"
@@ -69,10 +68,10 @@ onSubmitForm(async (formState) => {
             v-bind="name"
           />
           <AppDialogActions>
-            <AppDialogActionCancel label="Cancel" />
+            <AppDialogActionCancel :label="i18n.t('shared.cancel')" />
             <FormSubmitButton
               :form="form"
-              label="add"
+              :label="i18n.t('shared.save')"
             />
           </AppDialogActions>
         </AppForm>

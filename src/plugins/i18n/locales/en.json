@@ -170,9 +170,11 @@
   "shared": {
     "add_item": "Add {item}",
     "admin": "Admin",
+    "cancel": "cancel",
     "close": "Close",
     "edit": "Edit",
     "role": "Role",
+    "save": "save",
     "user": "User"
   },
   "user": {
