@@ -13,7 +13,7 @@ const props = defineProps<{
   isTableScrolledToBottom: boolean
   permissions: Permission[]
   roles: Role[]
-  rolesModelMap: Map<string, null | string[]>
+  rolesModelMap: Map<string, string[] | null>
 }>()
 
 const emit = defineEmits<{

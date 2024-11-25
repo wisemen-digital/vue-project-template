@@ -19,6 +19,7 @@ function enter(element: Element): void {
   const width = getComputedStyle(htmlElement).width
 
   htmlElement.style.width = width
+  // removed position absolute but it may be needed in some cases
   // htmlElement.style.position = 'absolute'
   htmlElement.style.visibility = 'hidden'
   htmlElement.style.height = 'auto'
@@ -72,7 +73,6 @@ function leave(element: Element): void {
   transition:
     height v-bind(durationString) cubic-bezier(0.645, 0.045, 0.355, 1),
     opacity v-bind(durationString);
-  //overflow: hidden;
 }
 
 .expand-enter-from,

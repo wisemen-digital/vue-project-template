@@ -16,7 +16,7 @@ const props = defineProps<{
 }>()
 
 const i18n = useI18n()
-const rolesModelMap = ref<Map<string, null | string[]>>(
+const rolesModelMap = ref<Map<string, string[] | null>>(
   new Map(
     RolesAndPermissionsTableUtil.createGrid(
       props.permissions,

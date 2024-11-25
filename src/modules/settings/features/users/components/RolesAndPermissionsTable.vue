@@ -17,7 +17,7 @@ const props = defineProps<{
   roles: Role[]
 }>()
 
-const rolesModelMap = defineModel<Map<string, null | string[]>>({ required: true })
+const rolesModelMap = defineModel<Map<string, string[] | null>>({ required: true })
 const tableScrollContainerRef = ref<HTMLElement | null>(null)
 
 const scroll = useScroll(tableScrollContainerRef)
@@ -67,7 +67,7 @@ function onUpdatePermissionCheckbox(value: boolean, permissionId: PermissionId, 
 function onUpdateActionCheckbox(value: boolean, permissionId: PermissionId, roleUuid: RoleUuid, action: string): void {
   const key = `${permissionId}-${roleUuid}`
 
-  const valueArray = ObjectUtil.deepClone<null | string[] | undefined>(rolesModelMap.value.get(key)) ?? []
+  const valueArray = ObjectUtil.deepClone<string[] | null | undefined>(rolesModelMap.value.get(key)) ?? []
 
   if (!value) {
     const actionIndex = valueArray.indexOf(action)

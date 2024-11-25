@@ -3,8 +3,8 @@ import type { PermissionAction } from '@/models/permission/permissionAction.mode
 import type { Role } from '@/models/role/role.model.ts'
 
 export class RolesAndPermissionsTableUtil {
-  static createGrid(permissions: Permission[], roles: Role[]): Map<string, null | string[]> {
-    const grid = new Map<string, null | string[]>()
+  static createGrid(permissions: Permission[], roles: Role[]): Map<string, string[] | null> {
+    const grid = new Map<string, string[] | null>()
 
     permissions.forEach((permission) => {
       roles.forEach((role) => {
@@ -29,7 +29,7 @@ export class RolesAndPermissionsTableUtil {
     return grid
   }
 
-  static mapGridToRoles(grid: Map<string, null | string[]>, permissions: Permission[], roles: Role[]): Role[] {
+  static mapGridToRoles(grid: Map<string, string[] | null>, permissions: Permission[], roles: Role[]): Role[] {
     const roleArray: Role[] = []
 
     permissions.forEach((permission) => {

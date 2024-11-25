@@ -9,7 +9,7 @@ const props = withDefaults(
   defineProps<{
     title: string
     breadcrumbs?: BreadcrumbItem[] | null
-    subtitle?: null | string
+    subtitle?: string | null
   }>(),
   {
     hasNoPaddingTop: false,
