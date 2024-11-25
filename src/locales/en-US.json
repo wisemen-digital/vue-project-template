@@ -123,6 +123,18 @@
         },
         "title": "Language"
       },
+      "high_contrast": {
+        "title": "High contrast mode",
+        "description": "Enhance readability and visibility by increasing the contrast between UI elements.",
+        "enabled": {
+          "label": "Enabled",
+          "description": "High contrast mode is enabled."
+        },
+        "disabled": {
+          "label": "Disabled",
+          "description": "High contrast mode is disabled."
+        }
+      },
       "keyboard_shortcuts": {
         "title": "Keyboard shortcut hints",
         "description": "Keyboard shortcuts are always enabled, but you can choose whether to display a hint.",

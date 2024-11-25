@@ -136,6 +136,18 @@
           "description": "Toetsenbord sneltoetsen zijn verborgen."
         }
       },
+      "high_contrast": {
+        "title": "Hoog contrast",
+        "description": "Verbeter de leesbaarheid en zichtbaarheid door het verhogen van de contrast tussen UI-elementen.",
+        "enabled": {
+          "label": "Ingeschakeld",
+          "description": "Hoog contrast is ingeschakeld."
+        },
+        "disabled": {
+          "label": "Uitgeschakeld",
+          "description": "Hoog contrast is uitgeschakeld."
+        }
+      },
       "reduce_motion": {
         "description": "Verminder het aantal en intensiteit van animaties, hovereffecten en andere bewegende effecten in de applicatie.",
         "title": "Verminder beweging",

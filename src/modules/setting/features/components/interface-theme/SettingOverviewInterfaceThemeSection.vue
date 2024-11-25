@@ -10,6 +10,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import FormSection from '@/components/form/FormSection.vue'
+import { useTheme } from '@/composables/theme/theme.composable'
 import SettingOverviewMiniDashboard from '@/modules/setting/features/components/interface-theme/SettingOverviewMiniDashboard.vue'
 import { BrowserUtil } from '@/utils/browser.util'
 
@@ -17,6 +18,7 @@ type ThemeValue = 'dark' | 'light' | 'system'
 
 const { t } = useI18n()
 const darkMode = useDarkMode()
+const theme = useTheme()
 
 const themes = computed<RadioGroupItem<ThemeValue>[]>(() => [
   {
@@ -33,18 +35,6 @@ const themes = computed<RadioGroupItem<ThemeValue>[]>(() => [
   },
 ])
 
-function getTheme(value: ThemeValue): 'dark' | 'light' {
-  if (value === 'system') {
-    return darkMode.isSystemDarkMode.value ? 'dark' : 'light'
-  }
-
-  if (value === 'dark') {
-    return 'dark'
-  }
-
-  return 'light'
-}
-
 const value = computed<'dark' | 'light' | 'system'>({
   get: () => darkMode.value.value,
   set: (value) => {
@@ -59,6 +49,18 @@ const value = computed<'dark' | 'light' | 'system'>({
     })
   },
 })
+
+function getIsDarkModeEnabled(value: 'dark' | 'light' | 'system'): boolean {
+  if (value === 'dark') {
+    return true
+  }
+
+  if (value === 'light') {
+    return false
+  }
+
+  return darkMode.isSystemDarkMode.value
+}
 </script>
 
 <template>
@@ -78,7 +80,10 @@ const value = computed<'dark' | 'light' | 'system'>({
             :item="item"
             class="group rounded-xl text-left !ring-0 !ring-offset-0"
           >
-            <VcThemeProvider :theme="getTheme(item.value)">
+            <VcThemeProvider
+              :is-dark-mode-enabled="getIsDarkModeEnabled(item.value)"
+              :theme="theme"
+            >
               <div class="relative h-40 overflow-hidden rounded-xl border-2 border-solid border-transparent bg-tertiary ring-brand-primary-500 ring-offset-1 duration-200 group-focus-visible:ring-2 group-data-[state=checked]:border-brand">
                 <SettingOverviewMiniDashboard class="absolute left-4 top-4" />
               </div>

@@ -15,6 +15,7 @@ import { useFontSize } from '@/composables/font-size/fontSize.composable'
 import { useLanguage } from '@/composables/language/language.composable'
 import { useReduceMotion } from '@/composables/reduce-motion/reduceMotion.composable'
 import { useRefreshPrompt } from '@/composables/refresh-prompt/refreshPrompt.composable'
+import { useTheme } from '@/composables/theme/theme.composable'
 import { logBuildInformation } from '@/constants/environment.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
@@ -23,6 +24,7 @@ const { locale } = useI18n()
 const router = useRouter()
 const darkMode = useDarkMode()
 const authStore = useAuthStore()
+const theme = useTheme()
 
 setTemplate('{title} | $projectName')
 
@@ -45,7 +47,7 @@ authStore.onLogout(() => {
   <VcConfigProvider :locale="locale">
     <VcThemeProvider
       :is-dark-mode-enabled="darkMode.isEnabled.value"
-      theme="default"
+      :theme="theme"
       class="flex size-full flex-1 flex-col"
     >
       <RouterView />

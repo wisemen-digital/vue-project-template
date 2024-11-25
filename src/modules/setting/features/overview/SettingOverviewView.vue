@@ -5,6 +5,7 @@ import AppSeparator from '@/components/app/AppSeparator.vue'
 import FormLayout from '@/components/form/FormLayout.vue'
 import AppPage from '@/components/layout/AppPage.vue'
 import SettingOverviewFontSizeSection from '@/modules/setting/features/components/font-size/SettingOverviewFontSizeSection.vue'
+import SettingOverviewHighContrastSection from '@/modules/setting/features/components/high-contrast/SettingOverviewHighContrastSection.vue'
 import SettingOverviewInterfaceThemeSection from '@/modules/setting/features/components/interface-theme/SettingOverviewInterfaceThemeSection.vue'
 import SettingOverviewKeyboardShortcutSection from '@/modules/setting/features/components/keyboard-shortcuts/SettingOverviewKeyboardShortcutSection.vue'
 import SettingOverviewLanguageSection from '@/modules/setting/features/components/language/SettingOverviewLanguageSection.vue'
@@ -25,6 +26,8 @@ const { t } = useI18n()
       <SettingOverviewKeyboardShortcutSection />
       <AppSeparator />
       <SettingOverviewReduceMotionSection />
+      <AppSeparator />
+      <SettingOverviewHighContrastSection />
     </FormLayout>
   </AppPage>
 </template>
