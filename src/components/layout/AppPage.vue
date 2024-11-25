@@ -38,6 +38,9 @@ router.beforeResolve(() => {
 <template>
   <main class="flex w-full flex-1 flex-col">
     <header
+      :style="{
+        viewTransitionName: 'page-header',
+      }"
       class="bg-primary z-10 sticky top-0"
     >
       <AppContainer>

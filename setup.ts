@@ -63,7 +63,7 @@ function changeProjectName(projectName: string): void {
     const fileContent = fs.readFileSync(filePath, 'utf8')
 
     // Check if the file contains `$projectName` to avoid unnecessary writes
-    if (fileContent.includes('$$projectName')) {
+    if (fileContent.includes('$projectName')) {
       const updatedContent = fileContent.replace(/\$projectName/g, projectName)
 
       // Write the updated content back to the file
