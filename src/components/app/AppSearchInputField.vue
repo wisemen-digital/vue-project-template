@@ -12,6 +12,7 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 
 const props = withDefaults(defineProps<{
@@ -27,6 +28,7 @@ const props = withDefaults(defineProps<{
 })
 
 const { t } = useI18n()
+const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 
 let timeout: ReturnType<typeof setTimeout> | null = null
 
@@ -66,7 +68,7 @@ function onClearInput(): void {
       <template #right>
         <div>
           <VcKeyboardShortcut
-            v-if="(search === null || search === '') && !props.disableKeyboardCommand"
+            v-if="(search === null || search === '') && !props.disableKeyboardCommand && isKeyboardShortcutHintVisible"
             :keyboard-keys="KEYBOARD_SHORTCUT.SEARCH.keys"
             keyboard-classes="border-primary text-tertiary"
             class="mr-md"

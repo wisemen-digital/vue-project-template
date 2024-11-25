@@ -37,8 +37,10 @@ router.beforeResolve(() => {
 
 <template>
   <main class="flex w-full flex-1 flex-col">
-    <AppContainer>
-      <header class="border-b border-solid border-secondary pb-2xl">
+    <header
+      class="bg-primary z-10 sticky top-0"
+    >
+      <AppContainer>
         <VcBreadcrumbs
           v-if="props.breadcrumbs.length > 0"
           :style="{
@@ -66,14 +68,23 @@ router.beforeResolve(() => {
             <slot name="header-actions" />
           </div>
         </div>
-      </header>
-    </AppContainer>
+      </AppContainer>
+
+      <!-- No border bottom to make sure it can be animated -->
+      <div
+        :style="{
+          viewTransitionName: 'page-header-border-bottom',
+        }"
+        role="presentation"
+        class="h-px w-full bg-quaternary"
+      />
+    </header>
 
     <AppContainer
       :style="{
         viewTransitionName: 'page-content',
       }"
-      class="flex flex-1 flex-col overflow-hidden pb-xl pt-4xl"
+      class="flex flex-1 flex-col overflow-hidden pb-4xl pt-4xl"
     >
       <slot />
     </AppContainer>
@@ -81,19 +92,21 @@ router.beforeResolve(() => {
 </template>
 
 <style>
+::view-transition-group(page-header-border-bottom) {
+  animation-duration: 0.2s;
+}
+
 ::view-transition-group(page-title) {
   animation-duration: 0.2s;
 }
 
 ::view-transition-old(page-title) {
-  animation-duration: 0.2s;
   height: 100%;
   width: 100%;
   object-fit: fill;
 }
 
 ::view-transition-new(page-title) {
-  animation-duration: 0.2s;
   height: 100%;
   width: 100%;
   object-fit: fill;
@@ -104,7 +117,6 @@ router.beforeResolve(() => {
 }
 
 ::view-transition-new(header-action) {
-  animation-duration: 0.2s;
   mix-blend-mode: normal;
   height: 100%;
   width: 100%;
@@ -112,7 +124,6 @@ router.beforeResolve(() => {
 }
 
 ::view-transition-old(header-action) {
-  animation-duration: 0.2s;
   mix-blend-mode: normal;
   height: 100%;
   width: 100%;

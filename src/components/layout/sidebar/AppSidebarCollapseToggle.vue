@@ -9,11 +9,15 @@ import {
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
+
 const isCollapsed = defineModel<boolean>({
   required: true,
 })
 
 const { t } = useI18n()
+
+const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 
 const toggleBtnLabel = computed<string>(() => {
   if (isCollapsed.value) {
@@ -60,7 +64,10 @@ const toggleBtnLabel = computed<string>(() => {
               {{ toggleBtnLabel }}
             </span>
 
-            <VcKeyboardShortcut :keyboard-keys="keys" />
+            <VcKeyboardShortcut
+              v-if="isKeyboardShortcutHintVisible"
+              :keyboard-keys="keys"
+            />
           </div>
         </template>
       </VcTooltip>

@@ -16,6 +16,7 @@ import { BrowserUtil } from '@/utils/browser.util'
 const { t } = useI18n()
 const value = useKeyboardShortcutVisibilityValue()
 const isReduceMotionEnabled = useReduceMotionValue()
+const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 
 const computedValue = computed<boolean>({
   get: () => value.value,
@@ -81,7 +82,7 @@ const description = computed<string>(() => {
           </span>
 
           <VcKeyboardShortcut
-            v-if="computedValue"
+            v-if="computedValue && isKeyboardShortcutHintVisible"
             :style="{
               viewTransitionName: 'example-button-shortcut',
             }"

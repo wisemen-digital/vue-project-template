@@ -6,6 +6,7 @@ import {
 } from '@wisemen/vue-core'
 
 import AppGroup from '@/components/app/AppGroup.vue'
+import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 
 const props = withDefaults(defineProps<{
   isDisabled?: boolean
@@ -13,6 +14,8 @@ const props = withDefaults(defineProps<{
 }>(), {
   isDisabled: false,
 })
+
+const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 </script>
 
 <template>
@@ -26,6 +29,7 @@ const props = withDefaults(defineProps<{
         {{ props.label }}
 
         <VcKeyboardKey
+          v-if="isKeyboardShortcutHintVisible"
           keyboard-key="escape"
           class="border-tertiary bg-secondary text-tertiary"
         />

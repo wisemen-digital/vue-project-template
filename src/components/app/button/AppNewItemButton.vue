@@ -6,6 +6,7 @@ import {
 } from '@wisemen/vue-core'
 
 import AppGroup from '@/components/app/AppGroup.vue'
+import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 import type { RouteLocationCurrent } from '@/types/global/vueRouter'
 
@@ -13,6 +14,8 @@ const props = defineProps<{
   label: string
   to: RouteLocationCurrent
 }>()
+
+const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 </script>
 
 <template>
@@ -32,6 +35,7 @@ const props = defineProps<{
         {{ props.label }}
 
         <VcKeyboardShortcut
+          v-if="isKeyboardShortcutHintVisible"
           :keyboard-keys="keys"
           keyboard-classes="border-0 bg-white/10"
         />
