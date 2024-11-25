@@ -18,12 +18,7 @@ const props = withDefaults(
 
 <template>
   <main class="flex w-full flex-1 flex-col">
-    <header
-      :style="{
-        viewTransitionName: 'page-header',
-      }"
-      class="bg-primary z-10 sticky top-0"
-    >
+    <header class="bg-primary z-10 sticky top-0">
       <AppContainer class="py-xl">
         <VcBreadcrumbs
           v-if="props.breadcrumbs.length > 0"
@@ -76,10 +71,6 @@ const props = withDefaults(
 </template>
 
 <style>
-::view-transition-group(page-header) {
-  animation-duration: 0.2s;
-}
-
 ::view-transition-group(page-header-border-bottom) {
   animation-duration: 0.2s;
 }

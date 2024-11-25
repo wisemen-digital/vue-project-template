@@ -1,1 +1,3 @@
-import '@/component-styles/button/defaultButtonVariant.style'
+export function setupCustomStyles(): void {
+  import('@/component-styles/button/defaultButtonVariant.style')
+}

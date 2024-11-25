@@ -5,7 +5,7 @@ export const icons = {
   barChartSquare: import('./BarChartSquareIcon.vue'),
   edit: import('./EditIcon.vue'),
   googleLogo: import('./GoogleLogoIcon.vue'),
-  logOut: import('./LogOutIcon.vue'),
+  logout: import('./LogoutIcon.vue'),
   stars: import('./StarsIcon.vue'),
 } satisfies Record<string, Component>
 

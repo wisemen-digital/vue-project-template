@@ -1,4 +1,4 @@
-@import '@wisemen/vue-core/style.css' layer(base);
+@import '@wisemen/vue-core/style.css';
 @import './colors.css'; 
 @import './themes/default.css';
 @import './themes/high-contrast.css';

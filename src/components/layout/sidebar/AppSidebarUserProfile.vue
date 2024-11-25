@@ -43,7 +43,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
     type: 'separator',
   },
   {
-    icon: 'logOut',
+    icon: 'logout',
     keyboardKeys: [
       's',
       'o',
