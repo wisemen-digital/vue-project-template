@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
 import { VcBreadcrumbs } from '@wisemen/vue-core'
-import { useRouter } from 'vue-router'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
-import { BrowserUtil } from '@/utils/browser.util'
 
 const props = withDefaults(
   defineProps<{
@@ -16,23 +14,6 @@ const props = withDefaults(
     breadcrumbs: () => [],
   },
 )
-
-const router = useRouter()
-
-router.beforeResolve(() => {
-  if (!BrowserUtil.hasSupportForViewTransition()) {
-    return
-  }
-
-  let changeRoute: () => void
-  const ready = new Promise<void>((resolve) => (changeRoute = resolve))
-
-  document.startViewTransition(() => {
-    changeRoute()
-  })
-
-  return ready
-})
 </script>
 
 <template>
@@ -43,7 +24,7 @@ router.beforeResolve(() => {
       }"
       class="bg-primary z-10 sticky top-0"
     >
-      <AppContainer>
+      <AppContainer class="py-xl">
         <VcBreadcrumbs
           v-if="props.breadcrumbs.length > 0"
           :style="{
@@ -85,7 +66,7 @@ router.beforeResolve(() => {
 
     <AppContainer
       :style="{
-        viewTransitionName: 'page-content',
+        // viewTransitionName: 'page-content',
       }"
       class="flex flex-1 flex-col overflow-hidden pb-4xl pt-4xl"
     >
@@ -95,6 +76,10 @@ router.beforeResolve(() => {
 </template>
 
 <style>
+::view-transition-group(page-header) {
+  animation-duration: 0.2s;
+}
+
 ::view-transition-group(page-header-border-bottom) {
   animation-duration: 0.2s;
 }

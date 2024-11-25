@@ -10,8 +10,8 @@ const logoLg = 'Wisemen'
 <template>
   <div class="pointer-events-none relative flex h-20 items-center justify-center p-xl font-medium uppercase tracking-widest text-primary">
     <Transition
-      enter-active-class="duration-500 ease-sidebar-collapse"
-      leave-active-class="duration-500 ease-sidebar-collapse"
+      enter-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
+      leave-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
       enter-from-class="opacity-0"
       leave-to-class="opacity-0"
     >
