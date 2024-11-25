@@ -123,6 +123,19 @@
         },
         "title": "Taal"
       },
+      "keyboard_shortcuts": {
+        "title": "Toetsenbord sneltoetsen",
+        "description": "Toetsenbord sneltoetsen zijn altijd ingeschakeld, maar je kunt kiezen of ze worden weergegeven.",
+        "example_button": "Voorbeeld",
+        "enabled": {
+          "label": "Ingeschakeld",
+          "description": "Toetsenbord sneltoetsen zijn zichtbaar."
+        },
+        "disabled": {
+          "label": "Uitgeschakeld",
+          "description": "Toetsenbord sneltoetsen zijn verborgen."
+        }
+      },
       "reduce_motion": {
         "description": "Verminder het aantal en intensiteit van animaties, hovereffecten en andere bewegende effecten in de applicatie.",
         "title": "Verminder beweging",

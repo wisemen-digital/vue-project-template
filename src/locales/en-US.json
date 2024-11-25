@@ -123,6 +123,19 @@
         },
         "title": "Language"
       },
+      "keyboard_shortcuts": {
+        "title": "Keyboard shortcut hints",
+        "description": "Keyboard shortcuts are always enabled, but you can choose whether to display a hint.",
+        "example_button": "Example",
+        "enabled": {
+          "label": "Enabled",
+          "description": "Keyboard shortcut hints are visible."
+        },
+        "disabled": {
+          "label": "Disabled",
+          "description": "Keyboard shortcut hints are hidden."
+        }
+      },
       "reduce_motion": {
         "description": "Reduce the amount and intensity of animations, hover effects and other moving effects across the application.",
         "title": "Reduce motion",

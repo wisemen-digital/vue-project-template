@@ -89,7 +89,9 @@ function hasSetupBeenRun(): boolean {
 }
 
 async function setup(): Promise<void> {
-  if (hasSetupBeenRun() || true) {
+  const isProjectTemplate = process.env.PWD?.includes('project-template')
+
+  if (isProjectTemplate || hasSetupBeenRun()) {
     return
   }
 

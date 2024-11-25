@@ -9,7 +9,6 @@ import {
 
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin'
 import { createI18nKeyMap } from '@/types/enum.type'
-import { BrowserUtil } from '@/utils/browser.util'
 
 type FontSize = 'default' | 'large' | 'larger' | 'small' | 'smaller'
 
@@ -43,15 +42,7 @@ export function useFontSizeSelect(): UseFontSizeReturnType {
   const value = computed<FontSize>({
     get: () => fontSize.value,
     set: (value) => {
-      if (!BrowserUtil.hasSupportForViewTransition()) {
-        fontSize.value = value
-
-        return
-      }
-
-      document.startViewTransition(() => {
-        fontSize.value = value
-      })
+      fontSize.value = value
     },
   })
 

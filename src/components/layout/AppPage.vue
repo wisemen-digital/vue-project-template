@@ -36,7 +36,7 @@ router.beforeResolve(() => {
 </script>
 
 <template>
-  <div class="flex w-full flex-1 flex-col">
+  <main class="flex w-full flex-1 flex-col">
     <AppContainer>
       <header class="border-b border-solid border-secondary pb-2xl">
         <VcBreadcrumbs
@@ -77,7 +77,7 @@ router.beforeResolve(() => {
     >
       <slot />
     </AppContainer>
-  </div>
+  </main>
 </template>
 
 <style>
