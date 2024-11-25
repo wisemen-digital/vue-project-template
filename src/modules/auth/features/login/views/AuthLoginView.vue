@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useToast, VcButton } from '@wisemen/vue-core'
 import { ref } from 'vue'
-
 import { useI18n } from 'vue-i18n'
+
 import AuthLoginElementTransition from '@/modules/auth/features/login/components/AuthLoginElementTransition.vue'
 import { useAuthStore } from '@/stores/auth.store'
 

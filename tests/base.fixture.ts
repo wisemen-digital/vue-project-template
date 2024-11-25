@@ -24,10 +24,8 @@ export const test = base.extend({
     //   ])
     //   .analyze()
 
-    // eslint-disable-next-line playwright/no-standalone-expect
     expect(errors).toStrictEqual([])
 
-    // eslint-disable-next-line playwright/no-standalone-expect
     await expect(page.getByTestId(TEST_ID.SHARED.MALFORMED_RESPONSE_TOAST)).toBeHidden()
     // expect(accessibilityScanResults.violations).toEqual([])
     //

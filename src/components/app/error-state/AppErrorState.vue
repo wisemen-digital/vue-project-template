@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import GridDecorativeBackgroundPattern from '@/components/decorative/GridDecorativeBackgroundPattern.vue';
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+
+import GridDecorativeBackgroundPattern from '@/components/decorative/GridDecorativeBackgroundPattern.vue'
 
 const props = defineProps<{
   error: unknown

@@ -1,5 +1,6 @@
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import type { UserIndexFiltersDto } from '@/models/user/index/userIndexFiltersDto.model'
+
 import type { UserCreateDto } from './create/userCreateDto.model'
 import type { UserCreateForm } from './create/userCreateForm.model'
 import type { User } from './detail/user.model'

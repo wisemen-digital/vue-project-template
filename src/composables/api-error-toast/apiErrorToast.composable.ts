@@ -1,6 +1,5 @@
 import { useToast } from '@wisemen/vue-core'
 import Axios from 'axios'
-
 import { useI18n } from 'vue-i18n'
 
 interface UserErrorToastReturnType {

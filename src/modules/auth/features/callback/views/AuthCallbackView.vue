@@ -2,9 +2,9 @@
 import { useRouteQuery } from '@vueuse/router'
 import { useToast } from '@wisemen/vue-core'
 import { onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
-import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const i18n = useI18n()

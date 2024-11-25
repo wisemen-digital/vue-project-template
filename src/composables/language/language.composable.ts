@@ -60,6 +60,7 @@ export function useLanguage(): void {
     document.startViewTransition(() => {
       if (!BrowserUtil.hasSupportForViewTransition()) {
         i18n.locale.value = locale.value
+
         return
       }
 

@@ -4,14 +4,14 @@ export class BrowserUtil {
   }
 
   static isChrome(): boolean {
-    return navigator.userAgent.indexOf('Chrome') !== -1
+    return navigator.userAgent.includes('Chrome')
   }
 
   static isFirefox(): boolean {
-    return navigator.userAgent.indexOf('Firefox') !== -1
+    return navigator.userAgent.includes('Firefox')
   }
 
   static isSafari(): boolean {
-    return navigator.userAgent.indexOf('Safari') !== -1
+    return navigator.userAgent.includes('Safari')
   }
 }

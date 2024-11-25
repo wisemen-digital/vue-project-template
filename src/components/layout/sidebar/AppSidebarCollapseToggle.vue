@@ -7,7 +7,6 @@ import {
   VcTooltip,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
-
 import { useI18n } from 'vue-i18n'
 
 const isCollapsed = defineModel<boolean>({

@@ -7,11 +7,11 @@ import {
   VcThemeProvider,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import FormSection from '@/components/form/FormSection.vue'
-import { useI18n } from 'vue-i18n'
-import SettingOverviewMiniDashboard from '@/modules/setting/features/components/interface-theme/SettingOverviewMiniDashboard.vue';
-import { BrowserUtil } from '@/utils/browser.util';
+import SettingOverviewMiniDashboard from '@/modules/setting/features/components/interface-theme/SettingOverviewMiniDashboard.vue'
+import { BrowserUtil } from '@/utils/browser.util'
 
 type ThemeValue = 'dark' | 'light' | 'system'
 
@@ -45,11 +45,12 @@ function getTheme(value: ThemeValue): 'dark' | 'light' {
   return 'light'
 }
 
-const test = computed({
+const value = computed<'dark' | 'light' | 'system'>({
   get: () => darkMode.value.value,
   set: (value) => {
     if (!BrowserUtil.hasSupportForViewTransition()) {
       darkMode.value.value = value
+
       return
     }
 
@@ -66,7 +67,7 @@ const test = computed({
     :description="t('module.setting.interface_theme.description')"
   >
     <VcRadioGroup
-      v-model="test"
+      v-model="value"
       :items="themes"
     >
       <template #items="{ items }">

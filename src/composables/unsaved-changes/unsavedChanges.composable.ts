@@ -58,7 +58,7 @@ export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChan
   onMounted(() => {
     window.onbeforeunload = (): string | null => {
       if (isDirty.value) {
-        return i18nPlugin.global.t('component.unsaved_changes_description')
+        return i18nPlugin.global.t('component.unsaved_changes_dialog.description')
       }
 
       return null

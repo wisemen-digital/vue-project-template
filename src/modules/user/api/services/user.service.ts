@@ -37,8 +37,8 @@ export class UserService {
     const data = await httpClient.get({
       config: {
         params: new PaginationDtoBuilder<UserIndexFilters>(
-          paginationOptions).build(UserIndexFiltersTransformer.fromDto
-        ),
+          paginationOptions,
+        ).build(UserIndexFiltersTransformer.fromDto),
       },
       responseSchema: paginatedDataSchema(userIndexDtoSchema),
       url: '/users',

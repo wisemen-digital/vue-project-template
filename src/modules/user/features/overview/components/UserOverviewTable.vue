@@ -10,9 +10,9 @@ import {
   h,
   type VNode,
 } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
-import { useI18n } from 'vue-i18n'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserIndex } from '@/models/user/index/userIndex.model.ts'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model.ts'

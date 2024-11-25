@@ -15,6 +15,6 @@ export default [
     },
     rules: {
       // Add or override rules here
-    }
+    },
   },
 ]

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import AppDashboardLayoutFloating from '@/components/layout/dashboard/AppDashboardLayoutFloating.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
-import { useI18n } from 'vue-i18n'
 import type { AuthUser } from '@/models/auth-user/authUser.model'
 import { useAuthStore } from '@/stores/auth.store'
 

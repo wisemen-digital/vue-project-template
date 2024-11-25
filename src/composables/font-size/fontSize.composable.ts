@@ -45,6 +45,7 @@ export function useFontSizeSelect(): UseFontSizeReturnType {
     set: (value) => {
       if (!BrowserUtil.hasSupportForViewTransition()) {
         fontSize.value = value
+
         return
       }
 

@@ -5,9 +5,9 @@ import {
   VcDropdownMenuTrigger,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import AppSeparator from '@/components/app/AppSeparator.vue'
-import { useI18n } from 'vue-i18n'
 import {
   CURRENT_BUILD_NUMBER,
   CURRENT_ENVIRONMENT,
