@@ -48,36 +48,8 @@ export const useAuthStore = defineStore('auth', () => {
     return authUser.value
   }
 
-  function isLoggedIn(): boolean {
-    return oAuthClient.isLoggedIn()
-  }
-
   function setAuthUser(user: AuthUser | null): void {
     authUser.value = user
-  }
-
-  async function getIdentityProviderLoginUrl(provider: string): Promise<string> {
-    if (provider === 'apple') {
-      return await oAuthClient.getIdentityProviderLoginUrl(AUTH_APPLE_IDP_ID)
-    }
-
-    if (provider === 'google') {
-      return await oAuthClient.getIdentityProviderLoginUrl(AUTH_GOOGLE_IDP_ID)
-    }
-
-    throw new Error('Unsupported identity provider')
-  }
-
-  async function getLoginUrl(): Promise<string> {
-    return await oAuthClient.getLoginUrl()
-  }
-
-  function getLogoutUrl(): string {
-    return oAuthClient.getLogoutUrl()
-  }
-
-  async function loginWithCode(code: string): Promise<void> {
-    await oAuthClient.loginWithCode(code)
   }
 
   function logout(): void {
@@ -103,3 +75,31 @@ export const useAuthStore = defineStore('auth', () => {
     onLogout,
   }
 })
+
+async function getLoginUrl(): Promise<string> {
+  return await oAuthClient.getLoginUrl()
+}
+
+function getLogoutUrl(): string {
+  return oAuthClient.getLogoutUrl()
+}
+
+async function loginWithCode(code: string): Promise<void> {
+  await oAuthClient.loginWithCode(code)
+}
+
+async function isLoggedIn(): Promise<boolean> {
+  return await oAuthClient.isLoggedIn()
+}
+
+async function getIdentityProviderLoginUrl(provider: string): Promise<string> {
+  if (provider === 'apple') {
+    return await oAuthClient.getIdentityProviderLoginUrl(AUTH_APPLE_IDP_ID)
+  }
+
+  if (provider === 'google') {
+    return await oAuthClient.getIdentityProviderLoginUrl(AUTH_GOOGLE_IDP_ID)
+  }
+
+  throw new Error('Unsupported identity provider')
+}

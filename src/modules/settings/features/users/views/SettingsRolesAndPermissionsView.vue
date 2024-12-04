@@ -33,7 +33,7 @@ const addRoleDialog = useDialog({
   component: () => import('@/modules/settings/features/users/components/RolesAndPermissionsAddRoleDialog.vue'),
 })
 const settingsRoleDelte = useSettingsRoleDeleteMutation()
-const rolesModelMap = ref<Map<string, null | string[]>>(
+const rolesModelMap = ref<Map<string, string[] | null>>(
   new Map(
     RolesAndPermissionsTableUtil.createGrid(
       props.permissions,
@@ -43,7 +43,7 @@ const rolesModelMap = ref<Map<string, null | string[]>>(
 )
 const settingsRolesBulkUpdateMutation = useSettingsRolesBulkUpdateMutation()
 
-const rolesModelMapSnapshot = ref<Map<string, null | string[]>>(new Map(rolesModelMap.value))
+const rolesModelMapSnapshot = ref<Map<string, string[] | null>>(new Map(rolesModelMap.value))
 
 const isRolesModelMapChanged = computed<boolean>(() => {
   return !MapUtil.areEqual(rolesModelMap.value, rolesModelMapSnapshot.value)

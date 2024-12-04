@@ -1,10 +1,12 @@
 import { useAuthStore } from '@/stores/auth.store'
 import { MiddlewareUtil } from '@/utils/middleware.util'
 
-export const guest = MiddlewareUtil.createMiddleware(() => {
+export const guest = MiddlewareUtil.createMiddleware(async () => {
   const authStore = useAuthStore()
 
-  if (!authStore.isLoggedIn()) {
+  const isLoggedIn = await authStore.isLoggedIn()
+
+  if (!isLoggedIn) {
     return
   }
 

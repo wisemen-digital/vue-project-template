@@ -11,7 +11,7 @@ describe('useTheme', () => {
   it('theme default be null', () => {
     const theme = useTheme()
 
-    expect(theme.current.value).toBe(null)
+    expect(theme.current.value).toBeNull()
   })
 
   it('theme be set when setting the theme', () => {

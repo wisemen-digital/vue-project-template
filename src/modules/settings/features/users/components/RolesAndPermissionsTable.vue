@@ -3,6 +3,7 @@ import { useScroll } from '@vueuse/core'
 import { computed, ref } from 'vue'
 
 import type { Permission } from '@/models/permission/permission.model.ts'
+import type { PermissionId } from '@/models/permission/permissionId.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
 import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
 import RolesAndPermissionsTableBody
@@ -20,7 +21,7 @@ const emit = defineEmits<{
   deleteRole: [RoleUuid]
 }>()
 
-const rolesModelMap = defineModel<Map<string, null | string[]>>({ required: true })
+const rolesModelMap = defineModel<Map<string, string[] | null>>({ required: true })
 const tableScrollContainerRef = ref<HTMLElement | null>(null)
 
 const scroll = useScroll(tableScrollContainerRef)
@@ -41,7 +42,7 @@ const gridColsStyle = computed<string>(() => {
   return `${firstColumn} ${props.roles.map(() => `minmax(200px, auto)`).join(' ')}`
 })
 
-function onUpdatePermissionCheckbox(value: boolean, permissionId: string, roleUuid: RoleUuid): void {
+function onUpdatePermissionCheckbox(value: boolean, permissionId: PermissionId, roleUuid: RoleUuid): void {
   const key = `${permissionId}-${roleUuid}`
 
   const permissionActions = props.permissions.find((permission) => permission.id === permissionId)?.actions ?? null
@@ -71,10 +72,10 @@ function onDeleteRole(roleUuid: RoleUuid): void {
   emit('deleteRole', roleUuid)
 }
 
-function onUpdateActionCheckbox(value: boolean, permissionId: string, roleUuid: RoleUuid, action: string): void {
+function onUpdateActionCheckbox(value: boolean, permissionId: PermissionId, roleUuid: RoleUuid, action: string): void {
   const key = `${permissionId}-${roleUuid}`
 
-  const valueArray = ObjectUtil.deepClone<null | string[] | undefined>(rolesModelMap.value.get(key)) ?? []
+  const valueArray = ObjectUtil.deepClone<string[] | null | undefined>(rolesModelMap.value.get(key)) ?? []
 
   if (!value) {
     const actionIndex = valueArray.indexOf(action)
