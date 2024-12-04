@@ -4,7 +4,7 @@ import type { Field } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import FormGrid from '@/components/app/grid/FormGrid.vue'
-import FormSection from '@/components/form/FormSection.vue'
+import FormFieldset from '@/components/form/FormFieldset.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 
 const props = defineProps<{
@@ -16,7 +16,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <FormSection
+  <FormFieldset
     :description="t('module.user.form.section.name.description')"
     :title="t('user.name')"
   >
@@ -32,5 +32,5 @@ const { t } = useI18n()
         :label="t('user.last_name')"
       />
     </FormGrid>
-  </FormSection>
+  </FormFieldset>
 </template>

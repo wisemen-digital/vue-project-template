@@ -31,9 +31,6 @@ const error = computed<unknown>(() => userIndexQuery.error.value)
         :to="{
           name: 'user-create',
         }"
-        :style="{
-          viewTransitionName: 'header-action',
-        }"
         :data-test-id="TEST_ID.USERS.OVERVIEW.CREATE_BUTTON"
         :label="t('module.user.create.title')"
       />

@@ -7,12 +7,7 @@ import { RouterView } from 'vue-router'
     <slot name="sidebar" />
 
     <div class="z-[1] flex h-dvh flex-1 p-xl pl-xs overflow-hidden flex-col">
-      <div
-        :style="{
-          viewTransitionName: 'page-content',
-        }"
-        class="flex flex-1 flex-col rounded-2xl bg-primary shadow-lg overflow-auto"
-      >
+      <div class="flex flex-1 flex-col rounded-2xl bg-primary shadow-lg overflow-auto">
         <RouterView />
       </div>
     </div>

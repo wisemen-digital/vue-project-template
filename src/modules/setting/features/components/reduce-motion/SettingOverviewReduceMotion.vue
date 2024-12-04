@@ -3,7 +3,7 @@ import { VcSwitch } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import FormSection from '@/components/form/FormSection.vue'
+import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable'
 
 const { t } = useI18n()
@@ -27,7 +27,7 @@ const description = computed<string>(() => {
 </script>
 
 <template>
-  <FormSection
+  <FormFieldset
     :title="t('module.setting.reduce_motion.title')"
     :description="t('module.setting.reduce_motion.description')"
   >
@@ -37,5 +37,5 @@ const description = computed<string>(() => {
       :label="label"
       :hint="description"
     />
-  </FormSection>
+  </FormFieldset>
 </template>

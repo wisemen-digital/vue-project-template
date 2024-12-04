@@ -15,7 +15,6 @@ import { useFontSize } from '@/composables/font-size/fontSize.composable'
 import { useLanguage } from '@/composables/language/language.composable'
 import { useReduceMotion } from '@/composables/reduce-motion/reduceMotion.composable'
 import { useRefreshPrompt } from '@/composables/refresh-prompt/refreshPrompt.composable'
-import { useRouterViewTransition } from '@/composables/router-view-transition/routerViewTransition.composable'
 import { useTheme } from '@/composables/theme/theme.composable'
 import { logBuildInformation } from '@/constants/environment.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
@@ -30,11 +29,9 @@ const theme = useTheme()
 setTemplate('{title} | $projectName')
 
 useRefreshPrompt()
-
 useFontSize()
 useLanguage()
 useReduceMotion()
-useRouterViewTransition()
 
 logBuildInformation()
 

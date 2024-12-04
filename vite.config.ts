@@ -31,9 +31,6 @@ export default defineConfig({
     tailwindcss(),
     viteCompression(),
     VitePWA({
-      devOptions: {
-        enabled: false,
-      },
       includeAssets: [
         'favicon.ico',
         'apple-touch-icon.png',

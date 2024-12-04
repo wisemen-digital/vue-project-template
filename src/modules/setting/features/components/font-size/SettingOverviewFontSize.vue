@@ -2,7 +2,7 @@
 import { VcSelect } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import FormSection from '@/components/form/FormSection.vue'
+import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable'
 
 const { t } = useI18n()
@@ -11,7 +11,7 @@ const fontSizeSelect = useFontSizeSelect()
 </script>
 
 <template>
-  <FormSection
+  <FormFieldset
     :title="t('module.setting.font_size.title')"
     :description="t('module.setting.font_size.description')"
   >
@@ -22,5 +22,5 @@ const fontSizeSelect = useFontSizeSelect()
       :label="t('module.setting.font_size.title')"
       class="w-72"
     />
-  </FormSection>
+  </FormFieldset>
 </template>

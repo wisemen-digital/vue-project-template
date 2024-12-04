@@ -67,6 +67,7 @@ const toggleBtnLabel = computed<string>(() => {
             <VcKeyboardShortcut
               v-if="isKeyboardShortcutHintVisible"
               :keyboard-keys="keys"
+              keyboard-classes="bg-white/10 text-white"
             />
           </div>
         </template>

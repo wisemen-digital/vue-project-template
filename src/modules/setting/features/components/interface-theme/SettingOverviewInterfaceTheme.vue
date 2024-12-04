@@ -9,10 +9,9 @@ import {
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import FormSection from '@/components/form/FormSection.vue'
+import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useTheme } from '@/composables/theme/theme.composable'
 import SettingOverviewMiniDashboard from '@/modules/setting/features/components/interface-theme/SettingOverviewMiniDashboard.vue'
-import { BrowserUtil } from '@/utils/browser.util'
 
 type ThemeValue = 'dark' | 'light' | 'system'
 
@@ -38,15 +37,7 @@ const themes = computed<RadioGroupItem<ThemeValue>[]>(() => [
 const value = computed<'dark' | 'light' | 'system'>({
   get: () => darkMode.value.value,
   set: (value) => {
-    if (!BrowserUtil.hasSupportForViewTransition()) {
-      darkMode.value.value = value
-
-      return
-    }
-
-    document.startViewTransition(() => {
-      darkMode.value.value = value
-    })
+    darkMode.value.value = value
   },
 })
 
@@ -64,7 +55,7 @@ function getIsDarkModeEnabled(value: 'dark' | 'light' | 'system'): boolean {
 </script>
 
 <template>
-  <FormSection
+  <FormFieldset
     :title="t('module.setting.interface_theme.title')"
     :description="t('module.setting.interface_theme.description')"
   >
@@ -96,5 +87,5 @@ function getIsDarkModeEnabled(value: 'dark' | 'light' | 'system'): boolean {
         </div>
       </template>
     </VcRadioGroup>
-  </FormSection>
+  </FormFieldset>
 </template>

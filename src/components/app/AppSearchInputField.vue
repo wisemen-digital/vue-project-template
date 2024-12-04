@@ -79,10 +79,10 @@ function onClearInput(): void {
             :style-config="{
               '--icon-button-size-default': '2rem',
               '--icon-button-icon-size-default': '1rem',
-              '--button-ring-color-focus': 'transparent',
-              '--button-bg-color-focus': 'var(--bg-secondary-hover)',
-              '--button-bg-color-disabled': 'transparent',
-              '--button-border-color-disabled': 'transparent',
+              '--icon-button-ring-color-focus': 'transparent',
+              '--icon-button-bg-color-focus': 'var(--bg-secondary-hover)',
+              '--icon-button-bg-color-disabled': 'transparent',
+              '--icon-button-border-color-disabled': 'transparent',
             }"
             :label="t('component.search_input.clear')"
             variant="tertiary"

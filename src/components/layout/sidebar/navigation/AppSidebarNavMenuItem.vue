@@ -90,7 +90,7 @@ const props = defineProps<{
 
     <template #content>
       <div class="flex items-center px-md py-sm">
-        <span class="text-xs">
+        <span class="text-xs text-white">
           {{ props.item.label }}
         </span>
       </div>

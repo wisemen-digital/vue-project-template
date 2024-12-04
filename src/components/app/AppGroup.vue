@@ -3,16 +3,18 @@ import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{
   align?: 'center' | 'end' | 'start'
+  direction?: 'col' | 'row'
+  gap?: '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '10xl' | '11xl' | 'lg' | 'md' | 'none' | 'sm' | 'xl' | 'xs'
   justify?: 'between' | 'center' | 'end' | 'start'
-  spacing?: '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '10xl' | '11xl' | 'lg' | 'md' | 'none' | 'sm' | 'xl' | 'xs'
 }>(), {
   align: 'center',
+  direction: 'row',
+  gap: 'md',
   justify: 'start',
-  spacing: 'md',
 })
 
 const gapClass = computed<string>(() => {
-  switch (props.spacing) {
+  switch (props.gap) {
     case '2xl':
       return 'gap-2xl'
     case '3xl':
@@ -77,11 +79,22 @@ const alignClass = computed<string>(() => {
       return 'items-start'
   }
 })
+
+const directionClass = computed<string>(() => {
+  switch (props.direction) {
+    case 'col':
+      return 'flex-col'
+    case 'row':
+      return 'flex-row'
+    default:
+      return 'flex-row'
+  }
+})
 </script>
 
 <template>
   <div
-    :class="[alignClass, justifyClass, gapClass]"
+    :class="[alignClass, justifyClass, gapClass, directionClass]"
     class="flex"
   >
     <slot />

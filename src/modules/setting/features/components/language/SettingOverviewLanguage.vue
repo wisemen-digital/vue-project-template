@@ -2,7 +2,7 @@
 import { VcSelect } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import FormSection from '@/components/form/FormSection.vue'
+import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useLanguageSelect } from '@/composables/language/language.composable'
 
 const { t } = useI18n()
@@ -11,7 +11,7 @@ const languageSelect = useLanguageSelect()
 </script>
 
 <template>
-  <FormSection
+  <FormFieldset
     :title="t('module.setting.language.title')"
     :description="t('module.setting.language.description')"
   >
@@ -22,5 +22,5 @@ const languageSelect = useLanguageSelect()
       :label="t('module.setting.language.title')"
       class="w-72"
     />
-  </FormSection>
+  </FormFieldset>
 </template>
