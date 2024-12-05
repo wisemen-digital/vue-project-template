@@ -39,8 +39,8 @@ dependencies:
     specifier: 2.1.0
     version: 2.1.0
   '@wisemen/vue-core':
-    specifier: file:/Users/wouter/Documents/Wisemen/Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz
-    version: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz(@babel/core@7.26.0)(sass@1.81.0)(svelte@5.5.3)(typescript@5.6.3)(vite@5.4.11)(vue-i18n@10.0.4)(vue@3.5.13)
+    specifier: 1.0.0-alpha.14
+    version: 1.0.0-alpha.14(@babel/core@7.26.0)(sass@1.81.0)(svelte@5.5.3)(typescript@5.6.3)(vite@5.4.11)(vue-i18n@10.0.4)(vue@3.5.13)
   '@wisemen/vue-core-auth':
     specifier: 0.0.5
     version: 0.0.5
@@ -5692,6 +5692,40 @@ packages:
       - '@vue/composition-api'
       - vue
     dev: true
+
+  /@wisemen/vue-core@1.0.0-alpha.14(@babel/core@7.26.0)(sass@1.81.0)(svelte@5.5.3)(typescript@5.6.3)(vite@5.4.11)(vue-i18n@10.0.4)(vue@3.5.13):
+    resolution: {integrity: sha512-6sSHbnXp03qsEfJ18x+RkK0ZDKb3p3mTYS86U40yehViB1hpeHW29ksScjxbYJ3sX+p1g8sVbAlh0ueyU2rvGg==}
+    peerDependencies:
+      vue: 3.5.12
+      vue-i18n: 10.0.4
+    dependencies:
+      '@googlemaps/js-api-loader': 1.16.8
+      '@internationalized/date': 3.5.4
+      '@tailwindcss/vite': 4.0.0-beta.4(@babel/core@7.26.0)(postcss@8.4.38)(sass@1.81.0)(svelte@5.5.3)(typescript@5.6.3)(vite@5.4.11)
+      '@vuepic/vue-datepicker': 9.0.2(vue@3.5.13)
+      axios: 1.7.3
+      date-fns: 3.6.0
+      defu: 6.1.4
+      postcss: 8.4.38
+      reka-ui: 1.0.0-alpha.5(vue@3.5.13)
+      tailwindcss: 4.0.0-beta.4
+      vue: 3.5.13(typescript@5.6.3)
+      vue-i18n: 10.0.4(vue@3.5.13)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@vue/composition-api'
+      - coffeescript
+      - debug
+      - less
+      - postcss-load-config
+      - pug
+      - sass
+      - stylus
+      - sugarss
+      - svelte
+      - typescript
+      - vite
+    dev: false
 
   /abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -12406,40 +12440,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-  file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz(@babel/core@7.26.0)(sass@1.81.0)(svelte@5.5.3)(typescript@5.6.3)(vite@5.4.11)(vue-i18n@10.0.4)(vue@3.5.13):
-    resolution: {integrity: sha512-ApoaEinBzUwJV3mMdTQG50u6EWXr8qMFqC1ncXaoCr6zzhumTSK8hCinFz9KipvjmJJf68kZ+68auZFZ8zy01g==, tarball: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz}
-    id: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz
-    name: '@wisemen/vue-core'
-    version: 1.0.0-alpha.13
-    peerDependencies:
-      vue: 3.5.12
-      vue-i18n: 10.0.4
-    dependencies:
-      '@googlemaps/js-api-loader': 1.16.8
-      '@internationalized/date': 3.5.4
-      '@tailwindcss/vite': 4.0.0-beta.4(@babel/core@7.26.0)(postcss@8.4.38)(sass@1.81.0)(svelte@5.5.3)(typescript@5.6.3)(vite@5.4.11)
-      '@vuepic/vue-datepicker': 9.0.2(vue@3.5.13)
-      axios: 1.7.3
-      date-fns: 3.6.0
-      defu: 6.1.4
-      postcss: 8.4.38
-      reka-ui: 1.0.0-alpha.5(vue@3.5.13)
-      tailwindcss: 4.0.0-beta.4
-      vue: 3.5.13(typescript@5.6.3)
-      vue-i18n: 10.0.4(vue@3.5.13)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@vue/composition-api'
-      - coffeescript
-      - debug
-      - less
-      - postcss-load-config
-      - pug
-      - sass
-      - stylus
-      - sugarss
-      - svelte
-      - typescript
-      - vite
-    dev: false
