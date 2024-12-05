@@ -4,6 +4,11 @@ import playwright from 'eslint-plugin-playwright'
 export default [
   ...(await eslintVueConfig),
   {
+    ignores: [
+      'src/client',
+    ],
+  },
+  {
     rules: {
       '@intlify/vue-i18n/no-dynamic-keys': 'off',
       '@intlify/vue-i18n/no-raw-text': 'off',

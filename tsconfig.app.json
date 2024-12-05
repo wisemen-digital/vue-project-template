@@ -10,7 +10,6 @@
     },
     "types": ["vite-plugin-pwa/client"],
     "allowImportingTsExtensions": true,
-
     /* Linting */
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
