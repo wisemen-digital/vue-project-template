@@ -101,7 +101,7 @@ function onUpdateActionCheckbox(value: boolean, permissionId: PermissionId, role
     class="col-span-full grid grid-cols-subgrid border-b border-solid border-secondary"
   >
     <div
-      class="z-30 col-span-full grid grid-cols-subgrid"
+      class="z-2 col-span-full grid grid-cols-subgrid"
     >
       <Component
         :is="permission.actions ? AppUnstyledButton : 'div'"

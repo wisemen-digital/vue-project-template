@@ -23,10 +23,10 @@ function onDeleteRole(roleUuid: RoleUuid): void {
 
 <template>
   <div
-    class="sticky top-0 z-40 col-span-full grid grid-cols-subgrid border-b border-solid border-secondary bg-secondary"
+    class="sticky top-0 z-2 col-span-full grid grid-cols-subgrid border-b border-solid border-secondary bg-secondary"
   >
     <div
-      class="sticky left-0 z-10 flex items-center gap-2 border-r border-solid border-secondary bg-secondary p-3 px-6 text-sm text-secondary"
+      class="sticky left-0 z-1 flex items-center gap-2 border-r border-solid border-secondary bg-secondary p-3 px-6 text-sm text-secondary"
     >
       <span>
         {{ t('module.settings.roles_and_permissions.table.permissions') }}
