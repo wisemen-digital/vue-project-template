@@ -10,13 +10,13 @@ const { t } = useI18n()
 
 const routeTabItems = computed<RouteTabItem[]>(() => [
   {
-    label: t('module.setting.application'),
+    label: t('module.setting.application.title'),
     to: {
       name: 'application-settings',
     },
   },
   {
-    label: t('module.setting.roles_and_permissions'),
+    label: t('module.setting.roles_and_permissions.title'),
     to: {
       name: 'role-and-permission-settings',
     },

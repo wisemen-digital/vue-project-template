@@ -31,7 +31,6 @@
       "open_sidebar": "Zijbalk openen"
     },
     "table": {
-      "page_count": "{startIndex} - {endIndex} van {totalItems}",
       "no_data": {
         "description": "Er zijn momenteel geen gegevens om weer te geven.",
         "title": "Geen gegevens"
@@ -39,13 +38,20 @@
       "no_results": {
         "description": "Er zijn geen resultaten die overeenkomen met de zoekcriteria.",
         "title": "Geen resultaten"
-      }
+      },
+      "page_count": "{startIndex} - {endIndex} van {totalItems}"
     },
     "unsaved_changes_dialog": {
       "cancel": "Blijven bewerken",
       "confirm": "Ja, ik ben zeker",
       "description": "Alle niet-opgeslagen wijzigingen gaan verloren. Weet je zeker dat je wilt doorgaan?",
       "title": "Niet-opgeslagen wijzigingen"
+    }
+  },
+  "enum": {
+    "role": {
+      "admin": "Admin",
+      "user": "User"
     }
   },
   "error": {
@@ -99,6 +105,9 @@
       }
     },
     "setting": {
+      "application": {
+        "title": "Applicatie"
+      },
       "font_size": {
         "default": "Standaard",
         "description": "Pas de lettergrootte aan.",
@@ -108,12 +117,37 @@
         "smaller": "Kleiner",
         "title": "Lettergrootte"
       },
+      "high_contrast": {
+        "description": "Verbeter de leesbaarheid en zichtbaarheid door het verhogen van de contrast tussen UI-elementen.",
+        "disabled": {
+          "description": "Hoog contrast is uitgeschakeld.",
+          "label": "Uitgeschakeld"
+        },
+        "enabled": {
+          "description": "Hoog contrast is ingeschakeld.",
+          "label": "Ingeschakeld"
+        },
+        "title": "Hoog contrast"
+      },
       "interface_theme": {
         "dark": "Donker",
         "description": "Selecteer of pas het UI-thema aan.",
         "light": "Licht",
         "system_preference": "Systeemvoorkeur",
         "title": "Interface-thema"
+      },
+      "keyboard_shortcuts": {
+        "description": "Toetsenbord sneltoetsen zijn altijd ingeschakeld, maar je kunt kiezen of ze worden weergegeven.",
+        "disabled": {
+          "description": "Toetsenbord sneltoetsen zijn verborgen.",
+          "label": "Uitgeschakeld"
+        },
+        "enabled": {
+          "description": "Toetsenbord sneltoetsen zijn zichtbaar.",
+          "label": "Ingeschakeld"
+        },
+        "example_button": "Voorbeeld",
+        "title": "Toetsenbord sneltoetsen"
       },
       "language": {
         "description": "Wijzig je taal.",
@@ -123,45 +157,38 @@
         },
         "title": "Taal"
       },
-      "keyboard_shortcuts": {
-        "title": "Toetsenbord sneltoetsen",
-        "description": "Toetsenbord sneltoetsen zijn altijd ingeschakeld, maar je kunt kiezen of ze worden weergegeven.",
-        "example_button": "Voorbeeld",
-        "enabled": {
-          "label": "Ingeschakeld",
-          "description": "Toetsenbord sneltoetsen zijn zichtbaar."
-        },
-        "disabled": {
-          "label": "Uitgeschakeld",
-          "description": "Toetsenbord sneltoetsen zijn verborgen."
-        }
-      },
-      "high_contrast": {
-        "title": "Hoog contrast",
-        "description": "Verbeter de leesbaarheid en zichtbaarheid door het verhogen van de contrast tussen UI-elementen.",
-        "enabled": {
-          "label": "Ingeschakeld",
-          "description": "Hoog contrast is ingeschakeld."
-        },
-        "disabled": {
-          "label": "Uitgeschakeld",
-          "description": "Hoog contrast is uitgeschakeld."
-        }
-      },
       "reduce_motion": {
         "description": "Verminder het aantal en intensiteit van animaties, hovereffecten en andere bewegende effecten in de applicatie.",
-        "title": "Verminder beweging",
-        "enabled": {
-          "label": "Ingeschakeld",
-          "description": "Je zult minder animaties en hovereffecten zien om beweging te verminderen."
-        },
         "disabled": {
-          "label": "Uitgeschakeld",
-          "description": "Alle animaties en hovereffecten zijn ingeschakeld voor een volledige ervaring."
-        }
+          "description": "Alle animaties en hovereffecten zijn ingeschakeld voor een volledige ervaring.",
+          "label": "Uitgeschakeld"
+        },
+        "enabled": {
+          "description": "Je zult minder animaties en hovereffecten zien om beweging te verminderen.",
+          "label": "Ingeschakeld"
+        },
+        "title": "Verminder beweging"
+      },
+      "roles_and_permissions": {
+        "add_new_role": "Rol aanmaken",
+        "create_role_dialog": {
+          "description": "Maak een nieuwe rol aan",
+          "title": "Nieuwe rol"
+        },
+        "save_changes": "Opslaan",
+        "save_changes_success": "Veranderingen zijn opgeslagen",
+        "title": "Rollen en rechten"
       },
       "subtitle": "Beheer je app-instellingen",
       "title": "Instellingen"
+    },
+    "settings": {
+      "roles_and_permissions": {
+        "table": {
+          "delete_role": "Rol verwijderen",
+          "permissions": "Permissies"
+        }
+      }
     },
     "user": {
       "create": {
@@ -190,8 +217,10 @@
     }
   },
   "shared": {
+    "cancel": "Annuleer",
     "close": "Sluiten",
-    "edit": "Bewerken"
+    "edit": "Bewerken",
+    "save": "Maak aan"
   },
   "user": {
     "birth_date": "Geboortedatum",

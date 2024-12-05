@@ -32,6 +32,7 @@ function onDeleteRole(roleUuid: RoleUuid): void {
         {{ t('module.settings.roles_and_permissions.table.permissions') }}
       </span>
       <VcIcon
+        class="size-4"
         icon="bottomRightCorner"
       />
     </div>

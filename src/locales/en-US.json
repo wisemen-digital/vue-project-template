@@ -31,7 +31,6 @@
       "open_sidebar": "Open sidebar"
     },
     "table": {
-      "page_count": "{startIndex} - {endIndex} of {totalItems}",
       "no_data": {
         "description": "There is currently no data to display.",
         "title": "No data"
@@ -39,13 +38,20 @@
       "no_results": {
         "description": "There are no results matching your search criteria.",
         "title": "No results"
-      }
+      },
+      "page_count": "{startIndex} - {endIndex} of {totalItems}"
     },
     "unsaved_changes_dialog": {
       "cancel": "Keep editing",
       "confirm": "Yes, I'm sure",
       "description": "All unsaved changes will be lost. Are you sure you want to continue?",
       "title": "Unsaved changes"
+    }
+  },
+  "enum": {
+    "role": {
+      "admin": "Admin",
+      "user": "User"
     }
   },
   "error": {
@@ -99,6 +105,9 @@
       }
     },
     "setting": {
+      "application": {
+        "title": "Application"
+      },
       "font_size": {
         "default": "Default",
         "description": "Adjust your font size.",
@@ -108,12 +117,37 @@
         "smaller": "Smaller",
         "title": "Font size"
       },
+      "high_contrast": {
+        "description": "Enhance readability and visibility by increasing the contrast between UI elements.",
+        "disabled": {
+          "description": "High contrast mode is disabled.",
+          "label": "Disabled"
+        },
+        "enabled": {
+          "description": "High contrast mode is enabled.",
+          "label": "Enabled"
+        },
+        "title": "High contrast mode"
+      },
       "interface_theme": {
         "dark": "Dark",
         "description": "Select or customize your UI theme.",
         "light": "Light",
         "system_preference": "System preference",
         "title": "Interface theme"
+      },
+      "keyboard_shortcuts": {
+        "description": "Keyboard shortcuts are always enabled, but you can choose whether to display a hint.",
+        "disabled": {
+          "description": "Keyboard shortcut hints are hidden.",
+          "label": "Disabled"
+        },
+        "enabled": {
+          "description": "Keyboard shortcut hints are visible.",
+          "label": "Enabled"
+        },
+        "example_button": "Example",
+        "title": "Keyboard shortcut hints"
       },
       "language": {
         "description": "Change your language.",
@@ -123,47 +157,38 @@
         },
         "title": "Language"
       },
-      "high_contrast": {
-        "title": "High contrast mode",
-        "description": "Enhance readability and visibility by increasing the contrast between UI elements.",
-        "enabled": {
-          "label": "Enabled",
-          "description": "High contrast mode is enabled."
-        },
-        "disabled": {
-          "label": "Disabled",
-          "description": "High contrast mode is disabled."
-        }
-      },
-      "keyboard_shortcuts": {
-        "title": "Keyboard shortcut hints",
-        "description": "Keyboard shortcuts are always enabled, but you can choose whether to display a hint.",
-        "example_button": "Example",
-        "enabled": {
-          "label": "Enabled",
-          "description": "Keyboard shortcut hints are visible."
-        },
-        "disabled": {
-          "label": "Disabled",
-          "description": "Keyboard shortcut hints are hidden."
-        }
-      },
       "reduce_motion": {
         "description": "Reduce the amount and intensity of animations, hover effects and other moving effects across the application.",
-        "title": "Reduce motion",
-        "enabled": {
-          "label": "Enabled",
-          "description": "You will see fewer animations and hover effects to reduce motion."
-        },
         "disabled": {
-          "label": "Disabled",
-          "description": "All animations and hover effects are enabled for a full experience."
-        }
+          "description": "All animations and hover effects are enabled for a full experience.",
+          "label": "Disabled"
+        },
+        "enabled": {
+          "description": "You will see fewer animations and hover effects to reduce motion.",
+          "label": "Enabled"
+        },
+        "title": "Reduce motion"
+      },
+      "roles_and_permissions": {
+        "add_new_role": "Add Role",
+        "create_role_dialog": {
+          "description": "Create a new role",
+          "title": "Create role"
+        },
+        "save_changes": "Save changes",
+        "save_changes_success": "Changes saved succesfully",
+        "title": "Roles and Permissions"
       },
       "subtitle": "Manage your app settings",
-      "title": "Settings",
-      "roles_and_permissions": "Roles and permissions",
-      "application": "Application"
+      "title": "Settings"
+    },
+    "settings": {
+      "roles_and_permissions": {
+        "table": {
+          "delete_role": "Delete role",
+          "permissions": "Permissiosn"
+        }
+      }
     },
     "user": {
       "create": {
@@ -192,8 +217,10 @@
     }
   },
   "shared": {
+    "cancel": "Cancel",
     "close": "Close",
-    "edit": "Edit"
+    "edit": "Edit",
+    "save": "Create"
   },
   "user": {
     "birth_date": "Birthdate",
@@ -226,11 +253,5 @@
     "too_small_date": "Must be after {count}",
     "too_small_number": "Must be greater than or equal to {count}",
     "too_small_string": "Must be at least {count} character | Must be at least {count} characters"
-  },
-  "enum": {
-    "role": {
-      "admin": "Admin",
-      "user": "User"
-    }
   }
 }

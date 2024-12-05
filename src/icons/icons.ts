@@ -9,6 +9,8 @@ export const icons = {
   googleLogo: import('./GoogleLogoIcon.vue'),
   logout: import('./LogoutIcon.vue'),
   stars: import('./StarsIcon.vue'),
+  threeDots: import('./ThreeDotsIcon.vue'),
+  trashIcon: import('./TrashIcon.vue'),
 } satisfies Record<string, Component>
 
 type CustomIcons = {

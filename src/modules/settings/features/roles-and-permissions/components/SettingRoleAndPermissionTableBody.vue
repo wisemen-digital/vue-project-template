@@ -158,7 +158,7 @@ function onUpdateActionCheckbox(value: boolean, permissionId: PermissionId, role
           <div
             v-for="role of props.roles"
             :key="role.uuid"
-            class="flex justify-center border-r border-solid p-3 last:border-none"
+            class="flex justify-center border-r border-solid border-secondary p-3 last:border-none"
           >
             <VcCheckbox
               :model-value="isActionCheckboxChecked(permission.id, role.uuid, action)"

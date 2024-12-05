@@ -1,0 +1,78 @@
+<script  lang="ts" setup="">
+import { VcDialog, VcTextField } from '@wisemen/vue-core'
+import { useForm } from 'formango'
+import { useI18n } from 'vue-i18n'
+import { z } from 'zod'
+
+import AppDialogActionCancel from '@/components/app/dialog/AppDialogActionCancel.vue'
+import AppDialogActions from '@/components/app/dialog/AppDialogActions.vue'
+import AppDialogContent from '@/components/app/dialog/AppDialogContent.vue'
+import AppDialogHeader from '@/components/app/dialog/AppDialogHeader.vue'
+import AppForm from '@/components/form/AppForm.vue'
+import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
+import { useSettingRoleCreateMutation } from '@/modules/settings/api/mutations/settingRoleCreate.mutation.ts'
+
+const emit = defineEmits<{
+  close: []
+}>()
+
+const { t } = useI18n()
+
+const apiErrorToast = useApiErrorToast()
+const settingsRoleCreateMutation = useSettingRoleCreateMutation()
+
+const { form, onSubmitForm } = useForm({
+  schema: z.object({
+    name: z.string(),
+  }),
+})
+
+const name = form.register('name')
+
+function onClose(): void {
+  emit('close')
+}
+
+onSubmitForm(async (formState) => {
+  try {
+    await settingsRoleCreateMutation.execute({
+      body: formState.name,
+    })
+    onClose()
+  }
+  catch (error) {
+    apiErrorToast.show(error)
+  }
+})
+</script>
+
+<template>
+  <VcDialog
+    @close="onClose"
+  >
+    <AppDialogContent
+      class="w-dialog-sm"
+    >
+      <AppDialogHeader
+        :title="t('module.setting.roles_and_permissions.create_role_dialog.title')"
+        :description="t('module.setting.roles_and_permissions.create_role_dialog.description')"
+      />
+      <div class="py-4">
+        <AppForm :form="form">
+          <VcTextField
+            :label="t('user.name')"
+            v-bind="name"
+          />
+          <AppDialogActions>
+            <AppDialogActionCancel :label="t('shared.cancel')" />
+            <FormSubmitButton
+              :form="form"
+              :label="t('shared.save')"
+            />
+          </AppDialogActions>
+        </AppForm>
+      </div>
+    </AppDialogContent>
+  </VcDialog>
+</template>

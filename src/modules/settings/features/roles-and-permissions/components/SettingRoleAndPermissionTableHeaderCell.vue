@@ -24,7 +24,7 @@ const { t } = useI18n()
 const dropDownItems = computed<DropdownMenuItem[]>(() => ([
   {
     isDestructive: true,
-    icon: 'settings',
+    icon: 'trash',
     label: t('module.settings.roles_and_permissions.table.delete_role'),
     type: 'option',
     onSelect: (): void => {
@@ -47,7 +47,7 @@ const dropDownItems = computed<DropdownMenuItem[]>(() => ([
       <template #trigger>
         <AppUnstyledButton>
           <VcIcon
-            icon="alertCircle"
+            icon="threeDots"
             class="size-4"
           />
         </AppUnstyledButton>

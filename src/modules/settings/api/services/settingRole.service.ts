@@ -30,26 +30,6 @@ export class SettingRoleService {
       url: '/roles',
     })
 
-    const mockData: Role[] = [
-      {
-        uuid: '1',
-        name: 'HR',
-        permissions: [
-          {
-            id: 'user',
-            actions: [
-              'create',
-              'read',
-              'update',
-              'delete',
-            ],
-          },
-        ],
-      },
-    ]
-
-    return mockData
-
     return dto.map(RoleTransformer.fromDto)
   }
 

@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { useToast } from '@wisemen/vue-core'
+import {
+  useDialog,
+  useToast,
+  VcButton,
+} from '@wisemen/vue-core'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElementSpacer.vue'
+import AppTeleport from '@/components/app/teleport/AppTeleport.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { useUnsavedChanges } from '@/composables/unsaved-changes/unsavedChanges.composable'
 import type { Permission } from '@/models/permission/permission.model'
@@ -22,10 +28,10 @@ const { t } = useI18n()
 const apiErrorToast = useApiErrorToast()
 const toast = useToast()
 
-// const addRoleDialog = useDialog({
-//   component: () => import('@/modules/settings/features/users/components/RolesAndPermissionsAddRoleDialog.vue'),
-// })
-const settingsRoleDelte = useSettingRoleDeleteMutation()
+const addRoleDialog = useDialog({
+  component: () => import('@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionRoleCreateDialog.vue'),
+})
+const settingsRoleDeleteMutation = useSettingRoleDeleteMutation()
 const rolesModelMap = ref<Map<string, string[] | null>>(
   new Map(
     RoleAndPermissionTableUtil.createGrid(
@@ -42,13 +48,15 @@ const isRolesModelMapChanged = computed<boolean>(() => {
   return !RoleAndPermissionTableUtil.isTableStateEqual(rolesModelMap.value, rolesModelMapSnapshot.value)
 })
 
-// function onAddNewRoleButtonClick(): void {
-//   addRoleDialog.open()
-// }
+function onAddNewRoleButtonClick(): void {
+  addRoleDialog.open({
+    id: 'addRole',
+  })
+}
 
 async function onDeleteRow(roleUuid: RoleUuid): Promise<void> {
   try {
-    await settingsRoleDelte.execute({
+    await settingsRoleDeleteMutation.execute({
       body: roleUuid,
     })
   }
@@ -64,7 +72,7 @@ async function onSaveChangesButtonClick(): Promise<void> {
     })
 
     toast.success({
-      message: 'Suc6',
+      message: t('module.setting.roles_and_permissions.save_changes_success'),
     })
 
     resetRolesModelMapSnapshot()
@@ -82,12 +90,28 @@ useUnsavedChanges(isRolesModelMapChanged)
 </script>
 
 <template>
-  <div>
+  <AppVerticalFormElementSpacer>
+    <AppTeleport to="headerActions">
+      <VcButton
+        icon-left="plus"
+        @click="onAddNewRoleButtonClick"
+      >
+        {{ t('module.setting.roles_and_permissions.add_new_role') }}
+      </VcButton>
+    </AppTeleport>
     <SettingRoleAndPermissionTable
       v-model="rolesModelMap"
       :permissions="props.permissions"
       :roles="props.roles"
-      @delete-row="onDeleteRow"
+      @delete-role="onDeleteRow"
     />
-  </div>
+    <div class="flex justify-end">
+      <VcButton
+        :is-disabled="!isRolesModelMapChanged"
+        @click="onSaveChangesButtonClick"
+      >
+        {{ t('module.setting.roles_and_permissions.save_changes') }}
+      </VcButton>
+    </div>
+  </AppVerticalFormElementSpacer>
 </template>

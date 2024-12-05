@@ -10,18 +10,6 @@ export class SettingPermissionService {
       url: '/permissions',
     })
 
-    return [
-      {
-        id: 'user',
-        actions: [
-          'create',
-          'read',
-          'update',
-          'delete',
-        ],
-      },
-    ]
-
     return PermissionTransformer.fromDto(dto)
   }
 }
