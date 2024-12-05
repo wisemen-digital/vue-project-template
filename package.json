@@ -63,8 +63,6 @@
     "dotenv": "16.4.5",
     "eslint": "9.15.0",
     "eslint-plugin-playwright": "2.1.0",
-    "fs": "0.0.1-security",
-    "fs-extra": "^11.2.0",
     "inquirer": "^12.1.0",
     "jsdom": "25.0.1",
     "postcss": "8.4.49",

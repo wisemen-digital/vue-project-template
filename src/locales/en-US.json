@@ -161,7 +161,9 @@
         }
       },
       "subtitle": "Manage your app settings",
-      "title": "Settings"
+      "title": "Settings",
+      "roles_and_permissions": "Roles and permissions",
+      "application": "Application"
     },
     "user": {
       "create": {
@@ -224,5 +226,11 @@
     "too_small_date": "Must be after {count}",
     "too_small_number": "Must be greater than or equal to {count}",
     "too_small_string": "Must be at least {count} character | Must be at least {count} characters"
+  },
+  "enum": {
+    "role": {
+      "admin": "Admin",
+      "user": "User"
+    }
   }
 }

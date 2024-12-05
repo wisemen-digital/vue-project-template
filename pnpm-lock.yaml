@@ -139,12 +139,6 @@ devDependencies:
   eslint-plugin-playwright:
     specifier: 2.1.0
     version: 2.1.0(eslint@9.15.0)
-  fs:
-    specifier: 0.0.1-security
-    version: 0.0.1-security
-  fs-extra:
-    specifier: ^11.2.0
-    version: 11.2.0
   inquirer:
     specifier: ^12.1.0
     version: 12.1.0(@types/node@22.9.1)
@@ -7709,10 +7703,6 @@ packages:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
 
-  /fs@0.0.1-security:
-    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
-    dev: true
-
   /fsevents@2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -12418,7 +12408,7 @@ packages:
     dev: true
 
   file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz(@babel/core@7.26.0)(sass@1.81.0)(svelte@5.5.3)(typescript@5.6.3)(vite@5.4.11)(vue-i18n@10.0.4)(vue@3.5.13):
-    resolution: {integrity: sha512-HqWlMtdcdFfL5FiitUqzrfk+Y1nc3+2PM5SJKHQoge/1Ntl4uCAfQuqsHoMSEZ8GmBn3Qu3RdqAOOaQXOreoiw==, tarball: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz}
+    resolution: {integrity: sha512-ApoaEinBzUwJV3mMdTQG50u6EWXr8qMFqC1ncXaoCr6zzhumTSK8hCinFz9KipvjmJJf68kZ+68auZFZ8zy01g==, tarball: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz}
     id: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz
     name: '@wisemen/vue-core'
     version: 1.0.0-alpha.13
