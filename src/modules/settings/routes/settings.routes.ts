@@ -7,16 +7,16 @@ export const settingRoutes = [
     path: '/settings',
     component: (): Component => import('@/modules/settings/views/SettingView.vue'),
     redirect: {
-      name: 'application-settings',
+      name: 'settings-application',
     },
     children: [
       {
-        name: 'application-settings',
+        name: 'settings-application',
         path: 'application',
         component: (): Component => import('@/modules/settings/features/application/views/SettingApplicationOverviewView.vue'),
       },
       {
-        name: 'role-and-permission-settings',
+        name: 'settings-role-and-permission',
         path: 'roles-and-permissions',
         component: (): Component => import('@/modules/settings/features/roles-and-permissions/views/SettingRoleAndPermissionDataProviderView.vue'),
       },

@@ -5,6 +5,7 @@ import { ref } from 'vue'
 import AppHeightTransition from '@/components/app/AppHeightTransition.vue'
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import type { Permission } from '@/models/permission/permission.model.ts'
+import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
 import type { PermissionId } from '@/models/permission/permissionId.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
 import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
@@ -18,7 +19,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   togglePermissionTab: [string]
-  updateActionCheckbox: [value: boolean, permissionId: PermissionId, roleUuid: RoleUuid, action: string]
+  updateActionCheckbox: [value: boolean, permissionId: PermissionId, roleUuid: RoleUuid, action: PermissionAction]
   updatePermissionCheckbox: [value: boolean, permissionId: PermissionId, roleUuid: RoleUuid]
 }>()
 
@@ -54,7 +55,7 @@ function isPermissionCheckboxChecked(permissionId: PermissionId, roleUuid: RoleU
   return value.length > 0
 }
 
-function isActionCheckboxChecked(permissionId: PermissionId, roleUuid: RoleUuid, action: string): boolean {
+function isActionCheckboxChecked(permissionId: PermissionId, roleUuid: RoleUuid, action: PermissionAction): boolean {
   const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key) ?? null
 
@@ -86,7 +87,12 @@ function onUpdatePermissionCheckbox(value: boolean, permissionId: PermissionId, 
   emit('updatePermissionCheckbox', value, permissionId, roleUuid)
 }
 
-function onUpdateActionCheckbox(value: boolean, permissionId: PermissionId, roleUuid: RoleUuid, action: string): void {
+function onUpdateActionCheckbox(
+  value: boolean,
+  permissionId: PermissionId,
+  roleUuid: RoleUuid,
+  action: PermissionAction,
+): void {
   emit('updateActionCheckbox', value, permissionId, roleUuid, action)
 }
 </script>

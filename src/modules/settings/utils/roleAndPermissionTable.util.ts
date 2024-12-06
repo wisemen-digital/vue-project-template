@@ -2,9 +2,15 @@ import type { Permission } from '@/models/permission/permission.model.ts'
 import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
 
+export type RoleAndPermissionTableMapValue = string[] | null
+export type RoleAndPermissionTableMapId = string
+
 export class RoleAndPermissionTableUtil {
-  static createGrid(permissions: Permission[], roles: Role[]): Map<string, string[] | null> {
-    const grid = new Map<string, string[] | null>()
+  static createGrid(
+    permissions: Permission[],
+    roles: Role[],
+  ): Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue> {
+    const grid = new Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>()
 
     permissions.forEach((permission) => {
       roles.forEach((role) => {
@@ -47,7 +53,11 @@ export class RoleAndPermissionTableUtil {
     return true
   }
 
-  static mapGridToRoles(grid: Map<string, string[] | null>, permissions: Permission[], roles: Role[]): Role[] {
+  static mapGridToRoles(
+    grid: Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>,
+    permissions: Permission[],
+    roles: Role[],
+  ): Role[] {
     const roleArray: Role[] = []
 
     permissions.forEach((permission) => {

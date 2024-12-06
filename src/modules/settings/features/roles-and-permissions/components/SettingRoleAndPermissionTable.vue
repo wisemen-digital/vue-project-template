@@ -3,11 +3,16 @@ import { useScroll } from '@vueuse/core'
 import { computed, ref } from 'vue'
 
 import type { Permission } from '@/models/permission/permission.model.ts'
+import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
 import type { PermissionId } from '@/models/permission/permissionId.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
 import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
 import SettingRoleAndPermissionTableBody from '@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionTableBody.vue'
 import SettingRoleAndPermissionTableHeader from '@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionTableHeader.vue'
+import type {
+  RoleAndPermissionTableMapId,
+  RoleAndPermissionTableMapValue,
+} from '@/modules/settings/utils/roleAndPermissionTable.util.ts'
 import { ObjectUtil } from '@/utils/object.util'
 
 const props = defineProps<{
@@ -19,7 +24,7 @@ const emit = defineEmits<{
   deleteRole: [RoleUuid]
 }>()
 
-const rolesModelMap = defineModel<Map<string, string[] | null>>({ required: true })
+const rolesModelMap = defineModel<Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>>({ required: true })
 const tableScrollContainerRef = ref<HTMLElement | null>(null)
 
 const scroll = useScroll(tableScrollContainerRef)
@@ -70,7 +75,12 @@ function onDeleteRole(roleUuid: RoleUuid): void {
   emit('deleteRole', roleUuid)
 }
 
-function onUpdateActionCheckbox(value: boolean, permissionId: PermissionId, roleUuid: RoleUuid, action: string): void {
+function onUpdateActionCheckbox(
+  value: boolean,
+  permissionId: PermissionId,
+  roleUuid: RoleUuid,
+  action: PermissionAction,
+): void {
   const key = `${permissionId}-${roleUuid}`
 
   const valueArray = ObjectUtil.deepClone<string[] | null | undefined>(rolesModelMap.value.get(key)) ?? []

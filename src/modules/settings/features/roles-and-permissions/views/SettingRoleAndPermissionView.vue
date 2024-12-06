@@ -17,7 +17,11 @@ import type { RoleUuid } from '@/models/role/roleUuid.model'
 import { useSettingRoleBulkUpdateMutation } from '@/modules/settings/api/mutations/settingRoleBulkUpdate.mutation'
 import { useSettingRoleDeleteMutation } from '@/modules/settings/api/mutations/settingRoleDelete.mutation'
 import SettingRoleAndPermissionTable from '@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionTable.vue'
-import { RoleAndPermissionTableUtil } from '@/modules/settings/utils/roleAndPermissionTable.util'
+import {
+  type RoleAndPermissionTableMapId,
+  type RoleAndPermissionTableMapValue,
+  RoleAndPermissionTableUtil,
+} from '@/modules/settings/utils/roleAndPermissionTable.util'
 
 const props = defineProps<{
   permissions: Permission[]
@@ -32,7 +36,7 @@ const addRoleDialog = useDialog({
   component: () => import('@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionRoleCreateDialog.vue'),
 })
 const settingsRoleDeleteMutation = useSettingRoleDeleteMutation()
-const rolesModelMap = ref<Map<string, string[] | null>>(
+const rolesModelMap = ref<Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>>(
   new Map(
     RoleAndPermissionTableUtil.createGrid(
       props.permissions,
@@ -42,7 +46,9 @@ const rolesModelMap = ref<Map<string, string[] | null>>(
 )
 const settingsRolesBulkUpdateMutation = useSettingRoleBulkUpdateMutation()
 
-const rolesModelMapSnapshot = ref<Map<string, string[] | null>>(new Map(rolesModelMap.value))
+const rolesModelMapSnapshot = ref<Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>>(
+  new Map(rolesModelMap.value),
+)
 
 const isRolesModelMapChanged = computed<boolean>(() => {
   return !RoleAndPermissionTableUtil.isTableStateEqual(rolesModelMap.value, rolesModelMapSnapshot.value)

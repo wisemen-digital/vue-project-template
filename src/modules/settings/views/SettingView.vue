@@ -12,13 +12,13 @@ const routeTabItems = computed<RouteTabItem[]>(() => [
   {
     label: t('module.setting.application.title'),
     to: {
-      name: 'application-settings',
+      name: 'settings-application',
     },
   },
   {
     label: t('module.setting.roles_and_permissions.title'),
     to: {
-      name: 'role-and-permission-settings',
+      name: 'settings-role-and-permission',
     },
   },
 ])
