@@ -11,7 +11,7 @@ import { useI18n } from 'vue-i18n'
 
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useTheme } from '@/composables/theme/theme.composable'
-import SettingOverviewMiniDashboard from '@/modules/setting/features/components/interface-theme/SettingOverviewMiniDashboard.vue'
+import SettingApplicationOverviewMiniDashboard from '@/modules/settings/features/application/components/interface-theme/SettingApplicationOverviewMiniDashboard.vue'
 
 type ThemeValue = 'dark' | 'light' | 'system'
 
@@ -76,7 +76,7 @@ function getIsDarkModeEnabled(value: 'dark' | 'light' | 'system'): boolean {
               :theme="theme"
             >
               <div class="relative h-40 overflow-hidden rounded-xl border-2 border-solid border-transparent bg-tertiary ring-brand-primary-500 ring-offset-1 duration-200 group-focus-visible:ring-2 group-data-[state=checked]:border-brand">
-                <SettingOverviewMiniDashboard class="absolute left-4 top-4" />
+                <SettingApplicationOverviewMiniDashboard class="absolute left-4 top-4" />
               </div>
             </VcThemeProvider>
 

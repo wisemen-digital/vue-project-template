@@ -35,7 +35,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
     ],
     label: t('module.setting.title'),
     to: {
-      name: 'settings-overview',
+      name: 'settings',
     },
     type: 'route',
   },
