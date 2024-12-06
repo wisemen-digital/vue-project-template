@@ -72,7 +72,6 @@
   --color-gray-800: var(--gray-800);
   --color-gray-900: var(--gray-900);
   --color-gray-950: var(--gray-950);
-
   --color-fg-primary: var(--fg-primary);
   --color-fg-secondary: var(--fg-secondary);
   --color-fg-secondary-hover: var(--fg-secondary-hover);
@@ -178,7 +177,7 @@
   --spacing-9xl: 6rem;      /* 96px */
   --spacing-10xl: 8rem;     /* 128px */
   --spacing-11xl: 10rem;    /* 160px */
-  
+
   --radius-*: initial;
   --radius-none: 0rem;      /* 0px */
   --radius-xxs: 0.125rem;   /* 2px */
@@ -196,35 +195,35 @@
   --leading-sm: 1.25rem;           /* 20px */
   --leading-md: 1.5rem;            /* 24px */
   --leading-lg: 1.75rem;           /* 28px */
-  --leading-xl: 2rem;              /* 32px */  
+  --leading-xl: 2rem;              /* 32px */
   --leading-display-xs: 2rem;      /* 32px */
   --leading-display-sm: 2.375rem;  /* 38px */
   --leading-4xl: 2.75rem;          /* 44px */
 
   --text-*: initial;
   --text-xs: 0.75rem;               /* 12px */
-  --text-xs--line-height: 
+  --text-xs--line-height:
     var(--line-height-xs);
   --text-sm: 0.875rem;              /* 14px */
-  --text-sm--line-height: 
+  --text-sm--line-height:
     var(--line-height-sm);
   --text-md: 1rem;                  /* 16px */
-  --text-md--line-height: 
+  --text-md--line-height:
     var(--line-height-md);
   --text-lg: 1.125rem;              /* 18px */
-  --text-lg--line-height: 
+  --text-lg--line-height:
     var(--line-height-lg);
   --text-xl: 1.25rem;               /* 20px */
-  --text-xl--line-height: 
+  --text-xl--line-height:
     var(--line-height-xl);
   --text-display-xs: 1.5rem;        /* 24px */
-  --text-display-xs--line-height: 
+  --text-display-xs--line-height:
     var(--line-height-display-xs);
   --text-display-sm: 1.875rem;      /* 30px */
-  --text-display-sm--line-height: 
+  --text-display-sm--line-height:
     var(--line-height-display-sm);
   --text-4xl: 2.25rem;              /* 36px */
-  --text-4xl--line-height: 
+  --text-4xl--line-height:
     var(--line-height-4xl);
 
     --margin-*: initial;
@@ -298,7 +297,7 @@
   --font-sans: Inter Variable, sans-serif;
 
   --ease-sidebar-collapse: cubic-bezier(0.25, 0.8, 0.25, 1);
-  
+
   --width-dialog-sm: 26rem;
   --width-drawer-lg: 40rem;
   --width-drawer-md: 30rem;

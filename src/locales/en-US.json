@@ -1,4 +1,9 @@
 {
+  "command_menu": {
+    "common_actions": {
+      "title": "Common actions"
+    }
+  },
   "component": {
     "keyboard_shortcut": {
       "then": "then"
@@ -31,7 +36,6 @@
       "open_sidebar": "Open sidebar"
     },
     "table": {
-      "page_count": "{startIndex} - {endIndex} of {totalItems}",
       "no_data": {
         "description": "There is currently no data to display.",
         "title": "No data"
@@ -39,7 +43,8 @@
       "no_results": {
         "description": "There are no results matching your search criteria.",
         "title": "No results"
-      }
+      },
+      "page_count": "{startIndex} - {endIndex} of {totalItems}"
     },
     "unsaved_changes_dialog": {
       "cancel": "Keep editing",
@@ -108,12 +113,37 @@
         "smaller": "Smaller",
         "title": "Font size"
       },
+      "high_contrast": {
+        "description": "Enhance readability and visibility by increasing the contrast between UI elements.",
+        "disabled": {
+          "description": "High contrast mode is disabled.",
+          "label": "Disabled"
+        },
+        "enabled": {
+          "description": "High contrast mode is enabled.",
+          "label": "Enabled"
+        },
+        "title": "High contrast mode"
+      },
       "interface_theme": {
         "dark": "Dark",
         "description": "Select or customize your UI theme.",
         "light": "Light",
         "system_preference": "System preference",
         "title": "Interface theme"
+      },
+      "keyboard_shortcuts": {
+        "description": "Keyboard shortcuts are always enabled, but you can choose whether to display a hint.",
+        "disabled": {
+          "description": "Keyboard shortcut hints are hidden.",
+          "label": "Disabled"
+        },
+        "enabled": {
+          "description": "Keyboard shortcut hints are visible.",
+          "label": "Enabled"
+        },
+        "example_button": "Example",
+        "title": "Keyboard shortcut hints"
       },
       "language": {
         "description": "Change your language.",
@@ -123,42 +153,17 @@
         },
         "title": "Language"
       },
-      "high_contrast": {
-        "title": "High contrast mode",
-        "description": "Enhance readability and visibility by increasing the contrast between UI elements.",
-        "enabled": {
-          "label": "Enabled",
-          "description": "High contrast mode is enabled."
-        },
-        "disabled": {
-          "label": "Disabled",
-          "description": "High contrast mode is disabled."
-        }
-      },
-      "keyboard_shortcuts": {
-        "title": "Keyboard shortcut hints",
-        "description": "Keyboard shortcuts are always enabled, but you can choose whether to display a hint.",
-        "example_button": "Example",
-        "enabled": {
-          "label": "Enabled",
-          "description": "Keyboard shortcut hints are visible."
-        },
-        "disabled": {
-          "label": "Disabled",
-          "description": "Keyboard shortcut hints are hidden."
-        }
-      },
       "reduce_motion": {
         "description": "Reduce the amount and intensity of animations, hover effects and other moving effects across the application.",
-        "title": "Reduce motion",
-        "enabled": {
-          "label": "Enabled",
-          "description": "You will see fewer animations and hover effects to reduce motion."
-        },
         "disabled": {
-          "label": "Disabled",
-          "description": "All animations and hover effects are enabled for a full experience."
-        }
+          "description": "All animations and hover effects are enabled for a full experience.",
+          "label": "Disabled"
+        },
+        "enabled": {
+          "description": "You will see fewer animations and hover effects to reduce motion.",
+          "label": "Enabled"
+        },
+        "title": "Reduce motion"
       },
       "subtitle": "Manage your app settings",
       "title": "Settings"

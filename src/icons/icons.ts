@@ -6,6 +6,7 @@ export const icons = {
   edit: import('./EditIcon.vue'),
   googleLogo: import('./GoogleLogoIcon.vue'),
   logout: import('./LogoutIcon.vue'),
+  search: import('./SearchIcon.vue'),
   stars: import('./StarsIcon.vue'),
 } satisfies Record<string, Component>
 
