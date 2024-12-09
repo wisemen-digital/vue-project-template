@@ -8,6 +8,7 @@
     "production": "vue-tsc --noEmit && vite build --mode production",
     "build": "vite build",
     "preview": "import-meta-env -x .env.e2e && vite preview",
+    "openapi-ts": "openapi-ts -f openapi.config.ts",
     "lint:fix": "eslint . --fix --cache",
     "lint": "eslint . --cache",
     "test:unit": "vitest --run",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@appwise/zod-http-client": "0.0.6",
     "@fontsource-variable/inter": "5.1.0",
+    "@hey-api/client-axios": "0.2.8",
     "@sentry/integrations": "7.114.0",
     "@sentry/tracing": "7.114.0",
     "@sentry/vue": "8.39.0",
@@ -46,6 +48,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
+    "@hey-api/openapi-ts": "0.57.1",
     "@import-meta-env/cli": "0.7.1",
     "@import-meta-env/unplugin": "0.6.0",
     "@playwright/test": "1.49.0",
