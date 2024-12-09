@@ -3,10 +3,14 @@ import type { Component } from 'vue'
 export const icons = {
   appleLogo: import('./AppleLogoIcon.vue'),
   barChartSquare: import('./BarChartSquareIcon.vue'),
+  bottomLeftCorner: import('./BottomLeftCornerIcon.vue'),
+  bottomRightCorner: import('./BottomRightCornerIcon.vue'),
   edit: import('./EditIcon.vue'),
   googleLogo: import('./GoogleLogoIcon.vue'),
   logout: import('./LogoutIcon.vue'),
   stars: import('./StarsIcon.vue'),
+  threeDots: import('./ThreeDotsIcon.vue'),
+  trashIcon: import('./TrashIcon.vue'),
 } satisfies Record<string, Component>
 
 type CustomIcons = {
