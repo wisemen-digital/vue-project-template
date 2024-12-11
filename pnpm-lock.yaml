@@ -145,6 +145,9 @@ devDependencies:
   fs-extra:
     specifier: ^11.2.0
     version: 11.2.0
+  husky:
+    specifier: ^9.1.7
+    version: 9.1.7
   inquirer:
     specifier: ^12.1.0
     version: 12.1.0(@types/node@22.9.1)
@@ -8037,6 +8040,12 @@ packages:
     engines: {node: '>=16.17.0'}
     dev: true
 
+  /husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dev: true
+
   /i18n-iso-countries@7.13.0:
     resolution: {integrity: sha512-pVh4CjdgAHZswI98hzG+1BItQlsQfR+yGDsjDISoWIV/jHDAvCmSyZ5vj2YWwAjfVZ8/BhBDqWcFvuGOyHe4vg==}
     engines: {node: '>= 12'}
@@ -12418,7 +12427,7 @@ packages:
     dev: true
 
   file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz(@babel/core@7.26.0)(sass@1.81.0)(svelte@5.5.3)(typescript@5.6.3)(vite@5.4.11)(vue-i18n@10.0.4)(vue@3.5.13):
-    resolution: {integrity: sha512-HqWlMtdcdFfL5FiitUqzrfk+Y1nc3+2PM5SJKHQoge/1Ntl4uCAfQuqsHoMSEZ8GmBn3Qu3RdqAOOaQXOreoiw==, tarball: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz}
+    resolution: {integrity: sha512-gWHhU3mJgguVGTwAykOoZXB25GAOvZTrAFinf7neXnd8+JzWLWNYUMJ10fq3QFG30qbayrNYMcjv+oDG6/SwZA==, tarball: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz}
     id: file:../../Libraries/wisemen-vue-core/packages/components/wisemen-vue-core-1.0.0-alpha.13.tgz
     name: '@wisemen/vue-core'
     version: 1.0.0-alpha.13

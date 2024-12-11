@@ -14,7 +14,8 @@
     "test:e2e": "npx playwright test",
     "type-check": "vue-tsc --build --force",
     "precommit": "pnpm type-check && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm build",
-    "project-setup": "npx tsx setup.ts"
+    "project-setup": "npx tsx setup.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "@appwise/zod-http-client": "0.0.6",
@@ -65,6 +66,7 @@
     "eslint-plugin-playwright": "2.1.0",
     "fs": "0.0.1-security",
     "fs-extra": "^11.2.0",
+    "husky": "^9.1.7",
     "inquirer": "^12.1.0",
     "jsdom": "25.0.1",
     "postcss": "8.4.49",
