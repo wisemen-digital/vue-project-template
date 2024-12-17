@@ -22,7 +22,11 @@ export class UserIndexTransformer {
 }
 
 export class UserIndexFiltersTransformer {
-  static fromDto(dto: UserIndexFiltersDto): UserIndexFilters {
+  static fromDto(dto?: UserIndexFiltersDto): UserIndexFilters | undefined {
+    if (dto === undefined) {
+      return undefined
+    }
+
     return {
       name: dto.name,
     }

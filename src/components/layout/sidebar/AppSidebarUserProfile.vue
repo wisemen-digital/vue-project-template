@@ -12,6 +12,7 @@ import {
   CURRENT_BUILD_NUMBER,
   CURRENT_ENVIRONMENT,
 } from '@/constants/environment.constant'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { AuthUser } from '@/models/auth-user/authUser.model'
 
 const props = defineProps<{
@@ -94,6 +95,7 @@ const authUserInitials = computed<string>(() => (
 
     <VcDropdownMenuTrigger>
       <button
+        :data-test-id="TEST_ID.APP_PAGE.USER_BUTTON"
         type="button"
         class="flex w-full items-center gap-x-xl rounded-full text-left outline-none ring-brand-primary-500 ring-offset-1 duration-200 focus-visible:ring-2"
       >
@@ -122,6 +124,7 @@ const authUserInitials = computed<string>(() => (
           >
             <div
               v-if="!props.isCollapsed"
+              :data-test-id="TEST_ID.APP_PAGE.USER_NAME"
               class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
             >
               <span class="w-full truncate text-left text-sm font-semibold text-primary">

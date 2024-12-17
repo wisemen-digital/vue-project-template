@@ -3,6 +3,7 @@ import { useToast, VcButton } from '@wisemen/vue-core'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import AuthLoginElementTransition from '@/modules/auth/features/login/components/AuthLoginElementTransition.vue'
 import { useAuthStore } from '@/stores/auth.store'
 
@@ -54,6 +55,7 @@ async function onSignInWithZitadel(): Promise<void> {
             <AuthLoginElementTransition delay-class="delay-300">
               <VcButton
                 :is-loading="isSigningIn"
+                :test-id="TEST_ID.AUTH.LOGIN.SUBMIT_BUTTON"
                 class="w-full"
                 variant="secondary"
                 @click="onSignInWithZitadel"
