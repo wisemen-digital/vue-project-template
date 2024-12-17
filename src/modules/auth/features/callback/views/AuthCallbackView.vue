@@ -5,6 +5,7 @@ import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const i18n = useI18n()
@@ -45,5 +46,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="h-dvh bg-primary" />
+  <div
+    :data-test-id="TEST_ID.AUTH.CALLBACK"
+    class="h-dvh bg-primary"
+  />
 </template>

@@ -14,7 +14,7 @@
     "test:unit": "vitest --run",
     "test:e2e": "npx playwright test",
     "type-check": "vue-tsc --build --force",
-    "precommit": "pnpm type-check && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm build",
+    "precommit": "pnpm type-check && pnpm lint:fix && pnpm test:unit && pnpm test:e2e && pnpm build",
     "project-setup": "npx tsx setup.ts"
   },
   "dependencies": {

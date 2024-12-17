@@ -29,8 +29,6 @@ setupCustomStyles()
 setupMockServer().then(() => {
   const app = createVueApp(App)
 
-  app.mount('#app')
-
   app.use(i18nPlugin)
   app.use(piniaPlugin)
   app.use(routerPlugin)

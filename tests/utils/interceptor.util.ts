@@ -4,7 +4,7 @@ import type { PaginatedDtoData } from '@/models/paginated-data/paginatedData.mod
 import type { S3FileUploadDto } from '@/models/s3-file/s3FileCreate.model.ts'
 import type { S3FileDto } from '@/models/s3-file/s3FileDto.model.ts'
 
-function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
+export function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
   return {
     items: response,
     meta: {
