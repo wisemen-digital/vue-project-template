@@ -6,11 +6,43 @@ export const zSetUserRolesCommand = z.object({
     roleUuids: z.array(z.string().uuid())
 });
 
+export const zRoleResponse = z.object({
+    uuid: z.string().uuid(),
+    createdAt: z.string().datetime(),
+    updatedAt: z.string().datetime(),
+    name: z.string(),
+    permissions: z.array(z.enum([
+        'admin',
+        'read_only',
+        'user.read',
+        'user.create',
+        'user.update',
+        'user.delete',
+        'role.read',
+        'role.create',
+        'role.update',
+        'role.delete',
+        'contact.create',
+        'contact.read',
+        'contact.update',
+        'contact.delete'
+    ]))
+});
+
+export const zViewMeResponse = z.object({
+    uuid: z.string().uuid(),
+    email: z.string().email(),
+    firstName: z.unknown(),
+    lastName: z.unknown(),
+    roles: z.array(zRoleResponse)
+});
+
 export const zViewUserResponse = z.object({
     uuid: z.string().uuid(),
     email: z.string().email(),
     firstName: z.unknown(),
-    lastName: z.unknown()
+    lastName: z.unknown(),
+    roles: z.array(zRoleResponse)
 });
 
 export const zPaginatedOffsetQuery = z.object({
@@ -55,30 +87,7 @@ export const zViewUsersResponse = z.object({
     meta: zPaginatedOffsetResponseMeta
 });
 
-export const zRoleTransformerType = z.object({
-    uuid: z.string().uuid(),
-    createdAt: z.string().datetime(),
-    updatedAt: z.string().datetime(),
-    name: z.string(),
-    permissions: z.array(z.enum([
-        'admin',
-        'read_only',
-        'user.read',
-        'user.create',
-        'user.update',
-        'user.delete',
-        'role.read',
-        'role.create',
-        'role.update',
-        'role.delete',
-        'contact.create',
-        'contact.read',
-        'contact.update',
-        'contact.delete'
-    ]))
-});
-
-export const zCreateRoleDto = z.object({
+export const zCreateRoleCommand = z.object({
     name: z.string()
 });
 
@@ -87,18 +96,32 @@ export const zPermissionObject = z.object({
     actions: z.array(z.string())
 });
 
-export const zRoleValueDto = z.object({
+export const zUpdateRolesBulkRoleCommand = z.object({
     uuid: z.string(),
     name: z.string(),
     permissions: z.array(zPermissionObject)
 });
 
-export const zUpdateRolesBulkDto = z.object({
-    roles: z.array(zRoleValueDto)
+export const zUpdateRolesBulkCommand = z.object({
+    roles: z.array(zUpdateRolesBulkRoleCommand)
 });
 
-export const zRoleCount = z.object({
-    count: z.number()
+export const zUpdateRoleCommand = z.object({
+    name: z.string()
+});
+
+export const zViewContactIndexResponse = z.object({
+    items: z.array(z.object({
+        uuid: z.string().uuid(),
+        createdAt: z.string().datetime(),
+        updatedAt: z.string().datetime(),
+        isActive: z.boolean(),
+        firstName: z.unknown(),
+        lastName: z.unknown(),
+        email: z.unknown(),
+        phone: z.unknown()
+    })),
+    meta: zPaginatedOffsetResponseMeta
 });
 
 export const zCreateFileDto = z.object({
@@ -201,9 +224,4 @@ export const zContactResponse = z.object({
     lastName: z.unknown(),
     email: z.unknown(),
     phone: z.unknown()
-});
-
-export const zViewContactIndexResponse = z.object({
-    items: z.array(zContactResponse),
-    meta: zPaginatedOffsetResponseMeta
 });

@@ -4,11 +4,28 @@ export type SetUserRolesCommand = {
     roleUuids: Array<string>;
 };
 
+export type RoleResponse = {
+    uuid: string;
+    createdAt: string;
+    updatedAt: string;
+    name: string;
+    permissions: Array<'admin' | 'read_only' | 'user.read' | 'user.create' | 'user.update' | 'user.delete' | 'role.read' | 'role.create' | 'role.update' | 'role.delete' | 'contact.create' | 'contact.read' | 'contact.update' | 'contact.delete'>;
+};
+
+export type ViewMeResponse = {
+    uuid: string;
+    email: string;
+    firstName: string | null;
+    lastName: string | null;
+    roles: Array<RoleResponse>;
+};
+
 export type ViewUserResponse = {
     uuid: string;
     email: string;
     firstName: string | null;
     lastName: string | null;
+    roles: Array<RoleResponse>;
 };
 
 export type PaginatedOffsetQuery = {
@@ -50,15 +67,7 @@ export type ViewUsersResponse = {
     meta: PaginatedOffsetResponseMeta;
 };
 
-export type RoleTransformerType = {
-    uuid: string;
-    createdAt: string;
-    updatedAt: string;
-    name: string;
-    permissions: Array<'admin' | 'read_only' | 'user.read' | 'user.create' | 'user.update' | 'user.delete' | 'role.read' | 'role.create' | 'role.update' | 'role.delete' | 'contact.create' | 'contact.read' | 'contact.update' | 'contact.delete'>;
-};
-
-export type CreateRoleDto = {
+export type CreateRoleCommand = {
     /**
      * The name of the role
      */
@@ -70,21 +79,29 @@ export type PermissionObject = {
     actions: Array<string>;
 };
 
-export type RoleValueDto = {
+export type UpdateRolesBulkRoleCommand = {
     uuid: string;
     name: string;
     permissions: Array<PermissionObject>;
 };
 
-export type UpdateRolesBulkDto = {
-    roles: Array<RoleValueDto>;
+export type UpdateRolesBulkCommand = {
+    roles: Array<UpdateRolesBulkRoleCommand>;
 };
 
-export type RoleCount = {
+export type UpdateRoleCommand = {
     /**
-     * The count of the roles
+     * The name of the role
      */
-    count: number;
+    name: string;
+};
+
+export type ViewContactIndexResponse = {
+    /**
+     * The items for the current page
+     */
+    items: Array<ContactResponse>;
+    meta: PaginatedOffsetResponseMeta;
 };
 
 export type CreateFileDto = {
@@ -151,12 +168,37 @@ export type ContactResponse = {
     phone: string | null;
 };
 
-export type ViewContactIndexResponse = {
-    /**
-     * The items for the current page
-     */
-    items: Array<ContactResponse>;
-    meta: PaginatedOffsetResponseMeta;
+export type SwaggerControllerHandleRedirectData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/oauth2-redirect';
+};
+
+export type SwaggerControllerHandleRedirectResponses = {
+    200: unknown;
+};
+
+export type StatusControllerGetApiStatusData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api';
+};
+
+export type StatusControllerGetApiStatusResponses = {
+    200: unknown;
+};
+
+export type StatusControllerGetHealthStatusData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/health';
+};
+
+export type StatusControllerGetHealthStatusResponses = {
+    200: unknown;
 };
 
 export type SetUserRolesControllerUpdateUserV1Data = {
@@ -172,13 +214,29 @@ export type SetUserRolesControllerUpdateUserV1Responses = {
     201: unknown;
 };
 
+export type ViewMeControllerViewMeV1Data = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/users/me';
+};
+
+export type ViewMeControllerViewMeV1Responses = {
+    /**
+     * User details retrieved
+     */
+    200: ViewMeResponse;
+};
+
+export type ViewMeControllerViewMeV1Response = ViewMeControllerViewMeV1Responses[keyof ViewMeControllerViewMeV1Responses];
+
 export type ViewUserControllerViewUserV1Data = {
     body?: never;
     path: {
-        user: string;
+        uuid: string;
     };
     query?: never;
-    url: '/api/v1/users/{user}';
+    url: '/api/v1/users/{uuid}';
 };
 
 export type ViewUserControllerViewUserV1Responses = {
@@ -209,127 +267,6 @@ export type ViewUsersControllerViewUserV1Responses = {
 };
 
 export type ViewUsersControllerViewUserV1Response = ViewUsersControllerViewUserV1Responses[keyof ViewUsersControllerViewUserV1Responses];
-
-export type RoleControllerGetRolesV1Data = {
-    body?: never;
-    url: '/api/v1/roles';
-};
-
-export type RoleControllerGetRolesV1Responses = {
-    /**
-     * The roles has been successfully received.
-     */
-    200: Array<RoleTransformerType>;
-};
-
-export type RoleControllerGetRolesV1Response = RoleControllerGetRolesV1Responses[keyof RoleControllerGetRolesV1Responses];
-
-export type RoleControllerCreateRoleV1Data = {
-    body: CreateRoleDto;
-    url: '/api/v1/roles';
-};
-
-export type RoleControllerCreateRoleV1Responses = {
-    /**
-     * The role has been successfully created.
-     */
-    201: RoleTransformerType;
-};
-
-export type RoleControllerCreateRoleV1Response = RoleControllerCreateRoleV1Responses[keyof RoleControllerCreateRoleV1Responses];
-
-export type RoleControllerUpdateRolesBulkV1Data = {
-    body: UpdateRolesBulkDto;
-    url: '/api/v1/roles/bulk';
-};
-
-export type RoleControllerUpdateRolesBulkV1Responses = {
-    /**
-     * The roles has been successfully created.
-     */
-    201: Array<RoleTransformerType>;
-};
-
-export type RoleControllerUpdateRolesBulkV1Response = RoleControllerUpdateRolesBulkV1Responses[keyof RoleControllerUpdateRolesBulkV1Responses];
-
-export type RoleControllerDeleteRoleV1Data = {
-    body?: never;
-    path: {
-        role: string;
-    };
-    query?: never;
-    url: '/api/v1/roles/{role}';
-};
-
-export type RoleControllerDeleteRoleV1Responses = {
-    /**
-     * The role has been successfully deleted.
-     */
-    200: unknown;
-};
-
-export type RoleControllerGetRoleV1Data = {
-    body?: never;
-    path: {
-        role: string;
-    };
-    query?: never;
-    url: '/api/v1/roles/{role}';
-};
-
-export type RoleControllerGetRoleV1Responses = {
-    /**
-     * The role has been successfully received.
-     */
-    200: RoleTransformerType;
-};
-
-export type RoleControllerGetRoleV1Response = RoleControllerGetRoleV1Responses[keyof RoleControllerGetRoleV1Responses];
-
-export type RoleControllerUpdateRoleV1Data = {
-    body: CreateRoleDto;
-    path: {
-        role: string;
-    };
-    query?: never;
-    url: '/api/v1/roles/{role}';
-};
-
-export type RoleControllerUpdateRoleV1Responses = {
-    /**
-     * The role has been successfully updated.
-     */
-    200: RoleTransformerType;
-};
-
-export type RoleControllerUpdateRoleV1Response = RoleControllerUpdateRoleV1Responses[keyof RoleControllerUpdateRoleV1Responses];
-
-export type RoleControllerGetRoleCountV1Data = {
-    body?: never;
-    path: {
-        role: string;
-    };
-    query?: never;
-    url: '/api/v1/roles/{role}/count';
-};
-
-export type RoleControllerGetRoleCountV1Responses = {
-    /**
-     * The role count has been successfully received.
-     */
-    200: RoleCount;
-};
-
-export type RoleControllerGetRoleCountV1Response = RoleControllerGetRoleCountV1Responses[keyof RoleControllerGetRoleCountV1Responses];
-
-export type PermissionControllerGetPermissionsV1Data = {
-    body?: never;
-    url: '/api/v1/permissions';
-};
-
-export type PermissionControllerGetPermissionsV1Responses = {
-    200: unknown;
-};
 
 export type TypesenseControllerMigrateV1Data = {
     body?: never;
@@ -366,6 +303,8 @@ export type TypesenseControllerImportV1Responses = {
 
 export type TypesenseControllerGetCollectionsV1Data = {
     body?: never;
+    path?: never;
+    query?: never;
     url: '/api/v1/typesense/collections';
 };
 
@@ -376,8 +315,103 @@ export type TypesenseControllerGetCollectionsV1Responses = {
     200: unknown;
 };
 
+export type ViewRolesControllerGetRolesV1Data = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/roles';
+};
+
+export type ViewRolesControllerGetRolesV1Responses = {
+    /**
+     * The roles has been successfully received.
+     */
+    200: ViewContactIndexResponse;
+};
+
+export type ViewRolesControllerGetRolesV1Response = ViewRolesControllerGetRolesV1Responses[keyof ViewRolesControllerGetRolesV1Responses];
+
+export type CreateRoleControllerCreateRoleV1Data = {
+    body: CreateRoleCommand;
+    path?: never;
+    query?: never;
+    url: '/api/v1/roles';
+};
+
+export type CreateRoleControllerCreateRoleV1Responses = {
+    201: unknown;
+};
+
+export type DeleteRoleControllerDeleteRoleV1Data = {
+    body?: never;
+    path: {
+        role: string;
+    };
+    query?: never;
+    url: '/api/v1/roles/{role}';
+};
+
+export type DeleteRoleControllerDeleteRoleV1Responses = {
+    200: unknown;
+};
+
+export type ViewRoleControllerGetRoleV1Data = {
+    body?: never;
+    path: {
+        role: string;
+    };
+    query?: never;
+    url: '/api/v1/roles/{role}';
+};
+
+export type ViewRoleControllerGetRoleV1Responses = {
+    /**
+     * The role has been successfully received.
+     */
+    200: RoleResponse;
+};
+
+export type ViewRoleControllerGetRoleV1Response = ViewRoleControllerGetRoleV1Responses[keyof ViewRoleControllerGetRoleV1Responses];
+
+export type UpdateRoleControllerUpdateRoleV1Data = {
+    body: UpdateRoleCommand;
+    path: {
+        role: string;
+    };
+    query?: never;
+    url: '/api/v1/roles/{role}';
+};
+
+export type UpdateRoleControllerUpdateRoleV1Responses = {
+    201: unknown;
+};
+
+export type UpdateRolesBulkControllerUpdateRolesBulkV1Data = {
+    body: UpdateRolesBulkCommand;
+    path?: never;
+    query?: never;
+    url: '/api/v1/roles/bulk';
+};
+
+export type UpdateRolesBulkControllerUpdateRolesBulkV1Responses = {
+    201: unknown;
+};
+
+export type PermissionControllerGetPermissionsV1Data = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/permissions';
+};
+
+export type PermissionControllerGetPermissionsV1Responses = {
+    200: unknown;
+};
+
 export type FileControllerCreateFileV1Data = {
     body: CreateFileDto;
+    path?: never;
+    query?: never;
     url: '/api/v1/file';
 };
 
@@ -431,24 +465,6 @@ export type FileControllerRemoveFileV1Responses = {
     200: unknown;
 };
 
-export type StatusControllerGetApiStatusData = {
-    body?: never;
-    url: '/api';
-};
-
-export type StatusControllerGetApiStatusResponses = {
-    200: unknown;
-};
-
-export type StatusControllerGetHealthStatusData = {
-    body?: never;
-    url: '/api/health';
-};
-
-export type StatusControllerGetHealthStatusResponses = {
-    200: unknown;
-};
-
 export type ViewContactIndexControllerViewContactIndexV1Data = {
     body?: never;
     path?: never;
@@ -467,6 +483,8 @@ export type ViewContactIndexControllerViewContactIndexV1Response = ViewContactIn
 
 export type CreateContactControllerCreateContactV1Data = {
     body: CreateContactCommand;
+    path?: never;
+    query?: never;
     url: '/api/v1/contacts';
 };
 
