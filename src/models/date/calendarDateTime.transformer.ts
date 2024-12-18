@@ -1,5 +1,3 @@
-import dayjs from 'dayjs'
-
 import type { CalendarDateTime } from '@/models/date/calendarDateTime.model.ts'
 import type { CalendarDateTimeDto } from '@/models/date/calendarDateTimeDto.model.ts'
 
@@ -17,7 +15,7 @@ export class CalendarDateTimeTransformer {
   }
 
   static toDto(date: CalendarDateTime): CalendarDateTimeDto {
-    return dayjs(date).format('YYYY-MM-DD HH:mm') as CalendarDateTimeDto
+    return date.toISOString() as CalendarDateTimeDto
   }
 
   static toNullableDto(date: CalendarDateTime | null): CalendarDateTimeDto | null {

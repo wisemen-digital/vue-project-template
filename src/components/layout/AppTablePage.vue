@@ -8,7 +8,7 @@ const props = withDefaults(
   defineProps<{
     title: string
     breadcrumbs?: BreadcrumbItem[]
-    subtitle?: null | string
+    subtitle?: string | null
   }>(),
   {
     breadcrumbs: () => [],
@@ -26,7 +26,7 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
     :subtitle="props.subtitle"
     :breadcrumbs="props.breadcrumbs"
     :title="props.title"
-    class="h-dvh overflow-hidden"
+    class="max-h-dvh overflow-hidden"
   >
     <template #header-actions>
       <slot name="header-actions" />
@@ -34,7 +34,7 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
 
     <div
       v-if="hasTabsSlot"
-      class="mb-6"
+      class="mb-3xl"
     >
       <slot name="tabs" />
     </div>

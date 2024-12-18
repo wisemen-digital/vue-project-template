@@ -6,12 +6,10 @@ import AppPage from '@/components/layout/AppPage.vue'
 const props = withDefaults(
   defineProps<{
     title: string
-    breadcrumbs?: BreadcrumbItem[] | null
-    subtitle?: null | string
+    breadcrumbs?: BreadcrumbItem[]
   }>(),
   {
-    breadcrumbs: null,
-    subtitle: null,
+    breadcrumbs: () => [],
   },
 )
 </script>
@@ -19,9 +17,8 @@ const props = withDefaults(
 <template>
   <AppPage
     :title="props.title"
-    :subtitle="props.subtitle"
     :breadcrumbs="props.breadcrumbs"
-    class="pb-12"
+    class="pb-6xl"
   >
     <template #header-actions>
       <slot name="header-actions" />

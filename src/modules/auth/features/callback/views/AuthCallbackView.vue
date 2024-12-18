@@ -1,48 +1,53 @@
 <script lang="ts" setup>
-import {
-  useToast,
-  useTypedRouteQuery,
-  useTypedRouter,
-} from '@wisemen/vue-core'
+import { useRouteQuery } from '@vueuse/router'
+import { useToast } from '@wisemen/vue-core'
 import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const i18n = useI18n()
-const router = useTypedRouter()
+const router = useRouter()
 const authStore = useAuthStore()
-
 const toast = useToast()
-
-const routeQuery = useTypedRouteQuery('auth-callback')
+const authorizationCode = useRouteQuery<string | null>('code', null)
 
 onMounted(async () => {
-  const authorizationCode = routeQuery.code?.value
-
-  if (authorizationCode === undefined) {
+  if (authorizationCode.value === null) {
     toast.error({
-      title: i18n.t('auth.callback.login_error.title'),
-      description: i18n.t('auth.callback.login_error.description'),
+      message: i18n.t('module.auth.login.error'),
     })
-    await router.push({ name: 'auth-login' })
+
+    await router.push({
+      name: 'auth-logout',
+    })
 
     return
   }
-
   try {
-    await authStore.loginWithCode(authorizationCode)
-    await router.push({ name: 'index' })
+    await authStore.loginWithCode(authorizationCode.value)
+
+    await router.push({
+      name: 'index',
+    })
   }
   catch (error) {
     toast.error({
-      title: i18n.t('auth.callback.login_error.title'),
-      description: error?.toString(),
+      message: error?.toString() ?? 'Unknown error',
+    })
+
+    await router.push({
+      name: 'auth-logout',
     })
   }
 })
 </script>
 
 <template>
-  <div />
+  <div
+    :data-test-id="TEST_ID.AUTH.CALLBACK"
+    class="h-dvh bg-primary"
+  />
 </template>

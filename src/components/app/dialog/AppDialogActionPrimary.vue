@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { AppButton } from '@wisemen/vue-core'
+import {
+  VcButton,
+  VcKeyboardKey,
+  VcKeyboardShortcutProvider,
+} from '@wisemen/vue-core'
 import {
   computed,
   onMounted,
   ref,
 } from 'vue'
+
+import AppGroup from '@/components/app/AppGroup.vue'
+import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 
 const props = withDefaults(defineProps<{
   isDestructive?: boolean
@@ -18,6 +25,8 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{
   confirm: []
 }>()
+
+const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 
 function onConfirm(): void {
   emit('confirm')
@@ -41,15 +50,28 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppButton
-    :is-loading="props.isLoading"
-    :variant="props.isDestructive ? 'destructive' : 'default'"
-    :keyboard-shortcut="{
+  <VcKeyboardShortcutProvider
+    :config="{
       keys: ['enter'],
       isDisabled: computed<boolean>(() => isFocusedElementAButton),
     }"
-    @click="onConfirm"
+    class="w-full"
   >
-    {{ props.label }}
-  </AppButton>
+    <VcButton
+      :is-loading="props.isLoading"
+      :variant="props.isDestructive ? 'destructive-primary' : 'default'"
+      class="group w-full"
+      @click="onConfirm"
+    >
+      <AppGroup>
+        {{ props.label }}
+
+        <VcKeyboardKey
+          v-if="isKeyboardShortcutHintVisible"
+          keyboard-key="enter"
+          class="border-white/10 bg-white/10 duration-200"
+        />
+      </AppGroup>
+    </VcButton>
+  </VcKeyboardShortcutProvider>
 </template>

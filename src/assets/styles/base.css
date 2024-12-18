@@ -1,0 +1,20 @@
+@import '@wisemen/vue-core/style.css' layer(base);
+@import './colors.css';
+@import './themes/default.css';
+@import './themes/high-contrast.css';
+@import './tailwind.css';
+
+@layer base {
+  body {
+    @apply font-sans flex flex-col min-h-dvh bg-primary;
+  }
+
+  #app {
+    @apply flex flex-col w-full h-full flex-1;
+  }
+
+  img,
+  video {
+    @apply w-full h-full object-cover;
+  }
+}

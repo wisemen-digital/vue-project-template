@@ -18,7 +18,7 @@ describe('useDebounceSearch', () => {
 
     expect(debouncedSearch.value).toBe('')
     expect(search.value).toBe('')
-    expect(isDebouncing.value).toBe(false)
+    expect(isDebouncing.value).toBeFalsy()
   })
 
   it('should be debouncing', () => {
@@ -37,12 +37,12 @@ describe('useDebounceSearch', () => {
     search.value = 'test'
 
     expect(debouncedSearch.value).toBe('')
-    expect(isDebouncing.value).toBe(true)
+    expect(isDebouncing.value).toBeTruthy()
 
     setTimeout(() => {
       expect(debouncedSearch.value).toBe('test')
-      expect(isDebouncing.value).toBe(false)
-      expect(isCallbackCalled).toBe(true)
+      expect(isDebouncing.value).toBeFalsy()
+      expect(isCallbackCalled).toBeTruthy()
     }, 300)
   })
 })

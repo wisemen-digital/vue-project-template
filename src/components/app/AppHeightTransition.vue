@@ -19,7 +19,8 @@ function enter(element: Element): void {
   const width = getComputedStyle(htmlElement).width
 
   htmlElement.style.width = width
-  htmlElement.style.position = 'absolute'
+  // removed, but may need to be added back in
+  // htmlElement.style.position = 'absolute'
   htmlElement.style.visibility = 'hidden'
   htmlElement.style.height = 'auto'
 

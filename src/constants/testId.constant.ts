@@ -1,8 +1,11 @@
 export const TEST_ID = {
   APP_PAGE: {
     TITLE: 'app-page-title',
+    USER_BUTTON: 'app-page-user-button',
+    USER_NAME: 'app-page-user-name',
   },
   AUTH: {
+    CALLBACK: 'auth-callback',
     LOGIN: {
       EMAIL_INPUT: 'login-form-email-input',
       PASSWORD_INPUT: 'login-form-password-input',

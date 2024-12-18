@@ -1,29 +1,15 @@
-import { useLocalStorage } from '@vueuse/core'
-import type { ComputedRef } from 'vue'
-import { computed } from 'vue'
+import { computed, type ComputedRef } from 'vue'
 
-import type { ThemeConstant } from '@/constants/theme.constant.ts'
+import { useHighContrastModeValue } from '@/composables/high-contrast-mode/highContrastMode.composable'
 
-export interface UseThemeReturnType {
-  current: ComputedRef<ThemeConstant | null>
-  set: (value: ThemeConstant | null) => void
-}
+export function useTheme(): ComputedRef<string> {
+  const isHighContrastMode = useHighContrastModeValue()
 
-export function useTheme(): UseThemeReturnType {
-  const theme = useLocalStorage<'' | ThemeConstant>('theme', '')
+  return computed<string>(() => {
+    if (isHighContrastMode.value) {
+      return 'high-contrast'
+    }
 
-  function set(value: ThemeConstant | null): void {
-    theme.value = value ?? ''
-  }
-
-  return {
-    current: computed<ThemeConstant | null>(() => {
-      if (theme.value === '') {
-        return null
-      }
-
-      return theme.value
-    }),
-    set,
-  }
+    return 'default'
+  })
 }

@@ -1,135 +1,73 @@
 <script setup lang="ts">
-import {
-  AppButton,
-  useLoading,
-  useToast,
-  useTypedRouter,
-} from '@wisemen/vue-core'
-import { useForm } from 'formango'
-import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
+import { useToast, VcButton } from '@wisemen/vue-core'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppGrid from '@/components/app/AppGrid.vue'
-import type { CurrentUser } from '@/models/auth/current-user/currentUser.model'
-import { loginStartSessionFormSchema } from '@/models/auth/login/loginStartSessionForm.model.ts'
-import AuthPage from '@/modules/auth/components/AuthPage.vue'
-import { useAuthStore } from '@/stores/auth.store.ts'
+import { TEST_ID } from '@/constants/testId.constant.ts'
+import AuthLoginElementTransition from '@/modules/auth/features/login/components/AuthLoginElementTransition.vue'
+import { useAuthStore } from '@/stores/auth.store'
 
 const authStore = useAuthStore()
 
-const { lastLoggedInUser } = storeToRefs(authStore)
+const isSigningIn = ref<boolean>(false)
 
 const { t } = useI18n()
 const toast = useToast()
-const router = useTypedRouter()
 
-const loadingZitadel = useLoading()
+async function onSignInWithZitadel(): Promise<void> {
+  isSigningIn.value = true
 
-const form = useForm({
-  schema: loginStartSessionFormSchema,
-})
-
-const title = computed<string>(() => {
-  if (lastLoggedInUser.value === null) {
-    return t('auth.login.log_in')
-  }
-
-  return t('auth.login.welcome_back_name', {
-    name: lastLoggedInUser.value.firstName,
-  })
-})
-
-async function handleLoggedIn(user: CurrentUser): Promise<void> {
-  authStore.setLastLoginAttemptEmail(null)
-  authStore.setLastLoggedInUser(user)
-
-  await router.replace({
-    name: 'index',
-  })
-}
-
-async function onLoginWithZitadelClick(): Promise<void> {
   try {
-    loadingZitadel.setState(true)
-
     const loginUrl = await authStore.getLoginUrl()
 
     window.location.replace(loginUrl)
   }
   catch {
-    loadingZitadel.setState(false)
+    isSigningIn.value = false
+
     toast.error({
-      title: t('auth.login.error_toast.title'),
-      description: t('auth.login.error_toast.description'),
+      message: t('module.auth.login.error'),
     })
   }
 }
-
-async function onLoginWithProviderClick(provider: 'apple' | 'google'): Promise<void> {
-  try {
-    loadingZitadel.setState(true)
-
-    window.location.href = await authStore.getIdentityProviderLoginUrl(provider)
-  }
-
-  catch (error) {
-    loadingZitadel.setState(false)
-    toast.error({
-      title: t('auth.login.error_toast.title'),
-      description: error?.toString() ?? t('auth.login.error_toast.description'),
-    })
-  }
-}
-
-form.onSubmitFormError(() => {
-  toast.error({
-    title: t('error.invalid_form_input.title'),
-    description: t('error.invalid_form_input.description'),
-  })
-})
-
-form.onSubmitForm(async (data) => {
-  try {
-    // TODO implement
-    const currentUser = await authStore.getCurrentUser()
-
-    await handleLoggedIn(currentUser)
-  }
-  catch (error) {
-    toast.error({
-      title: t('auth.login.error_toast.title'),
-      description: error?.toString() ?? '',
-    })
-    authStore.setLastLoginAttemptEmail(data.email)
-  }
-})
 </script>
 
 <template>
-  <AuthPage
-    :description="t('auth.login.sign_in_to_continue')"
-    :title="title"
-  >
-    <AppGrid
-      :cols="1"
-      class="w-full"
-    >
-      <AppButton
-        @click="onLoginWithZitadelClick"
-      >
-        {{ t('auth.login.login_with_zitadel') }}
-      </AppButton>
-      <AppButton
-        @click="onLoginWithProviderClick('apple')"
-      >
-        {{ t('auth.login.login_with_apple') }}
-      </AppButton>
-      <AppButton
-        @click="onLoginWithProviderClick('google')"
-      >
-        {{ t('auth.login.login_with_google') }}
-      </AppButton>
-    </AppGrid>
-  </AuthPage>
+  <div class="grid h-dvh grid-cols-1 bg-primary md:grid-cols-2">
+    <div class="relative flex flex-col justify-center px-3xl py-8xl">
+      <div class="z-10 mx-auto w-full max-w-80">
+        <div>
+          <AuthLoginElementTransition delay-class="delay-0">
+            <!-- Not sure why, but wihtout duration-100 the transition is bugged -->
+            <h1 class="text-center text-4xl font-bold text-primary duration-100">
+              {{ t('module.auth.login.title') }}
+            </h1>
+          </AuthLoginElementTransition>
+
+          <AuthLoginElementTransition delay-class="delay-150">
+            <!-- Not sure why, but wihtout duration-100 the transition is bugged -->
+            <p class="relative mt-md text-center text-secondary duration-100">
+              {{ t('module.auth.login.description') }}
+            </p>
+          </AuthLoginElementTransition>
+
+          <div class="mt-4xl flex flex-col gap-y-md">
+            <AuthLoginElementTransition delay-class="delay-300">
+              <VcButton
+                :is-loading="isSigningIn"
+                :test-id="TEST_ID.AUTH.LOGIN.SUBMIT_BUTTON"
+                class="w-full"
+                variant="secondary"
+                @click="onSignInWithZitadel"
+              >
+                {{ t('module.auth.login.sign_in') }}
+              </VcButton>
+            </AuthLoginElementTransition>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-full bg-secondary" />
+  </div>
 </template>

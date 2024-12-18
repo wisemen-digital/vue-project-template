@@ -1,4 +1,5 @@
-import { CalendarDateTransformer } from '@/models/date/calendarDate.transformer.ts'
+import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import type { UserIndexFiltersDto } from '@/models/user/index/userIndexFiltersDto.model'
 
 import type { UserCreateDto } from './create/userCreateDto.model'
 import type { UserCreateForm } from './create/userCreateForm.model'
@@ -13,10 +14,21 @@ export class UserIndexTransformer {
   static fromDto(dto: UserIndexDto): UserIndex {
     return {
       uuid: dto.uuid,
-      birthDate: CalendarDateTransformer.fromDto(dto.birthDate),
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,
+    }
+  }
+}
+
+export class UserIndexFiltersTransformer {
+  static fromDto(dto?: UserIndexFiltersDto): UserIndexFilters | undefined {
+    if (dto === undefined) {
+      return undefined
+    }
+
+    return {
+      name: dto.name,
     }
   }
 }
@@ -25,7 +37,6 @@ export class UserTransformer {
   static fromDto(dto: UserDto): User {
     return {
       uuid: dto.uuid,
-      birthDate: CalendarDateTransformer.fromDto(dto.birthDate),
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,

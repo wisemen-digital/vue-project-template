@@ -1,22 +1,38 @@
-<script setup lang="ts" generic="TRoute extends keyof Routes">
-import { AppRouterLinkButton } from '@wisemen/vue-core'
+<script setup lang="ts">
+import {
+  VcKeyboardShortcutProvider,
+  VcRouterLinkButton,
+} from '@wisemen/vue-core'
 
-import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
-import type { Routes } from '@/routes/routes'
-import type { RouteLocationTyped } from '@/types/router/router.type'
+import AppButtonTooltip from '@/components/app/tooltip/AppButtonTooltip.vue'
+import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
+import type { RouteLocationCurrent } from '@/types/global/vueRouter'
 
 const props = defineProps<{
   label: string
-  to: RouteLocationTyped<TRoute>
+  to: RouteLocationCurrent
 }>()
 </script>
 
 <template>
-  <AppRouterLinkButton
-    :to="props.to"
-    :keyboard-shortcut="KEYBOARD_SHORTCUT.NEW"
-    icon-left="plus"
+  <VcKeyboardShortcutProvider
+    v-slot="{ keys }"
+    :config="{
+      keys: ['n'],
+    }"
   >
-    {{ props.label }}
-  </AppRouterLinkButton>
+    <AppButtonTooltip
+      :label="props.label"
+      :keyboard-shortcut-keys="keys"
+    >
+      <VcRouterLinkButton
+        :to="props.to"
+        :keyboard-shortcut="KEYBOARD_SHORTCUT.NEW"
+        icon-left="plus"
+        size="sm"
+      >
+        {{ props.label }}
+      </VcRouterLinkButton>
+    </AppButtonTooltip>
+  </VcKeyboardShortcutProvider>
 </template>

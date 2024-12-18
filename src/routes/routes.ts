@@ -1,22 +1,18 @@
-import { authMiddleware } from '@/middlewares/auth.middleware.ts'
-import type { AuthRoutes } from '@/modules/auth/routes/auth.routes.ts'
+import type {
+  Component,
+} from 'vue'
+import type { RouteRecordRaw } from 'vue-router'
+
+import { authMiddleware } from '@/middlewares/auth.middleware'
 import { authRoutes } from '@/modules/auth/routes/auth.routes.ts'
-import { type UserRoutes, userRoutes } from '@/modules/user/routes/user.routes'
-import type { RouteRecordTyped } from '@/types/router/router.type'
+import { settingRoutes } from '@/modules/settings/routes/settings.routes'
+import { userRoutes } from '@/modules/user/routes/user.routes'
+import type { RoutesProccessed } from '@/types/global/vueRouter'
 
-export interface Routes extends AuthRoutes, UserRoutes {
-  404: {
-    path: '/:catchAll(.*)'
-  }
-  index: {
-    path: '/'
-  }
-}
-
-export const routes: RouteRecordTyped[] = [
+export const routes = [
   {
     path: '',
-    component: () => import('@/components/layout/AppLayout.vue'),
+    component: (): Component => import('@/components/layout/dashboard/AppDashboardLayout.vue'),
     meta: {
       middleware: [
         authMiddleware,
@@ -34,6 +30,7 @@ export const routes: RouteRecordTyped[] = [
        * Authenticated routes
        */
       ...userRoutes,
+      ...settingRoutes,
     ],
   },
   /**
@@ -41,16 +38,14 @@ export const routes: RouteRecordTyped[] = [
    */
   ...authRoutes,
   {
-    name: 404,
+    name: '404',
     path: '/:catchAll(.*)',
     redirect: {
       name: 'index',
     },
   },
-]
-
-type ProjectRoutes = Routes
+] as const satisfies RouteRecordRaw[]
 
 declare module '@wisemen/vue-core' {
-  interface Routes extends ProjectRoutes {}
+  interface Routes extends RoutesProccessed {}
 }

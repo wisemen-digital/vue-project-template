@@ -7,7 +7,7 @@ export const twMerge = extendTailwindMerge({
         {
           text: [
             'subtext',
-            'caption',
+            'xs',
             'hero',
             'title',
             'subtitle',

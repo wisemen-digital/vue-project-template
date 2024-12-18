@@ -1,51 +1,32 @@
-import type { UserUuid } from '@/models/user/userUuid.model'
-import type { RouteRecordTyped } from '@/types/router/router.type'
+import type { Component } from 'vue'
+import type { RouteRecordRaw } from 'vue-router'
 
-export interface UserRoutes {
-  'user-create': {
-    path: '/users/create'
-  }
-  'user-detail': {
-    params: {
-      userUuid: UserUuid
-    }
-    path: '/users/:userUuid'
-  }
-  'user-overview': {
-    path: '/users'
-  }
-  'user-update': {
-    params: {
-      userUuid: UserUuid
-    }
-    path: '/users/:userUuid/update'
-  }
-}
-
-export const userRoutes: RouteRecordTyped[] = [
+export const userRoutes = [
   {
     path: '/users',
     children: [
       {
         name: 'user-overview',
         path: '',
-        component: () => import('@/modules/user/features/overview/views/UserOverviewView.vue'),
+        component: (): Component => import('@/modules/user/features/overview/views/UserOverviewView.vue'),
       },
       {
         name: 'user-detail',
+        props: true,
         path: ':userUuid',
-        component: () => import('@/modules/user/features/detail/views/UserDetailViewDataProvider.vue'),
+        component: (): Component => import('@/modules/user/features/detail/views/UserDetailViewDataProvider.vue'),
       },
       {
         name: 'user-create',
         path: 'create',
-        component: () => import('@/modules/user/features/create/views/UserCreateView.vue'),
+        component: (): Component => import('@/modules/user/features/create/views/UserCreateView.vue'),
       },
       {
         name: 'user-update',
+        props: true,
         path: ':userUuid/update',
-        component: () => import('@/modules/user/features/update/views/UserUpdateViewDataProvider.vue'),
+        component: (): Component => import('@/modules/user/features/update/views/UserUpdateViewDataProvider.vue'),
       },
     ],
   },
-]
+] as const satisfies RouteRecordRaw[]
