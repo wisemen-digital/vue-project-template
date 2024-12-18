@@ -5,6 +5,8 @@ import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.mode
 import type { UserUuid } from '@/models/user/userUuid.model'
 
 interface ProjectQueryKeys {
+  permissions: void
+  roles: void
   userDetail: {
     userUuid: ComputedRef<UserUuid>
   }

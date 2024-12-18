@@ -4,7 +4,7 @@ import type { PaginatedDtoData } from '@/models/paginated-data/paginatedData.mod
 import type { S3FileUploadDto } from '@/models/s3-file/s3FileCreate.model.ts'
 import type { S3FileDto } from '@/models/s3-file/s3FileDto.model.ts'
 
-function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
+export function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
   return {
     items: response,
     meta: {
@@ -65,8 +65,16 @@ export class InterceptorUtil {
 
     const callCount: Map<string, number> = new Map()
 
-    await page.route(`*/**/api/v1/${url}`, async (route, request) => {
-      await route.fulfill({
+    await page.route(`*/**/api/v1/${url}`, (route) => {
+      if (route.request().method() !== method) {
+        route.fallback()
+
+        return
+      }
+
+      callCount.set(interceptorId, (callCount.get(interceptorId) ?? 0) + 1)
+
+      route.fulfill({
         contentType: 'application/json',
         headers: {
           method,
@@ -75,10 +83,6 @@ export class InterceptorUtil {
         json: data,
         status: 200,
       })
-
-      if (request.method() === method) {
-        callCount.set(interceptorId, (callCount.get(interceptorId) ?? 0) + 1)
-      }
     })
 
     function getCount(): number {
