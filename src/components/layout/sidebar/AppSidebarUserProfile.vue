@@ -13,11 +13,11 @@ import {
   CURRENT_ENVIRONMENT,
 } from '@/constants/environment.constant'
 import { TEST_ID } from '@/constants/testId.constant.ts'
-import type { AuthUser } from '@/models/auth-user/authUser.model'
+import type { User } from '@/models/user/detail/user.model.ts'
 
 const props = defineProps<{
   isCollapsed: boolean
-  authUser: AuthUser
+  authUser: User
   sidebarItemHeightInRem: number
 }>()
 
@@ -58,7 +58,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
 ])
 
 const authUserInitials = computed<string>(() => (
-  `${props.authUser.firstName[0]}${props.authUser.lastName[0]}`
+  `${props.authUser?.firstName?.[0] ?? 0}${props.authUser?.lastName?.[0] ?? 0}`
 ))
 </script>
 
@@ -74,7 +74,7 @@ const authUserInitials = computed<string>(() => (
     <template #content-top>
       <div class="min-w-56 pb-xs">
         <span class="block px-lg py-md text-sm text-primary">
-          {{ props.authUser.fullName }}
+          {{ props.authUser?.fullName ?? '-' }}
         </span>
 
         <AppSeparator />
@@ -128,11 +128,11 @@ const authUserInitials = computed<string>(() => (
               class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
             >
               <span class="w-full truncate text-left text-sm font-semibold text-primary">
-                {{ props.authUser.fullName }}
+                {{ props.authUser.fullName ?? '-' }}
               </span>
 
               <span class="w-full truncate text-sm text-secondary">
-                {{ props.authUser.email }}
+                {{ props.authUser.email ?? '-' }}
               </span>
             </div>
           </Transition>

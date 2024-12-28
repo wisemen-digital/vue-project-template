@@ -27,7 +27,13 @@ const users: UserIndexDto[] = [
 ]
 
 export const userHandlers = [
-  http.get('*/api/v1/users*', () => {
+  http.get('*/api/v1/users*', ({ request }) => {
+    const url = new URL(request.url)
+
+    if (url.pathname === '/api/v1/users/me') {
+      return undefined
+    }
+
     return HttpResponse.json(getPaginatedJson(users))
   }),
 ]

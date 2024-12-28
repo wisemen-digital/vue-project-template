@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import AppSeparator from '@/components/app/AppSeparator.vue'
 import AppSidebarUserProfile from '@/components/layout/sidebar/AppSidebarUserProfile.vue'
-import type { AuthUser } from '@/models/auth-user/authUser.model'
+import type { User } from '@/models/user/detail/user.model.ts'
 
 const props = defineProps<{
   isCollapsed: boolean
-  authUser: AuthUser
+  authUser: User
   sidebarItemHeightInRem: number
 }>()
 
