@@ -27,7 +27,7 @@ function onSignOut(): void {
   <AppDashboardLayoutFloating v-if="authUser !== null">
     <template #sidebar>
       <AppSidebar
-        :auth-user="authUser"
+        :user="authUser"
         :main-items="[
           {
             label: 'General',

@@ -15,9 +15,9 @@ import type {
 import { CssUnitUtil } from '@/utils/cssUnit.util'
 
 const props = withDefaults(defineProps<{
-  authUser: User
   bottomItems?: NavigationItem[]
   mainItems: NavigationGroup[]
+  user: User
   variant: 'fixed-sidebar' | 'floating-content' | 'floating-sidebar'
 }>(), {
   bottomItems: () => [],
@@ -102,7 +102,7 @@ onCreated(() => {
         <AppSidebarBottom
           :is-collapsed="isSidebarCollapsed"
           :sidebar-item-height-in-rem="sidebarItemHeightInRem"
-          :auth-user="props.authUser"
+          :user="props.user"
           @sign-out="onSignOut"
         />
       </div>
