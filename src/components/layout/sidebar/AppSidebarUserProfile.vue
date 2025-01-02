@@ -58,7 +58,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
 ])
 
 const userInitials = computed<string>(() => (
-  `${props.user?.firstName?.[0] ?? 0}${props.user?.lastName?.[0] ?? 0}`
+  `${props.user?.firstName?.[0] ?? '-'}${props.user?.lastName?.[0] ?? ''}`
 ))
 </script>
 

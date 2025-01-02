@@ -33,18 +33,6 @@ export const useAuthStore = defineStore('auth', () => {
 
   const logoutCallback = ref<(() => void) | null>(null)
 
-  // async function getAuthUserSubject(): Promise<UserSubject> {
-  //   if (authUserSubject.value !== null) {
-  //     return authUserSubject.value
-  //   }
-  //
-  //   const user = await oAuthClient.getUserInfo()
-  //
-  //   authUserSubject.value = user.sub as UserSubject
-  //
-  //   return user.sub as UserSubject
-  // }
-
   async function getAuthUser(): Promise<User> {
     if (authUser.value !== null) {
       return authUser.value
