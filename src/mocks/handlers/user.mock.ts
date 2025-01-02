@@ -1,6 +1,8 @@
 import { http, HttpResponse } from 'msw'
 
 import type { PaginatedDtoData } from '@/models/paginated-data/paginatedData.model.ts'
+import { PreferenceDtoBuilder } from '@/models/preference/preferenceDto.builder.ts'
+import type { PreferenceDto } from '@/models/preference/preferenceDto.model.ts'
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.ts'
 import type { UserIndexDto } from '@/models/user/index/userIndexDto.model.ts'
 
@@ -26,7 +28,13 @@ const users: UserIndexDto[] = [
     .build(),
 ]
 
+const PREFERENCE: PreferenceDto = new PreferenceDtoBuilder().build()
+
 export const userHandlers = [
+  http.get('*/api/v1/users/*/preferences', () => {
+    return HttpResponse.json(PREFERENCE)
+  }),
+
   http.get('*/api/v1/users*', ({ request }) => {
     const url = new URL(request.url)
 
@@ -36,4 +44,7 @@ export const userHandlers = [
 
     return HttpResponse.json(getPaginatedJson(users))
   }),
+
+  //   URL: http://api.base.url/api/v1/users/e12de8a2-2428-4413-8e08-e6421b858c99/preferences
+
 ]

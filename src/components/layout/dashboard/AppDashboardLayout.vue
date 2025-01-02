@@ -4,10 +4,14 @@ import { useI18n } from 'vue-i18n'
 
 import AppDashboardLayoutFloating from '@/components/layout/dashboard/AppDashboardLayoutFloating.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
+import { usePreferences } from '@/composables/preference/preferences.composable.ts'
 import type { User } from '@/models/user/detail/user.model.ts'
 import { useAuthStore } from '@/stores/auth.store'
 
 const { t } = useI18n()
+
+usePreferences()
+
 const authStore = useAuthStore()
 
 const authUser = computed<User | null>(() => authStore.authUser)
