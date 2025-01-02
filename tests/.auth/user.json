@@ -6,11 +6,11 @@
       "localStorage": [
         {
           "name": "lang",
-          "value": "nl-BE"
+          "value": "en-US"
         },
         {
           "name": "theme",
-          "value": "system"
+          "value": "light"
         },
         {
           "name": "tokens",
@@ -34,7 +34,7 @@
         },
         {
           "name": "show-keyboard-shortcuts",
-          "value": "false"
+          "value": "true"
         }
       ]
     }

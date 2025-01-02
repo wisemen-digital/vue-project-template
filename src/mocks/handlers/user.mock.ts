@@ -45,6 +45,4 @@ export const userHandlers = [
     return HttpResponse.json(getPaginatedJson(users))
   }),
 
-  //   URL: http://api.base.url/api/v1/users/e12de8a2-2428-4413-8e08-e6421b858c99/preferences
-
 ]
