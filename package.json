@@ -49,7 +49,7 @@
     "@hey-api/openapi-ts": "0.53.10",
     "@import-meta-env/cli": "0.7.0",
     "@import-meta-env/unplugin": "0.6.0",
-    "@playwright/test": "1.48.1",
+    "@playwright/test": "1.49.1",
     "@sentry/vite-plugin": "2.22.6",
     "@tanstack/vue-query-devtools": "5.59.13",
     "@tsconfig/node20": "20.1.4",
