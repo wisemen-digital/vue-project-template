@@ -17,6 +17,7 @@ const props = defineProps<{
   <div v-if="props.navigationItem.type === 'option'">
     <AppTypedRouterLink
       v-slot="{ isActive }"
+      :aria-label="props.navigationItem.label"
       :to="props.navigationItem.to"
       class="block rounded-button"
     >

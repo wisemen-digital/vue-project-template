@@ -55,7 +55,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
   <AppTable
     :columns="columns"
     :data="props.data"
-    :row-to="(row) => ({
+    :row-to="(row: UserIndex) => ({
       name: 'user-detail',
       params: {
         userUuid: row.uuid,
