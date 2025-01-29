@@ -11,6 +11,7 @@ import AppDialogHeader from '@/components/app/dialog/AppDialogHeader.vue'
 import AppForm from '@/components/form/AppForm.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
+import { toFormField } from '@/helpers/formango.helper'
 import { useSettingRoleCreateMutation } from '@/modules/settings/api/mutations/settingRoleCreate.mutation.ts'
 
 const emit = defineEmits<{
@@ -22,10 +23,21 @@ const { t } = useI18n()
 const apiErrorToast = useApiErrorToast()
 const settingsRoleCreateMutation = useSettingRoleCreateMutation()
 
-const { form, onSubmitForm } = useForm({
+const form = useForm({
   schema: z.object({
     name: z.string(),
   }),
+  onSubmit: async (values) => {
+    try {
+      await settingsRoleCreateMutation.execute({
+        body: values.name,
+      })
+      onClose()
+    }
+    catch (error) {
+      apiErrorToast.show(error)
+    }
+  },
 })
 
 const name = form.register('name')
@@ -33,18 +45,6 @@ const name = form.register('name')
 function onClose(): void {
   emit('close')
 }
-
-onSubmitForm(async (formState) => {
-  try {
-    await settingsRoleCreateMutation.execute({
-      body: formState.name,
-    })
-    onClose()
-  }
-  catch (error) {
-    apiErrorToast.show(error)
-  }
-})
 </script>
 
 <template>
@@ -62,7 +62,7 @@ onSubmitForm(async (formState) => {
         <AppForm :form="form">
           <VcTextField
             :label="t('user.name')"
-            v-bind="name"
+            v-bind="toFormField(name)"
           />
           <AppDialogActions>
             <AppDialogActionCancel :label="t('shared.cancel')" />

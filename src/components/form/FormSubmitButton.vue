@@ -33,7 +33,7 @@ const isButtonDisabled = computed<boolean>(() => {
   }
 
   if (!props.isAlwaysEnabled) {
-    return !(props.form.isDirty as boolean)
+    return !props.form.isDirty.value
   }
 
   return false
@@ -46,7 +46,7 @@ const isButtonDisabled = computed<boolean>(() => {
     :icon-left="props.iconLeft"
     :form="props.formId"
     :is-disabled="isButtonDisabled"
-    :is-loading="props.form.isSubmitting"
+    :is-loading="props.form.isSubmitting.value"
     :keyboard-shortcut="KEYBOARD_SHORTCUT.SAVE"
     type="submit"
     class="w-full"

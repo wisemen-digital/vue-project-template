@@ -33,38 +33,32 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => [
   },
 ])
 
-const {
-  form,
-  onSubmitForm,
-  onSubmitFormError,
-} = useForm({
+const form = useForm({
   schema: userCreateFormSchema,
-})
+  onSubmit: async (values) => {
+    try {
+      await userCreateMutation.execute({
+        body: values,
+      })
 
-onSubmitFormError(() => {
-  toast.error({
-    message: t('error.invalid_form_input.description'),
-  })
-})
+      toast.success({
+        testId: TEST_ID.USERS.CREATE.SUCCESS_TOAST,
+        message: t('module.user.create.success_toast.message'),
+      })
 
-onSubmitForm(async (values) => {
-  try {
-    await userCreateMutation.execute({
-      body: values,
+      await router.push({
+        name: 'user-overview',
+      })
+    }
+    catch (error) {
+      errorToast.show(error)
+    }
+  },
+  onSubmitError: () => {
+    toast.error({
+      message: t('error.invalid_form_input.description'),
     })
-
-    toast.success({
-      testId: TEST_ID.USERS.CREATE.SUCCESS_TOAST,
-      message: t('module.user.create.success_toast.message'),
-    })
-
-    await router.push({
-      name: 'user-overview',
-    })
-  }
-  catch (error) {
-    errorToast.show(error)
-  }
+  },
 })
 </script>
 

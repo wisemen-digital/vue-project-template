@@ -48,38 +48,32 @@ const breadcrumbs: BreadcrumbItem[] = [
   },
 ]
 
-const {
-  form,
-  onSubmitForm,
-  onSubmitFormError,
-} = useForm({
+const form = useForm({
   initialState: computed<UserUpdateFormType>(() => UserUpdateTransformer.toForm(props.user)),
   schema: userUpdateFormSchema,
-})
+  onSubmit: async (values) => {
+    try {
+      await userUpdateMutation.execute({
+        body: values,
+        params: {
+          userUuid: props.user.uuid,
+        },
+      })
 
-onSubmitFormError(() => {
-  toast.error({
-    message: t('error.invalid_form_input.description'),
-  })
-})
-
-onSubmitForm(async (values) => {
-  try {
-    await userUpdateMutation.execute({
-      body: values,
-      params: {
-        userUuid: props.user.uuid,
-      },
+      toast.success({
+        testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
+        message: t('module.user.update.success_toast.message'),
+      })
+    }
+    catch (error) {
+      errorToast.show(error)
+    }
+  },
+  onSubmitError: () => {
+    toast.error({
+      message: t('error.invalid_form_input.description'),
     })
-
-    toast.success({
-      testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
-      message: t('module.user.update.success_toast.message'),
-    })
-  }
-  catch (error) {
-    errorToast.show(error)
-  }
+  },
 })
 </script>
 

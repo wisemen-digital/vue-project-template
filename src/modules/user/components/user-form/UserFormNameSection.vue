@@ -6,6 +6,7 @@ import { useI18n } from 'vue-i18n'
 import FormGrid from '@/components/app/grid/FormGrid.vue'
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
+import { toFormField } from '@/helpers/formango.helper'
 
 const props = defineProps<{
   firstName: Field<string>
@@ -23,11 +24,12 @@ const { t } = useI18n()
     <FormGrid :cols="2">
       <VcTextField
         :test-id="TEST_ID.USERS.FORM.FIRST_NAME_INPUT"
-        v-bind="props.firstName"
+        v-bind="toFormField(props.firstName)"
         :label="t('user.first_name')"
       />
+
       <VcTextField
-        v-bind="props.lastName"
+        v-bind="toFormField(props.lastName)"
         :test-id="TEST_ID.USERS.FORM.LAST_NAME_INPUT"
         :label="t('user.last_name')"
       />
