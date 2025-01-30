@@ -4,7 +4,6 @@ import { TEST_ID } from '@/constants/testId.constant.ts'
 import { PermissionDtoBuilder } from '@/models/permission/permissionDto.builder.ts'
 import { RoleDtoBuilder } from '@/models/role/roleDto.builder.ts'
 import { expect, test } from '@@/base.fixture'
-import { InterceptorUtil } from '@@/utils/interceptor.util'
 
 test.describe('Role Overview', () => {
   const ROLE_1 = new RoleDtoBuilder()
@@ -23,14 +22,6 @@ test.describe('Role Overview', () => {
   const PERMISSION_5 = new PermissionDtoBuilder().withName('admin').build()
 
   test('display roles in the table', async ({ http, page, worker }) => {
-    await InterceptorUtil.get(page, 'permissions*', [
-      PERMISSION_1,
-      PERMISSION_2,
-      PERMISSION_3,
-      PERMISSION_4,
-      PERMISSION_5,
-    ])
-
     await worker.use(
       http.get('*/api/v1/roles*', ({ request }) => {
         const url = new URL(request.url)
@@ -43,6 +34,21 @@ test.describe('Role Overview', () => {
           ROLE_1,
         ] })
       }),
+      http.get('*/api/v1/permissions*', ({ request }) => {
+        const url = new URL(request.url)
+
+        if (url.pathname === '/api/v1/users/me') {
+          return undefined
+        }
+
+        return HttpResponse.json([
+          PERMISSION_1,
+          PERMISSION_2,
+          PERMISSION_3,
+          PERMISSION_4,
+          PERMISSION_5,
+        ])
+      }),
     )
 
     await page.goto('/settings/roles-and-permissions')
@@ -51,14 +57,6 @@ test.describe('Role Overview', () => {
   })
 
   test('display permissions in the table', async ({ http, page, worker }) => {
-    await InterceptorUtil.get(page, 'permissions*', [
-      PERMISSION_1,
-      PERMISSION_2,
-      PERMISSION_3,
-      PERMISSION_4,
-      PERMISSION_5,
-    ])
-
     await worker.use(
       http.get('*/api/v1/roles*', ({ request }) => {
         const url = new URL(request.url)
@@ -70,6 +68,21 @@ test.describe('Role Overview', () => {
         return HttpResponse.json({ items: [
           ROLE_1,
         ] })
+      }),
+      http.get('*/api/v1/permissions*', ({ request }) => {
+        const url = new URL(request.url)
+
+        if (url.pathname === '/api/v1/users/me') {
+          return undefined
+        }
+
+        return HttpResponse.json([
+          PERMISSION_1,
+          PERMISSION_2,
+          PERMISSION_3,
+          PERMISSION_4,
+          PERMISSION_5,
+        ])
       }),
     )
 
