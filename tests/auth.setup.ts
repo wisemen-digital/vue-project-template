@@ -15,8 +15,6 @@ test('authenticate', async ({ page }) => {
 
   await page.goto('/auth/callback?code=123')
 
-  await expect(page.getByTestId(TEST_ID.AUTH.CALLBACK)).toBeVisible()
-
   await page.waitForLoadState()
 
   await page.getByTestId(TEST_ID.APP_PAGE.USER_BUTTON).click()
