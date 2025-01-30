@@ -1,13 +1,19 @@
 import { TEST_ID } from '@/constants/testId.constant'
+import { PermissionDtoBuilder } from '@/models/permission/permissionDto.builder.ts'
 import { RoleDtoBuilder } from '@/models/role/roleDto.builder.ts'
 import { expect, test } from '@@/base.fixture'
 import { InterceptorUtil } from '@@/utils/interceptor.util'
 
 test.describe('Role Create', () => {
   test('create a new role', async ({ page }) => {
-    await InterceptorUtil.get(page, 'roles*', [])
+    await InterceptorUtil.get(page, 'roles*', { items: [] })
 
     const ROLE_1 = new RoleDtoBuilder().build()
+    const PERMISSION_1 = new PermissionDtoBuilder().withName('admin').build()
+
+    await InterceptorUtil.get(page, 'permissions*', [
+      PERMISSION_1,
+    ])
 
     const createRequest = await InterceptorUtil.post(page, 'roles', ROLE_1)
 

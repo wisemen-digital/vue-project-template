@@ -46,7 +46,7 @@ const dropDownItems = computed<DropdownMenuItem[]>(() => ([
       side="top"
     >
       <template #trigger>
-        <AppUnstyledButton>
+        <AppUnstyledButton aria-label="Actions">
           <VcIcon
             icon="threeDots"
             class="size-4"
