@@ -20,9 +20,11 @@ export const useAuthStore = defineStore('auth', () => {
       return authUser.value
     }
 
-    authUser.value = await UserService.getMe()
+    const user = await UserService.getMe()
 
-    return authUser.value
+    setAuthUser(user)
+
+    return user
   }
 
   function setAuthUser(user: User | null): void {

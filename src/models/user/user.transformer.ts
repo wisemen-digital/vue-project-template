@@ -14,7 +14,8 @@ import type { UserUpdateForm } from './update/userUpdateForm.model'
 export class UserIndexTransformer {
   static fromDto(dto: UserIndexDto): UserIndex {
     return {
-      uuid: dto.uuid,
+      uuid: dto.uuid as UserUuid,
+      email: dto.email,
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,
@@ -34,6 +35,7 @@ export class UserTransformer {
   static fromDto(dto: UserDto): User {
     return {
       uuid: dto.uuid as UserUuid,
+      email: dto.email,
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,
@@ -60,8 +62,8 @@ export class UserUpdateTransformer {
 
   static toForm(user: User): UserUpdateForm {
     return {
-      firstName: user.firstName,
-      lastName: user.lastName,
+      firstName: user.firstName ?? '',
+      lastName: user.lastName ?? '',
     }
   }
 }

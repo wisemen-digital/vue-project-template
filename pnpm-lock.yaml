@@ -8,15 +8,12 @@ importers:
 
   .:
     dependencies:
-      '@appwise/zod-http-client':
-        specifier: 0.0.6
-        version: 0.0.6
       '@fontsource-variable/inter':
         specifier: 5.1.1
         version: 5.1.1
       '@hey-api/client-fetch':
-        specifier: 0.7.2
-        version: 0.7.2
+        specifier: 0.7.3
+        version: 0.7.3
       '@sentry/integrations':
         specifier: 7.114.0
         version: 7.114.0
@@ -26,9 +23,6 @@ importers:
       '@sentry/vue':
         specifier: 8.52.0
         version: 8.52.0(pinia@2.3.1(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))
-      '@tailwindcss/container-queries':
-        specifier: 0.1.1
-        version: 0.1.1(tailwindcss@4.0.0)
       '@tailwindcss/vite':
         specifier: 4.0.0
         version: 4.0.0(vite@6.0.11(@types/node@22.12.0)(jiti@2.4.2)(lightningcss@1.29.1)(sass@1.83.4)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))
@@ -57,8 +51,8 @@ importers:
         specifier: 1.11.13
         version: 1.11.13
       formango:
-        specifier: 2.0.38
-        version: 2.0.38(vue@3.5.13(typescript@5.7.3))(zod@3.24.1)
+        specifier: 3.0.0-alpha.0
+        version: 3.0.0-alpha.0(vue@3.5.13(typescript@5.7.3))(zod@3.24.1)
       i18n-iso-countries:
         specifier: 7.13.0
         version: 7.13.0
@@ -68,6 +62,9 @@ importers:
       libphonenumber-js:
         specifier: 1.11.18
         version: 1.11.18
+      motion-v:
+        specifier: 0.5.0
+        version: 0.5.0(typescript@5.7.3)
       pinia:
         specifier: 2.3.1
         version: 2.3.1(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
@@ -91,8 +88,8 @@ importers:
         version: 3.24.1
     devDependencies:
       '@hey-api/openapi-ts':
-        specifier: 0.63.0
-        version: 0.63.0(typescript@5.7.3)
+        specifier: 0.63.2
+        version: 0.63.2(typescript@5.7.3)
       '@import-meta-env/cli':
         specifier: 0.7.3
         version: 0.7.3(@import-meta-env/unplugin@0.6.2)
@@ -262,9 +259,6 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       ajv: '>=8'
-
-  '@appwise/zod-http-client@0.0.6':
-    resolution: {integrity: sha512-JeilGXv4ezbkrYUvDUGqrTX70XB/f3ExAu7/CJLF7tC1xteyZ+sPuLY4mvf2r1/cuUzzNNBKn+jWknLa6EEQtg==}
 
   '@asamuzakjp/css-color@2.8.3':
     resolution: {integrity: sha512-GIc76d9UI1hCvOATjZPyHFmE5qhRccp3/zGfMPapK3jBi+yocEzp6BBB0UnfRYP9NP4FANqUZYb0hnfs3TM3hw==}
@@ -1288,16 +1282,16 @@ packages:
   '@googlemaps/js-api-loader@1.16.8':
     resolution: {integrity: sha512-CROqqwfKotdO6EBjZO/gQGVTbeDps5V7Mt9+8+5Q+jTg5CRMi3Ii/L9PmV3USROrt2uWxtGzJHORmByxyo9pSQ==}
 
-  '@hey-api/client-fetch@0.7.2':
-    resolution: {integrity: sha512-4H9HohKQsAZnopV6cyAUuJOIYKMHi0WBaF+GJ7WZ45Tm3zubREe7pQAjaLlg8hHgjASHOOXU93ZqcgSn29sB7w==}
+  '@hey-api/client-fetch@0.7.3':
+    resolution: {integrity: sha512-nysIXMag9nr5ENy+47G0AYsegdT7vT6S4KLfY7NVgM6HsyZ0DrhCZvz5nP70M16x9i860SrnXhjpcuHx0g5sDQ==}
 
   '@hey-api/json-schema-ref-parser@1.0.1':
     resolution: {integrity: sha512-dBt0A7op9kf4BcK++x6HBYDmvCvnJUZEGe5QytghPFHnMXPyKwDKomwL/v5e9ERk6E0e1GzL/e/y6pWUso9zrQ==}
     engines: {node: '>= 16'}
 
-  '@hey-api/openapi-ts@0.63.0':
-    resolution: {integrity: sha512-P3bleOja/aaL/b3B9yJQSSxQ3Q6m488mu2unMLej8oR2z4/rGc2F3+uODHIXxVYbc7M9mvFRDK9JuJnnPzKbEw==}
-    engines: {node: ^18.20.5 || ^20.11.1 || >=22.11.0}
+  '@hey-api/openapi-ts@0.63.2':
+    resolution: {integrity: sha512-HC5fR3+07P1AvDYrcZv0kbnhWogvMFot848PfpS3Gbncm47mDdO/uhNGIr2RF9CaRIvJNSJvAf1jL3XAQZ18RA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=22.11.0}
     hasBin: true
     peerDependencies:
       typescript: ^5.5.3
@@ -2755,11 +2749,6 @@ packages:
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
-  '@tailwindcss/container-queries@0.1.1':
-    resolution: {integrity: sha512-p18dswChx6WnTSaJCSGx6lTmrGzNNvm2FtXmiO6AuA1V4U5REyoqwmT6kgAsIMdjo07QdAfYXHJ4hnMtfHzWgA==}
-    peerDependencies:
-      tailwindcss: '>=3.2.0'
-
   '@tailwindcss/node@4.0.0':
     resolution: {integrity: sha512-tfG2uBvo6j6kDIPmntxwXggCOZAt7SkpAXJ6pTIYirNdk5FBqh/CZZ9BZPpgcl/tNFLs6zc4yghM76sqiELG9g==}
 
@@ -3397,9 +3386,6 @@ packages:
 
   axios@1.7.3:
     resolution: {integrity: sha512-Ar7ND9pU99eJ9GpoGQKhKf58GpUOgnzuaB7ueNQ5BMi0p+LZ5oaEnfF999fAArcTIBwXTCHAmGcHOZJaWPq9Nw==}
-
-  axios@1.7.9:
-    resolution: {integrity: sha512-LhLcE7Hbiryz8oMDdDptSrWowmB4Bl6RCt6sIJKpRB4XtVf0iEgewX3au/pJqm+Py1kCASkb/FFKjxQaLtxJvw==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -4313,11 +4299,11 @@ packages:
     resolution: {integrity: sha512-tzN8e4TX8+kkxGPK8D5u0FNmjPUjw3lwC9lSLxxoB/+GtsJG91CO8bSWy73APlgAZzZbXEYZJuxjkHH2w+Ezhw==}
     engines: {node: '>= 6'}
 
-  formango@2.0.38:
-    resolution: {integrity: sha512-rLqJhmt8PSagbexEFjL2Rzei2Nau2VVMqguLLT8LFYLtIvEK5TRPH3BuGryLt428DjZKNWDTXB1i34TThK9gQA==}
+  formango@3.0.0-alpha.0:
+    resolution: {integrity: sha512-nzC9xB5TYP9a+SKsEdS8L4S6IiMM9cAzy/jy/RHR1OEckydmlkRl+rETutCZxdywj3DDxkwhZZ9mneqKOSZ6uw==}
     peerDependencies:
       vue: ^3.2.47
-      zod: ^3.21.4
+      zod: ^3.24.1
 
   format-io@2.0.0:
     resolution: {integrity: sha512-iQz8w2qr4f+doWBV6LsfScHbu1gXhccByjbmA1wjBTaKRhweH2baJL96UGR4C7Fjpr8zSkK7EXiLmbzZWTyQIA==}
@@ -4332,6 +4318,20 @@ packages:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0
       react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  framer-motion@11.15.0:
+    resolution: {integrity: sha512-MLk8IvZntxOMg7lDBLw2qgTHHv664bYoYmnFTmE0Gm/FW67aOJk0WM3ctMcG+Xhcv+vh5uyyXwxvxhSeJzSe+w==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
       '@emotion/is-prop-valid':
         optional: true
@@ -4530,6 +4530,9 @@ packages:
 
   headers-polyfill@4.0.3:
     resolution: {integrity: sha512-IScLbePpkvO846sIwOtOTDjutRMWdXdJmXdMvk6gCBHxFO8d+QKOQedyZSxFTTFYRSmlgSTDtXqqq4pcenBXLQ==}
+
+  hey-listen@1.0.8:
+    resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
@@ -5325,8 +5328,17 @@ packages:
   montag@1.2.1:
     resolution: {integrity: sha512-YFuR6t5KhDlmAnUmVSxGzNcpWqSDqxbd95tvnEnn7X9yFv7g3kDFoRjwyGayVdF/NNoWk7YW7IxUjilnGnoC5Q==}
 
+  motion-dom@11.18.1:
+    resolution: {integrity: sha512-g76KvA001z+atjfxczdRtw/RXOM3OMSdd1f4DL77qCTF/+avrRJiawSG4yDibEQ215sr9kpinSlX2pCTJ9zbhw==}
+
+  motion-utils@11.18.1:
+    resolution: {integrity: sha512-49Kt+HKjtbJKLtgO/LKj9Ld+6vw9BjH5d9sc40R/kVyH8GLAXgT42M2NnuPcJNuA3s9ZfZBUcwIgpmZWGEE+hA==}
+
   motion-v@0.4.1:
     resolution: {integrity: sha512-sl3qPrFx0Pf1H3PDvbe2A328kH57L5M7jNS7DYAIH5rOSFTvs0qeNpljsxORAoZZvNVcTGpgQzp3a3dS5+Kndg==}
+
+  motion-v@0.5.0:
+    resolution: {integrity: sha512-nw7LF3pv1YJ4QJ+bNF+TaX6bE5QAqroyn05Td/RlaRkz1n4who2MVUJUtjJ9JP4slmCIr2hcPTUzphJeMhdj6Q==}
 
   mrmime@2.0.0:
     resolution: {integrity: sha512-eu38+hdgojoyq63s+yTpN4XMBdt5l8HhMhc4VKLO9KM5caLIBvUm4thi7fFaxyTmCKeNnXZ5pAlBwCUnhA09uw==}
@@ -7004,13 +7016,6 @@ snapshots:
       jsonpointer: 5.0.1
       leven: 3.1.0
 
-  '@appwise/zod-http-client@0.0.6':
-    dependencies:
-      axios: 1.7.9
-      zod: 3.24.1
-    transitivePeerDependencies:
-      - debug
-
   '@asamuzakjp/css-color@2.8.3':
     dependencies:
       '@csstools/css-calc': 2.1.1(@csstools/css-parser-algorithms@3.0.4(@csstools/css-tokenizer@3.0.3))(@csstools/css-tokenizer@3.0.3)
@@ -8095,7 +8100,7 @@ snapshots:
 
   '@googlemaps/js-api-loader@1.16.8': {}
 
-  '@hey-api/client-fetch@0.7.2': {}
+  '@hey-api/client-fetch@0.7.3': {}
 
   '@hey-api/json-schema-ref-parser@1.0.1':
     dependencies:
@@ -8103,7 +8108,7 @@ snapshots:
       '@types/json-schema': 7.0.15
       js-yaml: 4.1.0
 
-  '@hey-api/openapi-ts@0.63.0(typescript@5.7.3)':
+  '@hey-api/openapi-ts@0.63.2(typescript@5.7.3)':
     dependencies:
       '@hey-api/json-schema-ref-parser': 1.0.1
       c12: 2.0.1
@@ -8708,6 +8713,8 @@ snapshots:
       '@putout/operator-filesystem': 5.4.0(putout@37.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))
       '@putout/operator-json': 2.2.0
       putout: 37.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
+    transitivePeerDependencies:
+      - supports-color
 
   '@putout/operator-regexp@1.0.0(putout@37.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))':
     dependencies:
@@ -9464,10 +9471,6 @@ snapshots:
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
-
-  '@tailwindcss/container-queries@0.1.1(tailwindcss@4.0.0)':
-    dependencies:
-      tailwindcss: 4.0.0
 
   '@tailwindcss/node@4.0.0':
     dependencies:
@@ -10244,14 +10247,6 @@ snapshots:
       possible-typed-array-names: 1.0.0
 
   axios@1.7.3:
-    dependencies:
-      follow-redirects: 1.15.9
-      form-data: 4.0.1
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-
-  axios@1.7.9:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.1
@@ -11367,7 +11362,7 @@ snapshots:
       combined-stream: 1.0.8
       mime-types: 2.1.35
 
-  formango@2.0.38(vue@3.5.13(typescript@5.7.3))(zod@3.24.1):
+  formango@3.0.0-alpha.0(vue@3.5.13(typescript@5.7.3))(zod@3.24.1):
     dependencies:
       '@vue/devtools-api': 6.6.4
       clone-deep: 4.0.1
@@ -11382,6 +11377,12 @@ snapshots:
 
   framer-motion@11.11.11:
     dependencies:
+      tslib: 2.8.1
+
+  framer-motion@11.15.0:
+    dependencies:
+      motion-dom: 11.18.1
+      motion-utils: 11.18.1
       tslib: 2.8.1
 
   fs-extra@10.1.0:
@@ -11610,6 +11611,8 @@ snapshots:
   he@1.2.0: {}
 
   headers-polyfill@4.0.3: {}
+
+  hey-listen@1.0.8: {}
 
   hookable@5.5.3: {}
 
@@ -12526,10 +12529,28 @@ snapshots:
 
   montag@1.2.1: {}
 
+  motion-dom@11.18.1:
+    dependencies:
+      motion-utils: 11.18.1
+
+  motion-utils@11.18.1: {}
+
   motion-v@0.4.1(typescript@5.7.3):
     dependencies:
       '@vueuse/core': 12.5.0(typescript@5.7.3)
       framer-motion: 11.11.11
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+      - react
+      - react-dom
+      - typescript
+
+  motion-v@0.5.0(typescript@5.7.3):
+    dependencies:
+      '@vueuse/core': 12.5.0(typescript@5.7.3)
+      framer-motion: 11.15.0
+      hey-listen: 1.0.8
+      motion-dom: 11.18.1
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
       - react

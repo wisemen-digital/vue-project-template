@@ -5,8 +5,8 @@ import { computed, ref } from 'vue'
 import type { SettingPermission } from '@/models/permission/permission.model.ts'
 import type { SettingPermissionAction } from '@/models/permission/permissionAction.model.ts'
 import type { SettingPermissionId } from '@/models/permission/permissionId.model.ts'
-import type { Role } from '@/models/role/role.model.ts'
-import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
+import type { SettingRole } from '@/models/setting-role/role.model.ts'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 import SettingRoleAndPermissionTableBody from '@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionTableBody.vue'
 import SettingRoleAndPermissionTableHeader from '@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionTableHeader.vue'
 import type {
@@ -17,7 +17,7 @@ import { ObjectUtil } from '@/utils/object.util'
 
 const props = defineProps<{
   permissions: SettingPermission[]
-  roles: Role[]
+  roles: SettingRole[]
 }>()
 
 const emit = defineEmits<{

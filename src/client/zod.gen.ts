@@ -2,31 +2,37 @@
 
 import { z } from 'zod';
 
+export const zTypesenseCollectionName = z.enum([
+    'user'
+]);
+
 export const zSetUserRolesCommand = z.object({
     roleUuids: z.array(z.string().uuid())
 });
+
+export const zPermission = z.enum([
+    'admin',
+    'read_only',
+    'user.read',
+    'user.create',
+    'user.update',
+    'user.delete',
+    'role.read',
+    'role.create',
+    'role.update',
+    'role.delete',
+    'contact.create',
+    'contact.read',
+    'contact.update',
+    'contact.delete'
+]);
 
 export const zRoleResponse = z.object({
     uuid: z.string().uuid(),
     createdAt: z.string().datetime(),
     updatedAt: z.string().datetime(),
     name: z.string(),
-    permissions: z.array(z.enum([
-        'admin',
-        'read_only',
-        'user.read',
-        'user.create',
-        'user.update',
-        'user.delete',
-        'role.read',
-        'role.create',
-        'role.update',
-        'role.delete',
-        'contact.create',
-        'contact.read',
-        'contact.update',
-        'contact.delete'
-    ]))
+    permissions: z.array(zPermission)
 });
 
 export const zViewMeResponse = z.object({
@@ -63,22 +69,7 @@ export const zPaginatedOffsetQuery = z.object({
 });
 
 export const zUsersFilterQuery = z.object({
-    permissions: z.array(z.enum([
-        'admin',
-        'read_only',
-        'user.read',
-        'user.create',
-        'user.update',
-        'user.delete',
-        'role.read',
-        'role.create',
-        'role.update',
-        'role.delete',
-        'contact.create',
-        'contact.read',
-        'contact.update',
-        'contact.delete'
-    ])).optional()
+    permissions: z.array(zPermission).optional()
 });
 
 export const zUserIndexView = z.object({
@@ -128,78 +119,38 @@ export const zUpdateRoleCommand = z.object({
     name: z.string()
 });
 
-export const zViewContactIndexResponse = z.object({
-    items: z.array(z.object({
-        uuid: z.string().uuid(),
-        createdAt: z.string().datetime(),
-        updatedAt: z.string().datetime(),
-        isActive: z.boolean(),
-        firstName: z.union([
-            z.string(),
-            z.null()
-        ]),
-        lastName: z.union([
-            z.string(),
-            z.null()
-        ]),
-        email: z.union([
-            z.string().email(),
-            z.null()
-        ]),
-        phone: z.union([
-            z.string(),
-            z.null()
-        ])
-    })),
-    meta: zPaginatedOffsetResponseMeta
+export const zViewRoleIndexResponse = z.object({
+    items: z.array(zRoleResponse)
 });
+
+export const zMimeType = z.enum([
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.ms-powerpoint',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    'text/plain',
+    'text/html',
+    'image/jpeg',
+    'image/png',
+    'image/tiff',
+    'image/bmp',
+    'image/heic',
+    'image/webp',
+    'image/gif'
+]);
 
 export const zCreateFileDto = z.object({
     name: z.string(),
-    mimeType: z.enum([
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/vnd.ms-powerpoint',
-        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-        'text/plain',
-        'text/html',
-        'text/html',
-        'image/jpeg',
-        'image/jpeg',
-        'image/jpeg',
-        'image/png',
-        'image/tiff',
-        'image/tiff',
-        'image/bmp',
-        'image/heic',
-        'image/webp',
-        'image/gif'
-    ])
+    mimeType: zMimeType
 });
 
 export const zCreateFileResponse = z.object({
     uuid: z.string().uuid(),
     name: z.string(),
-    mimeType: z.enum([
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/vnd.ms-powerpoint',
-        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-        'text/plain',
-        'text/html',
-        'text/html',
-        'image/jpeg',
-        'image/jpeg',
-        'image/jpeg',
-        'image/png',
-        'image/tiff',
-        'image/tiff',
-        'image/bmp',
-        'image/heic',
-        'image/webp',
-        'image/gif'
+    mimeType: z.union([
+        zMimeType,
+        z.null()
     ]),
     uploadUrl: z.string()
 });
@@ -316,12 +267,19 @@ export const zContactResponse = z.object({
     ])
 });
 
+export const zViewContactIndexResponse = z.object({
+    items: z.array(zContactResponse),
+    meta: zPaginatedOffsetResponseMeta
+});
+
+export const zTheme = z.enum([
+    'light',
+    'dark',
+    'system'
+]);
+
 export const zUpdatePreferencesCommand = z.object({
-    theme: z.enum([
-        'light',
-        'dark',
-        'system'
-    ]).optional(),
+    theme: zTheme.optional(),
     language: z.string().optional(),
     fontSize: z.string().optional(),
     showShortcuts: z.boolean().optional(),
@@ -330,11 +288,7 @@ export const zUpdatePreferencesCommand = z.object({
 });
 
 export const zViewPreferencesResponse = z.object({
-    theme: z.enum([
-        'light',
-        'dark',
-        'system'
-    ]),
+    theme: zTheme,
     language: z.union([
         z.string(),
         z.null()
@@ -354,9 +308,11 @@ export const zViewUserControllerViewUserV1Response = zViewUserResponse;
 
 export const zViewUsersControllerViewUserV1Response = zViewUsersResponse;
 
-export const zViewRolesControllerGetRolesV1Response = zViewContactIndexResponse;
+export const zViewRolesControllerGetRolesV1Response = zViewRoleIndexResponse;
 
 export const zViewRoleControllerGetRoleV1Response = zRoleResponse;
+
+export const zPermissionControllerGetPermissionsV1Response = z.array(z.string());
 
 export const zFileControllerCreateFileV1Response = zCreateFileResponse;
 

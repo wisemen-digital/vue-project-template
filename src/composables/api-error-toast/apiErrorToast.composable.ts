@@ -10,9 +10,9 @@ export function useApiErrorToast(): UserErrorToastReturnType {
   const toast = useToast()
 
   function show(error: unknown): void {
-    if (error instanceof TypeError) {
+    if (error instanceof TypeError && 'response' in error) {
       toast.error({
-        message: error?.response?.data?.message ?? t('error.default_error.description'),
+        message: t('error.default_error.description'),
       })
 
       return

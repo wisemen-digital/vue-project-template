@@ -7,19 +7,23 @@ import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import type { SettingPermission } from '@/models/permission/permission.model.ts'
 import type { SettingPermissionAction } from '@/models/permission/permissionAction.model.ts'
 import type { SettingPermissionId } from '@/models/permission/permissionId.model.ts'
-import type { Role } from '@/models/role/role.model.ts'
-import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
+import type { SettingRole } from '@/models/setting-role/role.model.ts'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 
 const props = defineProps<{
   isTableScrolledToBottom: boolean
   permissions: SettingPermission[]
-  roles: Role[]
+  roles: SettingRole[]
   rolesModelMap: Map<string, string[] | null>
 }>()
 
 const emit = defineEmits<{
   togglePermissionTab: [string]
-  updateActionCheckbox: [value: boolean, permissionId: SettingPermissionId, roleUuid: RoleUuid, action: SettingPermissionAction]
+  updateActionCheckbox: [
+      value: boolean,
+    permissionId: SettingPermissionId,
+    roleUuid: RoleUuid,
+    action: SettingPermissionAction]
   updatePermissionCheckbox: [value: boolean, permissionId: SettingPermissionId, roleUuid: RoleUuid]
 }>()
 
@@ -55,7 +59,11 @@ function isPermissionCheckboxChecked(permissionId: SettingPermissionId, roleUuid
   return value.length > 0
 }
 
-function isActionCheckboxChecked(permissionId: SettingPermissionId, roleUuid: RoleUuid, action: SettingPermissionAction): boolean {
+function isActionCheckboxChecked(
+  permissionId: SettingPermissionId,
+  roleUuid: RoleUuid,
+  action: SettingPermissionAction,
+): boolean {
   const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key) ?? null
 

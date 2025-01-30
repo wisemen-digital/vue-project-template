@@ -25,8 +25,6 @@ export function setupHttpClient(): void {
   })
 
   client.interceptors.response.use((response: Response): Response => {
-    console.log('response', response)
-
     if (response?.status !== 401) {
       return response
     }

@@ -22,7 +22,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     type: 'route',
   },
   {
-    label: props.user.fullName,
+    label: props.user.fullName ?? '-',
     type: 'page',
   },
 ]
@@ -30,7 +30,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 <template>
   <AppPage
-    :title="props.user.fullName"
+    :title="props.user.fullName ?? '-'"
     :breadcrumbs="breadcrumbs"
   >
     <template #header-actions>

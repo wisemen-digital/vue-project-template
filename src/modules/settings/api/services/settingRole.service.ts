@@ -1,49 +1,41 @@
-import { z } from 'zod'
-
-import { httpClient } from '@/libs/http.lib.ts'
-import type { Role } from '@/models/role/role.model.ts'
-import { RoleTransformer } from '@/models/role/role.transformer.ts'
-import { roleDtoSchema } from '@/models/role/roleDto.model.ts'
-import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
+import {
+  createRoleControllerCreateRoleV1,
+  deleteRoleControllerDeleteRoleV1,
+  updateRolesBulkControllerUpdateRolesBulkV1,
+  viewRolesControllerGetRolesV1,
+} from '@/client'
+import type { SettingRole } from '@/models/setting-role/role.model.ts'
+import { RoleTransformer } from '@/models/setting-role/role.transformer.ts'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
+import { SettingRoleBulkUpdateTransformer } from '@/models/setting-role/settingRole.transformer.ts'
+import type { SettingRoleBulkUpdateForm } from '@/models/setting-role/settingRoleBulkUpdateForm.model.ts'
 
 export class SettingRoleService {
   static async create(roleName: string): Promise<void> {
-    await httpClient.post({
+    await createRoleControllerCreateRoleV1({
       body: {
         name: roleName,
       },
-      responseSchema: z.unknown(),
-      url: '/roles',
     })
   }
 
   static async delete(roleUuid: RoleUuid): Promise<void> {
-    await httpClient.delete({
-      responseSchema: z.unknown(),
-      url: `/roles/${roleUuid}`,
-    })
-  }
-
-  static async getAll(): Promise<Role[]> {
-    const dto = await httpClient.get({
-      responseSchema: roleDtoSchema.array(),
-      url: '/roles',
-    })
-
-    return dto.map(RoleTransformer.fromDto)
-  }
-
-  static async updateRolesInBulk(roles: Role[]): Promise<void> {
-    await httpClient.post({
-      body: {
-        roles: roles.map((role) => ({
-          uuid: role.uuid,
-          name: role.name,
-          permissions: role.permissions,
-        })),
+    await deleteRoleControllerDeleteRoleV1({
+      path: {
+        role: roleUuid,
       },
-      responseSchema: z.unknown(),
-      url: '/roles/bulk',
+    })
+  }
+
+  static async getAll(): Promise<SettingRole[]> {
+    const response = await viewRolesControllerGetRolesV1()
+
+    return response.data.items.map(RoleTransformer.fromDto)
+  }
+
+  static async updateRolesInBulk(form: SettingRoleBulkUpdateForm): Promise<void> {
+    await updateRolesBulkControllerUpdateRolesBulkV1({
+      body: SettingRoleBulkUpdateTransformer.toDto(form),
     })
   }
 }

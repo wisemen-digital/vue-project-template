@@ -1,5 +1,5 @@
-import type { SettingPermission } from '@/models/permission/permission.model.ts'
+import type { Permission } from '@/client'
 
 export interface UserIndexFilters {
-  permissions: SettingPermission[]
+  permissions: Permission[]
 }

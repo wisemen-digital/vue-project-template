@@ -1,257 +1,134 @@
 {
-  "component": {
-    "keyboard_shortcut": {
-      "then": "dan"
-    },
-    "password_input": {
-      "hide_password": "Wachtwoord verbergen",
-      "show_password": "Wachtwoord tonen"
-    },
-    "refresh_prompt": {
-      "new_version": {
-        "action": "Vernieuwen",
-        "description": "Nieuwe versie beschikbaar! Herladen om de nieuwste functionaliteit te ontvangen."
-      }
-    },
-    "search_input": {
-      "clear": "Wissen",
-      "placeholder": "Zoeken..."
-    },
-    "select": {
-      "empty_text": "Geen resultaten gevonden voor '{searchTerm}'.",
-      "search_placeholder": "Zoeken..."
-    },
-    "sidebar": {
-      "close_sidebar": "Zijbalk sluiten",
-      "footer": {
-        "environment": "Omgeving",
-        "sign_out": "Afmelden",
-        "version": "Versie"
-      },
-      "open_sidebar": "Zijbalk openen"
-    },
-    "table": {
-      "no_data": {
-        "description": "Er zijn momenteel geen gegevens om weer te geven.",
-        "title": "Geen gegevens"
-      },
-      "no_results": {
-        "description": "Er zijn geen resultaten die overeenkomen met de zoekcriteria.",
-        "title": "Geen resultaten"
-      },
-      "page_count": "{startIndex} - {endIndex} van {totalItems}"
-    },
-    "unsaved_changes_dialog": {
-      "cancel": "Blijven bewerken",
-      "confirm": "Ja, ik ben zeker",
-      "description": "Alle niet-opgeslagen wijzigingen gaan verloren. Weet je zeker dat je wilt doorgaan?",
-      "title": "Niet-opgeslagen wijzigingen"
-    }
-  },
-  "enum": {
-    "role": {
-      "admin": "Admin",
-      "user": "User"
-    }
-  },
-  "error": {
-    "bad_request": {
-      "description": "Er ging iets mis. Probeer het opnieuw.",
-      "title": "Ongeldig verzoek"
-    },
-    "default_error": {
-      "description": "Probeer het later opnieuw.",
-      "title": "Er ging iets mis"
-    },
-    "forbidden": {
-      "description": "U heeft geen toestemming om deze bron te bekijken.",
-      "title": "Verboden"
-    },
-    "internal_server_error": {
-      "description": "Probeer het later opnieuw.",
-      "title": "Interne serverfout"
-    },
-    "invalid_form_input": {
-      "description": "Controleer de gemarkeerde velden en probeer het opnieuw.",
-      "title": "Ongeldige invoer"
-    },
-    "resource_not_found": {
-      "description": "De gevraagde bron kon niet worden gevonden.",
-      "title": "Bron niet gevonden"
-    },
-    "unauthorized": {
-      "description": "U bent niet gemachtigd om deze bron te bekijken.",
-      "title": "Niet gemachtigd"
-    },
-    "validation_error": {
-      "description": "Controleer het formulier op fouten.",
-      "title": "Validatiefout"
-    }
-  },
-  "form": {
-    "fields": {
-      "email": "E-mailadres",
-      "password": "Wachtwoord"
-    },
-    "save_changes": "Wijzigingen opslaan"
-  },
-  "module": {
-    "auth": {
-      "login": {
-        "description": "Meld je aan om door te gaan",
-        "error": "Er is iets misgegaan bij het aanmelden. Probeer het opnieuw.",
-        "sign_in": "Aanmelden",
-        "title": "Aanmelden"
-      }
-    },
-    "setting": {
-      "application": {
-        "title": "Applicatie"
-      },
-      "font_size": {
-        "default": "Standaard",
-        "description": "Pas de lettergrootte aan.",
-        "large": "Groot",
-        "larger": "Groter",
-        "small": "Klein",
-        "smaller": "Kleiner",
-        "title": "Lettergrootte"
-      },
-      "high_contrast": {
-        "description": "Verbeter de leesbaarheid en zichtbaarheid door het verhogen van de contrast tussen UI-elementen.",
-        "disabled": {
-          "description": "Hoog contrast is uitgeschakeld.",
-          "label": "Uitgeschakeld"
-        },
-        "enabled": {
-          "description": "Hoog contrast is ingeschakeld.",
-          "label": "Ingeschakeld"
-        },
-        "title": "Hoog contrast"
-      },
-      "interface_theme": {
-        "dark": "Donker",
-        "description": "Selecteer of pas het UI-thema aan.",
-        "light": "Licht",
-        "system_preference": "Systeemvoorkeur",
-        "title": "Interface-thema"
-      },
-      "keyboard_shortcuts": {
-        "description": "Toetsenbord sneltoetsen zijn altijd ingeschakeld, maar je kunt kiezen of ze worden weergegeven.",
-        "disabled": {
-          "description": "Toetsenbord sneltoetsen zijn verborgen.",
-          "label": "Uitgeschakeld"
-        },
-        "enabled": {
-          "description": "Toetsenbord sneltoetsen zijn zichtbaar.",
-          "label": "Ingeschakeld"
-        },
-        "example_button": "Voorbeeld",
-        "title": "Toetsenbord sneltoetsen"
-      },
-      "language": {
-        "description": "Wijzig je taal.",
-        "locales": {
-          "en_us": "English (United States)",
-          "nl_be": "Nederlands (België)"
-        },
-        "title": "Taal"
-      },
-      "reduce_motion": {
-        "description": "Verminder het aantal en intensiteit van animaties, hovereffecten en andere bewegende effecten in de applicatie.",
-        "disabled": {
-          "description": "Alle animaties en hovereffecten zijn ingeschakeld voor een volledige ervaring.",
-          "label": "Uitgeschakeld"
-        },
-        "enabled": {
-          "description": "Je zult minder animaties en hovereffecten zien om beweging te verminderen.",
-          "label": "Ingeschakeld"
-        },
-        "title": "Verminder beweging"
-      },
-      "roles_and_permissions": {
-        "add_new_role": "Rol aanmaken",
-        "create_role_dialog": {
-          "description": "Maak een nieuwe rol aan",
-          "title": "Nieuwe rol"
-        },
-        "save_changes": "Opslaan",
-        "save_changes_success": "Veranderingen zijn opgeslagen",
-        "title": "Rollen en rechten"
-      },
-      "subtitle": "Beheer je app-instellingen",
-      "title": "Instellingen"
-    },
-    "settings": {
-      "roles_and_permissions": {
-        "table": {
-          "delete_role": "Rol verwijderen",
-          "permissions": "Permissies"
-        }
-      }
-    },
-    "user": {
-      "create": {
-        "create_user": "Gebruiker aanmaken",
-        "success_toast": {
-          "message": "Gebruiker is succesvol aangemaakt."
-        },
-        "title": "Nieuwe gebruiker"
-      },
-      "detail": {
-        "edit_user": "Gebruiker bewerken",
-        "title": "Gebruiker bewerken"
-      },
-      "form": {
-        "section": {
-          "name": {
-            "description": "Voor- en achternaam van de gebruiker."
-          }
-        }
-      },
-      "update": {
-        "success_toast": {
-          "message": "Gebruiker is succesvol bijgewerkt."
-        }
-      }
-    }
-  },
-  "shared": {
-    "cancel": "Annuleer",
-    "close": "Sluiten",
-    "edit": "Bewerken",
-    "save": "Maak aan"
-  },
-  "user": {
-    "birth_date": "Geboortedatum",
-    "first_name": "Voornaam",
-    "label": {
-      "plural": "Gebruikers",
-      "singular": "Gebruiker",
-      "user_with_count": "Geen gebruikers | {count} gebruiker | {count} gebruikers"
-    },
-    "last_name": "Achternaam",
-    "name": "Naam"
-  },
-  "validation": {
-    "invalid_date": "Ongeldige datum",
-    "invalid_datetime": "Ongeldige datum en tijd",
-    "invalid_email": "Ongeldig e-mailadres",
-    "invalid_regex": "Ongeldig formaat",
-    "invalid_string": "Ongeldige invoer",
-    "invalid_union": "Ongeldige invoer",
-    "invalid_url": "Ongeldige URL",
-    "invalid_uuid": "Ongeldige UUID",
-    "required": "Dit veld is verplicht",
-    "too_big": "Moet kleiner dan of gelijk aan {count} zijn",
-    "too_big_array": "Mag maximaal {count} item bevatten | Mag maximaal {count} items bevatten",
-    "too_big_date": "Moet voor {count} liggen",
-    "too_big_number": "Moet kleiner dan of gelijk aan {count} zijn",
-    "too_big_string": "Mag maximaal {count} teken bevatten | Mag maximaal {count} tekens bevatten",
-    "too_small": "Moet groter dan of gelijk aan {count} zijn",
-    "too_small_array": "Moet minstens {count} item bevatten | Moet minstens {count} items bevatten",
-    "too_small_date": "Moet na {count} liggen",
-    "too_small_number": "Moet groter dan of gelijk aan {count} zijn",
-    "too_small_string": "Moet minstens {count} teken bevatten | Moet minstens {count} tekens bevatten"
-  }
+  "component.keyboard_shortcut.then": "dan",
+  "component.password_input.hide_password": "Wachtwoord verbergen",
+  "component.password_input.show_password": "Wachtwoord tonen",
+  "component.refresh_prompt.new_version.action": "Vernieuwen",
+  "component.refresh_prompt.new_version.description": "Nieuwe versie beschikbaar! Herladen om de nieuwste functionaliteit te ontvangen.",
+  "component.search_input.clear": "Wissen",
+  "component.search_input.placeholder": "Zoeken...",
+  "component.select.empty_text": "Geen resultaten gevonden voor '{searchTerm}'.",
+  "component.select.search_placeholder": "Zoeken...",
+  "component.sidebar.close_sidebar": "Zijbalk sluiten",
+  "component.sidebar.footer.environment": "Omgeving",
+  "component.sidebar.footer.sign_out": "Afmelden",
+  "component.sidebar.footer.version": "Versie",
+  "component.sidebar.open_sidebar": "Zijbalk openen",
+  "component.table.no_data.description": "Er zijn momenteel geen gegevens om weer te geven.",
+  "component.table.no_data.title": "Geen gegevens",
+  "component.table.no_results.description": "Er zijn geen resultaten die overeenkomen met de zoekcriteria.",
+  "component.table.no_results.title": "Geen resultaten",
+  "component.table.page_count": "{startIndex} - {endIndex} van {totalItems}",
+  "component.unsaved_changes_dialog.cancel": "Blijven bewerken",
+  "component.unsaved_changes_dialog.confirm": "Ja, ik ben zeker",
+  "component.unsaved_changes_dialog.description": "Alle niet-opgeslagen wijzigingen gaan verloren. Weet je zeker dat je wilt doorgaan?",
+  "component.unsaved_changes_dialog.title": "Niet-opgeslagen wijzigingen",
+  "enum.role.admin": "Admin",
+  "enum.role.user": "User",
+  "error.bad_request.description": "Er ging iets mis. Probeer het opnieuw.",
+  "error.bad_request.title": "Ongeldig verzoek",
+  "error.default_error.description": "Probeer het later opnieuw.",
+  "error.default_error.title": "Er ging iets mis",
+  "error.forbidden.description": "U heeft geen toestemming om deze bron te bekijken.",
+  "error.forbidden.title": "Verboden",
+  "error.internal_server_error.description": "Probeer het later opnieuw.",
+  "error.internal_server_error.title": "Interne serverfout",
+  "error.invalid_form_input.description": "Controleer de gemarkeerde velden en probeer het opnieuw.",
+  "error.invalid_form_input.title": "Ongeldige invoer",
+  "error.resource_not_found.description": "De gevraagde bron kon niet worden gevonden.",
+  "error.resource_not_found.title": "Bron niet gevonden",
+  "error.unauthorized.description": "U bent niet gemachtigd om deze bron te bekijken.",
+  "error.unauthorized.title": "Niet gemachtigd",
+  "error.validation_error.description": "Controleer het formulier op fouten.",
+  "error.validation_error.title": "Validatiefout",
+  "form.fields.email": "E-mailadres",
+  "form.fields.password": "Wachtwoord",
+  "form.save_changes": "Wijzigingen opslaan",
+  "module.auth.login.description": "Meld je aan om door te gaan",
+  "module.auth.login.error": "Er is iets misgegaan bij het aanmelden. Probeer het opnieuw.",
+  "module.auth.login.sign_in": "Aanmelden",
+  "module.auth.login.title": "Aanmelden",
+  "module.setting.application.title": "Applicatie",
+  "module.setting.font_size.default": "Standaard",
+  "module.setting.font_size.description": "Pas de lettergrootte aan.",
+  "module.setting.font_size.large": "Groot",
+  "module.setting.font_size.larger": "Groter",
+  "module.setting.font_size.small": "Klein",
+  "module.setting.font_size.smaller": "Kleiner",
+  "module.setting.font_size.title": "Lettergrootte",
+  "module.setting.high_contrast.description": "Verbeter de leesbaarheid en zichtbaarheid door het verhogen van de contrast tussen UI-elementen.",
+  "module.setting.high_contrast.disabled.description": "Hoog contrast is uitgeschakeld.",
+  "module.setting.high_contrast.disabled.label": "Uitgeschakeld",
+  "module.setting.high_contrast.enabled.description": "Hoog contrast is ingeschakeld.",
+  "module.setting.high_contrast.enabled.label": "Ingeschakeld",
+  "module.setting.high_contrast.title": "Hoog contrast",
+  "module.setting.interface_theme.dark": "Donker",
+  "module.setting.interface_theme.description": "Selecteer of pas het UI-thema aan.",
+  "module.setting.interface_theme.light": "Licht",
+  "module.setting.interface_theme.system_preference": "Systeemvoorkeur",
+  "module.setting.interface_theme.title": "Interface-thema",
+  "module.setting.keyboard_shortcuts.description": "Toetsenbord sneltoetsen zijn altijd ingeschakeld, maar je kunt kiezen of ze worden weergegeven.",
+  "module.setting.keyboard_shortcuts.disabled.description": "Toetsenbord sneltoetsen zijn verborgen.",
+  "module.setting.keyboard_shortcuts.disabled.label": "Uitgeschakeld",
+  "module.setting.keyboard_shortcuts.enabled.description": "Toetsenbord sneltoetsen zijn zichtbaar.",
+  "module.setting.keyboard_shortcuts.enabled.label": "Ingeschakeld",
+  "module.setting.keyboard_shortcuts.example_button": "Voorbeeld",
+  "module.setting.keyboard_shortcuts.title": "Toetsenbord sneltoetsen",
+  "module.setting.language.description": "Wijzig je taal.",
+  "module.setting.language.locales.en_us": "English (United States)",
+  "module.setting.language.locales.nl_be": "Nederlands (België)",
+  "module.setting.language.title": "Taal",
+  "module.setting.reduce_motion.description": "Verminder het aantal en intensiteit van animaties, hovereffecten en andere bewegende effecten in de applicatie.",
+  "module.setting.reduce_motion.disabled.description": "Alle animaties en hovereffecten zijn ingeschakeld voor een volledige ervaring.",
+  "module.setting.reduce_motion.disabled.label": "Uitgeschakeld",
+  "module.setting.reduce_motion.enabled.description": "Je zult minder animaties en hovereffecten zien om beweging te verminderen.",
+  "module.setting.reduce_motion.enabled.label": "Ingeschakeld",
+  "module.setting.reduce_motion.title": "Verminder beweging",
+  "module.setting.roles_and_permissions.add_new_role": "Rol aanmaken",
+  "module.setting.roles_and_permissions.create_role_dialog.description": "Maak een nieuwe rol aan",
+  "module.setting.roles_and_permissions.create_role_dialog.title": "Nieuwe rol",
+  "module.setting.roles_and_permissions.save_changes": "Opslaan",
+  "module.setting.roles_and_permissions.save_changes_success": "Veranderingen zijn opgeslagen",
+  "module.setting.roles_and_permissions.title": "Rollen en rechten",
+  "module.setting.subtitle": "Beheer je app-instellingen",
+  "module.setting.title": "Instellingen",
+  "module.settings.roles_and_permissions.table.delete_role": "Rol verwijderen",
+  "module.settings.roles_and_permissions.table.permissions": "Permissies",
+  "module.user.create.create_user": "Gebruiker aanmaken",
+  "module.user.create.success_toast.message": "Gebruiker is succesvol aangemaakt.",
+  "module.user.create.title": "Nieuwe gebruiker",
+  "module.user.detail.edit_user": "Gebruiker bewerken",
+  "module.user.detail.title": "Gebruiker bewerken",
+  "module.user.form.section.name.description": "Voor- en achternaam van de gebruiker.",
+  "module.user.update.success_toast.message": "Gebruiker is succesvol bijgewerkt.",
+  "module.user.role": "Rol",
+  "shared.cancel": "Annuleer",
+  "shared.close": "Sluiten",
+  "shared.edit": "Bewerken",
+  "shared.save": "Maak aan",
+  "user.birth_date": "Geboortedatum",
+  "user.first_name": "Voornaam",
+  "user.label.plural": "Gebruikers",
+  "user.label.singular": "Gebruiker",
+  "user.label.user_with_count": "Geen gebruikers | {count} gebruiker | {count} gebruikers",
+  "user.last_name": "Achternaam",
+  "user.name": "Naam",
+  "validation.invalid_date": "Ongeldige datum",
+  "validation.invalid_datetime": "Ongeldige datum en tijd",
+  "validation.invalid_email": "Ongeldig e-mailadres",
+  "validation.invalid_regex": "Ongeldig formaat",
+  "validation.invalid_string": "Ongeldige invoer",
+  "validation.invalid_union": "Ongeldige invoer",
+  "validation.invalid_url": "Ongeldige URL",
+  "validation.invalid_uuid": "Ongeldige UUID",
+  "validation.required": "Dit veld is verplicht",
+  "validation.too_big": "Moet kleiner dan of gelijk aan {count} zijn",
+  "validation.too_big_array": "Mag maximaal {count} item bevatten | Mag maximaal {count} items bevatten",
+  "validation.too_big_date": "Moet voor {count} liggen",
+  "validation.too_big_number": "Moet kleiner dan of gelijk aan {count} zijn",
+  "validation.too_big_string": "Mag maximaal {count} teken bevatten | Mag maximaal {count} tekens bevatten",
+  "validation.too_small": "Moet groter dan of gelijk aan {count} zijn",
+  "validation.too_small_array": "Moet minstens {count} item bevatten | Moet minstens {count} items bevatten",
+  "validation.too_small_date": "Moet na {count} liggen",
+  "validation.too_small_number": "Moet groter dan of gelijk aan {count} zijn",
+  "validation.too_small_string": "Moet minstens {count} teken bevatten | Moet minstens {count} tekens bevatten"
 }

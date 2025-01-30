@@ -33,7 +33,7 @@ if (!props.canExitWhenDirty) {
 watch(
   () => props.form.isSubmitting,
   (isSubmitting) => {
-    pageLoader.setIsLoading(isSubmitting)
+    pageLoader.setIsLoading(isSubmitting.value)
   },
 )
 

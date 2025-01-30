@@ -5,6 +5,7 @@ import { UuidUtil } from '@/utils/uuid.util.ts'
 export class UserIndexDtoBuilder {
   value: UserIndexDto = {
     uuid: UuidUtil.getRandom<UserUuid>(),
+    email: 'john.doe@gmail.com',
     firstName: 'John',
     lastName: 'Doe',
   }

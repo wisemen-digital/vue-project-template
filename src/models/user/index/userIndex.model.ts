@@ -1,12 +1,9 @@
-import { z } from 'zod'
+import type { UserUuid } from '@/models/user/userUuid.model'
 
-import { userUuidSchema } from '@/models/user/userUuid.model'
-
-export const userIndexSchema = z.object({
-  uuid: userUuidSchema,
-  firstName: z.string(),
-  fullName: z.string(),
-  lastName: z.string(),
-})
-
-export type UserIndex = z.infer<typeof userIndexSchema>
+export interface UserIndex {
+  uuid: UserUuid
+  email: string
+  firstName: string | null
+  fullName: string | null
+  lastName: string | null
+}

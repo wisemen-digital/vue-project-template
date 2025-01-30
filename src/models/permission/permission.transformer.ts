@@ -1,10 +1,10 @@
+import type { Permission } from '@/client'
 import type { SettingPermission } from '@/models/permission/permission.model.ts'
 import type { SettingPermissionAction } from '@/models/permission/permissionAction.model'
-import type { PermissionDto } from '@/models/permission/permissionDto.model.ts'
 import type { SettingPermissionId } from '@/models/permission/permissionId.model'
 
 export class PermissionTransformer {
-  static fromDto(permissionsDto: PermissionDto[]): SettingPermission[] {
+  static fromDto(permissionsDto: Permission[]): SettingPermission[] {
     const permissions: SettingPermission[] = []
 
     for (let i = 0; i < permissionsDto.length; i++) {

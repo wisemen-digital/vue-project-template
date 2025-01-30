@@ -4,10 +4,12 @@ import type {
 } from '@wisemen/vue-core'
 
 import {
+  setUserRolesControllerUpdateUserV1,
   viewMeControllerViewMeV1,
   viewUserControllerViewUserV1,
   viewUsersControllerViewUserV1,
 } from '@/client'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 import type { User } from '@/models/user/detail/user.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
@@ -45,5 +47,18 @@ export class UserService {
     const response = await viewMeControllerViewMeV1()
 
     return UserTransformer.fromDto(response.data)
+  }
+
+  static async updateRole(userUuid: UserUuid, roleUuid: RoleUuid): Promise<void> {
+    await setUserRolesControllerUpdateUserV1({
+      body: {
+        roleUuids: [
+          roleUuid,
+        ],
+      },
+      path: {
+        user: userUuid,
+      },
+    })
   }
 }
