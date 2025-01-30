@@ -1,4 +1,4 @@
-// Using  page.screenshot to ensure animations have completed
+// Using  page.waitForTimeout to ensure animations have completed
 
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test as base } from '@playwright/test'
@@ -25,7 +25,7 @@ const test = base.extend<{
 
     await use(page)
 
-    await page.screenshot({ animations: 'disabled', path: 'toast-validation.png' })
+    await page.waitForTimeout(500)
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags([
