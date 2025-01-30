@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
-import { AppButton } from '@wisemen/vue-core'
+import type { Icon } from '@wisemen/vue-core'
+import { VcButton } from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import {
   computed,
@@ -7,23 +8,24 @@ import {
 } from 'vue'
 import type { z } from 'zod'
 
-import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcuts.constant'
+import { KEYBOARD_SHORTCUT } from '@/constants/keyboardShortcut.constant'
 
 const props = withDefaults(defineProps<{
-  formId?: null | string
+  formId?: string | null
   isAlwaysEnabled?: boolean
   isDisabled?: boolean
   isKeyboardCommandDisabled?: boolean
   form: Form<TFormType>
+  iconLeft?: Icon | null
   label: string
 }>(), {
   formId: null,
   isAlwaysEnabled: false,
   isDisabled: false,
-  isKeyboardCommandDisabled: false,
+  iconLeft: null,
 })
 
-const buttonRef = ref<InstanceType<typeof AppButton> | null>(null)
+const buttonRef = ref<InstanceType<typeof VcButton> | null>(null)
 
 const isButtonDisabled = computed<boolean>(() => {
   if (props.isDisabled) {
@@ -31,7 +33,7 @@ const isButtonDisabled = computed<boolean>(() => {
   }
 
   if (!props.isAlwaysEnabled) {
-    return !(props.form.isDirty as boolean)
+    return !props.form.isDirty.value
   }
 
   return false
@@ -39,15 +41,17 @@ const isButtonDisabled = computed<boolean>(() => {
 </script>
 
 <template>
-  <AppButton
+  <VcButton
     ref="buttonRef"
+    :icon-left="props.iconLeft"
     :form="props.formId"
     :is-disabled="isButtonDisabled"
-    :is-loading="props.form.isSubmitting"
-    :keyboard-shortcut="isKeyboardCommandDisabled ? null : KEYBOARD_SHORTCUT.SAVE"
+    :is-loading="props.form.isSubmitting.value"
+    :keyboard-shortcut="KEYBOARD_SHORTCUT.SAVE"
     type="submit"
     class="w-full"
+    size="sm"
   >
     {{ props.label }}
-  </AppButton>
+  </VcButton>
 </template>

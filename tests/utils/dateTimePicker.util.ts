@@ -1,6 +1,25 @@
 import type { Page } from '@playwright/test'
 
 export class DateTimePickerUtil {
+  private static getMonthName(month: number): string {
+    const monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ]
+
+    return monthNames[month - 1]
+  }
+
   static async selectDateTime(
     page: Page,
     dateTestId: string,
@@ -22,25 +41,6 @@ export class DateTimePickerUtil {
     await this.selectYear(page, year)
     await this.selectMonth(page, month)
     await this.selectDay(page, day)
-  }
-
-  private static getMonthName(month: number): string {
-    const monthNames = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ]
-
-    return monthNames[month - 1]
   }
 
   private static async selectDay(page: Page, day: number): Promise<void> {

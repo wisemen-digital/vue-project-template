@@ -3,10 +3,18 @@
 
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test as base } from '@playwright/test'
+import { http } from 'msw'
+import type { MockServiceWorker } from 'playwright-msw'
+import { createWorkerFixture } from 'playwright-msw'
 
 import { TEST_ID } from '@/constants/testId.constant.ts'
+import { handlers } from '@/mocks/handlers'
 
-export const test = base.extend({
+const test = base.extend<{
+  http: typeof http
+  worker: MockServiceWorker
+}>({
+  http,
   page: async ({ page }, use) => {
     const errors: string[] = []
 
@@ -40,6 +48,9 @@ export const test = base.extend({
     //   contentType: 'application/json',
     // })
   },
+  worker: createWorkerFixture(handlers, {
+    waitForPageLoad: true,
+  }),
 })
 
-export { expect } from '@playwright/test'
+export { expect, test }

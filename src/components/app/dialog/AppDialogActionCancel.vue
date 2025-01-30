@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import {
-  AppButton,
-  AppDialogCloseButton,
-  AppKeyboardKey,
+  VcButton,
+  VcDialogCloseButton,
+  VcKeyboardKey,
 } from '@wisemen/vue-core'
 
-import AppButtonGroup from '@/components/app/AppButtonGroup.vue'
+import AppGroup from '@/components/app/AppGroup.vue'
+import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 
 const props = withDefaults(defineProps<{
   isDisabled?: boolean
@@ -13,22 +14,26 @@ const props = withDefaults(defineProps<{
 }>(), {
   isDisabled: false,
 })
+
+const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 </script>
 
 <template>
-  <AppDialogCloseButton>
-    <AppButton
+  <VcDialogCloseButton>
+    <VcButton
       :is-disabled="isDisabled"
-      variant="ghost"
+      variant="tertiary"
+      class="w-full"
     >
-      <AppButtonGroup>
+      <AppGroup>
         {{ props.label }}
 
-        <AppKeyboardKey
+        <VcKeyboardKey
+          v-if="isKeyboardShortcutHintVisible"
           keyboard-key="escape"
-          class="!bg-black/5"
+          class="border-tertiary bg-secondary text-tertiary"
         />
-      </AppButtonGroup>
-    </AppButton>
-  </AppDialogCloseButton>
+      </AppGroup>
+    </VcButton>
+  </VcDialogCloseButton>
 </template>

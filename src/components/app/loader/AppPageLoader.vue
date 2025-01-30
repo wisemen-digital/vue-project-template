@@ -15,7 +15,7 @@ router.beforeEach(() => {
 
   startLoadingTimeout = setTimeout(() => {
     setIsLoading(true)
-  }, 100)
+  }, 500)
 })
 
 router.afterEach(() => {
@@ -38,7 +38,7 @@ router.afterEach(() => {
       class="fixed left-0 top-0 z-30 h-[3px] w-full"
     >
       <!-- eslint-disable-next-line tailwindcss/no-custom-classname -->
-      <div class="loader h-full w-1/2 bg-primary" />
+      <div class="loader h-full w-1/2 bg-brand-primary-500" />
     </div>
   </Transition>
 </template>

@@ -1,6 +1,6 @@
 /* eslint-disable node/prefer-global/process */
 import ImportMetaEnvPlugin from '@import-meta-env/unplugin'
-import { sentryVitePlugin } from '@sentry/vite-plugin'
+import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
@@ -28,6 +28,7 @@ export default defineConfig({
       env: '.env',
       example: '.env.example',
     }),
+    tailwindcss(),
     viteCompression(),
     VitePWA({
       includeAssets: [
@@ -36,7 +37,7 @@ export default defineConfig({
       ],
       injectRegister: 'auto',
       manifest: {
-        name: 'Project template',
+        name: '$projectName',
         background_color: '#ffffff',
         display: 'fullscreen',
         icons: [
@@ -51,7 +52,7 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
-        short_name: 'Project template',
+        short_name: '$projectName',
         theme_color: 'rgb(23, 23, 23)',
       },
       registerType: 'prompt',
@@ -60,22 +61,33 @@ export default defineConfig({
         navigateFallbackDenylist: [
           /api/,
         ],
+        runtimeCaching: [
+          {
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 's3-images',
+              cacheableResponse: {
+                statuses: [
+                  0,
+                  200,
+                ], // cache responses with these statuses
+              },
+              expiration: {
+                maxAgeSeconds: 30 * 24 * 60 * 60, // cache for 30 days
+              },
+              matchOptions: {
+                ignoreSearch: true,
+              },
+            },
+            urlPattern: ({ url }): boolean => url.origin.includes('.s3.'),
+          },
+        ],
       },
     }),
     vue({
       script: {
         defineModel: true,
       },
-    }),
-    sentryVitePlugin({
-      authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
-      disable: process.env.VITE_SENTRY_AUTH_TOKEN === undefined,
-      errorHandler(error) {
-        console.error('SentryVitePlugin error:', error)
-      },
-      org: process.env.VITE_SENTRY_ORG,
-      project: process.env.VITE_SENTRY_PROJECT,
-      url: process.env.VITE_SENTRY_URL,
     }),
   ],
   resolve: {

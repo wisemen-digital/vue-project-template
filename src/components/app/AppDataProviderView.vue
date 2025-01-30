@@ -1,14 +1,14 @@
-<script setup lang="ts" generic="T">
-import { AppPageSkeletonLoader } from '@wisemen/vue-core'
+<script setup lang="ts" generic="TQueries">
+import { VcSkeletonItem } from '@wisemen/vue-core'
 import type { UseQueryReturnType } from '@wisemen/vue-core-query'
 import { AxiosError } from 'axios'
 import { computed } from 'vue'
 
-import AppErrorState from './error-state/AppErrorState.vue'
+import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 
 const props = defineProps<{
   queries: {
-    [K in keyof T]: UseQueryReturnType<T[K]>
+    [KQuery in keyof TQueries]: UseQueryReturnType<TQueries[KQuery]>
   }
 }>()
 
@@ -38,7 +38,7 @@ const error = computed<AxiosError | null>(() => {
 })
 
 const data = computed<{
-  [K in keyof T]: T[K]
+  [KQuery in keyof TQueries]: TQueries[KQuery]
 }>(() => {
   const data = {} as any
 
@@ -51,7 +51,8 @@ const data = computed<{
 </script>
 
 <template>
-  <AppPageSkeletonLoader v-if="isLoading" />
+  <!-- TODO: page skeleton -->
+  <VcSkeletonItem v-if="isLoading" />
 
   <div
     v-else-if="error !== null"

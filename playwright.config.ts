@@ -34,10 +34,15 @@ export default defineConfig({
   fullyParallel: true,
   /* Configure projects for major browsers */
   projects: [
+    { name: 'setup', testMatch: /.*\.setup\.ts/ },
     {
       name: 'chromium',
+      dependencies: [
+        'setup',
+      ],
       use: {
         ...devices['Desktop Chrome'],
+        storageState: 'tests/.auth/user.json',
       },
     },
     // {
