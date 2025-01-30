@@ -20,12 +20,12 @@ import { TEST_ID } from '@/constants/testId.constant.ts'
 import { toFormField } from '@/helpers/formango.helper.ts'
 import type { SettingRole } from '@/models/setting-role/role.model.ts'
 import { roleUuidSchema } from '@/models/setting-role/roleUuid.model.ts'
-import type { User } from '@/models/user/detail/user.model.ts'
+import type { UserDetail } from '@/models/user/detail/user.model.ts'
 import { useSettingRolesQuery } from '@/modules/settings/api/queries/settingRole.query.ts'
 import { useUserUpdateRoleMutation } from '@/modules/user/api/mutations/userUpdate.mutation.ts'
 
 const props = defineProps<{
-  user: User
+  user: UserDetail
 }>()
 
 const { t } = useI18n()
@@ -36,26 +36,38 @@ const userUpdateRoleMutation = useUserUpdateRoleMutation()
 
 const roleQuery = useSettingRolesQuery()
 
-const roleItems = computed<SelectItem<SettingRole>[]>(() => {
-  return roleQuery.data.value?.map((role): SelectItem<SettingRole> => {
-    return {
-      type: 'option',
-      value: role,
-    }
-  }) ?? []
+interface RoleItem {
+  uuid: string
+  name: string
+}
+
+const roleItems = computed<SelectItem<RoleItem>[]>(() => {
+  return roleQuery.data.value?.map((role): SelectItem<SettingRole> => ({
+    type: 'option',
+    value: {
+      uuid: role.uuid,
+      name: role.name,
+    },
+  })) ?? []
 })
 
 const form = useForm({
+  initialState: () => ({
+    roles: props.user.roles.map((role) => ({
+      uuid: role.uuid,
+      name: role.name,
+    })),
+  }),
   schema: z.object({
-    role: z.object({
+    roles: z.object({
       uuid: roleUuidSchema,
       name: z.string(),
-    }),
+    }).array(),
   }),
   onSubmit: async (values) => {
     try {
       await userUpdateRoleMutation.execute({
-        body: values.role.uuid,
+        body: values.roles.map((role) => role.uuid),
         params: {
           userUuid: props.user.uuid,
         },
@@ -77,7 +89,7 @@ const form = useForm({
   },
 })
 
-const role = form.register('role')
+const roles = form.registerArray('roles')
 </script>
 
 <template>
@@ -100,7 +112,7 @@ const role = form.register('role')
           <FormGrid :cols="2">
             <VcSelect
               :test-id="TEST_ID.USERS.FORM.FIRST_NAME_INPUT"
-              v-bind="toFormField(role)"
+              v-bind="toFormField(roles)"
               :display-fn="(item) => item.name"
               :items="roleItems"
               :label="t('module.user.role')"

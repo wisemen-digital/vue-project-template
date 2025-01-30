@@ -9,10 +9,10 @@ interface Params {
   userUuid: UserUuid
 }
 
-export function useUserUpdateRoleMutation(): UseMutationReturnType<RoleUuid, void, Params> {
-  return useMutation<RoleUuid, void, Params>({
+export function useUserUpdateRoleMutation(): UseMutationReturnType<RoleUuid[], void, Params> {
+  return useMutation<RoleUuid[], void, Params>({
     queryFn: async ({ body, params }) => {
-      await UserService.updateRole(params.userUuid, body)
+      await UserService.updateRoles(params.userUuid, body)
     },
     queryKeysToInvalidate: {
       userDetail: {

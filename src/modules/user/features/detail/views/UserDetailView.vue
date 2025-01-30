@@ -5,10 +5,10 @@ import { useI18n } from 'vue-i18n'
 import AppEditItemButton from '@/components/app/button/AppEditItemButton.vue'
 import AppPage from '@/components/layout/AppPage.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
-import type { User } from '@/models/user/detail/user.model'
+import type { UserDetail } from '@/models/user/detail/user.model'
 
 const props = defineProps<{
-  user: User
+  user: UserDetail
 }>()
 
 const { t } = useI18n()

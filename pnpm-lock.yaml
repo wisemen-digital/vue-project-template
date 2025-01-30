@@ -51,8 +51,8 @@ importers:
         specifier: 1.11.13
         version: 1.11.13
       formango:
-        specifier: 3.0.0-alpha.0
-        version: 3.0.0-alpha.0(vue@3.5.13(typescript@5.7.3))(zod@3.24.1)
+        specifier: 3.0.0-alpha.1
+        version: 3.0.0-alpha.1(vue@3.5.13(typescript@5.7.3))(zod@3.24.1)
       i18n-iso-countries:
         specifier: 7.13.0
         version: 7.13.0
@@ -4299,8 +4299,8 @@ packages:
     resolution: {integrity: sha512-tzN8e4TX8+kkxGPK8D5u0FNmjPUjw3lwC9lSLxxoB/+GtsJG91CO8bSWy73APlgAZzZbXEYZJuxjkHH2w+Ezhw==}
     engines: {node: '>= 6'}
 
-  formango@3.0.0-alpha.0:
-    resolution: {integrity: sha512-nzC9xB5TYP9a+SKsEdS8L4S6IiMM9cAzy/jy/RHR1OEckydmlkRl+rETutCZxdywj3DDxkwhZZ9mneqKOSZ6uw==}
+  formango@3.0.0-alpha.1:
+    resolution: {integrity: sha512-RLeRPfjwIaK7MFO2hghQrY0gTodp6exvqupPQ7AmvkyQ4J9HacjWVv30oKyS7CbBSCDKKCrp8NEOxuYI7LVQxA==}
     peerDependencies:
       vue: ^3.2.47
       zod: ^3.24.1
@@ -11362,7 +11362,7 @@ snapshots:
       combined-stream: 1.0.8
       mime-types: 2.1.35
 
-  formango@3.0.0-alpha.0(vue@3.5.13(typescript@5.7.3))(zod@3.24.1):
+  formango@3.0.0-alpha.1(vue@3.5.13(typescript@5.7.3))(zod@3.24.1):
     dependencies:
       '@vue/devtools-api': 6.6.4
       clone-deep: 4.0.1

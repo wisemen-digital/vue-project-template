@@ -3,11 +3,11 @@ import type { BreadcrumbItem } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import FormPage from '@/components/form/FormPage.vue'
-import type { User } from '@/models/user/detail/user.model'
+import type { UserDetail } from '@/models/user/detail/user.model'
 import UserUpdateRoleForm from '@/modules/user/features/update/components/UserUpdateRoleForm.vue'
 
 const props = defineProps<{
-  user: User
+  user: UserDetail
 }>()
 
 const { t } = useI18n()

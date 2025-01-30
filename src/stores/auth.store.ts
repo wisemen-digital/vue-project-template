@@ -5,17 +5,17 @@ import {
 } from 'vue'
 
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import type { User } from '@/models/user/detail/user.model.ts'
+import type { UserDetail } from '@/models/user/detail/user.model.ts'
 import { UserService } from '@/modules/user/api/services/user.service.ts'
 
 export const useAuthStore = defineStore('auth', () => {
-  const authUser = ref<User | null>(null)
+  const authUser = ref<UserDetail | null>(null)
 
   const isAuthenticated = computed<boolean>(() => authUser.value === null)
 
   const logoutCallback = ref<(() => void) | null>(null)
 
-  async function getAuthUser(): Promise<User> {
+  async function getAuthUser(): Promise<UserDetail> {
     if (authUser.value !== null) {
       return authUser.value
     }
@@ -27,7 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
     return user
   }
 
-  function setAuthUser(user: User | null): void {
+  function setAuthUser(user: UserDetail | null): void {
     authUser.value = user
   }
 

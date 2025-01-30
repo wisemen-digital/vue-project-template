@@ -1,9 +1,9 @@
-import type { UserDto } from '@/models/user/detail/userDto.model.ts'
+import type { UserDetailDto } from '@/models/user/detail/userDto.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { UuidUtil } from '@/utils/uuid.util.ts'
 
 export class UserDtoBuilder {
-  value: UserDto = {
+  value: UserDetailDto = {
     uuid: UuidUtil.getRandom<UserUuid>(),
     email: 'john.doe@jhonny.com',
     firstName: 'John',
@@ -13,7 +13,7 @@ export class UserDtoBuilder {
 
   constructor() {}
 
-  build(): UserDto {
+  build(): UserDetailDto {
     return this.value
   }
 

@@ -5,14 +5,30 @@ interface UserErrorToastReturnType {
   show: (error: unknown) => void
 }
 
+interface ApiError {
+  errors: {
+    code: string
+    detail: string
+    source: {
+      pointer: string
+    }
+  }[]
+}
+
+function isApiError(error: unknown): error is ApiError {
+  return (error as ApiError).errors !== undefined
+}
+
 export function useApiErrorToast(): UserErrorToastReturnType {
   const { t } = useI18n()
   const toast = useToast()
 
   function show(error: unknown): void {
-    if (error instanceof TypeError && 'response' in error) {
+    console.log('error', error)
+
+    if (isApiError(error)) {
       toast.error({
-        message: t('error.default_error.description'),
+        message: error.errors[0]?.detail ?? t('error.default_error.description'),
       })
 
       return

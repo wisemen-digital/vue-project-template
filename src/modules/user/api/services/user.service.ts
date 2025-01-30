@@ -10,7 +10,7 @@ import {
   viewUsersControllerViewUserV1,
 } from '@/client'
 import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
-import type { User } from '@/models/user/detail/user.model'
+import type { UserDetail } from '@/models/user/detail/user.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import {
@@ -33,7 +33,7 @@ export class UserService {
     }
   }
 
-  static async getByUuid(userUuid: UserUuid): Promise<User> {
+  static async getByUuid(userUuid: UserUuid): Promise<UserDetail> {
     const response = await viewUserControllerViewUserV1({
       path: {
         uuid: userUuid,
@@ -43,18 +43,16 @@ export class UserService {
     return UserTransformer.fromDto(response.data)
   }
 
-  static async getMe(): Promise<User> {
+  static async getMe(): Promise<UserDetail> {
     const response = await viewMeControllerViewMeV1()
 
     return UserTransformer.fromDto(response.data)
   }
 
-  static async updateRole(userUuid: UserUuid, roleUuid: RoleUuid): Promise<void> {
+  static async updateRoles(userUuid: UserUuid, roleUuids: RoleUuid[]): Promise<void> {
     await setUserRolesControllerUpdateUserV1({
       body: {
-        roleUuids: [
-          roleUuid,
-        ],
+        roleUuids,
       },
       path: {
         user: userUuid,
