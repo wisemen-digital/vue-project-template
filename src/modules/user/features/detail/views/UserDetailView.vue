@@ -15,7 +15,7 @@ const { t } = useI18n()
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    label: t('shared.users'),
+    label: t('user.label.plural'),
     to: {
       name: 'user-overview',
     },
@@ -30,8 +30,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 <template>
   <AppPage
-    :breadcrumbs="breadcrumbs"
     :title="props.user.fullName"
+    :breadcrumbs="breadcrumbs"
   >
     <template #header-actions>
       <AppEditItemButton
@@ -42,7 +42,7 @@ const breadcrumbs: BreadcrumbItem[] = [
           },
         }"
         :data-test-id="TEST_ID.USERS.DETAIL.EDIT_BUTTON"
-        :label="t('users.detail.edit_user')"
+        :label="t('module.user.detail.edit_user')"
       />
     </template>
   </AppPage>

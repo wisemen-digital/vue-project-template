@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AppDialog } from '@wisemen/vue-core'
+import { VcDialog } from '@wisemen/vue-core'
 
 import AppDialogActionCancel from '@/components/app/dialog/AppDialogActionCancel.vue'
 import AppDialogActionPrimary from '@/components/app/dialog/AppDialogActionPrimary.vue'
@@ -28,12 +28,11 @@ function onConfirm(): void {
 </script>
 
 <template>
-  <AppDialog>
+  <VcDialog>
     <AppDialogContent class="w-dialog-sm">
       <AppDialogHeader
         :title="props.title"
         :description="props.description"
-        icon="alertCircle"
       />
 
       <AppDialogActions>
@@ -50,5 +49,5 @@ function onConfirm(): void {
         />
       </AppDialogActions>
     </AppDialogContent>
-  </AppDialog>
+  </VcDialog>
 </template>

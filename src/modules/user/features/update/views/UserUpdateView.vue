@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
-import {
-  useApiErrorToast,
-  useToast,
-} from '@wisemen/vue-core'
+import { useToast } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import FormPage from '@/components/form/FormPage.vue'
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { User } from '@/models/user/detail/user.model'
 import type { UserUpdateForm as UserUpdateFormType } from '@/models/user/update/userUpdateForm.model'
@@ -28,7 +26,7 @@ const userUpdateMutation = useUserUpdateMutation()
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    label: t('shared.users'),
+    label: t('user.label.plural'),
     to: {
       name: 'user-overview',
     },
@@ -50,40 +48,32 @@ const breadcrumbs: BreadcrumbItem[] = [
   },
 ]
 
-const {
-  form,
-  onSubmitForm,
-  onSubmitFormError,
-} = useForm({
+const form = useForm({
   initialState: computed<UserUpdateFormType>(() => UserUpdateTransformer.toForm(props.user)),
   schema: userUpdateFormSchema,
-})
+  onSubmit: async (values) => {
+    try {
+      await userUpdateMutation.execute({
+        body: values,
+        params: {
+          userUuid: props.user.uuid,
+        },
+      })
 
-onSubmitFormError(() => {
-  toast.error({
-    title: t('error.invalid_form_input.title'),
-    description: t('error.invalid_form_input.description'),
-  })
-})
-
-onSubmitForm(async (values) => {
-  try {
-    await userUpdateMutation.execute({
-      body: values,
-      params: {
-        userUuid: props.user.uuid,
-      },
+      toast.success({
+        testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
+        message: t('module.user.update.success_toast.message'),
+      })
+    }
+    catch (error) {
+      errorToast.show(error)
+    }
+  },
+  onSubmitError: () => {
+    toast.error({
+      message: t('error.invalid_form_input.description'),
     })
-
-    toast.success({
-      testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
-      title: t('users.update.success.title'),
-      description: t('users.update.success.description'),
-    })
-  }
-  catch (error) {
-    errorToast.show(error)
-  }
+  },
 })
 </script>
 

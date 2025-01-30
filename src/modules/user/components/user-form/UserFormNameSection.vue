@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { FormInput } from '@wisemen/vue-core'
+import { VcTextField } from '@wisemen/vue-core'
 import type { Field } from 'formango'
 import { useI18n } from 'vue-i18n'
 
 import FormGrid from '@/components/app/grid/FormGrid.vue'
-import FormSection from '@/components/form/FormSection.vue'
+import FormFieldset from '@/components/form/FormFieldset.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
+import { toFormField } from '@/helpers/formango.helper'
 
 const props = defineProps<{
   firstName: Field<string>
@@ -16,21 +17,22 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <FormSection
-    :description="t('users.form.section.name.description')"
-    :title="t('shared.name')"
+  <FormFieldset
+    :description="t('module.user.form.section.name.description')"
+    :title="t('user.name')"
   >
     <FormGrid :cols="2">
-      <FormInput
+      <VcTextField
         :test-id="TEST_ID.USERS.FORM.FIRST_NAME_INPUT"
-        v-bind="props.firstName"
-        :label="t('shared.first_name')"
+        v-bind="toFormField(props.firstName)"
+        :label="t('user.first_name')"
       />
-      <FormInput
-        v-bind="props.lastName"
+
+      <VcTextField
+        v-bind="toFormField(props.lastName)"
         :test-id="TEST_ID.USERS.FORM.LAST_NAME_INPUT"
-        :label="t('shared.last_name')"
+        :label="t('user.last_name')"
       />
     </FormGrid>
-  </FormSection>
+  </FormFieldset>
 </template>

@@ -1,13 +1,7 @@
-import type { RouteLocationNormalized } from 'vue-router'
-
-import type { RouteMiddlewareReturnType } from '@/types/router/routeMiddleware.type'
-
-type MiddlewareFn = (
-  to: RouteLocationNormalized,
-  from: RouteLocationNormalized,
-) => Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
-
-type Middleware = Promise<RouteMiddlewareReturnType> | RouteMiddlewareReturnType
+import type {
+  Middleware,
+  MiddlewareFn,
+} from '@/types/routeMiddleware.type'
 
 /**
  * A simple wrapper for middleware functions so that you don't have to worry about the types

@@ -1,12 +1,12 @@
-# Vue Project Template
+# Project
 
 ### Environments
 
-- Dev: https://vue-node.project-template.development.appwi.se
-- Test: /
-- Staging: /
-- Production: /
+- Dev: https://project.development.appwi.se/
+- Test: https://project.test.appwi.se/
+- Staging: https://project.staging.appwi.se/
+- Production: https://project.production.appwi.se/
 
 ### Links
-- Docs: https://vue-node.project-template.development.appwi.se/api/docs
-- Linear: /
+- Docs: https://project.development.appwi.se/api/docs
+- Linear: -

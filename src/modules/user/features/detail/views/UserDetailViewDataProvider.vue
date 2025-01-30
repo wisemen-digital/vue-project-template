@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { useTypedRouteParams } from '@wisemen/vue-core'
+import { computed } from 'vue'
 
 import AppDataProviderView from '@/components/app/AppDataProviderView.vue'
+import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { useUserDetailQuery } from '@/modules/user/api/queries/userDetail.query'
+import UserDetailView from '@/modules/user/features/detail/views/UserDetailView.vue'
 
-import UserDetailView from './UserDetailView.vue'
+const props = defineProps<{
+  userUuid: UserUuid
+}>()
 
-const routeParams = useTypedRouteParams('user-detail')
-const userDetailQuery = useUserDetailQuery(routeParams.userUuid)
+const userDetailQuery = useUserDetailQuery(computed<UserUuid>(() => props.userUuid))
 </script>
 
 <template>

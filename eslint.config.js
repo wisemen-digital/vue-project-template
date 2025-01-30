@@ -6,6 +6,7 @@ export default [
   {
     ignores: [
       'src/client',
+      'tests/.auth',
     ],
   },
   {
@@ -17,6 +18,9 @@ export default [
       parserOptions: {
         tsconfigRootDir: 'tests',
       },
+    },
+    rules: {
+      // Add or override rules here
     },
   },
 ]
