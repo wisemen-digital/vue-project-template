@@ -1,4 +1,3 @@
-/* eslint-disable playwright/no-standalone-expect */
 // Using  page.screenshot to ensure animations have completed
 
 import AxeBuilder from '@axe-core/playwright'
