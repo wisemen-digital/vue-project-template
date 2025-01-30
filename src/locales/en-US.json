@@ -186,7 +186,7 @@
       "roles_and_permissions": {
         "table": {
           "delete_role": "Delete role",
-          "permissions": "Permissiosn"
+          "permissions": "Permissions"
         }
       }
     },

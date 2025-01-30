@@ -8,6 +8,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
+import { TEST_ID } from '@/constants/testId.constant'
 import type { Role } from '@/models/role/role.model.ts'
 import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
 
@@ -36,7 +37,7 @@ const dropDownItems = computed<DropdownMenuItem[]>(() => ([
 
 <template>
   <div class="flex items-center justify-center gap-4 text-nowrap p-3 px-6 text-sm text-secondary">
-    <span>
+    <span :data-test-id="TEST_ID.SETTINGS.ROLES.OVERVIEW.TABLE.ROLE_NAME">
       {{ props.role.name }}
     </span>
     <VcDropdownMenu
