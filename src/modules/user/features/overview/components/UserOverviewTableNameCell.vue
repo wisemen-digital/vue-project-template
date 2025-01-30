@@ -20,7 +20,7 @@ const props = defineProps<{
       }"
       class="hover:underline"
     >
-      {{ props.user.fullName }}
+      {{ props.user.email }}
     </AppRouterLink>
   </VcTableCell>
 </template>

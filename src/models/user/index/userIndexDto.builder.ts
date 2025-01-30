@@ -16,6 +16,12 @@ export class UserIndexDtoBuilder {
     return this.value
   }
 
+  withEmail(email: string): UserIndexDtoBuilder {
+    this.value.email = email
+
+    return this
+  }
+
   withFirstName(firstName: string): UserIndexDtoBuilder {
     this.value.firstName = firstName
 
