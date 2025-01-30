@@ -168,6 +168,24 @@ export type ContactResponse = {
     phone: string | null;
 };
 
+export type UpdatePreferencesCommand = {
+    theme?: 'light' | 'dark' | 'system';
+    language?: string;
+    fontSize?: string;
+    showShortcuts?: boolean;
+    reduceMotion?: boolean;
+    highContrast?: boolean;
+};
+
+export type ViewPreferencesResponse = {
+    theme: 'light' | 'dark' | 'system';
+    language: string | null;
+    fontSize: string | null;
+    showShortcuts: boolean;
+    reduceMotion: boolean;
+    highContrast: boolean;
+};
+
 export type SwaggerControllerHandleRedirectData = {
     body?: never;
     path?: never;
@@ -198,6 +216,53 @@ export type StatusControllerGetHealthStatusData = {
 };
 
 export type StatusControllerGetHealthStatusResponses = {
+    200: unknown;
+};
+
+export type TypesenseControllerMigrateV1Data = {
+    body?: never;
+    path?: never;
+    query?: {
+        collections?: Array<'user'>;
+        fresh?: boolean;
+    };
+    url: '/api/v1/typesense/migrate';
+};
+
+export type TypesenseControllerMigrateV1Responses = {
+    /**
+     * Successfully migrated collections
+     */
+    200: unknown;
+};
+
+export type TypesenseControllerImportV1Data = {
+    body?: never;
+    path?: never;
+    query?: {
+        collections?: Array<'user'>;
+    };
+    url: '/api/v1/typesense/import';
+};
+
+export type TypesenseControllerImportV1Responses = {
+    /**
+     * Successfully imported collections
+     */
+    200: unknown;
+};
+
+export type TypesenseControllerGetCollectionsV1Data = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/typesense/collections';
+};
+
+export type TypesenseControllerGetCollectionsV1Responses = {
+    /**
+     * Successfully returned collections
+     */
     200: unknown;
 };
 
@@ -267,53 +332,6 @@ export type ViewUsersControllerViewUserV1Responses = {
 };
 
 export type ViewUsersControllerViewUserV1Response = ViewUsersControllerViewUserV1Responses[keyof ViewUsersControllerViewUserV1Responses];
-
-export type TypesenseControllerMigrateV1Data = {
-    body?: never;
-    path?: never;
-    query?: {
-        collections?: Array<'user'>;
-        fresh?: boolean;
-    };
-    url: '/api/v1/typesense/migrate';
-};
-
-export type TypesenseControllerMigrateV1Responses = {
-    /**
-     * Successfully migrated collections
-     */
-    200: unknown;
-};
-
-export type TypesenseControllerImportV1Data = {
-    body?: never;
-    path?: never;
-    query?: {
-        collections?: Array<'user'>;
-    };
-    url: '/api/v1/typesense/import';
-};
-
-export type TypesenseControllerImportV1Responses = {
-    /**
-     * Successfully imported collections
-     */
-    200: unknown;
-};
-
-export type TypesenseControllerGetCollectionsV1Data = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/api/v1/typesense/collections';
-};
-
-export type TypesenseControllerGetCollectionsV1Responses = {
-    /**
-     * Successfully returned collections
-     */
-    200: unknown;
-};
 
 export type ViewRolesControllerGetRolesV1Data = {
     body?: never;
@@ -532,5 +550,33 @@ export type UpdateContactControllerUpdateContactV1Data = {
 };
 
 export type UpdateContactControllerUpdateContactV1Responses = {
+    200: unknown;
+};
+
+export type ViewPreferencesControllerViewPreferencesIndexV1Data = {
+    body?: never;
+    path: {
+        userUuid: string;
+    };
+    query?: never;
+    url: '/api/v1/users/{userUuid}/preferences';
+};
+
+export type ViewPreferencesControllerViewPreferencesIndexV1Responses = {
+    200: ViewPreferencesResponse;
+};
+
+export type ViewPreferencesControllerViewPreferencesIndexV1Response = ViewPreferencesControllerViewPreferencesIndexV1Responses[keyof ViewPreferencesControllerViewPreferencesIndexV1Responses];
+
+export type UpdatePreferencesControllerUpdatePreferencesV1Data = {
+    body: UpdatePreferencesCommand;
+    path: {
+        userUuid: string;
+    };
+    query?: never;
+    url: '/api/v1/users/{userUuid}/preferences';
+};
+
+export type UpdatePreferencesControllerUpdatePreferencesV1Responses = {
     200: unknown;
 };

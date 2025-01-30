@@ -1,7 +1,7 @@
-import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
-import type { PermissionId } from '@/models/permission/permissionId.model.ts'
+import type { SettingPermissionAction } from '@/models/permission/permissionAction.model.ts'
+import type { SettingPermissionId } from '@/models/permission/permissionId.model.ts'
 
-export interface Permission {
-  id: PermissionId
-  actions: PermissionAction[] | null
+export interface SettingPermission {
+  id: SettingPermissionId
+  actions: SettingPermissionAction[] | null
 }

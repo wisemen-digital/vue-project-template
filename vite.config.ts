@@ -7,16 +7,6 @@ import viteCompression from 'vite-plugin-compression'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern',
-        silenceDeprecations: [
-          'legacy-js-api',
-        ],
-      },
-    },
-  },
   define: {
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
     BUILD_COMMIT: JSON.stringify(process.env.BUILD_COMMIT ?? 'undefined'),
@@ -55,7 +45,7 @@ export default defineConfig({
         short_name: '$projectName',
         theme_color: 'rgb(23, 23, 23)',
       },
-      registerType: 'prompt',
+      registerType: 'autoUpdate',
       strategies: 'generateSW',
       workbox: {
         navigateFallbackDenylist: [
@@ -84,11 +74,7 @@ export default defineConfig({
         ],
       },
     }),
-    vue({
-      script: {
-        defineModel: true,
-      },
-    }),
+    vue(),
   ],
   resolve: {
     alias: [

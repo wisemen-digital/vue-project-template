@@ -1,23 +1,21 @@
 <script setup lang="ts">
-import { AxiosError } from 'axios'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import GridDecorativeBackgroundPattern from '@/components/decorative/GridDecorativeBackgroundPattern.vue'
 
 const props = defineProps<{
-  error: unknown
+  error: {
+    message: string
+    status: number
+  } | null
 }>()
 
 const { t } = useI18n()
 
-function isAxiosError(error: unknown): error is AxiosError {
-  return error instanceof AxiosError
-}
-
 const httpStatus = computed<number | null>(() => {
-  if (isAxiosError(props.error)) {
-    return props.error.response?.status ?? 500
+  if (props.error !== null) {
+    return props.error.status ?? 500
   }
 
   return null
@@ -43,7 +41,7 @@ const title = computed<string>(() => {
 
 const description = computed<string>(() => {
   if (httpStatus.value === null) {
-    return (props.error as Error).message
+    return props.error?.message ?? t('error.default_error.description')
   }
 
   return httpErrorMap.get(`${httpStatus.value}`) ?? t('error.default_error.title')

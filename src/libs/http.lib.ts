@@ -1,41 +1,44 @@
-import { createHttpZodClient } from '@appwise/zod-http-client'
-import { useClipboard } from '@vueuse/core'
-import { useToast } from '@wisemen/vue-core'
-import { computed } from 'vue'
+import { client } from '@/client/client.gen.ts'
+import { API_BASE_URL } from '@/constants/environment.constant.ts'
+import { oAuthClient } from '@/libs/oAuth.lib.ts'
+import { routerPlugin } from '@/plugins/router/router.plugin.ts'
+import { useAuthStore } from '@/stores/auth.store.ts'
 
-import { CURRENT_ENVIRONMENT } from '@/constants/environment.constant.ts'
-import { axios } from '@/libs/axios.lib'
-
-interface ZodError {
-  error: unknown
-  method: string
-  url: string
-}
-
-function onZodError({ error, method, url }: ZodError): void {
-  const toast = useToast()
-  const clipboard = useClipboard({
-    copiedDuring: 2000,
+export function setupHttpClient(): void {
+  client.setConfig({
+    baseUrl: API_BASE_URL,
+    headers: {
+      'Accept-Language': navigator.language,
+    },
   })
 
-  if (CURRENT_ENVIRONMENT !== 'production') {
-    toast.error({
-      action: {
-        label: computed<string>(() => clipboard.copied.value ? 'Copied!' : 'Copy error'),
-        onClick: () => {
-          void clipboard.copy(`${method.toUpperCase()} ${url} returned a malformed response.\n\n${JSON.stringify(error, null, 2)}`)
-        },
-      },
-      durationInMs: 20000,
-      icon: 'alertCircle',
-      message: `${method.toUpperCase()} ${url} returned a malformed response.`,
+  client.interceptors.request.use(async (request: Request): Promise<Request> => {
+    const isLoggedIn = await oAuthClient.isLoggedIn()
+
+    if (isLoggedIn) {
+      const token = await oAuthClient.getAccessToken()
+
+      request.headers.set('Authorization', `Bearer ${token}`)
+    }
+
+    return request
+  })
+
+  client.interceptors.response.use((response: Response): Response => {
+    console.log('response', response)
+
+    if (response?.status !== 401) {
+      return response
+    }
+
+    const authStore = useAuthStore()
+
+    authStore.logout()
+
+    void routerPlugin.replace({
+      name: 'auth-login',
     })
-  }
 
-  console.error(`${method.toUpperCase()} ${url} returned a malformed response\n\n`, JSON.stringify(error, null, 2))
+    return response
+  })
 }
-
-export const httpClient = createHttpZodClient({
-  axios,
-  onZodError,
-})

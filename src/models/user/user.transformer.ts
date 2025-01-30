@@ -1,5 +1,6 @@
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import type { UserIndexFiltersDto } from '@/models/user/index/userIndexFiltersDto.model'
+import type { UserUuid } from '@/models/user/userUuid.model.ts'
 
 import type { UserCreateDto } from './create/userCreateDto.model'
 import type { UserCreateForm } from './create/userCreateForm.model'
@@ -22,13 +23,9 @@ export class UserIndexTransformer {
 }
 
 export class UserIndexFiltersTransformer {
-  static fromDto(dto?: UserIndexFiltersDto): UserIndexFilters | undefined {
-    if (dto === undefined) {
-      return undefined
-    }
-
+  static toDto(filters?: UserIndexFilters): Partial<UserIndexFiltersDto> {
     return {
-      name: dto.name,
+      permissions: filters?.permissions,
     }
   }
 }
@@ -36,7 +33,7 @@ export class UserIndexFiltersTransformer {
 export class UserTransformer {
   static fromDto(dto: UserDto): User {
     return {
-      uuid: dto.uuid,
+      uuid: dto.uuid as UserUuid,
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,

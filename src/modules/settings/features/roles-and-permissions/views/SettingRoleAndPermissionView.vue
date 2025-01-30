@@ -11,7 +11,7 @@ import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElemen
 import AppTeleport from '@/components/app/teleport/AppTeleport.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { useUnsavedChanges } from '@/composables/unsaved-changes/unsavedChanges.composable'
-import type { Permission } from '@/models/permission/permission.model'
+import type { SettingPermission } from '@/models/permission/permission.model'
 import type { Role } from '@/models/role/role.model'
 import type { RoleUuid } from '@/models/role/roleUuid.model'
 import { useSettingRoleBulkUpdateMutation } from '@/modules/settings/api/mutations/settingRoleBulkUpdate.mutation'
@@ -24,7 +24,7 @@ import {
 } from '@/modules/settings/utils/roleAndPermissionTable.util'
 
 const props = defineProps<{
-  permissions: Permission[]
+  permissions: SettingPermission[]
   roles: Role[]
 }>()
 

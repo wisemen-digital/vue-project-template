@@ -1,7 +1,5 @@
-import { z } from 'zod'
+import type { SettingPermission } from '@/models/permission/permission.model.ts'
 
-export const userIndexFiltersSchema = z.object({
-  name: z.string(),
-})
-
-export type UserIndexFilters = z.infer<typeof userIndexFiltersSchema>
+export interface UserIndexFilters {
+  permissions: SettingPermission[]
+}

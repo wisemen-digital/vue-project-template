@@ -1,5 +1,5 @@
-import type { Permission } from '@/models/permission/permission.model.ts'
-import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
+import type { SettingPermission } from '@/models/permission/permission.model.ts'
+import type { SettingPermissionAction } from '@/models/permission/permissionAction.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
 
 export type RoleAndPermissionTableMapValue = string[] | null
@@ -7,7 +7,7 @@ export type RoleAndPermissionTableMapId = string
 
 export class RoleAndPermissionTableUtil {
   static createGrid(
-    permissions: Permission[],
+    permissions: SettingPermission[],
     roles: Role[],
   ): Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue> {
     const grid = new Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>()
@@ -55,7 +55,7 @@ export class RoleAndPermissionTableUtil {
 
   static mapGridToRoles(
     grid: Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>,
-    permissions: Permission[],
+    permissions: SettingPermission[],
     roles: Role[],
   ): Role[] {
     const roleArray: Role[] = []
@@ -63,7 +63,7 @@ export class RoleAndPermissionTableUtil {
     permissions.forEach((permission) => {
       roles.forEach((roleIndex) => {
         const role = roleArray.find((role) => role.uuid === roleIndex.uuid)
-        const value = grid.get(`${permission.id}-${roleIndex.uuid}`) as PermissionAction[]
+        const value = grid.get(`${permission.id}-${roleIndex.uuid}`) as SettingPermissionAction[]
 
         if (!value) {
           return

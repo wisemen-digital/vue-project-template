@@ -1,12 +1,8 @@
-import { z } from 'zod'
+import type { UserUuid } from '@/models/user/userUuid.model'
 
-import { userUuidSchema } from '@/models/user/userUuid.model'
-
-export const userSchema = z.object({
-  uuid: userUuidSchema,
-  firstName: z.string(),
-  fullName: z.string(),
-  lastName: z.string(),
-})
-
-export type User = z.infer<typeof userSchema>
+export interface User {
+  uuid: UserUuid
+  firstName: string | null
+  fullName: string | null
+  lastName: string | null
+}

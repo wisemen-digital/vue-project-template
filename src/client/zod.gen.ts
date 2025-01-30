@@ -32,16 +32,28 @@ export const zRoleResponse = z.object({
 export const zViewMeResponse = z.object({
     uuid: z.string().uuid(),
     email: z.string().email(),
-    firstName: z.unknown(),
-    lastName: z.unknown(),
+    firstName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    lastName: z.union([
+        z.string(),
+        z.null()
+    ]),
     roles: z.array(zRoleResponse)
 });
 
 export const zViewUserResponse = z.object({
     uuid: z.string().uuid(),
     email: z.string().email(),
-    firstName: z.unknown(),
-    lastName: z.unknown(),
+    firstName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    lastName: z.union([
+        z.string(),
+        z.null()
+    ]),
     roles: z.array(zRoleResponse)
 });
 
@@ -72,8 +84,14 @@ export const zUsersFilterQuery = z.object({
 export const zUserIndexView = z.object({
     uuid: z.string().uuid(),
     email: z.string().email(),
-    firstName: z.unknown(),
-    lastName: z.unknown()
+    firstName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    lastName: z.union([
+        z.string(),
+        z.null()
+    ])
 });
 
 export const zPaginatedOffsetResponseMeta = z.object({
@@ -116,10 +134,22 @@ export const zViewContactIndexResponse = z.object({
         createdAt: z.string().datetime(),
         updatedAt: z.string().datetime(),
         isActive: z.boolean(),
-        firstName: z.unknown(),
-        lastName: z.unknown(),
-        email: z.unknown(),
-        phone: z.unknown()
+        firstName: z.union([
+            z.string(),
+            z.null()
+        ]),
+        lastName: z.union([
+            z.string(),
+            z.null()
+        ]),
+        email: z.union([
+            z.string().email(),
+            z.null()
+        ]),
+        phone: z.union([
+            z.string(),
+            z.null()
+        ])
     })),
     meta: zPaginatedOffsetResponseMeta
 });
@@ -175,10 +205,22 @@ export const zCreateFileResponse = z.object({
 });
 
 export const zCreateContactCommand = z.object({
-    firstName: z.unknown(),
-    lastName: z.unknown(),
-    email: z.unknown(),
-    phone: z.unknown()
+    firstName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    lastName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    email: z.union([
+        z.string().email(),
+        z.null()
+    ]),
+    phone: z.union([
+        z.string(),
+        z.null()
+    ])
 });
 
 export const zCreateContactResponse = z.object({
@@ -186,17 +228,41 @@ export const zCreateContactResponse = z.object({
     createdAt: z.string().datetime(),
     updatedAt: z.string().datetime(),
     isActive: z.boolean(),
-    firstName: z.unknown(),
-    lastName: z.unknown(),
-    email: z.unknown(),
-    phone: z.unknown()
+    firstName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    lastName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    email: z.union([
+        z.string().email(),
+        z.null()
+    ]),
+    phone: z.union([
+        z.string(),
+        z.null()
+    ])
 });
 
 export const zUpdateContactCommand = z.object({
-    firstName: z.unknown(),
-    lastName: z.unknown(),
-    email: z.unknown(),
-    phone: z.unknown(),
+    firstName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    lastName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    email: z.union([
+        z.string().email(),
+        z.null()
+    ]),
+    phone: z.union([
+        z.string(),
+        z.null()
+    ]),
     isActive: z.boolean()
 });
 
@@ -205,10 +271,22 @@ export const zViewContactDetailResponse = z.object({
     createdAt: z.string().datetime(),
     updatedAt: z.string().datetime(),
     isActive: z.boolean(),
-    firstName: z.unknown(),
-    lastName: z.unknown(),
-    email: z.unknown(),
-    phone: z.unknown()
+    firstName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    lastName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    email: z.union([
+        z.string().email(),
+        z.null()
+    ]),
+    phone: z.union([
+        z.string(),
+        z.null()
+    ])
 });
 
 export const zViewContactIndexFilterQuery = z.object({
@@ -220,8 +298,72 @@ export const zContactResponse = z.object({
     createdAt: z.string().datetime(),
     updatedAt: z.string().datetime(),
     isActive: z.boolean(),
-    firstName: z.unknown(),
-    lastName: z.unknown(),
-    email: z.unknown(),
-    phone: z.unknown()
+    firstName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    lastName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    email: z.union([
+        z.string().email(),
+        z.null()
+    ]),
+    phone: z.union([
+        z.string(),
+        z.null()
+    ])
 });
+
+export const zUpdatePreferencesCommand = z.object({
+    theme: z.enum([
+        'light',
+        'dark',
+        'system'
+    ]).optional(),
+    language: z.string().optional(),
+    fontSize: z.string().optional(),
+    showShortcuts: z.boolean().optional(),
+    reduceMotion: z.boolean().optional(),
+    highContrast: z.boolean().optional()
+});
+
+export const zViewPreferencesResponse = z.object({
+    theme: z.enum([
+        'light',
+        'dark',
+        'system'
+    ]),
+    language: z.union([
+        z.string(),
+        z.null()
+    ]),
+    fontSize: z.union([
+        z.string(),
+        z.null()
+    ]),
+    showShortcuts: z.boolean(),
+    reduceMotion: z.boolean(),
+    highContrast: z.boolean()
+});
+
+export const zViewMeControllerViewMeV1Response = zViewMeResponse;
+
+export const zViewUserControllerViewUserV1Response = zViewUserResponse;
+
+export const zViewUsersControllerViewUserV1Response = zViewUsersResponse;
+
+export const zViewRolesControllerGetRolesV1Response = zViewContactIndexResponse;
+
+export const zViewRoleControllerGetRoleV1Response = zRoleResponse;
+
+export const zFileControllerCreateFileV1Response = zCreateFileResponse;
+
+export const zViewContactIndexControllerViewContactIndexV1Response = zViewContactIndexResponse;
+
+export const zCreateContactControllerCreateContactV1Response = zCreateContactResponse;
+
+export const zViewContactDetailControllerViewContactDetailV1Response = zViewContactDetailResponse;
+
+export const zViewPreferencesControllerViewPreferencesIndexV1Response = zViewPreferencesResponse;

@@ -2,9 +2,9 @@
 import { useScroll } from '@vueuse/core'
 import { computed, ref } from 'vue'
 
-import type { Permission } from '@/models/permission/permission.model.ts'
-import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
-import type { PermissionId } from '@/models/permission/permissionId.model.ts'
+import type { SettingPermission } from '@/models/permission/permission.model.ts'
+import type { SettingPermissionAction } from '@/models/permission/permissionAction.model.ts'
+import type { SettingPermissionId } from '@/models/permission/permissionId.model.ts'
 import type { Role } from '@/models/role/role.model.ts'
 import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
 import SettingRoleAndPermissionTableBody from '@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionTableBody.vue'
@@ -16,7 +16,7 @@ import type {
 import { ObjectUtil } from '@/utils/object.util'
 
 const props = defineProps<{
-  permissions: Permission[]
+  permissions: SettingPermission[]
   roles: Role[]
 }>()
 
@@ -45,7 +45,7 @@ const gridColsStyle = computed<string>(() => {
   return `${firstColumn} ${props.roles.map(() => `minmax(200px, auto)`).join(' ')}`
 })
 
-function onUpdatePermissionCheckbox(value: boolean, permissionId: PermissionId, roleUuid: RoleUuid): void {
+function onUpdatePermissionCheckbox(value: boolean, permissionId: SettingPermissionId, roleUuid: RoleUuid): void {
   const key = `${permissionId}-${roleUuid}`
 
   const permissionActions = props.permissions.find((permission) => permission.id === permissionId)?.actions ?? null
@@ -77,9 +77,9 @@ function onDeleteRole(roleUuid: RoleUuid): void {
 
 function onUpdateActionCheckbox(
   value: boolean,
-  permissionId: PermissionId,
+  permissionId: SettingPermissionId,
   roleUuid: RoleUuid,
-  action: PermissionAction,
+  action: SettingPermissionAction,
 ): void {
   const key = `${permissionId}-${roleUuid}`
 
