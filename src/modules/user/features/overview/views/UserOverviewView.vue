@@ -25,12 +25,11 @@ const error = computed<unknown>(() => userIndexQuery.error.value)
 <template>
   <AppTablePage :title="t('user.label.plural')">
     <template #default>
-      {{ error }}
       <div
         v-if="error !== null"
         class="flex size-full flex-1 items-center justify-center"
       >
-        <AppErrorState :error="null" />
+        <AppErrorState :error="error" />
       </div>
 
       <UserOverviewTable

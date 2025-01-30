@@ -24,8 +24,6 @@ export function useApiErrorToast(): UserErrorToastReturnType {
   const toast = useToast()
 
   function show(error: unknown): void {
-    console.log('error', error)
-
     if (isApiError(error)) {
       toast.error({
         message: error.errors[0]?.detail ?? t('error.default_error.description'),

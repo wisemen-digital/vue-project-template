@@ -3,19 +3,19 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import GridDecorativeBackgroundPattern from '@/components/decorative/GridDecorativeBackgroundPattern.vue'
+import { ApiErrorUtil } from '@/utils/apiError.util.ts'
 
 const props = defineProps<{
-  error: {
-    message: string
-    status: number
-  } | null
+  error: unknown
 }>()
 
 const { t } = useI18n()
 
-const httpStatus = computed<number | null>(() => {
-  if (props.error !== null) {
-    return props.error.status ?? 500
+const httpStatus = computed<string | null>(() => {
+  const isApiError = ApiErrorUtil.isError(props.error)
+
+  if (isApiError) {
+    return props.error?.errors[0]?.status ?? '500'
   }
 
   return null
@@ -40,8 +40,8 @@ const title = computed<string>(() => {
 })
 
 const description = computed<string>(() => {
-  if (httpStatus.value === null) {
-    return props.error?.message ?? t('error.default_error.description')
+  if (ApiErrorUtil.isError(props.error)) {
+    return props.error.errors?.[0]?.detail ?? t('error.default_error.description')
   }
 
   return httpErrorMap.get(`${httpStatus.value}`) ?? t('error.default_error.title')
@@ -54,9 +54,9 @@ const description = computed<string>(() => {
 
     <div class="relative z-10">
       <span
-        class="flex items-center p-xl text-sm font-medium"
+        class="flex flex-col gap-xl items-center p-xl text-sm font-medium"
       >
-        <span class="whitespace-nowrap border-r border-solid border-tertiary px-2xl tracking-wider text-quaternary">
+        <span class="whitespace-nowrap text-xl border-r border-solid border-tertiary px-2xl tracking-wider text-quaternary">
           {{ title }}
         </span>
 

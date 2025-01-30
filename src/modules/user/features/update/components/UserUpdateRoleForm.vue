@@ -18,8 +18,7 @@ import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { toFormField } from '@/helpers/formango.helper.ts'
-import type { SettingRole } from '@/models/setting-role/role.model.ts'
-import { roleUuidSchema } from '@/models/setting-role/roleUuid.model.ts'
+import { type RoleUuid, roleUuidSchema } from '@/models/setting-role/roleUuid.model.ts'
 import type { UserDetail } from '@/models/user/detail/user.model.ts'
 import { useSettingRolesQuery } from '@/modules/settings/api/queries/settingRole.query.ts'
 import { useUserUpdateRoleMutation } from '@/modules/user/api/mutations/userUpdate.mutation.ts'
@@ -37,12 +36,12 @@ const userUpdateRoleMutation = useUserUpdateRoleMutation()
 const roleQuery = useSettingRolesQuery()
 
 interface RoleItem {
-  uuid: string
+  uuid: RoleUuid
   name: string
 }
 
 const roleItems = computed<SelectItem<RoleItem>[]>(() => {
-  return roleQuery.data.value?.map((role): SelectItem<SettingRole> => ({
+  return roleQuery.data.value?.map((role): SelectItem<RoleItem> => ({
     type: 'option',
     value: {
       uuid: role.uuid,
@@ -89,7 +88,7 @@ const form = useForm({
   },
 })
 
-const roles = form.registerArray('roles')
+const roles = form.register('roles')
 </script>
 
 <template>
