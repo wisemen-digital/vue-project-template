@@ -45,3 +45,6 @@ lerna-debug.log*
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Playwright generated screenshot
+toast-validation.png

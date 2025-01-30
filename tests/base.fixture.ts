@@ -1,5 +1,6 @@
-/* eslint-disable playwright/no-wait-for-timeout */
 /* eslint-disable playwright/no-standalone-expect */
+// Using  page.screenshot to ensure animations have completed
+
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test as base } from '@playwright/test'
 
@@ -17,8 +18,7 @@ export const test = base.extend({
 
     await use(page)
 
-    // await is needed to accouint for aniamations delay (example: toasts fading in)
-    await page.waitForTimeout(500)
+    await page.screenshot({ animations: 'disabled', path: 'toast-validation.png' })
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags([
