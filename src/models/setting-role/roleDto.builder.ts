@@ -7,7 +7,7 @@ import {
   type PermissionDto,
   permissionDtoSchema,
 } from '@/models/permission/permissionDto.model.ts'
-import { type RoleUuid, roleUuidSchema } from '@/models/role/roleUuid.model.ts'
+import { type RoleUuid, roleUuidSchema } from '@/models/setting-role/roleUuid.model'
 import { UuidUtil } from '@/utils/uuid.util'
 
 export const roleDtoSchema = z.object({

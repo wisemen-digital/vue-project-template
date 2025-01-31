@@ -13,12 +13,12 @@ import {
   CURRENT_ENVIRONMENT,
 } from '@/constants/environment.constant'
 import { TEST_ID } from '@/constants/testId.constant.ts'
-import type { User } from '@/models/user/detail/user.model.ts'
+import type { UserDetail } from '@/models/user/detail/user.model.ts'
 
 const props = defineProps<{
   isCollapsed: boolean
   sidebarItemHeightInRem: number
-  user: User
+  user: UserDetail
 }>()
 
 const emit = defineEmits<{

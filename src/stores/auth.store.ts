@@ -5,35 +5,17 @@ import {
 } from 'vue'
 
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import type { User } from '@/models/user/detail/user.model.ts'
-import type { UserSubject } from '@/models/user/userSubject.model.ts'
+import type { UserDetail } from '@/models/user/detail/user.model.ts'
 import { UserService } from '@/modules/user/api/services/user.service.ts'
 
-async function getLoginUrl(): Promise<string> {
-  return await oAuthClient.getLoginUrl()
-}
-
-function getLogoutUrl(): string {
-  return oAuthClient.getLogoutUrl()
-}
-
-async function loginWithCode(code: string): Promise<void> {
-  await oAuthClient.loginWithCode(code)
-}
-
-async function isLoggedIn(): Promise<boolean> {
-  return await oAuthClient.isLoggedIn()
-}
-
 export const useAuthStore = defineStore('auth', () => {
-  const authUser = ref<User | null>(null)
-  const authUserSubject = ref<UserSubject | null>(null)
+  const authUser = ref<UserDetail | null>(null)
 
   const isAuthenticated = computed<boolean>(() => authUser.value === null)
 
   const logoutCallback = ref<(() => void) | null>(null)
 
-  async function getAuthUser(): Promise<User> {
+  async function getAuthUser(): Promise<UserDetail> {
     if (authUser.value !== null) {
       return authUser.value
     }
@@ -45,13 +27,12 @@ export const useAuthStore = defineStore('auth', () => {
     return user
   }
 
-  function setAuthUser(user: User | null): void {
+  function setAuthUser(user: UserDetail | null): void {
     authUser.value = user
   }
 
   function logout(): void {
     oAuthClient.logout()
-    authUserSubject.value = null
     setAuthUser(null)
     logoutCallback.value?.()
   }
@@ -72,3 +53,19 @@ export const useAuthStore = defineStore('auth', () => {
     onLogout,
   }
 })
+
+async function getLoginUrl(): Promise<string> {
+  return await oAuthClient.getLoginUrl()
+}
+
+function getLogoutUrl(): string {
+  return oAuthClient.getLogoutUrl()
+}
+
+async function loginWithCode(code: string): Promise<void> {
+  await oAuthClient.loginWithCode(code)
+}
+
+async function isLoggedIn(): Promise<boolean> {
+  return await oAuthClient.isLoggedIn()
+}

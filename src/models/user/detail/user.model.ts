@@ -1,13 +1,14 @@
-import { z } from 'zod'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
+import type { UserUuid } from '@/models/user/userUuid.model'
 
-import { userUuidSchema } from '@/models/user/userUuid.model'
-
-export const userSchema = z.object({
-  uuid: userUuidSchema,
-  email: z.string().email().nullable(),
-  firstName: z.string().nullable(),
-  fullName: z.string(),
-  lastName: z.string().nullable(),
-})
-
-export type User = z.infer<typeof userSchema>
+export interface UserDetail {
+  uuid: UserUuid
+  email: string
+  firstName: string | null
+  fullName: string | null
+  lastName: string | null
+  roles: {
+    uuid: RoleUuid
+    name: string
+  }[]
+}

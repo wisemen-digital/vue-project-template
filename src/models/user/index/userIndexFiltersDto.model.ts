@@ -1,7 +1,3 @@
-import { z } from 'zod'
+import type { UsersFilterQuery } from '@/client'
 
-export const userIndexFiltersDtoSchema = z.object({
-  name: z.string(),
-})
-
-export type UserIndexFiltersDto = z.infer<typeof userIndexFiltersDtoSchema>
+export type UserIndexFiltersDto = UsersFilterQuery

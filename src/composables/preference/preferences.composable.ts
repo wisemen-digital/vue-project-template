@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 
 import { usePreferenceQuery } from '@/api/queries/preference.query.ts'
 import { PreferenceService } from '@/api/services/preference.service.ts'
+import { Theme } from '@/client'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable.ts'
 import { useHighContrastModeValue } from '@/composables/high-contrast-mode/highContrastMode.composable.ts'
@@ -11,7 +12,6 @@ import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-short
 import { useLanguageSelect } from '@/composables/language/language.composable.ts'
 import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable.ts'
 import type { FontSize } from '@/models/preference/fontSize.model.ts'
-import { PreferenceTheme } from '@/models/preference/preferenceTheme.enum.ts'
 import type { PreferenceUpdateForm } from '@/models/preference/preferenceUpdateForm.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
@@ -57,7 +57,7 @@ export function usePreferences(): UsePreferenceReturnType {
     languageSelect.value.value = preferenceQuery.data.value.language ?? i18n.locale.value
     isKeyboardShortcutHintVisible.value = preferenceQuery.data.value.showShortcuts ?? false
     reduceMotionValue.value = preferenceQuery.data.value.reduceMotion ?? false
-    darkMode.value.value = preferenceQuery.data.value.theme ?? PreferenceTheme.SYSTEM
+    darkMode.value.value = preferenceQuery.data.value.theme ?? Theme.SYSTEM
   })
 
   return {

@@ -3,82 +3,60 @@ import type {
   PaginationOptions,
 } from '@wisemen/vue-core'
 
-import { httpClient } from '@/libs/http.lib'
-import { paginatedDataSchema } from '@/models/paginated-data/paginatedData.model'
-import type { UserCreateForm } from '@/models/user/create/userCreateForm.model'
-import type { User } from '@/models/user/detail/user.model'
-import { userDtoSchema } from '@/models/user/detail/userDto.model'
-import type { UserIndex } from '@/models/user/index/userIndex.model'
-import { userIndexDtoSchema } from '@/models/user/index/userIndexDto.model'
-import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
-import type { UserUpdateForm } from '@/models/user/update/userUpdateForm.model'
 import {
-  UserCreateTransformer,
+  setUserRolesControllerUpdateUserV1,
+  viewMeControllerViewMeV1,
+  viewUserControllerViewUserV1,
+  viewUsersControllerViewUserV1,
+} from '@/client'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
+import type { UserDetail } from '@/models/user/detail/user.model'
+import type { UserIndex } from '@/models/user/index/userIndex.model'
+import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import {
   UserIndexFiltersTransformer,
   UserIndexTransformer,
   UserTransformer,
-  UserUpdateTransformer,
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import { PaginationDtoBuilder } from '@/utils/paginationDtoBuilder.util'
 
 export class UserService {
-  static async create(form: UserCreateForm): Promise<User> {
-    const data = await httpClient.post({
-      body: UserCreateTransformer.toDto(form),
-      responseSchema: userDtoSchema,
-      url: '/users',
-    })
-
-    return UserTransformer.fromDto(data)
-  }
-
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
-    const data = await httpClient.get({
-      config: {
-        params: new PaginationDtoBuilder<UserIndexFilters>(
-          paginationOptions,
-        ).build(UserIndexFiltersTransformer.fromDto),
-      },
-      responseSchema: paginatedDataSchema(userIndexDtoSchema),
-      url: '/users',
+    const response = await viewUsersControllerViewUserV1({
+      query: new PaginationDtoBuilder(paginationOptions).build(UserIndexFiltersTransformer.toDto),
     })
 
     return {
-      data: data.items.map(UserIndexTransformer.fromDto),
-      meta: {
-        limit: data.meta.limit,
-        offset: data.meta.offset,
-        total: data.meta.total,
-      },
+      data: response.data.items.map(UserIndexTransformer.fromDto),
+      meta: response.data.meta,
     }
   }
 
-  static async getByUuid(userUuid: UserUuid): Promise<User> {
-    const data = await httpClient.get({
-      responseSchema: userDtoSchema,
-      url: `/users/${userUuid}`,
+  static async getByUuid(userUuid: UserUuid): Promise<UserDetail> {
+    const response = await viewUserControllerViewUserV1({
+      path: {
+        uuid: userUuid,
+      },
     })
 
-    return UserTransformer.fromDto(data)
+    return UserTransformer.fromDto(response.data)
   }
 
-  static async getMe(): Promise<User> {
-    const data = await httpClient.get({
-      responseSchema: userDtoSchema,
-      url: `/users/me`,
-    })
+  static async getMe(): Promise<UserDetail> {
+    const response = await viewMeControllerViewMeV1()
 
-    return UserTransformer.fromDto(data)
+    return UserTransformer.fromDto(response.data)
   }
 
-  static async update(userUuid: UserUuid, form: UserUpdateForm): Promise<User> {
-    const data = await httpClient.post({
-      body: UserUpdateTransformer.toDto(form),
-      responseSchema: userDtoSchema,
-      url: `/users/${userUuid}`,
+  static async updateRoles(userUuid: UserUuid, roleUuids: RoleUuid[]): Promise<void> {
+    await setUserRolesControllerUpdateUserV1({
+      body: {
+        roleUuids,
+      },
+      path: {
+        user: userUuid,
+      },
     })
-
-    return UserTransformer.fromDto(data)
   }
 }

@@ -1,7 +1,7 @@
 import type { UseMutationReturnType } from '@wisemen/vue-core-query'
 import { useMutation } from '@wisemen/vue-core-query'
 
-import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 import { SettingRoleService } from '@/modules/settings/api/services/settingRole.service'
 
 export function useSettingRoleDeleteMutation(): UseMutationReturnType<RoleUuid, void> {

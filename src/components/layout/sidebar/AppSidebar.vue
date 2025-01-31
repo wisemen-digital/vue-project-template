@@ -7,7 +7,7 @@ import AppSidebarCollapseToggle from '@/components/layout/sidebar/AppSidebarColl
 import AppSidebarTop from '@/components/layout/sidebar/AppSidebarTop.vue'
 import AppSidebarNavMenu from '@/components/layout/sidebar/navigation/AppSidebarNavMenu.vue'
 import { onCreated } from '@/composables/created/created.composable'
-import type { User } from '@/models/user/detail/user.model.ts'
+import type { UserDetail } from '@/models/user/detail/user.model.ts'
 import type {
   NavigationGroup,
   NavigationItem,
@@ -17,7 +17,7 @@ import { CssUnitUtil } from '@/utils/cssUnit.util'
 const props = withDefaults(defineProps<{
   bottomItems?: NavigationItem[]
   mainItems: NavigationGroup[]
-  user: User
+  user: UserDetail
   variant: 'fixed-sidebar' | 'floating-content' | 'floating-sidebar'
 }>(), {
   bottomItems: () => [],
