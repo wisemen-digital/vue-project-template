@@ -8,11 +8,11 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
-import type { Role } from '@/models/role/role.model.ts'
-import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
+import type { SettingRole } from '@/models/setting-role/role.model.ts'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 
 const props = defineProps<{
-  role: Role
+  role: SettingRole
 }>()
 
 const emit = defineEmits<{

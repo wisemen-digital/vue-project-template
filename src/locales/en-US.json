@@ -1,257 +1,134 @@
 {
-  "component": {
-    "keyboard_shortcut": {
-      "then": "then"
-    },
-    "password_input": {
-      "hide_password": "Hide password",
-      "show_password": "Show password"
-    },
-    "refresh_prompt": {
-      "new_version": {
-        "action": "Refresh",
-        "description": "New version available! Reload to receive the latest functionality."
-      }
-    },
-    "search_input": {
-      "clear": "Clear",
-      "placeholder": "Search..."
-    },
-    "select": {
-      "empty_text": "No results found for '{searchTerm}'.",
-      "search_placeholder": "Search..."
-    },
-    "sidebar": {
-      "close_sidebar": "Close sidebar",
-      "footer": {
-        "environment": "Environment",
-        "sign_out": "Sign out",
-        "version": "Version"
-      },
-      "open_sidebar": "Open sidebar"
-    },
-    "table": {
-      "no_data": {
-        "description": "There is currently no data to display.",
-        "title": "No data"
-      },
-      "no_results": {
-        "description": "There are no results matching your search criteria.",
-        "title": "No results"
-      },
-      "page_count": "{startIndex} - {endIndex} of {totalItems}"
-    },
-    "unsaved_changes_dialog": {
-      "cancel": "Keep editing",
-      "confirm": "Yes, I'm sure",
-      "description": "All unsaved changes will be lost. Are you sure you want to continue?",
-      "title": "Unsaved changes"
-    }
-  },
-  "enum": {
-    "role": {
-      "admin": "Admin",
-      "user": "User"
-    }
-  },
-  "error": {
-    "bad_request": {
-      "description": "Something went wrong. Please try again.",
-      "title": "Bad request"
-    },
-    "default_error": {
-      "description": "Please try again later.",
-      "title": "Something went wrong"
-    },
-    "forbidden": {
-      "description": "You don't have permission to access this resource.",
-      "title": "Forbidden"
-    },
-    "internal_server_error": {
-      "description": "Please try again later.",
-      "title": "Internal server error"
-    },
-    "invalid_form_input": {
-      "description": "Please check the highlighted fields and try again.",
-      "title": "Invalid form"
-    },
-    "resource_not_found": {
-      "description": "The requested resource could not be found.",
-      "title": "Resource not found"
-    },
-    "unauthorized": {
-      "description": "You are not authorized to access this resource.",
-      "title": "Unauthorized"
-    },
-    "validation_error": {
-      "description": "Please check the form for errors.",
-      "title": "Validation error"
-    }
-  },
-  "form": {
-    "fields": {
-      "email": "Email",
-      "password": "Password"
-    },
-    "save_changes": "Save changes"
-  },
-  "module": {
-    "auth": {
-      "login": {
-        "description": "Sign in to your account to continue",
-        "error": "Something went wrong while logging in. Please try again.",
-        "sign_in": "Sign in",
-        "title": "Sign in"
-      }
-    },
-    "setting": {
-      "application": {
-        "title": "Application"
-      },
-      "font_size": {
-        "default": "Default",
-        "description": "Adjust your font size.",
-        "large": "Large",
-        "larger": "Larger",
-        "small": "Small",
-        "smaller": "Smaller",
-        "title": "Font size"
-      },
-      "high_contrast": {
-        "description": "Enhance readability and visibility by increasing the contrast between UI elements.",
-        "disabled": {
-          "description": "High contrast mode is disabled.",
-          "label": "Disabled"
-        },
-        "enabled": {
-          "description": "High contrast mode is enabled.",
-          "label": "Enabled"
-        },
-        "title": "High contrast mode"
-      },
-      "interface_theme": {
-        "dark": "Dark",
-        "description": "Select or customize your UI theme.",
-        "light": "Light",
-        "system_preference": "System preference",
-        "title": "Interface theme"
-      },
-      "keyboard_shortcuts": {
-        "description": "Keyboard shortcuts are always enabled, but you can choose whether to display a hint.",
-        "disabled": {
-          "description": "Keyboard shortcut hints are hidden.",
-          "label": "Disabled"
-        },
-        "enabled": {
-          "description": "Keyboard shortcut hints are visible.",
-          "label": "Enabled"
-        },
-        "example_button": "Example",
-        "title": "Keyboard shortcut hints"
-      },
-      "language": {
-        "description": "Change your language.",
-        "locales": {
-          "en_us": "English (United States)",
-          "nl_be": "Nederlands (België)"
-        },
-        "title": "Language"
-      },
-      "reduce_motion": {
-        "description": "Reduce the amount and intensity of animations, hover effects and other moving effects across the application.",
-        "disabled": {
-          "description": "All animations and hover effects are enabled for a full experience.",
-          "label": "Disabled"
-        },
-        "enabled": {
-          "description": "You will see fewer animations and hover effects to reduce motion.",
-          "label": "Enabled"
-        },
-        "title": "Reduce motion"
-      },
-      "roles_and_permissions": {
-        "add_new_role": "Add Role",
-        "create_role_dialog": {
-          "description": "Create a new role",
-          "title": "Create role"
-        },
-        "save_changes": "Save changes",
-        "save_changes_success": "Changes saved succesfully",
-        "title": "Roles and Permissions"
-      },
-      "subtitle": "Manage your app settings",
-      "title": "Settings"
-    },
-    "settings": {
-      "roles_and_permissions": {
-        "table": {
-          "delete_role": "Delete role",
-          "permissions": "Permissiosn"
-        }
-      }
-    },
-    "user": {
-      "create": {
-        "create_user": "Create User",
-        "success_toast": {
-          "message": "User has been created successfully."
-        },
-        "title": "New user"
-      },
-      "detail": {
-        "edit_user": "Edit user",
-        "title": "Edit user"
-      },
-      "form": {
-        "section": {
-          "name": {
-            "description": "First and last name of the user."
-          }
-        }
-      },
-      "update": {
-        "success_toast": {
-          "message": "User has been updated successfully."
-        }
-      }
-    }
-  },
-  "shared": {
-    "cancel": "Cancel",
-    "close": "Close",
-    "edit": "Edit",
-    "save": "Create"
-  },
-  "user": {
-    "birth_date": "Birthdate",
-    "first_name": "First name",
-    "label": {
-      "plural": "Users",
-      "singular": "User",
-      "user_with_count": "No users | {count} user | {count} users"
-    },
-    "last_name": "Last name",
-    "name": "Name"
-  },
-  "validation": {
-    "invalid_date": "Invalid date",
-    "invalid_datetime": "Invalid date and time",
-    "invalid_email": "Invalid email address",
-    "invalid_regex": "Invalid format",
-    "invalid_string": "Invalid input",
-    "invalid_union": "Invalid input",
-    "invalid_url": "Invalid URL",
-    "invalid_uuid": "Invalid UUID",
-    "required": "This field is required",
-    "too_big": "Must be less than or equal to {count}",
-    "too_big_array": "Must contain a most {count} item | Must contain a most {count} items",
-    "too_big_date": "Must be before {count}",
-    "too_big_number": "Must be less than or equal to {count}",
-    "too_big_string": "Must be at most {count} character | Must be at most {count} characters",
-    "too_small": "Must be greater than or equal to {count}",
-    "too_small_array": "Must contain at least {count} item | Must contain at least {count} items",
-    "too_small_date": "Must be after {count}",
-    "too_small_number": "Must be greater than or equal to {count}",
-    "too_small_string": "Must be at least {count} character | Must be at least {count} characters"
-  }
+  "component.keyboard_shortcut.then": "then",
+  "component.password_input.hide_password": "Hide password",
+  "component.password_input.show_password": "Show password",
+  "component.refresh_prompt.new_version.action": "Refresh",
+  "component.refresh_prompt.new_version.description": "New version available! Reload to receive the latest functionality.",
+  "component.search_input.clear": "Clear",
+  "component.search_input.placeholder": "Search...",
+  "component.select.empty_text": "No results found for '{searchTerm}'.",
+  "component.select.search_placeholder": "Search...",
+  "component.sidebar.close_sidebar": "Close sidebar",
+  "component.sidebar.footer.environment": "Environment",
+  "component.sidebar.footer.sign_out": "Sign out",
+  "component.sidebar.footer.version": "Version",
+  "component.sidebar.open_sidebar": "Open sidebar",
+  "component.table.no_data.description": "There is currently no data to display.",
+  "component.table.no_data.title": "No data",
+  "component.table.no_results.description": "There are no results matching your search criteria.",
+  "component.table.no_results.title": "No results",
+  "component.table.page_count": "{startIndex} - {endIndex} of {totalItems}",
+  "component.unsaved_changes_dialog.cancel": "Keep editing",
+  "component.unsaved_changes_dialog.confirm": "Yes, I'm sure",
+  "component.unsaved_changes_dialog.description": "All unsaved changes will be lost. Are you sure you want to continue?",
+  "component.unsaved_changes_dialog.title": "Unsaved changes",
+  "enum.role.admin": "Admin",
+  "enum.role.user": "User",
+  "error.bad_request.description": "Something went wrong. Please try again.",
+  "error.bad_request.title": "Bad request",
+  "error.default_error.description": "Please try again later.",
+  "error.default_error.title": "Something went wrong",
+  "error.forbidden.description": "You don't have permission to access this resource.",
+  "error.forbidden.title": "Forbidden",
+  "error.internal_server_error.description": "Please try again later.",
+  "error.internal_server_error.title": "Internal server error",
+  "error.invalid_form_input.description": "Please check the highlighted fields and try again.",
+  "error.invalid_form_input.title": "Invalid form",
+  "error.resource_not_found.description": "The requested resource could not be found.",
+  "error.resource_not_found.title": "Resource not found",
+  "error.unauthorized.description": "You are not authorized to access this resource.",
+  "error.unauthorized.title": "Unauthorized",
+  "error.validation_error.description": "Please check the form for errors.",
+  "error.validation_error.title": "Validation error",
+  "form.fields.email": "Email",
+  "form.fields.password": "Password",
+  "form.save_changes": "Save changes",
+  "module.auth.login.description": "Sign in to your account to continue",
+  "module.auth.login.error": "Something went wrong while logging in. Please try again.",
+  "module.auth.login.sign_in": "Sign in",
+  "module.auth.login.title": "Sign in",
+  "module.setting.application.title": "Application",
+  "module.setting.font_size.default": "Default",
+  "module.setting.font_size.description": "Adjust your font size.",
+  "module.setting.font_size.large": "Large",
+  "module.setting.font_size.larger": "Larger",
+  "module.setting.font_size.small": "Small",
+  "module.setting.font_size.smaller": "Smaller",
+  "module.setting.font_size.title": "Font size",
+  "module.setting.high_contrast.description": "Enhance readability and visibility by increasing the contrast between UI elements.",
+  "module.setting.high_contrast.disabled.description": "High contrast mode is disabled.",
+  "module.setting.high_contrast.disabled.label": "Disabled",
+  "module.setting.high_contrast.enabled.description": "High contrast mode is enabled.",
+  "module.setting.high_contrast.enabled.label": "Enabled",
+  "module.setting.high_contrast.title": "High contrast mode",
+  "module.setting.interface_theme.dark": "Dark",
+  "module.setting.interface_theme.description": "Select or customize your UI theme.",
+  "module.setting.interface_theme.light": "Light",
+  "module.setting.interface_theme.system_preference": "System preference",
+  "module.setting.interface_theme.title": "Interface theme",
+  "module.setting.keyboard_shortcuts.description": "Keyboard shortcuts are always enabled, but you can choose whether to display a hint.",
+  "module.setting.keyboard_shortcuts.disabled.description": "Keyboard shortcut hints are hidden.",
+  "module.setting.keyboard_shortcuts.disabled.label": "Disabled",
+  "module.setting.keyboard_shortcuts.enabled.description": "Keyboard shortcut hints are visible.",
+  "module.setting.keyboard_shortcuts.enabled.label": "Enabled",
+  "module.setting.keyboard_shortcuts.example_button": "Example",
+  "module.setting.keyboard_shortcuts.title": "Keyboard shortcut hints",
+  "module.setting.language.description": "Change your language.",
+  "module.setting.language.locales.en_us": "English (United States)",
+  "module.setting.language.locales.nl_be": "Nederlands (België)",
+  "module.setting.language.title": "Language",
+  "module.setting.reduce_motion.description": "Reduce the amount and intensity of animations, hover effects and other moving effects across the application.",
+  "module.setting.reduce_motion.disabled.description": "All animations and hover effects are enabled for a full experience.",
+  "module.setting.reduce_motion.disabled.label": "Disabled",
+  "module.setting.reduce_motion.enabled.description": "You will see fewer animations and hover effects to reduce motion.",
+  "module.setting.reduce_motion.enabled.label": "Enabled",
+  "module.setting.reduce_motion.title": "Reduce motion",
+  "module.setting.roles_and_permissions.add_new_role": "Add Role",
+  "module.setting.roles_and_permissions.create_role_dialog.description": "Create a new role",
+  "module.setting.roles_and_permissions.create_role_dialog.title": "Create role",
+  "module.setting.roles_and_permissions.save_changes": "Save changes",
+  "module.setting.roles_and_permissions.save_changes_success": "Changes saved succesfully",
+  "module.setting.roles_and_permissions.title": "Roles and Permissions",
+  "module.setting.subtitle": "Manage your app settings",
+  "module.setting.title": "Settings",
+  "module.settings.roles_and_permissions.table.delete_role": "Delete role",
+  "module.settings.roles_and_permissions.table.permissions": "Permissiosn",
+  "module.user.create.create_user": "Create User",
+  "module.user.create.success_toast.message": "User has been created successfully.",
+  "module.user.create.title": "New user",
+  "module.user.detail.edit_user": "Edit user",
+  "module.user.detail.title": "Edit user",
+  "module.user.form.section.name.description": "First and last name of the user.",
+  "module.user.update.success_toast.message": "User has been updated successfully.",
+  "module.user.role": "Role",
+  "shared.cancel": "Cancel",
+  "shared.close": "Close",
+  "shared.edit": "Edit",
+  "shared.save": "Create",
+  "user.birth_date": "Birthdate",
+  "user.first_name": "First name",
+  "user.label.plural": "Users",
+  "user.label.singular": "User",
+  "user.label.user_with_count": "No users | {count} user | {count} users",
+  "user.last_name": "Last name",
+  "user.name": "Name",
+  "validation.invalid_date": "Invalid date",
+  "validation.invalid_datetime": "Invalid date and time",
+  "validation.invalid_email": "Invalid email address",
+  "validation.invalid_regex": "Invalid format",
+  "validation.invalid_string": "Invalid input",
+  "validation.invalid_union": "Invalid input",
+  "validation.invalid_url": "Invalid URL",
+  "validation.invalid_uuid": "Invalid UUID",
+  "validation.required": "This field is required",
+  "validation.too_big": "Must be less than or equal to {count}",
+  "validation.too_big_array": "Must contain a most {count} item | Must contain a most {count} items",
+  "validation.too_big_date": "Must be before {count}",
+  "validation.too_big_number": "Must be less than or equal to {count}",
+  "validation.too_big_string": "Must be at most {count} character | Must be at most {count} characters",
+  "validation.too_small": "Must be greater than or equal to {count}",
+  "validation.too_small_array": "Must contain at least {count} item | Must contain at least {count} items",
+  "validation.too_small_date": "Must be after {count}",
+  "validation.too_small_number": "Must be greater than or equal to {count}",
+  "validation.too_small_string": "Must be at least {count} character | Must be at least {count} characters"
 }

@@ -17,11 +17,6 @@ export const userRoutes = [
         component: (): Component => import('@/modules/user/features/detail/views/UserDetailViewDataProvider.vue'),
       },
       {
-        name: 'user-create',
-        path: 'create',
-        component: (): Component => import('@/modules/user/features/create/views/UserCreateView.vue'),
-      },
-      {
         name: 'user-update',
         props: true,
         path: ':userUuid/update',

@@ -1,5 +1,3 @@
-import { isAxiosError } from 'axios'
-
 import { useAuthStore } from '@/stores/auth.store.ts'
 import { LoggerUtil } from '@/utils/logger.util'
 import { MiddlewareUtil } from '@/utils/middleware.util'
@@ -18,9 +16,7 @@ export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
     await authStore.getAuthUser()
   }
   catch (error) {
-    if (isAxiosError(error)) {
-      authStore.logout()
-    }
+    authStore.logout()
 
     LoggerUtil.logError(error)
 

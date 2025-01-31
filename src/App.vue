@@ -11,10 +11,10 @@ import { useI18n } from 'vue-i18n'
 import { RouterView, useRouter } from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
+import { useAutoRefresh } from '@/composables/auto-refresh/autoRefresh.composable.ts'
 import { useFontSize } from '@/composables/font-size/fontSize.composable'
 import { useLanguage } from '@/composables/language/language.composable'
 import { useReduceMotion } from '@/composables/reduce-motion/reduceMotion.composable'
-import { useRefreshPrompt } from '@/composables/refresh-prompt/refreshPrompt.composable'
 import { useTheme } from '@/composables/theme/theme.composable'
 import { logBuildInformation } from '@/constants/environment.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
@@ -28,7 +28,7 @@ const theme = useTheme()
 
 setTemplate('{title} | $projectName')
 
-useRefreshPrompt()
+useAutoRefresh()
 useFontSize()
 useLanguage()
 useReduceMotion()

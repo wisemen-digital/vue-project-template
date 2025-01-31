@@ -1,7 +1,6 @@
 <script setup lang="ts" generic="TQueries">
 import { VcSkeletonItem } from '@wisemen/vue-core'
 import type { UseQueryReturnType } from '@wisemen/vue-core-query'
-import { AxiosError } from 'axios'
 import { computed } from 'vue'
 
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
@@ -22,12 +21,20 @@ const isLoading = computed<boolean>(() => {
   return false
 })
 
-const error = computed<AxiosError | null>(() => {
+interface ApiError {
+  message: string
+  status: number
+}
+
+const error = computed<ApiError | null>(() => {
   for (const key in props.queries) {
     const error = props.queries[key].error.value
 
-    if (error !== null && error instanceof AxiosError) {
-      return error
+    if (error !== null && error instanceof TypeError && 'message' in error && 'status' in error) {
+      return {
+        message: error.message as string,
+        status: error.status as number,
+      }
     }
     else if (error !== null) {
       throw error
@@ -58,7 +65,9 @@ const data = computed<{
     v-else-if="error !== null"
     class="flex flex-1 items-center justify-center"
   >
-    <AppErrorState :error="error" />
+    <AppErrorState
+      :error="error"
+    />
   </div>
 
   <template v-else>

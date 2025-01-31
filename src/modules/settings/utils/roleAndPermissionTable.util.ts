@@ -1,14 +1,13 @@
-import type { Permission } from '@/models/permission/permission.model.ts'
-import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
-import type { Role } from '@/models/role/role.model.ts'
+import type { SettingPermission } from '@/models/permission/permission.model.ts'
+import type { SettingRole } from '@/models/setting-role/role.model.ts'
 
 export type RoleAndPermissionTableMapValue = string[] | null
 export type RoleAndPermissionTableMapId = string
 
 export class RoleAndPermissionTableUtil {
   static createGrid(
-    permissions: Permission[],
-    roles: Role[],
+    permissions: SettingPermission[],
+    roles: SettingRole[],
   ): Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue> {
     const grid = new Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>()
 
@@ -51,39 +50,5 @@ export class RoleAndPermissionTableUtil {
     }
 
     return true
-  }
-
-  static mapGridToRoles(
-    grid: Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>,
-    permissions: Permission[],
-    roles: Role[],
-  ): Role[] {
-    const roleArray: Role[] = []
-
-    permissions.forEach((permission) => {
-      roles.forEach((roleIndex) => {
-        const role = roleArray.find((role) => role.uuid === roleIndex.uuid)
-        const value = grid.get(`${permission.id}-${roleIndex.uuid}`) as PermissionAction[]
-
-        if (!value) {
-          return
-        }
-
-        if (!role) {
-          roleArray.push({
-            ...roleIndex,
-            permissions: [
-              { id: permission.id, actions: (value) ?? [] },
-            ],
-          })
-        }
-
-        if (role) {
-          role.permissions.push({ id: permission.id, actions: (value) ?? [] })
-        }
-      })
-    })
-
-    return roleArray
   }
 }

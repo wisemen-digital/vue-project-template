@@ -1,3 +1,4 @@
+import type { Theme } from '@/client'
 import type { Preference } from '@/models/preference/preference.model.ts'
 import type { PreferenceDto } from '@/models/preference/preferenceDto.model.ts'
 import type { PreferenceUpdateDto } from '@/models/preference/preferenceUpdateDto.model.ts'
@@ -12,7 +13,7 @@ export class PreferenceTransformer {
       language: dto.language as Locale,
       reduceMotion: dto.reduceMotion,
       showShortcuts: dto.showShortcuts,
-      theme: dto.theme,
+      theme: dto.theme as Theme | null,
     }
   }
 

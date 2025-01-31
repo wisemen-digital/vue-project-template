@@ -51,7 +51,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     v-if="props.error !== null"
     class="flex size-full flex-1 items-center justify-center"
   >
-    <AppErrorState :error="props.error" />
+    <AppErrorState :error="null" />
   </div>
 
   <VcTable

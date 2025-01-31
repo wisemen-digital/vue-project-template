@@ -1,9 +1,5 @@
 import { z } from 'zod'
 
-export enum PreferenceTheme {
-  DARK = 'dark',
-  LIGHT = 'light',
-  SYSTEM = 'system',
-}
+import { Theme } from '@/client'
 
-export const preferenceThemeSchema = z.nativeEnum(PreferenceTheme)
+export const preferenceThemeSchema = z.nativeEnum(Theme)

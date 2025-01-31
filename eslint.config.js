@@ -7,6 +7,7 @@ export default [
     ignores: [
       'src/client',
       'tests/.auth',
+      'src/locales',
     ],
   },
   {
@@ -20,6 +21,13 @@ export default [
       },
     },
     rules: {
+      '@intlify/vue-i18n/key-format-style': [
+        'error',
+        'snake_case',
+        {
+          splitByDots: true,
+        },
+      ],
       // Add or override rules here
     },
   },

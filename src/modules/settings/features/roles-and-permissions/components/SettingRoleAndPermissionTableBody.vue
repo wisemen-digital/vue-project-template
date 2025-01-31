@@ -4,23 +4,27 @@ import { ref } from 'vue'
 
 import AppHeightTransition from '@/components/app/AppHeightTransition.vue'
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
-import type { Permission } from '@/models/permission/permission.model.ts'
-import type { PermissionAction } from '@/models/permission/permissionAction.model.ts'
-import type { PermissionId } from '@/models/permission/permissionId.model.ts'
-import type { Role } from '@/models/role/role.model.ts'
-import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
+import type { SettingPermission } from '@/models/permission/permission.model.ts'
+import type { SettingPermissionAction } from '@/models/permission/permissionAction.model.ts'
+import type { SettingPermissionId } from '@/models/permission/permissionId.model.ts'
+import type { SettingRole } from '@/models/setting-role/role.model.ts'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 
 const props = defineProps<{
   isTableScrolledToBottom: boolean
-  permissions: Permission[]
-  roles: Role[]
+  permissions: SettingPermission[]
+  roles: SettingRole[]
   rolesModelMap: Map<string, string[] | null>
 }>()
 
 const emit = defineEmits<{
   togglePermissionTab: [string]
-  updateActionCheckbox: [value: boolean, permissionId: PermissionId, roleUuid: RoleUuid, action: PermissionAction]
-  updatePermissionCheckbox: [value: boolean, permissionId: PermissionId, roleUuid: RoleUuid]
+  updateActionCheckbox: [
+      value: boolean,
+    permissionId: SettingPermissionId,
+    roleUuid: RoleUuid,
+    action: SettingPermissionAction]
+  updatePermissionCheckbox: [value: boolean, permissionId: SettingPermissionId, roleUuid: RoleUuid]
 }>()
 
 const permissionsToggleStateMap = ref<Map<string, boolean>>(new Map(
@@ -30,15 +34,15 @@ const permissionsToggleStateMap = ref<Map<string, boolean>>(new Map(
   ]),
 ))
 
-function onTogglePermissionActionsClick(permissionId: PermissionId): void {
+function onTogglePermissionActionsClick(permissionId: SettingPermissionId): void {
   permissionsToggleStateMap.value.set(permissionId, !permissionsToggleStateMap.value.get(permissionId)!)
 }
 
-function isPermissionTabOpen(permissionId: PermissionId): boolean {
+function isPermissionTabOpen(permissionId: SettingPermissionId): boolean {
   return permissionsToggleStateMap.value.get(permissionId)!
 }
 
-function isPermissionCheckboxChecked(permissionId: PermissionId, roleUuid: RoleUuid): boolean {
+function isPermissionCheckboxChecked(permissionId: SettingPermissionId, roleUuid: RoleUuid): boolean {
   const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key) ?? null
 
@@ -55,7 +59,11 @@ function isPermissionCheckboxChecked(permissionId: PermissionId, roleUuid: RoleU
   return value.length > 0
 }
 
-function isActionCheckboxChecked(permissionId: PermissionId, roleUuid: RoleUuid, action: PermissionAction): boolean {
+function isActionCheckboxChecked(
+  permissionId: SettingPermissionId,
+  roleUuid: RoleUuid,
+  action: SettingPermissionAction,
+): boolean {
   const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key) ?? null
 
@@ -66,7 +74,7 @@ function isActionCheckboxChecked(permissionId: PermissionId, roleUuid: RoleUuid,
   return value.includes(action)
 }
 
-function isPermissionCheckboxIndeterminate(permissionId: PermissionId, roleUuid: RoleUuid): boolean {
+function isPermissionCheckboxIndeterminate(permissionId: SettingPermissionId, roleUuid: RoleUuid): boolean {
   const key = `${permissionId}-${roleUuid}`
   const value = props.rolesModelMap.get(key)
 
@@ -83,15 +91,15 @@ function isPermissionCheckboxIndeterminate(permissionId: PermissionId, roleUuid:
   return value.length !== permissionActions.length && value.length !== 0
 }
 
-function onUpdatePermissionCheckbox(value: boolean, permissionId: PermissionId, roleUuid: RoleUuid): void {
+function onUpdatePermissionCheckbox(value: boolean, permissionId: SettingPermissionId, roleUuid: RoleUuid): void {
   emit('updatePermissionCheckbox', value, permissionId, roleUuid)
 }
 
 function onUpdateActionCheckbox(
   value: boolean,
-  permissionId: PermissionId,
+  permissionId: SettingPermissionId,
   roleUuid: RoleUuid,
-  action: PermissionAction,
+  action: SettingPermissionAction,
 ): void {
   emit('updateActionCheckbox', value, permissionId, roleUuid, action)
 }

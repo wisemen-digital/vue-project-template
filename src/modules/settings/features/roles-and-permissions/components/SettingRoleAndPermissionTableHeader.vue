@@ -2,12 +2,12 @@
 import { VcIcon } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import type { Role } from '@/models/role/role.model.ts'
-import type { RoleUuid } from '@/models/role/roleUuid.model.ts'
+import type { SettingRole } from '@/models/setting-role/role.model.ts'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 import SettingRoleAndPermissionTableHeaderCell from '@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionTableHeaderCell.vue'
 
 const props = defineProps<{
-  roles: Role[]
+  roles: SettingRole[]
 }>()
 
 const emit = defineEmits<{

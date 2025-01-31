@@ -11,9 +11,9 @@ import AppVerticalFormElementSpacer from '@/components/app/AppVerticalFormElemen
 import AppTeleport from '@/components/app/teleport/AppTeleport.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { useUnsavedChanges } from '@/composables/unsaved-changes/unsavedChanges.composable'
-import type { Permission } from '@/models/permission/permission.model'
-import type { Role } from '@/models/role/role.model'
-import type { RoleUuid } from '@/models/role/roleUuid.model'
+import type { SettingPermission } from '@/models/permission/permission.model'
+import type { SettingRole } from '@/models/setting-role/role.model'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model'
 import { useSettingRoleBulkUpdateMutation } from '@/modules/settings/api/mutations/settingRoleBulkUpdate.mutation'
 import { useSettingRoleDeleteMutation } from '@/modules/settings/api/mutations/settingRoleDelete.mutation'
 import SettingRoleAndPermissionTable from '@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionTable.vue'
@@ -24,11 +24,11 @@ import {
 } from '@/modules/settings/utils/roleAndPermissionTable.util'
 
 const props = defineProps<{
-  permissions: Permission[]
-  roles: Role[]
+  permissions: SettingPermission[]
+  roles: SettingRole[]
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 const apiErrorToast = useApiErrorToast()
 const toast = useToast()
 
@@ -36,14 +36,14 @@ const addRoleDialog = useDialog({
   component: () => import('@/modules/settings/features/roles-and-permissions/components/SettingRoleAndPermissionRoleCreateDialog.vue'),
 })
 const settingsRoleDeleteMutation = useSettingRoleDeleteMutation()
+
 const rolesModelMap = ref<Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>>(
-  new Map(
-    RoleAndPermissionTableUtil.createGrid(
-      props.permissions,
-      props.roles,
-    ),
-  ),
+  new Map(RoleAndPermissionTableUtil.createGrid(
+    props.permissions,
+    props.roles,
+  )),
 )
+
 const settingsRolesBulkUpdateMutation = useSettingRoleBulkUpdateMutation()
 
 const rolesModelMapSnapshot = ref<Map<RoleAndPermissionTableMapId, RoleAndPermissionTableMapValue>>(
@@ -74,11 +74,15 @@ async function onDeleteRow(roleUuid: RoleUuid): Promise<void> {
 async function onSaveChangesButtonClick(): Promise<void> {
   try {
     await settingsRolesBulkUpdateMutation.execute({
-      body: RoleAndPermissionTableUtil.mapGridToRoles(rolesModelMap.value, props.permissions, props.roles),
+      body: {
+        permissions: props.permissions,
+        roleMap: rolesModelMap.value,
+        roles: props.roles,
+      },
     })
 
     toast.success({
-      message: t('module.setting.roles_and_permissions.save_changes_success'),
+      message: i18n.t('module.setting.roles_and_permissions.save_changes_success'),
     })
 
     resetRolesModelMapSnapshot()
@@ -102,7 +106,7 @@ useUnsavedChanges(isRolesModelMapChanged)
         icon-left="plus"
         @click="onAddNewRoleButtonClick"
       >
-        {{ t('module.setting.roles_and_permissions.add_new_role') }}
+        {{ i18n.t('module.setting.roles_and_permissions.add_new_role') }}
       </VcButton>
     </AppTeleport>
     <SettingRoleAndPermissionTable
@@ -116,7 +120,7 @@ useUnsavedChanges(isRolesModelMapChanged)
         :is-disabled="!isRolesModelMapChanged"
         @click="onSaveChangesButtonClick"
       >
-        {{ t('module.setting.roles_and_permissions.save_changes') }}
+        {{ i18n.t('module.setting.roles_and_permissions.save_changes') }}
       </VcButton>
     </div>
   </AppVerticalFormElementSpacer>
