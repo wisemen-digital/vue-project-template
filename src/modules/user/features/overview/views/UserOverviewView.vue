@@ -3,6 +3,7 @@ import { usePagination } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
@@ -32,13 +33,22 @@ const error = computed<unknown>(() => userIndexQuery.error.value)
         <AppErrorState :error="error" />
       </div>
 
-      <UserOverviewTable
+      <div
         v-else
-        :data="userIndexQuery.data.value"
-        :is-loading="isLoading"
-        :pagination="pagination"
-        :error="userIndexQuery.error.value"
-      />
+        class="flex flex-col gap-lg flex-1"
+      >
+        <AppSearchInputField
+          :is-loading="userIndexQuery.isLoading.value"
+          :pagination="pagination"
+        />
+
+        <UserOverviewTable
+          :data="userIndexQuery.data.value"
+          :is-loading="isLoading"
+          :pagination="pagination"
+          :error="userIndexQuery.error.value"
+        />
+      </div>
     </template>
   </AppTablePage>
 </template>

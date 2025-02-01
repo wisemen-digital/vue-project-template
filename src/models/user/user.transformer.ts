@@ -25,7 +25,7 @@ export class UserIndexTransformer {
 }
 
 export class UserIndexFiltersTransformer {
-  static toDto(filters?: UserIndexFilters): Partial<UserIndexFiltersDto> {
+  static toDto(filters?: UserIndexFilters): UserIndexFiltersDto {
     return {
       permissions: filters?.permissions,
     }
