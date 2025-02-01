@@ -67,12 +67,11 @@ onCreated(() => {
       'p-xl': props.variant === 'floating-sidebar' || props.variant === 'floating-content',
       'border-r border-solid border-secondary': props.variant === 'fixed-sidebar',
     }"
-    class="sticky top-0 h-dvh"
+    class="sticky top-0 h-dvh z-20"
   >
     <div
       :class="{
         'rounded-2xl border border-solid border-secondary': props.variant === 'floating-sidebar',
-        'px-lg': props.variant === 'fixed-sidebar',
       }"
       class="h-full bg-secondary"
     >

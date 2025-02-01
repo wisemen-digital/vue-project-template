@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppDashboardLayoutFloating from '@/components/layout/dashboard/AppDashboardLayoutFloating.vue'
+import AppDashboardLayoutClassic from '@/components/layout/dashboard/AppDashboardLayoutClassic.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
 import { usePreferences } from '@/composables/preference/preferences.composable.ts'
 import type { UserDetail } from '@/models/user/detail/user.model.ts'
@@ -24,7 +24,7 @@ function onSignOut(): void {
 </script>
 
 <template>
-  <AppDashboardLayoutFloating v-if="authUser !== null">
+  <AppDashboardLayoutClassic v-if="authUser !== null">
     <template #sidebar>
       <AppSidebar
         :user="authUser"
@@ -42,9 +42,9 @@ function onSignOut(): void {
             ],
           },
         ]"
-        variant="floating-content"
+        variant="fixed-sidebar"
         @sign-out="onSignOut"
       />
     </template>
-  </AppDashboardLayoutFloating>
+  </AppDashboardLayoutClassic>
 </template>

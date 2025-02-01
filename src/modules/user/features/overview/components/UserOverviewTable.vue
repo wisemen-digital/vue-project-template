@@ -51,7 +51,7 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     v-if="props.error !== null"
     class="flex size-full flex-1 items-center justify-center"
   >
-    <AppErrorState :error="null" />
+    <AppErrorState :error="props.error" />
   </div>
 
   <VcTable
@@ -62,5 +62,6 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     :is-first-column-sticky="true"
     :is-loading="props.isLoading"
     :pagination="props.pagination"
+    class="basis-0"
   />
 </template>
