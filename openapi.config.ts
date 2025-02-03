@@ -17,5 +17,9 @@ export default defineConfig({
       name: '@hey-api/typescript',
       enums: 'typescript',
     },
+    {
+      name: '@hey-api/schemas',
+      type: 'form',
+    },
   ],
 })
