@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import AppEditItemButton from '@/components/app/button/AppEditItemButton.vue'
 import AppPage from '@/components/layout/AppPage.vue'
 import { TEST_ID } from '@/constants/testId.constant.ts'
-import type { UserDetail } from '@/models/user/detail/user.model'
+import type { UserDetail } from '@/models/user/detail/userDetail.model'
 
 const props = defineProps<{
   user: UserDetail
@@ -22,7 +22,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     type: 'route',
   },
   {
-    label: props.user.fullName ?? '-',
+    label: props.user.email,
     type: 'page',
   },
 ]
@@ -30,7 +30,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 <template>
   <AppPage
-    :title="props.user.fullName ?? '-'"
+    :title="props.user.email"
     :breadcrumbs="breadcrumbs"
   >
     <template #header-actions>

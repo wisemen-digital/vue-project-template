@@ -10,7 +10,7 @@ import {
   viewUsersControllerViewUserV1,
 } from '@/client'
 import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
-import type { UserDetail } from '@/models/user/detail/user.model'
+import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import {

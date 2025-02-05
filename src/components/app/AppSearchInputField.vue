@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T">
 import {
   type Pagination,
   VcIconButton,
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<{
   isDisabled?: boolean
   isLoading: boolean
   disableKeyboardCommand?: boolean
-  pagination: Pagination<unknown>
+  pagination: Pagination<T>
   placeholder?: string | null
 }>(), {
   isDisabled: false,

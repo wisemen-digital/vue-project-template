@@ -118,6 +118,7 @@ useUnsavedChanges(isRolesModelMapChanged)
     <div class="flex justify-end">
       <VcButton
         :is-disabled="!isRolesModelMapChanged"
+        :is-loading="settingsRolesBulkUpdateMutation.isLoading.value"
         @click="onSaveChangesButtonClick"
       >
         {{ i18n.t('module.setting.roles_and_permissions.save_changes') }}

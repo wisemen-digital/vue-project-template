@@ -111,6 +111,7 @@
   "user.label.singular": "User",
   "user.label.user_with_count": "No users | {count} user | {count} users",
   "user.last_name": "Last name",
+  "user.email": "Email",
   "user.name": "Name",
   "validation.invalid_date": "Invalid date",
   "validation.invalid_datetime": "Invalid date and time",

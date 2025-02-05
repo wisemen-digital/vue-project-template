@@ -1,4 +1,4 @@
-import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
+import type { RoleUuid } from '@/models/setting-role/roleUuid.model'
 import type { UserUuid } from '@/models/user/userUuid.model'
 
 export interface UserDetail {

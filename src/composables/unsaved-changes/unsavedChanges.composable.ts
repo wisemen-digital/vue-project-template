@@ -1,6 +1,6 @@
 import { useDialog } from '@wisemen/vue-core'
-import type { ComputedRef } from 'vue'
 import {
+  type ComputedRef,
   onMounted,
   onUnmounted,
 } from 'vue'
@@ -12,43 +12,58 @@ interface UseUnsavedChangesReturnType {
   handleUnsavedClose: (callback: () => void) => void
 }
 
+let pendingPromise: Promise<void> | null | void = null
+
 export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChangesReturnType {
   const confirmDialog = useDialog({
     component: () => import('@/components/dialog/AppConfirmDialog.vue'),
   })
 
-  function handleUnsavedClose(callback: () => void): void {
+  function handleUnsavedClose(): Promise<void> | void {
     const { t } = i18nPlugin.global
 
-    if (isDirty.value) {
+    pendingPromise = new Promise((resolve, reject) => {
       void confirmDialog.open({
         title: t('component.unsaved_changes_dialog.title'),
         isDestructive: true,
         cancelText: t('component.unsaved_changes_dialog.cancel'),
         confirmText: t('component.unsaved_changes_dialog.confirm'),
         description: t('component.unsaved_changes_dialog.description'),
+        onClosed: () => {
+          reject(new Error('Action cancelled'))
+        },
         onConfirm: () => {
           confirmDialog.close()
-          callback()
+          resolve()
         },
       })
+    })
 
-      return
-    }
-
-    callback()
+    return pendingPromise
   }
 
-  onBeforeRouteLeave((_to, _from, next) => {
-    if (isDirty.value) {
-      handleUnsavedClose(() => {
-        next()
-      })
-
-      return
+  onBeforeRouteLeave(async (_to, _from) => {
+    if (!isDirty.value) {
+      return true
     }
 
-    next()
+    if (pendingPromise === null) {
+      pendingPromise = handleUnsavedClose()
+    }
+    else {
+      return false
+    }
+
+    try {
+      await pendingPromise
+
+      pendingPromise = null
+    }
+    catch {
+      pendingPromise = null
+
+      return false
+    }
   })
 
   onUnmounted(() => {

@@ -178,6 +178,71 @@
   --spacing-9xl: 6rem;      /* 96px */
   --spacing-10xl: 8rem;     /* 128px */
   --spacing-11xl: 10rem;    /* 160px */
+
+  /* Since we don't want the width & height to be overridden by `--spacing-*`, we redefine it here */
+  --width-xs: var(--container-xs);
+  --width-sm: var(--container-sm);
+  --width-md: var(--container-md);
+  --width-lg: var(--container-lg);
+  --width-xl: var(--container-xl);
+  --width-2xl: var(--container-2xl);
+  --width-3xl: var(--container-3xl);
+  --width-4xl: var(--container-4xl);
+  --width-5xl: var(--container-5xl);
+  --width-6xl: var(--container-6xl);
+  --width-7xl: var(--container-7xl);
+  --width-8xl: var(--container-8xl);
+  --width-9xl: var(--container-9xl);
+  --width-10xl: var(--container-10xl);
+  --width-11xl: var(--container-11xl);
+
+  --max-width-xs: var(--container-xs);
+  --max-width-sm: var(--container-sm);
+  --max-width-md: var(--container-md);
+  --max-width-lg: var(--container-lg);
+  --max-width-xl: var(--container-xl);
+  --max-width-2xl: var(--container-2xl);
+  --max-width-3xl: var(--container-3xl);
+  --max-width-4xl: var(--container-4xl);
+  --max-width-5xl: var(--container-5xl);
+  --max-width-6xl: var(--container-6xl);
+  --max-width-7xl: var(--container-7xl);
+  --max-width-8xl: var(--container-8xl);
+  --max-width-9xl: var(--container-9xl);
+  --max-width-10xl: var(--container-10xl);
+  --max-width-11xl: var(--container-11xl);
+
+  --height-xs: var(--container-xs);
+  --height-sm: var(--container-sm);
+  --height-md: var(--container-md);
+  --height-lg: var(--container-lg);
+  --height-xl: var(--container-xl);
+  --height-2xl: var(--container-2xl);
+  --height-3xl: var(--container-3xl);
+  --height-4xl: var(--container-4xl);
+  --height-5xl: var(--container-5xl);
+  --height-6xl: var(--container-6xl);
+  --height-7xl: var(--container-7xl);
+  --height-8xl: var(--container-8xl);
+  --height-9xl: var(--container-9xl);
+  --height-10xl: var(--container-10xl);
+  --height-11xl: var(--container-11xl);
+
+  --max-height-xs: var(--container-xs);
+  --max-height-sm: var(--container-sm);
+  --max-height-md: var(--container-md);
+  --max-height-lg: var(--container-lg);
+  --max-height-xl: var(--container-xl);
+  --max-height-2xl: var(--container-2xl);
+  --max-height-3xl: var(--container-3xl);
+  --max-height-4xl: var(--container-4xl);
+  --max-height-5xl: var(--container-5xl);
+  --max-height-6xl: var(--container-6xl);
+  --max-height-7xl: var(--container-7xl);
+  --max-height-8xl: var(--container-8xl);
+  --max-height-9xl: var(--container-9xl);
+  --max-height-10xl: var(--container-10xl);
+  --max-height-11xl: var(--container-11xl);
   
   --radius-*: initial;
   --radius-none: 0rem;      /* 0px */

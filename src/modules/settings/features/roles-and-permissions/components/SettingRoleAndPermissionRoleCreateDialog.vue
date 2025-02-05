@@ -1,5 +1,8 @@
 <script  lang="ts" setup="">
-import { VcDialog, VcTextField } from '@wisemen/vue-core'
+import {
+  VcDialog,
+  VcTextField,
+} from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { useI18n } from 'vue-i18n'
 import { z } from 'zod'
@@ -51,28 +54,31 @@ function onClose(): void {
   <VcDialog
     @close="onClose"
   >
-    <AppDialogContent
-      class="w-dialog-sm"
-    >
+    <AppDialogContent class="w-dialog-sm">
       <AppDialogHeader
         :title="t('module.setting.roles_and_permissions.create_role_dialog.title')"
         :description="t('module.setting.roles_and_permissions.create_role_dialog.description')"
       />
-      <div class="py-4">
-        <AppForm :form="form">
-          <VcTextField
-            :label="t('user.name')"
-            v-bind="toFormField(name)"
+
+      <AppForm
+        :form="form"
+        :can-exit-when-dirty="true"
+        class="mt-xl"
+      >
+        <VcTextField
+          :label="t('user.name')"
+          v-bind="toFormField(name)"
+        />
+
+        <AppDialogActions>
+          <AppDialogActionCancel :label="t('shared.cancel')" />
+
+          <FormSubmitButton
+            :form="form"
+            :label="t('shared.save')"
           />
-          <AppDialogActions>
-            <AppDialogActionCancel :label="t('shared.cancel')" />
-            <FormSubmitButton
-              :form="form"
-              :label="t('shared.save')"
-            />
-          </AppDialogActions>
-        </AppForm>
-      </div>
+        </AppDialogActions>
+      </AppForm>
     </AppDialogContent>
   </VcDialog>
 </template>

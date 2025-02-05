@@ -5,7 +5,7 @@ import {
 } from 'vue'
 
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
-import type { UserDetail } from '@/models/user/detail/user.model.ts'
+import type { UserDetail } from '@/models/user/detail/userDetail.model.ts'
 import { UserService } from '@/modules/user/api/services/user.service.ts'
 
 export const useAuthStore = defineStore('auth', () => {

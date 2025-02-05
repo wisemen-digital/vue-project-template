@@ -19,16 +19,21 @@ const props = withDefaults(defineProps<{
 })
 
 const emit = defineEmits<{
+  closed: []
   confirm: []
 }>()
 
 function onConfirm(): void {
   emit('confirm')
 }
+
+function onClose(): void {
+  emit('closed')
+}
 </script>
 
 <template>
-  <VcDialog>
+  <VcDialog @close="onClose">
     <AppDialogContent class="w-dialog-sm">
       <AppDialogHeader
         :title="props.title"

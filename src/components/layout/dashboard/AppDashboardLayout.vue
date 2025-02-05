@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import AppDashboardLayoutClassic from '@/components/layout/dashboard/AppDashboardLayoutClassic.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
 import { usePreferences } from '@/composables/preference/preferences.composable.ts'
-import type { UserDetail } from '@/models/user/detail/user.model.ts'
+import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import { useAuthStore } from '@/stores/auth.store'
 
 const { t } = useI18n()

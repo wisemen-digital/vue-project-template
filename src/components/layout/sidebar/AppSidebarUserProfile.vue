@@ -13,7 +13,7 @@ import {
   CURRENT_ENVIRONMENT,
 } from '@/constants/environment.constant'
 import { TEST_ID } from '@/constants/testId.constant.ts'
-import type { UserDetail } from '@/models/user/detail/user.model.ts'
+import type { UserDetail } from '@/models/user/detail/userDetail.model.ts'
 
 const props = defineProps<{
   isCollapsed: boolean
