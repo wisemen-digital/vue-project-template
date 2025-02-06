@@ -18,10 +18,6 @@ export function setupHttpClient(): void {
       return request
     }
 
-    if (request.headers.has('Authorization')) {
-      return request
-    }
-
     const token = await oAuthClient.getAccessToken()
 
     request.headers.set('Authorization', `Bearer ${token}`)
