@@ -71,7 +71,7 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
       </AppContainer>
     </header>
 
-    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-4xl pt-4xl">
+    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-4xl pt-4xl bg-primary">
       <slot />
     </AppContainer>
   </main>

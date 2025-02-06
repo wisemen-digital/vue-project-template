@@ -6,19 +6,21 @@ import {
   VcRadioGroupItem,
   VcThemeProvider,
 } from '@wisemen/vue-core'
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { Theme } from '@/client'
 import FormFieldset from '@/components/form/FormFieldset.vue'
+import { usePreferences } from '@/composables/preference/preferences.composable'
 import { useTheme } from '@/composables/theme/theme.composable'
 import SettingApplicationOverviewMiniDashboard from '@/modules/settings/features/application/components/interface-theme/SettingApplicationOverviewMiniDashboard.vue'
 
 const { t } = useI18n()
 const darkMode = useDarkMode()
+const preferences = usePreferences()
 const theme = useTheme()
 
-const themes = computed<RadioGroupItem<Theme>[]>(() => [
+const appearances = computed<RadioGroupItem<Theme>[]>(() => [
   {
     label: t('module.setting.interface_theme.light'),
     value: Theme.LIGHT,
@@ -32,6 +34,12 @@ const themes = computed<RadioGroupItem<Theme>[]>(() => [
     value: Theme.SYSTEM,
   },
 ])
+
+watch(darkMode, () => {
+  preferences.update({
+    theme: darkMode.value as Theme,
+  })
+})
 </script>
 
 <template>
@@ -42,7 +50,7 @@ const themes = computed<RadioGroupItem<Theme>[]>(() => [
     <VcRadioGroup v-model="darkMode">
       <div class="grid gap-lg lg:grid-cols-3">
         <VcRadioGroupItem
-          v-for="item of themes"
+          v-for="item of appearances"
           :key="item.value"
           :value="item.value"
           class="group rounded-xl text-left !ring-0 !ring-offset-0"
