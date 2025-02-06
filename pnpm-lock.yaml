@@ -39,8 +39,8 @@ importers:
         specifier: 1.0.0-alpha.17
         version: 1.0.0-alpha.17(@babel/core@7.26.7)(sass@1.84.0)(svelte@5.19.4)(typescript@5.7.3)(vite@6.1.0(@types/node@22.12.0)(jiti@2.4.2)(lightningcss@1.29.1)(sass@1.84.0)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue-i18n@11.1.0(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))
       '@wisemen/vue-core-auth':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.0.1
+        version: 2.0.1
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -3279,8 +3279,8 @@ packages:
     peerDependencies:
       eslint: 9.6.0
 
-  '@wisemen/vue-core-auth@2.0.0':
-    resolution: {integrity: sha512-mTc4EOyD/QS3V4lN0HeOoxtm61/rGy2RwhSCddMgiTO6FbDOGorMTfb/VUNUH3HDAMPut0AFq+iHMpZD83bcVA==}
+  '@wisemen/vue-core-auth@2.0.1':
+    resolution: {integrity: sha512-pSIbQeoEqr479Qqo9L/iA7SL6+U0rZSTgqDEbb/Jw2Yk4b1HKmSUH52mLLatlcFKZUBGyC5VYMYJpavYGu5O/w==}
 
   '@wisemen/vue-core-query@0.0.32':
     resolution: {integrity: sha512-gfZYfesTxv8raFwCcTeqp7ECGNuhZluayRvg5EjYjC41SQYqgIow25fuRUjhRQ/6BkvrEGx1wdom2h9dzUkS+A==}
@@ -10342,7 +10342,7 @@ snapshots:
       - vitest
       - vue-eslint-parser
 
-  '@wisemen/vue-core-auth@2.0.0':
+  '@wisemen/vue-core-auth@2.0.1':
     dependencies:
       pkce-challenge: 4.1.0
 
