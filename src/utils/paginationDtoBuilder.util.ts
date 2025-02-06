@@ -4,7 +4,7 @@ const DEFAULT_OFFSET = 0
 const DEFAULT_LIMIT = 20
 
 export type PaginationParams<TFilterSchema> = {
-  filter: Partial<TFilterSchema>
+  filter: TFilterSchema
   search?: string
   sort?: {
     field: string
