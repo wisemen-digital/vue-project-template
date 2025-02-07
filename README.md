@@ -2,11 +2,11 @@
 
 ### Environments
 
-- Dev: https://project.development.appwi.se/
-- Test: https://project.test.appwi.se/
-- Staging: https://project.staging.appwi.se/
-- Production: https://project.production.appwi.se/
+- Dev: https://vue.project-template.development.appwi.se
+- Test: REPLACE_ME
+- Staging: REPLACE_ME
+- Production: REPLACE_ME
 
 ### Links
-- Docs: https://project.development.appwi.se/api/docs
-- Linear: -
+- Docs: https://vue.project-template.development.appwi.se/api/docs
+- Linear: REPLACE_ME

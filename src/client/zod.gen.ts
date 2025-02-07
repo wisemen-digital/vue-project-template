@@ -2,17 +2,12 @@
 
 import { z } from 'zod';
 
-export const zTypesenseCollectionName = z.enum([
-    'user'
-]);
-
 export const zSetUserRolesCommand = z.object({
     roleUuids: z.array(z.string().uuid())
 });
 
 export const zPermission = z.enum([
-    'admin',
-    'read_only',
+    'all_permissions',
     'user.read',
     'user.create',
     'user.update',
@@ -24,7 +19,8 @@ export const zPermission = z.enum([
     'contact.create',
     'contact.read',
     'contact.update',
-    'contact.delete'
+    'contact.delete',
+    'typesense'
 ]);
 
 export const zRoleResponse = z.object({
@@ -302,6 +298,8 @@ export const zViewPreferencesResponse = z.object({
     highContrast: z.boolean()
 });
 
+export const zPermissionControllerGetPermissionsV1Response = z.array(z.string());
+
 export const zViewMeControllerViewMeV1Response = zViewMeResponse;
 
 export const zViewUserControllerViewUserV1Response = zViewUserResponse;
@@ -311,8 +309,6 @@ export const zViewUsersControllerViewUserV1Response = zViewUsersResponse;
 export const zViewRolesControllerGetRolesV1Response = zViewRoleIndexResponse;
 
 export const zViewRoleControllerGetRoleV1Response = zRoleResponse;
-
-export const zPermissionControllerGetPermissionsV1Response = z.array(z.string());
 
 export const zFileControllerCreateFileV1Response = zCreateFileResponse;
 
