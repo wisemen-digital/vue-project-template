@@ -33,8 +33,11 @@ function onClose(): void {
 </script>
 
 <template>
-  <VcDialog @close="onClose">
-    <AppDialogContent class="w-dialog-sm">
+  <VcDialog
+    class="w-dialog-sm"
+    @close="onClose"
+  >
+    <AppDialogContent>
       <AppDialogHeader
         :title="props.title"
         :description="props.description"

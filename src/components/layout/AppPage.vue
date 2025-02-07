@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { BreadcrumbItem } from '@wisemen/vue-core'
-import { VcBreadcrumbs } from '@wisemen/vue-core'
+import { type BreadcrumbItem, VcBreadcrumbs } from '@wisemen/vue-core'
 import { computed, useSlots } from 'vue'
 
-import AppContainer from '@/components/layout/AppContainer.vue'
-import { TEST_ID } from '@/constants/testId.constant.ts'
+import AppPageContainer from '@/components/layout/AppPageContainer.vue'
+import { TEST_ID } from '@/constants/testId.constant'
 
 const props = withDefaults(
   defineProps<{
@@ -22,18 +21,14 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
 </script>
 
 <template>
-  <main class="flex w-full flex-1 flex-col">
+  <main class="flex w-full flex-1 flex-col min-h-dvh bg-primary">
     <header
       :style="{
         viewTransitionName: 'page-header',
       }"
       class="bg-primary z-10 sticky top-0"
     >
-      <AppContainer
-        :class="[
-          hasTabsSlot ? 'pt-xl pb-0' : 'py-xl',
-        ]"
-      >
+      <AppPageContainer class="pt-4xl pb-0">
         <VcBreadcrumbs
           v-if="props.breadcrumbs.length > 0"
           :style="{
@@ -68,12 +63,12 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
         >
           <slot name="tabs" />
         </div>
-      </AppContainer>
+      </AppPageContainer>
     </header>
 
-    <AppContainer class="flex flex-1 flex-col overflow-hidden pb-4xl pt-4xl bg-primary">
+    <AppPageContainer class="flex flex-1 flex-col overflow-hidden pb-4xl pt-4xl">
       <slot />
-    </AppContainer>
+    </AppPageContainer>
   </main>
 </template>
 

@@ -4,7 +4,7 @@ import {
   provide,
 } from 'vue'
 
-import { assert } from '@/helpers/assert.helper'
+import { assert } from '@/utils/assert.util'
 
 interface BaseDataItemContext {
   id: string

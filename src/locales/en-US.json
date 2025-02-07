@@ -12,6 +12,7 @@
   "component.sidebar.footer.environment": "Environment",
   "component.sidebar.footer.sign_out": "Sign out",
   "component.sidebar.footer.version": "Version",
+  "component.sidebar.footer.user_profile": "User profile",
   "component.sidebar.open_sidebar": "Open sidebar",
   "component.table.no_data.description": "There is currently no data to display.",
   "component.table.no_data.title": "No data",

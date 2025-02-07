@@ -4,9 +4,9 @@ import {
   ref,
 } from 'vue'
 
+import { AuthService } from '@/api/services/auth.service'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import type { UserDetail } from '@/models/user/detail/userDetail.model.ts'
-import { UserService } from '@/modules/user/api/services/user.service.ts'
 
 export const useAuthStore = defineStore('auth', () => {
   const authUser = ref<UserDetail | null>(null)
@@ -20,7 +20,7 @@ export const useAuthStore = defineStore('auth', () => {
       return authUser.value
     }
 
-    const user = await UserService.getMe()
+    const user = await AuthService.getMe()
 
     setAuthUser(user)
 

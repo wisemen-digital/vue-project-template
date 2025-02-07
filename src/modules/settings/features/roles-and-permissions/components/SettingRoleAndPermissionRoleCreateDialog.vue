@@ -14,7 +14,7 @@ import AppDialogHeader from '@/components/app/dialog/AppDialogHeader.vue'
 import AppForm from '@/components/form/AppForm.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
-import { toFormField } from '@/helpers/formango.helper'
+import { toFormField } from '@/utils/formango.util'
 import { useSettingRoleCreateMutation } from '@/modules/settings/api/mutations/settingRoleCreate.mutation.ts'
 
 const emit = defineEmits<{

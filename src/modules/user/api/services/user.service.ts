@@ -5,7 +5,6 @@ import type {
 
 import {
   setUserRolesControllerUpdateUserV1,
-  viewMeControllerViewMeV1,
   viewUserControllerViewUserV1,
   viewUsersControllerViewUserV1,
 } from '@/client'
@@ -41,12 +40,6 @@ export class UserService {
         uuid: userUuid,
       },
     })
-
-    return UserTransformer.fromDto(response.data)
-  }
-
-  static async getMe(): Promise<UserDetail> {
-    const response = await viewMeControllerViewMeV1()
 
     return UserTransformer.fromDto(response.data)
   }

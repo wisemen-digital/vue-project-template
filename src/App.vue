@@ -48,7 +48,7 @@ authStore.onLogout(() => {
     <VcThemeProvider
       :appearance="appearance"
       :theme="theme"
-      class="flex size-full flex-1 flex-col"
+      class="flex size-full flex-1 flex-col overflow-hidden"
     >
       <RouterView />
       <AppPageLoader />

@@ -42,7 +42,7 @@ function onSignOut(): void {
             ],
           },
         ]"
-        variant="fixed-sidebar"
+        variant="floating-sidebar"
         @sign-out="onSignOut"
       />
     </template>
