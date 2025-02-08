@@ -1,6 +1,6 @@
 export interface ApiError {
   errors: {
-    code: string
+    code: ApiErrorCode
     detail: string
     source?: {
       pointer: string

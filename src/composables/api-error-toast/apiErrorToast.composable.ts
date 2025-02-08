@@ -1,38 +1,27 @@
 import { useToast } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
+import { ApiErrorEnumUtil } from '@/models/api-error/apiError.model.ts'
+import { ApiErrorUtil } from '@/utils/apiError.util.ts'
+
 interface UserErrorToastReturnType {
   show: (error: unknown) => void
 }
 
-interface ApiError {
-  errors: {
-    code: string
-    detail: string
-    source: {
-      pointer: string
-    }
-  }[]
-}
-
-function isApiError(error: unknown): error is ApiError {
-  return (error as ApiError).errors !== undefined
-}
-
 export function useApiErrorToast(): UserErrorToastReturnType {
-  const { t } = useI18n()
+  const i18n = useI18n()
   const toast = useToast()
 
   function show(error: unknown): void {
-    if (isApiError(error)) {
-      toast.error({
-        message: error.errors[0]?.detail ?? t('error.default_error.description'),
-      })
-
-      return
+    if (!ApiErrorUtil.isError(error)) {
+      throw error
     }
 
-    throw error
+    const errorMessage = ApiErrorEnumUtil.getI18nKeyForError(error)
+
+    toast.error({
+      message: errorMessage !== null ? i18n.t(errorMessage) : i18n.t('error.default_error.description'),
+    })
   }
 
   return {

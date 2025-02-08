@@ -8,6 +8,7 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { client } from '@/client/client.gen.ts'
 import { Locale } from '@/plugins/i18n/i18n.plugin'
 
 interface UseLanguageSelectReturnType {
@@ -54,6 +55,12 @@ export function useLanguageSelect(): UseLanguageSelectReturnType {
 export function useLanguage(): void {
   const i18n = useI18n()
   const locale = useLocalStorage<Locale>(LOCAL_STORAGE_KEY, i18n.locale.value as Locale)
+
+  client.setConfig({
+    headers: {
+      'Accept-Language': locale.value,
+    },
+  })
 
   watch(locale, () => {
     i18n.locale.value = locale.value
