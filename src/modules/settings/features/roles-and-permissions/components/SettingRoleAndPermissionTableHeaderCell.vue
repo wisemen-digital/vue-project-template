@@ -19,13 +19,13 @@ const emit = defineEmits<{
   deleteRole: [RoleUuid]
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const dropDownItems = computed<DropdownMenuItem[]>(() => ([
   {
     isDestructive: true,
     icon: 'trash',
-    label: t('module.settings.roles_and_permissions.table.delete_role'),
+    label: i18n.t('module.settings.roles_and_permissions.table.delete_role'),
     type: 'option',
     onSelect: (): void => {
       emit('deleteRole', props.role.uuid)

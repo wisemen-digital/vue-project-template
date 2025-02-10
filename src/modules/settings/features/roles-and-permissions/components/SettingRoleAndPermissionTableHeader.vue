@@ -14,7 +14,7 @@ const emit = defineEmits<{
   deleteRole: [RoleUuid]
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 function onDeleteRole(roleUuid: RoleUuid): void {
   emit('deleteRole', roleUuid)
@@ -29,7 +29,7 @@ function onDeleteRole(roleUuid: RoleUuid): void {
       class="sticky left-0 z-1 flex items-center gap-2 border-r border-solid border-secondary bg-secondary p-3 px-6 text-sm text-secondary"
     >
       <span>
-        {{ t('module.settings.roles_and_permissions.table.permissions') }}
+        {{ i18n.t('module.settings.roles_and_permissions.table.permissions') }}
       </span>
       <VcIcon
         class="size-4"

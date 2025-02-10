@@ -9,7 +9,7 @@ const props = defineProps<{
   error: unknown
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const httpStatus = computed<string | null>(() => {
   const isApiError = ApiErrorUtil.isError(props.error)
@@ -23,17 +23,17 @@ const httpStatus = computed<string | null>(() => {
 
 const httpErrorMap = new Map<string, string>(
   Object.entries({
-    400: t('error.bad_request.title'),
-    401: t('error.unauthorized.title'),
-    403: t('error.forbidden.title'),
-    404: t('error.resource_not_found.title'),
-    500: t('error.internal_server_error.title'),
+    400: i18n.t('error.bad_request.title'),
+    401: i18n.t('error.unauthorized.title'),
+    403: i18n.t('error.forbidden.title'),
+    404: i18n.t('error.resource_not_found.title'),
+    500: i18n.t('error.internal_server_error.title'),
   }),
 )
 
 const title = computed<string>(() => {
   if (httpStatus.value === null) {
-    return t('error.default_error.title')
+    return i18n.t('error.default_error.title')
   }
 
   return `${httpStatus.value}`
@@ -41,10 +41,10 @@ const title = computed<string>(() => {
 
 const description = computed<string>(() => {
   if (ApiErrorUtil.isError(props.error)) {
-    return props.error.errors?.[0]?.detail ?? t('error.default_error.description')
+    return props.error.errors?.[0]?.detail ?? i18n.t('error.default_error.description')
   }
 
-  return httpErrorMap.get(`${httpStatus.value}`) ?? t('error.default_error.title')
+  return httpErrorMap.get(`${httpStatus.value}`) ?? i18n.t('error.default_error.title')
 })
 </script>
 

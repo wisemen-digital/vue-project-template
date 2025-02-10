@@ -25,7 +25,7 @@ const emit = defineEmits<{
   signOut: []
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
   {
@@ -34,7 +34,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
       'g',
       's',
     ],
-    label: t('module.setting.title'),
+    label: i18n.t('module.setting.title'),
     to: {
       name: 'settings',
     },
@@ -49,7 +49,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
       's',
       'o',
     ],
-    label: t('component.sidebar.footer.sign_out'),
+    label: i18n.t('component.sidebar.footer.sign_out'),
     type: 'option',
     onSelect: (): void => {
       emit('signOut')
@@ -81,11 +81,11 @@ const userInitials = computed<string>(() => (
 
         <div class="px-lg py-md">
           <span class="block text-sm text-tertiary">
-            {{ `${t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
+            {{ `${i18n.t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
           </span>
 
           <span class="mt-sm block text-sm text-tertiary">
-            {{ `${t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
+            {{ `${i18n.t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
           </span>
         </div>
 

@@ -3,12 +3,12 @@ import { createI18nKeyMap } from '@/types/enum.type.ts'
 import { ApiErrorUtil } from '@/utils/apiError.util.ts'
 
 export enum ApiErrorCode {
-  DUPLICATE = 'duplicate',
+  UNAUTHORIZED = 'unauthorized',
 }
 
 export class ApiErrorEnumUtil {
   private static i18nKeys = createI18nKeyMap<ApiErrorCode>({
-    duplicate: 'validation.duplicate',
+    unauthorized: 'validation.unauthorized',
   })
 
   static getI18nKey(value: ApiErrorCode): I18nKey {

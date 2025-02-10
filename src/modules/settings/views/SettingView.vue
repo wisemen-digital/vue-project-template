@@ -6,17 +6,17 @@ import { RouterView } from 'vue-router'
 
 import AppPage from '@/components/layout/AppPage.vue'
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const routeTabItems = computed<RouteTabItem[]>(() => [
   {
-    label: t('module.setting.application.title'),
+    label: i18n.t('module.setting.application.title'),
     to: {
       name: 'settings-application',
     },
   },
   {
-    label: t('module.setting.roles_and_permissions.title'),
+    label: i18n.t('module.setting.roles_and_permissions.title'),
     to: {
       name: 'settings-role-and-permission',
     },
@@ -25,7 +25,7 @@ const routeTabItems = computed<RouteTabItem[]>(() => [
 </script>
 
 <template>
-  <AppPage :title="t('module.setting.title')">
+  <AppPage :title="i18n.t('module.setting.title')">
     <template #tabs>
       <VcRouteTabs :items="routeTabItems" />
     </template>

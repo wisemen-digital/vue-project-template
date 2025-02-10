@@ -1,3 +1,5 @@
+import type { ApiErrorCode } from '@/models/api-error/apiError.model.ts'
+
 export interface ApiError {
   errors: {
     code: ApiErrorCode
@@ -5,6 +7,6 @@ export interface ApiError {
     source?: {
       pointer: string
     }
-    status?: string
+    status: string
   }[]
 }

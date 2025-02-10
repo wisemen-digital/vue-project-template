@@ -11,7 +11,7 @@ const authStore = useAuthStore()
 
 const isSigningIn = ref<boolean>(false)
 
-const { t } = useI18n()
+const i18n = useI18n()
 const toast = useToast()
 
 async function onSignInWithZitadel(): Promise<void> {
@@ -26,7 +26,7 @@ async function onSignInWithZitadel(): Promise<void> {
     isSigningIn.value = false
 
     toast.error({
-      message: t('module.auth.login.error'),
+      message: i18n.t('module.auth.login.error'),
     })
   }
 }
@@ -40,14 +40,14 @@ async function onSignInWithZitadel(): Promise<void> {
           <AuthLoginElementTransition delay-class="delay-0">
             <!-- Not sure why, but wihtout duration-100 the transition is bugged -->
             <h1 class="text-center text-4xl font-bold text-primary duration-100">
-              {{ t('module.auth.login.title') }}
+              {{ i18n.t('module.auth.login.title') }}
             </h1>
           </AuthLoginElementTransition>
 
           <AuthLoginElementTransition delay-class="delay-150">
             <!-- Not sure why, but wihtout duration-100 the transition is bugged -->
             <p class="relative mt-md text-center text-secondary duration-100">
-              {{ t('module.auth.login.description') }}
+              {{ i18n.t('module.auth.login.description') }}
             </p>
           </AuthLoginElementTransition>
 
@@ -60,7 +60,7 @@ async function onSignInWithZitadel(): Promise<void> {
                 variant="secondary"
                 @click="onSignInWithZitadel"
               >
-                {{ t('module.auth.login.sign_in') }}
+                {{ i18n.t('module.auth.login.sign_in') }}
               </VcButton>
             </AuthLoginElementTransition>
           </div>

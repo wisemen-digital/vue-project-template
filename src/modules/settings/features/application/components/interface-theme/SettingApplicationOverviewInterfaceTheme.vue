@@ -15,22 +15,22 @@ import { usePreferences } from '@/composables/preference/preferences.composable.
 import { useTheme } from '@/composables/theme/theme.composable'
 import SettingApplicationOverviewMiniDashboard from '@/modules/settings/features/application/components/interface-theme/SettingApplicationOverviewMiniDashboard.vue'
 
-const { t } = useI18n()
+const i18n = useI18n()
 const darkMode = useDarkMode()
 const theme = useTheme()
 const preferences = usePreferences()
 
 const themes = computed<RadioGroupItem<Theme>[]>(() => [
   {
-    label: t('module.setting.interface_theme.light'),
+    label: i18n.t('module.setting.interface_theme.light'),
     value: Theme.LIGHT,
   },
   {
-    label: t('module.setting.interface_theme.dark'),
+    label: i18n.t('module.setting.interface_theme.dark'),
     value: Theme.DARK,
   },
   {
-    label: t('module.setting.interface_theme.system_preference'),
+    label: i18n.t('module.setting.interface_theme.system_preference'),
     value: Theme.SYSTEM,
   },
 ])
@@ -67,8 +67,8 @@ function onUpdateModelValue(newValue: Theme | null): void {
 
 <template>
   <FormFieldset
-    :title="t('module.setting.interface_theme.title')"
-    :description="t('module.setting.interface_theme.description')"
+    :title="i18n.t('module.setting.interface_theme.title')"
+    :description="i18n.t('module.setting.interface_theme.description')"
   >
     <VcRadioGroup
       v-model="value"

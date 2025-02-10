@@ -99,8 +99,8 @@
   "module.user.detail.edit_user": "Edit user",
   "module.user.detail.title": "Edit user",
   "module.user.form.section.name.description": "First and last name of the user.",
-  "module.user.update.success_toast.message": "User has been updated successfully.",
   "module.user.role": "Role",
+  "module.user.update.success_toast.message": "User has been updated successfully.",
   "shared.cancel": "Cancel",
   "shared.close": "Close",
   "shared.edit": "Edit",
@@ -112,6 +112,7 @@
   "user.label.user_with_count": "No users | {count} user | {count} users",
   "user.last_name": "Last name",
   "user.name": "Name",
+  "validation.duplicate": "Duplicate value",
   "validation.invalid_date": "Invalid date",
   "validation.invalid_datetime": "Invalid date and time",
   "validation.invalid_email": "Invalid email address",
@@ -130,5 +131,6 @@
   "validation.too_small_array": "Must contain at least {count} item | Must contain at least {count} items",
   "validation.too_small_date": "Must be after {count}",
   "validation.too_small_number": "Must be greater than or equal to {count}",
-  "validation.too_small_string": "Must be at least {count} character | Must be at least {count} characters"
+  "validation.too_small_string": "Must be at least {count} character | Must be at least {count} characters",
+  "validation.unauthorized": "Unauthorized"
 }

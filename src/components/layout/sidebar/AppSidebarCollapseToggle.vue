@@ -15,16 +15,16 @@ const isCollapsed = defineModel<boolean>({
   required: true,
 })
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 
 const toggleBtnLabel = computed<string>(() => {
   if (isCollapsed.value) {
-    return t('component.sidebar.open_sidebar')
+    return i18n.t('component.sidebar.open_sidebar')
   }
 
-  return t('component.sidebar.close_sidebar')
+  return i18n.t('component.sidebar.close_sidebar')
 })
 </script>
 

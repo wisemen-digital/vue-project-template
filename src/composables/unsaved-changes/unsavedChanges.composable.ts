@@ -18,15 +18,15 @@ export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChan
   })
 
   function handleUnsavedClose(callback: () => void): void {
-    const { t } = i18nPlugin.global
+    const i18n = i18nPlugin.global
 
     if (isDirty.value) {
       void confirmDialog.open({
-        title: t('component.unsaved_changes_dialog.title'),
+        title: i18n.t('component.unsaved_changes_dialog.title'),
         isDestructive: true,
-        cancelText: t('component.unsaved_changes_dialog.cancel'),
-        confirmText: t('component.unsaved_changes_dialog.confirm'),
-        description: t('component.unsaved_changes_dialog.description'),
+        cancelText: i18n.t('component.unsaved_changes_dialog.cancel'),
+        confirmText: i18n.t('component.unsaved_changes_dialog.confirm'),
+        description: i18n.t('component.unsaved_changes_dialog.description'),
         onConfirm: () => {
           confirmDialog.close()
           callback()

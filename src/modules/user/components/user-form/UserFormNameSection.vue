@@ -13,25 +13,25 @@ const props = defineProps<{
   lastName: Field<string>
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 </script>
 
 <template>
   <FormFieldset
-    :description="t('module.user.form.section.name.description')"
-    :title="t('user.name')"
+    :description="i18n.t('module.user.form.section.name.description')"
+    :title="i18n.t('user.name')"
   >
     <FormGrid :cols="2">
       <VcTextField
         :test-id="TEST_ID.USERS.FORM.FIRST_NAME_INPUT"
         v-bind="toFormField(props.firstName)"
-        :label="t('user.first_name')"
+        :label="i18n.t('user.first_name')"
       />
 
       <VcTextField
         v-bind="toFormField(props.lastName)"
         :test-id="TEST_ID.USERS.FORM.LAST_NAME_INPUT"
-        :label="t('user.last_name')"
+        :label="i18n.t('user.last_name')"
       />
     </FormGrid>
   </FormFieldset>

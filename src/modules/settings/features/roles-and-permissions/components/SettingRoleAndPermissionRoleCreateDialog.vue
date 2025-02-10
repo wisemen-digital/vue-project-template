@@ -18,7 +18,7 @@ const emit = defineEmits<{
   close: []
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const apiErrorToast = useApiErrorToast()
 const settingsRoleCreateMutation = useSettingRoleCreateMutation()
@@ -55,20 +55,20 @@ function onClose(): void {
       class="w-dialog-sm"
     >
       <AppDialogHeader
-        :title="t('module.setting.roles_and_permissions.create_role_dialog.title')"
-        :description="t('module.setting.roles_and_permissions.create_role_dialog.description')"
+        :title="i18n.t('module.setting.roles_and_permissions.create_role_dialog.title')"
+        :description="i18n.t('module.setting.roles_and_permissions.create_role_dialog.description')"
       />
       <div class="py-4">
         <AppForm :form="form">
           <VcTextField
-            :label="t('user.name')"
+            :label="i18n.t('user.name')"
             v-bind="toFormField(name)"
           />
           <AppDialogActions>
-            <AppDialogActionCancel :label="t('shared.cancel')" />
+            <AppDialogActionCancel :label="i18n.t('shared.cancel')" />
             <FormSubmitButton
               :form="form"
-              :label="t('shared.save')"
+              :label="i18n.t('shared.save')"
             />
           </AppDialogActions>
         </AppForm>

@@ -119,7 +119,7 @@ function onUpdateActionCheckbox(
     >
       <Component
         :is="permission.actions ? AppUnstyledButton : 'div'"
-        class="sticky left-0 flex items-center justify-between border-r border-solid border-secondary bg-primary p-3 px-6 text-left !ring-offset-0"
+        class="sticky left-0 flex items-center uppercase text-sm justify-between border-r border-solid border-secondary bg-primary p-3 px-6 text-left !ring-offset-0"
         @click="onTogglePermissionActionsClick(permission.id)"
       >
         {{ permission.id }}
@@ -172,7 +172,7 @@ function onUpdateActionCheckbox(
           <div
             v-for="role of props.roles"
             :key="role.uuid"
-            class="flex justify-center border-r border-solid border-secondary p-3 last:border-none"
+            class="flex justify-center text-sm border-r bg-secondary border-solid border-secondary p-3 last:border-none"
           >
             <VcCheckbox
               :model-value="isActionCheckboxChecked(permission.id, role.uuid, action)"
