@@ -4,6 +4,7 @@ import {
   ref,
 } from 'vue'
 
+import type { Permission } from '@/client'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import type { UserDetail } from '@/models/user/detail/user.model.ts'
 import { UserService } from '@/modules/user/api/services/user.service.ts'
@@ -31,6 +32,14 @@ export const useAuthStore = defineStore('auth', () => {
     authUser.value = user
   }
 
+  function hasPermission(permission: Permission): boolean {
+    if (authUser.value === null) {
+      return false
+    }
+
+    return authUser.value.permissions.includes(permission)
+  }
+
   function logout(): void {
     oAuthClient.logout()
     setAuthUser(null)
@@ -42,6 +51,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   return {
+    hasPermission,
     isAuthenticated,
     isLoggedIn,
     authUser,
