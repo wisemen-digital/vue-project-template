@@ -40,6 +40,7 @@ export class UserTransformer {
       firstName: dto.firstName,
       fullName: `${dto.firstName} ${dto.lastName}`,
       lastName: dto.lastName,
+      permissions: dto.roles.flatMap((role) => role.permissions),
       roles: dto.roles.map((role) => ({
         uuid: role.uuid as RoleUuid,
         name: role.name,
