@@ -10,11 +10,11 @@ const props = defineProps<{
   user: UserDetail
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    label: t('user.label.plural'),
+    label: i18n.t('user.label.plural'),
     to: {
       name: 'user-overview',
     },
@@ -31,7 +31,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     type: 'route',
   },
   {
-    label: t('shared.edit'),
+    label: i18n.t('shared.edit'),
     type: 'page',
   },
 ]

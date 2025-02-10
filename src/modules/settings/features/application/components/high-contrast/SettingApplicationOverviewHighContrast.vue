@@ -7,23 +7,23 @@ import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useHighContrastModeValue } from '@/composables/high-contrast-mode/highContrastMode.composable'
 import { usePreferences } from '@/composables/preference/preferences.composable.ts'
 
-const { t } = useI18n()
+const i18n = useI18n()
 const isHighContrastModeEnabled = useHighContrastModeValue()
 const preference = usePreferences()
 const label = computed<string>(() => {
   if (isHighContrastModeEnabled.value) {
-    return t('module.setting.high_contrast.enabled.label')
+    return i18n.t('module.setting.high_contrast.enabled.label')
   }
 
-  return t('module.setting.high_contrast.disabled.label')
+  return i18n.t('module.setting.high_contrast.disabled.label')
 })
 
 const description = computed<string>(() => {
   if (isHighContrastModeEnabled.value) {
-    return t('module.setting.high_contrast.enabled.description')
+    return i18n.t('module.setting.high_contrast.enabled.description')
   }
 
-  return t('module.setting.high_contrast.disabled.description')
+  return i18n.t('module.setting.high_contrast.disabled.description')
 })
 
 function onUpdateModelValue(value: boolean): void {
@@ -35,8 +35,8 @@ function onUpdateModelValue(value: boolean): void {
 
 <template>
   <FormFieldset
-    :title="t('module.setting.high_contrast.title')"
-    :description="t('module.setting.high_contrast.description')"
+    :title="i18n.t('module.setting.high_contrast.title')"
+    :description="i18n.t('module.setting.high_contrast.description')"
   >
     <VcSwitch
       v-model="isHighContrastModeEnabled"

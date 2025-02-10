@@ -7,23 +7,23 @@ import FormFieldset from '@/components/form/FormFieldset.vue'
 import { usePreferences } from '@/composables/preference/preferences.composable.ts'
 import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable'
 
-const { t } = useI18n()
+const i18n = useI18n()
 const reduceMotionValue = useReduceMotionValue()
 const preferences = usePreferences()
 const label = computed<string>(() => {
   if (reduceMotionValue.value) {
-    return t('module.setting.reduce_motion.enabled.label')
+    return i18n.t('module.setting.reduce_motion.enabled.label')
   }
 
-  return t('module.setting.reduce_motion.disabled.label')
+  return i18n.t('module.setting.reduce_motion.disabled.label')
 })
 
 const description = computed<string>(() => {
   if (reduceMotionValue.value) {
-    return t('module.setting.reduce_motion.enabled.description')
+    return i18n.t('module.setting.reduce_motion.enabled.description')
   }
 
-  return t('module.setting.reduce_motion.disabled.description')
+  return i18n.t('module.setting.reduce_motion.disabled.description')
 })
 
 function onUpdateModelValue(newValue: boolean): void {
@@ -35,8 +35,8 @@ function onUpdateModelValue(newValue: boolean): void {
 
 <template>
   <FormFieldset
-    :title="t('module.setting.reduce_motion.title')"
-    :description="t('module.setting.reduce_motion.description')"
+    :title="i18n.t('module.setting.reduce_motion.title')"
+    :description="i18n.t('module.setting.reduce_motion.description')"
   >
     <VcSwitch
       id="reduce-motion"

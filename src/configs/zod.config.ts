@@ -6,7 +6,7 @@ import { z } from 'zod'
 
 import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
 
-const { t } = i18nPlugin.global
+const i18n = i18nPlugin.global
 
 function customErrorMap(issue: ZodIssueOptionalMessage, ctx: ErrorMapCtx): { message: string } {
   const isStringAndEmpty = issue.code === 'too_small' && issue.minimum === 1 && issue.type === 'string'
@@ -15,84 +15,84 @@ function customErrorMap(issue: ZodIssueOptionalMessage, ctx: ErrorMapCtx): { mes
 
   if (isStringAndEmpty || isInvalidType || isInvalidDiscriminator) {
     return {
-      message: t('validation.required'),
+      message: i18n.t('validation.required'),
     }
   }
 
   if (issue.code === z.ZodIssueCode.invalid_union) {
     return {
-      message: t('validation.invalid_union'),
+      message: i18n.t('validation.invalid_union'),
     }
   }
   if (issue.code === z.ZodIssueCode.invalid_string) {
     if (issue.validation === 'email') {
       return {
-        message: t('validation.invalid_email'),
+        message: i18n.t('validation.invalid_email'),
       }
     }
     if (issue.validation === 'url') {
       return {
-        message: t('validation.invalid_url'),
+        message: i18n.t('validation.invalid_url'),
       }
     }
     if (issue.validation === 'uuid') {
       return {
-        message: t('validation.invalid_uuid'),
+        message: i18n.t('validation.invalid_uuid'),
       }
     }
     if (issue.validation === 'regex') {
       return {
-        message: t('validation.invalid_regex'),
+        message: i18n.t('validation.invalid_regex'),
       }
     }
     if (issue.validation === 'datetime') {
       return {
-        message: t('validation.invalid_datetime'),
+        message: i18n.t('validation.invalid_datetime'),
       }
     }
 
     return {
-      message: t('validation.invalid_string'),
+      message: i18n.t('validation.invalid_string'),
     }
   }
 
   if (issue.code === z.ZodIssueCode.invalid_date) {
     return {
-      message: t('validation.invalid_date'),
+      message: i18n.t('validation.invalid_date'),
     }
   }
   if (issue.code === z.ZodIssueCode.too_big) {
     if (issue.type === 'string') {
       return {
-        message: t('validation.too_big_string', {
+        message: i18n.t('validation.too_big_string', {
           count: issue.maximum,
         }),
       }
     }
     if (issue.type === 'number') {
       return {
-        message: t('validation.too_big_number', {
+        message: i18n.t('validation.too_big_number', {
           count: issue.maximum,
         }),
       }
     }
     if (issue.type === 'array') {
       return {
-        message: t('validation.too_big_array', {
+        message: i18n.t('validation.too_big_array', {
           count: issue.maximum,
         }),
       }
     }
     if (issue.type === 'date') {
       return {
-        message: t('validation.too_big_date', {
+        message: i18n.t('validation.too_big_date', {
           count: issue.maximum,
         }),
       }
     }
 
     return {
-      message: t('validation.too_big', {
+      message: i18n.t('validation.too_big', {
         count: issue.maximum,
       }),
     }
@@ -100,33 +100,33 @@ function customErrorMap(issue: ZodIssueOptionalMessage, ctx: ErrorMapCtx): { mes
   if (issue.code === z.ZodIssueCode.too_small) {
     if (issue.type === 'string') {
       return {
-        message: t('validation.too_small_string', {
+        message: i18n.t('validation.too_small_string', {
           count: issue.minimum,
         }),
       }
     }
     if (issue.type === 'number') {
       return {
-        message: t('validation.too_small_number', {
+        message: i18n.t('validation.too_small_number', {
           count: issue.minimum,
         }),
       }
     }
     if (issue.type === 'array') {
       return {
-        message: t('validation.too_small_array', {
+        message: i18n.t('validation.too_small_array', {
           count: issue.minimum,
         }),
       }
     }
     if (issue.type === 'date') {
       return {
-        message: t('validation.too_small_date', { v: issue.minimum }),
+        message: i18n.t('validation.too_small_date', { v: issue.minimum }),
       }
     }
 
     return {
-      message: t('validation.too_small', {
+      message: i18n.t('validation.too_small', {
         count: issue.minimum,
       }),
     }

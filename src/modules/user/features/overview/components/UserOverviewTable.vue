@@ -26,21 +26,21 @@ const props = defineProps<{
   pagination: Pagination<UserIndexFilters>
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const columns = computed<TableColumn<UserIndex>[]>(() => [
   {
     testId: TEST_ID.USERS.OVERVIEW.TABLE.FULL_NAME,
     isSortable: true,
     cell: (user): VNode => h(UserOverviewTableNameCell, { user }),
-    headerLabel: t('user.name'),
+    headerLabel: i18n.t('user.name'),
     key: 'name',
   },
   {
     testId: TEST_ID.USERS.OVERVIEW.TABLE.BIRTH_DATE,
     isSortable: true,
     cell: (): VNode => h(VcTableCell, () => DateFormatUtil.toNumericDate(new Date())),
-    headerLabel: t('user.birth_date'),
+    headerLabel: i18n.t('user.birth_date'),
     key: 'birthDate',
   },
 ])

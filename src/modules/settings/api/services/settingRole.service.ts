@@ -1,3 +1,5 @@
+import { z } from 'zod'
+
 import {
   createRoleControllerCreateRoleV1,
   deleteRoleControllerDeleteRoleV1,
@@ -28,7 +30,19 @@ export class SettingRoleService {
   }
 
   static async getAll(): Promise<SettingRole[]> {
-    const response = await viewRolesControllerGetRolesV1()
+    const response = await viewRolesControllerGetRolesV1({
+      responseValidator: async (data) => {
+        return await z.object({
+          items: z.object({
+            uuid: z.string().uuid(),
+            createdAt: z.string().datetime(),
+            updatedAt: z.string().datetime(),
+            name: z.string(),
+            permissions: z.string().array(),
+          }).array(),
+        }).parseAsync(data)
+      },
+    })
 
     return response.data.items.map(RoleTransformer.fromDto)
   }

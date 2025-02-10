@@ -99,8 +99,8 @@
   "module.user.detail.edit_user": "Gebruiker bewerken",
   "module.user.detail.title": "Gebruiker bewerken",
   "module.user.form.section.name.description": "Voor- en achternaam van de gebruiker.",
-  "module.user.update.success_toast.message": "Gebruiker is succesvol bijgewerkt.",
   "module.user.role": "Rol",
+  "module.user.update.success_toast.message": "Gebruiker is succesvol bijgewerkt.",
   "shared.cancel": "Annuleer",
   "shared.close": "Sluiten",
   "shared.edit": "Bewerken",
@@ -112,6 +112,7 @@
   "user.label.user_with_count": "Geen gebruikers | {count} gebruiker | {count} gebruikers",
   "user.last_name": "Achternaam",
   "user.name": "Naam",
+  "validation.duplicate": "Dubbele waarde",
   "validation.invalid_date": "Ongeldige datum",
   "validation.invalid_datetime": "Ongeldige datum en tijd",
   "validation.invalid_email": "Ongeldig e-mailadres",
@@ -130,5 +131,6 @@
   "validation.too_small_array": "Moet minstens {count} item bevatten | Moet minstens {count} items bevatten",
   "validation.too_small_date": "Moet na {count} liggen",
   "validation.too_small_number": "Moet groter dan of gelijk aan {count} zijn",
-  "validation.too_small_string": "Moet minstens {count} teken bevatten | Moet minstens {count} tekens bevatten"
+  "validation.too_small_string": "Moet minstens {count} teken bevatten | Moet minstens {count} tekens bevatten",
+  "validation.unauthorized": "Ongeautoriseerd"
 }

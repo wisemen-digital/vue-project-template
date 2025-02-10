@@ -27,7 +27,7 @@ const props = defineProps<{
   user: UserDetail
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const toast = useToast()
 const errorToast = useApiErrorToast()
@@ -74,7 +74,7 @@ const form = useForm({
 
       toast.success({
         testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
-        message: t('module.user.update.success_toast.message'),
+        message: i18n.t('module.user.update.success_toast.message'),
       })
     }
     catch (error) {
@@ -83,7 +83,7 @@ const form = useForm({
   },
   onSubmitError: () => {
     toast.error({
-      message: t('error.invalid_form_input.description'),
+      message: i18n.t('error.invalid_form_input.description'),
     })
   },
 })
@@ -99,14 +99,14 @@ const roles = form.register('roles')
           :form-id="formId"
           :form="form"
           :data-test-id="TEST_ID.USERS.FORM.SUBMIT_BUTTON"
-          :label="t('form.save_changes')"
+          :label="i18n.t('form.save_changes')"
         />
       </AppTeleport>
 
       <FormLayout>
         <FormFieldset
-          :description="t('module.user.form.section.name.description')"
-          :title="t('user.name')"
+          :description="i18n.t('module.user.form.section.name.description')"
+          :title="i18n.t('user.name')"
         >
           <FormGrid :cols="2">
             <VcSelect
@@ -114,7 +114,7 @@ const roles = form.register('roles')
               v-bind="toFormField(roles)"
               :display-fn="(item) => item.name"
               :items="roleItems"
-              :label="t('module.user.role')"
+              :label="i18n.t('module.user.role')"
             />
           </FormGrid>
         </FormFieldset>

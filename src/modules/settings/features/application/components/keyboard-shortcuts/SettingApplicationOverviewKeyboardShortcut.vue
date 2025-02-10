@@ -12,7 +12,7 @@ import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 import { usePreferences } from '@/composables/preference/preferences.composable.ts'
 
-const { t } = useI18n()
+const i18n = useI18n()
 const value = useKeyboardShortcutVisibilityValue()
 const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 const preferences = usePreferences()
@@ -26,18 +26,18 @@ const computedValue = computed<boolean>({
 
 const label = computed<string>(() => {
   if (value.value) {
-    return t('module.setting.keyboard_shortcuts.enabled.label')
+    return i18n.t('module.setting.keyboard_shortcuts.enabled.label')
   }
 
-  return t('module.setting.keyboard_shortcuts.disabled.label')
+  return i18n.t('module.setting.keyboard_shortcuts.disabled.label')
 })
 
 const description = computed<string>(() => {
   if (value.value) {
-    return t('module.setting.keyboard_shortcuts.enabled.description')
+    return i18n.t('module.setting.keyboard_shortcuts.enabled.description')
   }
 
-  return t('module.setting.keyboard_shortcuts.disabled.description')
+  return i18n.t('module.setting.keyboard_shortcuts.disabled.description')
 })
 
 function onUpdateModelValue(newValue: boolean): void {
@@ -49,8 +49,8 @@ function onUpdateModelValue(newValue: boolean): void {
 
 <template>
   <FormFieldset
-    :title="t('module.setting.keyboard_shortcuts.title')"
-    :description="t('module.setting.keyboard_shortcuts.description')"
+    :title="i18n.t('module.setting.keyboard_shortcuts.title')"
+    :description="i18n.t('module.setting.keyboard_shortcuts.description')"
   >
     <AppGroup
       gap="6xl"
@@ -69,7 +69,7 @@ function onUpdateModelValue(newValue: boolean): void {
       >
         <AppGroup>
           <span>
-            {{ t('module.setting.keyboard_shortcuts.example_button') }}
+            {{ i18n.t('module.setting.keyboard_shortcuts.example_button') }}
           </span>
 
           <VcKeyboardShortcut

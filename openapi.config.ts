@@ -11,6 +11,7 @@ export default defineConfig({
     },
     {
       name: '@hey-api/sdk',
+      auth: false,
       validator: true,
     },
     {

@@ -13,10 +13,17 @@ const test = base.extend<{
   http,
   page: async ({ page }, use) => {
     const errors: string[] = []
+    const warnings: string[] = []
 
     page.on('console', (event) => {
       if (event.type() === 'error') {
         errors.push(event.text())
+      }
+    })
+
+    page.on('console', (event) => {
+      if (event.type() === 'warning') {
+        warnings.push(event.text())
       }
     })
 
@@ -33,6 +40,7 @@ const test = base.extend<{
     //   .analyze()
 
     expect(errors).toStrictEqual([])
+    expect(warnings).toStrictEqual([])
 
     await expect(page.getByTestId(TEST_ID.SHARED.MALFORMED_RESPONSE_TOAST)).toBeHidden()
     // expect(accessibilityScanResults.violations).toEqual([])

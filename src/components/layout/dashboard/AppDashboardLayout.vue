@@ -8,7 +8,7 @@ import { usePreferences } from '@/composables/preference/preferences.composable.
 import type { UserDetail } from '@/models/user/detail/user.model.ts'
 import { useAuthStore } from '@/stores/auth.store'
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 usePreferences()
 
@@ -36,7 +36,7 @@ function onSignOut(): void {
                 to: {
                   name: 'user-overview',
                 },
-                label: t('user.label.plural'),
+                label: i18n.t('user.label.plural'),
                 icon: 'barChartSquare',
               },
             ],

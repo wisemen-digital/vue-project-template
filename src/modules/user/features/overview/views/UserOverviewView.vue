@@ -10,7 +10,7 @@ import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.mode
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 import UserOverviewTable from '@/modules/user/features/overview/components/UserOverviewTable.vue'
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const pagination = usePagination<UserIndexFilters>({
   isRouteQueryEnabled: true,
@@ -24,7 +24,7 @@ const error = computed<unknown>(() => userIndexQuery.error.value)
 </script>
 
 <template>
-  <AppTablePage :title="t('user.label.plural')">
+  <AppTablePage :title="i18n.t('user.label.plural')">
     <template #default>
       <div
         v-if="error !== null"

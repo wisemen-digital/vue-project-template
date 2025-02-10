@@ -11,11 +11,11 @@ const props = defineProps<{
   user: UserDetail
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    label: t('user.label.plural'),
+    label: i18n.t('user.label.plural'),
     to: {
       name: 'user-overview',
     },
@@ -42,7 +42,7 @@ const breadcrumbs: BreadcrumbItem[] = [
           },
         }"
         :data-test-id="TEST_ID.USERS.DETAIL.EDIT_BUTTON"
-        :label="t('module.user.detail.edit_user')"
+        :label="i18n.t('module.user.detail.edit_user')"
       />
     </template>
   </AppPage>
