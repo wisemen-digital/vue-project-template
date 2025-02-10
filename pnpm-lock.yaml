@@ -128,7 +128,7 @@ importers:
         version: 0.7.0(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
       '@wisemen/eslint-config-vue':
         specifier: 1.0.0-next.0
-        version: 1.0.0-next.0(@typescript-eslint/eslint-plugin@8.22.0(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@typescript-eslint/utils@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@vue/compiler-sfc@3.5.13)(eslint@9.19.0(jiti@2.4.2))(putout@37.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(svelte@5.19.4)(tailwindcss@4.0.3)(typescript@5.7.3)(vitest@3.0.5(@types/debug@4.1.12)(@types/node@22.12.0)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.12.0)(typescript@5.7.3))(sass@1.84.0)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue-eslint-parser@9.4.3(eslint@9.19.0(jiti@2.4.2)))
+        version: 1.0.0-next.0(@typescript-eslint/eslint-plugin@8.22.0(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@typescript-eslint/utils@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@vue/compiler-sfc@3.5.13)(eslint@9.19.0(jiti@2.4.2))(putout@37.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(svelte@5.19.4)(tailwindcss@4.0.5)(typescript@5.7.3)(vitest@3.0.5(@types/debug@4.1.12)(@types/node@22.12.0)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.12.0)(typescript@5.7.3))(sass@1.84.0)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue-eslint-parser@9.4.3(eslint@9.19.0(jiti@2.4.2)))
       '@wisemen/vue-core-query':
         specifier: 0.0.32
         version: 0.0.32(vue@3.5.13(typescript@5.7.3))
@@ -169,8 +169,8 @@ importers:
         specifier: 1.84.0
         version: 1.84.0
       tailwindcss:
-        specifier: 4.0.3
-        version: 4.0.3
+        specifier: 4.0.5
+        version: 4.0.5
       tsx:
         specifier: 4.19.2
         version: 4.19.2
@@ -6375,6 +6375,9 @@ packages:
   tailwindcss@4.0.3:
     resolution: {integrity: sha512-ImmZF0Lon5RrQpsEAKGxRvHwCvMgSC4XVlFRqmbzTEDb/3wvin9zfEZrMwgsa3yqBbPqahYcVI6lulM2S7IZAA==}
 
+  tailwindcss@4.0.5:
+    resolution: {integrity: sha512-DZZIKX3tA23LGTjHdnwlJOTxfICD1cPeykLLsYF1RQBI9QsCR3i0szohJfJDVjr6aNRAIio5WVO7FGB77fRHwg==}
+
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
@@ -10300,7 +10303,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@wisemen/eslint-config-vue@1.0.0-next.0(@typescript-eslint/eslint-plugin@8.22.0(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@typescript-eslint/utils@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@vue/compiler-sfc@3.5.13)(eslint@9.19.0(jiti@2.4.2))(putout@37.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(svelte@5.19.4)(tailwindcss@4.0.3)(typescript@5.7.3)(vitest@3.0.5(@types/debug@4.1.12)(@types/node@22.12.0)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.12.0)(typescript@5.7.3))(sass@1.84.0)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue-eslint-parser@9.4.3(eslint@9.19.0(jiti@2.4.2)))':
+  '@wisemen/eslint-config-vue@1.0.0-next.0(@typescript-eslint/eslint-plugin@8.22.0(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@typescript-eslint/utils@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@vue/compiler-sfc@3.5.13)(eslint@9.19.0(jiti@2.4.2))(putout@37.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(svelte@5.19.4)(tailwindcss@4.0.5)(typescript@5.7.3)(vitest@3.0.5(@types/debug@4.1.12)(@types/node@22.12.0)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.12.0)(typescript@5.7.3))(sass@1.84.0)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))(vue-eslint-parser@9.4.3(eslint@9.19.0(jiti@2.4.2)))':
     dependencies:
       '@antfu/eslint-config': 3.8.0(@typescript-eslint/utils@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(@vue/compiler-sfc@3.5.13)(eslint@9.19.0(jiti@2.4.2))(svelte@5.19.4)(typescript@5.7.3)(vitest@3.0.5(@types/debug@4.1.12)(@types/node@22.12.0)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.12.0)(typescript@5.7.3))(sass@1.84.0)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.0))
       '@eslint/eslintrc': 3.1.0
@@ -10313,7 +10316,7 @@ snapshots:
       eslint-plugin-putout: 23.2.0(eslint@9.19.0(jiti@2.4.2))(putout@37.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))
       eslint-plugin-require-explicit-generics: 1.0.0
       eslint-plugin-simple-import-sort: 12.1.1(eslint@9.19.0(jiti@2.4.2))
-      eslint-plugin-tailwindcss: 3.17.5(tailwindcss@4.0.3)
+      eslint-plugin-tailwindcss: 3.17.5(tailwindcss@4.0.5)
       eslint-plugin-unused-imports: 4.1.4(@typescript-eslint/eslint-plugin@8.22.0(@typescript-eslint/parser@8.22.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.19.0(jiti@2.4.2))
     transitivePeerDependencies:
       - '@babel/preset-typescript'
@@ -11342,11 +11345,11 @@ snapshots:
     dependencies:
       eslint: 9.19.0(jiti@2.4.2)
 
-  eslint-plugin-tailwindcss@3.17.5(tailwindcss@4.0.3):
+  eslint-plugin-tailwindcss@3.17.5(tailwindcss@4.0.5):
     dependencies:
       fast-glob: 3.3.3
       postcss: 8.5.1
-      tailwindcss: 4.0.3
+      tailwindcss: 4.0.5
 
   eslint-plugin-toml@0.11.1(eslint@9.19.0(jiti@2.4.2)):
     dependencies:
@@ -14197,6 +14200,8 @@ snapshots:
   tailwindcss@4.0.0-beta.4: {}
 
   tailwindcss@4.0.3: {}
+
+  tailwindcss@4.0.5: {}
 
   tapable@2.2.1: {}
 
