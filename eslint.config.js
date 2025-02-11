@@ -5,6 +5,7 @@ export default [
   ...(await eslintVueConfig),
   {
     ignores: [
+      'public/mockServiceWorker.js',
       'src/client',
       'tests/.auth',
       'src/locales',
