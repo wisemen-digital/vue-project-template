@@ -169,7 +169,7 @@ export const zCreateContactCommand = z.object({
         z.null()
     ]),
     phone: z.union([
-        z.string(),
+        z.string().regex(/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/),
         z.null()
     ])
 });
@@ -192,7 +192,7 @@ export const zCreateContactResponse = z.object({
         z.null()
     ]),
     phone: z.union([
-        z.string(),
+        z.string().regex(/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/),
         z.null()
     ])
 });
@@ -211,7 +211,7 @@ export const zUpdateContactCommand = z.object({
         z.null()
     ]),
     phone: z.union([
-        z.string(),
+        z.string().regex(/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/),
         z.null()
     ]),
     isActive: z.boolean()
@@ -235,7 +235,7 @@ export const zViewContactDetailResponse = z.object({
         z.null()
     ]),
     phone: z.union([
-        z.string(),
+        z.string().regex(/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/),
         z.null()
     ])
 });
@@ -262,7 +262,7 @@ export const zContactResponse = z.object({
         z.null()
     ]),
     phone: z.union([
-        z.string(),
+        z.string().regex(/^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/),
         z.null()
     ])
 });

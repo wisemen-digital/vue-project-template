@@ -16,6 +16,12 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 
 export const swaggerControllerHandleRedirect = <ThrowOnError extends boolean = true>(options?: Options<SwaggerControllerHandleRedirectData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/oauth2-redirect',
         ...options
     });
@@ -37,6 +43,12 @@ export const statusControllerGetHealthStatus = <ThrowOnError extends boolean = t
 
 export const typesenseControllerMigrateV1 = <ThrowOnError extends boolean = true>(options?: Options<TypesenseControllerMigrateV1Data, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/typesense/migrate',
         ...options
     });
@@ -44,6 +56,12 @@ export const typesenseControllerMigrateV1 = <ThrowOnError extends boolean = true
 
 export const typesenseControllerImportV1 = <ThrowOnError extends boolean = true>(options?: Options<TypesenseControllerImportV1Data, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/typesense/import',
         ...options
     });
@@ -51,6 +69,12 @@ export const typesenseControllerImportV1 = <ThrowOnError extends boolean = true>
 
 export const typesenseControllerGetCollectionsV1 = <ThrowOnError extends boolean = true>(options?: Options<TypesenseControllerGetCollectionsV1Data, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/typesense/collections',
         ...options
     });
@@ -58,6 +82,12 @@ export const typesenseControllerGetCollectionsV1 = <ThrowOnError extends boolean
 
 export const setUserRolesControllerUpdateUserV1 = <ThrowOnError extends boolean = true>(options: Options<SetUserRolesControllerUpdateUserV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/users/{user}/role',
         ...options,
         headers: {
@@ -69,6 +99,12 @@ export const setUserRolesControllerUpdateUserV1 = <ThrowOnError extends boolean 
 
 export const viewMeControllerViewMeV1 = <ThrowOnError extends boolean = true>(options?: Options<ViewMeControllerViewMeV1Data, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<ViewMeControllerViewMeV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zViewMeControllerViewMeV1Response.parseAsync(data);
         },
@@ -79,6 +115,12 @@ export const viewMeControllerViewMeV1 = <ThrowOnError extends boolean = true>(op
 
 export const viewUserControllerViewUserV1 = <ThrowOnError extends boolean = true>(options: Options<ViewUserControllerViewUserV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<ViewUserControllerViewUserV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zViewUserControllerViewUserV1Response.parseAsync(data);
         },
@@ -89,6 +131,12 @@ export const viewUserControllerViewUserV1 = <ThrowOnError extends boolean = true
 
 export const viewUsersControllerViewUserV1 = <ThrowOnError extends boolean = true>(options: Options<ViewUsersControllerViewUserV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<ViewUsersControllerViewUserV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zViewUsersControllerViewUserV1Response.parseAsync(data);
         },
@@ -99,6 +147,12 @@ export const viewUsersControllerViewUserV1 = <ThrowOnError extends boolean = tru
 
 export const viewRolesControllerGetRolesV1 = <ThrowOnError extends boolean = true>(options?: Options<ViewRolesControllerGetRolesV1Data, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<ViewRolesControllerGetRolesV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zViewRolesControllerGetRolesV1Response.parseAsync(data);
         },
@@ -109,6 +163,12 @@ export const viewRolesControllerGetRolesV1 = <ThrowOnError extends boolean = tru
 
 export const createRoleControllerCreateRoleV1 = <ThrowOnError extends boolean = true>(options: Options<CreateRoleControllerCreateRoleV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/roles',
         ...options,
         headers: {
@@ -120,6 +180,12 @@ export const createRoleControllerCreateRoleV1 = <ThrowOnError extends boolean = 
 
 export const deleteRoleControllerDeleteRoleV1 = <ThrowOnError extends boolean = true>(options: Options<DeleteRoleControllerDeleteRoleV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).delete<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/roles/{role}',
         ...options
     });
@@ -127,6 +193,12 @@ export const deleteRoleControllerDeleteRoleV1 = <ThrowOnError extends boolean = 
 
 export const viewRoleControllerGetRoleV1 = <ThrowOnError extends boolean = true>(options: Options<ViewRoleControllerGetRoleV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<ViewRoleControllerGetRoleV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zViewRoleControllerGetRoleV1Response.parseAsync(data);
         },
@@ -137,6 +209,12 @@ export const viewRoleControllerGetRoleV1 = <ThrowOnError extends boolean = true>
 
 export const updateRoleControllerUpdateRoleV1 = <ThrowOnError extends boolean = true>(options: Options<UpdateRoleControllerUpdateRoleV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/roles/{role}',
         ...options,
         headers: {
@@ -148,6 +226,12 @@ export const updateRoleControllerUpdateRoleV1 = <ThrowOnError extends boolean = 
 
 export const updateRolesBulkControllerUpdateRolesBulkV1 = <ThrowOnError extends boolean = true>(options: Options<UpdateRolesBulkControllerUpdateRolesBulkV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/roles/bulk',
         ...options,
         headers: {
@@ -159,6 +243,12 @@ export const updateRolesBulkControllerUpdateRolesBulkV1 = <ThrowOnError extends 
 
 export const permissionControllerGetPermissionsV1 = <ThrowOnError extends boolean = true>(options?: Options<PermissionControllerGetPermissionsV1Data, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<PermissionControllerGetPermissionsV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zPermissionControllerGetPermissionsV1Response.parseAsync(data);
         },
@@ -169,6 +259,12 @@ export const permissionControllerGetPermissionsV1 = <ThrowOnError extends boolea
 
 export const fileControllerCreateFileV1 = <ThrowOnError extends boolean = true>(options: Options<FileControllerCreateFileV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<FileControllerCreateFileV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zFileControllerCreateFileV1Response.parseAsync(data);
         },
@@ -183,6 +279,12 @@ export const fileControllerCreateFileV1 = <ThrowOnError extends boolean = true>(
 
 export const fileControllerConfirmFileUploadV1 = <ThrowOnError extends boolean = true>(options: Options<FileControllerConfirmFileUploadV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/file/{file}/confirm-upload',
         ...options
     });
@@ -190,6 +292,12 @@ export const fileControllerConfirmFileUploadV1 = <ThrowOnError extends boolean =
 
 export const fileControllerDownloadFileV1 = <ThrowOnError extends boolean = true>(options: Options<FileControllerDownloadFileV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/file/{file}/download',
         ...options
     });
@@ -197,6 +305,12 @@ export const fileControllerDownloadFileV1 = <ThrowOnError extends boolean = true
 
 export const fileControllerRemoveFileV1 = <ThrowOnError extends boolean = true>(options: Options<FileControllerRemoveFileV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).delete<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/file/{file}',
         ...options
     });
@@ -204,6 +318,12 @@ export const fileControllerRemoveFileV1 = <ThrowOnError extends boolean = true>(
 
 export const viewContactIndexControllerViewContactIndexV1 = <ThrowOnError extends boolean = true>(options?: Options<ViewContactIndexControllerViewContactIndexV1Data, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<ViewContactIndexControllerViewContactIndexV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zViewContactIndexControllerViewContactIndexV1Response.parseAsync(data);
         },
@@ -214,6 +334,12 @@ export const viewContactIndexControllerViewContactIndexV1 = <ThrowOnError extend
 
 export const createContactControllerCreateContactV1 = <ThrowOnError extends boolean = true>(options: Options<CreateContactControllerCreateContactV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).post<CreateContactControllerCreateContactV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zCreateContactControllerCreateContactV1Response.parseAsync(data);
         },
@@ -228,6 +354,12 @@ export const createContactControllerCreateContactV1 = <ThrowOnError extends bool
 
 export const deleteContactControllerDeleteContactV1 = <ThrowOnError extends boolean = true>(options: Options<DeleteContactControllerDeleteContactV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).delete<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/contacts/{uuid}',
         ...options
     });
@@ -235,6 +367,12 @@ export const deleteContactControllerDeleteContactV1 = <ThrowOnError extends bool
 
 export const viewContactDetailControllerViewContactDetailV1 = <ThrowOnError extends boolean = true>(options: Options<ViewContactDetailControllerViewContactDetailV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<ViewContactDetailControllerViewContactDetailV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zViewContactDetailControllerViewContactDetailV1Response.parseAsync(data);
         },
@@ -245,6 +383,12 @@ export const viewContactDetailControllerViewContactDetailV1 = <ThrowOnError exte
 
 export const updateContactControllerUpdateContactV1 = <ThrowOnError extends boolean = true>(options: Options<UpdateContactControllerUpdateContactV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).put<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/contacts/{uuid}',
         ...options,
         headers: {
@@ -256,6 +400,12 @@ export const updateContactControllerUpdateContactV1 = <ThrowOnError extends bool
 
 export const viewPreferencesControllerViewPreferencesIndexV1 = <ThrowOnError extends boolean = true>(options: Options<ViewPreferencesControllerViewPreferencesIndexV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<ViewPreferencesControllerViewPreferencesIndexV1Response, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         responseValidator: async (data) => {
             return await zViewPreferencesControllerViewPreferencesIndexV1Response.parseAsync(data);
         },
@@ -266,6 +416,12 @@ export const viewPreferencesControllerViewPreferencesIndexV1 = <ThrowOnError ext
 
 export const updatePreferencesControllerUpdatePreferencesV1 = <ThrowOnError extends boolean = true>(options: Options<UpdatePreferencesControllerUpdatePreferencesV1Data, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).patch<unknown, unknown, ThrowOnError>({
+        security: [
+            {
+                scheme: 'bearer',
+                type: 'http'
+            }
+        ],
         url: '/api/v1/users/{userUuid}/preferences',
         ...options,
         headers: {

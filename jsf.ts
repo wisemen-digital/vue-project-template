@@ -8,6 +8,27 @@ import { LoggerUtil } from './src/utils/logger.util'
 
 const outputFilePath = path.resolve('./src/client/generators.gen.ts')
 
+function resolveRefs(schema: any, allSchemas: any): any {
+  if (schema.$ref) {
+    const refPath = schema.$ref.replace('#/components/schemas/', '')
+
+    return resolveRefs(allSchemas[`${refPath}Schema`], allSchemas)
+  }
+  if (schema.properties) {
+    for (const key in schema.properties) {
+      schema.properties[key] = resolveRefs(schema.properties[key], allSchemas)
+    }
+  }
+  if (schema.items) {
+    schema.items = resolveRefs(schema.items, allSchemas)
+  }
+  if (schema.allOf) {
+    schema.allOf = schema.allOf.map((item: any) => resolveRefs(item, allSchemas))
+  }
+
+  return schema
+}
+
 async function generateMockGenerators(): Promise<void> {
   try {
     if (!schemas) {
@@ -33,13 +54,13 @@ async function generateMockGenerators(): Promise<void> {
         useExamplesValue: true,
       })
 
+      const resolvedSchema = resolveRefs(schema, schemas)
       const formattedSchemaName = schemaName.replace(/Schema$/, '')
-
       const mockFunctionName = `${formattedSchemaName}Generator`
       const returnType = `types.${formattedSchemaName}`
 
       outputContent += `export function ${mockFunctionName}(): ${returnType} {
-  return JSONSchemaFaker.generate(${JSON.stringify(schema, null, 2)}) as ${returnType};
+  return JSONSchemaFaker.generate(${JSON.stringify(resolvedSchema, null, 2)}) as ${returnType};
 }
 
 `
