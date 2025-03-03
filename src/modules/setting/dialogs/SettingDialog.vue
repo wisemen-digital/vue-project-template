@@ -14,9 +14,9 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
-import AppUnstyledButton from '@/components/app/AppUnstyledButton.vue'
 import AppAsyncComponent from '@/components/app/async-component/AppAsyncComponent.vue'
+import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
+import AppSearchInputField from '@/components/app/search/AppSearchInputField.vue'
 import AppTextHighlight from '@/components/app/text-highlight/AppTextHighlight.vue'
 import { useSettingNavigation } from '@/modules/setting/composables/settingNavigation.composable.ts'
 import type { SettingKey } from '@/modules/setting/types/settingKey.type.ts'
@@ -40,29 +40,17 @@ const menuItems = computed<MenuItemGroup<SettingKey>[]>(() => {
     {
       title: i18n.t('module.setting.general_settings'),
       items: [
-        // {
-        //   title: i18n.t('module.setting.account'),
-        //   icon: 'settings',
-        //   key: 'account',
-        //   component: import('@/modules/setting/features/components/account/SettingAccount.vue'),
-        // },
         {
-          title: i18n.t('module.setting.notifications.title'),
-          icon: 'notification',
-          key: 'notifications',
-          component: import('@/modules/setting/features/components/notifications/SettingNotifications.vue'),
+          title: i18n.t('module.setting.appearance'),
+          icon: 'brush',
+          key: 'appearance',
+          component: import('@/modules/setting/features/appearance/views/SettingAppearanceView.vue'),
         },
         {
           title: i18n.t('module.setting.roles_and_permissions'),
           icon: 'shield',
           key: 'rolesPermissions',
-          component: import('@/modules/setting/features/components/permissions/SettingRoleAndPermission.vue'),
-        },
-        {
-          title: i18n.t('module.setting.appearance'),
-          icon: 'brush',
-          key: 'appearance',
-          component: import('@/modules/setting/features/components/appearance/SettingAppearance.vue'),
+          component: import('@/modules/setting/features/roles-and-permissions/views/SettingRoleAndPermissionView.vue'),
         },
       ],
     },
@@ -72,7 +60,7 @@ const menuItems = computed<MenuItemGroup<SettingKey>[]>(() => {
 const searchInput = ref<string>('')
 
 const navigation = useSettingNavigation({
-  default: 'notifications',
+  default: 'appearance',
 })
 
 const activeMenuItem = computed<SettingKey>(() => navigation.currentItem.value.item)

@@ -9,8 +9,8 @@ import { useI18n } from 'vue-i18n'
 
 import AppGroup from '@/components/app/AppGroup.vue'
 import FormFieldset from '@/components/form/FormFieldset.vue'
-import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
-import { usePreferences } from '@/composables/preferences/preferences.composable.ts'
+import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable.ts'
+import { usePreferences } from '@/composables/preference/preferences.composable.ts'
 
 const i18n = useI18n()
 const value = useKeyboardShortcutVisibilityValue()

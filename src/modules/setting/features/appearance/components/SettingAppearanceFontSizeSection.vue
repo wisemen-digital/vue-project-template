@@ -2,10 +2,10 @@
 import { VcSelect } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import type { FontSize } from '@/client'
 import FormFieldset from '@/components/form/FormFieldset.vue'
-import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable'
-import { usePreferences } from '@/composables/preferences/preferences.composable.ts'
+import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable.ts'
+import { usePreferences } from '@/composables/preference/preferences.composable.ts'
+import type { FontSize } from '@/models/preference/fontSize.model.ts'
 
 const i18n = useI18n()
 

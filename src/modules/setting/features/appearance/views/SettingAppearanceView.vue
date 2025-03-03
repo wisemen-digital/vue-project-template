@@ -3,20 +3,20 @@ import { useI18n } from 'vue-i18n'
 
 import AppGrid from '@/components/app/AppGrid.vue'
 import AppSeparator from '@/components/app/AppSeparator.vue'
+import SettingContainer from '@/modules/setting/components/SettingContainer.vue'
 import type { SettingNavigation } from '@/modules/setting/composables/settingNavigation.composable.ts'
 import SettingAppearanceFontSizeSection
-  from '@/modules/setting/features/components/appearance/SettingAppearanceFontSizeSection.vue'
+  from '@/modules/setting/features/appearance/components/SettingAppearanceFontSizeSection.vue'
 import SettingAppearanceHighContrastSection
-  from '@/modules/setting/features/components/appearance/SettingAppearanceHighContrastSection.vue'
+  from '@/modules/setting/features/appearance/components/SettingAppearanceHighContrastSection.vue'
 import SettingAppearanceInterfaceThemeSection
-  from '@/modules/setting/features/components/appearance/SettingAppearanceInterfaceThemeSection.vue'
+  from '@/modules/setting/features/appearance/components/SettingAppearanceInterfaceThemeSection.vue'
 import SettingAppearanceKeyboardShortcutSection
-  from '@/modules/setting/features/components/appearance/SettingAppearanceKeyboardShortcutSection.vue'
+  from '@/modules/setting/features/appearance/components/SettingAppearanceKeyboardShortcutSection.vue'
 import SettingAppearanceLanguageSection
-  from '@/modules/setting/features/components/appearance/SettingAppearanceLanguageSection.vue'
+  from '@/modules/setting/features/appearance/components/SettingAppearanceLanguageSection.vue'
 import SettingAppearanceReduceMotionSection
-  from '@/modules/setting/features/components/appearance/SettingAppearanceReduceMotionSection.vue'
-import SettingContainer from '@/modules/setting/features/components/SettingContainer.vue'
+  from '@/modules/setting/features/appearance/components/SettingAppearanceReduceMotionSection.vue'
 
 const props = defineProps<{
   navigation: SettingNavigation

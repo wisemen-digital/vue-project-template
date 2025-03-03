@@ -17,7 +17,7 @@ import {
   UserTransformer,
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
-import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
 import { ObjectUtil } from '@/utils/object.util.ts'
 import { PaginationDtoBuilder } from '@/utils/paginationDtoBuilder.util'
 

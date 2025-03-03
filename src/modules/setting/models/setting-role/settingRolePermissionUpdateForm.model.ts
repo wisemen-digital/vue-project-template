@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 import { permissionSchema } from '@/models/permission/permission.model.ts'
-import { settingRoleUuidSchema } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
+import { settingRoleUuidSchema } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
 
 export const settingRolePermissionUpdateFormSchema = z.object({
   roles: z.object({

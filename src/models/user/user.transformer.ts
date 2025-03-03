@@ -3,7 +3,7 @@ import type { UserDetailDto } from '@/models/user/detail/userDetailDto.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import type { UserIndexFiltersDto } from '@/models/user/index/userIndexFiltersDto.model'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
 
 import type { UserIndex } from './index/userIndex.model'
 import type { UserIndexDto } from './index/userIndexDto.model'

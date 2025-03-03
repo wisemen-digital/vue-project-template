@@ -7,11 +7,11 @@ import type { Permission } from '@/client'
 import AppHeightTransition from '@/components/app/AppHeightTransition.vue'
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import type { SettingPermission } from '@/models/permission/permission.model.ts'
-import type { SettingRole } from '@/modules/settings/models/setting-role/settingRole.model.ts'
+import type { SettingRole } from '@/modules/setting/models/setting-role/settingRole.model.ts'
 import type {
   settingRolePermissionUpdateFormSchema,
-} from '@/modules/settings/models/setting-role/settingRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
+} from '@/modules/setting/models/setting-role/settingRolePermissionUpdateForm.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
 import { assert } from '@/utils/assert.util.ts'
 
 const props = defineProps<{

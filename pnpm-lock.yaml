@@ -36,8 +36,8 @@ importers:
         specifier: 12.7.0
         version: 12.7.0(typescript@5.7.3)(vue-router@4.5.0(vue@3.5.13(typescript@5.7.3)))
       '@wisemen/vue-core':
-        specifier: 1.0.0-alpha.26
-        version: 1.0.0-alpha.26(@babel/core@7.26.9)(sass@1.85.1)(svelte@5.20.5)(typescript@5.7.3)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)(sass@1.85.1)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.0))(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))
+        specifier: 1.0.0-alpha.28
+        version: 1.0.0-alpha.28(@babel/core@7.26.9)(sass@1.85.1)(svelte@5.20.5)(typescript@5.7.3)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)(sass@1.85.1)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.0))(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))
       '@wisemen/vue-core-auth':
         specifier: 2.0.1
         version: 2.0.1
@@ -77,6 +77,9 @@ importers:
       vue:
         specifier: 3.5.13
         version: 3.5.13(typescript@5.7.3)
+      vue-highlight-words:
+        specifier: 3.0.1
+        version: 3.0.1(vue@3.5.13(typescript@5.7.3))
       vue-i18n:
         specifier: 11.1.1
         version: 11.1.1(vue@3.5.13(typescript@5.7.3))
@@ -3217,8 +3220,8 @@ packages:
   '@wisemen/vue-core-query@0.0.32':
     resolution: {integrity: sha512-gfZYfesTxv8raFwCcTeqp7ECGNuhZluayRvg5EjYjC41SQYqgIow25fuRUjhRQ/6BkvrEGx1wdom2h9dzUkS+A==}
 
-  '@wisemen/vue-core@1.0.0-alpha.26':
-    resolution: {integrity: sha512-i8bfu/S4Mwvq4+qSk+vHB8OD0tdY4bbn+2G583iGzZ78k9cMHz4XMoPL2P6Oesy6lWO2wmpGU/wXaOWqZesNIw==}
+  '@wisemen/vue-core@1.0.0-alpha.28':
+    resolution: {integrity: sha512-5rXLo3vje6Rt6Z6hx+SXqzdbTMq/4LpmreSkTb1R1sv3i8HmiXVuVAhjeK16JoxZ2PBk27gBr8HQ8KPVKqQaSw==}
     peerDependencies:
       vue: 3.5.12
       vue-i18n: 10.0.4
@@ -4519,6 +4522,9 @@ packages:
 
   hey-listen@1.0.8:
     resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
+
+  highlight-words-core@1.2.3:
+    resolution: {integrity: sha512-m1O9HW3/GNHxzSIXWw1wCNXXsgLlxrP0OI6+ycGUhiUHkikqW3OrwVHz+lxeNBe5yqLESdIcj8PowHQ2zLvUvQ==}
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
@@ -6810,6 +6816,11 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
+  vue-highlight-words@3.0.1:
+    resolution: {integrity: sha512-t6L0+KRaMzX5RVubWl6Sog+Aa+U0kHsbUlDIrln1VfajR2SEg+zQYfXov8UmX3MLNOfd6cv7MCM6LclqNlW4ww==}
+    peerDependencies:
+      vue: ^3.0.0
+
   vue-i18n@11.1.1:
     resolution: {integrity: sha512-0P6DkKy96R4Wh2sIZJEHw8ivnlD1pnB6Ib/eldoF1SUpQutfKZv6aMqZwICS1gW0rwq24ZSXw7y3jW+PRVYqWA==}
     engines: {node: '>= 16'}
@@ -8820,8 +8831,6 @@ snapshots:
       '@putout/operator-filesystem': 6.0.3(putout@38.4.3(eslint@9.21.0(jiti@2.4.2))(typescript@5.7.3))
       '@putout/operator-json': 2.2.0
       putout: 38.4.3(eslint@9.21.0(jiti@2.4.2))(typescript@5.7.3)
-    transitivePeerDependencies:
-      - supports-color
 
   '@putout/operator-parens@1.2.0':
     dependencies:
@@ -10295,7 +10304,7 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
-  '@wisemen/vue-core@1.0.0-alpha.26(@babel/core@7.26.9)(sass@1.85.1)(svelte@5.20.5)(typescript@5.7.3)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)(sass@1.85.1)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.0))(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))':
+  '@wisemen/vue-core@1.0.0-alpha.28(@babel/core@7.26.9)(sass@1.85.1)(svelte@5.20.5)(typescript@5.7.3)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)(sass@1.85.1)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.0))(vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)))(vue@3.5.13(typescript@5.7.3))':
     dependencies:
       '@googlemaps/js-api-loader': 1.16.8
       '@internationalized/date': 3.5.4
@@ -11825,6 +11834,8 @@ snapshots:
   headers-polyfill@4.0.3: {}
 
   hey-listen@1.0.8: {}
+
+  highlight-words-core@1.2.3: {}
 
   hookable@5.5.3: {}
 
@@ -14686,6 +14697,11 @@ snapshots:
       semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
+
+  vue-highlight-words@3.0.1(vue@3.5.13(typescript@5.7.3)):
+    dependencies:
+      highlight-words-core: 1.2.3
+      vue: 3.5.13(typescript@5.7.3)
 
   vue-i18n@11.1.1(vue@3.5.13(typescript@5.7.3)):
     dependencies:

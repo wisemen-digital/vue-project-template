@@ -1,9 +1,9 @@
 import type { SettingPermission } from '@/models/permission/permission.model.ts'
-import type { SettingRole } from '@/modules/settings/models/setting-role/settingRole.model.ts'
-import type { SettingRoleDto } from '@/modules/settings/models/setting-role/settingRoleDto.model.ts'
-import type { SettingRolePermissionUpdateDto } from '@/modules/settings/models/setting-role/settingRolePermissionUpdateDto.model.ts'
-import type { SettingRolePermissionUpdateForm } from '@/modules/settings/models/setting-role/settingRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
+import type { SettingRole } from '@/modules/setting/models/setting-role/settingRole.model.ts'
+import type { SettingRoleDto } from '@/modules/setting/models/setting-role/settingRoleDto.model.ts'
+import type { SettingRolePermissionUpdateDto } from '@/modules/setting/models/setting-role/settingRolePermissionUpdateDto.model.ts'
+import type { SettingRolePermissionUpdateForm } from '@/modules/setting/models/setting-role/settingRolePermissionUpdateForm.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
 
 export class SettingRolePermissionUpdateTransformer {
   static toDto(form: SettingRolePermissionUpdateForm): SettingRolePermissionUpdateDto {

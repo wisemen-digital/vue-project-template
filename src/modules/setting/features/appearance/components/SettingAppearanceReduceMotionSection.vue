@@ -4,8 +4,8 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import FormFieldset from '@/components/form/FormFieldset.vue'
-import { usePreferences } from '@/composables/preferences/preferences.composable.ts'
-import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable'
+import { usePreferences } from '@/composables/preference/preferences.composable.ts'
+import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable.ts'
 
 const i18n = useI18n()
 const reduceMotionValue = useReduceMotionValue()

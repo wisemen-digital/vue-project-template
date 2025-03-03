@@ -2,7 +2,7 @@
 import type { Pagination } from '@wisemen/vue-core'
 import { computed } from 'vue'
 
-import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
+import AppSearchInputField from '@/components/app/search/AppSearchInputField.vue'
 
 const props = withDefaults(defineProps<{
   isDisabled?: boolean
