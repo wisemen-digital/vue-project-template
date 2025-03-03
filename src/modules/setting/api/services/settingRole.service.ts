@@ -6,13 +6,13 @@ import {
   updateRolesPermissionsControllerUpdateRolePermissionsV1,
   viewRolesControllerGetRolesV1,
 } from '@/client'
-import type { SettingRole } from '@/modules/settings/models/setting-role/settingRole.model.ts'
+import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
 import {
   SettingRolePermissionUpdateTransformer,
   SettingRoleTransformer,
-} from '@/modules/settings/models/setting-role/settingRole.transformer.ts'
-import type { SettingRolePermissionUpdateForm } from '@/modules/settings/models/setting-role/settingRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
+} from '@/modules/setting/models/role/settingRole.transformer.ts'
+import type { SettingRolePermissionUpdateForm } from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 export class SettingRoleService {
   static async create(roleName: string): Promise<void> {

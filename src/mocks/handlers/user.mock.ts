@@ -1,10 +1,10 @@
 import { http, HttpResponse } from 'msw'
 
 import type { PaginatedDtoData } from '@/models/paginated-data/paginatedData.model.ts'
-import { PreferenceDtoBuilder } from '@/models/preference/preferenceDto.builder.ts'
-import type { PreferenceDto } from '@/models/preference/preferenceDto.model.ts'
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.ts'
 import type { UserIndexDto } from '@/models/user/index/userIndexDto.model.ts'
+import { SettingPreferenceDtoBuilder } from '@/modules/setting/models/preference/settingPreferenceDto.builder.ts'
+import type { SettingPreferenceDto } from '@/modules/setting/models/preference/settingPreferenceDto.model.ts'
 
 function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
   return {
@@ -28,7 +28,7 @@ const users: UserIndexDto[] = [
     .build(),
 ]
 
-const PREFERENCE: PreferenceDto = new PreferenceDtoBuilder().build()
+const PREFERENCE: SettingPreferenceDto = new SettingPreferenceDtoBuilder().build()
 
 export const userHandlers = [
   http.get('*/api/v1/users/*/preferences', () => {

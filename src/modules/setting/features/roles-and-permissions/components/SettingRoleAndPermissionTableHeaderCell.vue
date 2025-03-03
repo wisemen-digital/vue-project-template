@@ -8,8 +8,8 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
-import type { SettingRole } from '@/modules/settings/models/setting-role/settingRole.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
+import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 const props = defineProps<{
   role: SettingRole

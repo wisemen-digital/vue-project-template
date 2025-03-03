@@ -1,7 +1,1 @@
-export type SettingKey = 'account'
-  | 'appearance'
-  | 'contractTypes'
-  | 'location-types'
-  | 'notifications'
-  | 'rolesPermissions'
-  | 'virtualSegments'
+export type SettingKey = 'appearance' | 'rolesPermissions'

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   type DropdownMenuItem,
+  useDialog,
   VcDropdownMenu,
   VcDropdownMenuTrigger,
 } from '@wisemen/vue-core'
@@ -29,6 +30,10 @@ const emit = defineEmits<{
 
 const i18n = useI18n()
 
+const settingDialog = useDialog({
+  component: () => import('@/modules/setting/dialogs/SettingDialog.vue'),
+})
+
 const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
   {
     icon: 'settings',
@@ -37,10 +42,10 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
       's',
     ],
     label: i18n.t('module.setting.title'),
-    to: {
-      name: 'settings',
+    type: 'option',
+    onSelect: (): void => {
+      settingDialog.open()
     },
-    type: 'route',
   },
   {
     type: 'separator',

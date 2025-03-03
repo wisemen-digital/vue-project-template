@@ -18,12 +18,12 @@ const props = withDefaults(
 </script>
 
 <template>
-  <BaseFieldset class="grid gap-x-6xl gap-y-xl md:grid-cols-3">
-    <div>
+  <BaseFieldset>
+    <div class="mb-lg">
       <Component :is="props.isTitleHidden ? VisuallyHidden : 'div'">
         <BaseFieldsetLegend
           as="h2"
-          class="font-medium text-primary"
+          class="font-medium text-sm text-primary"
         >
           {{ props.title }}
         </BaseFieldsetLegend>
