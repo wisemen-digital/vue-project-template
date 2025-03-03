@@ -22,7 +22,7 @@ import { useAuthStore } from '@/stores/auth.store.ts'
 const { setTemplate } = useDocumentTitle()
 const { locale } = useI18n()
 const router = useRouter()
-const darkMode = useDarkMode()
+const appearance = useDarkMode()
 const authStore = useAuthStore()
 const theme = useTheme()
 
@@ -45,9 +45,9 @@ authStore.onLogout(() => {
 <template>
   <VcConfigProvider :locale="locale">
     <VcThemeProvider
-      :is-dark-mode-enabled="darkMode.isEnabled.value"
+      :appearance="appearance"
       :theme="theme"
-      class="flex size-full flex-1 flex-col"
+      class="flex size-full flex-1 flex-col overflow-hidden"
     >
       <RouterView />
       <AppPageLoader />

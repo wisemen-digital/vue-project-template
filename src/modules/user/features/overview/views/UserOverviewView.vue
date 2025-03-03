@@ -3,8 +3,8 @@ import { usePagination } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppSearchInputField from '@/components/app/AppSearchInputField.vue'
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
+import AppPaginationSearchField from '@/components/app/search/AppPaginationSearchField.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
@@ -37,7 +37,7 @@ const error = computed<unknown>(() => userIndexQuery.error.value)
         v-else
         class="flex flex-col gap-lg flex-1"
       >
-        <AppSearchInputField
+        <AppPaginationSearchField
           :is-loading="userIndexQuery.isLoading.value"
           :pagination="pagination"
         />
