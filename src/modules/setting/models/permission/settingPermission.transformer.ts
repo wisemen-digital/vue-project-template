@@ -1,7 +1,7 @@
 import type { Permission } from '@/client'
-import type { SettingPermission } from '@/models/permission/permission.model.ts'
+import type { SettingPermission } from '@/modules/setting/models/permission/settingPermission.model.ts'
 
-export class PermissionTransformer {
+export class SettingPermissionTransformer {
   static fromDto(dto: Permission[]): SettingPermission[] {
     const result: SettingPermission[] = []
 

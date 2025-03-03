@@ -1,8 +1,8 @@
 import { Theme } from '@/client'
-import type { PreferenceDto } from '@/models/preference/preferenceDto.model.ts'
+import type { SettingPreferenceDto } from '@/modules/setting/models/preference/settingPreferenceDto.model.ts'
 
-export class PreferenceDtoBuilder {
-  value: PreferenceDto = {
+export class SettingPreferenceDtoBuilder {
+  value: SettingPreferenceDto = {
     fontSize: 'default',
     highContrast: false,
     language: 'en-US',
@@ -13,7 +13,7 @@ export class PreferenceDtoBuilder {
 
   constructor() {}
 
-  build(): PreferenceDto {
+  build(): SettingPreferenceDto {
     return this.value
   }
 }

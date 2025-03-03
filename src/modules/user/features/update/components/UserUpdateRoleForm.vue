@@ -22,7 +22,7 @@ import { useSettingRolesQuery } from '@/modules/setting/api/queries/settingRole.
 import {
   type SettingRoleUuid,
   settingRoleUuidSchema,
-} from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
+} from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 import { useUserUpdateRoleMutation } from '@/modules/user/api/mutations/userUpdate.mutation.ts'
 import { toFormField } from '@/utils/formango.util'
 

@@ -11,9 +11,9 @@ import { useHighContrastModeValue } from '@/composables/high-contrast-mode/highC
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable.ts'
 import { useLanguageSelect } from '@/composables/language/language.composable.ts'
 import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable.ts'
-import type { FontSize } from '@/models/preference/fontSize.model.ts'
-import type { PreferenceUpdateForm } from '@/models/preference/preferenceUpdateForm.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
+import type { FontSize } from '@/modules/setting/models/preference/settingFontSize.model.ts'
+import type { PreferenceUpdateForm } from '@/modules/setting/models/preference/settingPreferenceUpdateForm.model.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 interface UsePreferenceReturnType {

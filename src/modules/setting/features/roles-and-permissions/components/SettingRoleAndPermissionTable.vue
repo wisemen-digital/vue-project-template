@@ -3,14 +3,14 @@ import { useScroll } from '@vueuse/core'
 import type { Form } from 'formango'
 import { computed, ref } from 'vue'
 
-import type { SettingPermission } from '@/models/permission/permission.model.ts'
 import SettingRoleAndPermissionTableBody from '@/modules/setting/features/roles-and-permissions/components/SettingRoleAndPermissionTableBody.vue'
 import SettingRoleAndPermissionTableHeader from '@/modules/setting/features/roles-and-permissions/components/SettingRoleAndPermissionTableHeader.vue'
-import type { SettingRole } from '@/modules/setting/models/setting-role/settingRole.model.ts'
+import type { SettingPermission } from '@/modules/setting/models/permission/settingPermission.model.ts'
+import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
 import type {
   settingRolePermissionUpdateFormSchema,
-} from '@/modules/setting/models/setting-role/settingRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
+} from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 const props = defineProps<{
   form: Form<typeof settingRolePermissionUpdateFormSchema>

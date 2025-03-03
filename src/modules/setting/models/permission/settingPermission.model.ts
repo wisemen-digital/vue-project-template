@@ -7,4 +7,4 @@ export interface SettingPermission {
   key: string
 }
 
-export const permissionSchema = z.nativeEnum(Permission)
+export const settingPermissionSchema = z.nativeEnum(Permission)

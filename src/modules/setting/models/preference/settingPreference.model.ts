@@ -1,7 +1,7 @@
 import type { Theme } from '@/client'
 import type { Locale } from '@/plugins/i18n/i18n.plugin.ts'
 
-export interface Preference {
+export interface SettingPreference {
   fontSize: string | null
   highContrast: boolean | null
   language: Locale | null

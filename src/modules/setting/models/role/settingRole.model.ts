@@ -1,5 +1,5 @@
 import type { Permission } from '@/client'
-import type { SettingRoleUuid } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 export interface SettingRole {
   uuid: SettingRoleUuid

@@ -3,8 +3,8 @@ import { VcIcon } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import SettingRoleAndPermissionTableHeaderCell from '@/modules/setting/features/roles-and-permissions/components/SettingRoleAndPermissionTableHeaderCell.vue'
-import type { SettingRole } from '@/modules/setting/models/setting-role/settingRole.model.ts'
-import type { SettingRoleUuid } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
+import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 const props = defineProps<{
   roles: SettingRole[]

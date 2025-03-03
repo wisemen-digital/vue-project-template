@@ -13,7 +13,6 @@ import AppForm from '@/components/form/AppForm.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { useUnsavedChanges } from '@/composables/unsaved-changes/unsavedChanges.composable'
-import type { SettingPermission } from '@/models/permission/permission.model.ts'
 import { useSettingRoleBulkUpdateMutation } from '@/modules/setting/api/mutations/settingRoleBulkUpdate.mutation'
 import { useSettingRoleDeleteMutation } from '@/modules/setting/api/mutations/settingRoleDelete.mutation'
 import { useSettingPermissionQuery } from '@/modules/setting/api/queries/settingPermission.query.ts'
@@ -21,13 +20,14 @@ import { useSettingRolesQuery } from '@/modules/setting/api/queries/settingRole.
 import SettingContainer from '@/modules/setting/components/SettingContainer.vue'
 import type { SettingNavigation } from '@/modules/setting/composables/settingNavigation.composable.ts'
 import SettingRoleAndPermissionTable from '@/modules/setting/features/roles-and-permissions/components/SettingRoleAndPermissionTable.vue'
-import type { SettingRole } from '@/modules/setting/models/setting-role/settingRole.model.ts'
-import { SettingRolePermissionUpdateTransformer } from '@/modules/setting/models/setting-role/settingRole.transformer.ts'
+import type { SettingPermission } from '@/modules/setting/models/permission/settingPermission.model.ts'
+import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
+import { SettingRolePermissionUpdateTransformer } from '@/modules/setting/models/role/settingRole.transformer.ts'
 import {
   type SettingRolePermissionUpdateForm,
   settingRolePermissionUpdateFormSchema,
-} from '@/modules/setting/models/setting-role/settingRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/setting/models/setting-role/settingRoleUuid.model.ts'
+} from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 const props = defineProps<{
   navigation: SettingNavigation

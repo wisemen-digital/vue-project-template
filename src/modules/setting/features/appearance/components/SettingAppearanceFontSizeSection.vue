@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable.ts'
 import { usePreferences } from '@/composables/preference/preferences.composable.ts'
-import type { FontSize } from '@/models/preference/fontSize.model.ts'
+import type { FontSize } from '@/modules/setting/models/preference/settingFontSize.model.ts'
 
 const i18n = useI18n()
 
