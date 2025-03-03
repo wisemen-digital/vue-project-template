@@ -22,7 +22,7 @@ const emit = defineEmits<{
   'update:modelValue': [value: string]
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const search = computed<string>({
   get: () => props.modelValue,
@@ -43,7 +43,7 @@ function onClearInput(): void {
     ref="VcTextFieldRef"
     v-model="search"
     :is-disabled="props.isDisabled"
-    :placeholder="props.placeholder ?? t('component.search_input.placeholder')"
+    :placeholder="props.placeholder ?? i18n.t('component.search_input.placeholder')"
     :is-loading="props.isLoading && search.length > 0"
     icon-left="search"
   >
@@ -59,7 +59,7 @@ function onClearInput(): void {
             '--icon-button-bg-color-disabled': 'transparent',
             '--icon-button-border-color-disabled': 'transparent',
           }"
-          :label="t('component.search_input.clear')"
+          :label="i18n.t('component.search_input.clear')"
           variant="tertiary"
           size="sm"
           icon="close"

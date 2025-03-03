@@ -7,7 +7,7 @@ import { useLanguageSelect } from '@/composables/language/language.composable.ts
 import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
 import type { Locale } from '@/plugins/i18n/i18n.plugin.ts'
 
-const { t } = useI18n()
+const i18n = useI18n()
 
 const languageSelect = useLanguageSelect()
 const preferences = useSettingPreferences()
@@ -26,13 +26,13 @@ function onUpdateModelValue(value: Locale | null): void {
 <template>
   <FormFieldset
     :is-title-hidden="true"
-    :title="t('module.setting.language.title')"
+    :title="i18n.t('module.setting.language.title')"
   >
     <VcSelect
       v-model="languageSelect.value.value"
       :items="languageSelect.items.value"
       :display-fn="languageSelect.displayFn"
-      :label="t('module.setting.language.title')"
+      :label="i18n.t('module.setting.language.title')"
       class="w-72"
       @update:model-value="onUpdateModelValue"
     />

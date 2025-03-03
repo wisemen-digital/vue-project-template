@@ -33,7 +33,7 @@ const props = defineProps<{
   navigation: SettingNavigation
 }>()
 
-const { t } = useI18n()
+const i18n = useI18n()
 const apiErrorToast = useApiErrorToast()
 const toast = useToast()
 
@@ -78,7 +78,7 @@ const form = useForm({
       })
 
       toast.success({
-        message: t('module.setting.roles_and_permissions.save_changes_success'),
+        message: i18n.t('module.setting.roles_and_permissions.save_changes_success'),
       })
     }
     catch (error) {
@@ -94,7 +94,7 @@ useUnsavedChanges(isRolesModelMapChanged)
 
 <template>
   <SettingContainer
-    :title="t('module.setting.roles_and_permissions.title')"
+    :title="i18n.t('module.setting.roles_and_permissions.title')"
     :navigation="props.navigation"
   >
     <AppForm
@@ -117,11 +117,11 @@ useUnsavedChanges(isRolesModelMapChanged)
           icon-left="plus"
           @click="onAddNewRoleButtonClick"
         >
-          {{ t('module.setting.roles_and_permissions.add_new_role') }}
+          {{ i18n.t('module.setting.roles_and_permissions.add_new_role') }}
         </VcButton>
         <FormSubmitButton
           :form="form"
-          :label="t('module.setting.roles_and_permissions.save_changes')"
+          :label="i18n.t('module.setting.roles_and_permissions.save_changes')"
           class="w-min"
         />
       </AppGroup>
