@@ -8,7 +8,6 @@ import {
   viewUserControllerViewUserV1,
   viewUsersControllerViewUserV1,
 } from '@/client'
-import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
@@ -18,6 +17,7 @@ import {
   UserTransformer,
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
+import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
 import { ObjectUtil } from '@/utils/object.util.ts'
 import { PaginationDtoBuilder } from '@/utils/paginationDtoBuilder.util'
 
@@ -44,7 +44,7 @@ export class UserService {
     return UserTransformer.fromDto(response.data)
   }
 
-  static async updateRoles(userUuid: UserUuid, roleUuids: RoleUuid[]): Promise<void> {
+  static async updateRoles(userUuid: UserUuid, roleUuids: SettingRoleUuid[]): Promise<void> {
     await setUserRolesControllerUpdateUserV1({
       body: {
         roleUuids,

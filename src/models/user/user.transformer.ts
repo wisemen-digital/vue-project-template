@@ -1,9 +1,9 @@
-import type { RoleUuid } from '@/models/setting-role/roleUuid.model.ts'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import type { UserDetailDto } from '@/models/user/detail/userDetailDto.model'
 import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
 import type { UserIndexFiltersDto } from '@/models/user/index/userIndexFiltersDto.model'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
+import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
 
 import type { UserIndex } from './index/userIndex.model'
 import type { UserIndexDto } from './index/userIndexDto.model'
@@ -38,7 +38,7 @@ export class UserTransformer {
       lastName: dto.lastName,
       permissions: dto.roles.flatMap((role) => role.permissions),
       roles: dto.roles.map((role) => ({
-        uuid: role.uuid as RoleUuid,
+        uuid: role.uuid as SettingRoleUuid,
         name: role.name,
       })),
     }

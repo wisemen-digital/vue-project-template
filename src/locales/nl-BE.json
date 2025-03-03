@@ -12,6 +12,7 @@
   "component.sidebar.footer.environment": "Omgeving",
   "component.sidebar.footer.sign_out": "Afmelden",
   "component.sidebar.footer.version": "Versie",
+  "component.sidebar.footer.user_profile": "User profile",
   "component.sidebar.open_sidebar": "Zijbalk openen",
   "component.table.no_data.description": "Er zijn momenteel geen gegevens om weer te geven.",
   "component.table.no_data.title": "Geen gegevens",

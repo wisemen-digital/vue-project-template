@@ -1,7 +1,10 @@
-import type { SettingPermissionAction } from '@/models/permission/permissionAction.model.ts'
-import type { SettingPermissionId } from '@/models/permission/permissionId.model.ts'
+import { z } from 'zod'
+
+import { Permission } from '@/client'
 
 export interface SettingPermission {
-  id: SettingPermissionId
-  actions: SettingPermissionAction[] | null
+  actions: Permission[]
+  key: string
 }
+
+export const permissionSchema = z.nativeEnum(Permission)

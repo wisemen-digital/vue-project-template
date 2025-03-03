@@ -1,6 +1,6 @@
 import type { Permission } from '@/client'
-import type { RoleUuid } from '@/models/setting-role/roleUuid.model'
 import type { UserUuid } from '@/models/user/userUuid.model'
+import type { SettingRoleUuid } from '@/modules/settings/models/setting-role/settingRoleUuid.model.ts'
 
 export interface UserDetail {
   uuid: UserUuid
@@ -9,7 +9,7 @@ export interface UserDetail {
   lastName: string | null
   permissions: Permission[]
   roles: {
-    uuid: RoleUuid
+    uuid: SettingRoleUuid
     name: string
   }[]
 }
