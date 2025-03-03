@@ -65,7 +65,7 @@ const navigation = useSettingNavigation({
 
 const activeMenuItem = computed<SettingKey>(() => navigation.currentItem.value.item)
 
-const filteredMenuItems = computed<MenuItemGroup<SettingKey>[]>(() => {
+const filteredGroupMenuItems = computed<MenuItemGroup<SettingKey>[]>(() => {
   const search = searchInput.value.toLowerCase()
 
   return menuItems.value
@@ -129,7 +129,7 @@ function onMenuItemClick(key: SettingKey): void {
       </div>
 
       <div
-        v-for="group in filteredMenuItems"
+        v-for="group in filteredGroupMenuItems"
         :key="group.title"
         class="flex flex-col gap-lg"
       >

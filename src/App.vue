@@ -32,7 +32,6 @@ useAutoRefresh()
 useFontSize()
 useLanguage()
 useReduceMotion()
-// useRouterViewTransition()
 
 logBuildInformation()
 
