@@ -5,11 +5,11 @@ import { useI18n } from 'vue-i18n'
 
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useHighContrastModeValue } from '@/composables/high-contrast-mode/highContrastMode.composable.ts'
-import { usePreferences } from '@/composables/preference/preferences.composable.ts'
+import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
 
 const i18n = useI18n()
 const isHighContrastModeEnabled = useHighContrastModeValue()
-const preference = usePreferences()
+const preference = useSettingPreferences()
 
 const label = computed<string>(() => {
   if (isHighContrastModeEnabled.value) {

@@ -4,13 +4,13 @@ import { useI18n } from 'vue-i18n'
 
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useLanguageSelect } from '@/composables/language/language.composable.ts'
-import { usePreferences } from '@/composables/preference/preferences.composable.ts'
+import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
 import type { Locale } from '@/plugins/i18n/i18n.plugin.ts'
 
 const { t } = useI18n()
 
 const languageSelect = useLanguageSelect()
-const preferences = usePreferences()
+const preferences = useSettingPreferences()
 
 function onUpdateModelValue(value: Locale | null): void {
   if (value === null) {

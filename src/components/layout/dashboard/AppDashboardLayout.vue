@@ -4,13 +4,13 @@ import { useI18n } from 'vue-i18n'
 
 import AppDashboardLayoutClassic from '@/components/layout/dashboard/AppDashboardLayoutClassic.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
-import { usePreferences } from '@/composables/preference/preferences.composable.ts'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
+import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
 import { useAuthStore } from '@/stores/auth.store'
 
 const i18n = useI18n()
 
-usePreferences()
+useSettingPreferences()
 
 const authStore = useAuthStore()
 

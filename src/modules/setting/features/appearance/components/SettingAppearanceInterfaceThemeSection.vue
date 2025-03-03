@@ -11,13 +11,13 @@ import { useI18n } from 'vue-i18n'
 
 import { Theme } from '@/client'
 import FormFieldset from '@/components/form/FormFieldset.vue'
-import { usePreferences } from '@/composables/preference/preferences.composable.ts'
 import { useTheme } from '@/composables/theme/theme.composable.ts'
+import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
 import SettingAppearanceMiniDashboard from '@/modules/setting/features/appearance/components/SettingAppearanceMiniDashboard.vue'
 
 const i18n = useI18n()
 const darkMode = useDarkMode()
-const preferences = usePreferences()
+const preferences = useSettingPreferences()
 const theme = useTheme()
 
 const appearances = computed<RadioGroupItem<Theme>[]>(() => [

@@ -2,8 +2,6 @@ import { useDarkMode } from '@wisemen/vue-core'
 import { computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { usePreferenceQuery } from '@/api/queries/preference.query.ts'
-import { PreferenceService } from '@/api/services/preference.service.ts'
 import { Theme } from '@/client'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable.ts'
@@ -12,14 +10,17 @@ import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-short
 import { useLanguageSelect } from '@/composables/language/language.composable.ts'
 import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
+import { usePreferenceQuery } from '@/modules/setting/api/queries/settingPreference.query.ts'
+import { SettingPreferenceService } from '@/modules/setting/api/services/settingPreference.service.ts'
 import type { FontSize } from '@/modules/setting/models/preference/settingFontSize.model.ts'
-import type { PreferenceUpdateForm } from '@/modules/setting/models/preference/settingPreferenceUpdateForm.model.ts'
+import type { SettingPreferenceUpdateForm } from '@/modules/setting/models/preference/settingPreferenceUpdateForm.model.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
-interface UsePreferenceReturnType {
-  update: (preferenceForm: PreferenceUpdateForm) => Promise<void>
+interface UseSettingPreferenceReturnType {
+  update: (preferenceForm: SettingPreferenceUpdateForm) => Promise<void>
 }
-export function usePreferences(): UsePreferenceReturnType {
+
+export function useSettingPreferences(): UseSettingPreferenceReturnType {
   const i18n = useI18n()
   const apiErrorToast = useApiErrorToast()
 
@@ -34,13 +35,13 @@ export function usePreferences(): UsePreferenceReturnType {
   const isHighContrastModeEnabled = useHighContrastModeValue()
   const darkMode = useDarkMode()
 
-  async function update(preferenceForm: PreferenceUpdateForm): Promise<void> {
+  async function update(preferenceForm: SettingPreferenceUpdateForm): Promise<void> {
     if (userUuid.value === null) {
       throw new Error('User UUID is null')
     }
 
     try {
-      await PreferenceService.update(userUuid.value, preferenceForm)
+      await SettingPreferenceService.update(userUuid.value, preferenceForm)
     }
     catch (error) {
       apiErrorToast.show(error)

@@ -4,8 +4,8 @@ import {
 } from '@wisemen/vue-core-query'
 import type { ComputedRef } from 'vue'
 
-import { PreferenceService } from '@/api/services/preference.service.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
+import { SettingPreferenceService } from '@/modules/setting/api/services/settingPreference.service.ts'
 import type { SettingPreference } from '@/modules/setting/models/preference/settingPreference.model.ts'
 
 export function usePreferenceQuery(
@@ -18,7 +18,7 @@ export function usePreferenceQuery(
         throw new Error('User UUID is null')
       }
 
-      return PreferenceService.get(userUuid.value)
+      return SettingPreferenceService.get(userUuid.value)
     },
     queryKey: {
       preference: {

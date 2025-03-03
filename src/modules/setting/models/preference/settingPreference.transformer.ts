@@ -2,7 +2,7 @@ import type { Theme } from '@/client'
 import type { SettingPreference } from '@/modules/setting/models/preference/settingPreference.model.ts'
 import type { SettingPreferenceDto } from '@/modules/setting/models/preference/settingPreferenceDto.model.ts'
 import type { SettingPreferenceUpdateDto } from '@/modules/setting/models/preference/settingPreferenceUpdateDto.model.ts'
-import type { PreferenceUpdateForm } from '@/modules/setting/models/preference/settingPreferenceUpdateForm.model.ts'
+import type { SettingPreferenceUpdateForm } from '@/modules/setting/models/preference/settingPreferenceUpdateForm.model.ts'
 import type { Locale } from '@/plugins/i18n/i18n.plugin.ts'
 
 export class SettingPreferenceTransformer {
@@ -17,7 +17,7 @@ export class SettingPreferenceTransformer {
     }
   }
 
-  static toDto(model: PreferenceUpdateForm): SettingPreferenceUpdateDto {
+  static toDto(model: SettingPreferenceUpdateForm): SettingPreferenceUpdateDto {
     return {
       fontSize: model.fontSize,
       highContrast: model.highContrast,

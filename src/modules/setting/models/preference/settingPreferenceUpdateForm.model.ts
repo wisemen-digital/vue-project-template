@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { settingPreferenceThemeSchema } from '@/modules/setting/models/preference/settingPreferenceTheme.enum.ts'
 
-export const preferenceUpdateFormSchema = z.object({
+export const settingPreferenceUpdateFormSchema = z.object({
   fontSize: z.string().optional(),
   highContrast: z.boolean().optional(),
   language: z.string().optional(),
@@ -11,4 +11,4 @@ export const preferenceUpdateFormSchema = z.object({
   theme: settingPreferenceThemeSchema.optional(),
 })
 
-export type PreferenceUpdateForm = z.infer<typeof preferenceUpdateFormSchema>
+export type SettingPreferenceUpdateForm = z.infer<typeof settingPreferenceUpdateFormSchema>
