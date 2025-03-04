@@ -3,7 +3,7 @@ import type { SettingPreference } from '@/modules/setting/models/preference/sett
 import type { SettingPreferenceDto } from '@/modules/setting/models/preference/settingPreferenceDto.model.ts'
 import type { SettingPreferenceUpdateDto } from '@/modules/setting/models/preference/settingPreferenceUpdateDto.model.ts'
 import type { SettingPreferenceUpdateForm } from '@/modules/setting/models/preference/settingPreferenceUpdateForm.model.ts'
-import type { Locale } from '@/plugins/i18n/i18n.plugin.ts'
+import type { Locale } from '@/plugins/i18n.plugin.ts'
 
 export class SettingPreferenceTransformer {
   static fromDto(dto: SettingPreferenceDto): SettingPreference {

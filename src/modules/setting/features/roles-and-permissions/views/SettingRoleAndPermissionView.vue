@@ -8,7 +8,7 @@ import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppGroup from '@/components/app/AppGroup.vue'
+import AppGroup from '@/components/app/group/AppGroup.vue'
 import AppForm from '@/components/form/AppForm.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'

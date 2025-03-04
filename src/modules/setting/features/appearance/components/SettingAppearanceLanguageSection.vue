@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useLanguageSelect } from '@/composables/language/language.composable.ts'
 import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
-import type { Locale } from '@/plugins/i18n/i18n.plugin.ts'
+import type { Locale } from '@/plugins/i18n.plugin.ts'
 
 const i18n = useI18n()
 

@@ -6,7 +6,7 @@ import {
   createWebHistory,
 } from 'vue-router'
 
-import { useRouterMiddleware } from '@/composables/router/routerMiddleware.composable'
+import { useRouterMiddleware } from '@/composables/router/routerMiddleware.composable.ts'
 import { routes } from '@/routes/routes.ts'
 
 const router = createRouter({

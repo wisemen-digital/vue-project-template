@@ -8,7 +8,7 @@ import {
 } from 'vue'
 
 import type { FontSize } from '@/modules/setting/models/preference/settingFontSize.model.ts'
-import { i18nPlugin } from '@/plugins/i18n/i18n.plugin'
+import { i18nPlugin } from '@/plugins/i18n.plugin.ts'
 import { createI18nKeyMap } from '@/types/enum.type'
 
 interface UseFontSizeReturnType {

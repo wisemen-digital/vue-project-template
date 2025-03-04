@@ -1,10 +1,10 @@
 import { http, HttpResponse } from 'msw'
 
-import type { PaginatedDtoData } from '@/models/paginated-data/paginatedData.model.ts'
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.ts'
 import type { UserIndexDto } from '@/models/user/index/userIndexDto.model.ts'
 import { SettingPreferenceDtoBuilder } from '@/modules/setting/models/preference/settingPreferenceDto.builder.ts'
 import type { SettingPreferenceDto } from '@/modules/setting/models/preference/settingPreferenceDto.model.ts'
+import type { PaginatedDtoData } from '@/types/paginatedData.type.ts'
 
 function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
   return {

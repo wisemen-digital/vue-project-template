@@ -1,4 +1,4 @@
-import dayjs from '@/plugins/dayjs/dayjs.plugin'
+import dayjs from '@/plugins/dayjs.plugin.ts'
 
 export class DateUtil {
   /**

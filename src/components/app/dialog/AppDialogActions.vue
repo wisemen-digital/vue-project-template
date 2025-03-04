@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppGroup from '@/components/app/AppGroup.vue'
+import AppGroup from '@/components/app/group/AppGroup.vue'
 </script>
 
 <template>

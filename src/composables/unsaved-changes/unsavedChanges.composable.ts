@@ -6,7 +6,7 @@ import {
 } from 'vue'
 import { onBeforeRouteLeave } from 'vue-router'
 
-import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
+import { i18nPlugin } from '@/plugins/i18n.plugin.ts'
 
 interface UseUnsavedChangesReturnType {
   handleUnsavedClose: (callback: () => void) => void

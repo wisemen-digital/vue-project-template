@@ -1,6 +1,6 @@
 import { useI18n } from 'vue-i18n'
 
-import dayjs from '@/plugins/dayjs/dayjs.plugin'
+import dayjs from '@/plugins/dayjs.plugin.ts'
 
 interface UseLocalizedDateFormatReturnType {
   /**

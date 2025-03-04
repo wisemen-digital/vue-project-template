@@ -12,7 +12,7 @@ import updateLocale from 'dayjs/plugin/updateLocale.js'
 import utc from 'dayjs/plugin/utc.js'
 import weekOfYear from 'dayjs/plugin/weekOfYear.js'
 
-import { i18nPlugin } from '@/plugins/i18n/i18n.plugin'
+import { i18nPlugin } from '@/plugins/i18n.plugin.ts'
 
 dayjs.extend(updateLocale)
 dayjs.updateLocale(i18nPlugin.global.locale.value, { weekStart: 1 })
