@@ -4,7 +4,7 @@ import { computed } from 'vue'
 
 import type { CalendarDate } from '@/models/date/calendarDate.model'
 import { CalendarDateTransformer } from '@/models/date/calendarDate.transformer'
-import dayjs from '@/plugins/dayjs/dayjs.plugin'
+import dayjs from '@/plugins/dayjs.plugin.ts'
 
 export function useRouteDateQuery<TDateValue extends CalendarDate>(
   identifier: string,

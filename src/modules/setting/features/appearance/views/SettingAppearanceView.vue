@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-import AppGrid from '@/components/app/AppGrid.vue'
 import AppSeparator from '@/components/app/AppSeparator.vue'
+import AppGrid from '@/components/app/grid/AppGrid.vue'
 import SettingContainer from '@/modules/setting/components/SettingContainer.vue'
 import type { SettingNavigation } from '@/modules/setting/composables/settingNavigation.composable.ts'
 import SettingAppearanceFontSizeSection

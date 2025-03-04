@@ -1,8 +1,8 @@
 import type { Page } from '@playwright/test'
 
-import type { PaginatedDtoData } from '@/models/paginated-data/paginatedData.model'
 import type { S3FileUploadDto } from '@/models/s3-file/s3FileCreate.model.ts'
 import type { S3FileDto } from '@/models/s3-file/s3FileDto.model.ts'
+import type { PaginatedDtoData } from '@/types/paginatedData.type.ts'
 
 export function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
   return {

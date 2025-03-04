@@ -15,8 +15,7 @@
     "test:e2e": "npx playwright test",
     "type-check": "vue-tsc --build --force",
     "prepare": "husky",
-    "precommit": "pnpm type-check && pnpm lint:fix && pnpm test:unit && pnpm test:e2e && pnpm build",
-    "project-setup": "npx tsx setup.ts"
+    "precommit": "pnpm type-check && pnpm lint:fix && pnpm test:unit && pnpm test:e2e && pnpm build"
   },
   "dependencies": {
     "@fontsource-variable/inter": "5.1.1",

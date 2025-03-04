@@ -13,10 +13,10 @@ import { setupMockServer } from '@/configs/mockServer.config.ts'
 import { configureZod } from '@/configs/zod.config.ts'
 import { icons } from '@/icons/icons.ts'
 import { setupHttpClient } from '@/libs/http.lib.ts'
-import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
-import { piniaPlugin } from '@/plugins/pinia/pinia.plugin.ts'
-import { routerPlugin } from '@/plugins/router/router.plugin.ts'
-import { vueQueryPlugin } from '@/plugins/vue-query/vueQuery.plugin.ts'
+import { i18nPlugin } from '@/plugins/i18n.plugin.ts'
+import { piniaPlugin } from '@/plugins/pinia.plugin.ts'
+import { routerPlugin } from '@/plugins/router.plugin.ts'
+import { vueQueryPlugin } from '@/plugins/vueQuery.plugin.ts'
 
 extendIcons(icons)
 configureZod()

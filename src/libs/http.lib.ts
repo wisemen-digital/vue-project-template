@@ -2,6 +2,7 @@ import { client } from '@/client/client.gen.ts'
 import { API_BASE_URL } from '@/constants/environment.constant.ts'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
+import { ObjectUtil } from '@/utils/object.util.ts'
 
 export function setupHttpClient(): void {
   client.setConfig({
@@ -9,6 +10,7 @@ export function setupHttpClient(): void {
     headers: {
       'Accept-Language': navigator.language,
     },
+    querySerializer: ObjectUtil.serialize,
   })
 
   client.interceptors.request.use(async (request: Request): Promise<Request> => {

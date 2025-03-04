@@ -9,7 +9,7 @@ import {
 import { useI18n } from 'vue-i18n'
 
 import { client } from '@/client/client.gen.ts'
-import { Locale } from '@/plugins/i18n/i18n.plugin'
+import { Locale } from '@/plugins/i18n.plugin.ts'
 
 interface UseLanguageSelectReturnType {
   displayFn: (value: Locale) => string

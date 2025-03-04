@@ -10,7 +10,7 @@ import {
   ref,
 } from 'vue'
 
-import AppGroup from '@/components/app/AppGroup.vue'
+import AppGroup from '@/components/app/group/AppGroup.vue'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 
 const props = withDefaults(defineProps<{

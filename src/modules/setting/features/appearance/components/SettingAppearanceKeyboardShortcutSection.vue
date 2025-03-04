@@ -7,7 +7,7 @@ import {
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import AppGroup from '@/components/app/AppGroup.vue'
+import AppGroup from '@/components/app/group/AppGroup.vue'
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable.ts'
 import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'

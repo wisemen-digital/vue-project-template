@@ -4,8 +4,8 @@ import type { Form } from 'formango'
 import { ref } from 'vue'
 
 import type { Permission } from '@/client'
-import AppHeightTransition from '@/components/app/AppHeightTransition.vue'
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
+import AppHeightTransition from '@/components/app/transition/AppHeightTransition.vue'
 import type { SettingPermission } from '@/modules/setting/models/permission/settingPermission.model.ts'
 import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
 import type {

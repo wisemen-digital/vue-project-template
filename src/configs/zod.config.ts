@@ -4,7 +4,7 @@ import type {
 } from 'zod'
 import { z } from 'zod'
 
-import { i18nPlugin } from '@/plugins/i18n/i18n.plugin.ts'
+import { i18nPlugin } from '@/plugins/i18n.plugin.ts'
 
 const i18n = i18nPlugin.global
 

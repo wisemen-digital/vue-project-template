@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { VcIcon, VcTooltip } from '@wisemen/vue-core'
+import {
+  VcIcon,
+  VcTooltip,
+} from '@wisemen/vue-core'
+import { RouterLink } from 'vue-router'
 
-import AppRouterLink from '@/components/app/link/AppRouterLink.vue'
 import type { NavigationItem } from '@/types/navigationItem.type'
 
 const props = defineProps<{
@@ -22,10 +25,10 @@ const props = defineProps<{
     popover-side="right"
   >
     <template #trigger>
-      <AppRouterLink
+      <RouterLink
         v-slot="{ isActive }"
         :to="props.item.to"
-        class="group block rounded-xl ring-fg-brand-primary"
+        class="group block rounded-xl ring-fg-brand-primary rounded text-left ring-brand-primary-500 duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:cursor-not-allowed"
       >
         <div
           :style="{
@@ -85,7 +88,7 @@ const props = defineProps<{
             </Transition>
           </div>
         </div>
-      </AppRouterLink>
+      </RouterLink>
     </template>
 
     <template #content>

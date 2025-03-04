@@ -1,4 +1,4 @@
-import type { I18nKey } from '@/plugins/i18n/i18n.plugin.ts'
+import type { I18nKey } from '@/plugins/i18n.plugin.ts'
 import { createI18nKeyMap } from '@/types/enum.type.ts'
 import { ApiErrorUtil } from '@/utils/apiError.util.ts'
 
