@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss' layer(base);
 
 @variant motion-reduce (&:where(.reduce-motion, .reduce-motion *));
 @variant dark (&:where(.dark, .dark *));

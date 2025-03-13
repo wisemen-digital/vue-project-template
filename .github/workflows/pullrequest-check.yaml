@@ -12,4 +12,4 @@ jobs:
     uses: wisemen-digital/devops-github-actions/.github/workflows/web-build-and-test.yml@main
     if: github.event.pull_request.draft == false
     with:
-      test-playwright-image: 'mcr.microsoft.com/playwright:v1.50.0'
+      test-playwright-image: 'mcr.microsoft.com/playwright:v1.51.0'

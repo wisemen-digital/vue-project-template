@@ -18,12 +18,12 @@ import {
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
-import { PaginationDtoBuilder } from '@/utils/paginationDtoBuilder.util'
+import { PaginationParamsBuilder } from '@/utils/paginationDtoBuilder.util'
 
 export class UserService {
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
     const response = await viewUsersControllerViewUserV1({
-      query: new PaginationDtoBuilder(paginationOptions).build(UserIndexFiltersTransformer.toDto),
+      query: new PaginationParamsBuilder(paginationOptions).build(UserIndexFiltersTransformer.toDto),
     })
 
     return {
