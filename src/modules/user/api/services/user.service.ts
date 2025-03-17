@@ -2,6 +2,7 @@ import type {
   PaginatedData,
   PaginationOptions,
 } from '@wisemen/vue-core'
+import { PaginationParamsBuilder } from '@wisemen/vue-core'
 
 import {
   setUserRolesControllerUpdateUserV1,
@@ -18,7 +19,6 @@ import {
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
-import { PaginationParamsBuilder } from '@/utils/paginationDtoBuilder.util'
 
 export class UserService {
   static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
