@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { usePagination } from '@wisemen/vue-core'
+import {
+  useDocumentTitle,
+  usePagination,
+} from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -11,6 +14,10 @@ import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 import UserOverviewTable from '@/modules/user/features/overview/components/UserOverviewTable.vue'
 
 const i18n = useI18n()
+
+const documentTitle = useDocumentTitle()
+
+documentTitle.set(i18n.t('module.user.title'))
 
 const pagination = usePagination<UserIndexFilters>({
   isRouteQueryEnabled: true,

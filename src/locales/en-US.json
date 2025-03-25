@@ -105,6 +105,7 @@
   "module.user.detail.title": "Edit user",
   "module.user.form.section.name.description": "First and last name of the user.",
   "module.user.role": "Role",
+  "module.user.title": "Users",
   "module.user.update.success_toast.message": "User has been updated successfully.",
   "shared.cancel": "Cancel",
   "shared.close": "Close",
