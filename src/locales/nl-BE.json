@@ -105,6 +105,7 @@
   "module.user.detail.title": "Gebruiker bewerken",
   "module.user.form.section.name.description": "Voor- en achternaam van de gebruiker.",
   "module.user.role": "Rol",
+  "module.user.title": "Gebruikers",
   "module.user.update.success_toast.message": "Gebruiker is succesvol bijgewerkt.",
   "shared.cancel": "Annuleer",
   "shared.close": "Sluiten",
