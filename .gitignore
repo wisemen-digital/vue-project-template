@@ -40,6 +40,8 @@ lerna-debug.log*
 !.env.e2e
 
 #generated files
+coverage
+.nyc_output
 .eslintcache
 /test-results/
 /playwright-report/
