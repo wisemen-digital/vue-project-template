@@ -1,5 +1,6 @@
-<script setup lang="ts" generic="T">
+<script setup lang="ts" generic="TPagination extends BasePagination">
 import {
+  type BasePagination,
   type Pagination,
   useDebounceSearch,
 } from '@wisemen/vue-core'
@@ -10,7 +11,7 @@ const props = withDefaults(defineProps<{
   isDisabled?: boolean
   isLoading: boolean
   disableKeyboardCommand?: boolean
-  pagination: Pagination<T>
+  pagination: Pagination<TPagination>
   placeholder?: string | null
 }>(), {
   isDisabled: false,

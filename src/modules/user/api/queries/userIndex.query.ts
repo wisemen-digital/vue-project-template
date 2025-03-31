@@ -9,11 +9,11 @@ import { useQuery } from '@wisemen/vue-core-query'
 import type { ComputedRef } from 'vue'
 
 import type { UserIndex } from '@/models/user/index/userIndex.model'
-import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
 import { UserService } from '@/modules/user/api/services/user.service'
 
 export function useUserIndexQuery(
-  paginationOptions: ComputedRef<PaginationOptions<UserIndexFilters>>,
+  paginationOptions: ComputedRef<PaginationOptions<UserIndexPagination>>,
 ): UseQueryReturnType<PaginatedData<UserIndex>> {
   return useQuery<PaginatedData<UserIndex>>({
     queryFn: () => {

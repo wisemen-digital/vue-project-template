@@ -1,7 +1,7 @@
 import type { PaginationOptions } from '@wisemen/vue-core'
 import type { ComputedRef } from 'vue'
 
-import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model'
 
 interface ProjectQueryKeys {
@@ -14,7 +14,7 @@ interface ProjectQueryKeys {
     userUuid: ComputedRef<UserUuid>
   }
   userIndex: {
-    paginationOptions?: ComputedRef<PaginationOptions<UserIndexFilters>>
+    paginationOptions?: ComputedRef<PaginationOptions<UserIndexPagination>>
   }
 }
 

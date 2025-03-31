@@ -1,7 +1,7 @@
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import type { UserDetailDto } from '@/models/user/detail/userDetailDto.model'
-import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
-import type { UserIndexFiltersDto } from '@/models/user/index/userIndexFiltersDto.model'
+import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
+import type { UserIndexPaginationDto } from '@/models/user/index/userIndexPaginationDto.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
@@ -21,10 +21,13 @@ export class UserIndexTransformer {
   }
 }
 
-export class UserIndexFiltersTransformer {
-  static toDto(filters?: UserIndexFilters): UserIndexFiltersDto {
+export class UserIndexPaginationTransformer {
+  static toDto(pagination: UserIndexPagination): UserIndexPaginationDto {
     return {
-      permissions: filters?.permissions,
+      filter: {
+        permissions: pagination.filter?.permissions,
+      },
+      sort: pagination.sort,
     }
   }
 }
