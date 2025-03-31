@@ -81,7 +81,7 @@ export default defineConfig({
     istanbul({
       exclude: [
         'node_modules',
-        'test/',
+        'tests/',
         'src/configs',
         'src/utils',
         'src/libs',
@@ -97,7 +97,7 @@ export default defineConfig({
         '.ts',
         '.vue',
       ],
-      include: 'src/*',
+      include: 'src/**/*',
       requireEnv: false,
     }),
     vue(),
