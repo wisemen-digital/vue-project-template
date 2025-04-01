@@ -2,6 +2,7 @@ import type { BasePagination } from '@wisemen/vue-core'
 
 import type { UsersFilterQuery } from '@/client'
 
-export interface UserIndexPaginationDto extends BasePagination {
+export type UserIndexPaginationDto = BasePagination<{
   filter: UsersFilterQuery
-}
+  sort: undefined
+}>

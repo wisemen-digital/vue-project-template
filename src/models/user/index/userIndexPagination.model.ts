@@ -2,8 +2,9 @@ import type { BasePagination } from '@wisemen/vue-core'
 
 import type { Permission } from '@/client'
 
-export interface UserIndexPagination extends BasePagination {
+export type UserIndexPagination = BasePagination<{
   filter: {
     permissions: Permission[]
   }
-}
+  sort: undefined
+}>
