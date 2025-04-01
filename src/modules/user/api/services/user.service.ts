@@ -11,9 +11,9 @@ import {
 } from '@/client'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
-import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
 import {
-  UserIndexFiltersTransformer,
+  UserIndexPaginationTransformer,
   UserIndexTransformer,
   UserTransformer,
 } from '@/models/user/user.transformer'
@@ -21,9 +21,9 @@ import type { UserUuid } from '@/models/user/userUuid.model'
 import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 export class UserService {
-  static async getAll(paginationOptions: PaginationOptions<UserIndexFilters>): Promise<PaginatedData<UserIndex>> {
+  static async getAll(paginationOptions: PaginationOptions<UserIndexPagination>): Promise<PaginatedData<UserIndex>> {
     const response = await viewUsersControllerViewUserV1({
-      query: new PaginationParamsBuilder(paginationOptions).build(UserIndexFiltersTransformer.toDto),
+      query: new PaginationParamsBuilder(paginationOptions).build(UserIndexPaginationTransformer.toDto),
     })
 
     return {

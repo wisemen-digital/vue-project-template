@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
+import istanbul from 'vite-plugin-istanbul'
 import type { VitePWAOptions } from 'vite-plugin-pwa'
 import { VitePWA } from 'vite-plugin-pwa'
 
@@ -77,6 +78,28 @@ export default defineConfig({
     tailwindcss(),
     viteCompression(),
     VitePWA(vitePwaConfig),
+    istanbul({
+      exclude: [
+        'node_modules',
+        'tests/',
+        'src/configs',
+        'src/utils',
+        'src/libs',
+        'src/plugins',
+        'src/**/*.builder.ts',
+        'src/constants',
+        'src/mocks',
+        'src/composables',
+        'src/client',
+      ],
+      extension: [
+        '.js',
+        '.ts',
+        '.vue',
+      ],
+      include: 'src/**/*',
+      requireEnv: false,
+    }),
     vue(),
   ],
   resolve: {

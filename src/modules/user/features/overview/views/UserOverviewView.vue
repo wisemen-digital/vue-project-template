@@ -9,7 +9,7 @@ import { useI18n } from 'vue-i18n'
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppPaginationSearchField from '@/components/app/search/AppPaginationSearchField.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
-import type { UserIndexFilters } from '@/models/user/index/userIndexFilters.model'
+import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 import UserOverviewTable from '@/modules/user/features/overview/components/UserOverviewTable.vue'
 
@@ -19,7 +19,7 @@ const documentTitle = useDocumentTitle()
 
 documentTitle.set(i18n.t('module.user.title'))
 
-const pagination = usePagination<UserIndexFilters>({
+const pagination = usePagination<UserIndexPagination>({
   isRouteQueryEnabled: true,
   key: 'users',
 })
