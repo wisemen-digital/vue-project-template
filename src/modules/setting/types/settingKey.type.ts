@@ -1,1 +1,1 @@
-export type SettingKey = 'appearance' | 'rolesPermissions'
+export type SettingKey = 'appearance' | 'rolesPermissions' | 'eventLog'

@@ -54,6 +54,17 @@ const menuItems = computed<MenuItemGroup<SettingKey>[]>(() => {
         },
       ],
     },
+    {
+      title: i18n.t('module.setting.system.title'),
+      items: [
+        {
+          title: i18n.t('module.setting.appearance'),
+          icon: 'brush',
+          key: 'appearance',
+          component: import('@/modules/setting/features/appearance/views/SettingAppearanceView.vue'),
+        },
+      ]
+    }
   ]
 })
 
