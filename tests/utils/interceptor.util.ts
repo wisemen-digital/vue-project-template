@@ -37,9 +37,7 @@ export class InterceptorUtil {
     await page.route(fileUpload.uploadUrl, async (route) => {
       await route.fulfill({
         contentType: 'application/json',
-        headers: {
-          method: 'PUT',
-        },
+        headers: { method: 'PUT' },
         json: file,
       })
     })
@@ -89,9 +87,7 @@ export class InterceptorUtil {
       return callCount.get(interceptorId) ?? 0
     }
 
-    return {
-      getCount,
-    }
+    return { getCount }
   }
 
   static async post<T>(page: Page, url: string, data: T): Promise<InterceptorResult> {

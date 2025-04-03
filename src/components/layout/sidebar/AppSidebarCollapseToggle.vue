@@ -12,9 +12,7 @@ import { useI18n } from 'vue-i18n'
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 
-const isCollapsed = defineModel<boolean>({
-  required: true,
-})
+const isCollapsed = defineModel<boolean>({ required: true })
 
 const i18n = useI18n()
 
@@ -30,7 +28,7 @@ const toggleBtnLabel = computed<string>(() => {
 </script>
 
 <template>
-  <div class="absolute right-0 top-4">
+  <div class="absolute top-4 right-0">
     <VcKeyboardShortcutProvider
       v-slot="{ keys }"
       :config="{
@@ -46,7 +44,13 @@ const toggleBtnLabel = computed<string>(() => {
           <VcToggle v-model="isCollapsed">
             <AppUnstyledButton
               :aria-label="toggleBtnLabel"
-              class="flex h-10 w-5 translate-x-1/2 items-center justify-center rounded-2xl border border-solid border-secondary bg-secondary text-fg-disabled opacity-0 outline-none ring-fg-tertiary focus-visible:opacity-100 group-hover/sidebar:opacity-100"
+              class="
+                border-secondary bg-secondary text-fg-disabled ring-fg-tertiary
+                flex h-10 w-5 translate-x-1/2 items-center justify-center
+                rounded-2xl border border-solid opacity-0 outline-none
+                group-hover/sidebar:opacity-100
+                focus-visible:opacity-100
+              "
             >
               <VcIcon
                 :class="{
@@ -60,7 +64,7 @@ const toggleBtnLabel = computed<string>(() => {
         </template>
 
         <template #content>
-          <div class="flex items-center gap-x-md px-md py-sm">
+          <div class="gap-x-md px-md py-sm flex items-center">
             <span class="text-xs text-white">
               {{ toggleBtnLabel }}
             </span>

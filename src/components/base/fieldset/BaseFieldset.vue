@@ -5,9 +5,7 @@ import { useProvideBaseFieldsetContext } from '@/components/base/fieldset/baseFi
 
 const id = useId()
 
-useProvideBaseFieldsetContext({
-  id,
-})
+useProvideBaseFieldsetContext({ id })
 </script>
 
 <template>

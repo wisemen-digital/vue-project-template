@@ -8,9 +8,7 @@ const props = withDefaults(
     title: string
     breadcrumbs?: BreadcrumbItem[]
   }>(),
-  {
-    breadcrumbs: () => [],
-  },
+  { breadcrumbs: () => [] },
 )
 </script>
 

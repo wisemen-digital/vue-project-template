@@ -18,7 +18,7 @@ const props = defineProps<{
 
 <template>
   <nav class="flex h-full flex-col justify-between">
-    <div class="flex flex-col gap-y-xl">
+    <div class="gap-y-xl flex flex-col">
       <AppSidebarNavMenuGroup
         v-for="group of props.mainItems"
         :key="group.label"
@@ -39,7 +39,7 @@ const props = defineProps<{
       </AppSidebarNavMenuGroup>
     </div>
 
-    <div class="flex flex-col gap-y-xl">
+    <div class="gap-y-xl flex flex-col">
       <AppSidebarNavMenuItem
         v-for="item of props.bottomItems"
         :key="item.label"

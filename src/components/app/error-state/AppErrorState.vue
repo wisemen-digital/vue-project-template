@@ -49,18 +49,36 @@ const description = computed<string>(() => {
 </script>
 
 <template>
-  <div class="relative flex h-96 min-w-96 items-center justify-center overflow-hidden">
-    <GridDecorativeBackgroundPattern class="absolute size-full scale-125 text-gray-200 dark:text-gray-900" />
+  <div
+    class="
+      relative flex h-96 min-w-96 items-center justify-center overflow-hidden
+    "
+  >
+    <GridDecorativeBackgroundPattern
+      class="
+        absolute size-full scale-125 text-gray-200
+        dark:text-gray-900
+      "
+    />
 
     <div class="relative z-10">
       <span
-        class="flex flex-col gap-xl items-center p-xl text-sm font-medium"
+        class="gap-xl p-xl flex flex-col items-center text-sm font-medium"
       >
-        <span class="whitespace-nowrap text-xl border-r border-solid border-tertiary px-2xl tracking-wider text-quaternary">
+        <span
+          class="
+            border-tertiary px-2xl text-quaternary border-r border-solid text-xl
+            tracking-wider whitespace-nowrap
+          "
+        >
           {{ title }}
         </span>
 
-        <span class="min-w-60 px-xl font-medium uppercase tracking-wider text-quaternary">
+        <span
+          class="
+            px-xl text-quaternary min-w-60 font-medium tracking-wider uppercase
+          "
+        >
           {{ description }}
         </span>
       </span>

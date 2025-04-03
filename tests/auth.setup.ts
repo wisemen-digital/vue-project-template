@@ -2,7 +2,10 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { TEST_ID } from '@/constants/testId.constant.ts'
-import { expect, test } from '@@/base.fixture.ts'
+import {
+  expect,
+  test,
+} from '@@/base.fixture.ts'
 
 const __filename = fileURLToPath(import.meta.url) // get the resolved path to the file
 const __dirname = path.dirname(__filename) // get the name of the directory

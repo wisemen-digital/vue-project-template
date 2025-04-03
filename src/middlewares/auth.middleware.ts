@@ -7,9 +7,7 @@ export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
   const isLoggedIn = await authStore.isLoggedIn()
 
   if (!isLoggedIn) {
-    return {
-      name: 'auth-login',
-    }
+    return { name: 'auth-login' }
   }
 
   try {
@@ -20,8 +18,6 @@ export const authMiddleware = MiddlewareUtil.createMiddleware(async () => {
 
     LoggerUtil.logError(error)
 
-    return {
-      name: 'auth-login',
-    }
+    return { name: 'auth-login' }
   }
 })

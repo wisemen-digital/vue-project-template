@@ -1,5 +1,8 @@
 import type { ComputedRef } from 'vue'
-import { computed, ref } from 'vue'
+import {
+  computed,
+  ref,
+} from 'vue'
 
 interface UsePageLoaderReturnType {
   isLoading: ComputedRef<boolean>

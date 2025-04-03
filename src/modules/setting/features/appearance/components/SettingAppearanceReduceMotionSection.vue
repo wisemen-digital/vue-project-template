@@ -27,10 +27,8 @@ const description = computed<string>(() => {
   return i18n.t('module.setting.reduce_motion.disabled.description')
 })
 
-function onUpdateModelValue(newValue: boolean): void {
-  preferences.update({
-    reduceMotion: newValue,
-  })
+function onUpdateModelValue(value: boolean): void {
+  preferences.update({ reduceMotion: value })
 }
 </script>
 

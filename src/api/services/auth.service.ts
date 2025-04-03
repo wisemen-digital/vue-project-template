@@ -4,9 +4,7 @@ import { UserTransformer } from '@/models/user/user.transformer'
 
 export class AuthService {
   static async getMe(): Promise<UserDetail> {
-    const response = await viewMeControllerViewMeV1({
-      responseValidator: undefined,
-    })
+    const response = await viewMeControllerViewMeV1({ responseValidator: undefined })
 
     return UserTransformer.fromDto(response.data)
   }

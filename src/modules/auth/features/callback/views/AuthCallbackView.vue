@@ -16,31 +16,21 @@ const authorizationCode = useRouteQuery<string | null>('code', null)
 
 onMounted(async () => {
   if (authorizationCode.value === null) {
-    toast.error({
-      message: i18n.t('module.auth.login.error'),
-    })
+    toast.error({ message: i18n.t('module.auth.login.error') })
 
-    await router.push({
-      name: 'auth-logout',
-    })
+    await router.push({ name: 'auth-logout' })
 
     return
   }
   try {
     await authStore.loginWithCode(authorizationCode.value)
 
-    await router.push({
-      name: 'index',
-    })
+    await router.push({ name: 'index' })
   }
   catch (error) {
-    toast.error({
-      message: error?.toString() ?? 'Unknown error',
-    })
+    toast.error({ message: error?.toString() ?? 'Unknown error' })
 
-    await router.push({
-      name: 'auth-logout',
-    })
+    await router.push({ name: 'auth-logout' })
   }
 })
 </script>
@@ -48,6 +38,6 @@ onMounted(async () => {
 <template>
   <div
     :data-test-id="TEST_ID.AUTH.CALLBACK"
-    class="h-dvh bg-primary"
+    class="bg-primary h-dvh"
   />
 </template>

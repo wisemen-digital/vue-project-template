@@ -16,18 +16,12 @@ export default [
     files: [
       'tests/**',
     ],
-    languageOptions: {
-      parserOptions: {
-        tsconfigRootDir: 'tests',
-      },
-    },
+    languageOptions: { parserOptions: { tsconfigRootDir: 'tests' } },
     rules: {
       '@intlify/vue-i18n/key-format-style': [
         'error',
         'snake_case',
-        {
-          splitByDots: true,
-        },
+        { splitByDots: true },
       ],
       // Add or override rules here
     },

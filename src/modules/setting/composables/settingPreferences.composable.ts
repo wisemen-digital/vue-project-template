@@ -1,5 +1,8 @@
 import { useDarkMode } from '@wisemen/vue-core'
-import { computed, watch } from 'vue'
+import {
+  computed,
+  watch,
+} from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { Theme } from '@/client'
@@ -61,7 +64,5 @@ export function useSettingPreferences(): UseSettingPreferenceReturnType {
     darkMode.value = preferenceQuery.data.value.theme ?? Theme.SYSTEM
   })
 
-  return {
-    update,
-  }
+  return { update }
 }

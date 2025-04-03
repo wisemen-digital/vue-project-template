@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import type { RadioGroupItem } from '@wisemen/vue-core'
 import {
-  type RadioGroupItem,
   useDarkMode,
   VcRadioGroup,
   VcRadioGroupItem,
   VcThemeProvider,
 } from '@wisemen/vue-core'
-import { computed, watch } from 'vue'
+import {
+  computed,
+  watch,
+} from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { Theme } from '@/client'
@@ -36,21 +39,26 @@ const appearances = computed<RadioGroupItem<Theme>[]>(() => [
 ])
 
 watch(darkMode, () => {
-  preferences.update({
-    theme: darkMode.value as Theme,
-  })
+  preferences.update({ theme: darkMode.value as Theme })
 })
 </script>
 
 <template>
   <FormFieldset :title="i18n.t('module.setting.interface_theme.title')">
     <VcRadioGroup v-model="darkMode">
-      <div class="grid gap-lg max-w-160 lg:grid-cols-3">
+      <div
+        class="
+          gap-lg grid max-w-160
+          lg:grid-cols-3
+        "
+      >
         <VcRadioGroupItem
           v-for="item of appearances"
           :key="item.value"
           :value="item.value"
-          class="group rounded-xl text-left cursor-pointer !ring-0 !ring-offset-0"
+          class="
+            group cursor-pointer rounded-xl text-left !ring-0 !ring-offset-0
+          "
         >
           <VcThemeProvider
             :appearance="item.value"
@@ -58,34 +66,51 @@ watch(darkMode, () => {
           >
             <div
               v-if="item.value === Theme.SYSTEM"
-              class="relative h-30 rounded-xl overflow-hidden border-2 border-solid ring-brand-500 border-solid border-transparent ring-offset-1 duration-200 group-focus-visible:ring-2 group-data-[state=checked]:border-brand"
+              class="
+                ring-brand-500 relative h-30 overflow-hidden rounded-xl border-2
+                border-solid border-transparent ring-offset-1 duration-200
+                group-data-[state=checked]:border-brand
+                group-focus-visible:ring-2
+              "
             >
               <VcThemeProvider
                 :appearance="Theme.LIGHT"
                 :theme="theme"
               >
-                <div class="absolute inset-0 bg-tertiary">
-                  <SettingAppearanceMiniDashboard class="absolute left-1/10 top-1/6" />
+                <div class="bg-tertiary absolute inset-0">
+                  <SettingAppearanceMiniDashboard
+                    class="absolute top-1/6 left-1/10"
+                  />
                 </div>
               </VcThemeProvider>
               <VcThemeProvider
                 :appearance="Theme.DARK"
                 :theme="theme"
               >
-                <div class="absolute inset-0 left-1/2 overflow-hidden bg-tertiary">
-                  <SettingAppearanceMiniDashboard class="absolute -left-7/8 top-1/6" />
+                <div
+                  class="bg-tertiary absolute inset-0 left-1/2 overflow-hidden"
+                >
+                  <SettingAppearanceMiniDashboard
+                    class="absolute top-1/6 -left-7/8"
+                  />
                 </div>
               </VcThemeProvider>
             </div>
             <div
               v-else
-              class="relative h-30 overflow-hidden rounded-xl border-2 border-solid border-transparent bg-tertiary ring-brand-500 ring-offset-1 duration-200 group-focus-visible:ring-2 group-data-[state=checked]:border-brand"
+              class="
+                bg-tertiary ring-brand-500 relative h-30 overflow-hidden
+                rounded-xl border-2 border-solid border-transparent
+                ring-offset-1 duration-200
+                group-data-[state=checked]:border-brand
+                group-focus-visible:ring-2
+              "
             >
-              <SettingAppearanceMiniDashboard class="absolute left-1/10 top-1/6" />
+              <SettingAppearanceMiniDashboard class="absolute top-1/6 left-1/10" />
             </div>
           </VcThemeProvider>
 
-          <span class="mt-md block text-sm text-primary">
+          <span class="mt-md text-primary block text-sm">
             {{ item.label }}
           </span>
         </VcRadioGroupItem>

@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { type BreadcrumbItem, VcBreadcrumbs } from '@wisemen/vue-core'
-import { computed, useSlots } from 'vue'
+import type { BreadcrumbItem } from '@wisemen/vue-core'
+import { VcBreadcrumbs } from '@wisemen/vue-core'
+import {
+  computed,
+  useSlots,
+} from 'vue'
 
 import AppPageContainer from '@/components/layout/AppPageContainer.vue'
 import { TEST_ID } from '@/constants/testId.constant'
@@ -10,9 +14,7 @@ const props = withDefaults(
     title: string
     breadcrumbs?: BreadcrumbItem[]
   }>(),
-  {
-    breadcrumbs: () => [],
-  },
+  { breadcrumbs: () => [] },
 )
 
 const slots = useSlots()
@@ -21,12 +23,12 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
 </script>
 
 <template>
-  <main class="flex w-full flex-1 flex-col min-h-dvh bg-primary">
+  <main class="bg-primary flex min-h-dvh w-full flex-1 flex-col">
     <header
       :style="{
         viewTransitionName: 'page-header',
       }"
-      class="bg-primary z-10 sticky top-0"
+      class="bg-primary sticky top-0 z-10"
     >
       <AppPageContainer class="pt-4xl pb-0">
         <VcBreadcrumbs
@@ -44,14 +46,14 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
             :style="{
               viewTransitionName: 'page-title',
             }"
-            class="text-display-xs font-semibold text-primary"
+            class="text-display-xs text-primary font-semibold"
           >
             {{ props.title }}
           </h1>
 
           <div
             id="header-actions"
-            class="flex items-center justify-end gap-xl"
+            class="gap-xl flex items-center justify-end"
           >
             <slot name="header-actions" />
           </div>
@@ -66,7 +68,7 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
       </AppPageContainer>
     </header>
 
-    <AppPageContainer class="flex flex-1 flex-col overflow-hidden pb-4xl pt-4xl">
+    <AppPageContainer class="pb-4xl pt-4xl flex flex-1 flex-col overflow-hidden">
       <slot />
     </AppPageContainer>
   </main>

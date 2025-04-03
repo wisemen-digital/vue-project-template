@@ -1,12 +1,13 @@
+import type { VueQueryPluginOptions } from '@tanstack/vue-query'
 import {
   QueryCache,
   QueryClient,
   VueQueryPlugin,
-  type VueQueryPluginOptions,
 } from '@tanstack/vue-query'
 import { useClipboard } from '@vueuse/core'
 import { useToast } from '@wisemen/vue-core'
-import { type App, computed } from 'vue'
+import type { App } from 'vue'
+import { computed } from 'vue'
 
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { ApiErrorUtil } from '@/utils/apiError.util.ts'
@@ -26,9 +27,7 @@ const vueQueryPluginOptions: VueQueryPluginOptions = {
       onError: (error): void => {
         const toast = useToast()
 
-        const clipboard = useClipboard({
-          copiedDuring: 2000,
-        })
+        const clipboard = useClipboard({ copiedDuring: 2000 })
 
         LoggerUtil.logError(error)
 

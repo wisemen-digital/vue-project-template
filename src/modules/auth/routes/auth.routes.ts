@@ -7,9 +7,7 @@ export const authRoutes = [
   {
     path: '/auth',
     component: (): Component => import('@/modules/auth/components/AuthLayout.vue'),
-    redirect: {
-      name: 'auth-login',
-    },
+    redirect: { name: 'auth-login' },
     children: [
       {
         name: 'auth-login',

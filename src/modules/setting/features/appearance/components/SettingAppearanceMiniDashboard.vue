@@ -1,26 +1,34 @@
 <template>
-  <div class="w-full min-w-80 rounded-xl border border-solid border-secondary bg-primary">
+  <div
+    class="
+      border-secondary bg-primary w-full min-w-80 rounded-xl border border-solid
+    "
+  >
     <!-- macOS top bar -->
-    <div class="flex items-center gap-x-xs border-b border-solid border-secondary p-md">
-      <div class="size-2.5 rounded-full bg-error-400" />
-      <div class="size-2.5 rounded-full bg-warning-400" />
-      <div class="size-2.5 rounded-full bg-success-400" />
+    <div
+      class="
+        gap-x-xs border-secondary p-md flex items-center border-b border-solid
+      "
+    >
+      <div class="bg-error-400 size-2.5 rounded-full" />
+      <div class="bg-warning-400 size-2.5 rounded-full" />
+      <div class="bg-success-400 size-2.5 rounded-full" />
     </div>
 
-    <div class="grid grid-cols-[5rem_auto] p-md">
+    <div class="p-md grid grid-cols-[5rem_auto]">
       <div class="py-xs">
         <!-- Profile -->
-        <div class="flex items-center gap-x-md">
-          <div class="size-4 rounded-full bg-quaternary" />
-          <div class="h-2.5 w-12 rounded-lg bg-quaternary" />
+        <div class="gap-x-md flex items-center">
+          <div class="bg-quaternary size-4 rounded-full" />
+          <div class="bg-quaternary h-2.5 w-12 rounded-lg" />
         </div>
 
         <!-- Navigation -->
-        <div class="my-xl flex flex-col gap-y-md">
+        <div class="my-xl gap-y-md flex flex-col">
           <div
             v-for="i in 5"
             :key="i"
-            class="h-2.5 w-12 rounded-lg bg-quaternary"
+            class="bg-quaternary h-2.5 w-12 rounded-lg"
           />
         </div>
       </div>
@@ -29,14 +37,14 @@
       <div class="px-md py-xxs">
         <div class="flex items-center justify-between">
           <!-- eslint-disable-next-line @intlify/vue-i18n/no-raw-text -->
-          <span class="text-sm font-bold text-tertiary">
+          <span class="text-tertiary text-sm font-bold">
             Dashboard
           </span>
 
-          <div class="h-2.5 w-8 rounded-2xl bg-quaternary" />
+          <div class="bg-quaternary h-2.5 w-8 rounded-2xl" />
         </div>
 
-        <div class="mt-md h-28 w-full rounded-xl bg-tertiary" />
+        <div class="mt-md bg-tertiary h-28 w-full rounded-xl" />
       </div>
     </div>
   </div>

@@ -11,8 +11,8 @@ export class SettingRolePermissionUpdateTransformer {
       roles: form.roles
         .filter((role) => role.isEditable)
         .map((role) => ({
-          permissions: role.permissions.flatMap((permission) => permission.actions),
           roleUuid: role.roleUuid,
+          permissions: role.permissions.flatMap((permission) => permission.actions),
         })),
     }
   }
@@ -20,6 +20,7 @@ export class SettingRolePermissionUpdateTransformer {
   static toForm(roles: SettingRole[], permissions: SettingPermission[]): SettingRolePermissionUpdateForm {
     return {
       roles: roles.map((role) => ({
+        roleUuid: role.uuid,
         isEditable: !role.isSystemAdmin,
         permissions: permissions
           .filter((permission) => role.permissions.find((value) => permission.actions.includes(value)))
@@ -27,7 +28,6 @@ export class SettingRolePermissionUpdateTransformer {
             actions: permission.actions,
             key: permission.key,
           })),
-        roleUuid: role.uuid,
       })),
     }
   }

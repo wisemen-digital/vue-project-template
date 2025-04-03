@@ -23,7 +23,7 @@ const props = withDefaults(
       <Component :is="props.isTitleHidden ? VisuallyHidden : 'div'">
         <BaseFieldsetLegend
           as="h2"
-          class="font-medium text-sm text-primary"
+          class="text-primary text-sm font-medium"
         >
           {{ props.title }}
         </BaseFieldsetLegend>
@@ -31,7 +31,7 @@ const props = withDefaults(
 
       <p
         v-if="props.description !== null"
-        class="mt-sm text-sm text-secondary"
+        class="mt-sm text-secondary text-sm"
       >
         {{ props.description }}
       </p>

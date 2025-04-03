@@ -22,9 +22,10 @@ import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleU
 
 export class UserService {
   static async getAll(paginationOptions: PaginationOptions<UserIndexPagination>): Promise<PaginatedData<UserIndex>> {
-    const response = await viewUsersControllerViewUserV1({
-      query: new PaginationParamsBuilder(paginationOptions).build(UserIndexPaginationTransformer.toDto),
-    })
+    const query = new PaginationParamsBuilder(paginationOptions)
+      .build(UserIndexPaginationTransformer.toDto)
+
+    const response = await viewUsersControllerViewUserV1({ query })
 
     return {
       data: response.data.items.map(UserIndexTransformer.fromDto),
@@ -33,23 +34,15 @@ export class UserService {
   }
 
   static async getByUuid(userUuid: UserUuid): Promise<UserDetail> {
-    const response = await viewUserControllerViewUserV1({
-      path: {
-        uuid: userUuid,
-      },
-    })
+    const response = await viewUserControllerViewUserV1({ path: { uuid: userUuid } })
 
     return UserTransformer.fromDto(response.data)
   }
 
   static async updateRoles(userUuid: UserUuid, roleUuids: SettingRoleUuid[]): Promise<void> {
     await setUserRolesControllerUpdateUserV1({
-      body: {
-        roleUuids,
-      },
-      path: {
-        user: userUuid,
-      },
+      body: { roleUuids },
+      path: { user: userUuid },
     })
   }
 }

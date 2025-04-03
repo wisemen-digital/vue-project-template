@@ -17,9 +17,7 @@ function onUpdateModelValue(value: FontSize | null): void {
     return
   }
 
-  preferences.update({
-    fontSize: value,
-  })
+  preferences.update({ fontSize: value })
 }
 </script>
 

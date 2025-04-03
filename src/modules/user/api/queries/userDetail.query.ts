@@ -1,14 +1,13 @@
-import {
-  useQuery,
-  type UseQueryOptions,
-  type UseQueryReturnType,
+import type {
+  UseQueryOptions,
+  UseQueryReturnType,
 } from '@wisemen/vue-core-query'
-import { type ComputedRef, toValue } from 'vue'
+import { useQuery } from '@wisemen/vue-core-query'
+import type { ComputedRef } from 'vue'
+import { toValue } from 'vue'
 
-import {
-  type PrefetchQueryReturnType,
-  usePrefetchQuery,
-} from '@/composables/prefetch-query/prefetchQuery.composable'
+import type { PrefetchQueryReturnType } from '@/composables/prefetch-query/prefetchQuery.composable'
+import { usePrefetchQuery } from '@/composables/prefetch-query/prefetchQuery.composable'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import { UserService } from '@/modules/user/api/services/user.service'
@@ -18,11 +17,7 @@ export function userDetailQuery(userUuid: ComputedRef<UserUuid>): UseQueryOption
   return {
     staleTime: TimeUtil.seconds(30),
     queryFn: () => UserService.getByUuid(toValue(userUuid)),
-    queryKey: {
-      userDetail: {
-        userUuid,
-      },
-    },
+    queryKey: { userDetail: { userUuid } },
   }
 }
 

@@ -8,7 +8,10 @@ import {
   VcToastContainer,
 } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
-import { RouterView, useRouter } from 'vue-router'
+import {
+  RouterView,
+  useRouter,
+} from 'vue-router'
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
 import { useAutoRefresh } from '@/composables/auto-refresh/autoRefresh.composable.ts'
@@ -36,9 +39,7 @@ useReduceMotion()
 logBuildInformation()
 
 authStore.onLogout(() => {
-  router.replace({
-    name: 'auth-login',
-  })
+  router.replace({ name: 'auth-login' })
 })
 </script>
 

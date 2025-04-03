@@ -1,7 +1,7 @@
 import type { Currency } from './currency.model'
 import type { CurrencyDto } from './currencyDto.model'
 
-const CURRENCY_MULTIPLIER = 10000
+const CURRENCY_MULTIPLIER = 10_000
 
 export class CurrencyTransformer {
   static fromDto(currencyDto: CurrencyDto): Currency {

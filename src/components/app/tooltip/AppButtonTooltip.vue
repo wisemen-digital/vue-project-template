@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { KeyboardKey } from '@wisemen/vue-core'
 import {
-  type KeyboardKey,
   VcKeyboardShortcut,
   VcTooltip,
 } from '@wisemen/vue-core'
@@ -11,9 +11,7 @@ import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-short
 const props = withDefaults(defineProps<{
   keyboardShortcutKeys?: KeyboardKey[]
   label: string
-}>(), {
-  keyboardShortcutKeys: () => [],
-})
+}>(), { keyboardShortcutKeys: () => [] })
 
 const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 </script>
@@ -39,7 +37,7 @@ const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 
     <template #content>
       <AppGroup class="px-1.5 py-1">
-        <span class="text-xs text-primary">
+        <span class="text-primary text-xs">
           {{ props.label }}
         </span>
 

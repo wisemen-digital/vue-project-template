@@ -30,7 +30,5 @@ export function usePrefetchQuery<TResData>(query: UseQueryOptions<TResData>): Pr
     })
   }
 
-  return {
-    execute,
-  }
+  return { execute }
 }

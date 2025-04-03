@@ -7,9 +7,7 @@ import { ObjectUtil } from '@/utils/object.util.ts'
 export function setupHttpClient(): void {
   client.setConfig({
     baseUrl: API_BASE_URL,
-    headers: {
-      'Accept-Language': navigator.language,
-    },
+    headers: { 'Accept-Language': navigator.language },
     querySerializer: ObjectUtil.serialize,
   })
 

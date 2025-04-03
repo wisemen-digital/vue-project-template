@@ -28,7 +28,13 @@ const props = defineProps<{
       <RouterLink
         v-slot="{ isActive }"
         :to="props.item.to"
-        class="group block rounded-xl ring-fg-brand-primary rounded text-left ring-brand-primary-500 duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 disabled:cursor-not-allowed"
+        class="
+          group ring-fg-brand-primary ring-brand-primary-500 block rounded
+          rounded-xl text-left duration-100
+          focus-visible:ring-2 focus-visible:ring-offset-1
+          focus-visible:outline-none
+          disabled:cursor-not-allowed
+        "
       >
         <div
           :style="{
@@ -38,10 +44,18 @@ const props = defineProps<{
           }"
           :class="[
             isActive
-              ? 'bg-fg-brand-primary text-primary-on-brand hover:brightness-95'
-              : 'bg-secondary text-quaternary group-hover:bg-secondary-hover',
+              ? `
+                bg-fg-brand-primary text-primary-on-brand
+                hover:brightness-95
+              `
+              : `
+                bg-secondary text-quaternary
+                group-hover:bg-secondary-hover
+              `,
           ]"
-          class="flex items-center overflow-hidden rounded-xl px-md duration-300"
+          class="
+            px-md flex items-center overflow-hidden rounded-xl duration-300
+          "
         >
           <div class="relative">
             <VcIcon
@@ -55,7 +69,10 @@ const props = defineProps<{
 
             <div
               v-if="props.item.hasAlertDot ?? false"
-              class="absolute right-[-4px] top-[-4px] size-[5px] rounded-full bg-fg-error-primary"
+              class="
+                bg-fg-error-primary absolute top-[-4px] right-[-4px] size-[5px]
+                rounded-full
+              "
             />
           </div>
 
@@ -68,7 +85,10 @@ const props = defineProps<{
             >
               <div
                 v-if="!props.isCollapsed"
-                class="absolute top-1/2 flex w-full -translate-y-1/2 items-center justify-between whitespace-nowrap pl-xl"
+                class="
+                  pl-xl absolute top-1/2 flex w-full -translate-y-1/2
+                  items-center justify-between whitespace-nowrap
+                "
               >
                 <span
                   :class="[
@@ -92,7 +112,7 @@ const props = defineProps<{
     </template>
 
     <template #content>
-      <div class="flex items-center px-md py-sm">
+      <div class="px-md py-sm flex items-center">
         <span class="text-xs text-white">
           {{ props.item.label }}
         </span>

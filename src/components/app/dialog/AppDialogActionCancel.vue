@@ -11,9 +11,7 @@ import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-short
 const props = withDefaults(defineProps<{
   isDisabled?: boolean
   label: string
-}>(), {
-  isDisabled: false,
-})
+}>(), { isDisabled: false })
 
 const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 </script>

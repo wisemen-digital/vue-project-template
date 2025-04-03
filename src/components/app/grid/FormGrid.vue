@@ -13,7 +13,7 @@ const props = defineProps<{
       'xl:grid-cols-4': props.cols === 4,
       '2xl:grid-cols-5': props.cols >= 5,
     }"
-    class="grid gap-xl"
+    class="gap-xl grid"
   >
     <slot />
   </div>

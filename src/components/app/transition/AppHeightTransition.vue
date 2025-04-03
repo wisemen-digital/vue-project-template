@@ -8,9 +8,7 @@ interface Props {
   duration?: number
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  duration: 0.5,
-})
+const props = withDefaults(defineProps<Props>(), { duration: 0.5 })
 
 const durationString = computed<string>(() => `${props.duration}s`)
 

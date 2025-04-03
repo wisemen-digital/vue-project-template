@@ -19,10 +19,8 @@ import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.co
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserDetail } from '@/models/user/detail/userDetail.model.ts'
 import { useSettingRolesQuery } from '@/modules/setting/api/queries/settingRole.query.ts'
-import {
-  type SettingRoleUuid,
-  settingRoleUuidSchema,
-} from '@/modules/setting/models/role/settingRoleUuid.model.ts'
+import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
+import { settingRoleUuidSchema } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 import { useUserUpdateRoleMutation } from '@/modules/user/api/mutations/userUpdate.mutation.ts'
 import { toFormField } from '@/utils/formango.util'
 
@@ -70,9 +68,7 @@ const form = useForm({
     try {
       await userUpdateRoleMutation.execute({
         body: values.roles.map((role) => role.uuid),
-        params: {
-          userUuid: props.user.uuid,
-        },
+        params: { userUuid: props.user.uuid },
       })
 
       toast.success({
@@ -85,9 +81,7 @@ const form = useForm({
     }
   },
   onSubmitError: () => {
-    toast.error({
-      message: i18n.t('error.invalid_form_input.description'),
-    })
+    toast.error({ message: i18n.t('error.invalid_form_input.description') })
   },
 })
 

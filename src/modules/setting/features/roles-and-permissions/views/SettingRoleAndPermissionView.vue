@@ -23,10 +23,8 @@ import SettingRoleAndPermissionTable from '@/modules/setting/features/roles-and-
 import type { SettingPermission } from '@/modules/setting/models/permission/settingPermission.model.ts'
 import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
 import { SettingRolePermissionUpdateTransformer } from '@/modules/setting/models/role/settingRole.transformer.ts'
-import {
-  type SettingRolePermissionUpdateForm,
-  settingRolePermissionUpdateFormSchema,
-} from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
+import type { SettingRolePermissionUpdateForm } from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
+import { settingRolePermissionUpdateFormSchema } from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
 import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 const props = defineProps<{
@@ -40,9 +38,7 @@ const toast = useToast()
 const settingPermissionQuery = useSettingPermissionQuery()
 const settingRoleQuery = useSettingRolesQuery()
 
-const addRoleDialog = useDialog({
-  component: () => import('@/modules/setting/features/roles-and-permissions/components/SettingRoleAndPermissionRoleCreateDialog.vue'),
-})
+const addRoleDialog = useDialog({ component: () => import('@/modules/setting/features/roles-and-permissions/components/SettingRoleAndPermissionRoleCreateDialog.vue') })
 const settingsRoleDeleteMutation = useSettingRoleDeleteMutation()
 const settingsRolesBulkUpdateMutation = useSettingRoleBulkUpdateMutation()
 
@@ -50,16 +46,12 @@ const permissions = computed<SettingPermission[]>(() => settingPermissionQuery.d
 const roles = computed<SettingRole[]>(() => settingRoleQuery.data.value ?? [])
 
 function onAddNewRoleButtonClick(): void {
-  addRoleDialog.open({
-    id: 'addRole',
-  })
+  addRoleDialog.open({ id: 'addRole' })
 }
 
 async function onDeleteRow(roleUuid: SettingRoleUuid): Promise<void> {
   try {
-    await settingsRoleDeleteMutation.execute({
-      body: roleUuid,
-    })
+    await settingsRoleDeleteMutation.execute({ body: roleUuid })
   }
   catch (error) {
     apiErrorToast.show(error)
@@ -73,13 +65,9 @@ const form = useForm({
   schema: settingRolePermissionUpdateFormSchema,
   onSubmit: async (values: SettingRolePermissionUpdateForm) => {
     try {
-      await settingsRolesBulkUpdateMutation.execute({
-        body: values,
-      })
+      await settingsRolesBulkUpdateMutation.execute({ body: values })
 
-      toast.success({
-        message: i18n.t('module.setting.roles_and_permissions.save_changes_success'),
-      })
+      toast.success({ message: i18n.t('module.setting.roles_and_permissions.save_changes_success') })
     }
     catch (error) {
       apiErrorToast.show(error)
@@ -99,7 +87,7 @@ useUnsavedChanges(isRolesModelMapChanged)
   >
     <AppForm
       :form="form"
-      class="relative h-full bg-error-200"
+      class="bg-error-200 relative h-full"
     >
       <SettingRoleAndPermissionTable
         :form="form"
@@ -110,7 +98,10 @@ useUnsavedChanges(isRolesModelMapChanged)
       <AppGroup
         direction="row"
         justify="end"
-        class="w-full sticky border-t border-secondary left-0 z-10 bg-primary bottom-0 p-lg"
+        class="
+          border-secondary bg-primary p-lg sticky bottom-0 left-0 z-10 w-full
+          border-t
+        "
       >
         <VcButton
           size="sm"

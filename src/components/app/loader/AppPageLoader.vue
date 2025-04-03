@@ -4,7 +4,9 @@ import { useRouter } from 'vue-router'
 import { usePageLoader } from '@/composables/page-loader/pageLoader.composable'
 
 const router = useRouter()
-const { isLoading, setIsLoading } = usePageLoader()
+const {
+  isLoading, setIsLoading,
+} = usePageLoader()
 
 let startLoadingTimeout: ReturnType<typeof setTimeout> | null = null
 
@@ -35,10 +37,10 @@ router.afterEach(() => {
   >
     <div
       v-if="isLoading"
-      class="fixed left-0 top-0 z-30 h-[3px] w-full"
+      class="fixed top-0 left-0 z-30 h-[3px] w-full"
     >
       <!-- eslint-disable-next-line tailwindcss/no-custom-classname -->
-      <div class="loader h-full w-1/2 bg-brand-primary-500" />
+      <div class="loader bg-brand-primary-500 h-full w-1/2" />
     </div>
   </Transition>
 </template>

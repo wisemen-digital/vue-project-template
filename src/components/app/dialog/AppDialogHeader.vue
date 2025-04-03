@@ -13,7 +13,7 @@ const props = defineProps<{
 <template>
   <div class="flex flex-col">
     <VcDialogTitle>
-      <h1 class="text-lg font-semibold text-primary">
+      <h1 class="text-primary text-lg font-semibold">
         {{ props.title }}
       </h1>
     </VcDialogTitle>

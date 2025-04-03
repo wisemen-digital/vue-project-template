@@ -5,10 +5,10 @@ import type {
   TableColumn,
 } from '@wisemen/vue-core'
 import { VcTable } from '@wisemen/vue-core'
+import type { VNode } from 'vue'
 import {
   computed,
   h,
-  type VNode,
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 

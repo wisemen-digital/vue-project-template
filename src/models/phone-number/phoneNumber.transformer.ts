@@ -22,8 +22,7 @@ export class PhoneNumberTransformer {
 
   static toDto(phoneNumber: PhoneNumber): PhoneNumberDto {
     const {
-      countryCallingCode,
-      nationalNumber,
+      countryCallingCode, nationalNumber,
     } = parsePhoneNumber(phoneNumber)
 
     return `+${countryCallingCode} ${nationalNumber}`
