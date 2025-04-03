@@ -3,12 +3,10 @@ import { usePagination } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import { useSettingEventLogIndexQuery } from '@/modules/setting/api/queries/settingEventLogIndex.query.ts'
-import SettingDialogContainer from '@/modules/setting/components/SettingDialogContainer.vue'
+import SettingContainer from '@/modules/setting/components/SettingContainer.vue'
 import type { SettingNavigation } from '@/modules/setting/composables/settingNavigation.composable.ts'
 import SettingEventLogIndexTable from '@/modules/setting/features/event-logs/components/SettingEventLogIndexTable.vue'
-import type {
-  SettingLogIndexPagination,
-} from '@/modules/setting/models/event-log/settingEventLogIndexPagination.model.ts'
+import type { SettingLogIndexPagination } from '@/modules/setting/models/event-log/settingEventLogIndexPagination.model.ts'
 
 const props = defineProps<{
   navigation: SettingNavigation
@@ -29,9 +27,9 @@ async function onNext(): Promise<void> {
 </script>
 
 <template>
-  <SettingDialogContainer
+  <SettingContainer
     :navigation="props.navigation"
-    :title="i18n.t('module.setting.location_types')"
+    :title="i18n.t('module.setting.event_logs.title')"
   >
     <SettingEventLogIndexTable
       :is-loading="indexQuery.isLoading.value"
@@ -41,5 +39,5 @@ async function onNext(): Promise<void> {
       :error="indexQuery.error.value"
       :is-fetching="indexQuery.isFetching.value"
     />
-  </SettingDialogContainer>
+  </SettingContainer>
 </template>

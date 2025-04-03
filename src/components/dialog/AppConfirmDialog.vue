@@ -14,9 +14,7 @@ const props = withDefaults(defineProps<{
   cancelText: string
   confirmText: string
   description: string
-}>(), {
-  isLoading: false,
-})
+}>(), { isLoading: false })
 
 const emit = defineEmits<{
   closed: []

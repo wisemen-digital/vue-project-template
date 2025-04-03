@@ -9,8 +9,6 @@ export function useSettingPermissionQuery(): UseQueryReturnType<SettingPermissio
     queryFn: () => {
       return SettingPermissionService.getAll()
     },
-    queryKey: {
-      permissions: {},
-    },
+    queryKey: { permissions: {} },
   })
 }

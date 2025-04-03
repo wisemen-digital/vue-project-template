@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { useScroll } from '@vueuse/core'
 import type { Form } from 'formango'
-import { computed, ref } from 'vue'
+import {
+  computed,
+  ref,
+} from 'vue'
 
 import SettingRoleAndPermissionTableBody from '@/modules/setting/features/roles-and-permissions/components/SettingRoleAndPermissionTableBody.vue'
 import SettingRoleAndPermissionTableHeader from '@/modules/setting/features/roles-and-permissions/components/SettingRoleAndPermissionTableHeader.vue'
 import type { SettingPermission } from '@/modules/setting/models/permission/settingPermission.model.ts'
 import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
-import type {
-  settingRolePermissionUpdateFormSchema,
-} from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
+import type { settingRolePermissionUpdateFormSchema } from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
 import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 
 const props = defineProps<{
@@ -48,7 +49,7 @@ function onDeleteRole(roleUuid: SettingRoleUuid): void {
 </script>
 
 <template>
-  <div class="flex flex-1 flex-col overflow-hidden bg-primary">
+  <div class="bg-primary flex flex-1 flex-col overflow-hidden">
     <div
       ref="tableScrollContainerRef"
       :style="{

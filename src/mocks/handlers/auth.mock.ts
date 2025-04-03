@@ -1,5 +1,8 @@
 import sign from 'jwt-encode'
-import { http, HttpResponse } from 'msw'
+import {
+  http,
+  HttpResponse,
+} from 'msw'
 
 import { UserDetailDtoBuilder } from '@/models/user/detail/userDetailDto.builder'
 
@@ -17,7 +20,7 @@ export const authHandlers = [
   http.post('*/oauth/v2/token', () => {
     return HttpResponse.json({
       access_token: encodeJwt({ exp: new Date(new Date().getFullYear() + 1, 0, 1).getTime() }),
-      expires_in: 43199,
+      expires_in: 43_199,
       id_token: encodeJwt({ exp: new Date(new Date().getFullYear() + 1, 0, 1).getTime() }),
       refresh_token: 'refresh_token',
       token_type: 'Bearer',

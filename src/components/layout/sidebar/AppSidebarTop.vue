@@ -8,7 +8,12 @@ const logoLg = 'Wisemen'
 </script>
 
 <template>
-  <div class="pointer-events-none relative flex h-20 items-center justify-center p-xl font-medium uppercase tracking-widest text-primary">
+  <div
+    class="
+      p-xl text-primary pointer-events-none relative flex h-20 items-center
+      justify-center font-medium tracking-widest uppercase
+    "
+  >
     <Transition
       enter-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"
       leave-active-class="not-motion-reduce:duration-500 ease-sidebar-collapse"

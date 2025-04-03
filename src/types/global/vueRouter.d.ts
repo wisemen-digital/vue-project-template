@@ -156,7 +156,7 @@ interface RouterWithParams {
 }
 
 type RouterExtended = {
-  [Key in keyof RouterWithParams | keyof import('vue-router').Router]: Key extends keyof RouterWithParams
+  [Key in keyof import('vue-router').Router | keyof RouterWithParams]: Key extends keyof RouterWithParams
     ? RouterWithParams[Key]
     : import('vue-router').Router[Key]
 }

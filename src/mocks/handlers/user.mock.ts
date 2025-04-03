@@ -1,4 +1,7 @@
-import { http, HttpResponse } from 'msw'
+import {
+  http,
+  HttpResponse,
+} from 'msw'
 
 import { UserIndexDtoBuilder } from '@/models/user/index/userIndexDto.builder.ts'
 import type { UserIndexDto } from '@/models/user/index/userIndexDto.model.ts'
@@ -39,7 +42,7 @@ export const userHandlers = [
     const url = new URL(request.url)
 
     if (url.pathname === '/api/v1/users/me') {
-      return undefined
+      return
     }
 
     return HttpResponse.json(getPaginatedJson(users))

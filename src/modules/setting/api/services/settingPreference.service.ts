@@ -1,6 +1,6 @@
 import {
-  updatePreferencesControllerUpdatePreferencesV1,
-  viewPreferencesControllerViewPreferencesIndexV1,
+  updatePreferencesV1,
+  viewPreferencesV1,
 } from '@/client'
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import type { SettingPreference } from '@/modules/setting/models/preference/settingPreference.model.ts'
@@ -9,21 +9,15 @@ import type { SettingPreferenceUpdateForm } from '@/modules/setting/models/prefe
 
 export class SettingPreferenceService {
   static async get(userUuid: UserUuid): Promise<SettingPreference> {
-    const response = await viewPreferencesControllerViewPreferencesIndexV1({
-      path: {
-        userUuid,
-      },
-    })
+    const response = await viewPreferencesV1({ path: { userUuid } })
 
     return SettingPreferenceTransformer.fromDto(response.data)
   }
 
   static async update(userUuid: UserUuid, preference: SettingPreferenceUpdateForm): Promise<void> {
-    await updatePreferencesControllerUpdatePreferencesV1({
+    await updatePreferencesV1({
       body: SettingPreferenceTransformer.toDto(preference),
-      path: {
-        userUuid,
-      },
+      path: { userUuid },
     })
   }
 }

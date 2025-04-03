@@ -5,10 +5,10 @@ export class SettingPermissionTransformer {
   static fromDto(dto: Permission[]): SettingPermission[] {
     const result: SettingPermission[] = []
 
-    dto.forEach((permission) => {
+    for (const permission of dto) {
       const key = permission.split('.')[0]
 
-      if (result.find((item) => item.key === key)) {
+      if (result.some((item) => item.key === key)) {
         const index = result.findIndex((item) => item.key === key)
 
         result[index].actions.push(permission)
@@ -21,7 +21,7 @@ export class SettingPermissionTransformer {
           key,
         })
       }
-    })
+    }
 
     return result
   }

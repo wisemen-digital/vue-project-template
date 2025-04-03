@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@wisemen/vue-core'
 import {
-  type DropdownMenuItem,
   useDialog,
   VcDropdownMenu,
   VcDropdownMenuTrigger,
@@ -30,9 +30,7 @@ const emit = defineEmits<{
 
 const i18n = useI18n()
 
-const settingDialog = useDialog({
-  component: () => import('@/modules/setting/dialogs/SettingDialog.vue'),
-})
+const settingDialog = useDialog({ component: () => import('@/modules/setting/dialogs/SettingDialog.vue') })
 
 const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
   {
@@ -47,9 +45,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
       settingDialog.open()
     },
   },
-  {
-    type: 'separator',
-  },
+  { type: 'separator' },
   {
     icon: 'logout',
     keyboardKeys: [
@@ -91,19 +87,19 @@ const userInitials = computed<string | null>(() => {
     popover-align="end"
   >
     <template #content-top>
-      <div class="min-w-56 pb-xs">
-        <span class="block px-lg py-md text-sm text-primary">
+      <div class="pb-xs min-w-56">
+        <span class="px-lg py-md text-primary block text-sm">
           {{ fullName ?? '-' }}
         </span>
 
         <AppSeparator />
 
         <div class="px-lg py-md">
-          <span class="block text-sm text-tertiary">
+          <span class="text-tertiary block text-sm">
             {{ `${i18n.t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
           </span>
 
-          <span class="mt-sm block text-sm text-tertiary">
+          <span class="mt-sm text-tertiary block text-sm">
             {{ `${i18n.t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
           </span>
         </div>
@@ -117,15 +113,21 @@ const userInitials = computed<string | null>(() => {
         :data-test-id="TEST_ID.APP_PAGE.USER_BUTTON"
         :aria-label="i18n.t('component.sidebar.footer.user_profile')"
         type="button"
-        class="flex w-full items-center gap-x-xl rounded-full text-left outline-none ring-brand-primary-500"
+        class="
+          gap-x-xl ring-brand-primary-500 flex w-full items-center rounded-full
+          text-left outline-none
+        "
       >
         <div
           :style="{
             height: `${props.sidebarItemHeightInRem}rem`,
           }"
-          class="flex aspect-square items-center justify-center rounded-full bg-quaternary"
+          class="
+            bg-quaternary flex aspect-square items-center justify-center
+            rounded-full
+          "
         >
-          <span class="text-sm font-medium text-primary">
+          <span class="text-primary text-sm font-medium">
             {{ userInitials ?? '?' }}
           </span>
         </div>
@@ -145,13 +147,20 @@ const userInitials = computed<string | null>(() => {
             <div
               v-if="!props.isCollapsed"
               :data-test-id="TEST_ID.APP_PAGE.USER_NAME"
-              class="absolute top-1/2 flex w-full -translate-y-1/2 flex-col items-start overflow-hidden"
+              class="
+                absolute top-1/2 flex w-full -translate-y-1/2 flex-col
+                items-start overflow-hidden
+              "
             >
-              <span class="w-full truncate text-left text-sm font-semibold text-primary">
+              <span
+                class="
+                  text-primary w-full truncate text-left text-sm font-semibold
+                "
+              >
                 {{ fullName ?? '-' }}
               </span>
 
-              <span class="w-full truncate text-sm text-secondary">
+              <span class="text-secondary w-full truncate text-sm">
                 {{ props.user.email ?? '-' }}
               </span>
             </div>

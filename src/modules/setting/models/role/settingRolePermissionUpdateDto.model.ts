@@ -1,5 +1,3 @@
-import type {
-  UpdateRolesPermissionsCommand,
-} from '@/client'
+import type { UpdateRoleCommand } from '@/client'
 
-export type SettingRolePermissionUpdateDto = UpdateRolesPermissionsCommand
+export type SettingRolePermissionUpdateDto = UpdateRoleCommand

@@ -9,8 +9,6 @@ export function useSettingRolesQuery(): UseQueryReturnType<SettingRole[]> {
     queryFn: () => {
       return SettingRoleService.getAll()
     },
-    queryKey: {
-      roles: {},
-    },
+    queryKey: { roles: {} },
   })
 }

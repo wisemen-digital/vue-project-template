@@ -3,10 +3,10 @@ import { VcDialogCloseButton } from '@wisemen/vue-core'
 </script>
 
 <template>
-  <div class="overflow-y-auto px-4xl py-3xl">
+  <div class="px-4xl py-3xl overflow-y-auto">
     <slot />
 
-    <div class="absolute right-2 top-2">
+    <div class="absolute top-2 right-2">
       <VcDialogCloseButton />
     </div>
   </div>

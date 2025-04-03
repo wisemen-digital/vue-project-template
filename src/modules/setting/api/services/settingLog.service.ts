@@ -10,9 +10,7 @@ import {
   SettingLogIndexTransformer,
 } from '@/modules/setting/models/event-log/settingEventLog.transformer.ts'
 import type { SettingLogIndex } from '@/modules/setting/models/event-log/settingEventLogIndex.model.ts'
-import type {
-  SettingLogIndexPagination,
-} from '@/modules/setting/models/event-log/settingEventLogIndexPagination.model.ts'
+import type { SettingLogIndexPagination } from '@/modules/setting/models/event-log/settingEventLogIndexPagination.model.ts'
 
 export class SettingLogService {
   static async getAll(
@@ -21,9 +19,7 @@ export class SettingLogService {
     const query = new PaginationParamsBuilder(paginationOptions)
       .buildKeyset(SettingLogIndexPaginationTransformer.toDto)
 
-    const response = await viewEventLogIndexV1({
-      query,
-    })
+    const response = await viewEventLogIndexV1({ query })
 
     return {
       data: response.data.items.map(SettingLogIndexTransformer.fromDto),

@@ -24,9 +24,7 @@ export class UserIndexTransformer {
 export class UserIndexPaginationTransformer {
   static toDto(pagination: UserIndexPagination): UserIndexPaginationDto {
     return {
-      filter: {
-        permissions: pagination.filter?.permissions,
-      },
+      filter: pagination.filter,
       sort: pagination.sort,
     }
   }

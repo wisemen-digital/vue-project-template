@@ -19,12 +19,8 @@ export function useApiErrorToast(): UserErrorToastReturnType {
 
     const errorMessage = ApiErrorEnumUtil.getI18nKeyForError(error)
 
-    toast.error({
-      message: errorMessage !== null ? i18n.t(errorMessage) : i18n.t('error.default_error.description'),
-    })
+    toast.error({ message: errorMessage !== null ? i18n.t(errorMessage) : i18n.t('error.default_error.description') })
   }
 
-  return {
-    show,
-  }
+  return { show }
 }

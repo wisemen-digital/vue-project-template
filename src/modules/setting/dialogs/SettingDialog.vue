@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import type { Icon } from '@wisemen/vue-core'
 import {
-  type Icon,
   VcDialog,
   VcDialogCloseButton,
   VcDialogTitle,
   VcIcon,
 } from '@wisemen/vue-core'
 import { VisuallyHidden } from 'reka-ui'
+import type { Component } from 'vue'
 import {
-  type Component,
   computed,
   ref,
 } from 'vue'
@@ -58,21 +58,19 @@ const menuItems = computed<MenuItemGroup<SettingKey>[]>(() => {
       title: i18n.t('module.setting.system.title'),
       items: [
         {
-          title: i18n.t('module.setting.appearance'),
-          icon: 'brush',
-          key: 'appearance',
-          component: import('@/modules/setting/features/appearance/views/SettingAppearanceView.vue'),
+          title: i18n.t('module.setting.event_logs.title'),
+          icon: 'file',
+          key: 'eventLogs',
+          component: import('@/modules/setting/features/event-logs/views/SettingEventLogsView.vue'),
         },
-      ]
-    }
+      ],
+    },
   ]
 })
 
 const searchInput = ref<string>('')
 
-const navigation = useSettingNavigation({
-  default: 'appearance',
-})
+const navigation = useSettingNavigation({ default: 'appearance' })
 
 const activeMenuItem = computed<SettingKey>(() => navigation.currentItem.value.item)
 
@@ -97,7 +95,8 @@ function isActive(key: SettingKey): boolean {
   return activeMenuItem.value === key
 }
 
-const activeComponent = computed<{ key: string, component: Promise<Component> } | null>(() => {
+const activeComponent = computed<{ key: string
+  component: Promise<Component> } | null>(() => {
   const item = menuItems.value
     .flatMap((group) => group.items)
     .find((item) => isActive(item.key))
@@ -118,16 +117,26 @@ function onMenuItemClick(key: SettingKey): void {
 </script>
 
 <template>
-  <VcDialog class="max-w-[90vw] lg:max-w-[70vw] size-full flex my-4xl max-h-[80vh]">
-    <div class="absolute right-2 top-2">
+  <VcDialog
+    class="
+      my-4xl flex size-full max-h-[80vh] max-w-[90vw]
+      lg:max-w-[70vw]
+    "
+  >
+    <div class="absolute top-2 right-2">
       <VcDialogCloseButton />
     </div>
 
-    <div class="bg-tertiary py-xl flex flex-col gap-xl w-full overflow-y-auto shrink-0 max-w-[16rem] border-r border-secondary px-2xl">
-      <div class="flex flex-col gap-xl">
+    <div
+      class="
+        bg-tertiary py-xl gap-xl border-secondary px-2xl flex w-full
+        max-w-[16rem] shrink-0 flex-col overflow-y-auto border-r
+      "
+    >
+      <div class="gap-xl flex flex-col">
         <VisuallyHidden>
           <VcDialogTitle>
-            <h1 class="text-lg font-bold text-primary">
+            <h1 class="text-primary text-lg font-bold">
               {{ i18n.t('module.setting.title') }}
             </h1>
           </VcDialogTitle>
@@ -142,14 +151,17 @@ function onMenuItemClick(key: SettingKey): void {
       <div
         v-for="group in filteredGroupMenuItems"
         :key="group.title"
-        class="flex flex-col gap-lg"
+        class="gap-lg flex flex-col"
       >
-        <span class="text-tertiary uppercase text-xs font-semibold">{{ group.title }}</span>
-        <div class="-mx-xs flex flex-col gap-sm">
+        <span class="text-tertiary text-xs font-semibold uppercase">{{ group.title }}</span>
+        <div class="-mx-xs gap-sm flex flex-col">
           <AppUnstyledButton
             v-for="item in group.items"
             :key="item.key"
-            class="flex gap-lg p-xxs w-full rounded-lg group transition-all items-center cursor-pointer"
+            class="
+              gap-lg p-xxs group flex w-full cursor-pointer items-center
+              rounded-lg transition-all
+            "
             @click="onMenuItemClick(item.key)"
           >
             <span
@@ -157,7 +169,10 @@ function onMenuItemClick(key: SettingKey): void {
                 'bg-brand-solid border-brand text-primary-on-brand': isActive(item.key),
                 'bg-primary border-primary text-primary': !isActive(item.key),
               }"
-              class="flex group-hover:border-brand items-center justify-center p-md border rounded-lg"
+              class="
+                group-hover:border-brand
+                p-md flex items-center justify-center rounded-lg border
+              "
             >
               <VcIcon
                 :icon="item.icon"
@@ -169,7 +184,10 @@ function onMenuItemClick(key: SettingKey): void {
                 'text-primary': isActive(item.key),
                 'text-tertiary': !isActive(item.key),
               }"
-              class="text-sm group-hover:text-primary font-medium"
+              class="
+                group-hover:text-primary
+                text-sm font-medium
+              "
             >
               <AppTextHighlight
                 :search-term="searchInput"

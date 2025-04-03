@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
-import { computed, ref } from 'vue'
+import {
+  computed,
+  ref,
+} from 'vue'
 
 import AppSidebarBottom from '@/components/layout/sidebar/AppSidebarBottom.vue'
 import AppSidebarCollapseToggle from '@/components/layout/sidebar/AppSidebarCollapseToggle.vue'
@@ -19,9 +22,7 @@ const props = withDefaults(defineProps<{
   mainItems: NavigationGroup[]
   user: UserDetail
   variant: 'fixed-sidebar' | 'floating-content' | 'floating-sidebar'
-}>(), {
-  bottomItems: () => [],
-})
+}>(), { bottomItems: () => [] })
 
 const emit = defineEmits<{
   signOut: []
@@ -65,15 +66,15 @@ onCreated(() => {
   <div
     :class="{
       'p-xl': props.variant === 'floating-sidebar' || props.variant === 'floating-content',
-      'border-r border-solid border-secondary': props.variant === 'fixed-sidebar',
+      'border-secondary border-r border-solid': props.variant === 'fixed-sidebar',
     }"
-    class="sticky top-0 h-dvh z-20 bg-primary"
+    class="bg-primary sticky top-0 z-20 h-dvh"
   >
     <div
       :class="{
-        'rounded-2xl border border-solid border-secondary': props.variant === 'floating-sidebar',
+        'border-secondary rounded-2xl border border-solid': props.variant === 'floating-sidebar',
       }"
-      class="h-full bg-secondary"
+      class="bg-secondary h-full"
     >
       <div
         :style="{
@@ -81,7 +82,11 @@ onCreated(() => {
           paddingLeft: `${sidebarPaddingXInRem}rem`,
           paddingRight: `${sidebarPaddingXInRem}rem`,
         }"
-        class="group/sidebar relative flex h-full flex-col justify-between not-motion-reduce:duration-500 ease-sidebar-collapse"
+        class="
+          group/sidebar ease-sidebar-collapse relative flex h-full flex-col
+          justify-between
+          not-motion-reduce:duration-500
+        "
       >
         <AppSidebarCollapseToggle v-model="isSidebarCollapsed" />
 

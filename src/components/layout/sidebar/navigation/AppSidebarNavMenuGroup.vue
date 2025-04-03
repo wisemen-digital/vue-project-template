@@ -22,14 +22,14 @@ const props = defineProps<{
       >
         <h3
           v-if="!props.isCollapsed"
-          class="absolute text-xs uppercase text-quaternary"
+          class="text-quaternary absolute text-xs uppercase"
         >
           {{ props.group.label }}
         </h3>
       </Transition>
     </div>
 
-    <ul class="py-md flex flex-col gap-y-md">
+    <ul class="py-md gap-y-md flex flex-col">
       <li
         v-for="item of props.group.items"
         :key="item.label"

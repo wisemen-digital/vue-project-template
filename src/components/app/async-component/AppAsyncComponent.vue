@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {
-  type Component,
-  defineAsyncComponent,
-} from 'vue'
+import type { Component } from 'vue'
+import { defineAsyncComponent } from 'vue'
 
 const props = defineProps<{
   component: Promise<Component>

@@ -1,5 +1,5 @@
 export interface SettingLogIndex {
-  id: string
+  uuid: string
   createdAt: Date
   content: unknown
   message: string

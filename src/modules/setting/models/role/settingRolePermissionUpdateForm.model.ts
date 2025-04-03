@@ -5,12 +5,12 @@ import { settingRoleUuidSchema } from '@/modules/setting/models/role/settingRole
 
 export const settingRolePermissionUpdateFormSchema = z.object({
   roles: z.object({
+    roleUuid: settingRoleUuidSchema,
     isEditable: z.boolean(),
     permissions: z.object({
       actions: settingPermissionSchema.array(),
       key: z.string(),
     }).array(),
-    roleUuid: settingRoleUuidSchema,
   }).array(),
 })
 

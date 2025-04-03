@@ -19,9 +19,7 @@ const props = withDefaults(defineProps<{
    */
   canExitWhenDirty?: boolean
   form: Form<TFormType>
-}>(), {
-  canExitWhenDirty: false,
-})
+}>(), { canExitWhenDirty: false })
 
 const formId = useId()
 const pageLoader = usePageLoader()
@@ -45,7 +43,7 @@ onUnmounted(() => {
 <template>
   <form
     :id="formId"
-    class="flex size-full flex-1 flex-col @container/form-layout"
+    class="@container/form-layout flex size-full flex-1 flex-col"
     novalidate
     @submit.prevent="props.form.submit"
   >

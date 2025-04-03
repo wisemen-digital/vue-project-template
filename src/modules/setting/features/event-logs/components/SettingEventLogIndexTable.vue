@@ -14,12 +14,9 @@ import { useI18n } from 'vue-i18n'
 
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppTableTextCell from '@/components/app/table/AppTableTextCell.vue'
-import SettingEventLogIndexTableContentCell
-  from '@/modules/setting/features/event-logs/components/SettingEventLogIndexTableContentCell.vue'
+import SettingEventLogIndexTableContentCell from '@/modules/setting/features/event-logs/components/SettingEventLogIndexTableContentCell.vue'
 import type { SettingLogIndex } from '@/modules/setting/models/event-log/settingEventLogIndex.model.ts'
-import type {
-  SettingLogIndexPagination,
-} from '@/modules/setting/models/event-log/settingEventLogIndexPagination.model.ts'
+import type { SettingLogIndexPagination } from '@/modules/setting/models/event-log/settingEventLogIndexPagination.model.ts'
 import { DateFormatUtil } from '@/utils/date.util.ts'
 
 const props = defineProps<{
@@ -35,41 +32,31 @@ const i18n = useI18n()
 
 const columns = computed<TableColumn<SettingLogIndex>[]>(() => [
   {
-    cell: (eventLog): VNode => h(SettingEventLogIndexTableContentCell, {
-      content: eventLog.content,
-    }),
+    cell: (eventLog): VNode => h(SettingEventLogIndexTableContentCell, { content: eventLog.content }),
     headerLabel: i18n.t('shared.info'),
     key: 'content',
     width: '5rem',
   },
   {
-    cell: (eventLog): VNode => h(AppTableTextCell, {
-      value: eventLog.type,
-    }),
+    cell: (eventLog): VNode => h(AppTableTextCell, { value: eventLog.type }),
     headerLabel: i18n.t('shared.type'),
     key: 'type',
     width: '20rem',
   },
   {
-    cell: (eventLog): VNode => h(AppTableTextCell, {
-      value: DateFormatUtil.toDateTime(eventLog.createdAt),
-    }),
+    cell: (eventLog): VNode => h(AppTableTextCell, { value: DateFormatUtil.toDateTime(eventLog.createdAt) }),
     headerLabel: i18n.t('shared.created_at'),
     key: 'created_at',
     width: '12rem',
   },
   {
-    cell: (eventLog): VNode => h(AppTableTextCell, {
-      value: eventLog.id,
-    }),
+    cell: (eventLog): VNode => h(AppTableTextCell, { value: eventLog.id }),
     headerLabel: i18n.t('shared.id'),
     key: 'id',
     width: '24rem',
   },
   {
-    cell: (eventLog): VNode => h(AppTableTextCell, {
-      value: eventLog.topic,
-    }),
+    cell: (eventLog): VNode => h(AppTableTextCell, { value: eventLog.topic }),
     headerLabel: i18n.t('shared.topic'),
     key: 'topic',
     width: '40rem',

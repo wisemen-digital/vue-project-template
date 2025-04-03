@@ -9,8 +9,7 @@ import { TimeUtil } from '@/utils/time.util'
 
 export function useAutoRefresh(): void {
   const {
-    needRefresh,
-    updateServiceWorker,
+    needRefresh, updateServiceWorker,
   } = useRegisterSW({
     immediate: true,
     async onRegisteredSW(swUrl: string, serviceWorkerRegistration: ServiceWorkerRegistration | undefined) {
@@ -37,8 +36,6 @@ export function useAutoRefresh(): void {
       if (needRefresh) {
         updateServiceWorker(true)
       }
-    }, {
-      immediate: true,
-    })
+    }, { immediate: true })
   })
 }

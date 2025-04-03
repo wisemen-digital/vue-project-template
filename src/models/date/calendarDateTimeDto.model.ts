@@ -1,5 +1,5 @@
 import { z } from 'zod'
 
-export const calendarDateTimeDtoSchema = z.string().datetime().brand('CalendarDateTimeDto')
+export const calendarDateTimeDtoSchema = z.string().datetime()
 
 export type CalendarDateTimeDto = z.infer<typeof calendarDateTimeDtoSchema>

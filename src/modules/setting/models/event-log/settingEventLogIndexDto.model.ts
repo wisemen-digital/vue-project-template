@@ -1,5 +1,3 @@
-import type {
-  GetEventLogsResponse,
-} from '@/client'
+import type { ViewEventLogIndexResponse } from '@/client'
 
-export type SettingLogIndexDto = GetEventLogsResponse['items'][number]
+export type SettingLogIndexDto = ViewEventLogIndexResponse['items'][number]

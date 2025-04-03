@@ -10,7 +10,5 @@ export const guest = MiddlewareUtil.createMiddleware(async () => {
     return
   }
 
-  return {
-    name: 'index',
-  }
+  return { name: 'index' }
 })

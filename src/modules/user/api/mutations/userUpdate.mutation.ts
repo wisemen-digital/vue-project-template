@@ -11,13 +11,13 @@ interface Params {
 
 export function useUserUpdateRoleMutation(): UseMutationReturnType<SettingRoleUuid[], void, Params> {
   return useMutation<SettingRoleUuid[], void, Params>({
-    queryFn: async ({ body, params }) => {
+    queryFn: async ({
+      body, params,
+    }) => {
       await UserService.updateRoles(params.userUuid, body)
     },
     queryKeysToInvalidate: {
-      userDetail: {
-        userUuid: (params) => params.userUuid,
-      },
+      userDetail: { userUuid: (params) => params.userUuid },
       userIndex: {},
     },
   })

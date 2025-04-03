@@ -1,7 +1,7 @@
 import { useRefHistory } from '@vueuse/core'
+import type { ComputedRef } from 'vue'
 import {
   computed,
-  type ComputedRef,
   ref,
 } from 'vue'
 
@@ -22,9 +22,7 @@ interface HistoryItem {
 }
 
 export function useSettingNavigation(props: { default: SettingKey }): SettingNavigation {
-  const currentItem = ref<HistoryItem>({
-    item: props.default,
-  })
+  const currentItem = ref<HistoryItem>({ item: props.default })
 
   const history = useRefHistory<HistoryItem>(currentItem)
 

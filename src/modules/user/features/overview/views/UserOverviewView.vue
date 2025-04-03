@@ -42,7 +42,7 @@ const error = computed<unknown>(() => userIndexQuery.error.value)
 
       <div
         v-else
-        class="flex flex-col gap-lg flex-1"
+        class="gap-lg flex flex-1 flex-col"
       >
         <AppPaginationSearchField
           :is-loading="userIndexQuery.isLoading.value"

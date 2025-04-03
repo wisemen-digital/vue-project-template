@@ -424,24 +424,8 @@ export type StatusData = {
     url: '/api';
 };
 
-export type StatusErrors = {
-    500: {
-        traceId?: string | null;
-        errors?: Array<InternalServerApiError>;
-    };
-};
-
-export type StatusError = StatusErrors[keyof StatusErrors];
-
 export type StatusResponses = {
     200: unknown;
-};
-
-export type StatusData = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/api/health';
 };
 
 export type StatusErrors = {
@@ -452,10 +436,6 @@ export type StatusErrors = {
 };
 
 export type StatusError = StatusErrors[keyof StatusErrors];
-
-export type StatusResponses = {
-    200: unknown;
-};
 
 export type MigrateCollectionsV1Data = {
     body?: never;

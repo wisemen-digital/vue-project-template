@@ -2,7 +2,10 @@ import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
-import { defineConfig, devices } from '@playwright/test'
+import {
+  defineConfig,
+  devices,
+} from '@playwright/test'
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -34,7 +37,10 @@ export default defineConfig({
   fullyParallel: true,
   /* Configure projects for major browsers */
   projects: [
-    { name: 'setup', testMatch: /.*\.setup\.ts/ },
+    {
+      name: 'setup',
+      testMatch: /.*\.setup\.ts/,
+    },
     {
       name: 'chromium',
       dependencies: [
@@ -83,9 +89,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: process.env.CI === undefined ? `pnpm dev --port ${PORT}` : `pnpm preview --port ${PORT}`,
-    env: {
-      ENVIRONMENT,
-    },
+    env: { ENVIRONMENT },
     port: PORT,
     // reuseExistingServer: process.env.CI === undefined,
     /**

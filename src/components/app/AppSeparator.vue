@@ -1,9 +1,7 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
   direction?: 'horizontal' | 'vertical'
-}>(), {
-  direction: 'horizontal',
-})
+}>(), { direction: 'horizontal' })
 </script>
 
 <template>

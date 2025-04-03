@@ -43,19 +43,15 @@ const vitePwaConfig: Partial<VitePWAOptions> = {
       {
         handler: 'CacheFirst',
         options: {
-          cacheName: 's3-images',
           cacheableResponse: {
             statuses: [
               0,
               200,
             ], // cache responses with these statuses
           },
-          expiration: {
-            maxAgeSeconds: 30 * 24 * 60 * 60, // cache for 30 days
-          },
-          matchOptions: {
-            ignoreSearch: true,
-          },
+          cacheName: 's3-images',
+          expiration: { maxAgeSeconds: 30 * 24 * 60 * 60 },
+          matchOptions: { ignoreSearch: true },
         },
         urlPattern: ({ url }): boolean => url.origin.includes('.s3.'),
       },

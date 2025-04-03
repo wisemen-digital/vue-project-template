@@ -1,19 +1,16 @@
 <script setup lang="ts">
-import { type Component, useId } from 'vue'
+import type { Component } from 'vue'
+import { useId } from 'vue'
 
 import { useProvideBaseDataItemContext } from '@/components/base/data-item/baseDataItem.context'
 
 const props = withDefaults(defineProps<{
   as?: string | Component
-}>(), {
-  as: 'div',
-})
+}>(), { as: 'div' })
 
 const id = useId()
 
-useProvideBaseDataItemContext({
-  id,
-})
+useProvideBaseDataItemContext({ id })
 </script>
 
 <template>

@@ -17,9 +17,7 @@ function onUpdateModelValue(value: Locale | null): void {
     return
   }
 
-  preferences.update({
-    language: value,
-  })
+  preferences.update({ language: value })
 }
 </script>
 

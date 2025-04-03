@@ -20,9 +20,7 @@ const authStore = useAuthStore()
 const breadcrumbs: BreadcrumbItem[] = [
   {
     label: i18n.t('user.label.plural'),
-    to: {
-      name: 'user-overview',
-    },
+    to: { name: 'user-overview' },
     type: 'route',
   },
   {

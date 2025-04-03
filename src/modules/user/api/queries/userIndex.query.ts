@@ -2,9 +2,7 @@ import type {
   PaginatedData,
   PaginationOptions,
 } from '@wisemen/vue-core'
-import type {
-  UseQueryReturnType,
-} from '@wisemen/vue-core-query'
+import type { UseQueryReturnType } from '@wisemen/vue-core-query'
 import { useQuery } from '@wisemen/vue-core-query'
 import type { ComputedRef } from 'vue'
 
@@ -19,10 +17,6 @@ export function useUserIndexQuery(
     queryFn: () => {
       return UserService.getAll(paginationOptions.value)
     },
-    queryKey: {
-      userIndex: {
-        paginationOptions,
-      },
-    },
+    queryKey: { userIndex: { paginationOptions } },
   })
 }

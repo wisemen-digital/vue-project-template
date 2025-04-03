@@ -1,6 +1,4 @@
-import type {
-  Component,
-} from 'vue'
+import type { Component } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 
 import { authMiddleware } from '@/middlewares/auth.middleware'
@@ -21,9 +19,7 @@ export const routes = [
       {
         name: 'index',
         path: '',
-        redirect: {
-          name: 'user-overview',
-        },
+        redirect: { name: 'user-overview' },
       },
       /**
        * Authenticated routes
@@ -38,9 +34,7 @@ export const routes = [
   {
     name: '404',
     path: '/:catchAll(.*)',
-    redirect: {
-      name: 'index',
-    },
+    redirect: { name: 'index' },
   },
 ] as const satisfies RouteRecordRaw[]
 

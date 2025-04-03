@@ -3,11 +3,15 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div class="flex size-full flex-1 bg-secondary">
+  <div class="bg-secondary flex size-full flex-1">
     <slot name="sidebar" />
 
-    <div class="z-[1] flex h-dvh flex-1 p-xl pl-xs overflow-hidden flex-col">
-      <div class="flex flex-1 flex-col rounded-2xl bg-primary shadow-lg overflow-auto">
+    <div class="p-xl pl-xs z-[1] flex h-dvh flex-1 flex-col overflow-hidden">
+      <div
+        class="
+          bg-primary flex flex-1 flex-col overflow-auto rounded-2xl shadow-lg
+        "
+      >
         <RouterView />
       </div>
     </div>

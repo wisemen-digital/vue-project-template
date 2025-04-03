@@ -14,7 +14,9 @@ describe('usePageLoader', () => {
   })
 
   it('changes isLoading to the correct state', () => {
-    const { isLoading, setIsLoading } = usePageLoader()
+    const {
+      isLoading, setIsLoading,
+    } = usePageLoader()
 
     setIsLoading(true)
     expect(isLoading.value).toBeTruthy()

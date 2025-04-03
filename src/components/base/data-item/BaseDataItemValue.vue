@@ -9,9 +9,7 @@ const props = withDefaults(defineProps<{
    * @default 'span'
    */
   as?: string | Component
-}>(), {
-  as: 'span',
-})
+}>(), { as: 'span' })
 
 const baseDataItemContext = useInjectBaseDataItemContext()
 </script>
