@@ -19,8 +19,8 @@ const preferences = useSettingPreferences()
 
 const computedValue = computed<boolean>({
   get: () => value.value,
-  set: (newValue) => {
-    value.value = newValue
+  set: (setValue) => {
+    value.value = setValue
   },
 })
 
@@ -40,10 +40,8 @@ const description = computed<string>(() => {
   return i18n.t('module.setting.keyboard_shortcuts.disabled.description')
 })
 
-function onUpdateModelValue(newValue: boolean): void {
-  preferences.update({
-    showShortcuts: newValue,
-  })
+function onUpdateModelValue(value: boolean): void {
+  preferences.update({ showShortcuts: value })
 }
 </script>
 

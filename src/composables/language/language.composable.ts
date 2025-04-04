@@ -1,9 +1,11 @@
 import { useLocalStorage } from '@vueuse/core'
 import type { SelectItem } from '@wisemen/vue-core'
+import type {
+  ComputedRef,
+  Ref,
+} from 'vue'
 import {
   computed,
-  type ComputedRef,
-  type Ref,
   watch,
 } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -56,15 +58,9 @@ export function useLanguage(): void {
   const i18n = useI18n()
   const locale = useLocalStorage<Locale>(LOCAL_STORAGE_KEY, i18n.locale.value as Locale)
 
-  client.setConfig({
-    headers: {
-      'Accept-Language': locale.value,
-    },
-  })
+  client.setConfig({ headers: { 'Accept-Language': locale.value } })
 
   watch(locale, () => {
     i18n.locale.value = locale.value
-  }, {
-    immediate: true,
-  })
+  }, { immediate: true })
 }

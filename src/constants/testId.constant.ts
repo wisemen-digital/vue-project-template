@@ -12,16 +12,10 @@ export const TEST_ID = {
       SUBMIT_BUTTON: 'login-form-submit-button',
     },
   },
-  SHARED: {
-    MALFORMED_RESPONSE_TOAST: 'shared-malformed-response-toast',
-  },
+  SHARED: { MALFORMED_RESPONSE_TOAST: 'shared-malformed-response-toast' },
   USERS: {
-    CREATE: {
-      SUCCESS_TOAST: 'users-create-success-toast',
-    },
-    DETAIL: {
-      EDIT_BUTTON: 'users-detail-edit-button',
-    },
+    CREATE: { SUCCESS_TOAST: 'users-create-success-toast' },
+    DETAIL: { EDIT_BUTTON: 'users-detail-edit-button' },
     FORM: {
       BIRTH_DATE_INPUT: 'users-form-birth-date-input',
       FIRST_NAME_INPUT: 'users-form-first-name-input',
@@ -37,8 +31,6 @@ export const TEST_ID = {
       },
       TITLE: 'users-overview-title',
     },
-    UPDATE: {
-      SUCCESS_TOAST: 'users-update-success-toast',
-    },
+    UPDATE: { SUCCESS_TOAST: 'users-update-success-toast' },
   },
 } as const

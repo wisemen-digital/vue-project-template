@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { VcIcon, VcIconButton } from '@wisemen/vue-core'
+import {
+  VcIcon,
+  VcIconButton,
+} from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import type { SettingNavigation } from '@/modules/setting/composables/settingNavigation.composable.ts'
@@ -8,9 +11,7 @@ const props = withDefaults(defineProps<{
   title: string
   navigation: SettingNavigation
   subTitle?: string | null
-}>(), {
-  subTitle: null,
-})
+}>(), { subTitle: null })
 
 const i18n = useI18n()
 
@@ -24,8 +25,8 @@ function onNavigateForward(): void {
 </script>
 
 <template>
-  <div class="flex flex-1 w-full flex-col overflow-x-hidden">
-    <div class="flex px-lg border-b py-xl border-primary items-center">
+  <div class="flex w-full flex-1 flex-col overflow-x-hidden">
+    <div class="px-lg py-xl border-primary flex items-center border-b">
       <VcIconButton
         :label="i18n.t('shared.navigate_back')"
         :is-disabled="props.navigation.isBackDisabled.value"
@@ -42,7 +43,7 @@ function onNavigateForward(): void {
         variant="tertiary"
         @click="onNavigateForward"
       />
-      <h2 class="px-md font-bold text-primary">
+      <h2 class="px-md text-primary font-bold">
         {{ props.title }}
       </h2>
       <Transition
@@ -56,7 +57,7 @@ function onNavigateForward(): void {
           class="flex items-center"
         >
           <VcIcon
-            class="size-4 text-quaternary"
+            class="text-quaternary size-4"
             icon="chevronRight"
           />
           <h3
@@ -68,7 +69,7 @@ function onNavigateForward(): void {
       </Transition>
     </div>
 
-    <div class="overflow-y-auto flex flex-col flex-1">
+    <div class="flex flex-1 flex-col overflow-y-auto">
       <slot />
     </div>
   </div>

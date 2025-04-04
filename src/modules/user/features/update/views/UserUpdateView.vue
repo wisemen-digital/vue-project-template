@@ -15,18 +15,14 @@ const i18n = useI18n()
 const breadcrumbs: BreadcrumbItem[] = [
   {
     label: i18n.t('user.label.plural'),
-    to: {
-      name: 'user-overview',
-    },
+    to: { name: 'user-overview' },
     type: 'route',
   },
   {
     label: props.user.email,
     to: {
       name: 'user-detail',
-      params: {
-        userUuid: props.user.uuid,
-      },
+      params: { userUuid: props.user.uuid },
     },
     type: 'route',
   },

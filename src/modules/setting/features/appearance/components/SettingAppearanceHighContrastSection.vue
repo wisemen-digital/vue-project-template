@@ -28,9 +28,7 @@ const description = computed<string>(() => {
 })
 
 function onUpdateModelValue(value: boolean): void {
-  preference.update({
-    highContrast: value,
-  })
+  preference.update({ highContrast: value })
 }
 </script>
 

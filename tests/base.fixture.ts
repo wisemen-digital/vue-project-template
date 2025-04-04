@@ -3,7 +3,10 @@ import * as fs from 'node:fs'
 import * as path from 'node:path'
 import process from 'node:process'
 
-import { expect, test as base } from '@playwright/test'
+import {
+  expect,
+  test as base,
+} from '@playwright/test'
 import { http } from 'msw'
 import type { MockServiceWorker } from 'playwright-msw'
 import { createWorkerFixture } from 'playwright-msw'
@@ -81,9 +84,9 @@ const test = base.extend<{
     //   contentType: 'application/json',
     // })
   },
-  worker: createWorkerFixture(handlers, {
-    waitForPageLoad: true,
-  }),
+  worker: createWorkerFixture(handlers, { waitForPageLoad: true }),
 })
 
-export { expect, test }
+export {
+  expect, test,
+}

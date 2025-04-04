@@ -7,9 +7,7 @@ export enum ApiErrorCode {
 }
 
 export class ApiErrorEnumUtil {
-  private static i18nKeys = createI18nKeyMap<ApiErrorCode>({
-    unauthorized: 'validation.unauthorized',
-  })
+  private static i18nKeys = createI18nKeyMap<ApiErrorCode>({ unauthorized: 'validation.unauthorized' })
 
   static getI18nKey(value: ApiErrorCode): I18nKey {
     return this.i18nKeys.get(value)!

@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { VcCheckbox, VcIcon } from '@wisemen/vue-core'
+import {
+  VcCheckbox,
+  VcIcon,
+} from '@wisemen/vue-core'
 import type { Form } from 'formango'
 import { ref } from 'vue'
 
@@ -8,9 +11,7 @@ import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import AppHeightTransition from '@/components/app/transition/AppHeightTransition.vue'
 import type { SettingPermission } from '@/modules/setting/models/permission/settingPermission.model.ts'
 import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
-import type {
-  settingRolePermissionUpdateFormSchema,
-} from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
+import type { settingRolePermissionUpdateFormSchema } from '@/modules/setting/models/role/settingRolePermissionUpdateForm.model.ts'
 import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleUuid.model.ts'
 import { assert } from '@/utils/assert.util.ts'
 
@@ -40,7 +41,7 @@ function onTogglePermissionActionsClick(key: string): void {
 }
 
 function isPermissionTabOpen(key: string): boolean {
-  return openPermissionTabs.value.find((tab) => tab === key) !== undefined
+  return openPermissionTabs.value.includes(key)
 }
 
 function getActionsForKey(key: string): Permission[] {
@@ -85,20 +86,20 @@ function onUpdatePermissionCheckbox(value: boolean, key: string, roleUuid: Setti
 
   assert(permissionsForRoleValue !== null, `Role ${roleUuid} not found`)
 
-  const newPermissions = permissionsForRoleValue.permissions.filter((permission) => permission.key !== key)
+  const filteredPermissions = permissionsForRoleValue.permissions.filter((permission) => permission.key !== key)
 
   permissionsForRole.setValue({
+    roleUuid,
     isEditable: permissionsForRoleValue.isEditable,
     permissions: value
       ? [
-          ...newPermissions,
+          ...filteredPermissions,
           {
             actions: getActionsForKey(key),
             key,
           },
         ]
-      : newPermissions,
-    roleUuid,
+      : filteredPermissions,
   })
 }
 
@@ -120,28 +121,26 @@ function onUpdateActionCheckbox(
 
   assert(permissionForRoleValue !== null, `Role ${roleUuid} not found`)
 
-  const newPermissions = permissionForRoleValue.permissions.map((permission) => {
-    if (permission.key !== key) {
-      return permission
-    }
-
-    const actions = permission.actions.filter((a) => a !== action)
-
-    return {
-      ...permission,
-      actions: value
-        ? [
-            ...actions,
-            action,
-          ]
-        : actions,
-    }
-  }) ?? []
-
   permissionsForRole.setValue({
-    isEditable: permissionForRoleValue.isEditable,
-    permissions: newPermissions,
     roleUuid,
+    isEditable: permissionForRoleValue.isEditable,
+    permissions: permissionForRoleValue.permissions.map((permission) => {
+      if (permission.key !== key) {
+        return permission
+      }
+
+      const actions = permission.actions.filter((a) => a !== action)
+
+      return {
+        ...permission,
+        actions: value
+          ? [
+              ...actions,
+              action,
+            ]
+          : actions,
+      }
+    }) ?? [],
   })
 }
 </script>
@@ -153,29 +152,40 @@ function onUpdateActionCheckbox(
     :class="{
       'last:border-b-0': props.isTableScrolledToBottom || !props.isTableScrollable,
     }"
-    class="col-span-full grid grid-cols-subgrid border-b border-solid border-secondary"
+    class="
+      border-secondary col-span-full grid grid-cols-subgrid border-b
+      border-solid
+    "
   >
     <div class="z-2 col-span-full grid grid-cols-subgrid">
       <Component
         :is="permission.actions.length > 1 ? AppUnstyledButton : 'div'"
-        class="sticky left-0 flex items-center uppercase text-sm justify-between border-r border-solid border-secondary bg-primary p-3 px-6 text-left !ring-offset-0"
+        class="
+          border-secondary bg-primary sticky left-0 flex items-center
+          justify-between border-r border-solid p-3 px-6 text-left text-sm
+          uppercase !ring-offset-0
+        "
         @click="onTogglePermissionActionsClick(permission.key)"
       >
-        <span class="text-sm text-primary font-medium">
+        <span class="text-primary text-sm font-medium">
           {{ permission.key }}
         </span>
 
         <VcIcon
           v-if="permission.actions.length > 1"
           :icon="isPermissionTabOpen(permission.key) ? 'chevronUp' : 'chevronDown'"
-          class="size-4 text-secondary"
+          class="text-secondary size-4"
         />
       </Component>
 
       <div
         v-for="(role) of props.roles"
         :key="role.uuid"
-        class="flex items-center justify-center border-r border-solid border-secondary p-3 last:border-none"
+        class="
+          border-secondary flex items-center justify-center border-r
+          border-solid p-3
+          last:border-none
+        "
       >
         <VcCheckbox
           :model-value="isPermissionCheckboxChecked(permission.key, role.uuid)"
@@ -194,17 +204,26 @@ function onUpdateActionCheckbox(
         <div
           v-for="(action, actionIndex) in permission.actions"
           :key="action"
-          class="col-span-full grid grid-cols-subgrid border-b border-secondary first:border-t last:border-b-0"
+          class="
+            border-secondary col-span-full grid grid-cols-subgrid border-b
+            first:border-t
+            last:border-b-0
+          "
         >
-          <div class="sticky left-0 flex gap-2 border-r border-secondary bg-secondary p-3 pl-10 text-secondary">
+          <div
+            class="
+              border-secondary bg-secondary text-secondary sticky left-0 flex
+              gap-2 border-r p-3 pl-10
+            "
+          >
             <VcIcon
               :class="{
                 'opacity-100': actionIndex === 0,
               }"
               icon="bottomLeftCorner"
-              class="mt-0.5 size-3 text-quaternary opacity-0"
+              class="text-quaternary mt-0.5 size-3 opacity-0"
             />
-            <span class="text-sm text-secondary">
+            <span class="text-secondary text-sm">
               {{ action.split('.')[1] }}
             </span>
           </div>
@@ -212,7 +231,11 @@ function onUpdateActionCheckbox(
           <div
             v-for="role of props.roles"
             :key="role.uuid"
-            class="flex justify-center text-sm border-r bg-secondary border-solid border-secondary p-3 last:border-none"
+            class="
+              bg-secondary border-secondary flex justify-center border-r
+              border-solid p-3 text-sm
+              last:border-none
+            "
           >
             <VcCheckbox
               :is-disabled="isPermissionCheckboxDisabled(role.uuid)"

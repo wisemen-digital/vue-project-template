@@ -1,7 +1,5 @@
-import {
-  useQuery,
-  type UseQueryReturnType,
-} from '@wisemen/vue-core-query'
+import type { UseQueryReturnType } from '@wisemen/vue-core-query'
+import { useQuery } from '@wisemen/vue-core-query'
 import type { ComputedRef } from 'vue'
 
 import type { UserUuid } from '@/models/user/userUuid.model.ts'
@@ -20,10 +18,6 @@ export function usePreferenceQuery(
 
       return SettingPreferenceService.get(userUuid.value)
     },
-    queryKey: {
-      preference: {
-        userUuid,
-      },
-    },
+    queryKey: { preference: { userUuid } },
   })
 }

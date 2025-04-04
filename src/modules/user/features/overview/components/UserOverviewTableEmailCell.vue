@@ -36,6 +36,7 @@ function onMouseEnter(): void {
       size="sm"
       variant="tertiary"
       class="hover:underline"
+      @focusin="onMouseEnter"
       @mouseenter="onMouseEnter"
     >
       {{ props.user.email }}

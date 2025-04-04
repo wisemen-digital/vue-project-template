@@ -23,10 +23,16 @@ function onDeleteRole(roleUuid: SettingRoleUuid): void {
 
 <template>
   <div
-    class="sticky top-0 z-2 col-span-full grid grid-cols-subgrid border-b border-solid border-secondary bg-secondary"
+    class="
+      border-secondary bg-secondary sticky top-0 z-2 col-span-full grid
+      grid-cols-subgrid border-b border-solid
+    "
   >
     <div
-      class="sticky left-0 z-1 flex items-center gap-2 border-r border-solid border-secondary bg-secondary p-3 px-6 text-sm text-secondary"
+      class="
+        border-secondary bg-secondary text-secondary sticky left-0 z-1 flex
+        items-center gap-2 border-r border-solid p-3 px-6 text-sm
+      "
     >
       <span>
         {{ i18n.t('module.settings.roles_and_permissions.table.permissions') }}
@@ -39,7 +45,10 @@ function onDeleteRole(roleUuid: SettingRoleUuid): void {
     <div
       v-for="role of props.roles"
       :key="role.uuid"
-      class="border-r border-solid border-secondary last:border-none"
+      class="
+        border-secondary border-r border-solid
+        last:border-none
+      "
     >
       <SettingRoleAndPermissionTableHeaderCell
         :role="role"

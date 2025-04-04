@@ -1,5 +1,6 @@
 import { useLocalStorage } from '@vueuse/core'
-import { type Ref, watch } from 'vue'
+import type { Ref } from 'vue'
+import { watch } from 'vue'
 
 const LOCAL_STORAGE_KEY = 'reduce-motion'
 
@@ -19,7 +20,5 @@ export function useReduceMotion(): void {
     else {
       document.documentElement.classList.remove('reduce-motion')
     }
-  }, {
-    immediate: true,
-  })
+  }, { immediate: true })
 }

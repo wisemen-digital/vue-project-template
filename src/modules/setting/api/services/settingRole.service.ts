@@ -16,19 +16,11 @@ import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleU
 
 export class SettingRoleService {
   static async create(roleName: string): Promise<void> {
-    await createRoleControllerCreateRoleV1({
-      body: {
-        name: roleName,
-      },
-    })
+    await createRoleControllerCreateRoleV1({ body: { name: roleName } })
   }
 
   static async delete(roleUuid: SettingRoleUuid): Promise<void> {
-    await deleteRoleControllerDeleteRoleV1({
-      path: {
-        role: roleUuid,
-      },
-    })
+    await deleteRoleControllerDeleteRoleV1({ path: { role: roleUuid } })
   }
 
   static async getAll(): Promise<SettingRole[]> {
@@ -50,8 +42,8 @@ export class SettingRoleService {
   }
 
   static async updateRolesInBulk(form: SettingRolePermissionUpdateForm): Promise<void> {
-    await updateRolesPermissionsControllerUpdateRolePermissionsV1({
-      body: SettingRolePermissionUpdateTransformer.toDto(form),
-    })
+    const body = SettingRolePermissionUpdateTransformer.toDto(form)
+
+    await updateRolesPermissionsControllerUpdateRolePermissionsV1({ body })
   }
 }

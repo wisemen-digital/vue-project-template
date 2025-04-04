@@ -1,9 +1,11 @@
 import { useLocalStorage } from '@vueuse/core'
 import type { SelectItem } from '@wisemen/vue-core'
+import type {
+  ComputedRef,
+  Ref,
+} from 'vue'
 import {
   computed,
-  type ComputedRef,
-  type Ref,
   watch,
 } from 'vue'
 
@@ -89,7 +91,5 @@ export function useFontSize(): void {
 
   watch(fontSize, () => {
     document.documentElement.style.fontSize = `${fontSizeToPxMap.get(fontSize.value)}px`
-  }, {
-    immediate: true,
-  })
+  }, { immediate: true })
 }

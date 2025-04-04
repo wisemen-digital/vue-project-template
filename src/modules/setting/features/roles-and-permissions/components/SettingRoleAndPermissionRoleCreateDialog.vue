@@ -27,14 +27,10 @@ const apiErrorToast = useApiErrorToast()
 const settingsRoleCreateMutation = useSettingRoleCreateMutation()
 
 const form = useForm({
-  schema: z.object({
-    name: z.string(),
-  }),
+  schema: z.object({ name: z.string() }),
   onSubmit: async (values) => {
     try {
-      await settingsRoleCreateMutation.execute({
-        body: values.name,
-      })
+      await settingsRoleCreateMutation.execute({ body: values.name })
       onClose()
     }
     catch (error) {

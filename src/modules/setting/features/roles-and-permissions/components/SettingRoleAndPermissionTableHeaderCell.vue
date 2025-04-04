@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { DropdownMenuItem } from '@wisemen/vue-core'
 import {
-  type DropdownMenuItem,
   VcDropdownMenu,
   VcIcon,
 } from '@wisemen/vue-core'
@@ -35,7 +35,12 @@ const dropDownItems = computed<DropdownMenuItem[]>(() => ([
 </script>
 
 <template>
-  <div class="flex items-center justify-center gap-4 text-nowrap p-3 px-6 text-sm text-secondary">
+  <div
+    class="
+      text-secondary flex items-center justify-center gap-4 p-3 px-6 text-sm
+      text-nowrap
+    "
+  >
     <span>
       {{ props.role.name }}
     </span>

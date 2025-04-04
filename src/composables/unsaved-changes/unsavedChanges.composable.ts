@@ -1,6 +1,6 @@
 import { useDialog } from '@wisemen/vue-core'
+import type { ComputedRef } from 'vue'
 import {
-  type ComputedRef,
   onMounted,
   onUnmounted,
 } from 'vue'
@@ -15,9 +15,7 @@ interface UseUnsavedChangesReturnType {
 let pendingPromise: Promise<void> | null | void = null
 
 export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChangesReturnType {
-  const confirmDialog = useDialog({
-    component: () => import('@/components/dialog/AppConfirmDialog.vue'),
-  })
+  const confirmDialog = useDialog({ component: () => import('@/components/dialog/AppConfirmDialog.vue') })
 
   function handleUnsavedClose(): Promise<void> | void {
     const i18n = i18nPlugin.global
@@ -80,7 +78,5 @@ export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChan
     }
   })
 
-  return {
-    handleUnsavedClose,
-  }
+  return { handleUnsavedClose }
 }
