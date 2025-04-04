@@ -1,10 +1,10 @@
 import { z } from 'zod'
 
 import {
-  createRoleControllerCreateRoleV1,
-  deleteRoleControllerDeleteRoleV1,
-  updateRolesPermissionsControllerUpdateRolePermissionsV1,
-  viewRolesControllerGetRolesV1,
+  createRoleV1,
+  deleteRoleV1,
+  updateRoleV1,
+  viewRoleIndexV1,
 } from '@/client'
 import type { SettingRole } from '@/modules/setting/models/role/settingRole.model.ts'
 import {
@@ -16,15 +16,15 @@ import type { SettingRoleUuid } from '@/modules/setting/models/role/settingRoleU
 
 export class SettingRoleService {
   static async create(roleName: string): Promise<void> {
-    await createRoleControllerCreateRoleV1({ body: { name: roleName } })
+    await createRoleV1({ body: { name: roleName } })
   }
 
   static async delete(roleUuid: SettingRoleUuid): Promise<void> {
-    await deleteRoleControllerDeleteRoleV1({ path: { role: roleUuid } })
+    await deleteRoleV1({ path: { role: roleUuid } })
   }
 
   static async getAll(): Promise<SettingRole[]> {
-    const response = await viewRolesControllerGetRolesV1({
+    const response = await viewRoleIndexV1({
       responseValidator: async (data) => {
         return await z.object({
           items: z.object({
@@ -44,6 +44,6 @@ export class SettingRoleService {
   static async updateRolesInBulk(form: SettingRolePermissionUpdateForm): Promise<void> {
     const body = SettingRolePermissionUpdateTransformer.toDto(form)
 
-    await updateRolesPermissionsControllerUpdateRolePermissionsV1({ body })
+    await updateRoleV1({ body })
   }
 }

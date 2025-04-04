@@ -7,6 +7,7 @@ export const icons = {
   bottomRightCorner: import('./BottomRightCornerIcon.vue'),
   brush: import('./BrushIcon.vue'),
   edit: import('./EditIcon.vue'),
+  file: import('./FileIcon.vue'),
   googleLogo: import('./GoogleLogoIcon.vue'),
   logout: import('./LogoutIcon.vue'),
   shield: import('./ShieldIcon.vue'),

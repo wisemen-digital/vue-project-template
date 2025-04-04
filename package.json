@@ -15,7 +15,7 @@
     "test:unit": "vitest --run",
     "test:e2e": "npx playwright test",
     "test:coverage": "nyc pnpm test:e2e && nyc report --reporter=html",
-    "type-check": "vue-tsc --build --force",
+    "type-check": "vue-tsc --build",
     "prepare": "husky",
     "precommit": "pnpm lint && pnpm type-check && pnpm test:unit && pnpm build && pnpm test:coverage"
   },

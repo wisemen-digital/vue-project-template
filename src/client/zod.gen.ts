@@ -8,22 +8,27 @@ export const zSetUserRolesCommand = z.object({
 
 export const zPermission = z.enum([
     'all_permissions',
-    'user.read',
-    'user.create',
-    'user.update',
-    'user.delete',
-    'role.read',
-    'role.create',
-    'role.update',
-    'role.delete',
     'contact.create',
     'contact.read',
     'contact.update',
     'contact.delete',
-    'typesense'
+    'event-log.read',
+    'file.read',
+    'file.create',
+    'file.delete',
+    'role.read',
+    'role.create',
+    'role.update',
+    'role.delete',
+    'send_push_notification',
+    'typesense',
+    'user.read',
+    'user.create',
+    'user.update',
+    'user.delete'
 ]);
 
-export const zRoleResponse = z.object({
+export const zViewRoleDetailResponse = z.object({
     uuid: z.string().uuid(),
     createdAt: z.string().datetime(),
     updatedAt: z.string().datetime(),
@@ -44,7 +49,7 @@ export const zViewMeResponse = z.object({
         z.string(),
         z.null()
     ]),
-    roles: z.array(zRoleResponse)
+    roles: z.array(zViewRoleDetailResponse)
 });
 
 export const zViewUserResponse = z.object({
@@ -58,16 +63,12 @@ export const zViewUserResponse = z.object({
         z.string(),
         z.null()
     ]),
-    roles: z.array(zRoleResponse)
+    roles: z.array(zViewRoleDetailResponse)
 });
 
 export const zPaginatedOffsetQuery = z.object({
     limit: z.number().gte(1).lte(100),
     offset: z.number().gte(0)
-});
-
-export const zUsersFilterQuery = z.object({
-    permissions: z.array(zPermission).optional()
 });
 
 export const zUserIndexView = z.object({
@@ -102,14 +103,28 @@ export const zUpdateRoleCommand = z.object({
     name: z.string()
 });
 
+export const zRoleResponse = z.object({
+    uuid: z.string().uuid(),
+    createdAt: z.string().datetime(),
+    updatedAt: z.string().datetime(),
+    name: z.string(),
+    permissions: z.array(zPermission),
+    isDefault: z.boolean(),
+    isSystemAdmin: z.boolean()
+});
+
 export const zViewRoleIndexResponse = z.object({
     items: z.array(zRoleResponse)
 });
 
 export const zRoleNotFoundError = z.object({
     detail: z.string().optional(),
-    status: z.string(),
-    code: z.string()
+    status: z.enum([
+        '404'
+    ]),
+    code: z.enum([
+        'role_not_found'
+    ])
 });
 
 export const zUpdateRolesPermissionsCommandItem = z.object({
@@ -138,7 +153,7 @@ export const zMimeType = z.enum([
     'image/gif'
 ]);
 
-export const zCreateFileDto = z.object({
+export const zCreateFileCommand = z.object({
     name: z.string(),
     mimeType: zMimeType
 });
@@ -300,26 +315,186 @@ export const zViewPreferencesResponse = z.object({
     highContrast: z.boolean()
 });
 
-export const zPermissionControllerGetPermissionsV1Response = z.array(z.string());
+export const zCreateOneSignalTokenResponse = z.object({
+    token: z.string(),
+    userUuid: z.string().uuid()
+});
 
-export const zViewMeControllerViewMeV1Response = zViewMeResponse;
+export const zTranslations = z.object({
+    nl: z.string().optional(),
+    en: z.string().optional()
+});
 
-export const zViewUserControllerViewUserV1Response = zViewUserResponse;
+export const zSendPushNotificationCommand = z.object({
+    name: z.string(),
+    title: zTranslations,
+    description: zTranslations,
+    userUuids: z.array(z.string().uuid())
+});
 
-export const zViewUsersControllerViewUserV1Response = zViewUsersResponse;
+export const zViewEventLogIndexQueryKey = z.object({
+    createdAt: z.string(),
+    uuid: z.string().uuid()
+});
 
-export const zViewRolesControllerGetRolesV1Response = zViewRoleIndexResponse;
+export const zViewEventLogIndexPaginationQuery = z.object({
+    limit: z.number().gte(0).lte(100),
+    key: z.union([
+        zViewEventLogIndexQueryKey,
+        z.null()
+    ]).optional()
+});
 
-export const zUpdateRolesPermissionsControllerUpdateRolePermissionsV1Response = z.void();
+export const zUserCreatedEventContent = z.object({
+    userUuid: z.string().uuid()
+});
 
-export const zViewRoleControllerGetRoleV1Response = zRoleResponse;
+export const zUserCreatedEventLog = z.object({
+    uuid: z.string().uuid(),
+    topic: z.string(),
+    createdAt: z.string().datetime(),
+    version: z.number().int().gte(0),
+    source: z.string(),
+    userUuid: z.union([
+        z.string().uuid(),
+        z.null()
+    ]),
+    type: z.enum([
+        'user.created'
+    ]),
+    content: zUserCreatedEventContent
+});
 
-export const zFileControllerCreateFileV1Response = zCreateFileResponse;
+export const zRoleAssignedToUserEventContent = z.object({
+    userUuid: z.string().uuid(),
+    roleUuid: z.string().uuid()
+});
 
-export const zViewContactIndexControllerViewContactIndexV1Response = zViewContactIndexResponse;
+export const zUserRoleAssignedEventLog = z.object({
+    uuid: z.string().uuid(),
+    topic: z.string(),
+    createdAt: z.string().datetime(),
+    version: z.number().int().gte(0),
+    source: z.string(),
+    userUuid: z.union([
+        z.string().uuid(),
+        z.null()
+    ]),
+    type: z.enum([
+        'user.role-assigned'
+    ]),
+    content: zRoleAssignedToUserEventContent
+});
 
-export const zCreateContactControllerCreateContactV1Response = zCreateContactResponse;
+export const zUpdatedRole = z.object({
+    uuid: z.string().uuid(),
+    newPermissions: z.array(zPermission)
+});
 
-export const zViewContactDetailControllerViewContactDetailV1Response = zViewContactDetailResponse;
+export const zRolePermissionsUpdatedEventContent = z.object({
+    roles: z.array(zUpdatedRole)
+});
 
-export const zViewPreferencesControllerViewPreferencesIndexV1Response = zViewPreferencesResponse;
+export const zRolesPermissionsUpdatedEventLog = z.object({
+    uuid: z.string().uuid(),
+    topic: z.string(),
+    createdAt: z.string().datetime(),
+    version: z.number().int().gte(0),
+    source: z.string(),
+    userUuid: z.union([
+        z.string().uuid(),
+        z.null()
+    ]),
+    type: z.enum([
+        'roles.permissions.updated'
+    ]),
+    content: zRolePermissionsUpdatedEventContent
+});
+
+export const zEventLogResponse = z.object({
+    uuid: z.string().uuid(),
+    topic: z.string(),
+    createdAt: z.string().datetime(),
+    version: z.number().int().gte(0),
+    source: z.string(),
+    userUuid: z.union([
+        z.string().uuid(),
+        z.null()
+    ])
+});
+
+export const zViewEventLogIndexResponseMeta = z.object({
+    next: z.union([
+        zViewEventLogIndexQueryKey,
+        z.null()
+    ])
+});
+
+export const zViewEventLogIndexResponse = z.object({
+    items: z.array(z.unknown()),
+    meta: zViewEventLogIndexResponseMeta
+});
+
+export const zGlobalSearchCollectionName = z.enum([
+    'user'
+]);
+
+export const zSearchCollectionsFilterQuery = z.object({
+    collections: z.array(zGlobalSearchCollectionName).optional()
+});
+
+export const zSearchCollectionUserResponse = z.object({
+    uuid: z.string().uuid(),
+    name: z.string(),
+    email: z.string().email()
+});
+
+export const zSearchCollectionsResponseItem = z.object({
+    collection: zGlobalSearchCollectionName,
+    entity: zSearchCollectionUserResponse,
+    text_match: z.number()
+});
+
+export const zSearchCollectionsResponse = z.object({
+    items: z.array(zSearchCollectionsResponseItem)
+});
+
+export const zInternalServerApiError = z.object({
+    detail: z.string().optional(),
+    status: z.enum([
+        '500'
+    ]),
+    code: z.enum([
+        'internal_server_error'
+    ])
+});
+
+export const zPermissionV1Response = z.array(z.string());
+
+export const zViewMeV1Response = zViewMeResponse;
+
+export const zViewUserV1Response = zViewUserResponse;
+
+export const zViewUsersV1Response = zViewUsersResponse;
+
+export const zViewRoleIndexV1Response = zViewRoleIndexResponse;
+
+export const zUpdateRolesPermissionsV1Response = z.void();
+
+export const zViewRoleDetailV1Response = zViewRoleDetailResponse;
+
+export const zCreateFileV1Response = zCreateFileResponse;
+
+export const zViewContactIndexV1Response = zViewContactIndexResponse;
+
+export const zCreateContactV1Response = zCreateContactResponse;
+
+export const zViewContactDetailV1Response = zViewContactDetailResponse;
+
+export const zViewPreferencesV1Response = zViewPreferencesResponse;
+
+export const zCreateOneSignalTokenV1Response = zCreateOneSignalTokenResponse;
+
+export const zViewEventLogIndexV1Response = zViewEventLogIndexResponse;
+
+export const zSearchCollectionsV1Response = zSearchCollectionsResponse;

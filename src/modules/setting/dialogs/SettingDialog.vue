@@ -54,6 +54,17 @@ const menuItems = computed<MenuItemGroup<SettingKey>[]>(() => {
         },
       ],
     },
+    {
+      title: i18n.t('module.setting.system.title'),
+      items: [
+        {
+          title: i18n.t('module.setting.event_logs.title'),
+          icon: 'file',
+          key: 'eventLogs',
+          component: import('@/modules/setting/features/event-logs/views/SettingEventLogsView.vue'),
+        },
+      ],
+    },
   ]
 })
 
