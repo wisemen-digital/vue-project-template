@@ -32,8 +32,8 @@ export function useLanguageSelect(): UseLanguageSelectReturnType {
   ]
 
   const i18nKeys = computed<Record<Locale, string>>(() => ({
-    [Locale.EN_US]: i18n.t('module.setting.language.locales.en_us'),
-    [Locale.NL_BE]: i18n.t('module.setting.language.locales.nl_be'),
+    [Locale.EN_US]: i18n.t('module.settings.language.locales.en_us'),
+    [Locale.NL_BE]: i18n.t('module.settings.language.locales.nl_be'),
   }))
 
   const languageSelectItems = computed<SelectItem<Locale>[]>(() => {

@@ -3,7 +3,7 @@ import type { ComputedRef } from 'vue'
 
 import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model'
-import type { SettingLogIndexPagination } from '@/modules/setting/models/event-log/settingEventLogIndexPagination.model.ts'
+import type { SettingLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
 
 interface ProjectQueryKeys {
   permissions: void

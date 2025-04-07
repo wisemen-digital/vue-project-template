@@ -5,7 +5,7 @@ import {
 } from 'msw'
 
 import { UserDetailDtoBuilder } from '@/models/user/detail/userDetailDto.builder'
-import { SettingPreferenceDtoBuilder } from '@/modules/setting/models/preference/settingPreferenceDto.builder.ts'
+import { SettingsPreferenceDtoBuilder } from '@/modules/settings/models/preference/settingsPreferenceDto.builder.ts'
 
 interface Token {
   exp: number
@@ -33,7 +33,7 @@ export const authHandlers = [
   }),
 
   http.get('*/api/v1/me/ui-preferences', () => {
-    const data = new SettingPreferenceDtoBuilder().build()
+    const data = new SettingsPreferenceDtoBuilder().build()
 
     return HttpResponse.json(data)
   }),
