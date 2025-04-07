@@ -34,12 +34,6 @@ const dateFormatter = useLocalizedDateFormat()
 
 const columns = computed<TableColumn<SettingLogIndex>[]>(() => [
   {
-    cell: (eventLog): VNode => h(SettingEventLogIndexTableContentCell, { content: eventLog.content }),
-    headerLabel: i18n.t('shared.info'),
-    key: 'content',
-    width: '5rem',
-  },
-  {
     cell: (eventLog): VNode => h(AppTableTextCell, { value: eventLog.type }),
     headerLabel: i18n.t('shared.type'),
     key: 'type',
@@ -58,10 +52,10 @@ const columns = computed<TableColumn<SettingLogIndex>[]>(() => [
     width: '24rem',
   },
   {
-    cell: (eventLog): VNode => h(AppTableTextCell, { value: eventLog.topic }),
-    headerLabel: i18n.t('shared.topic'),
-    key: 'topic',
-    width: '40rem',
+    cell: (eventLog): VNode => h(SettingEventLogIndexTableContentCell, { content: eventLog.content }),
+    headerLabel: i18n.t('shared.info'),
+    key: 'content',
+    width: '5rem',
   },
 ])
 
@@ -84,7 +78,7 @@ async function onNext(): Promise<void> {
       distance: 300,
     }"
     :row-class="() => '!border-b-secondary'"
-    :is-first-column-sticky="true"
+    :is-last-column-sticky="true"
     :is-loading="props.isLoading"
     :pagination="props.pagination"
     variant="borderless"
