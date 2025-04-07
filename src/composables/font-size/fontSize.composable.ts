@@ -84,7 +84,7 @@ export function useFontSize(): void {
       18,
     ],
     [
-      FontSize.SMALLER,
+      FontSize.LARGER,
       20,
     ],
   ])
