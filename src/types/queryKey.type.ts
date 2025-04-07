@@ -7,9 +7,7 @@ import type { SettingLogIndexPagination } from '@/modules/setting/models/event-l
 
 interface ProjectQueryKeys {
   permissions: void
-  preference: {
-    userUuid: ComputedRef<string | null>
-  }
+  preferences: void
   roles: void
   settingLogIndex: {
     paginationOptions: ComputedRef<PaginationOptions<SettingLogIndexPagination>>

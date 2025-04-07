@@ -1,11 +1,14 @@
-import type { Theme } from '@/client'
-import type { Locale } from '@/plugins/i18n.plugin.ts'
+import type {
+  FontSize,
+  Locale,
+  UiTheme,
+} from '@/client'
 
 export interface SettingPreference {
-  fontSize: string | null
+  fontSize: FontSize | null
   highContrast: boolean | null
   language: Locale | null
   reduceMotion: boolean | null
   showShortcuts: boolean | null
-  theme: Theme | null
+  theme: UiTheme | null
 }

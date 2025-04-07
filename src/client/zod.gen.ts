@@ -285,31 +285,37 @@ export const zViewContactIndexResponse = z.object({
     meta: zPaginatedOffsetResponseMeta
 });
 
-export const zTheme = z.enum([
+export const zUiTheme = z.enum([
     'light',
     'dark',
     'system'
 ]);
 
-export const zUpdatePreferencesCommand = z.object({
-    theme: zTheme.optional(),
-    language: z.string().optional(),
-    fontSize: z.string().optional(),
+export const zLocale = z.enum([
+    'en-US'
+]);
+
+export const zFontSize = z.enum([
+    'smaller',
+    'small',
+    'default',
+    'large',
+    'larger'
+]);
+
+export const zUpdateUiPreferencesCommand = z.object({
+    theme: zUiTheme.optional(),
+    language: zLocale.optional(),
+    fontSize: zFontSize.optional(),
     showShortcuts: z.boolean().optional(),
     reduceMotion: z.boolean().optional(),
     highContrast: z.boolean().optional()
 });
 
-export const zViewPreferencesResponse = z.object({
-    theme: zTheme,
-    language: z.union([
-        z.string(),
-        z.null()
-    ]),
-    fontSize: z.union([
-        z.string(),
-        z.null()
-    ]),
+export const zViewUiPreferencesResponse = z.object({
+    theme: zUiTheme,
+    language: zLocale,
+    fontSize: zFontSize,
     showShortcuts: z.boolean(),
     reduceMotion: z.boolean(),
     highContrast: z.boolean()
@@ -332,15 +338,15 @@ export const zSendPushNotificationCommand = z.object({
     userUuids: z.array(z.string().uuid())
 });
 
-export const zViewEventLogIndexQueryKey = z.object({
+export const zViewDomainEventLogIndexQueryKey = z.object({
     createdAt: z.string(),
     uuid: z.string().uuid()
 });
 
-export const zViewEventLogIndexPaginationQuery = z.object({
+export const zViewDomainEventLogIndexPaginationQuery = z.object({
     limit: z.number().gte(0).lte(100),
     key: z.union([
-        zViewEventLogIndexQueryKey,
+        zViewDomainEventLogIndexQueryKey,
         z.null()
     ]).optional()
 });
@@ -349,7 +355,7 @@ export const zUserCreatedEventContent = z.object({
     userUuid: z.string().uuid()
 });
 
-export const zUserCreatedEventLog = z.object({
+export const zUserCreatedDomainEventLog = z.object({
     uuid: z.string().uuid(),
     topic: z.string(),
     createdAt: z.string().datetime(),
@@ -359,6 +365,7 @@ export const zUserCreatedEventLog = z.object({
         z.string().uuid(),
         z.null()
     ]),
+    message: z.string(),
     type: z.enum([
         'user.created'
     ]),
@@ -370,7 +377,7 @@ export const zRoleAssignedToUserEventContent = z.object({
     roleUuid: z.string().uuid()
 });
 
-export const zUserRoleAssignedEventLog = z.object({
+export const zUserRoleAssignedDomainEventLog = z.object({
     uuid: z.string().uuid(),
     topic: z.string(),
     createdAt: z.string().datetime(),
@@ -380,6 +387,7 @@ export const zUserRoleAssignedEventLog = z.object({
         z.string().uuid(),
         z.null()
     ]),
+    message: z.string(),
     type: z.enum([
         'user.role-assigned'
     ]),
@@ -395,7 +403,7 @@ export const zRolePermissionsUpdatedEventContent = z.object({
     roles: z.array(zUpdatedRole)
 });
 
-export const zRolesPermissionsUpdatedEventLog = z.object({
+export const zRolesPermissionsUpdatedDomainEventLog = z.object({
     uuid: z.string().uuid(),
     topic: z.string(),
     createdAt: z.string().datetime(),
@@ -405,13 +413,14 @@ export const zRolesPermissionsUpdatedEventLog = z.object({
         z.string().uuid(),
         z.null()
     ]),
+    message: z.string(),
     type: z.enum([
         'roles.permissions.updated'
     ]),
     content: zRolePermissionsUpdatedEventContent
 });
 
-export const zEventLogResponse = z.object({
+export const zDomainEventLogResponse = z.object({
     uuid: z.string().uuid(),
     topic: z.string(),
     createdAt: z.string().datetime(),
@@ -420,19 +429,20 @@ export const zEventLogResponse = z.object({
     userUuid: z.union([
         z.string().uuid(),
         z.null()
-    ])
+    ]),
+    message: z.string()
 });
 
-export const zViewEventLogIndexResponseMeta = z.object({
+export const zViewDomainEventLogIndexResponseMeta = z.object({
     next: z.union([
-        zViewEventLogIndexQueryKey,
+        zViewDomainEventLogIndexQueryKey,
         z.null()
     ])
 });
 
-export const zViewEventLogIndexResponse = z.object({
+export const zViewDomainEventLogIndexResponse = z.object({
     items: z.array(z.unknown()),
-    meta: zViewEventLogIndexResponseMeta
+    meta: zViewDomainEventLogIndexResponseMeta
 });
 
 export const zGlobalSearchCollectionName = z.enum([
@@ -469,13 +479,13 @@ export const zInternalServerApiError = z.object({
     ])
 });
 
-export const zPermissionV1Response = z.array(z.string());
-
 export const zViewMeV1Response = zViewMeResponse;
 
 export const zViewUserV1Response = zViewUserResponse;
 
 export const zViewUsersV1Response = zViewUsersResponse;
+
+export const zPermissionV1Response = z.array(z.string());
 
 export const zViewRoleIndexV1Response = zViewRoleIndexResponse;
 
@@ -491,10 +501,10 @@ export const zCreateContactV1Response = zCreateContactResponse;
 
 export const zViewContactDetailV1Response = zViewContactDetailResponse;
 
-export const zViewPreferencesV1Response = zViewPreferencesResponse;
+export const zViewUiPreferencesV1Response = zViewUiPreferencesResponse;
 
 export const zCreateOneSignalTokenV1Response = zCreateOneSignalTokenResponse;
 
-export const zViewEventLogIndexV1Response = zViewEventLogIndexResponse;
+export const zViewDomainEventLogIndexV1Response = zViewDomainEventLogIndexResponse;
 
 export const zSearchCollectionsV1Response = zSearchCollectionsResponse;

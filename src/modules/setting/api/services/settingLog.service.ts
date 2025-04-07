@@ -4,7 +4,7 @@ import type {
 } from '@wisemen/vue-core'
 import { PaginationParamsBuilder } from '@wisemen/vue-core'
 
-import { viewEventLogIndexV1 } from '@/client'
+import { viewDomainEventLogIndexV1 } from '@/client'
 import {
   SettingLogIndexPaginationTransformer,
   SettingLogIndexTransformer,
@@ -19,7 +19,7 @@ export class SettingLogService {
     const query = new PaginationParamsBuilder(paginationOptions)
       .buildKeyset(SettingLogIndexPaginationTransformer.toDto)
 
-    const response = await viewEventLogIndexV1({ query })
+    const response = await viewDomainEventLogIndexV1({ query })
 
     return {
       data: response.data.items.map(SettingLogIndexTransformer.fromDto),

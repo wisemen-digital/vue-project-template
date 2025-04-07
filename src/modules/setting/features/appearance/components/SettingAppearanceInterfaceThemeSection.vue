@@ -12,7 +12,7 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { Theme } from '@/client'
+import { UiTheme } from '@/client'
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useTheme } from '@/composables/theme/theme.composable.ts'
 import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
@@ -23,23 +23,23 @@ const darkMode = useDarkMode()
 const preferences = useSettingPreferences()
 const theme = useTheme()
 
-const appearances = computed<RadioGroupItem<Theme>[]>(() => [
+const appearances = computed<RadioGroupItem<UiTheme>[]>(() => [
   {
     label: i18n.t('module.setting.interface_theme.light'),
-    value: Theme.LIGHT,
+    value: UiTheme.LIGHT,
   },
   {
     label: i18n.t('module.setting.interface_theme.dark'),
-    value: Theme.DARK,
+    value: UiTheme.DARK,
   },
   {
     label: i18n.t('module.setting.interface_theme.system_preference'),
-    value: Theme.SYSTEM,
+    value: UiTheme.SYSTEM,
   },
 ])
 
 watch(darkMode, () => {
-  preferences.update({ theme: darkMode.value as Theme })
+  preferences.update({ theme: darkMode.value as UiTheme })
 })
 </script>
 
@@ -65,7 +65,7 @@ watch(darkMode, () => {
             :theme="theme"
           >
             <div
-              v-if="item.value === Theme.SYSTEM"
+              v-if="item.value === UiTheme.SYSTEM"
               class="
                 ring-brand-500 relative h-30 overflow-hidden rounded-xl border-2
                 border-solid border-transparent ring-offset-1 duration-200
@@ -74,7 +74,7 @@ watch(darkMode, () => {
               "
             >
               <VcThemeProvider
-                :appearance="Theme.LIGHT"
+                :appearance="UiTheme.LIGHT"
                 :theme="theme"
               >
                 <div class="bg-tertiary absolute inset-0">
@@ -84,7 +84,7 @@ watch(darkMode, () => {
                 </div>
               </VcThemeProvider>
               <VcThemeProvider
-                :appearance="Theme.DARK"
+                :appearance="UiTheme.DARK"
                 :theme="theme"
               >
                 <div

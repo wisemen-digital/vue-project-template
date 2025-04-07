@@ -2,10 +2,10 @@
 import { VcSelect } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
+import type { Locale } from '@/client'
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useLanguageSelect } from '@/composables/language/language.composable.ts'
 import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
-import type { Locale } from '@/plugins/i18n.plugin.ts'
 
 const i18n = useI18n()
 

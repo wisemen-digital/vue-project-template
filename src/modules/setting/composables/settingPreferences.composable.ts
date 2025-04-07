@@ -1,23 +1,20 @@
 import { useDarkMode } from '@wisemen/vue-core'
-import {
-  computed,
-  watch,
-} from 'vue'
+import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { Theme } from '@/client'
+import {
+  FontSize,
+  UiTheme,
+} from '@/client'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable.ts'
 import { useHighContrastModeValue } from '@/composables/high-contrast-mode/highContrastMode.composable.ts'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable.ts'
 import { useLanguageSelect } from '@/composables/language/language.composable.ts'
 import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable.ts'
-import type { UserUuid } from '@/models/user/userUuid.model.ts'
 import { usePreferenceQuery } from '@/modules/setting/api/queries/settingPreference.query.ts'
 import { SettingPreferenceService } from '@/modules/setting/api/services/settingPreference.service.ts'
-import type { FontSize } from '@/modules/setting/models/preference/settingFontSize.model.ts'
 import type { SettingPreferenceUpdateForm } from '@/modules/setting/models/preference/settingPreferenceUpdateForm.model.ts'
-import { useAuthStore } from '@/stores/auth.store.ts'
 
 interface UseSettingPreferenceReturnType {
   update: (preferenceForm: SettingPreferenceUpdateForm) => Promise<void>
@@ -27,9 +24,7 @@ export function useSettingPreferences(): UseSettingPreferenceReturnType {
   const i18n = useI18n()
   const apiErrorToast = useApiErrorToast()
 
-  const authStore = useAuthStore()
-  const userUuid = computed<UserUuid | null>(() => authStore.authUser?.uuid ?? null)
-  const preferenceQuery = usePreferenceQuery(userUuid)
+  const preferenceQuery = usePreferenceQuery()
 
   const fontSizeSelect = useFontSizeSelect()
   const languageSelect = useLanguageSelect()
@@ -39,12 +34,8 @@ export function useSettingPreferences(): UseSettingPreferenceReturnType {
   const darkMode = useDarkMode()
 
   async function update(preferenceForm: SettingPreferenceUpdateForm): Promise<void> {
-    if (userUuid.value === null) {
-      throw new Error('User UUID is null')
-    }
-
     try {
-      await SettingPreferenceService.update(userUuid.value, preferenceForm)
+      await SettingPreferenceService.update(preferenceForm)
     }
     catch (error) {
       apiErrorToast.show(error)
@@ -57,11 +48,11 @@ export function useSettingPreferences(): UseSettingPreferenceReturnType {
     }
 
     isHighContrastModeEnabled.value = preferenceQuery.data.value.highContrast ?? false
-    fontSizeSelect.value.value = preferenceQuery.data.value.fontSize as FontSize ?? 'default'
+    fontSizeSelect.value.value = preferenceQuery.data.value.fontSize as FontSize ?? FontSize.DEFAULT
     languageSelect.value.value = preferenceQuery.data.value.language ?? i18n.locale.value
     isKeyboardShortcutHintVisible.value = preferenceQuery.data.value.showShortcuts ?? false
     reduceMotionValue.value = preferenceQuery.data.value.reduceMotion ?? false
-    darkMode.value = preferenceQuery.data.value.theme ?? Theme.SYSTEM
+    darkMode.value = preferenceQuery.data.value.theme ?? UiTheme.SYSTEM
   })
 
   return { update }

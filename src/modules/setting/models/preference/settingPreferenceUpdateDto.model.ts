@@ -1,3 +1,3 @@
-import type { UpdatePreferencesCommand } from '@/client'
+import type { UpdateUiPreferencesCommand } from '@/client'
 
-export type SettingPreferenceUpdateDto = UpdatePreferencesCommand
+export type SettingPreferenceUpdateDto = UpdateUiPreferencesCommand

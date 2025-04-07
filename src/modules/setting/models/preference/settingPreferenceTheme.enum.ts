@@ -1,5 +1,5 @@
 import { z } from 'zod'
 
-import { Theme } from '@/client'
+import { UiTheme } from '@/client'
 
-export const settingPreferenceThemeSchema = z.nativeEnum(Theme)
+export const settingPreferenceThemeSchema = z.nativeEnum(UiTheme)

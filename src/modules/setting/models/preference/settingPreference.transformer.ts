@@ -1,9 +1,11 @@
-import type { Theme } from '@/client'
+import type {
+  Locale,
+  UiTheme,
+} from '@/client'
 import type { SettingPreference } from '@/modules/setting/models/preference/settingPreference.model.ts'
 import type { SettingPreferenceDto } from '@/modules/setting/models/preference/settingPreferenceDto.model.ts'
 import type { SettingPreferenceUpdateDto } from '@/modules/setting/models/preference/settingPreferenceUpdateDto.model.ts'
 import type { SettingPreferenceUpdateForm } from '@/modules/setting/models/preference/settingPreferenceUpdateForm.model.ts'
-import type { Locale } from '@/plugins/i18n.plugin.ts'
 
 export class SettingPreferenceTransformer {
   static fromDto(dto: SettingPreferenceDto): SettingPreference {
@@ -13,7 +15,7 @@ export class SettingPreferenceTransformer {
       language: dto.language as Locale,
       reduceMotion: dto.reduceMotion,
       showShortcuts: dto.showShortcuts,
-      theme: dto.theme as Theme | null,
+      theme: dto.theme as UiTheme | null,
     }
   }
 

@@ -1,3 +1,3 @@
-import type { ViewPreferencesResponse } from '@/client'
+import type { ViewUiPreferencesResponse } from '@/client'
 
-export type SettingPreferenceDto = ViewPreferencesResponse
+export type SettingPreferenceDto = ViewUiPreferencesResponse
