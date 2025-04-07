@@ -1,4 +1,4 @@
-import { Theme } from '@/client'
+import { UiTheme } from '@/client'
 import type { SettingPreferenceDto } from '@/modules/setting/models/preference/settingPreferenceDto.model.ts'
 
 export class SettingPreferenceDtoBuilder {
@@ -8,7 +8,7 @@ export class SettingPreferenceDtoBuilder {
     language: 'en-US',
     reduceMotion: false,
     showShortcuts: true,
-    theme: Theme.LIGHT,
+    theme: UiTheme.LIGHT,
   }
 
   constructor() {}

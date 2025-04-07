@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppDashboardLayoutClassic from '@/components/layout/dashboard/AppDashboardLayoutClassic.vue'
+import AppHeader from '@/components/layout/dashboard/AppHeader.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import { useSettingPreferences } from '@/modules/setting/composables/settingPreferences.composable.ts'
@@ -25,6 +26,9 @@ function onSignOut(): void {
 
 <template>
   <AppDashboardLayoutClassic v-if="authUser !== null">
+    <template #header>
+      <AppHeader />
+    </template>
     <template #sidebar>
       <AppSidebar
         :user="authUser"

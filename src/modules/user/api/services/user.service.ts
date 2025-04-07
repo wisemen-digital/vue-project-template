@@ -5,9 +5,9 @@ import type {
 import { PaginationParamsBuilder } from '@wisemen/vue-core'
 
 import {
-  setUserRolesControllerUpdateUserV1,
-  viewUserControllerViewUserV1,
-  viewUsersControllerViewUserV1,
+  setUserRolesV1,
+  viewUsersV1,
+  viewUserV1,
 } from '@/client'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import type { UserIndex } from '@/models/user/index/userIndex.model'
@@ -25,7 +25,7 @@ export class UserService {
     const query = new PaginationParamsBuilder(paginationOptions)
       .build(UserIndexPaginationTransformer.toDto)
 
-    const response = await viewUsersControllerViewUserV1({ query })
+    const response = await viewUsersV1({ query })
 
     return {
       data: response.data.items.map(UserIndexTransformer.fromDto),
@@ -34,13 +34,13 @@ export class UserService {
   }
 
   static async getByUuid(userUuid: UserUuid): Promise<UserDetail> {
-    const response = await viewUserControllerViewUserV1({ path: { uuid: userUuid } })
+    const response = await viewUserV1({ path: { uuid: userUuid } })
 
     return UserTransformer.fromDto(response.data)
   }
 
   static async updateRoles(userUuid: UserUuid, roleUuids: SettingRoleUuid[]): Promise<void> {
-    await setUserRolesControllerUpdateUserV1({
+    await setUserRolesV1({
       body: { roleUuids },
       path: { user: userUuid },
     })

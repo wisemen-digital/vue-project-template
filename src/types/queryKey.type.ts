@@ -5,6 +5,9 @@ import type { UserIndexPagination } from '@/models/user/index/userIndexPaginatio
 import type { UserUuid } from '@/models/user/userUuid.model'
 
 interface ProjectQueryKeys {
+  globalSearchIndex: {
+    search: ComputedRef<string>
+  }
   permissions: void
   preference: {
     userUuid: ComputedRef<string | null>

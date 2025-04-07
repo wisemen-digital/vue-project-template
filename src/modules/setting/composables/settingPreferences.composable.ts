@@ -5,7 +5,7 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { Theme } from '@/client'
+import { UiTheme } from '@/client'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable.ts'
 import { useHighContrastModeValue } from '@/composables/high-contrast-mode/highContrastMode.composable.ts'
@@ -44,7 +44,7 @@ export function useSettingPreferences(): UseSettingPreferenceReturnType {
     }
 
     try {
-      await SettingPreferenceService.update(userUuid.value, preferenceForm)
+      await SettingPreferenceService.update(preferenceForm)
     }
     catch (error) {
       apiErrorToast.show(error)
@@ -61,7 +61,7 @@ export function useSettingPreferences(): UseSettingPreferenceReturnType {
     languageSelect.value.value = preferenceQuery.data.value.language ?? i18n.locale.value
     isKeyboardShortcutHintVisible.value = preferenceQuery.data.value.showShortcuts ?? false
     reduceMotionValue.value = preferenceQuery.data.value.reduceMotion ?? false
-    darkMode.value = preferenceQuery.data.value.theme ?? Theme.SYSTEM
+    darkMode.value = preferenceQuery.data.value.theme ?? UiTheme.SYSTEM
   })
 
   return { update }

@@ -23,7 +23,7 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
 </script>
 
 <template>
-  <main class="bg-primary flex min-h-dvh w-full flex-1 flex-col">
+  <main class="bg-primary flex w-full flex-1 flex-col">
     <header
       :style="{
         viewTransitionName: 'page-header',
