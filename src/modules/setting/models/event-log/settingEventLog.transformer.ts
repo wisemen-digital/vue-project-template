@@ -10,7 +10,7 @@ export class SettingLogIndexTransformer {
       uuid: dto.uuid,
       createdAt: CalendarDateTimeTransformer.fromDto(dto.createdAt),
       content: dto.content,
-      message: '',
+      message: dto.message,
       topic: dto.topic,
       type: dto.type,
     }
