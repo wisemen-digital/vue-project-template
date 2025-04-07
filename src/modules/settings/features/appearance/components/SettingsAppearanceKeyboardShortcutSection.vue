@@ -10,12 +10,12 @@ import { useI18n } from 'vue-i18n'
 import AppGroup from '@/components/app/group/AppGroup.vue'
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable.ts'
-import { useSettingPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
+import { useSettingsPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
 
 const i18n = useI18n()
 const value = useKeyboardShortcutVisibilityValue()
 const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
-const preferences = useSettingPreferences()
+const preferences = useSettingsPreferences()
 
 const computedValue = computed<boolean>({
   get: () => value.value,

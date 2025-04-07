@@ -5,12 +5,12 @@ import { useI18n } from 'vue-i18n'
 import type { FontSize } from '@/client'
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useFontSizeSelect } from '@/composables/font-size/fontSize.composable.ts'
-import { useSettingPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
+import { useSettingsPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
 
 const i18n = useI18n()
 
 const fontSizeSelect = useFontSizeSelect()
-const preferences = useSettingPreferences()
+const preferences = useSettingsPreferences()
 
 function onUpdateModelValue(value: FontSize | null): void {
   if (value === null) {

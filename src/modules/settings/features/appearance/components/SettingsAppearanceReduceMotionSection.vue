@@ -5,11 +5,11 @@ import { useI18n } from 'vue-i18n'
 
 import FormFieldset from '@/components/form/FormFieldset.vue'
 import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable.ts'
-import { useSettingPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
+import { useSettingsPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
 
 const i18n = useI18n()
 const reduceMotionValue = useReduceMotionValue()
-const preferences = useSettingPreferences()
+const preferences = useSettingsPreferences()
 
 const label = computed<string>(() => {
   if (reduceMotionValue.value) {

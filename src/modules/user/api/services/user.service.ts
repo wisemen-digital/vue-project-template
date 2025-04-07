@@ -18,7 +18,7 @@ import {
   UserTransformer,
 } from '@/models/user/user.transformer'
 import type { UserUuid } from '@/models/user/userUuid.model'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 
 export class UserService {
   static async getAll(paginationOptions: PaginationOptions<UserIndexPagination>): Promise<PaginatedData<UserIndex>> {
@@ -39,7 +39,7 @@ export class UserService {
     return UserTransformer.fromDto(response.data)
   }
 
-  static async updateRoles(userUuid: UserUuid, roleUuids: SettingRoleUuid[]): Promise<void> {
+  static async updateRoles(userUuid: UserUuid, roleUuids: SettingsRoleUuid[]): Promise<void> {
     await setUserRolesV1({
       body: { roleUuids },
       path: { user: userUuid },

@@ -3,10 +3,10 @@ import {
   Locale,
   UiTheme,
 } from '@/client'
-import type { SettingPreferenceDto } from '@/modules/settings/models/preference/settingsPreferenceDto.model.ts'
+import type { SettingsPreferenceDto } from '@/modules/settings/models/preference/settingsPreferenceDto.model.ts'
 
 export class SettingsPreferenceDtoBuilder {
-  value: SettingPreferenceDto = {
+  value: SettingsPreferenceDto = {
     fontSize: FontSize.DEFAULT,
     highContrast: false,
     language: Locale.EN_US,
@@ -17,7 +17,7 @@ export class SettingsPreferenceDtoBuilder {
 
   constructor() {}
 
-  build(): SettingPreferenceDto {
+  build(): SettingsPreferenceDto {
     return this.value
   }
 }

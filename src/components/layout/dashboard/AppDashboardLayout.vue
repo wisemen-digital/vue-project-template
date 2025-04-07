@@ -5,12 +5,12 @@ import { useI18n } from 'vue-i18n'
 import AppDashboardLayoutClassic from '@/components/layout/dashboard/AppDashboardLayoutClassic.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
-import { useSettingPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
+import { useSettingsPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
 import { useAuthStore } from '@/stores/auth.store'
 
 const i18n = useI18n()
 
-useSettingPreferences()
+useSettingsPreferences()
 
 const authStore = useAuthStore()
 

@@ -7,7 +7,7 @@ import {
 
 import type { SettingsMenuItemKey } from '@/modules/settings/types/settingsMenuItemKey.type.ts'
 
-export interface SettingNavigation {
+export interface SettingsNavigation {
   isBackDisabled: ComputedRef<boolean>
   isForwardDisabled: ComputedRef<boolean>
   currentItem: ComputedRef<HistoryItem>
@@ -21,7 +21,7 @@ interface HistoryItem {
   item: SettingsMenuItemKey
 }
 
-export function useSettingNavigation(props: { default: SettingsMenuItemKey }): SettingNavigation {
+export function useSettingsNavigation(props: { default: SettingsMenuItemKey }): SettingsNavigation {
   const currentItem = ref<HistoryItem>({ item: props.default })
 
   const history = useRefHistory<HistoryItem>(currentItem)

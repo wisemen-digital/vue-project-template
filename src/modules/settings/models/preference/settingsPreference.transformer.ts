@@ -2,13 +2,13 @@ import type {
   Locale,
   UiTheme,
 } from '@/client'
-import type { SettingPreference } from '@/modules/settings/models/preference/settingsPreference.model.ts'
-import type { SettingPreferenceDto } from '@/modules/settings/models/preference/settingsPreferenceDto.model.ts'
-import type { SettingPreferenceUpdateDto } from '@/modules/settings/models/preference/settingsPreferenceUpdateDto.model.ts'
-import type { SettingPreferenceUpdateForm } from '@/modules/settings/models/preference/settingsPreferenceUpdateForm.model.ts'
+import type { SettingsPreference } from '@/modules/settings/models/preference/settingsPreference.model.ts'
+import type { SettingsPreferenceDto } from '@/modules/settings/models/preference/settingsPreferenceDto.model.ts'
+import type { SettingsPreferenceUpdateDto } from '@/modules/settings/models/preference/settingsPreferenceUpdateDto.model.ts'
+import type { SettingsPreferenceUpdateForm } from '@/modules/settings/models/preference/settingsPreferenceUpdateForm.model.ts'
 
 export class SettingsPreferenceTransformer {
-  static fromDto(dto: SettingPreferenceDto): SettingPreference {
+  static fromDto(dto: SettingsPreferenceDto): SettingsPreference {
     return {
       fontSize: dto.fontSize,
       highContrast: dto.highContrast,
@@ -19,7 +19,7 @@ export class SettingsPreferenceTransformer {
     }
   }
 
-  static toDto(model: SettingPreferenceUpdateForm): SettingPreferenceUpdateDto {
+  static toDto(model: SettingsPreferenceUpdateForm): SettingsPreferenceUpdateDto {
     return {
       fontSize: model.fontSize,
       highContrast: model.highContrast,

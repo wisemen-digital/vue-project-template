@@ -1,9 +1,9 @@
 import type { Permission } from '@/client'
-import type { SettingPermission } from '@/modules/settings/models/permission/settingsPermission.model.ts'
+import type { SettingsPermission } from '@/modules/settings/models/permission/settingsPermission.model.ts'
 
 export class SettingsPermissionTransformer {
-  static fromDto(dto: Permission[]): SettingPermission[] {
-    const result: SettingPermission[] = []
+  static fromDto(dto: Permission[]): SettingsPermission[] {
+    const result: SettingsPermission[] = []
 
     for (const permission of dto) {
       const key = permission.split('.')[0]

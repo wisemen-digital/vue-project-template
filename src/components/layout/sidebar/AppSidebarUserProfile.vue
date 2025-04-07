@@ -30,7 +30,7 @@ const emit = defineEmits<{
 
 const i18n = useI18n()
 
-const settingDialog = useDialog({ component: () => import('@/modules/settings/dialogs/SettingsDialog.vue') })
+const settingsDialog = useDialog({ component: () => import('@/modules/settings/dialogs/SettingsDialog.vue') })
 
 const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
   {
@@ -42,7 +42,7 @@ const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
     label: i18n.t('module.settings.title'),
     type: 'option',
     onSelect: (): void => {
-      settingDialog.open()
+      settingsDialog.open()
     },
   },
   { type: 'separator' },

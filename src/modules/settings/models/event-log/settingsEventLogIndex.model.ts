@@ -1,4 +1,4 @@
-export interface SettingLogIndex {
+export interface SettingsEventLogIndex {
   uuid: string
   createdAt: Date
   content: unknown

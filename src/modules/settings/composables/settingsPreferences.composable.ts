@@ -14,13 +14,13 @@ import { useLanguageSelect } from '@/composables/language/language.composable.ts
 import { useReduceMotionValue } from '@/composables/reduce-motion/reduceMotion.composable.ts'
 import { usePreferenceQuery } from '@/modules/settings/api/queries/settingsPreference.query.ts'
 import { SettingsPreferenceService } from '@/modules/settings/api/services/settingsPreference.service.ts'
-import type { SettingPreferenceUpdateForm } from '@/modules/settings/models/preference/settingsPreferenceUpdateForm.model.ts'
+import type { SettingsPreferenceUpdateForm } from '@/modules/settings/models/preference/settingsPreferenceUpdateForm.model.ts'
 
-interface UseSettingPreferenceReturnType {
-  update: (preferenceForm: SettingPreferenceUpdateForm) => Promise<void>
+interface UseSettingsPreferenceReturnType {
+  update: (preferenceForm: SettingsPreferenceUpdateForm) => Promise<void>
 }
 
-export function useSettingPreferences(): UseSettingPreferenceReturnType {
+export function useSettingsPreferences(): UseSettingsPreferenceReturnType {
   const i18n = useI18n()
   const apiErrorToast = useApiErrorToast()
 
@@ -33,7 +33,7 @@ export function useSettingPreferences(): UseSettingPreferenceReturnType {
   const isHighContrastModeEnabled = useHighContrastModeValue()
   const darkMode = useDarkMode()
 
-  async function update(preferenceForm: SettingPreferenceUpdateForm): Promise<void> {
+  async function update(preferenceForm: SettingsPreferenceUpdateForm): Promise<void> {
     try {
       await SettingsPreferenceService.update(preferenceForm)
     }
