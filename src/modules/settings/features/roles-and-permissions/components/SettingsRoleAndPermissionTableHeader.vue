@@ -3,20 +3,20 @@ import { VcIcon } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import SettingsRoleAndPermissionTableHeaderCell from '@/modules/settings/features/roles-and-permissions/components/SettingsRoleAndPermissionTableHeaderCell.vue'
-import type { SettingRole } from '@/modules/settings/models/role/settingsRole.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import type { SettingsRole } from '@/modules/settings/models/role/settingsRole.model.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 
 const props = defineProps<{
-  roles: SettingRole[]
+  roles: SettingsRole[]
 }>()
 
 const emit = defineEmits<{
-  deleteRole: [SettingRoleUuid]
+  deleteRole: [SettingsRoleUuid]
 }>()
 
 const i18n = useI18n()
 
-function onDeleteRole(roleUuid: SettingRoleUuid): void {
+function onDeleteRole(roleUuid: SettingsRoleUuid): void {
   emit('deleteRole', roleUuid)
 }
 </script>

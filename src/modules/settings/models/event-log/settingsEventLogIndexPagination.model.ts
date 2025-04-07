@@ -1,3 +1,3 @@
 import type { BasePagination } from '@wisemen/vue-core'
 
-export interface SettingLogIndexPagination extends BasePagination {}
+export interface SettingsEventLogIndexPagination extends BasePagination {}

@@ -9,18 +9,18 @@ import { ref } from 'vue'
 import type { Permission } from '@/client'
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import AppHeightTransition from '@/components/app/transition/AppHeightTransition.vue'
-import type { SettingPermission } from '@/modules/settings/models/permission/settingsPermission.model.ts'
-import type { SettingRole } from '@/modules/settings/models/role/settingsRole.model.ts'
-import type { settingRolePermissionUpdateFormSchema } from '@/modules/settings/models/role/settingsRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import type { SettingsPermission } from '@/modules/settings/models/permission/settingsPermission.model.ts'
+import type { SettingsRole } from '@/modules/settings/models/role/settingsRole.model.ts'
+import type { settingsRolePermissionUpdateFormSchema } from '@/modules/settings/models/role/settingsRolePermissionUpdateForm.model.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 import { assert } from '@/utils/assert.util.ts'
 
 const props = defineProps<{
   isTableScrollable: boolean
   isTableScrolledToBottom: boolean
-  form: Form<typeof settingRolePermissionUpdateFormSchema>
-  permissions: SettingPermission[]
-  roles: SettingRole[]
+  form: Form<typeof settingsRolePermissionUpdateFormSchema>
+  permissions: SettingsPermission[]
+  roles: SettingsRole[]
 }>()
 
 const openPermissionTabs = ref<string[]>([])
@@ -48,13 +48,13 @@ function getActionsForKey(key: string): Permission[] {
   return props.permissions.find((permission) => permission.key === key)?.actions ?? []
 }
 
-function getActiveActionsForKeyAndRole(key: string, roleUuid: SettingRoleUuid): Permission[] {
+function getActiveActionsForKeyAndRole(key: string, roleUuid: SettingsRoleUuid): Permission[] {
   const value = rolesForm.modelValue.value.find((value) => value.roleUuid === roleUuid)?.permissions ?? []
 
   return value.find((v) => v.key === key)?.actions ?? []
 }
 
-function isPermissionCheckboxChecked(key: string, roleUuid: SettingRoleUuid): boolean {
+function isPermissionCheckboxChecked(key: string, roleUuid: SettingsRoleUuid): boolean {
   const permissionsForRole = rolesForm.modelValue.value.find((role) => role.roleUuid === roleUuid)?.permissions ?? []
 
   return (permissionsForRole.find((p) => p.key === key)?.actions.length ?? 0) > 0
@@ -62,7 +62,7 @@ function isPermissionCheckboxChecked(key: string, roleUuid: SettingRoleUuid): bo
 
 function isActionCheckboxChecked(
   key: string,
-  roleUuid: SettingRoleUuid,
+  roleUuid: SettingsRoleUuid,
   action: Permission,
 ): boolean {
   const activeActions = getActiveActionsForKeyAndRole(key, roleUuid)
@@ -70,14 +70,14 @@ function isActionCheckboxChecked(
   return activeActions.includes(action)
 }
 
-function isPermissionCheckboxIndeterminate(key: string, roleUuid: SettingRoleUuid): boolean {
+function isPermissionCheckboxIndeterminate(key: string, roleUuid: SettingsRoleUuid): boolean {
   const allActions = getActionsForKey(key)
   const activeActions = getActiveActionsForKeyAndRole(key, roleUuid)
 
   return activeActions.length > 0 && activeActions.length < allActions.length
 }
 
-function onUpdatePermissionCheckbox(value: boolean, key: string, roleUuid: SettingRoleUuid): void {
+function onUpdatePermissionCheckbox(value: boolean, key: string, roleUuid: SettingsRoleUuid): void {
   const roleIndex = rolesForm.modelValue.value.findIndex((role) => role.roleUuid === roleUuid)
 
   const permissionsForRole = rolesForm.register(`${roleIndex}`)
@@ -103,14 +103,14 @@ function onUpdatePermissionCheckbox(value: boolean, key: string, roleUuid: Setti
   })
 }
 
-function isPermissionCheckboxDisabled(roleUuid: SettingRoleUuid): boolean {
+function isPermissionCheckboxDisabled(roleUuid: SettingsRoleUuid): boolean {
   return !(rolesForm.modelValue.value.find((role) => role.roleUuid === roleUuid)?.isEditable ?? false)
 }
 
 function onUpdateActionCheckbox(
   value: boolean,
   key: string,
-  roleUuid: SettingRoleUuid,
+  roleUuid: SettingsRoleUuid,
   action: Permission,
 ): void {
   const roleIndex = rolesForm.modelValue.value.findIndex((role) => role.roleUuid === roleUuid)

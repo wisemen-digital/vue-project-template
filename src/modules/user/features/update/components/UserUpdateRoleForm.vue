@@ -18,9 +18,9 @@ import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { UserDetail } from '@/models/user/detail/userDetail.model.ts'
-import { useSettingRolesQuery } from '@/modules/settings/api/queries/settingsRole.query.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
-import { settingRoleUuidSchema } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import { useSettingsRolesQuery } from '@/modules/settings/api/queries/settingsRole.query.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import { settingsRoleUuidSchema } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 import { useUserUpdateRoleMutation } from '@/modules/user/api/mutations/userUpdate.mutation.ts'
 import { toFormField } from '@/utils/formango.util'
 
@@ -34,10 +34,10 @@ const toast = useToast()
 const errorToast = useApiErrorToast()
 const userUpdateRoleMutation = useUserUpdateRoleMutation()
 
-const roleQuery = useSettingRolesQuery()
+const roleQuery = useSettingsRolesQuery()
 
 interface RoleItem {
-  uuid: SettingRoleUuid
+  uuid: SettingsRoleUuid
   name: string
 }
 
@@ -60,7 +60,7 @@ const form = useForm({
   }),
   schema: z.object({
     roles: z.object({
-      uuid: settingRoleUuidSchema,
+      uuid: settingsRoleUuidSchema,
       name: z.string(),
     }).array(),
   }),

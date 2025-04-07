@@ -1,3 +1,3 @@
 import type { UpdateUiPreferencesCommand } from '@/client'
 
-export type SettingPreferenceUpdateDto = UpdateUiPreferencesCommand
+export type SettingsPreferenceUpdateDto = UpdateUiPreferencesCommand

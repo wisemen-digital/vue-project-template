@@ -14,7 +14,7 @@ import AppDialogHeader from '@/components/app/dialog/AppDialogHeader.vue'
 import AppForm from '@/components/form/AppForm.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
-import { useSettingRoleCreateMutation } from '@/modules/settings/api/mutations/settingsRoleCreate.mutation.ts'
+import { useSettingsRoleCreateMutation } from '@/modules/settings/api/mutations/settingsRoleCreate.mutation.ts'
 import { toFormField } from '@/utils/formango.util'
 
 const emit = defineEmits<{
@@ -24,7 +24,7 @@ const emit = defineEmits<{
 const i18n = useI18n()
 
 const apiErrorToast = useApiErrorToast()
-const settingsRoleCreateMutation = useSettingRoleCreateMutation()
+const settingsRoleCreateMutation = useSettingsRoleCreateMutation()
 
 const form = useForm({
   schema: z.object({ name: z.string() }),

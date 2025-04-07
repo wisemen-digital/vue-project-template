@@ -1,8 +1,8 @@
 import type { Permission } from '@/client'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 
-export interface SettingRole {
-  uuid: SettingRoleUuid
+export interface SettingsRole {
+  uuid: SettingsRoleUuid
   isDefault: boolean
   isSystemAdmin: boolean
   name: string

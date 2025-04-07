@@ -4,7 +4,7 @@ import type {
   UiTheme,
 } from '@/client'
 
-export interface SettingPreference {
+export interface SettingsPreference {
   fontSize: FontSize | null
   highContrast: boolean | null
   language: Locale | null

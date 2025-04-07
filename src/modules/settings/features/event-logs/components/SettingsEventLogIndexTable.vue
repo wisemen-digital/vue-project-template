@@ -16,15 +16,15 @@ import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppTableTextCell from '@/components/app/table/AppTableTextCell.vue'
 import { useLocalizedDateFormat } from '@/composables/localized-date-format/localizedDateFormat.composable.ts'
 import SettingsEventLogIndexTableContentCell from '@/modules/settings/features/event-logs/components/SettingsEventLogIndexTableContentCell.vue'
-import type { SettingLogIndex } from '@/modules/settings/models/event-log/settingsEventLogIndex.model.ts'
-import type { SettingLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
+import type { SettingsEventLogIndex } from '@/modules/settings/models/event-log/settingsEventLogIndex.model.ts'
+import type { SettingsEventLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
 
 const props = defineProps<{
   isFetching: boolean
   isLoading: boolean
-  data: PaginatedData<SettingLogIndex> | null
+  data: PaginatedData<SettingsEventLogIndex> | null
   error: unknown | null
-  pagination: Pagination<SettingLogIndexPagination>
+  pagination: Pagination<SettingsEventLogIndexPagination>
   onNext: () => Promise<void>
 }>()
 
@@ -32,7 +32,7 @@ const i18n = useI18n()
 
 const dateFormatter = useLocalizedDateFormat()
 
-const columns = computed<TableColumn<SettingLogIndex>[]>(() => [
+const columns = computed<TableColumn<SettingsEventLogIndex>[]>(() => [
   {
     cell: (eventLog): VNode => h(SettingsEventLogIndexTableContentCell, { content: eventLog.content }),
     headerLabel: i18n.t('shared.info'),

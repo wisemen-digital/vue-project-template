@@ -4,17 +4,17 @@ import { useInfiniteQuery } from '@wisemen/vue-core-query'
 import type { ComputedRef } from 'vue'
 
 import { SettingsLogService } from '@/modules/settings/api/services/settingsLog.service.ts'
-import type { SettingLogIndex } from '@/modules/settings/models/event-log/settingsEventLogIndex.model.ts'
-import type { SettingLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
+import type { SettingsEventLogIndex } from '@/modules/settings/models/event-log/settingsEventLogIndex.model.ts'
+import type { SettingsEventLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
 
-export function useSettingEventLogIndexQuery(
-  paginationOptions: ComputedRef<PaginationOptions<SettingLogIndexPagination>>,
-): UseInfiniteQueryReturnType<SettingLogIndex> {
-  return useInfiniteQuery<SettingLogIndex, SettingLogIndexPagination>({
+export function useSettingsEventLogIndexQuery(
+  paginationOptions: ComputedRef<PaginationOptions<SettingsEventLogIndexPagination>>,
+): UseInfiniteQueryReturnType<SettingsEventLogIndex> {
+  return useInfiniteQuery<SettingsEventLogIndex, SettingsEventLogIndexPagination>({
     paginationOptions,
     queryFn: (options) => {
       return SettingsLogService.getAll(options)
     },
-    queryKey: { settingLogIndex: { paginationOptions } },
+    queryKey: { settingsEventLogIndex: { paginationOptions } },
   })
 }

@@ -2,24 +2,24 @@
 import { usePagination } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import { useSettingEventLogIndexQuery } from '@/modules/settings/api/queries/settingsEventLogIndex.query.ts'
+import { useSettingsEventLogIndexQuery } from '@/modules/settings/api/queries/settingsEventLogIndex.query.ts'
 import SettingsDialogContainer from '@/modules/settings/components/SettingsDialogContainer.vue'
-import type { SettingNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
+import type { SettingsNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
 import SettingsEventLogIndexTable from '@/modules/settings/features/event-logs/components/SettingsEventLogIndexTable.vue'
-import type { SettingLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
+import type { SettingsEventLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
 
 const props = defineProps<{
-  navigation: SettingNavigation
+  navigation: SettingsNavigation
 }>()
 
 const i18n = useI18n()
 
-const pagination = usePagination<SettingLogIndexPagination>({
+const pagination = usePagination<SettingsEventLogIndexPagination>({
   isRouteQueryEnabled: false,
   type: 'keyset',
 })
 
-const indexQuery = useSettingEventLogIndexQuery(pagination.paginationOptions)
+const indexQuery = useSettingsEventLogIndexQuery(pagination.paginationOptions)
 
 async function onNext(): Promise<void> {
   await indexQuery.getNextPage()

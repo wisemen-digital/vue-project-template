@@ -2,9 +2,9 @@ import { z } from 'zod'
 
 import { Permission } from '@/client'
 
-export interface SettingPermission {
+export interface SettingsPermission {
   actions: Permission[]
   key: string
 }
 
-export const settingPermissionSchema = z.nativeEnum(Permission)
+export const settingsPermissionSchema = z.nativeEnum(Permission)
