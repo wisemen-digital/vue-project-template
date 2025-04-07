@@ -6,22 +6,27 @@ export type SetUserRolesCommand = {
 
 export enum Permission {
     ALL_PERMISSIONS = 'all_permissions',
-    USER_READ = 'user.read',
-    USER_CREATE = 'user.create',
-    USER_UPDATE = 'user.update',
-    USER_DELETE = 'user.delete',
-    ROLE_READ = 'role.read',
-    ROLE_CREATE = 'role.create',
-    ROLE_UPDATE = 'role.update',
-    ROLE_DELETE = 'role.delete',
     CONTACT_CREATE = 'contact.create',
     CONTACT_READ = 'contact.read',
     CONTACT_UPDATE = 'contact.update',
     CONTACT_DELETE = 'contact.delete',
-    TYPESENSE = 'typesense'
+    EVENT_LOG_READ = 'event-log.read',
+    FILE_READ = 'file.read',
+    FILE_CREATE = 'file.create',
+    FILE_DELETE = 'file.delete',
+    ROLE_READ = 'role.read',
+    ROLE_CREATE = 'role.create',
+    ROLE_UPDATE = 'role.update',
+    ROLE_DELETE = 'role.delete',
+    SEND_PUSH_NOTIFICATION = 'send_push_notification',
+    TYPESENSE = 'typesense',
+    USER_READ = 'user.read',
+    USER_CREATE = 'user.create',
+    USER_UPDATE = 'user.update',
+    USER_DELETE = 'user.delete'
 }
 
-export type RoleResponse = {
+export type ViewRoleDetailResponse = {
     uuid: string;
     createdAt: string;
     updatedAt: string;
@@ -36,7 +41,7 @@ export type ViewMeResponse = {
     email: string;
     firstName: string | null;
     lastName: string | null;
-    roles: Array<RoleResponse>;
+    roles: Array<ViewRoleDetailResponse>;
 };
 
 export type ViewUserResponse = {
@@ -44,16 +49,12 @@ export type ViewUserResponse = {
     email: string;
     firstName: string | null;
     lastName: string | null;
-    roles: Array<RoleResponse>;
+    roles: Array<ViewRoleDetailResponse>;
 };
 
 export type PaginatedOffsetQuery = {
     limit: number;
     offset: number;
-};
-
-export type UsersFilterQuery = {
-    permissions?: Array<Permission>;
 };
 
 export type UserIndexView = {
@@ -100,6 +101,16 @@ export type UpdateRoleCommand = {
     name: string;
 };
 
+export type RoleResponse = {
+    uuid: string;
+    createdAt: string;
+    updatedAt: string;
+    name: string;
+    permissions: Array<Permission>;
+    isDefault: boolean;
+    isSystemAdmin: boolean;
+};
+
 export type ViewRoleIndexResponse = {
     items: Array<RoleResponse>;
 };
@@ -109,8 +120,8 @@ export type RoleNotFoundError = {
      * a human-readable explanation specific to this occurrence of the problem
      */
     detail?: string;
-    status: string;
-    code: string;
+    status: '404';
+    code: 'role_not_found';
 };
 
 export type UpdateRolesPermissionsCommandItem = {
@@ -139,7 +150,7 @@ export enum MimeType {
     IMAGE_GIF = 'image/gif'
 }
 
-export type CreateFileDto = {
+export type CreateFileCommand = {
     name: string;
     mimeType: MimeType;
 };
@@ -211,77 +222,177 @@ export type ViewContactIndexResponse = {
     meta: PaginatedOffsetResponseMeta;
 };
 
-export enum Theme {
+export enum UiTheme {
     LIGHT = 'light',
     DARK = 'dark',
     SYSTEM = 'system'
 }
 
-export type UpdatePreferencesCommand = {
-    theme?: Theme;
-    language?: string;
-    fontSize?: string;
+export enum Locale {
+    EN_US = 'en-US',
+    NL_BE= 'nl-BE'
+}
+
+export enum FontSize {
+    SMALLER = 'smaller',
+    SMALL = 'small',
+    DEFAULT = 'default',
+    LARGE = 'large',
+    LARGER = 'larger'
+}
+
+export type UpdateUiPreferencesCommand = {
+    theme?: UiTheme;
+    language?: Locale;
+    fontSize?: FontSize;
     showShortcuts?: boolean;
     reduceMotion?: boolean;
     highContrast?: boolean;
 };
 
-export type ViewPreferencesResponse = {
-    theme: Theme;
-    language: string | null;
-    fontSize: string | null;
+export type ViewUiPreferencesResponse = {
+    theme: UiTheme;
+    language: Locale;
+    fontSize: FontSize;
     showShortcuts: boolean;
     reduceMotion: boolean;
     highContrast: boolean;
 };
 
-export type PermissionControllerGetPermissionsV1Data = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/api/v1/permissions';
+export type CreateOneSignalTokenResponse = {
+    token: string;
+    userUuid: string;
 };
 
-export type PermissionControllerGetPermissionsV1Responses = {
-    200: Array<string>;
+export type Translations = {
+    nl?: string;
+    en?: string;
 };
 
-export type PermissionControllerGetPermissionsV1Response = PermissionControllerGetPermissionsV1Responses[keyof PermissionControllerGetPermissionsV1Responses];
-
-export type SwaggerControllerHandleRedirectData = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/api/oauth2-redirect';
+export type SendPushNotificationCommand = {
+    name: string;
+    title: Translations;
+    description: Translations;
+    userUuids: Array<string>;
 };
 
-export type SwaggerControllerHandleRedirectResponses = {
-    200: unknown;
+export type ViewDomainEventLogIndexQueryKey = {
+    createdAt: string;
+    uuid: string;
 };
 
-export type StatusControllerGetApiStatusData = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/api';
+export type ViewDomainEventLogIndexPaginationQuery = {
+    limit: number;
+    key?: ViewDomainEventLogIndexQueryKey | null;
 };
 
-export type StatusControllerGetApiStatusResponses = {
-    200: unknown;
+export type UserCreatedEventContent = {
+    userUuid: string;
 };
 
-export type StatusControllerGetHealthStatusData = {
-    body?: never;
-    path?: never;
-    query?: never;
-    url: '/api/health';
+export type UserCreatedDomainEventLog = {
+    uuid: string;
+    topic: string;
+    createdAt: string;
+    version: number;
+    source: string;
+    userUuid: string | null;
+    message: string;
+    type: 'user.created';
+    content: UserCreatedEventContent;
 };
 
-export type StatusControllerGetHealthStatusResponses = {
-    200: unknown;
+export type RoleAssignedToUserEventContent = {
+    userUuid: string;
+    roleUuid: string;
 };
 
-export type MigrateCollectionsControllerMigrateV1Data = {
+export type UserRoleAssignedDomainEventLog = {
+    uuid: string;
+    topic: string;
+    createdAt: string;
+    version: number;
+    source: string;
+    userUuid: string | null;
+    message: string;
+    type: 'user.role-assigned';
+    content: RoleAssignedToUserEventContent;
+};
+
+export type UpdatedRole = {
+    uuid: string;
+    newPermissions: Array<Permission>;
+};
+
+export type RolePermissionsUpdatedEventContent = {
+    roles: Array<UpdatedRole>;
+};
+
+export type RolesPermissionsUpdatedDomainEventLog = {
+    uuid: string;
+    topic: string;
+    createdAt: string;
+    version: number;
+    source: string;
+    userUuid: string | null;
+    message: string;
+    type: 'roles.permissions.updated';
+    content: RolePermissionsUpdatedEventContent;
+};
+
+export type DomainEventLogResponse = {
+    uuid: string;
+    topic: string;
+    createdAt: string;
+    version: number;
+    source: string;
+    userUuid: string | null;
+    message: string;
+};
+
+export type ViewDomainEventLogIndexResponseMeta = {
+    next: ViewDomainEventLogIndexQueryKey | null;
+};
+
+export type ViewDomainEventLogIndexResponse = {
+    items: Array<UserCreatedDomainEventLog | UserRoleAssignedDomainEventLog | RolesPermissionsUpdatedDomainEventLog>;
+    meta: ViewDomainEventLogIndexResponseMeta;
+};
+
+export enum GlobalSearchCollectionName {
+    USER = 'user'
+}
+
+export type SearchCollectionsFilterQuery = {
+    collections?: Array<GlobalSearchCollectionName>;
+};
+
+export type SearchCollectionUserResponse = {
+    uuid: string;
+    name: string;
+    email: string;
+};
+
+export type SearchCollectionsResponseItem = {
+    collection: GlobalSearchCollectionName;
+    entity: SearchCollectionUserResponse;
+    text_match: number;
+};
+
+export type SearchCollectionsResponse = {
+    items: Array<SearchCollectionsResponseItem>;
+};
+
+export type InternalServerApiError = {
+    /**
+     * a human-readable explanation specific to this occurrence of the problem
+     */
+    detail?: string;
+    status: '500';
+    code: 'internal_server_error';
+};
+
+export type MigrateCollectionsV1Data = {
     body?: never;
     path?: never;
     query?: {
@@ -291,14 +402,23 @@ export type MigrateCollectionsControllerMigrateV1Data = {
     url: '/api/v1/typesense/migrate';
 };
 
-export type MigrateCollectionsControllerMigrateV1Responses = {
+export type MigrateCollectionsV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type MigrateCollectionsV1Error = MigrateCollectionsV1Errors[keyof MigrateCollectionsV1Errors];
+
+export type MigrateCollectionsV1Responses = {
     /**
      * Successfully migrated collections
      */
     200: unknown;
 };
 
-export type ImportCollectionsControllerImportV1Data = {
+export type ImportCollectionsV1Data = {
     body?: never;
     path?: never;
     query?: {
@@ -307,28 +427,46 @@ export type ImportCollectionsControllerImportV1Data = {
     url: '/api/v1/typesense/import';
 };
 
-export type ImportCollectionsControllerImportV1Responses = {
+export type ImportCollectionsV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ImportCollectionsV1Error = ImportCollectionsV1Errors[keyof ImportCollectionsV1Errors];
+
+export type ImportCollectionsV1Responses = {
     /**
      * Successfully imported collections
      */
     200: unknown;
 };
 
-export type ViewCollectionsControllerGetCollectionsV1Data = {
+export type ViewCollectionsV1Data = {
     body?: never;
     path?: never;
     query?: never;
     url: '/api/v1/typesense/collections';
 };
 
-export type ViewCollectionsControllerGetCollectionsV1Responses = {
+export type ViewCollectionsV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewCollectionsV1Error = ViewCollectionsV1Errors[keyof ViewCollectionsV1Errors];
+
+export type ViewCollectionsV1Responses = {
     /**
      * Successfully returned collections
      */
     200: unknown;
 };
 
-export type SetUserRolesControllerUpdateUserV1Data = {
+export type SetUserRolesV1Data = {
     body: SetUserRolesCommand;
     path: {
         user: string;
@@ -337,27 +475,45 @@ export type SetUserRolesControllerUpdateUserV1Data = {
     url: '/api/v1/users/{user}/role';
 };
 
-export type SetUserRolesControllerUpdateUserV1Responses = {
+export type SetUserRolesV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type SetUserRolesV1Error = SetUserRolesV1Errors[keyof SetUserRolesV1Errors];
+
+export type SetUserRolesV1Responses = {
     201: unknown;
 };
 
-export type ViewMeControllerViewMeV1Data = {
+export type ViewMeV1Data = {
     body?: never;
     path?: never;
     query?: never;
     url: '/api/v1/users/me';
 };
 
-export type ViewMeControllerViewMeV1Responses = {
+export type ViewMeV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewMeV1Error = ViewMeV1Errors[keyof ViewMeV1Errors];
+
+export type ViewMeV1Responses = {
     /**
      * User details retrieved
      */
     200: ViewMeResponse;
 };
 
-export type ViewMeControllerViewMeV1Response = ViewMeControllerViewMeV1Responses[keyof ViewMeControllerViewMeV1Responses];
+export type ViewMeV1Response = ViewMeV1Responses[keyof ViewMeV1Responses];
 
-export type ViewUserControllerViewUserV1Data = {
+export type ViewUserV1Data = {
     body?: never;
     path: {
         uuid: string;
@@ -366,84 +522,182 @@ export type ViewUserControllerViewUserV1Data = {
     url: '/api/v1/users/{uuid}';
 };
 
-export type ViewUserControllerViewUserV1Responses = {
+export type ViewUserV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewUserV1Error = ViewUserV1Errors[keyof ViewUserV1Errors];
+
+export type ViewUserV1Responses = {
     /**
      * User details retrieved
      */
     200: ViewUserResponse;
 };
 
-export type ViewUserControllerViewUserV1Response = ViewUserControllerViewUserV1Responses[keyof ViewUserControllerViewUserV1Responses];
+export type ViewUserV1Response = ViewUserV1Responses[keyof ViewUserV1Responses];
 
-export type ViewUsersControllerViewUserV1Data = {
+export type ViewUsersV1Data = {
     body?: never;
     path?: never;
-    query: {
+    query?: {
         pagination?: PaginatedOffsetQuery;
-        filter: UsersFilterQuery;
         search?: string;
     };
     url: '/api/v1/users';
 };
 
-export type ViewUsersControllerViewUserV1Responses = {
+export type ViewUsersV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewUsersV1Error = ViewUsersV1Errors[keyof ViewUsersV1Errors];
+
+export type ViewUsersV1Responses = {
     /**
      * Users retrieved
      */
     200: ViewUsersResponse;
 };
 
-export type ViewUsersControllerViewUserV1Response = ViewUsersControllerViewUserV1Responses[keyof ViewUsersControllerViewUserV1Responses];
+export type ViewUsersV1Response = ViewUsersV1Responses[keyof ViewUsersV1Responses];
 
-export type ViewRolesControllerGetRolesV1Data = {
+export type PermissionV1Data = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/permissions';
+};
+
+export type PermissionV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type PermissionV1Error = PermissionV1Errors[keyof PermissionV1Errors];
+
+export type PermissionV1Responses = {
+    200: Array<string>;
+};
+
+export type PermissionV1Response = PermissionV1Responses[keyof PermissionV1Responses];
+
+export type SwaggerData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/oauth2-redirect';
+};
+
+export type SwaggerErrors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type SwaggerError = SwaggerErrors[keyof SwaggerErrors];
+
+export type SwaggerResponses = {
+    200: unknown;
+};
+
+export type StatusData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api';
+};
+
+export type StatusErrors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type StatusError = StatusErrors[keyof StatusErrors];
+
+export type ViewRoleIndexV1Data = {
     body?: never;
     path?: never;
     query?: never;
     url: '/api/v1/roles';
 };
 
-export type ViewRolesControllerGetRolesV1Responses = {
+export type ViewRoleIndexV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewRoleIndexV1Error = ViewRoleIndexV1Errors[keyof ViewRoleIndexV1Errors];
+
+export type ViewRoleIndexV1Responses = {
     /**
      * The roles has been successfully received.
      */
     200: ViewRoleIndexResponse;
 };
 
-export type ViewRolesControllerGetRolesV1Response = ViewRolesControllerGetRolesV1Responses[keyof ViewRolesControllerGetRolesV1Responses];
+export type ViewRoleIndexV1Response = ViewRoleIndexV1Responses[keyof ViewRoleIndexV1Responses];
 
-export type UpdateRolesPermissionsControllerUpdateRolePermissionsV1Data = {
+export type UpdateRolesPermissionsV1Data = {
     body: UpdateRolesPermissionsCommand;
     path?: never;
     query?: never;
     url: '/api/v1/roles';
 };
 
-export type UpdateRolesPermissionsControllerUpdateRolePermissionsV1Errors = {
+export type UpdateRolesPermissionsV1Errors = {
     404: {
+        traceId?: string | null;
         errors?: Array<RoleNotFoundError>;
+    };
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
     };
 };
 
-export type UpdateRolesPermissionsControllerUpdateRolePermissionsV1Error = UpdateRolesPermissionsControllerUpdateRolePermissionsV1Errors[keyof UpdateRolesPermissionsControllerUpdateRolePermissionsV1Errors];
+export type UpdateRolesPermissionsV1Error = UpdateRolesPermissionsV1Errors[keyof UpdateRolesPermissionsV1Errors];
 
-export type UpdateRolesPermissionsControllerUpdateRolePermissionsV1Responses = {
+export type UpdateRolesPermissionsV1Responses = {
     204: void;
 };
 
-export type UpdateRolesPermissionsControllerUpdateRolePermissionsV1Response = UpdateRolesPermissionsControllerUpdateRolePermissionsV1Responses[keyof UpdateRolesPermissionsControllerUpdateRolePermissionsV1Responses];
+export type UpdateRolesPermissionsV1Response = UpdateRolesPermissionsV1Responses[keyof UpdateRolesPermissionsV1Responses];
 
-export type CreateRoleControllerCreateRoleV1Data = {
+export type CreateRoleV1Data = {
     body: CreateRoleCommand;
     path?: never;
     query?: never;
     url: '/api/v1/roles';
 };
 
-export type CreateRoleControllerCreateRoleV1Responses = {
+export type CreateRoleV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type CreateRoleV1Error = CreateRoleV1Errors[keyof CreateRoleV1Errors];
+
+export type CreateRoleV1Responses = {
     201: unknown;
 };
 
-export type DeleteRoleControllerDeleteRoleV1Data = {
+export type DeleteRoleV1Data = {
     body?: never;
     path: {
         role: string;
@@ -452,11 +706,20 @@ export type DeleteRoleControllerDeleteRoleV1Data = {
     url: '/api/v1/roles/{role}';
 };
 
-export type DeleteRoleControllerDeleteRoleV1Responses = {
+export type DeleteRoleV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type DeleteRoleV1Error = DeleteRoleV1Errors[keyof DeleteRoleV1Errors];
+
+export type DeleteRoleV1Responses = {
     200: unknown;
 };
 
-export type ViewRoleControllerGetRoleV1Data = {
+export type ViewRoleDetailV1Data = {
     body?: never;
     path: {
         role: string;
@@ -465,16 +728,25 @@ export type ViewRoleControllerGetRoleV1Data = {
     url: '/api/v1/roles/{role}';
 };
 
-export type ViewRoleControllerGetRoleV1Responses = {
+export type ViewRoleDetailV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewRoleDetailV1Error = ViewRoleDetailV1Errors[keyof ViewRoleDetailV1Errors];
+
+export type ViewRoleDetailV1Responses = {
     /**
      * The role has been successfully received.
      */
-    200: RoleResponse;
+    200: ViewRoleDetailResponse;
 };
 
-export type ViewRoleControllerGetRoleV1Response = ViewRoleControllerGetRoleV1Responses[keyof ViewRoleControllerGetRoleV1Responses];
+export type ViewRoleDetailV1Response = ViewRoleDetailV1Responses[keyof ViewRoleDetailV1Responses];
 
-export type UpdateRoleControllerUpdateRoleV1Data = {
+export type UpdateRoleV1Data = {
     body: UpdateRoleCommand;
     path: {
         role: string;
@@ -483,27 +755,42 @@ export type UpdateRoleControllerUpdateRoleV1Data = {
     url: '/api/v1/roles/{role}';
 };
 
-export type UpdateRoleControllerUpdateRoleV1Responses = {
+export type UpdateRoleV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type UpdateRoleV1Error = UpdateRoleV1Errors[keyof UpdateRoleV1Errors];
+
+export type UpdateRoleV1Responses = {
     201: unknown;
 };
 
-export type FileControllerCreateFileV1Data = {
-    body: CreateFileDto;
+export type CreateFileV1Data = {
+    body: CreateFileCommand;
     path?: never;
     query?: never;
     url: '/api/v1/files';
 };
 
-export type FileControllerCreateFileV1Responses = {
-    /**
-     * Successfully created file
-     */
+export type CreateFileV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type CreateFileV1Error = CreateFileV1Errors[keyof CreateFileV1Errors];
+
+export type CreateFileV1Responses = {
     201: CreateFileResponse;
 };
 
-export type FileControllerCreateFileV1Response = FileControllerCreateFileV1Responses[keyof FileControllerCreateFileV1Responses];
+export type CreateFileV1Response = CreateFileV1Responses[keyof CreateFileV1Responses];
 
-export type FileControllerConfirmFileUploadV1Data = {
+export type ConfirmFileUploadV1Data = {
     body?: never;
     path: {
         file: string;
@@ -512,23 +799,20 @@ export type FileControllerConfirmFileUploadV1Data = {
     url: '/api/v1/files/{file}/confirm-upload';
 };
 
-export type FileControllerConfirmFileUploadV1Responses = {
-    /**
-     * Successfully confirmed file upload
-     */
+export type ConfirmFileUploadV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ConfirmFileUploadV1Error = ConfirmFileUploadV1Errors[keyof ConfirmFileUploadV1Errors];
+
+export type ConfirmFileUploadV1Responses = {
     200: unknown;
 };
 
-export type FileControllerDownloadFileV1Data = {
-    body?: never;
-    path: {
-        file: string;
-    };
-    query?: never;
-    url: '/api/v1/files/{file}/download';
-};
-
-export type FileControllerRemoveFileV1Data = {
+export type DeleteFileV1Data = {
     body?: never;
     path: {
         file: string;
@@ -537,14 +821,38 @@ export type FileControllerRemoveFileV1Data = {
     url: '/api/v1/files/{file}';
 };
 
-export type FileControllerRemoveFileV1Responses = {
-    /**
-     * Successfully removed file
-     */
+export type DeleteFileV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type DeleteFileV1Error = DeleteFileV1Errors[keyof DeleteFileV1Errors];
+
+export type DeleteFileV1Responses = {
     200: unknown;
 };
 
-export type ViewContactIndexControllerViewContactIndexV1Data = {
+export type DownloadFileV1Data = {
+    body?: never;
+    path: {
+        file: string;
+    };
+    query?: never;
+    url: '/api/v1/files/{file}/download';
+};
+
+export type DownloadFileV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type DownloadFileV1Error = DownloadFileV1Errors[keyof DownloadFileV1Errors];
+
+export type ViewContactIndexV1Data = {
     body?: never;
     path?: never;
     query?: {
@@ -554,26 +862,44 @@ export type ViewContactIndexControllerViewContactIndexV1Data = {
     url: '/api/v1/contacts';
 };
 
-export type ViewContactIndexControllerViewContactIndexV1Responses = {
+export type ViewContactIndexV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewContactIndexV1Error = ViewContactIndexV1Errors[keyof ViewContactIndexV1Errors];
+
+export type ViewContactIndexV1Responses = {
     200: ViewContactIndexResponse;
 };
 
-export type ViewContactIndexControllerViewContactIndexV1Response = ViewContactIndexControllerViewContactIndexV1Responses[keyof ViewContactIndexControllerViewContactIndexV1Responses];
+export type ViewContactIndexV1Response = ViewContactIndexV1Responses[keyof ViewContactIndexV1Responses];
 
-export type CreateContactControllerCreateContactV1Data = {
+export type CreateContactV1Data = {
     body: CreateContactCommand;
     path?: never;
     query?: never;
     url: '/api/v1/contacts';
 };
 
-export type CreateContactControllerCreateContactV1Responses = {
+export type CreateContactV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type CreateContactV1Error = CreateContactV1Errors[keyof CreateContactV1Errors];
+
+export type CreateContactV1Responses = {
     201: CreateContactResponse;
 };
 
-export type CreateContactControllerCreateContactV1Response = CreateContactControllerCreateContactV1Responses[keyof CreateContactControllerCreateContactV1Responses];
+export type CreateContactV1Response = CreateContactV1Responses[keyof CreateContactV1Responses];
 
-export type DeleteContactControllerDeleteContactV1Data = {
+export type DeleteContactV1Data = {
     body?: never;
     path: {
         uuid: string;
@@ -582,11 +908,20 @@ export type DeleteContactControllerDeleteContactV1Data = {
     url: '/api/v1/contacts/{uuid}';
 };
 
-export type DeleteContactControllerDeleteContactV1Responses = {
+export type DeleteContactV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type DeleteContactV1Error = DeleteContactV1Errors[keyof DeleteContactV1Errors];
+
+export type DeleteContactV1Responses = {
     200: unknown;
 };
 
-export type ViewContactDetailControllerViewContactDetailV1Data = {
+export type ViewContactDetailV1Data = {
     body?: never;
     path: {
         uuid: string;
@@ -595,13 +930,22 @@ export type ViewContactDetailControllerViewContactDetailV1Data = {
     url: '/api/v1/contacts/{uuid}';
 };
 
-export type ViewContactDetailControllerViewContactDetailV1Responses = {
+export type ViewContactDetailV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewContactDetailV1Error = ViewContactDetailV1Errors[keyof ViewContactDetailV1Errors];
+
+export type ViewContactDetailV1Responses = {
     200: ViewContactDetailResponse;
 };
 
-export type ViewContactDetailControllerViewContactDetailV1Response = ViewContactDetailControllerViewContactDetailV1Responses[keyof ViewContactDetailControllerViewContactDetailV1Responses];
+export type ViewContactDetailV1Response = ViewContactDetailV1Responses[keyof ViewContactDetailV1Responses];
 
-export type UpdateContactControllerUpdateContactV1Data = {
+export type UpdateContactV1Data = {
     body: UpdateContactCommand;
     path: {
         uuid: string;
@@ -610,38 +954,152 @@ export type UpdateContactControllerUpdateContactV1Data = {
     url: '/api/v1/contacts/{uuid}';
 };
 
-export type UpdateContactControllerUpdateContactV1Responses = {
+export type UpdateContactV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type UpdateContactV1Error = UpdateContactV1Errors[keyof UpdateContactV1Errors];
+
+export type UpdateContactV1Responses = {
     200: unknown;
 };
 
-export type ViewPreferencesControllerViewPreferencesIndexV1Data = {
+export type ViewUiPreferencesV1Data = {
     body?: never;
-    path: {
-        userUuid: string;
-    };
+    path?: never;
     query?: never;
-    url: '/api/v1/users/{userUuid}/preferences';
+    url: '/api/v1/me/ui-preferences';
 };
 
-export type ViewPreferencesControllerViewPreferencesIndexV1Responses = {
-    200: ViewPreferencesResponse;
-};
-
-export type ViewPreferencesControllerViewPreferencesIndexV1Response = ViewPreferencesControllerViewPreferencesIndexV1Responses[keyof ViewPreferencesControllerViewPreferencesIndexV1Responses];
-
-export type UpdatePreferencesControllerUpdatePreferencesV1Data = {
-    body: UpdatePreferencesCommand;
-    path: {
-        userUuid: string;
+export type ViewUiPreferencesV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
     };
-    query?: never;
-    url: '/api/v1/users/{userUuid}/preferences';
 };
 
-export type UpdatePreferencesControllerUpdatePreferencesV1Responses = {
+export type ViewUiPreferencesV1Error = ViewUiPreferencesV1Errors[keyof ViewUiPreferencesV1Errors];
+
+export type ViewUiPreferencesV1Responses = {
+    200: ViewUiPreferencesResponse;
+};
+
+export type ViewUiPreferencesV1Response = ViewUiPreferencesV1Responses[keyof ViewUiPreferencesV1Responses];
+
+export type UpdateUiPreferencesV1Data = {
+    body: UpdateUiPreferencesCommand;
+    path?: never;
+    query?: never;
+    url: '/api/v1/me/ui-preferences';
+};
+
+export type UpdateUiPreferencesV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type UpdateUiPreferencesV1Error = UpdateUiPreferencesV1Errors[keyof UpdateUiPreferencesV1Errors];
+
+export type UpdateUiPreferencesV1Responses = {
     200: unknown;
 };
+
+export type CreateOneSignalTokenV1Data = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/v1/onesignal/token';
+};
+
+export type CreateOneSignalTokenV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type CreateOneSignalTokenV1Error = CreateOneSignalTokenV1Errors[keyof CreateOneSignalTokenV1Errors];
+
+export type CreateOneSignalTokenV1Responses = {
+    201: CreateOneSignalTokenResponse;
+};
+
+export type CreateOneSignalTokenV1Response = CreateOneSignalTokenV1Responses[keyof CreateOneSignalTokenV1Responses];
+
+export type SendPushNotificationV1Data = {
+    body: SendPushNotificationCommand;
+    path?: never;
+    query?: never;
+    url: '/api/v1/onesignal/push-notification';
+};
+
+export type SendPushNotificationV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type SendPushNotificationV1Error = SendPushNotificationV1Errors[keyof SendPushNotificationV1Errors];
+
+export type SendPushNotificationV1Responses = {
+    201: unknown;
+};
+
+export type ViewDomainEventLogIndexV1Data = {
+    body?: never;
+    path?: never;
+    query?: {
+        pagination?: ViewDomainEventLogIndexPaginationQuery;
+    };
+    url: '/api/v1/event-logs';
+};
+
+export type ViewDomainEventLogIndexV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewDomainEventLogIndexV1Error = ViewDomainEventLogIndexV1Errors[keyof ViewDomainEventLogIndexV1Errors];
+
+export type ViewDomainEventLogIndexV1Responses = {
+    200: ViewDomainEventLogIndexResponse;
+};
+
+export type ViewDomainEventLogIndexV1Response = ViewDomainEventLogIndexV1Responses[keyof ViewDomainEventLogIndexV1Responses];
+
+export type SearchCollectionsV1Data = {
+    body?: never;
+    path?: never;
+    query: {
+        filter: SearchCollectionsFilterQuery;
+        search: string;
+    };
+    url: '/api/v1/search';
+};
+
+export type SearchCollectionsV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type SearchCollectionsV1Error = SearchCollectionsV1Errors[keyof SearchCollectionsV1Errors];
+
+export type SearchCollectionsV1Responses = {
+    200: SearchCollectionsResponse;
+};
+
+export type SearchCollectionsV1Response = SearchCollectionsV1Responses[keyof SearchCollectionsV1Responses];
 
 export type ClientOptions = {
-    baseUrl: 'http://localhost:3000' | 'https://example.test.appwi.se' | 'https://example.qa.appwi.se' | 'https://example.development.appwi.se' | 'https://example.staging.appwi.se' | 'https://example.production.appwi.se' | (string & {});
+    baseUrl: 'https://example.development.appwi.se' | 'http://localhost:3000' | 'https://example.test.appwi.se' | 'https://example.qa.appwi.se' | 'https://example.staging.appwi.se' | 'https://example.production.appwi.se' | (string & {});
 };

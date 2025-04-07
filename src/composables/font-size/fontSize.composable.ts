@@ -9,7 +9,7 @@ import {
   watch,
 } from 'vue'
 
-import type { FontSize } from '@/modules/setting/models/preference/settingFontSize.model.ts'
+import { FontSize } from '@/client'
 import { i18nPlugin } from '@/plugins/i18n.plugin.ts'
 import { createI18nKeyMap } from '@/types/enum.type'
 
@@ -23,22 +23,22 @@ const LOCAL_STORAGE_KEY = 'fontSize'
 
 export function useFontSizeSelect(): UseFontSizeReturnType {
   const fontSizes: FontSize[] = [
-    'smaller',
-    'small',
-    'default',
-    'large',
-    'larger',
+    FontSize.SMALLER,
+    FontSize.SMALL,
+    FontSize.DEFAULT,
+    FontSize.LARGE,
+    FontSize.LARGER,
   ]
 
   const i18nKeys = createI18nKeyMap<FontSize>({
-    default: 'module.setting.font_size.default',
-    large: 'module.setting.font_size.large',
-    larger: 'module.setting.font_size.larger',
-    small: 'module.setting.font_size.small',
-    smaller: 'module.setting.font_size.smaller',
+    default: 'module.settings.font_size.default',
+    large: 'module.settings.font_size.large',
+    larger: 'module.settings.font_size.larger',
+    small: 'module.settings.font_size.small',
+    smaller: 'module.settings.font_size.smaller',
   })
 
-  const fontSize = useLocalStorage<FontSize>(LOCAL_STORAGE_KEY, 'default')
+  const fontSize = useLocalStorage<FontSize>(LOCAL_STORAGE_KEY, FontSize.DEFAULT)
 
   const value = computed<FontSize>({
     get: () => fontSize.value,
@@ -64,27 +64,27 @@ export function useFontSizeSelect(): UseFontSizeReturnType {
 }
 
 export function useFontSize(): void {
-  const fontSize = useLocalStorage<FontSize>(LOCAL_STORAGE_KEY, 'default')
+  const fontSize = useLocalStorage<FontSize>(LOCAL_STORAGE_KEY, FontSize.DEFAULT)
 
   const fontSizeToPxMap = new Map<FontSize, number>([
     [
-      'smaller',
+      FontSize.SMALLER,
       12,
     ],
     [
-      'small',
+      FontSize.SMALL,
       14,
     ],
     [
-      'default',
+      FontSize.DEFAULT,
       16,
     ],
     [
-      'large',
+      FontSize.LARGE,
       18,
     ],
     [
-      'larger',
+      FontSize.LARGER,
       20,
     ],
   ])
