@@ -26,7 +26,7 @@ function onClick(): void {
       <template #trigger>
         <VcIconButton
           :label="i18n.t('shared.info')"
-          :icon="clipboard.copied.value ? 'clipboardCheck' : 'infoCircle'"
+          :icon="clipboard.copied.value ? 'check' : 'infoCircle'"
           :variant="clipboard.copied.value ? 'tertiary-color' : 'tertiary'"
           @click="onClick"
         />

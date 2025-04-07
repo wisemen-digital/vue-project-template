@@ -10,6 +10,11 @@ interface UseLocalizedDateFormatReturnType {
   toDate: (date: Date) => string
   /**
    * @param date The date to format.
+   * @returns E.g. 2024-01-01 10:30:00
+   */
+  toDateTime: (date: Date) => string
+  /**
+   * @param date The date to format.
    * @returns E.g. 01 January 2024
    */
   toLongDate: (date: Date) => string
@@ -97,6 +102,12 @@ export function useLocalizedDateFormat(): UseLocalizedDateFormatReturnType {
     return formatter.format(date)
   }
 
+  function toDateTime(date: Date): string {
+    return dayjs(date)
+      .locale(i18n.locale.value)
+      .format('YYYY-MM-DD HH:mm:ss')
+  }
+
   function toShortDate(date: Date): string {
     return dayjs(date)
       .locale(i18n.locale.value)
@@ -111,6 +122,7 @@ export function useLocalizedDateFormat(): UseLocalizedDateFormatReturnType {
 
   return {
     toDate,
+    toDateTime,
     toLongDate,
     toNumericDate,
     toShortDate,

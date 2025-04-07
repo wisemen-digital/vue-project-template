@@ -14,10 +14,10 @@ import { useI18n } from 'vue-i18n'
 
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppTableTextCell from '@/components/app/table/AppTableTextCell.vue'
+import { useLocalizedDateFormat } from '@/composables/localized-date-format/localizedDateFormat.composable.ts'
 import SettingEventLogIndexTableContentCell from '@/modules/setting/features/event-logs/components/SettingEventLogIndexTableContentCell.vue'
 import type { SettingLogIndex } from '@/modules/setting/models/event-log/settingEventLogIndex.model.ts'
 import type { SettingLogIndexPagination } from '@/modules/setting/models/event-log/settingEventLogIndexPagination.model.ts'
-import { DateFormatUtil } from '@/utils/date.util.ts'
 
 const props = defineProps<{
   isFetching: boolean
@@ -29,6 +29,8 @@ const props = defineProps<{
 }>()
 
 const i18n = useI18n()
+
+const dateFormatter = useLocalizedDateFormat()
 
 const columns = computed<TableColumn<SettingLogIndex>[]>(() => [
   {
@@ -44,15 +46,15 @@ const columns = computed<TableColumn<SettingLogIndex>[]>(() => [
     width: '20rem',
   },
   {
-    cell: (eventLog): VNode => h(AppTableTextCell, { value: DateFormatUtil.toDateTime(eventLog.createdAt) }),
+    cell: (eventLog): VNode => h(AppTableTextCell, { value: dateFormatter.toDateTime(eventLog.createdAt) }),
     headerLabel: i18n.t('shared.created_at'),
-    key: 'created_at',
+    key: 'createdAt',
     width: '12rem',
   },
   {
-    cell: (eventLog): VNode => h(AppTableTextCell, { value: eventLog.id }),
+    cell: (eventLog): VNode => h(AppTableTextCell, { value: eventLog.uuid }),
     headerLabel: i18n.t('shared.id'),
-    key: 'id',
+    key: 'uuid',
     width: '24rem',
   },
   {

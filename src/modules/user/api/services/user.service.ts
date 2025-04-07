@@ -5,7 +5,7 @@ import type {
 import { PaginationParamsBuilder } from '@wisemen/vue-core'
 
 import {
-  updateRolesPermissionsV1,
+  setUserRolesV1,
   viewUsersV1,
   viewUserV1,
 } from '@/client'
@@ -40,7 +40,7 @@ export class UserService {
   }
 
   static async updateRoles(userUuid: UserUuid, roleUuids: SettingRoleUuid[]): Promise<void> {
-    await updateRolesPermissionsV1({
+    await setUserRolesV1({
       body: { roleUuids },
       path: { user: userUuid },
     })
