@@ -9,6 +9,7 @@ export const icons = {
   edit: import('./EditIcon.vue'),
   enterKey: import('./EnterKeyIcon.vue'),
   escKey: import('./EscKeyIcon.vue'),
+  file: import('./FileIcon.vue'),
   googleLogo: import('./GoogleLogoIcon.vue'),
   logout: import('./LogoutIcon.vue'),
   shield: import('./ShieldIcon.vue'),

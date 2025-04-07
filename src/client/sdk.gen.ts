@@ -98,8 +98,14 @@ export const swagger = <ThrowOnError extends boolean = true>(options?: Options<S
     });
 };
 
-
 export const status = <ThrowOnError extends boolean = true>(options?: Options<StatusData, ThrowOnError>) => {
+    return (options?.client ?? _heyApiClient).get<unknown, StatusError, ThrowOnError>({
+        url: '/api',
+        ...options
+    });
+};
+
+export const statusHealth = <ThrowOnError extends boolean = true>(options?: Options<StatusData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<unknown, StatusError, ThrowOnError>({
         url: '/api/health',
         ...options

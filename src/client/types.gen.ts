@@ -229,7 +229,8 @@ export enum UiTheme {
 }
 
 export enum Locale {
-    EN_US = 'en-US'
+    EN_US = 'en-US',
+    NL_BE= 'nl-BE'
 }
 
 export enum FontSize {
@@ -291,6 +292,7 @@ export type UserCreatedEventContent = {
 
 export type UserCreatedDomainEventLog = {
     uuid: string;
+    topic: string;
     createdAt: string;
     version: number;
     source: string;
@@ -307,6 +309,7 @@ export type RoleAssignedToUserEventContent = {
 
 export type UserRoleAssignedDomainEventLog = {
     uuid: string;
+    topic: string;
     createdAt: string;
     version: number;
     source: string;
@@ -327,6 +330,7 @@ export type RolePermissionsUpdatedEventContent = {
 
 export type RolesPermissionsUpdatedDomainEventLog = {
     uuid: string;
+    topic: string;
     createdAt: string;
     version: number;
     source: string;
@@ -338,6 +342,7 @@ export type RolesPermissionsUpdatedDomainEventLog = {
 
 export type DomainEventLogResponse = {
     uuid: string;
+    topic: string;
     createdAt: string;
     version: number;
     source: string;
@@ -605,12 +610,11 @@ export type SwaggerResponses = {
     200: unknown;
 };
 
-
 export type StatusData = {
     body?: never;
     path?: never;
     query?: never;
-    url: '/api/health';
+    url: '/api';
 };
 
 export type StatusErrors = {
@@ -621,10 +625,6 @@ export type StatusErrors = {
 };
 
 export type StatusError = StatusErrors[keyof StatusErrors];
-
-export type StatusResponses = {
-    200: unknown;
-};
 
 export type ViewRoleIndexV1Data = {
     body?: never;

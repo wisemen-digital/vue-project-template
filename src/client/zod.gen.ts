@@ -357,6 +357,7 @@ export const zUserCreatedEventContent = z.object({
 
 export const zUserCreatedDomainEventLog = z.object({
     uuid: z.string().uuid(),
+    topic: z.string(),
     createdAt: z.string().datetime(),
     version: z.number().int().gte(0),
     source: z.string(),
@@ -378,6 +379,7 @@ export const zRoleAssignedToUserEventContent = z.object({
 
 export const zUserRoleAssignedDomainEventLog = z.object({
     uuid: z.string().uuid(),
+    topic: z.string(),
     createdAt: z.string().datetime(),
     version: z.number().int().gte(0),
     source: z.string(),
@@ -403,6 +405,7 @@ export const zRolePermissionsUpdatedEventContent = z.object({
 
 export const zRolesPermissionsUpdatedDomainEventLog = z.object({
     uuid: z.string().uuid(),
+    topic: z.string(),
     createdAt: z.string().datetime(),
     version: z.number().int().gte(0),
     source: z.string(),
@@ -419,6 +422,7 @@ export const zRolesPermissionsUpdatedDomainEventLog = z.object({
 
 export const zDomainEventLogResponse = z.object({
     uuid: z.string().uuid(),
+    topic: z.string(),
     createdAt: z.string().datetime(),
     version: z.number().int().gte(0),
     source: z.string(),
