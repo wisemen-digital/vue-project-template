@@ -57,12 +57,6 @@ const columns = computed<TableColumn<SettingLogIndex>[]>(() => [
     key: 'uuid',
     width: '24rem',
   },
-  {
-    cell: (eventLog): VNode => h(AppTableTextCell, { value: eventLog.topic }),
-    headerLabel: i18n.t('shared.topic'),
-    key: 'topic',
-    width: '40rem',
-  },
 ])
 
 async function onNext(): Promise<void> {
