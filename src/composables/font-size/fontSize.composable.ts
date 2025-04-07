@@ -31,11 +31,11 @@ export function useFontSizeSelect(): UseFontSizeReturnType {
   ]
 
   const i18nKeys = createI18nKeyMap<FontSize>({
-    default: 'module.setting.font_size.default',
-    large: 'module.setting.font_size.large',
-    larger: 'module.setting.font_size.larger',
-    small: 'module.setting.font_size.small',
-    smaller: 'module.setting.font_size.smaller',
+    default: 'module.settings.font_size.default',
+    large: 'module.settings.font_size.large',
+    larger: 'module.settings.font_size.larger',
+    small: 'module.settings.font_size.small',
+    smaller: 'module.settings.font_size.smaller',
   })
 
   const fontSize = useLocalStorage<FontSize>(LOCAL_STORAGE_KEY, FontSize.DEFAULT)
