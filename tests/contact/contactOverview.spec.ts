@@ -1,0 +1,100 @@
+import { HttpResponse } from 'msw'
+
+import { TEST_ID } from '@/constants/testId.constant'
+import { ContactIndexDtoBuilder } from '@/models/contact/index/contactIndexDto.builder'
+import {
+  expect,
+  test,
+} from '@@/base.fixture'
+import { getPaginatedJson } from '@@/utils/interceptor.util'
+
+test('display contacts in the table', async ({
+  http,
+  page,
+  worker,
+}) => {
+  const CONTACT_1 = new ContactIndexDtoBuilder()
+    .withFirstName('Charles')
+    .withLastName('Doe')
+    .withEmail('charles.doe@email.com')
+    .withPhone('+1 234 567 890')
+    .build()
+
+  const CONTACT_2 = new ContactIndexDtoBuilder()
+    .withFirstName('Nancy')
+    .withLastName('Johnson')
+    .withEmail('nancy.johnson@email.com')
+    .withPhone('+1 987 654 321')
+    .build()
+
+  await worker.use(
+    http.get('*/api/v1/contacts', () => {
+      return HttpResponse.json(getPaginatedJson([
+        CONTACT_1,
+        CONTACT_2,
+      ]))
+    }),
+  )
+
+  await page.goto('/contacts')
+
+  // Check if the contacts are displayed in the table
+  await expect(page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.TABLE.EMAIL_LINK).first()).toContainText('charles.doe@email.com')
+  await expect(page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.TABLE.NAME_LINK).first()).toContainText('Charles Doe')
+  await expect(page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.TABLE.PHONE_LINK).first()).toContainText('+1 234 567 890')
+})
+
+test('navigate to contact detail page', async ({
+  http,
+  page,
+  worker,
+}) => {
+  const CONTACT = new ContactIndexDtoBuilder()
+    .withFirstName('Charles')
+    .withLastName('Doe')
+    .withEmail('charles.doe@email.com')
+    .withPhone('+1 234 567 890')
+    .build()
+
+  await worker.use(
+    http.get('*/api/v1/contacts', () => {
+      return HttpResponse.json(getPaginatedJson([
+        CONTACT,
+      ]))
+    }),
+    http.get(`*/api/v1/contacts/${CONTACT.uuid}`, () => {
+      return HttpResponse.json(CONTACT)
+    }),
+  )
+
+  await page.goto('/contacts')
+
+  // Click on the contact name to navigate to the detail page
+  await page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.TABLE.NAME_LINK).click()
+
+  // Check if we're on the detail page
+  await expect(page.url()).toContain(`/contacts/${CONTACT.uuid}`)
+})
+
+test('create contact button is visible and navigates to create page', async ({
+  http,
+  page,
+  worker,
+}) => {
+  await worker.use(
+    http.get('*/api/v1/contacts', () => {
+      return HttpResponse.json(getPaginatedJson([]))
+    }),
+  )
+
+  await page.goto('/contacts')
+
+  // Check if the create button is visible
+  await expect(page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.CREATE_BUTTON)).toBeVisible()
+
+  // Click on the create button
+  await page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.CREATE_BUTTON).click()
+
+  // Check if we're on the create page
+  await expect(page.url()).toContain('/contacts/create')
+})
