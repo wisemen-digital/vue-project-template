@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import {
-  VcBadge,
-  VcTableCell,
-} from '@wisemen/vue-core'
+import { VcTableCell } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
 import type { ContactIndex } from '@/models/contact/index/contactIndex.model'
@@ -18,17 +15,11 @@ const i18n = useI18n()
   <VcTableCell
     data-test-id="contact-status"
   >
-    <VcBadge
-      v-if="props.contact.isActive"
-      color="success"
-    >
+    <span v-if="props.contact.isActive">
       {{ i18n.t('contact.status.active') }}
-    </VcBadge>
-    <VcBadge
-      v-else
-      color="error"
-    >
+    </span>
+    <span v-else>
       {{ i18n.t('contact.status.inactive') }}
-    </VcBadge>
+    </span>
   </VcTableCell>
 </template>

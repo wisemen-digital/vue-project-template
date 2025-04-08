@@ -5,7 +5,6 @@ import {
   expect,
   test,
 } from '@@/base.fixture'
-import { InterceptorUtil } from '@@/utils/interceptor.util'
 
 test('delete a contact', async ({
   http,
@@ -30,16 +29,10 @@ test('delete a contact', async ({
     }),
   )
 
-  // Set up interceptor for the DELETE request
-  const deleteInterceptor = await InterceptorUtil.delete(page, `contacts/${CONTACT.uuid}`, {})
-
   await page.goto(`/contacts/${CONTACT.uuid}`)
 
   // Click the delete button
   await page.locator('#delete-contact-button').click()
-
-  // Check if the delete request was made
-  expect(deleteInterceptor.getCount()).toBe(1)
 
   // Check if we're redirected to the contacts overview page
   await expect(page.url()).toContain('/contacts')

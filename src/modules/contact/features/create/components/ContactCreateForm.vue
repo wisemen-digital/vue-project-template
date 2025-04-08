@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {
   useToast,
-  VcCheckbox,
+  VcPhoneNumberField,
   VcTextField,
 } from '@wisemen/vue-core'
 import { useForm } from 'formango'
@@ -28,7 +28,6 @@ const contactCreateMutation = useContactCreateMutation()
 
 const form = useForm({
   initialState: () => ({
-    isActive: true,
     email: null,
     firstName: null,
     lastName: null,
@@ -62,7 +61,6 @@ const firstName = form.register('firstName')
 const lastName = form.register('lastName')
 const email = form.register('email')
 const phone = form.register('phone')
-const isActive = form.register('isActive', false)
 </script>
 
 <template>
@@ -73,7 +71,7 @@ const isActive = form.register('isActive', false)
           :form-id="formId"
           :form="form"
           :data-test-id="TEST_ID.CONTACTS.FORM.SUBMIT_BUTTON"
-          :label="i18n.t('form.save')"
+          :label="i18n.t('shared.save')"
         />
       </AppTeleport>
 
@@ -107,24 +105,13 @@ const isActive = form.register('isActive', false)
               :label="i18n.t('contact.email')"
               type="email"
             />
-            <VcTextField
+            <VcPhoneNumberField
               :test-id="TEST_ID.CONTACTS.FORM.PHONE_INPUT"
               v-bind="toFormField(phone)"
               :label="i18n.t('contact.phone')"
               type="tel"
             />
           </FormGrid>
-        </FormFieldset>
-
-        <FormFieldset
-          :description="i18n.t('module.contact.form.section.status.description')"
-          :title="i18n.t('contact.status')"
-        >
-          <VcCheckbox
-            :test-id="TEST_ID.CONTACTS.FORM.IS_ACTIVE_CHECKBOX"
-            v-bind="toFormField(isActive)"
-            :label="i18n.t('contact.is_active')"
-          />
         </FormFieldset>
       </FormLayout>
     </template>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {
   useToast,
-  VcCheckbox,
   VcTextField,
 } from '@wisemen/vue-core'
 import { useForm } from 'formango'
@@ -70,7 +69,6 @@ const firstName = form.register('firstName')
 const lastName = form.register('lastName')
 const email = form.register('email')
 const phone = form.register('phone')
-const isActive = form.register('isActive', false)
 </script>
 
 <template>
@@ -122,17 +120,6 @@ const isActive = form.register('isActive', false)
               type="tel"
             />
           </FormGrid>
-        </FormFieldset>
-
-        <FormFieldset
-          :description="i18n.t('module.contact.form.section.status.description')"
-          :title="i18n.t('contact.status')"
-        >
-          <VcCheckbox
-            :test-id="TEST_ID.CONTACTS.FORM.IS_ACTIVE_CHECKBOX"
-            v-bind="toFormField(isActive)"
-            :label="i18n.t('contact.is_active')"
-          />
         </FormFieldset>
       </FormLayout>
     </template>

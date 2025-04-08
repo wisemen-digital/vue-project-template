@@ -1,7 +1,6 @@
 import { z } from 'zod'
 
 export const contactCreateFormSchema = z.object({
-  isActive: z.boolean(),
   email: z.string().email().nullable(),
   firstName: z.string().nullable(),
   lastName: z.string().nullable(),

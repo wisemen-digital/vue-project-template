@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@wisemen/vue-core'
+import { VcRouterLinkButton } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { Permission } from '@/client'
-import AppEditItemButton from '@/components/app/button/AppEditItemButton.vue'
 import AppPage from '@/components/layout/AppPage.vue'
 import { TEST_ID } from '@/constants/testId.constant'
 import { ContactUtil } from '@/models/contact/contact.util'
@@ -41,7 +41,7 @@ const isEditButtonVisible = computed<boolean>(() => authStore.hasPermission(Perm
     :breadcrumbs="breadcrumbs"
   >
     <template #header-actions>
-      <AppEditItemButton
+      <VcRouterLinkButton
         v-if="isEditButtonVisible"
         :to="{
           name: 'contact-update',
@@ -50,8 +50,9 @@ const isEditButtonVisible = computed<boolean>(() => authStore.hasPermission(Perm
           },
         }"
         :data-test-id="TEST_ID.CONTACTS.DETAIL.EDIT_BUTTON"
-        :label="i18n.t('module.contact.detail.edit_contact')"
-      />
+      >
+        {{ i18n.t('module.contact.detail.edit_contact') }}
+      </VcRouterLinkButton>
     </template>
 
     <div
@@ -71,23 +72,23 @@ const isEditButtonVisible = computed<boolean>(() => authStore.hasPermission(Perm
         </h2>
         <div class="space-y-2">
           <div>
-            <span class="font-medium">{{ i18n.t('contact.first_name') }}:</span>
+            <span class="font-medium">{{ i18n.t('contact.first_name') }}</span>
             <span class="ml-2">{{ contact.firstName ?? '-' }}</span>
           </div>
           <div>
-            <span class="font-medium">{{ i18n.t('contact.last_name') }}:</span>
+            <span class="font-medium">{{ i18n.t('contact.last_name') }}</span>
             <span class="ml-2">{{ contact.lastName ?? '-' }}</span>
           </div>
           <div>
-            <span class="font-medium">{{ i18n.t('contact.email') }}:</span>
+            <span class="font-medium">{{ i18n.t('contact.email') }}</span>
             <span class="ml-2">{{ contact.email ?? '-' }}</span>
           </div>
           <div>
-            <span class="font-medium">{{ i18n.t('contact.phone') }}:</span>
+            <span class="font-medium">{{ i18n.t('contact.phone') }}</span>
             <span class="ml-2">{{ contact.phone ?? '-' }}</span>
           </div>
           <div>
-            <span class="font-medium">{{ i18n.t('contact.status') }}:</span>
+            <span class="font-medium">{{ i18n.t('contact.status') }}</span>
             <span class="ml-2">
               <span v-if="contact.isActive">
                 {{ i18n.t('contact.status.active') }}

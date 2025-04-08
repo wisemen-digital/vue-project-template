@@ -39,6 +39,13 @@ function onSignOut(): void {
                 label: i18n.t('user.label.plural'),
                 icon: 'barChartSquare',
               },
+              {
+                to: {
+                  name: 'contact-overview',
+                },
+                label: i18n.t('module.contact.title'),
+                icon: 'plus',
+              },
             ],
           },
         ]"

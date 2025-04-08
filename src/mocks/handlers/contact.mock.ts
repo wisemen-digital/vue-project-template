@@ -5,8 +5,7 @@ import {
 
 import { ContactIndexDtoBuilder } from '@/models/contact/index/contactIndexDto.builder'
 import type { ContactIndexDto } from '@/models/contact/index/contactIndexDto.model'
-
-import { getPaginatedJson } from '../../../tests/utils/interceptor.util.ts'
+import { PaginationUtil } from '@/utils/pagination.util.ts'
 
 const contacts: ContactIndexDto[] = [
   new ContactIndexDtoBuilder()
@@ -25,7 +24,7 @@ const contacts: ContactIndexDto[] = [
 
 export const contactHandlers = [
   http.get('*/api/v1/contacts', () => {
-    return HttpResponse.json(getPaginatedJson(contacts))
+    return HttpResponse.json(PaginationUtil.getJson(contacts))
   }),
 
   http.get('*/api/v1/contacts/:uuid', ({ params }) => {
@@ -40,24 +39,25 @@ export const contactHandlers = [
   }),
 
   http.post('*/api/v1/contacts', async ({ request }) => {
-    const body = await request.json()
-    const newContact = {
+    const body = await request.json() as ContactIndexDto
+
+    const contact = {
       ...body,
       uuid: crypto.randomUUID(),
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     }
 
-    contacts.push(newContact as ContactIndexDto)
+    contacts.push(contact as ContactIndexDto)
 
-    return HttpResponse.json(newContact, { status: 201 })
+    return HttpResponse.json(contact, { status: 201 })
   }),
 
   http.put('*/api/v1/contacts/:uuid', async ({
     params, request,
   }) => {
-    const { uuid } = params
-    const body = await request.json()
+    const uuid = params.uuid
+    const body = await request.json() as ContactIndexDto
     const contactIndex = contacts.findIndex((c) => c.uuid === uuid)
 
     if (contactIndex === -1) {

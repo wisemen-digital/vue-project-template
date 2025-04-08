@@ -27,7 +27,7 @@ export class ContactIndexPaginationTransformer {
   static toDto(pagination: ContactIndexPagination): ContactIndexPaginationDto {
     return {
       filter: {
-        isActive: pagination.filter.isActive !== undefined
+        isActive: pagination.filter?.isActive !== undefined
           ? String(pagination.filter.isActive)
           : undefined,
       },
@@ -36,17 +36,22 @@ export class ContactIndexPaginationTransformer {
   }
 }
 
-export class ContactTransformer {
-  static createDtoFromForm(form: ContactCreateForm): ContactCreateDto {
+export class ContactDetailTransformer {
+  static fromDto(dto: ContactDetailDto): ContactDetail {
     return {
-      isActive: form.isActive,
-      email: form.email,
-      firstName: form.firstName,
-      lastName: form.lastName,
-      phone: form.phone,
+      uuid: dto.uuid as ContactUuid,
+      createdAt: dto.createdAt,
+      updatedAt: dto.updatedAt,
+      isActive: dto.isActive,
+      email: dto.email,
+      firstName: dto.firstName,
+      lastName: dto.lastName,
+      phone: dto.phone,
     }
   }
+}
 
+export class ContactCreateTransformer {
   static fromDto(dto: ContactDetailDto): ContactDetail {
     return {
       uuid: dto.uuid as ContactUuid,
@@ -60,7 +65,18 @@ export class ContactTransformer {
     }
   }
 
-  static updateDtoFromForm(form: ContactUpdateForm): ContactUpdateDto {
+  static toDto(form: ContactCreateForm): ContactCreateDto {
+    return {
+      email: form.email,
+      firstName: form.firstName,
+      lastName: form.lastName,
+      phone: form.phone,
+    }
+  }
+}
+
+export class ContactUpdateTransformer {
+  static toDto(form: ContactUpdateForm): ContactUpdateDto {
     return {
       isActive: form.isActive,
       email: form.email,

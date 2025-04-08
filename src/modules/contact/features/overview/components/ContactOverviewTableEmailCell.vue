@@ -4,6 +4,7 @@ import {
   VcTableCell,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import { TEST_ID } from '@/constants/testId.constant'
 import type { ContactUuid } from '@/models/contact/contactUuid.model'
@@ -13,6 +14,8 @@ import { useContactDetailPrefetchQuery } from '@/modules/contact/api/queries/con
 const props = defineProps<{
   contact: ContactIndex
 }>()
+
+const i18n = useI18n()
 
 const contactDetailPrefetchQuery = useContactDetailPrefetchQuery(computed<ContactUuid>(() => props.contact.uuid))
 
@@ -41,6 +44,6 @@ function onMouseEnter(): void {
     >
       {{ props.contact.email }}
     </VcRouterLinkButton>
-    <span v-else>-</span>
+    <span v-else>{{ i18n.t('shared.empty_dash') }}</span>
   </VcTableCell>
 </template>

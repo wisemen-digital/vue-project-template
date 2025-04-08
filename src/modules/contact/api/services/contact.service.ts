@@ -12,9 +12,11 @@ import {
   viewContactIndexV1,
 } from '@/client'
 import {
+  ContactCreateTransformer,
+  ContactDetailTransformer,
   ContactIndexPaginationTransformer,
   ContactIndexTransformer,
-  ContactTransformer,
+  ContactUpdateTransformer,
 } from '@/models/contact/contact.transformer'
 import type { ContactUuid } from '@/models/contact/contactUuid.model'
 import type { ContactCreateForm } from '@/models/contact/create/contactCreateForm.model'
@@ -25,7 +27,7 @@ import type { ContactUpdateForm } from '@/models/contact/update/contactUpdateFor
 
 export class ContactService {
   static async create(form: ContactCreateForm): Promise<ContactUuid> {
-    const dto = ContactTransformer.createDtoFromForm(form)
+    const dto = ContactCreateTransformer.toDto(form)
     const response = await createContactV1({ body: dto })
 
     return response.data.uuid as ContactUuid
@@ -52,11 +54,11 @@ export class ContactService {
   static async getByUuid(contactUuid: ContactUuid): Promise<ContactDetail> {
     const response = await viewContactDetailV1({ path: { uuid: contactUuid } })
 
-    return ContactTransformer.fromDto(response.data)
+    return ContactDetailTransformer.fromDto(response.data)
   }
 
   static async update(contactUuid: ContactUuid, form: ContactUpdateForm): Promise<void> {
-    const dto = ContactTransformer.updateDtoFromForm(form)
+    const dto = ContactUpdateTransformer.toDto(form)
 
     await updateContactV1({
       body: dto,

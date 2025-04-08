@@ -2,13 +2,13 @@ import { HttpResponse } from 'msw'
 
 import { TEST_ID } from '@/constants/testId.constant'
 import { ContactIndexDtoBuilder } from '@/models/contact/index/contactIndexDto.builder'
+import { PaginationUtil } from '@/utils/pagination.util.ts'
 import {
   expect,
   test,
 } from '@@/base.fixture'
-import { getPaginatedJson } from '@@/utils/interceptor.util'
 
-test('display contacts in the table', async ({
+test('should display contacts in the overview table', async ({
   http,
   page,
   worker,
@@ -29,7 +29,7 @@ test('display contacts in the table', async ({
 
   await worker.use(
     http.get('*/api/v1/contacts', () => {
-      return HttpResponse.json(getPaginatedJson([
+      return HttpResponse.json(PaginationUtil.getJson([
         CONTACT_1,
         CONTACT_2,
       ]))
@@ -44,7 +44,7 @@ test('display contacts in the table', async ({
   await expect(page.getByTestId(TEST_ID.CONTACTS.TABLE.PHONE_LINK).first()).toContainText('+1 234 567 890')
 })
 
-test('navigate to contact detail page', async ({
+test('should navigate to contact detail page when clicking on an entry in the overivew table', async ({
   http,
   page,
   worker,
@@ -58,7 +58,7 @@ test('navigate to contact detail page', async ({
 
   await worker.use(
     http.get('*/api/v1/contacts', () => {
-      return HttpResponse.json(getPaginatedJson([
+      return HttpResponse.json(PaginationUtil.getJson([
         CONTACT,
       ]))
     }),
@@ -76,14 +76,14 @@ test('navigate to contact detail page', async ({
   await expect(page.url()).toContain(`/contacts/${CONTACT.uuid}`)
 })
 
-test('create contact button is visible and navigates to create page', async ({
+test('should navigate to create page when pressing the create button', async ({
   http,
   page,
   worker,
 }) => {
   await worker.use(
     http.get('*/api/v1/contacts', () => {
-      return HttpResponse.json(getPaginatedJson([]))
+      return HttpResponse.json(PaginationUtil.getJson([]))
     }),
   )
 

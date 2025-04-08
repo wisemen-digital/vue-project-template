@@ -2,7 +2,7 @@
 import {
   useDocumentTitle,
   usePagination,
-  VcButton,
+  VcRouterLinkButton,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -41,7 +41,7 @@ const isCreateButtonVisible = computed<boolean>(() => authStore.hasPermission(Pe
     :title="i18n.t('contact.label.plural')"
   >
     <template #header-actions>
-      <VcButton
+      <VcRouterLinkButton
         v-if="isCreateButtonVisible"
         :to="{ name: 'contact-create' }"
         :data-test-id="TEST_ID.CONTACTS.OVERVIEW.CREATE_BUTTON"
@@ -49,7 +49,7 @@ const isCreateButtonVisible = computed<boolean>(() => authStore.hasPermission(Pe
         icon="plus"
       >
         {{ i18n.t('contact.create') }}
-      </VcButton>
+      </VcRouterLinkButton>
     </template>
 
     <template #default>

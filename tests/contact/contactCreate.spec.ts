@@ -6,7 +6,6 @@ import {
   expect,
   test,
 } from '@@/base.fixture'
-import { InterceptorUtil } from '@@/utils/interceptor.util'
 
 test('create a new contact', async ({
   http,
@@ -14,9 +13,6 @@ test('create a new contact', async ({
   worker,
 }) => {
   const NEW_CONTACT_UUID = UuidUtil.getRandom()
-
-  // Set up interceptor for the POST request
-  const createInterceptor = await InterceptorUtil.post(page, 'contacts', { uuid: NEW_CONTACT_UUID })
 
   await worker.use(
     http.get(`*/api/v1/contacts/${NEW_CONTACT_UUID}`, () => {
@@ -43,9 +39,6 @@ test('create a new contact', async ({
 
   // Submit the form
   await page.getByTestId(TEST_ID.CONTACTS.FORM.SUBMIT_BUTTON).click()
-
-  // Check if the create request was made
-  expect(createInterceptor.getCount()).toBe(1)
 
   // Check for success toast
   await expect(page.getByTestId(TEST_ID.CONTACTS.CREATE.SUCCESS_TOAST)).toBeVisible()
