@@ -23,12 +23,6 @@ const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
     :disable-hoverable-content="true"
     :delay-duration="500"
     :is-hidden="!isKeyboardShortcutHintVisible"
-    :style-config="{
-      '--tooltip-bg-color-default': 'var(--bg-primary)',
-      '--tooltip-border-color-default': 'var(--border-secondary)',
-      '--tooltip-shadow-default': 'var(--shadow-sm)',
-      '--tooltip-border-radius-default': 'var(--radius-sm)',
-    }"
     popover-side="top"
   >
     <template #trigger>

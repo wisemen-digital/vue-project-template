@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VcTableCell } from '@wisemen/vue-core'
+import { VcTableCell } from '@wisemen/vue-core-components'
 
 const props = defineProps<{
   value: string

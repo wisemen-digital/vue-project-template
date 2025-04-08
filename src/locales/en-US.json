@@ -120,6 +120,7 @@
   "shared.save": "Create",
   "shared.topic": "Topic",
   "shared.type": "Type",
+  "shared.loading": "Loading",
   "user.birth_date": "Birthdate",
   "user.email": "Email",
   "user.first_name": "First name",

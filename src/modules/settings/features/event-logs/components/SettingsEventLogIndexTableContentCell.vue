@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 import {
+  VcIconButton,
   VcTableCell,
   VcTooltip,
-} from '@wisemen/vue-core'
-import { VcIconButton } from '@wisemen/vue-core-components'
+} from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{

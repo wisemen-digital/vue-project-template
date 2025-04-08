@@ -1,5 +1,6 @@
 import '@/assets/styles/base.css'
 import '@fontsource-variable/inter'
+import '@/component-variants'
 
 import {
   extendIcons,
