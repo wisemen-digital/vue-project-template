@@ -26,15 +26,15 @@ export function useCommandMenuActionItems(): ComputedRef<CommandMenuItem[]> {
   function getBreadcrumbs(action: CommandMenuAction): string[] {
     if (action === CommandMenuAction.SETTINGS_APPEARANCE) {
       return [
-        i18n.t('module.setting.title'),
-        i18n.t('module.setting.appearance'),
+        i18n.t('module.settings.title'),
+        i18n.t('module.settings.appearance'),
       ]
     }
 
     if (action === CommandMenuAction.SETTINGS_NOTIFICATIONS) {
       return [
-        i18n.t('module.setting.title'),
-        i18n.t('module.setting.notifications.title'),
+        i18n.t('module.settings.title'),
+        i18n.t('module.settings.notifications.title'),
       ]
     }
 
@@ -43,11 +43,11 @@ export function useCommandMenuActionItems(): ComputedRef<CommandMenuItem[]> {
 
   function getLabel(action: CommandMenuAction): string {
     if (action === CommandMenuAction.SETTINGS_APPEARANCE) {
-      return i18n.t('module.setting.appearance')
+      return i18n.t('module.settings.appearance')
     }
 
     if (action === CommandMenuAction.SETTINGS_NOTIFICATIONS) {
-      return i18n.t('module.setting.notifications.title')
+      return i18n.t('module.settings.notifications.title')
     }
 
     throw new Error(`Unknown action: ${action}`)
