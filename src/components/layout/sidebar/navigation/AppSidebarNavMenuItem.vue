@@ -2,7 +2,7 @@
 import {
   VcIcon,
   VcTooltip,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { RouterLink } from 'vue-router'
 
 import type { NavigationItem } from '@/types/navigationItem.type'

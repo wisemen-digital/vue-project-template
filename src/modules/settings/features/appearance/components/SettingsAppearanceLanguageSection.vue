@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { VcSelect } from '@wisemen/vue-core'
+import {
+  VcSelect,
+  VcSelectItem,
+} from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 import type { Locale } from '@/client'
@@ -28,11 +31,18 @@ function onUpdateModelValue(value: Locale | null): void {
   >
     <VcSelect
       v-model="languageSelect.value.value"
-      :items="languageSelect.items.value"
       :display-fn="languageSelect.displayFn"
       :label="i18n.t('module.settings.language.title')"
       class="w-72"
       @update:model-value="onUpdateModelValue"
-    />
+    >
+      <VcSelectItem
+        v-for="item in languageSelect.items"
+        :key="item"
+        :value="item"
+      >
+        {{ languageSelect.displayFn(item) }}
+      </VcSelectItem>
+    </VcSelect>
   </FormFieldset>
 </template>

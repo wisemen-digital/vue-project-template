@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useToast } from '@wisemen/vue-core'
 import {
-  useDialog,
-  useToast,
+  useVcDialog,
   VcButton,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -38,7 +38,7 @@ const toast = useToast()
 const settingsPermissionQuery = useSettingsPermissionQuery()
 const settingsRoleQuery = useSettingsRolesQuery()
 
-const addRoleDialog = useDialog({ component: () => import('@/modules/settings/features/roles-and-permissions/components/SettingsRoleAndPermissionRoleCreateDialog.vue') })
+const addRoleDialog = useVcDialog({ component: () => import('@/modules/settings/features/roles-and-permissions/components/SettingsRoleAndPermissionRoleCreateDialog.vue') })
 const settingsRoleDeleteMutation = useSettingsRoleDeleteMutation()
 const settingsRolesBulkUpdateMutation = useSettingsRoleBulkUpdateMutation()
 

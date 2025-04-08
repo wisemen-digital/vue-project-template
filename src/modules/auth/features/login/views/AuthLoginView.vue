@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {
-  useToast,
-  VcButton,
-} from '@wisemen/vue-core'
+import { useToast } from '@wisemen/vue-core'
+import { VcButton } from '@wisemen/vue-core-components'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 

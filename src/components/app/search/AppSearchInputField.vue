@@ -2,7 +2,7 @@
 import {
   VcIconButton,
   VcTextField,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import {
   computed,
   ref,

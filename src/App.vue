@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import {
-  useDarkMode,
   useDocumentTitle,
   VcConfigProvider,
   VcDialogContainer,
   VcThemeProvider,
   VcToastContainer,
 } from '@wisemen/vue-core'
+import {
+  useAppearance,
+  VcConfigProvider as VcConfigProviderNext,
+  VcDialogContainer as VcDialogContainerNext,
+  VcThemeProvider as VcThemeProviderNext,
+} from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 import {
   RouterView,
@@ -23,9 +28,9 @@ import { logBuildInformation } from '@/constants/environment.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const { setTemplate } = useDocumentTitle()
-const { locale } = useI18n()
+const i18n = useI18n()
 const router = useRouter()
-const appearance = useDarkMode()
+const appearance = useAppearance()
 const authStore = useAuthStore()
 const theme = useTheme()
 
@@ -44,16 +49,30 @@ authStore.onLogout(() => {
 </script>
 
 <template>
-  <VcConfigProvider :locale="locale">
-    <VcThemeProvider
-      :appearance="appearance"
-      :theme="theme"
-      class="flex size-full flex-1 flex-col overflow-hidden"
+  <VcConfigProvider :locale="i18n.locale.value">
+    <VcConfigProviderNext
+      :locale="i18n.locale.value"
+      teleport-target-selector="#teleport-target"
     >
-      <RouterView />
-      <AppPageLoader />
-      <VcDialogContainer />
-      <VcToastContainer />
-    </VcThemeProvider>
+      <VcThemeProvider
+        :theme="theme"
+        :appearance="appearance"
+        class="flex size-full flex-1 flex-col overflow-hidden"
+      >
+        <VcThemeProviderNext
+          :theme="theme"
+          :appearance="appearance"
+          class="flex size-full flex-1 flex-col overflow-hidden"
+        >
+          <RouterView />
+
+          <AppPageLoader />
+          <VcDialogContainer />
+          <VcDialogContainerNext />
+          <VcToastContainer />
+          <div id="teleport-target" />
+        </VcThemeProviderNext>
+      </VcThemeProvider>
+    </VcConfigProviderNext>
   </VcConfigProvider>
 </template>

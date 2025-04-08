@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import { VcToggle } from '@wisemen/vue-core'
 import {
   VcIcon,
   VcKeyboardShortcut,
   VcKeyboardShortcutProvider,
-  VcToggle,
   VcTooltip,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -31,9 +31,7 @@ const toggleBtnLabel = computed<string>(() => {
   <div class="absolute top-4 right-0">
     <VcKeyboardShortcutProvider
       v-slot="{ keys }"
-      :config="{
-        keys: ['c'],
-      }"
+      :keyboard-keys="['c']"
     >
       <VcTooltip
         :is-arrow-hidden="true"
@@ -72,7 +70,12 @@ const toggleBtnLabel = computed<string>(() => {
             <VcKeyboardShortcut
               v-if="isKeyboardShortcutHintVisible"
               :keyboard-keys="keys"
-              keyboard-classes="bg-white/10 text-white"
+              :class-config="{
+                root: 'bg-white/10',
+                keyboardKey: {
+                  key: 'text-white',
+                },
+              }"
             />
           </div>
         </template>

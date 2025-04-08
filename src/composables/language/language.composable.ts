@@ -1,9 +1,5 @@
 import { useLocalStorage } from '@vueuse/core'
-import type { SelectItem } from '@wisemen/vue-core'
-import type {
-  ComputedRef,
-  Ref,
-} from 'vue'
+import type { Ref } from 'vue'
 import {
   computed,
   watch,
@@ -15,7 +11,7 @@ import { client } from '@/client/client.gen.ts'
 
 interface UseLanguageSelectReturnType {
   displayFn: (value: Locale) => string
-  items: ComputedRef<SelectItem<Locale>[]>
+  items: Locale[]
   value: Ref<Locale>
 }
 
@@ -36,20 +32,13 @@ export function useLanguageSelect(): UseLanguageSelectReturnType {
     [Locale.NL_BE]: i18n.t('module.settings.language.locales.nl_be'),
   }))
 
-  const languageSelectItems = computed<SelectItem<Locale>[]>(() => {
-    return locales.map((locale) => ({
-      type: 'option',
-      value: locale,
-    }))
-  })
-
   function displayFn(value: Locale): string {
     return i18nKeys.value[value]
   }
 
   return {
     displayFn,
-    items: languageSelectItems,
+    items: locales,
     value: locale,
   }
 }

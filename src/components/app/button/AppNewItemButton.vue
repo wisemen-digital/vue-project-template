@@ -2,7 +2,7 @@
 import {
   VcKeyboardShortcutProvider,
   VcRouterLinkButton,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 
 import AppButtonTooltip from '@/components/app/tooltip/AppButtonTooltip.vue'
 import type { RouteLocationCurrent } from '@/types/global/vueRouter'
@@ -16,9 +16,7 @@ const props = defineProps<{
 <template>
   <VcKeyboardShortcutProvider
     v-slot="{ keys }"
-    :config="{
-      keys: ['n'],
-    }"
+    :keyboard-keys="['n']"
   >
     <AppButtonTooltip
       :label="props.label"

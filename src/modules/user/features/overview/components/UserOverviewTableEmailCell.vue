@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {
-  VcRouterLinkButton,
-  VcTableCell,
-} from '@wisemen/vue-core'
+import { VcTableCell } from '@wisemen/vue-core'
+import { VcRouterLinkButton } from '@wisemen/vue-core-components'
 import { computed } from 'vue'
 
 import { TEST_ID } from '@/constants/testId.constant'

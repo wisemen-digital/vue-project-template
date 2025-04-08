@@ -5,6 +5,7 @@ import {
   extendIcons,
   setupDefaultStyles,
 } from '@wisemen/vue-core'
+import { extendIcons as extendIconsNext } from '@wisemen/vue-core-components'
 import { createApp as createVueApp } from 'vue'
 
 import App from '@/App.vue'
@@ -19,6 +20,7 @@ import { routerPlugin } from '@/plugins/router.plugin.ts'
 import { vueQueryPlugin } from '@/plugins/vueQuery.plugin.ts'
 
 extendIcons(icons)
+extendIconsNext(icons)
 configureZod()
 setupDefaultStyles()
 setupCustomStyles()

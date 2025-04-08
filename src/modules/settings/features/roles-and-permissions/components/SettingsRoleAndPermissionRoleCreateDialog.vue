@@ -2,7 +2,7 @@
 import {
   VcDialog,
   VcTextField,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { useForm } from 'formango'
 import { useI18n } from 'vue-i18n'
 import { z } from 'zod'

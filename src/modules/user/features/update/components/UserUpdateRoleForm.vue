@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { SelectItem } from '@wisemen/vue-core'
+import { useToast } from '@wisemen/vue-core'
 import {
-  useToast,
   VcSelect,
-} from '@wisemen/vue-core'
+  VcSelectItem,
+} from '@wisemen/vue-core-components'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -41,14 +41,8 @@ interface RoleItem {
   name: string
 }
 
-const roleItems = computed<SelectItem<RoleItem>[]>(() => {
-  return roleQuery.data.value?.map((role): SelectItem<RoleItem> => ({
-    type: 'option',
-    value: {
-      uuid: role.uuid,
-      name: role.name,
-    },
-  })) ?? []
+const roleItems = computed<RoleItem[]>(() => {
+  return roleQuery.data.value ?? []
 })
 
 const form = useForm({
@@ -112,7 +106,18 @@ const roles = form.register('roles')
               :display-fn="(item) => item.name"
               :items="roleItems"
               :label="i18n.t('module.user.role')"
-            />
+            >
+              <VcSelectItem
+                v-for="role in roleItems"
+                :key="role.uuid"
+                :value="{
+                  uuid: role.uuid,
+                  name: role.name,
+                }"
+              >
+                {{ role }}
+              </VcSelectItem>
+            </VcSelect>
           </FormGrid>
         </FormFieldset>
       </FormLayout>
