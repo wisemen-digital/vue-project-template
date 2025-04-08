@@ -39,9 +39,9 @@ test('display contacts in the table', async ({
   await page.goto('/contacts')
 
   // Check if the contacts are displayed in the table
-  await expect(page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.TABLE.EMAIL_LINK).first()).toContainText('charles.doe@email.com')
-  await expect(page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.TABLE.NAME_LINK).first()).toContainText('Charles Doe')
-  await expect(page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.TABLE.PHONE_LINK).first()).toContainText('+1 234 567 890')
+  await expect(page.getByTestId(TEST_ID.CONTACTS.TABLE.EMAIL_LINK).first()).toContainText('charles.doe@email.com')
+  await expect(page.getByTestId(TEST_ID.CONTACTS.TABLE.NAME_LINK).first()).toContainText('Charles Doe')
+  await expect(page.getByTestId(TEST_ID.CONTACTS.TABLE.PHONE_LINK).first()).toContainText('+1 234 567 890')
 })
 
 test('navigate to contact detail page', async ({
@@ -70,7 +70,7 @@ test('navigate to contact detail page', async ({
   await page.goto('/contacts')
 
   // Click on the contact name to navigate to the detail page
-  await page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.TABLE.NAME_LINK).click()
+  await page.getByTestId(TEST_ID.CONTACTS.TABLE.NAME_LINK).click()
 
   // Check if we're on the detail page
   await expect(page.url()).toContain(`/contacts/${CONTACT.uuid}`)

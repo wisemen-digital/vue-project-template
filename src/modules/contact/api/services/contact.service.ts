@@ -35,7 +35,9 @@ export class ContactService {
     await deleteContactV1({ path: { uuid: contactUuid } })
   }
 
-  static async getAll(paginationOptions: PaginationOptions<ContactIndexPagination>): Promise<PaginatedData<ContactIndex>> {
+  static async getAll(
+    paginationOptions: PaginationOptions<ContactIndexPagination>,
+  ): Promise<PaginatedData<ContactIndex>> {
     const query = new PaginationParamsBuilder(paginationOptions)
       .build(ContactIndexPaginationTransformer.toDto)
 

@@ -89,18 +89,12 @@ const isEditButtonVisible = computed<boolean>(() => authStore.hasPermission(Perm
           <div>
             <span class="font-medium">{{ i18n.t('contact.status') }}:</span>
             <span class="ml-2">
-              <VcBadge
-                v-if="contact.isActive"
-                color="success"
-              >
+              <span v-if="contact.isActive">
                 {{ i18n.t('contact.status.active') }}
-              </VcBadge>
-              <VcBadge
-                v-else
-                color="error"
-              >
+              </span>
+              <span v-else>
                 {{ i18n.t('contact.status.inactive') }}
-              </VcBadge>
+              </span>
             </span>
           </div>
         </div>

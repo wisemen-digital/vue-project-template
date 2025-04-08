@@ -3,8 +3,6 @@ import {
   useDocumentTitle,
   usePagination,
   VcButton,
-  VcPagination,
-  VcSpinner,
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -13,6 +11,7 @@ import { Permission } from '@/client'
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppPaginationSearchField from '@/components/app/search/AppPaginationSearchField.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import type { ContactIndexPagination } from '@/models/contact/index/contactIndexPagination.model'
 import { useContactIndexQuery } from '@/modules/contact/api/queries/contactIndex.query'
 import ContactOverviewTable from '@/modules/contact/features/overview/components/ContactOverviewTable.vue'
@@ -23,17 +22,17 @@ const authStore = useAuthStore()
 
 const documentTitle = useDocumentTitle()
 
-documentTitle.value = i18n.t('contact.label.plural')
+documentTitle.set(i18n.t('contact.label.plural'))
 
 const pagination = usePagination<ContactIndexPagination>({
-  defaultPagination: {
-    filter: {},
-    sort: undefined,
-  },
+  isRouteQueryEnabled: true,
+  key: 'contactIndex',
 })
 
-const contactIndexQuery = useContactIndexQuery(computed(() => pagination.options.value))
+const contactIndexQuery = useContactIndexQuery(pagination.paginationOptions)
 
+const isLoading = computed<boolean>(() => contactIndexQuery.isLoading.value)
+const error = computed<unknown>(() => contactIndexQuery.error.value)
 const isCreateButtonVisible = computed<boolean>(() => authStore.hasPermission(Permission.CONTACT_CREATE))
 </script>
 
@@ -42,10 +41,6 @@ const isCreateButtonVisible = computed<boolean>(() => authStore.hasPermission(Pe
     :title="i18n.t('contact.label.plural')"
   >
     <template #header-actions>
-      <AppPaginationSearchField
-        v-model="pagination.search"
-        :placeholder="i18n.t('shared.search')"
-      />
       <VcButton
         v-if="isCreateButtonVisible"
         :to="{ name: 'contact-create' }"
@@ -59,25 +54,26 @@ const isCreateButtonVisible = computed<boolean>(() => authStore.hasPermission(Pe
 
     <template #default>
       <div
-        v-if="contactIndexQuery.isLoading.value"
-        class="flex justify-center py-8"
+        v-if="error !== null"
+        class="flex size-full flex-1 items-center justify-center"
       >
-        <VcSpinner size="lg" />
+        <AppErrorState :error="error" />
       </div>
 
-      <AppErrorState
-        v-else-if="contactIndexQuery.isError.value"
-        :error="contactIndexQuery.error.value"
-      />
+      <div
+        v-else
+        class="gap-lg flex flex-1 flex-col"
+      >
+        <AppPaginationSearchField
+          :is-loading="contactIndexQuery.isLoading.value"
+          :pagination="pagination"
+        />
 
-      <div v-else-if="contactIndexQuery.data.value">
-        <ContactOverviewTable :contacts="contactIndexQuery.data.value" />
-
-        <VcPagination
-          v-if="contactIndexQuery.data.value.meta.totalPages > 1"
-          v-model="pagination.page"
-          :total-pages="contactIndexQuery.data.value.meta.totalPages"
-          class="mt-4"
+        <ContactOverviewTable
+          :data="contactIndexQuery.data.value"
+          :is-loading="isLoading"
+          :pagination="pagination"
+          :error="contactIndexQuery.error.value"
         />
       </div>
     </template>

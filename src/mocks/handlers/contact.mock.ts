@@ -5,7 +5,8 @@ import {
 
 import { ContactIndexDtoBuilder } from '@/models/contact/index/contactIndexDto.builder'
 import type { ContactIndexDto } from '@/models/contact/index/contactIndexDto.model'
-import { getPaginatedJson } from '@@/utils/interceptor.util'
+
+import { getPaginatedJson } from '../../../tests/utils/interceptor.util.ts'
 
 const contacts: ContactIndexDto[] = [
   new ContactIndexDtoBuilder()

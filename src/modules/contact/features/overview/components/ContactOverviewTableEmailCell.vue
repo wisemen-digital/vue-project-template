@@ -22,16 +22,21 @@ function onMouseEnter(): void {
 </script>
 
 <template>
-  <VcTableCell>
+  <VcTableCell
+    :data-test-id="TEST_ID.CONTACTS.TABLE.EMAIL_LINK"
+  >
     <VcRouterLinkButton
       v-if="props.contact.email"
-      :data-test-id="TEST_ID.CONTACTS.TABLE.EMAIL_LINK"
       :to="{
         name: 'contact-detail',
         params: {
           contactUuid: props.contact.uuid,
         },
       }"
+      size="sm"
+      variant="tertiary"
+      class="hover:underline"
+      @focusin="onMouseEnter"
       @mouseenter="onMouseEnter"
     >
       {{ props.contact.email }}

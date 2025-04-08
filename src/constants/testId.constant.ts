@@ -26,13 +26,13 @@ export const TEST_ID = {
     },
     OVERVIEW: {
       CREATE_BUTTON: 'contacts-overview-create-button',
-      TABLE: {
-        CONTAINER: 'contacts-overview-table-container',
-        EMAIL_LINK: 'contacts-overview-table-email-link',
-        NAME_LINK: 'contacts-overview-table-name-link',
-        PHONE_LINK: 'contacts-overview-table-phone-link',
-      },
       TITLE: 'contacts-overview-title',
+    },
+    TABLE: {
+      CONTAINER: 'contacts-overview-table-container',
+      EMAIL_LINK: 'contacts-overview-table-email-link',
+      NAME_LINK: 'contacts-overview-table-name-link',
+      PHONE_LINK: 'contacts-overview-table-phone-link',
     },
     UPDATE: { SUCCESS_TOAST: 'contacts-update-success-toast' },
   },

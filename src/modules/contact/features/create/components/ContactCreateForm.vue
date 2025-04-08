@@ -2,7 +2,7 @@
 import {
   useToast,
   VcCheckbox,
-  VcInput,
+  VcTextField,
 } from '@wisemen/vue-core'
 import { useForm } from 'formango'
 import { useI18n } from 'vue-i18n'
@@ -62,7 +62,7 @@ const firstName = form.register('firstName')
 const lastName = form.register('lastName')
 const email = form.register('email')
 const phone = form.register('phone')
-const isActive = form.register('isActive')
+const isActive = form.register('isActive', false)
 </script>
 
 <template>
@@ -83,12 +83,12 @@ const isActive = form.register('isActive')
           :title="i18n.t('contact.personal_info')"
         >
           <FormGrid :cols="2">
-            <VcInput
+            <VcTextField
               :test-id="TEST_ID.CONTACTS.FORM.FIRST_NAME_INPUT"
               v-bind="toFormField(firstName)"
               :label="i18n.t('contact.first_name')"
             />
-            <VcInput
+            <VcTextField
               :test-id="TEST_ID.CONTACTS.FORM.LAST_NAME_INPUT"
               v-bind="toFormField(lastName)"
               :label="i18n.t('contact.last_name')"
@@ -101,13 +101,13 @@ const isActive = form.register('isActive')
           :title="i18n.t('contact.contact_info')"
         >
           <FormGrid :cols="2">
-            <VcInput
+            <VcTextField
               :test-id="TEST_ID.CONTACTS.FORM.EMAIL_INPUT"
               v-bind="toFormField(email)"
               :label="i18n.t('contact.email')"
               type="email"
             />
-            <VcInput
+            <VcTextField
               :test-id="TEST_ID.CONTACTS.FORM.PHONE_INPUT"
               v-bind="toFormField(phone)"
               :label="i18n.t('contact.phone')"

@@ -35,19 +35,6 @@ test('delete a contact', async ({
 
   await page.goto(`/contacts/${CONTACT.uuid}`)
 
-  // Add a delete button to the page (assuming it's not implemented yet)
-  await page.evaluate((contactUuid) => {
-    const deleteButton = document.createElement('button')
-
-    deleteButton.id = 'delete-contact-button'
-    deleteButton.textContent = 'Delete Contact'
-    deleteButton.onclick = async () => {
-      await fetch(`/api/v1/contacts/${contactUuid}`, { method: 'DELETE' })
-      window.location.href = '/contacts'
-    }
-    document.body.appendChild(deleteButton)
-  }, CONTACT.uuid)
-
   // Click the delete button
   await page.locator('#delete-contact-button').click()
 

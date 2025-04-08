@@ -16,6 +16,7 @@ const props = defineProps<{
 }>()
 
 const contactDetailPrefetchQuery = useContactDetailPrefetchQuery(computed<ContactUuid>(() => props.contact.uuid))
+
 const fullName = computed<string | null>(() => ContactUtil.getFullName(props.contact))
 
 function onMouseEnter(): void {
@@ -24,16 +25,22 @@ function onMouseEnter(): void {
 </script>
 
 <template>
-  <VcTableCell>
+  <VcTableCell
+    :is-primary-cell="true"
+    :data-test-id="TEST_ID.CONTACTS.TABLE.NAME_LINK"
+  >
     <VcRouterLinkButton
       v-if="fullName"
-      :data-test-id="TEST_ID.CONTACTS.TABLE.NAME_LINK"
       :to="{
         name: 'contact-detail',
         params: {
           contactUuid: props.contact.uuid,
         },
       }"
+      size="sm"
+      variant="tertiary"
+      class="hover:underline"
+      @focusin="onMouseEnter"
       @mouseenter="onMouseEnter"
     >
       {{ fullName }}

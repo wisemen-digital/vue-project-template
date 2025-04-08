@@ -15,7 +15,9 @@ const i18n = useI18n()
 </script>
 
 <template>
-  <VcTableCell>
+  <VcTableCell
+    data-test-id="contact-status"
+  >
     <VcBadge
       v-if="props.contact.isActive"
       color="success"
