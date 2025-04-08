@@ -8,15 +8,15 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
-import type { SettingRole } from '@/modules/settings/models/role/settingsRole.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import type { SettingsRole } from '@/modules/settings/models/role/settingsRole.model.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 
 const props = defineProps<{
-  role: SettingRole
+  role: SettingsRole
 }>()
 
 const emit = defineEmits<{
-  deleteRole: [SettingRoleUuid]
+  deleteRole: [SettingsRoleUuid]
 }>()
 
 const i18n = useI18n()

@@ -1,12 +1,12 @@
-import type { SettingPermission } from '@/modules/settings/models/permission/settingsPermission.model.ts'
-import type { SettingRole } from '@/modules/settings/models/role/settingsRole.model.ts'
-import type { SettingRoleDto } from '@/modules/settings/models/role/settingsRoleDto.model.ts'
-import type { SettingRolePermissionUpdateDto } from '@/modules/settings/models/role/settingsRolePermissionUpdateDto.model.ts'
-import type { SettingRolePermissionUpdateForm } from '@/modules/settings/models/role/settingsRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import type { SettingsPermission } from '@/modules/settings/models/permission/settingsPermission.model.ts'
+import type { SettingsRole } from '@/modules/settings/models/role/settingsRole.model.ts'
+import type { SettingsRoleDto } from '@/modules/settings/models/role/settingsRoleDto.model.ts'
+import type { SettingsRolePermissionUpdateDto } from '@/modules/settings/models/role/settingsRolePermissionUpdateDto.model.ts'
+import type { SettingsRolePermissionUpdateForm } from '@/modules/settings/models/role/settingsRolePermissionUpdateForm.model.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 
-export class SettingRolePermissionUpdateTransformer {
-  static toDto(form: SettingRolePermissionUpdateForm): SettingRolePermissionUpdateDto {
+export class SettingsRolePermissionUpdateTransformer {
+  static toDto(form: SettingsRolePermissionUpdateForm): SettingsRolePermissionUpdateDto {
     return {
       roles: form.roles
         .filter((role) => role.isEditable)
@@ -17,7 +17,7 @@ export class SettingRolePermissionUpdateTransformer {
     }
   }
 
-  static toForm(roles: SettingRole[], permissions: SettingPermission[]): SettingRolePermissionUpdateForm {
+  static toForm(roles: SettingsRole[], permissions: SettingsPermission[]): SettingsRolePermissionUpdateForm {
     return {
       roles: roles.map((role) => ({
         roleUuid: role.uuid,
@@ -34,9 +34,9 @@ export class SettingRolePermissionUpdateTransformer {
 }
 
 export class SettingsRoleTransformer {
-  static fromDto(dto: SettingRoleDto): SettingRole {
+  static fromDto(dto: SettingsRoleDto): SettingsRole {
     return {
-      uuid: dto.uuid as SettingRoleUuid,
+      uuid: dto.uuid as SettingsRoleUuid,
       isDefault: dto.isDefault,
       isSystemAdmin: dto.isSystemAdmin,
       name: dto.name,

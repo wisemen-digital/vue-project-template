@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import AppSeparator from '@/components/app/AppSeparator.vue'
 import AppGrid from '@/components/app/grid/AppGrid.vue'
 import SettingsDialogContainer from '@/modules/settings/components/SettingsDialogContainer.vue'
-import type { SettingNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
+import type { SettingsNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
 import SettingsAppearanceFontSizeSection from '@/modules/settings/features/appearance/components/SettingsAppearanceFontSizeSection.vue'
 import SettingsAppearanceHighContrastSection from '@/modules/settings/features/appearance/components/SettingsAppearanceHighContrastSection.vue'
 import SettingsAppearanceInterfaceThemeSection from '@/modules/settings/features/appearance/components/SettingsAppearanceInterfaceThemeSection.vue'
@@ -13,7 +13,7 @@ import SettingsAppearanceLanguageSection from '@/modules/settings/features/appea
 import SettingsAppearanceReduceMotionSection from '@/modules/settings/features/appearance/components/SettingsAppearanceReduceMotionSection.vue'
 
 const props = defineProps<{
-  navigation: SettingNavigation
+  navigation: SettingsNavigation
 }>()
 
 const i18n = useI18n()

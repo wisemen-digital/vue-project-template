@@ -5,11 +5,11 @@ import {
 } from '@wisemen/vue-core'
 import { useI18n } from 'vue-i18n'
 
-import type { SettingNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
+import type { SettingsNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
 
 const props = withDefaults(defineProps<{
   title: string
-  navigation: SettingNavigation
+  navigation: SettingsNavigation
   subTitle?: string | null
 }>(), { subTitle: null })
 

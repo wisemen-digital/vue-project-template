@@ -6,24 +6,24 @@ import {
   updateRolesPermissionsV1,
   viewRoleIndexV1,
 } from '@/client'
-import type { SettingRole } from '@/modules/settings/models/role/settingsRole.model.ts'
+import type { SettingsRole } from '@/modules/settings/models/role/settingsRole.model.ts'
 import {
-  SettingRolePermissionUpdateTransformer,
+  SettingsRolePermissionUpdateTransformer,
   SettingsRoleTransformer,
 } from '@/modules/settings/models/role/settingsRole.transformer.ts'
-import type { SettingRolePermissionUpdateForm } from '@/modules/settings/models/role/settingsRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import type { SettingsRolePermissionUpdateForm } from '@/modules/settings/models/role/settingsRolePermissionUpdateForm.model.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 
 export class SettingsRoleService {
   static async create(roleName: string): Promise<void> {
     await createRoleV1({ body: { name: roleName } })
   }
 
-  static async delete(roleUuid: SettingRoleUuid): Promise<void> {
+  static async delete(roleUuid: SettingsRoleUuid): Promise<void> {
     await deleteRoleV1({ path: { role: roleUuid } })
   }
 
-  static async getAll(): Promise<SettingRole[]> {
+  static async getAll(): Promise<SettingsRole[]> {
     const response = await viewRoleIndexV1({
       responseValidator: async (data) => {
         return await z.object({
@@ -41,8 +41,8 @@ export class SettingsRoleService {
     return response.data.items.map(SettingsRoleTransformer.fromDto)
   }
 
-  static async updateRolesInBulk(form: SettingRolePermissionUpdateForm): Promise<void> {
-    const body = SettingRolePermissionUpdateTransformer.toDto(form)
+  static async updateRolesInBulk(form: SettingsRolePermissionUpdateForm): Promise<void> {
+    const body = SettingsRolePermissionUpdateTransformer.toDto(form)
 
     await updateRolesPermissionsV1({ body })
   }

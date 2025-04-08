@@ -8,19 +8,19 @@ import {
 
 import SettingsRoleAndPermissionTableBody from '@/modules/settings/features/roles-and-permissions/components/SettingsRoleAndPermissionTableBody.vue'
 import SettingsRoleAndPermissionTableHeader from '@/modules/settings/features/roles-and-permissions/components/SettingsRoleAndPermissionTableHeader.vue'
-import type { SettingPermission } from '@/modules/settings/models/permission/settingsPermission.model.ts'
-import type { SettingRole } from '@/modules/settings/models/role/settingsRole.model.ts'
-import type { settingRolePermissionUpdateFormSchema } from '@/modules/settings/models/role/settingsRolePermissionUpdateForm.model.ts'
-import type { SettingRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
+import type { SettingsPermission } from '@/modules/settings/models/permission/settingsPermission.model.ts'
+import type { SettingsRole } from '@/modules/settings/models/role/settingsRole.model.ts'
+import type { settingsRolePermissionUpdateFormSchema } from '@/modules/settings/models/role/settingsRolePermissionUpdateForm.model.ts'
+import type { SettingsRoleUuid } from '@/modules/settings/models/role/settingsRoleUuid.model.ts'
 
 const props = defineProps<{
-  form: Form<typeof settingRolePermissionUpdateFormSchema>
-  permissions: SettingPermission[]
-  roles: SettingRole[]
+  form: Form<typeof settingsRolePermissionUpdateFormSchema>
+  permissions: SettingsPermission[]
+  roles: SettingsRole[]
 }>()
 
 const emit = defineEmits<{
-  deleteRole: [SettingRoleUuid]
+  deleteRole: [SettingsRoleUuid]
 }>()
 
 const tableScrollContainerRef = ref<HTMLElement | null>(null)
@@ -43,7 +43,7 @@ const gridColsStyle = computed<string>(() => {
   return `${firstColumn} ${props.roles.map(() => `minmax(200px, auto)`).join(' ')}`
 })
 
-function onDeleteRole(roleUuid: SettingRoleUuid): void {
+function onDeleteRole(roleUuid: SettingsRoleUuid): void {
   emit('deleteRole', roleUuid)
 }
 </script>

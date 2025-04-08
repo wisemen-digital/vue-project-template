@@ -18,7 +18,7 @@ import AppAsyncComponent from '@/components/app/async-component/AppAsyncComponen
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
 import AppSearchInputField from '@/components/app/search/AppSearchInputField.vue'
 import AppTextHighlight from '@/components/app/text-highlight/AppTextHighlight.vue'
-import { useSettingNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
+import { useSettingsNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
 import type { SettingsMenuItemKey } from '@/modules/settings/types/settingsMenuItemKey.type.ts'
 
 const i18n = useI18n()
@@ -70,7 +70,7 @@ const menuItems = computed<MenuItemGroup<SettingsMenuItemKey>[]>(() => {
 
 const searchInput = ref<string>('')
 
-const navigation = useSettingNavigation({ default: 'appearance' })
+const navigation = useSettingsNavigation({ default: 'appearance' })
 
 const activeMenuItem = computed<SettingsMenuItemKey>(() => navigation.currentItem.value.item)
 
