@@ -5,6 +5,7 @@ import {
   VcKeyboardShortcutProvider,
   VcPopover,
 } from '@wisemen/vue-core'
+import { AnimatePresence } from 'motion-v'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -67,7 +68,9 @@ function onSelect(): void {
       </template>
 
       <template #content>
-        <AppHeaderCommandMenu @select="onSelect" />
+        <AnimatePresence>
+          <AppHeaderCommandMenu @select="onSelect" />
+        </AnimatePresence>
       </template>
     </VcPopover>
   </VcKeyboardShortcutProvider>

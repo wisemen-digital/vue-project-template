@@ -63,8 +63,8 @@ importers:
         specifier: 1.12.6
         version: 1.12.6
       motion-v:
-        specifier: 1.0.0-beta.0
-        version: 1.0.0-beta.0(vue@3.5.13(typescript@5.8.2))
+        specifier: 1.0.0-beta.1
+        version: 1.0.0-beta.1(vue@3.5.13(typescript@5.8.2))
       pinia:
         specifier: 3.0.1
         version: 3.0.1(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))
@@ -4561,8 +4561,8 @@ packages:
     peerDependencies:
       vue: '>=3.0.0'
 
-  motion-v@1.0.0-beta.0:
-    resolution: {integrity: sha512-7NF9gayHqnEoYUCZiBZi6iiZ4KBlOKfKlcnVAVULtP6V2GFszWI8CX1FWg49T7jgTnL7nBRhLTWFZ++cfji2mA==}
+  motion-v@1.0.0-beta.1:
+    resolution: {integrity: sha512-LHHCmRtLnQVujKwlGS69IFKDJjrqzu/0+5Oc7Uniciy8FNeLWERyZOedXaCDXO5a7a5k9Po8dL3rr6aAySApXw==}
     peerDependencies:
       vue: '>=3.0.0'
 
@@ -10973,7 +10973,7 @@ snapshots:
       - react
       - react-dom
 
-  motion-v@1.0.0-beta.0(vue@3.5.13(typescript@5.8.2)):
+  motion-v@1.0.0-beta.1(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       '@vueuse/core': 10.11.1(vue@3.5.13(typescript@5.8.2))
       framer-motion: 12.5.0
