@@ -22,6 +22,9 @@ const props = defineProps<{
     :popover-offset-in-px="10"
     :is-arrow-hidden="true"
     :delay-duration="500"
+    :class-config="{
+      innerContent: 'bg-fg-primary text-fg-disabled',
+    }"
     popover-side="right"
   >
     <template #trigger>

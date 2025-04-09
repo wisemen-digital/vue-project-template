@@ -36,6 +36,9 @@ const toggleBtnLabel = computed<string>(() => {
       <VcTooltip
         :is-arrow-hidden="true"
         :delay-duration="500"
+        :class-config="{
+          innerContent: 'bg-fg-primary text-fg-disabled',
+        }"
         side="right"
       >
         <template #trigger>
