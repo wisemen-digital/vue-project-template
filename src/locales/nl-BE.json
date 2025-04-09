@@ -16,6 +16,7 @@
       "settings": "Settings"
     }
   },
+  "component.sidebar.settings": "Settings",
   "component.keyboard_shortcut.then": "dan",
   "component.password_input.hide_password": "Wachtwoord verbergen",
   "component.password_input.show_password": "Wachtwoord tonen",
@@ -126,11 +127,6 @@
   "module.user.role": "Rol",
   "module.user.title": "Gebruikers",
   "module.user.update.success_toast.message": "Gebruiker is succesvol bijgewerkt.",
-  "shared": {
-    "navigate": "Navigeer",
-    "select": "Selecteer",
-    "user": "Gebruiker"
-  },
   "shared.cancel": "Annuleer",
   "shared.close": "Sluiten",
   "shared.created_at": "Aangemaakt op",

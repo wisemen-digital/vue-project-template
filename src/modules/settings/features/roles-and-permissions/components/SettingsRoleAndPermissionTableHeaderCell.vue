@@ -19,6 +19,10 @@ const emit = defineEmits<{
 }>()
 
 const i18n = useI18n()
+
+function onSelectMenuItem(): void {
+  emit('deleteRole', props.role.uuid)
+}
 </script>
 
 <template>
@@ -48,7 +52,7 @@ const i18n = useI18n()
           :is-destructive="true"
           :label="i18n.t('module.settings.roles_and_permissions.table.delete_role')"
           icon="trashIcon"
-          @select="() => emit('deleteRole', props.role.uuid)"
+          @select="onSelectMenuItem"
         />
       </template>
     </VcDropdownMenu>
