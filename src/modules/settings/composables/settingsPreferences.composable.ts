@@ -1,4 +1,4 @@
-import { useDarkMode } from '@wisemen/vue-core'
+import { useAppearance } from '@wisemen/vue-core-components'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -31,7 +31,7 @@ export function useSettingsPreferences(): UseSettingsPreferenceReturnType {
   const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
   const reduceMotionValue = useReduceMotionValue()
   const isHighContrastModeEnabled = useHighContrastModeValue()
-  const darkMode = useDarkMode()
+  const appearance = useAppearance()
 
   async function update(preferenceForm: SettingsPreferenceUpdateForm): Promise<void> {
     try {
@@ -52,7 +52,7 @@ export function useSettingsPreferences(): UseSettingsPreferenceReturnType {
     languageSelect.value.value = preferenceQuery.data.value.language ?? i18n.locale.value
     isKeyboardShortcutHintVisible.value = preferenceQuery.data.value.showShortcuts ?? false
     reduceMotionValue.value = preferenceQuery.data.value.reduceMotion ?? false
-    darkMode.value = preferenceQuery.data.value.theme ?? UiTheme.SYSTEM
+    appearance.value = preferenceQuery.data.value.theme ?? UiTheme.SYSTEM
   })
 
   return { update }

@@ -1,8 +1,8 @@
 import type {
   PaginatedData,
   PaginationOptions,
-} from '@wisemen/vue-core'
-import { PaginationParamsBuilder } from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
+import { PaginationParamsBuilder } from '@wisemen/vue-core-components'
 
 import { viewDomainEventLogIndexV1 } from '@/client'
 import {

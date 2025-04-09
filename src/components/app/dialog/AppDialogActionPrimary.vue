@@ -3,7 +3,7 @@ import {
   VcButton,
   VcKeyboardKey,
   VcKeyboardShortcutProvider,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import {
   computed,
   onMounted,
@@ -51,15 +51,13 @@ onMounted(() => {
 
 <template>
   <VcKeyboardShortcutProvider
-    :config="{
-      keys: ['enter'],
-      isDisabled: computed<boolean>(() => isFocusedElementAButton),
-    }"
+    :keyboard-keys="['enter']"
+    :is-disabled="!isFocusedElementAButton"
     class="w-full"
   >
     <VcButton
       :is-loading="props.isLoading"
-      :variant="props.isDestructive ? 'destructive-primary' : 'default'"
+      :variant="props.isDestructive ? 'destructive-primary' : 'primary'"
       class="group w-full"
       @click="onConfirm"
     >

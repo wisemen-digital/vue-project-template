@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { SelectItem } from '@wisemen/vue-core'
 import {
-  useToast,
+  useVcToast,
   VcSelect,
-} from '@wisemen/vue-core'
+  VcSelectItem,
+} from '@wisemen/vue-core-components'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -30,7 +30,7 @@ const props = defineProps<{
 
 const i18n = useI18n()
 
-const toast = useToast()
+const toast = useVcToast()
 const errorToast = useApiErrorToast()
 const userUpdateRoleMutation = useUserUpdateRoleMutation()
 
@@ -41,14 +41,8 @@ interface RoleItem {
   name: string
 }
 
-const roleItems = computed<SelectItem<RoleItem>[]>(() => {
-  return roleQuery.data.value?.map((role): SelectItem<RoleItem> => ({
-    type: 'option',
-    value: {
-      uuid: role.uuid,
-      name: role.name,
-    },
-  })) ?? []
+const roleItems = computed<RoleItem[]>(() => {
+  return roleQuery.data.value ?? []
 })
 
 const form = useForm({
@@ -73,7 +67,8 @@ const form = useForm({
 
       toast.success({
         testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
-        message: i18n.t('module.user.update.success_toast.message'),
+        title: i18n.t('toast.success.general_title'),
+        description: i18n.t('module.user.update.success_toast.message'),
       })
     }
     catch (error) {
@@ -81,7 +76,10 @@ const form = useForm({
     }
   },
   onSubmitError: () => {
-    toast.error({ message: i18n.t('error.invalid_form_input.description') })
+    toast.error({
+      title: i18n.t('toast.error.general_title'),
+      description: i18n.t('error.invalid_form_input.description'),
+    })
   },
 })
 
@@ -112,7 +110,18 @@ const roles = form.register('roles')
               :display-fn="(item) => item.name"
               :items="roleItems"
               :label="i18n.t('module.user.role')"
-            />
+            >
+              <VcSelectItem
+                v-for="role in roleItems"
+                :key="role.uuid"
+                :value="{
+                  uuid: role.uuid,
+                  name: role.name,
+                }"
+              >
+                {{ role }}
+              </VcSelectItem>
+            </VcSelect>
           </FormGrid>
         </FormFieldset>
       </FormLayout>

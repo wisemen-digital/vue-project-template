@@ -2,7 +2,7 @@
 import {
   VcRouterLinkButton,
   VcTableCell,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { computed } from 'vue'
 
 import { TEST_ID } from '@/constants/testId.constant'

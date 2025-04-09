@@ -22,7 +22,7 @@ const props = defineProps<{
       >
         <h3
           v-if="!props.isCollapsed"
-          class="text-quaternary absolute text-xs uppercase"
+          class="text-primary-on-brand/80 absolute text-xs uppercase"
         >
           {{ props.group.label }}
         </h3>

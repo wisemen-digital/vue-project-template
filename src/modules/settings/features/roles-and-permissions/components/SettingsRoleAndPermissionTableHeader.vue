@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VcIcon } from '@wisemen/vue-core'
+import { VcIcon } from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 import SettingsRoleAndPermissionTableHeaderCell from '@/modules/settings/features/roles-and-permissions/components/SettingsRoleAndPermissionTableHeaderCell.vue'

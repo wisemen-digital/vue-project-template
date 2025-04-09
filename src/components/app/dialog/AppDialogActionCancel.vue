@@ -3,7 +3,7 @@ import {
   VcButton,
   VcDialogCloseButton,
   VcKeyboardKey,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 
 import AppGroup from '@/components/app/group/AppGroup.vue'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'

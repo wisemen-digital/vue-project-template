@@ -7,6 +7,9 @@
     },
     "header": {
       "search": "Global search"
+    },
+    "sidebar": {
+      "settings": "Settings"
     }
   },
   "component.keyboard_shortcut.then": "then",
@@ -104,12 +107,12 @@
   "module.settings.roles_and_permissions.create_role_dialog.title": "Create role",
   "module.settings.roles_and_permissions.save_changes": "Save changes",
   "module.settings.roles_and_permissions.save_changes_success": "Changes saved succesfully",
+  "module.settings.roles_and_permissions.table.delete_role": "Delete role",
+  "module.settings.roles_and_permissions.table.permissions": "Permissiosn",
   "module.settings.roles_and_permissions.title": "Roles and Permissions",
   "module.settings.subtitle": "Manage your app settings",
   "module.settings.system.title": "System",
   "module.settings.title": "Settings",
-  "module.settings.roles_and_permissions.table.delete_role": "Delete role",
-  "module.settings.roles_and_permissions.table.permissions": "Permissiosn",
   "module.user.create.create_user": "Create User",
   "module.user.create.success_toast.message": "User has been created successfully.",
   "module.user.create.title": "New user",
@@ -130,11 +133,20 @@
   "shared.edit": "Edit",
   "shared.id": "Id",
   "shared.info": "Info",
+  "shared.loading": "Loading",
   "shared.navigate_back": "Navigate back",
   "shared.navigate_forward": "Navigate forward",
   "shared.save": "Create",
   "shared.topic": "Topic",
   "shared.type": "Type",
+  "toast": {
+    "error": {
+      "general_title": "Something went wrong"
+    },
+    "success": {
+      "general_title": "Success"
+    }
+  },
   "user.birth_date": "Birthdate",
   "user.email": "Email",
   "user.first_name": "First name",

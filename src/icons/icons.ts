@@ -6,12 +6,16 @@ export const icons = {
   bottomLeftCorner: import('./BottomLeftCornerIcon.vue'),
   bottomRightCorner: import('./BottomRightCornerIcon.vue'),
   brush: import('./BrushIcon.vue'),
+  chevronDown: import('./ChevronDownIcon.vue'),
+  chevronUp: import('./ChevronUpIcon.vue'),
   edit: import('./EditIcon.vue'),
   enterKey: import('./EnterKeyIcon.vue'),
   escKey: import('./EscKeyIcon.vue'),
   file: import('./FileIcon.vue'),
   googleLogo: import('./GoogleLogoIcon.vue'),
+  infoCircle: import('./InfoCircleIcon.vue'),
   logout: import('./LogoutIcon.vue'),
+  settings: import('./SettingsIcon.vue'),
   shield: import('./ShieldIcon.vue'),
   stars: import('./StarsIcon.vue'),
   threeDots: import('./ThreeDotsIcon.vue'),
@@ -20,6 +24,10 @@ export const icons = {
 
 type CustomIcons = {
   [K in keyof typeof icons]: Component
+}
+
+declare module '@wisemen/vue-core-components' {
+  interface Icons extends CustomIcons {}
 }
 
 declare module '@wisemen/vue-core' {

@@ -2,7 +2,7 @@
 import {
   VcCheckbox,
   VcIcon,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import type { Form } from 'formango'
 import { ref } from 'vue'
 

@@ -1,9 +1,5 @@
 import { useLocalStorage } from '@vueuse/core'
-import type { SelectItem } from '@wisemen/vue-core'
-import type {
-  ComputedRef,
-  Ref,
-} from 'vue'
+import type { Ref } from 'vue'
 import {
   computed,
   watch,
@@ -15,7 +11,7 @@ import { createI18nKeyMap } from '@/types/enum.type'
 
 interface UseFontSizeReturnType {
   displayFn: (value: FontSize) => string
-  items: ComputedRef<SelectItem<FontSize>[]>
+  items: FontSize[]
   value: Ref<FontSize>
 }
 
@@ -51,14 +47,9 @@ export function useFontSizeSelect(): UseFontSizeReturnType {
     return i18nPlugin.global.t(i18nKeys.get(value)!)
   }
 
-  const items = computed<SelectItem<FontSize>[]>(() => fontSizes.map((item) => ({
-    type: 'option',
-    value: item,
-  })))
-
   return {
     displayFn,
-    items,
+    items: fontSizes,
     value,
   }
 }

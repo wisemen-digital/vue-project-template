@@ -2,7 +2,7 @@
 import {
   VcIcon,
   VcTooltip,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { RouterLink } from 'vue-router'
 
 import type { NavigationItem } from '@/types/navigationItem.type'
@@ -22,6 +22,9 @@ const props = defineProps<{
     :popover-offset-in-px="10"
     :is-arrow-hidden="true"
     :delay-duration="500"
+    :class-config="{
+      innerContent: 'bg-fg-primary text-fg-disabled',
+    }"
     popover-side="right"
   >
     <template #trigger>
@@ -45,12 +48,12 @@ const props = defineProps<{
           :class="[
             isActive
               ? `
-                bg-fg-brand-primary text-primary-on-brand
+                bg-primary/20 text-primary-on-brand
                 hover:brightness-95
               `
               : `
-                bg-secondary text-quaternary
-                group-hover:bg-secondary-hover
+                bg-secondary text-quaternary text-primary-on-brand/70
+                group-hover:bg-primary/10
               `,
           ]"
           class="

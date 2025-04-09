@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import {
-  useDarkMode,
-  useDocumentTitle,
+  useAppearance,
   VcConfigProvider,
   VcDialogContainer,
   VcThemeProvider,
   VcToastContainer,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 import {
   RouterView,
@@ -15,6 +14,7 @@ import {
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
 import { useAutoRefresh } from '@/composables/auto-refresh/autoRefresh.composable.ts'
+import { useDocumentTitle } from '@/composables/document-title/documentTitle.composable.ts'
 import { useFontSize } from '@/composables/font-size/fontSize.composable'
 import { useLanguage } from '@/composables/language/language.composable'
 import { useReduceMotion } from '@/composables/reduce-motion/reduceMotion.composable'
@@ -23,9 +23,9 @@ import { logBuildInformation } from '@/constants/environment.constant.ts'
 import { useAuthStore } from '@/stores/auth.store.ts'
 
 const { setTemplate } = useDocumentTitle()
-const { locale } = useI18n()
+const i18n = useI18n()
 const router = useRouter()
-const appearance = useDarkMode()
+const appearance = useAppearance()
 const authStore = useAuthStore()
 const theme = useTheme()
 
@@ -44,16 +44,21 @@ authStore.onLogout(() => {
 </script>
 
 <template>
-  <VcConfigProvider :locale="locale">
+  <VcConfigProvider
+    :locale="i18n.locale.value"
+    teleport-target-selector="#teleport-target"
+  >
     <VcThemeProvider
-      :appearance="appearance"
       :theme="theme"
+      :appearance="appearance"
       class="flex size-full flex-1 flex-col overflow-hidden"
     >
       <RouterView />
+
       <AppPageLoader />
       <VcDialogContainer />
       <VcToastContainer />
+      <div id="teleport-target" />
     </VcThemeProvider>
   </VcConfigProvider>
 </template>

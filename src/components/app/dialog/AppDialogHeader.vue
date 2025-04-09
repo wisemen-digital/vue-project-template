@@ -2,7 +2,7 @@
 import {
   VcDialogDescription,
   VcDialogTitle,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 
 const props = defineProps<{
   title: string

@@ -1,4 +1,4 @@
-import { useDialog } from '@wisemen/vue-core'
+import { useVcDialog } from '@wisemen/vue-core-components'
 import type { ComputedRef } from 'vue'
 import {
   onMounted,
@@ -15,7 +15,7 @@ interface UseUnsavedChangesReturnType {
 let pendingPromise: Promise<void> | null | void = null
 
 export function useUnsavedChanges(isDirty: ComputedRef<boolean>): UseUnsavedChangesReturnType {
-  const confirmDialog = useDialog({ component: () => import('@/components/dialog/AppConfirmDialog.vue') })
+  const confirmDialog = useVcDialog({ component: () => import('@/components/dialog/AppConfirmDialog.vue') })
 
   function handleUnsavedClose(): Promise<void> | void {
     const i18n = i18nPlugin.global
