@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/wisemen-digital/vue-core/refs/heads/main/packages/generator/schema/stylesheet.json",
   "colors": {
     "brand-25": { "light": "#FCFAFF", "dark": "#FCFAFF" },
     "brand-50": { "light": "#F9F5FF", "dark": "#F9F5FF" },
