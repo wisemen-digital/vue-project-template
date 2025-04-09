@@ -1,16 +1,10 @@
 <script setup lang="ts">
 import {
+  useAppearance,
   VcConfigProvider,
   VcDialogContainer,
   VcThemeProvider,
   VcToastContainer,
-} from '@wisemen/vue-core'
-import {
-  useAppearance,
-  VcConfigProvider as VcConfigProviderNext,
-  VcDialogContainer as VcDialogContainerNext,
-  VcThemeProvider as VcThemeProviderNext,
-  VcToastContainer as VcToastContainerNext,
 } from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 import {
@@ -50,31 +44,21 @@ authStore.onLogout(() => {
 </script>
 
 <template>
-  <VcConfigProvider :locale="i18n.locale.value">
-    <VcConfigProviderNext
-      :locale="i18n.locale.value"
-      teleport-target-selector="#teleport-target"
+  <VcConfigProvider
+    :locale="i18n.locale.value"
+    teleport-target-selector="#teleport-target"
+  >
+    <VcThemeProvider
+      :theme="theme"
+      :appearance="appearance"
+      class="flex size-full flex-1 flex-col overflow-hidden"
     >
-      <VcThemeProvider
-        :theme="theme"
-        :appearance="appearance"
-        class="flex size-full flex-1 flex-col overflow-hidden"
-      >
-        <VcThemeProviderNext
-          :theme="theme"
-          :appearance="appearance"
-          class="flex size-full flex-1 flex-col overflow-hidden"
-        >
-          <RouterView />
+      <RouterView />
 
-          <AppPageLoader />
-          <VcDialogContainer />
-          <VcDialogContainerNext />
-          <VcToastContainer />
-          <VcToastContainerNext />
-          <div id="teleport-target" />
-        </VcThemeProviderNext>
-      </VcThemeProvider>
-    </VcConfigProviderNext>
+      <AppPageLoader />
+      <VcDialogContainer />
+      <VcToastContainer />
+      <div id="teleport-target" />
+    </VcThemeProvider>
   </VcConfigProvider>
 </template>
