@@ -16,10 +16,10 @@ const i18n = useI18n()
     data-test-id="contact-status"
   >
     <span v-if="props.contact.isActive">
-      {{ i18n.t('contact.status.active') }}
+      {{ i18n.t('module.contact.status.active') }}
     </span>
     <span v-else>
-      {{ i18n.t('contact.status.inactive') }}
+      {{ i18n.t('module.contact.status.inactive') }}
     </span>
   </VcTableCell>
 </template>

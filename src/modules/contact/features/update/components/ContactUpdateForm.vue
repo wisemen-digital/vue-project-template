@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   useToast,
+  VcPhoneNumberField,
   VcTextField,
 } from '@wisemen/vue-core'
 import { useForm } from 'formango'
@@ -46,11 +47,6 @@ const form = useForm({
         params: { contactUuid: props.contact.uuid },
       })
 
-      toast.success({
-        testId: TEST_ID.CONTACTS.UPDATE.SUCCESS_TOAST,
-        message: i18n.t('module.contact.update.success_toast.message'),
-      })
-
       await router.push({
         name: 'contact-detail',
         params: { contactUuid: props.contact.uuid },
@@ -85,39 +81,31 @@ const phone = form.register('phone')
 
       <FormLayout>
         <FormFieldset
-          :description="i18n.t('module.contact.form.section.name.description')"
-          :title="i18n.t('contact.personal_info')"
+          :title="i18n.t('module.contact.personal_info')"
         >
           <FormGrid :cols="2">
             <VcTextField
-              :test-id="TEST_ID.CONTACTS.FORM.FIRST_NAME_INPUT"
               v-bind="toFormField(firstName)"
-              :label="i18n.t('contact.first_name')"
+              :label="i18n.t('module.contact.first_name')"
             />
             <VcTextField
-              :test-id="TEST_ID.CONTACTS.FORM.LAST_NAME_INPUT"
               v-bind="toFormField(lastName)"
-              :label="i18n.t('contact.last_name')"
+              :label="i18n.t('module.contact.last_name')"
             />
           </FormGrid>
         </FormFieldset>
 
         <FormFieldset
-          :description="i18n.t('module.contact.form.section.contact.description')"
-          :title="i18n.t('contact.contact_info')"
+          :title="i18n.t('module.contact.contact_info')"
         >
           <FormGrid :cols="2">
             <VcTextField
-              :test-id="TEST_ID.CONTACTS.FORM.EMAIL_INPUT"
               v-bind="toFormField(email)"
-              :label="i18n.t('contact.email')"
-              type="email"
+              :label="i18n.t('module.contact.email')"
             />
-            <VcTextField
-              :test-id="TEST_ID.CONTACTS.FORM.PHONE_INPUT"
+            <VcPhoneNumberField
               v-bind="toFormField(phone)"
-              :label="i18n.t('contact.phone')"
-              type="tel"
+              :label="i18n.t('module.contact.phone')"
             />
           </FormGrid>
         </FormFieldset>

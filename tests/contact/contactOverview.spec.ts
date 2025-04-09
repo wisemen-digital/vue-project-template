@@ -44,7 +44,7 @@ test('should display contacts in the overview table', async ({
   await expect(page.getByTestId(TEST_ID.CONTACTS.TABLE.PHONE_LINK).first()).toContainText('+1 234 567 890')
 })
 
-test('should navigate to contact detail page when clicking on an entry in the overivew table', async ({
+test('should navigate to contact detail page when clicking on an entry in the overview table', async ({
   http,
   page,
   worker,
@@ -69,11 +69,9 @@ test('should navigate to contact detail page when clicking on an entry in the ov
 
   await page.goto('/contacts')
 
-  // Click on the contact name to navigate to the detail page
-  await page.getByTestId(TEST_ID.CONTACTS.TABLE.NAME_LINK).click()
+  await page.getByRole('cell', { name: 'Charles Doe' }).click()
 
-  // Check if we're on the detail page
-  await expect(page.url()).toContain(`/contacts/${CONTACT.uuid}`)
+  await expect(page).toHaveURL(`/contacts/${CONTACT.uuid}`)
 })
 
 test('should navigate to create page when pressing the create button', async ({
@@ -89,12 +87,7 @@ test('should navigate to create page when pressing the create button', async ({
 
   await page.goto('/contacts')
 
-  // Check if the create button is visible
-  await expect(page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.CREATE_BUTTON)).toBeVisible()
-
-  // Click on the create button
   await page.getByTestId(TEST_ID.CONTACTS.OVERVIEW.CREATE_BUTTON).click()
 
-  // Check if we're on the create page
-  await expect(page.url()).toContain('/contacts/create')
+  await expect(page).toHaveURL(`/contacts/create`)
 })

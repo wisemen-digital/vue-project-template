@@ -7,7 +7,7 @@ import {
   test,
 } from '@@/base.fixture'
 
-test('update contact information', async ({
+test('should update an existing contact information', async ({
   http,
   page,
   worker,
@@ -21,6 +21,9 @@ test('update contact information', async ({
     .build()
 
   await worker.use(
+    http.put(`*/api/v1/contacts/${CONTACT.uuid}`, () => {
+      return HttpResponse.json(CONTACT)
+    }),
     http.get(`*/api/v1/contacts/${CONTACT.uuid}`, () => {
       return HttpResponse.json(CONTACT)
     }),
@@ -28,13 +31,12 @@ test('update contact information', async ({
 
   await page.goto(`/contacts/${CONTACT.uuid}/update`)
 
-  await page.getByTestId(TEST_ID.CONTACTS.FORM.FIRST_NAME_INPUT).fill('Updated')
-  await page.getByTestId(TEST_ID.CONTACTS.FORM.LAST_NAME_INPUT).fill('Contact')
-  await page.getByTestId(TEST_ID.CONTACTS.FORM.EMAIL_INPUT).fill('updated.contact@email.com')
-  await page.getByTestId(TEST_ID.CONTACTS.FORM.PHONE_INPUT).fill('+1 555 555 555')
+  await page.getByRole('textbox', { name: 'First name' }).fill('Updated')
+  await page.getByRole('textbox', { name: 'Last name' }).fill('Contact')
+  await page.getByRole('textbox', { name: 'Email' }).fill('updated.contact@email.com')
+  await page.getByRole('textbox', { name: 'Phone' }).fill('481293020')
 
   await page.getByTestId(TEST_ID.CONTACTS.FORM.SUBMIT_BUTTON).click()
 
-  await expect(page.getByTestId(TEST_ID.CONTACTS.UPDATE.SUCCESS_TOAST)).toBeVisible()
-  await expect(page.url()).toContain(`/contacts/${CONTACT.uuid}`)
+  await expect(page).toHaveURL(`/contacts/${CONTACT.uuid}`)
 })

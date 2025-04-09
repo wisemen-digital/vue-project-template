@@ -17,12 +17,12 @@ const fullName = computed<string | null>(() => ContactUtil.getFullName(props.con
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    label: i18n.t('contact.label.plural'),
+    label: i18n.t('module.contact.label.plural'),
     to: { name: 'contact-overview' },
     type: 'route',
   },
   {
-    label: fullName.value ?? props.contact.email ?? i18n.t('contact.unknown'),
+    label: fullName.value ?? props.contact.email ?? i18n.t('module.contact.unknown'),
     to: {
       name: 'contact-detail',
       params: { contactUuid: props.contact.uuid },

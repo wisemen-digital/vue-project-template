@@ -22,7 +22,7 @@ const authStore = useAuthStore()
 
 const documentTitle = useDocumentTitle()
 
-documentTitle.set(i18n.t('contact.label.plural'))
+documentTitle.set(i18n.t('module.contact.label.plural'))
 
 const pagination = usePagination<ContactIndexPagination>({
   isRouteQueryEnabled: true,
@@ -38,7 +38,7 @@ const isCreateButtonVisible = computed<boolean>(() => authStore.hasPermission(Pe
 
 <template>
   <AppTablePage
-    :title="i18n.t('contact.label.plural')"
+    :title="i18n.t('module.contact.label.plural')"
   >
     <template #header-actions>
       <VcRouterLinkButton
@@ -48,7 +48,7 @@ const isCreateButtonVisible = computed<boolean>(() => authStore.hasPermission(Pe
         color="primary"
         icon="plus"
       >
-        {{ i18n.t('contact.create') }}
+        {{ i18n.t('module.contact.create') }}
       </VcRouterLinkButton>
     </template>
 

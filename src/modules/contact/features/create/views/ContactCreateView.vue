@@ -9,12 +9,12 @@ const i18n = useI18n()
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
-    label: i18n.t('contact.label.plural'),
+    label: i18n.t('module.contact.label.plural'),
     to: { name: 'contact-overview' },
     type: 'route',
   },
   {
-    label: i18n.t('contact.create'),
+    label: i18n.t('module.contact.create'),
     type: 'page',
   },
 ]

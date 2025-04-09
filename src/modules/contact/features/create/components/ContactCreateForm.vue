@@ -38,11 +38,6 @@ const form = useForm({
     try {
       const contactUuid = await contactCreateMutation.execute({ body: values })
 
-      toast.success({
-        testId: TEST_ID.CONTACTS.CREATE.SUCCESS_TOAST,
-        message: i18n.t('module.contact.create.success_toast.message'),
-      })
-
       await router.push({
         name: 'contact-detail',
         params: { contactUuid },
@@ -68,47 +63,39 @@ const phone = form.register('phone')
     <template #default="{ formId }">
       <AppTeleport to="headerActions">
         <FormSubmitButton
-          :form-id="formId"
           :form="form"
+          :form-id="formId"
           :data-test-id="TEST_ID.CONTACTS.FORM.SUBMIT_BUTTON"
           :label="i18n.t('shared.save')"
         />
       </AppTeleport>
 
       <FormLayout>
-        <FormFieldset
-          :description="i18n.t('module.contact.form.section.name.description')"
-          :title="i18n.t('contact.personal_info')"
-        >
+        <FormFieldset :title="i18n.t('module.contact.personal_info')">
           <FormGrid :cols="2">
             <VcTextField
-              :test-id="TEST_ID.CONTACTS.FORM.FIRST_NAME_INPUT"
               v-bind="toFormField(firstName)"
-              :label="i18n.t('contact.first_name')"
+              :label="i18n.t('module.contact.first_name')"
             />
             <VcTextField
-              :test-id="TEST_ID.CONTACTS.FORM.LAST_NAME_INPUT"
               v-bind="toFormField(lastName)"
-              :label="i18n.t('contact.last_name')"
+              :label="i18n.t('module.contact.last_name')"
             />
           </FormGrid>
         </FormFieldset>
 
         <FormFieldset
-          :description="i18n.t('module.contact.form.section.contact.description')"
-          :title="i18n.t('contact.contact_info')"
+          :title="i18n.t('module.contact.contact_info')"
         >
           <FormGrid :cols="2">
             <VcTextField
-              :test-id="TEST_ID.CONTACTS.FORM.EMAIL_INPUT"
               v-bind="toFormField(email)"
-              :label="i18n.t('contact.email')"
+              :label="i18n.t('module.contact.email')"
               type="email"
             />
             <VcPhoneNumberField
-              :test-id="TEST_ID.CONTACTS.FORM.PHONE_INPUT"
               v-bind="toFormField(phone)"
-              :label="i18n.t('contact.phone')"
+              :label="i18n.t('module.contact.phone')"
               type="tel"
             />
           </FormGrid>

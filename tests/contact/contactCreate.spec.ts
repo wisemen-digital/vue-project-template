@@ -1,48 +1,36 @@
 import { HttpResponse } from 'msw'
 
 import { TEST_ID } from '@/constants/testId.constant'
-import { UuidUtil } from '@/utils/uuid.util'
+import { ContactDetailDtoBuilder } from '@/models/contact/detail/contactDetailDto.builder.ts'
 import {
   expect,
   test,
 } from '@@/base.fixture'
 
-test('create a new contact', async ({
+test('should create a new contact', async ({
   http,
   page,
   worker,
 }) => {
-  const NEW_CONTACT_UUID = UuidUtil.getRandom()
+  const CONTACT = new ContactDetailDtoBuilder().build()
 
   await worker.use(
-    http.get(`*/api/v1/contacts/${NEW_CONTACT_UUID}`, () => {
-      return HttpResponse.json({
-        uuid: NEW_CONTACT_UUID,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        isActive: true,
-        email: 'new.contact@email.com',
-        firstName: 'New',
-        lastName: 'Contact',
-        phone: '+1 555 123 456',
-      })
+    http.get(`*/api/v1/contacts/${CONTACT.uuid}`, () => {
+      return HttpResponse.json(CONTACT)
+    }),
+    http.post(`*/api/v1/contacts`, () => {
+      return HttpResponse.json(CONTACT)
     }),
   )
 
   await page.goto('/contacts/create')
 
-  // Fill in the contact information
-  await page.getByTestId(TEST_ID.CONTACTS.FORM.FIRST_NAME_INPUT).fill('New')
-  await page.getByTestId(TEST_ID.CONTACTS.FORM.LAST_NAME_INPUT).fill('Contact')
-  await page.getByTestId(TEST_ID.CONTACTS.FORM.EMAIL_INPUT).fill('new.contact@email.com')
-  await page.getByTestId(TEST_ID.CONTACTS.FORM.PHONE_INPUT).fill('+1 555 123 456')
+  await page.getByRole('textbox', { name: 'First name' }).fill('New')
+  await page.getByRole('textbox', { name: 'Last name' }).fill('Contact')
+  await page.getByRole('textbox', { name: 'Email' }).fill('new.contact@email.com')
+  await page.getByRole('textbox', { name: 'Phone' }).fill('481293020')
 
-  // Submit the form
   await page.getByTestId(TEST_ID.CONTACTS.FORM.SUBMIT_BUTTON).click()
 
-  // Check for success toast
-  await expect(page.getByTestId(TEST_ID.CONTACTS.CREATE.SUCCESS_TOAST)).toBeVisible()
-
-  // Check if we're redirected to the detail page
-  await expect(page.url()).toContain(`/contacts/${NEW_CONTACT_UUID}`)
+  await expect(page).toHaveURL(`/contacts/${CONTACT.uuid}`)
 })

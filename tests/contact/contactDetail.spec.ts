@@ -7,7 +7,7 @@ import {
   test,
 } from '@@/base.fixture'
 
-test('display contact details', async ({
+test('should display contact information in detail view', async ({
   http,
   page,
   worker,
@@ -35,7 +35,7 @@ test('display contact details', async ({
   await expect(page).toContainText('Active')
 })
 
-test('edit button navigates to update page', async ({
+test('should navigate to the update page when clicking on the edit button', async ({
   http,
   page,
   worker,
@@ -55,12 +55,7 @@ test('edit button navigates to update page', async ({
 
   await page.goto(`/contacts/${CONTACT.uuid}`)
 
-  // Check if the edit button is visible
-  await expect(page.getByTestId(TEST_ID.CONTACTS.DETAIL.EDIT_BUTTON)).toBeVisible()
-
-  // Click on the edit button
   await page.getByTestId(TEST_ID.CONTACTS.DETAIL.EDIT_BUTTON).click()
 
-  // Check if we're on the update page
-  await expect(page.url()).toContain(`/contacts/${CONTACT.uuid}/update`)
+  await expect(page).toHaveURL(`/contacts/${CONTACT.uuid}/update`)
 })

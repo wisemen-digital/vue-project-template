@@ -14,7 +14,10 @@ export const TEST_ID = {
   },
   CONTACTS: {
     CREATE: { SUCCESS_TOAST: 'contacts-create-success-toast' },
-    DETAIL: { EDIT_BUTTON: 'contacts-detail-edit-button' },
+    DETAIL: {
+      DELETE_BUTTON: 'contacts-detail-delete-button',
+      EDIT_BUTTON: 'contacts-detail-edit-button',
+    },
     FORM: {
       EMAIL_INPUT: 'contacts-form-email-input',
       FIRST_NAME_INPUT: 'contacts-form-first-name-input',
