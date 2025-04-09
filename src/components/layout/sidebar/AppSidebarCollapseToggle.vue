@@ -28,7 +28,7 @@ const toggleBtnLabel = computed<string>(() => {
 </script>
 
 <template>
-  <div class="absolute top-4 right-0">
+  <div class="absolute top-18 right-0">
     <VcKeyboardShortcutProvider
       v-slot="{ keys }"
       :keyboard-keys="['c']"
@@ -48,7 +48,7 @@ const toggleBtnLabel = computed<string>(() => {
               class="
                 border-secondary bg-secondary text-fg-disabled ring-fg-tertiary
                 flex h-10 w-5 translate-x-1/2 items-center justify-center
-                rounded-2xl border border-solid opacity-0 outline-none
+                rounded-2xl border border-solid outline-none
                 group-hover/sidebar:opacity-100
                 focus-visible:opacity-100
               "

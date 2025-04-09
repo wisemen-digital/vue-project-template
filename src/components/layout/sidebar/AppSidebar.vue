@@ -56,16 +56,16 @@ onCreated(() => {
 <template>
   <div
     :class="{
-      'p-xl': props.variant === 'floating-sidebar' || props.variant === 'floating-content',
+      'px-0': props.variant === 'floating-sidebar' || props.variant === 'floating-content',
       'border-secondary border-r border-solid': props.variant === 'fixed-sidebar',
     }"
-    class="bg-secondary sticky top-0 z-20 h-dvh"
+    class="sticky top-0 z-20 h-dvh"
   >
     <div
       :class="{
-        'border-secondary rounded-2xl border border-solid': props.variant === 'floating-sidebar',
+        'rounded-2xl border border-solid': props.variant === 'floating-sidebar',
       }"
-      class="bg-secondary h-full"
+      class="h-full"
     >
       <div
         :style="{

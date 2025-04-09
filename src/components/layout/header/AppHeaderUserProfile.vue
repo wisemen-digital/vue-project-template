@@ -62,20 +62,23 @@ function onSignOut(): void {
     <template #trigger>
       <VcButton
         :test-id="TEST_ID.APP_PAGE.USER_BUTTON"
+        :class-config="{
+          root: 'data-[loading=false]:not-disabled:hover:bg-transparent',
+        }"
         variant="tertiary"
       >
         <AppGroup>
           <VcAvatar
             :name="fullName ?? ''"
             :class-config="{
-              root: 'size-8 bg-quaternary',
-              fallback: 'text-xs',
+              root: 'size-8 bg-quaternary/50',
+              fallback: 'text-xs text-white',
             }"
           />
 
           <VcIcon
             icon="chevronRight"
-            class="text-quaternary size-5 rotate-90"
+            class="size-5 rotate-90 text-white/50"
           />
         </AppGroup>
       </VcButton>

@@ -21,7 +21,9 @@ const settingsDialog = useVcDialog({ component: () => import('@/modules/settings
     >
       <VcIconButton
         :label="i18n.t('component.sidebar.settings')"
-
+        :class-config="{
+          root: 'text-white/50 data-[loading=false]:not-disabled:hover:bg-transparent',
+        }"
         variant="tertiary"
         icon="settings"
         @click="settingsDialog.open()"
