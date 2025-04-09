@@ -1,9 +1,5 @@
 {
-  "component": {
-    "sidebar": {
-      "settings": "Settings"
-    }
-  },
+  "component.sidebar.settings": "Settings",
   "component.keyboard_shortcut.then": "then",
   "component.password_input.hide_password": "Hide password",
   "component.password_input.show_password": "Show password",
