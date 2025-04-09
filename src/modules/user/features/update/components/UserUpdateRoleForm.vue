@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useToast } from '@wisemen/vue-core'
 import {
+  useVcToast,
   VcSelect,
   VcSelectItem,
 } from '@wisemen/vue-core-components'
@@ -30,7 +30,7 @@ const props = defineProps<{
 
 const i18n = useI18n()
 
-const toast = useToast()
+const toast = useVcToast()
 const errorToast = useApiErrorToast()
 const userUpdateRoleMutation = useUserUpdateRoleMutation()
 
@@ -67,7 +67,8 @@ const form = useForm({
 
       toast.success({
         testId: TEST_ID.USERS.UPDATE.SUCCESS_TOAST,
-        message: i18n.t('module.user.update.success_toast.message'),
+        title: i18n.t('toast.success.general_title'),
+        description: i18n.t('module.user.update.success_toast.message'),
       })
     }
     catch (error) {
@@ -75,7 +76,10 @@ const form = useForm({
     }
   },
   onSubmitError: () => {
-    toast.error({ message: i18n.t('error.invalid_form_input.description') })
+    toast.error({
+      title: i18n.t('toast.error.general_title'),
+      description: i18n.t('error.invalid_form_input.description'),
+    })
   },
 })
 

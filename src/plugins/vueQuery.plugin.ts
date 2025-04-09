@@ -5,9 +5,8 @@ import {
   VueQueryPlugin,
 } from '@tanstack/vue-query'
 import { useClipboard } from '@vueuse/core'
-import { useToast } from '@wisemen/vue-core'
+import { useVcToast } from '@wisemen/vue-core-components'
 import type { App } from 'vue'
-import { computed } from 'vue'
 
 import { TEST_ID } from '@/constants/testId.constant.ts'
 import { ApiErrorUtil } from '@/utils/apiError.util.ts'
@@ -25,7 +24,7 @@ const vueQueryPluginOptions: VueQueryPluginOptions = {
     },
     queryCache: new QueryCache({
       onError: (error): void => {
-        const toast = useToast()
+        const toast = useVcToast()
 
         const clipboard = useClipboard({ copiedDuring: 2000 })
 
@@ -34,15 +33,17 @@ const vueQueryPluginOptions: VueQueryPluginOptions = {
         if (error.name === 'ZodError') {
           toast.error({
             testId: TEST_ID.SHARED.MALFORMED_RESPONSE_TOAST,
-            action: {
-              label: computed<string>(() => clipboard.copied.value ? 'Copied!' : 'Copy error'),
-              onClick: () => {
-                void clipboard.copy(`API returned a malformed response.\n\n${JSON.stringify(error, null, 2)}`)
+            title: `Zod Error`,
+            actions: [
+              {
+                label: clipboard.copied.value ? 'Copied!' : 'Copy error',
+                onClick: (): void => {
+                  void clipboard.copy(`API returned a malformed response.\n\n${JSON.stringify(error, null, 2)}`)
+                },
               },
-            },
-            durationInMs: 4000,
+            ],
+            description: `API returned a malformed response.`,
             icon: 'alertCircle',
-            message: `API returned a malformed response.`,
           })
 
           return
@@ -50,17 +51,18 @@ const vueQueryPluginOptions: VueQueryPluginOptions = {
 
         if (ApiErrorUtil.isError(error)) {
           toast.error({
-            durationInMs: 4000,
+            title: 'Api Error',
+            description: error.errors?.[0]?.detail,
             icon: 'alertCircle',
-            message: error.errors?.[0]?.detail,
           })
 
           return
         }
 
         toast.error({
+          title: 'Error',
+          description: error.message,
           icon: 'alertCircle',
-          message: error.message,
         })
       },
     }),

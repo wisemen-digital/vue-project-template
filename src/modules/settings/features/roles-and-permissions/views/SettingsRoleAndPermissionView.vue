@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useToast } from '@wisemen/vue-core'
 import {
   useVcDialog,
+  useVcToast,
   VcButton,
 } from '@wisemen/vue-core-components'
 import { useForm } from 'formango'
@@ -33,7 +33,7 @@ const props = defineProps<{
 
 const i18n = useI18n()
 const apiErrorToast = useApiErrorToast()
-const toast = useToast()
+const toast = useVcToast()
 
 const settingsPermissionQuery = useSettingsPermissionQuery()
 const settingsRoleQuery = useSettingsRolesQuery()
@@ -67,7 +67,10 @@ const form = useForm({
     try {
       await settingsRolesBulkUpdateMutation.execute({ body: values })
 
-      toast.success({ message: i18n.t('module.settings.roles_and_permissions.save_changes_success') })
+      toast.success({
+        title: i18n.t('toast.success.general_title'),
+        description: i18n.t('module.settings.roles_and_permissions.save_changes_success'),
+      })
     }
     catch (error) {
       apiErrorToast.show(error)

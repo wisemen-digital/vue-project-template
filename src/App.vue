@@ -10,6 +10,7 @@ import {
   VcConfigProvider as VcConfigProviderNext,
   VcDialogContainer as VcDialogContainerNext,
   VcThemeProvider as VcThemeProviderNext,
+  VcToastContainer as VcToastContainerNext,
 } from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 import {
@@ -70,6 +71,7 @@ authStore.onLogout(() => {
           <VcDialogContainer />
           <VcDialogContainerNext />
           <VcToastContainer />
+          <VcToastContainerNext />
           <div id="teleport-target" />
         </VcThemeProviderNext>
       </VcThemeProvider>
