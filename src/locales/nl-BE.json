@@ -1,4 +1,9 @@
 {
+  "component": {
+    "sidebar": {
+      "settings": "Settings"
+    }
+  },
   "component.keyboard_shortcut.then": "dan",
   "component.password_input.hide_password": "Wachtwoord verbergen",
   "component.password_input.show_password": "Wachtwoord tonen",

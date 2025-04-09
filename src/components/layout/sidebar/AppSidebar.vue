@@ -5,7 +5,6 @@ import {
   ref,
 } from 'vue'
 
-import AppSidebarBottom from '@/components/layout/sidebar/AppSidebarBottom.vue'
 import AppSidebarCollapseToggle from '@/components/layout/sidebar/AppSidebarCollapseToggle.vue'
 import AppSidebarTop from '@/components/layout/sidebar/AppSidebarTop.vue'
 import AppSidebarNavMenu from '@/components/layout/sidebar/navigation/AppSidebarNavMenu.vue'
@@ -23,10 +22,6 @@ const props = withDefaults(defineProps<{
   user: UserDetail
   variant: 'fixed-sidebar' | 'floating-content' | 'floating-sidebar'
 }>(), { bottomItems: () => [] })
-
-const emit = defineEmits<{
-  signOut: []
-}>()
 
 const isSidebarCollapsed = useLocalStorage<boolean>('isSidebarCollapsed', false)
 
@@ -47,10 +42,6 @@ const sidebarWidth = computed<string>(() => {
 const sidebarItemHeightInRem = computed<number>(() => {
   return sidebarWidthWhenCollapsedInRem.value - sidebarPaddingXInRem.value * 2
 })
-
-function onSignOut(): void {
-  emit('signOut')
-}
 
 onCreated(() => {
   if (
@@ -102,13 +93,6 @@ onCreated(() => {
             :bottom-items="props.bottomItems"
           />
         </div>
-
-        <AppSidebarBottom
-          :is-collapsed="isSidebarCollapsed"
-          :sidebar-item-height-in-rem="sidebarItemHeightInRem"
-          :user="props.user"
-          @sign-out="onSignOut"
-        />
       </div>
     </div>
   </div>

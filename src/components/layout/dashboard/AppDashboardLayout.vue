@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppDashboardLayoutFloating from '@/components/layout/dashboard/AppDashboardLayoutFloating.vue'
+import AppHeader from '@/components/layout/header/AppHeader.vue'
 import AppSidebar from '@/components/layout/sidebar/AppSidebar.vue'
 import type { UserDetail } from '@/models/user/detail/userDetail.model'
 import { useSettingsPreferences } from '@/modules/settings/composables/settingsPreferences.composable.ts'
@@ -44,12 +45,14 @@ const mainItems = computed<NavigationGroup[]>(() => [
         :user="authUser"
         :main-items="mainItems"
         variant="floating-content"
-        @sign-out="onSignOut"
       />
     </template>
 
     <template #header>
-      <p>TEST</p>
+      <AppHeader
+        :user="authUser"
+        @sign-out="onSignOut"
+      />
     </template>
   </AppDashboardLayoutFloating>
 </template>
