@@ -1,7 +1,6 @@
 @import '@wisemen/vue-core/style.css' layer(base);
 @import './colors.css';
 @import './themes/default.css';
-@import './themes/high-contrast.css';
 @import './tailwind.css';
 
 @layer base {
