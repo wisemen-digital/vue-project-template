@@ -1,6 +1,6 @@
 import { useLocalStorage } from '@vueuse/core'
-import type { Icon } from '@wisemen/vue-core'
 import { useDebounceSearch } from '@wisemen/vue-core'
+import type { Icon } from '@wisemen/vue-core-components'
 import type {
   ComputedRef,
   Ref,
@@ -149,7 +149,10 @@ export function useCommandMenu(): UseCommandMenuReturnType {
 
 function getRoute(item: GlobalSearchIndex): RouteLocationCurrent {
   if (item.entity.type === GlobalSearchCollectionName.USER) {
-    return { name: 'user-overview' }
+    return {
+      name: 'user-detail',
+      params: { userUuid: item.entity.uuid },
+    }
   }
 
   throw new Error(`No route found for entity type: ${item.entity}`)
@@ -157,7 +160,7 @@ function getRoute(item: GlobalSearchIndex): RouteLocationCurrent {
 
 function getIcon(item: GlobalSearchIndex): Icon {
   if (item.entity.type === GlobalSearchCollectionName.USER) {
-    return 'trash'
+    return 'barChartSquare'
   }
 
   throw new Error(`No icon found for entity type: ${item.entity}`)

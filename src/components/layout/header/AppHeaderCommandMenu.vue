@@ -2,7 +2,7 @@
 import {
   VcIcon,
   VcTextField,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import {
   ListboxContent,
   ListboxFilter,
@@ -38,7 +38,7 @@ function onClick(item: CommandMenuItem): void {
 </script>
 
 <template>
-  <div class="p-lg h-min max-h-120 w-120 rounded-lg">
+  <div class="p-lg h-min max-h-120 w-120 rounded-lg text-white">
     <ListboxRoot @highlight="(payload) => onHighlight(payload?.value?.toString())">
       <ListboxFilter as-child>
         <VcTextField

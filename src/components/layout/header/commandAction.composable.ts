@@ -105,11 +105,11 @@ export function useCommandMenuAction(props: Props): void {
 
 function getIcon(action: CommandMenuAction): Icon {
   if (action === CommandMenuAction.SETTINGS_APPEARANCE) {
-    return 'trash'
+    return 'trashIcon'
   }
 
   if (action === CommandMenuAction.SETTINGS_NOTIFICATIONS) {
-    return 'trash'
+    return 'trashIcon'
   }
 
   throw new Error(`Unknown action: ${action}`)

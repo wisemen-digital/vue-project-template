@@ -1,74 +1,82 @@
 <script setup lang="ts">
 import {
-  VcIcon,
+  useVcDialog,
+  VcButton,
+  VcButtonIconLeft,
   VcKeyboardShortcut,
   VcKeyboardShortcutProvider,
-  VcPopover,
-} from '@wisemen/vue-core'
-import { ref } from 'vue'
+} from '@wisemen/vue-core-components'
+import {
+  AnimatePresence,
+  Motion,
+  MotionConfig,
+} from 'motion-v'
 import { useI18n } from 'vue-i18n'
 
-import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
-import AppGroup from '@/components/app/group/AppGroup.vue'
-import AppHeaderCommandMenu from '@/components/layout/header/AppHeaderCommandMenu.vue'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 
-const { t } = useI18n()
+const i18n = useI18n()
 const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
 
-const isOpen = ref<boolean>(false)
-
-function onSelect(): void {
-  isOpen.value = false
-}
+const dialog = useVcDialog({ component: () => import('@/components/layout/header/AppHeaderCommandMenuDialog.vue') })
 </script>
 
 <template>
-  <VcKeyboardShortcutProvider
-    v-slot="{ keys }"
-    :config="{
-      keys: ['meta', 'k'],
-      stopPropagation: true,
+  <MotionConfig
+    :transition="{
+      duration: 0.5,
+      type: 'spring',
+      bounce: 0.2,
     }"
   >
-    <VcPopover
-      v-model:is-open="isOpen"
-      :is-arrow-hidden="true"
-      :popover-offset-in-px="-40"
-      popover-side="bottom"
-      class="bg-fg-primary border-transparent shadow-lg backdrop-blur-md"
-    >
-      <template #trigger>
-        <AppUnstyledButton
-          class="
-            hover:border-brand-500
-            py-sm px-lg ring-offset-brand-800 max-w-120 min-w-full rounded-full
-            border border-white/10 bg-white/10
-          "
+    <AnimatePresence>
+      <Motion
+        v-if="!dialog.isOpen()"
+        layout-id="dialog"
+      >
+        <VcKeyboardShortcutProvider
+          :keyboard-keys="['meta', 'k']"
+          class="w-full"
         >
-          <AppGroup gap="lg">
-            <VcIcon
-              icon="search"
-              class="text-placeholder size-4"
-            />
-
-            <span class="text-placeholder">
-              {{ t('component.header.search') }}
-            </span>
-
-            <VcKeyboardShortcut
-              v-if="isKeyboardShortcutHintVisible"
-              :keyboard-keys="keys"
-              keyboard-classes="bg-white/10 text-white/75"
-              class="ml-auto"
-            />
-          </AppGroup>
-        </AppUnstyledButton>
-      </template>
-
-      <template #content>
-        <AppHeaderCommandMenu @select="onSelect" />
-      </template>
-    </VcPopover>
-  </VcKeyboardShortcutProvider>
+          <VcButton
+            class-config="{
+              root: 'border-primary text-placeholder w-72 justify-start !scale-100 !bg-white',
+            }"
+            icon-left="search"
+            @click="dialog.open()"
+          >
+            <template #icon-left>
+              <Motion
+                layout-id="dialog-icon"
+                class="text-white/50"
+              >
+                <VcButtonIconLeft />
+              </Motion>
+            </template>
+            <Motion
+              layout-id="dialog-placeholder"
+              class="inline-block items-center justify-between text-white/50"
+            >
+              {{ i18n.t('component.global_search.placeholder') }}
+            </Motion>
+            <Motion
+              layout-id="dialog-shortcut"
+              class="ml-7"
+            >
+              <VcKeyboardShortcut
+                v-if="isKeyboardShortcutHintVisible"
+                :class-config="{
+                  root: 'border-white text-white',
+                  keyboardKey: {
+                    key: 'text-white/50 border-white',
+                  },
+                }"
+                :keyboard-keys="['meta', 'k']"
+              />
+            </Motion>
+          </VcButton>
+        </VcKeyboardShortcutProvider>
+      </Motion>
+    </AnimatePresence>
+  </MotionConfig>
 </template>

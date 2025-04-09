@@ -4,7 +4,10 @@ import { RouterView } from 'vue-router'
 
 <template>
   <div
-    class="from-brand-600 to-brand-800 flex size-full flex-1 bg-gradient-to-br"
+    class="
+      from-brand-600 to-brand-800 flex size-full flex-1 bg-gradient-to-br
+      dark:from-brand-800 dark:to-brnad-900
+    "
   >
     <slot name="sidebar" />
 
