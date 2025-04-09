@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {
-  useDocumentTitle,
   VcConfigProvider,
   VcDialogContainer,
   VcThemeProvider,
@@ -20,6 +19,7 @@ import {
 
 import AppPageLoader from '@/components/app/loader/AppPageLoader.vue'
 import { useAutoRefresh } from '@/composables/auto-refresh/autoRefresh.composable.ts'
+import { useDocumentTitle } from '@/composables/document-title/documentTitle.composable.ts'
 import { useFontSize } from '@/composables/font-size/fontSize.composable'
 import { useLanguage } from '@/composables/language/language.composable'
 import { useReduceMotion } from '@/composables/reduce-motion/reduceMotion.composable'

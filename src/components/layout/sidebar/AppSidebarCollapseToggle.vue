@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { VcToggle } from '@wisemen/vue-core'
 import {
   VcIcon,
   VcKeyboardShortcut,
   VcKeyboardShortcutProvider,
   VcTooltip,
 } from '@wisemen/vue-core-components'
+import { Toggle } from 'reka-ui'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -42,7 +42,7 @@ const toggleBtnLabel = computed<string>(() => {
         side="right"
       >
         <template #trigger>
-          <VcToggle v-model="isCollapsed">
+          <Toggle v-model="isCollapsed">
             <AppUnstyledButton
               :aria-label="toggleBtnLabel"
               class="
@@ -61,7 +61,7 @@ const toggleBtnLabel = computed<string>(() => {
                 icon="chevronLeft"
               />
             </AppUnstyledButton>
-          </VcToggle>
+          </Toggle>
         </template>
 
         <template #content>
