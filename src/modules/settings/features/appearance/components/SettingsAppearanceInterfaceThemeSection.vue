@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { RadioGroupItem } from '@wisemen/vue-core'
 import {
-  useDarkMode,
+  useAppearance,
   VcRadioGroup,
-  VcRadioGroupItem,
+  VcRadioGroupItemRoot,
   VcThemeProvider,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import {
   computed,
   watch,
@@ -19,11 +18,14 @@ import { useSettingsPreferences } from '@/modules/settings/composables/settingsP
 import SettingsAppearanceMiniDashboard from '@/modules/settings/features/appearance/components/SettingsAppearanceMiniDashboard.vue'
 
 const i18n = useI18n()
-const darkMode = useDarkMode()
+const darkMode = useAppearance()
 const preferences = useSettingsPreferences()
 const theme = useTheme()
 
-const appearances = computed<RadioGroupItem<UiTheme>[]>(() => [
+const appearances = computed<{
+  label: string
+  value: UiTheme
+}[]>(() => [
   {
     label: i18n.t('module.settings.interface_theme.light'),
     value: UiTheme.LIGHT,
@@ -52,25 +54,25 @@ watch(darkMode, () => {
           lg:grid-cols-3
         "
       >
-        <VcRadioGroupItem
+        <VcRadioGroupItemRoot
           v-for="item of appearances"
           :key="item.value"
           :value="item.value"
-          class="
-            group cursor-pointer rounded-xl text-left !ring-0 !ring-offset-0
-          "
+          class="rounded-xl text-left"
         >
           <VcThemeProvider
             :appearance="item.value"
             :theme="theme"
+            class="w-full"
           >
             <div
               v-if="item.value === UiTheme.SYSTEM"
               class="
-                ring-brand-500 relative h-30 overflow-hidden rounded-xl border-2
-                border-solid border-transparent ring-offset-1 duration-200
-                group-data-[state=checked]:border-brand
-                group-focus-visible:ring-2
+                ring-brand-500 relative h-30 w-full overflow-hidden rounded-xl
+                border-2 border-solid border-transparent ring-offset-1
+                duration-200
+                group-data-[state=checked]/radio-group-item:border-brand
+                group-focus-visible/radio-group-item:ring-2
               "
             >
               <VcThemeProvider
@@ -102,8 +104,7 @@ watch(darkMode, () => {
                 bg-tertiary ring-brand-500 relative h-30 overflow-hidden
                 rounded-xl border-2 border-solid border-transparent
                 ring-offset-1 duration-200
-                group-data-[state=checked]:border-brand
-                group-focus-visible:ring-2
+                group-data-[state=checked]/radio-group-item:border-brand
               "
             >
               <SettingsAppearanceMiniDashboard
@@ -115,7 +116,7 @@ watch(darkMode, () => {
           <span class="mt-md text-primary block text-sm">
             {{ item.label }}
           </span>
-        </VcRadioGroupItem>
+        </VcRadioGroupItemRoot>
       </div>
     </VcRadioGroup>
   </FormFieldset>

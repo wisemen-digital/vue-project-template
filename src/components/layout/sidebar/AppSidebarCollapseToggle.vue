@@ -3,9 +3,9 @@ import {
   VcIcon,
   VcKeyboardShortcut,
   VcKeyboardShortcutProvider,
-  VcToggle,
   VcTooltip,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
+import { Toggle } from 'reka-ui'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -31,17 +31,18 @@ const toggleBtnLabel = computed<string>(() => {
   <div class="absolute top-4 right-0">
     <VcKeyboardShortcutProvider
       v-slot="{ keys }"
-      :config="{
-        keys: ['c'],
-      }"
+      :keyboard-keys="['c']"
     >
       <VcTooltip
         :is-arrow-hidden="true"
         :delay-duration="500"
+        :class-config="{
+          innerContent: 'bg-fg-primary text-fg-disabled',
+        }"
         side="right"
       >
         <template #trigger>
-          <VcToggle v-model="isCollapsed">
+          <Toggle v-model="isCollapsed">
             <AppUnstyledButton
               :aria-label="toggleBtnLabel"
               class="
@@ -60,7 +61,7 @@ const toggleBtnLabel = computed<string>(() => {
                 icon="chevronLeft"
               />
             </AppUnstyledButton>
-          </VcToggle>
+          </Toggle>
         </template>
 
         <template #content>
@@ -72,7 +73,12 @@ const toggleBtnLabel = computed<string>(() => {
             <VcKeyboardShortcut
               v-if="isKeyboardShortcutHintVisible"
               :keyboard-keys="keys"
-              keyboard-classes="bg-white/10 text-white"
+              :class-config="{
+                root: 'bg-white/10',
+                keyboardKey: {
+                  key: 'text-white',
+                },
+              }"
             />
           </div>
         </template>

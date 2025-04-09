@@ -1,4 +1,4 @@
-import type { Icon } from '@wisemen/vue-core'
+import type { Icon } from '@wisemen/vue-core-components'
 
 import type { I18nKey } from '@/plugins/i18n.plugin.ts'
 

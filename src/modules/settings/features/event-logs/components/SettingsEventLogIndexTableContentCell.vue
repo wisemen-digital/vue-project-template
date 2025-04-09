@@ -4,7 +4,7 @@ import {
   VcIconButton,
   VcTableCell,
   VcTooltip,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
@@ -27,7 +27,7 @@ function onClick(): void {
         <VcIconButton
           :label="i18n.t('shared.info')"
           :icon="clipboard.copied.value ? 'check' : 'infoCircle'"
-          :variant="clipboard.copied.value ? 'tertiary-color' : 'tertiary'"
+          :variant="clipboard.copied.value ? 'secondary' : 'tertiary'"
           @click="onClick"
         />
       </template>

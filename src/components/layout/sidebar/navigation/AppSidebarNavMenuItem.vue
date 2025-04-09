@@ -2,7 +2,7 @@
 import {
   VcIcon,
   VcTooltip,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { RouterLink } from 'vue-router'
 
 import type { NavigationItem } from '@/types/navigationItem.type'
@@ -22,6 +22,9 @@ const props = defineProps<{
     :popover-offset-in-px="10"
     :is-arrow-hidden="true"
     :delay-duration="500"
+    :class-config="{
+      innerContent: 'bg-fg-primary text-fg-disabled',
+    }"
     popover-side="right"
   >
     <template #trigger>

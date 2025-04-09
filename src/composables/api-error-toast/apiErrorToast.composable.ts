@@ -1,4 +1,4 @@
-import { useToast } from '@wisemen/vue-core'
+import { useVcToast } from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 import { ApiErrorEnumUtil } from '@/models/api-error/apiError.model.ts'
@@ -10,7 +10,7 @@ interface UserErrorToastReturnType {
 
 export function useApiErrorToast(): UserErrorToastReturnType {
   const i18n = useI18n()
-  const toast = useToast()
+  const toast = useVcToast()
 
   function show(error: unknown): void {
     if (!ApiErrorUtil.isError(error)) {
@@ -19,7 +19,10 @@ export function useApiErrorToast(): UserErrorToastReturnType {
 
     const errorMessage = ApiErrorEnumUtil.getI18nKeyForError(error)
 
-    toast.error({ message: errorMessage !== null ? i18n.t(errorMessage) : i18n.t('error.default_error.description') })
+    toast.error({
+      title: i18n.t('toast.error.general_title'),
+      description: errorMessage !== null ? i18n.t(errorMessage) : i18n.t('error.default_error.description'),
+    })
   }
 
   return { show }

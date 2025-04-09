@@ -1,14 +1,14 @@
 import type {
   Icon,
-  KeyboardShortcut,
-} from '@wisemen/vue-core'
+  VcKeyboardKeyProps,
+} from '@wisemen/vue-core-components'
 
 import type { RouteLocationCurrent } from '@/types/global/vueRouter'
 
 export interface NavigationItem {
   hasAlertDot?: boolean
   icon: Icon
-  keyboardShortcut?: KeyboardShortcut
+  keyboardShortcut?: VcKeyboardKeyProps['keyboardKey']
   label: string
   to: RouteLocationCurrent
 }

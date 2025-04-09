@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { KeyboardKey } from '@wisemen/vue-core'
+import type { VcKeyboardKeyProps } from '@wisemen/vue-core-components'
 import {
   VcKeyboardShortcut,
   VcTooltip,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 
 import AppGroup from '@/components/app/group/AppGroup.vue'
 import { useKeyboardShortcutVisibilityValue } from '@/composables/keyboard-shortcut-visibility/keyboardShortcutVisibility.composable'
 
 const props = withDefaults(defineProps<{
-  keyboardShortcutKeys?: KeyboardKey[]
+  keyboardShortcutKeys?: VcKeyboardKeyProps['keyboardKey'][]
   label: string
 }>(), { keyboardShortcutKeys: () => [] })
 
@@ -23,12 +23,6 @@ const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
     :disable-hoverable-content="true"
     :delay-duration="500"
     :is-hidden="!isKeyboardShortcutHintVisible"
-    :style-config="{
-      '--tooltip-bg-color-default': 'var(--bg-primary)',
-      '--tooltip-border-color-default': 'var(--border-secondary)',
-      '--tooltip-shadow-default': 'var(--shadow-sm)',
-      '--tooltip-border-radius-default': 'var(--radius-sm)',
-    }"
     popover-side="top"
   >
     <template #trigger>
@@ -44,6 +38,12 @@ const isKeyboardShortcutHintVisible = useKeyboardShortcutVisibilityValue()
         <VcKeyboardShortcut
           v-if="props.keyboardShortcutKeys.length > 0"
           :keyboard-keys="props.keyboardShortcutKeys"
+          :class-config="{
+            root: 'border-primary bg-secondary',
+            keyboardKey: {
+              key: 'text-primary',
+            },
+          }"
           keyboard-classes="bg-tertiary text-tertiary"
         />
       </AppGroup>

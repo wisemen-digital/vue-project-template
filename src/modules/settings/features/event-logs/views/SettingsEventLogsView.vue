@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePagination } from '@wisemen/vue-core'
+import { usePagination } from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 import { useSettingsEventLogIndexQuery } from '@/modules/settings/api/queries/settingsEventLogIndex.query.ts'

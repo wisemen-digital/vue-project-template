@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="TPagination extends BasePagination">
+import { useDebounceSearch } from '@wisemen/vue-core'
 import type {
   BasePagination,
   Pagination,
-} from '@wisemen/vue-core'
-import { useDebounceSearch } from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 
 import AppSearchInputField from '@/components/app/search/AppSearchInputField.vue'
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VcTextField } from '@wisemen/vue-core'
+import { VcTextField } from '@wisemen/vue-core-components'
 import type { Field } from 'formango'
 import { useI18n } from 'vue-i18n'
 

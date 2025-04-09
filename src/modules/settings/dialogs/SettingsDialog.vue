@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Icon } from '@wisemen/vue-core'
+import type { Icon } from '@wisemen/vue-core-components'
 import {
   VcDialog,
   VcDialogCloseButton,
   VcDialogTitle,
   VcIcon,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { VisuallyHidden } from 'reka-ui'
 import type { Component } from 'vue'
 import {
@@ -20,6 +20,10 @@ import AppSearchInputField from '@/components/app/search/AppSearchInputField.vue
 import AppTextHighlight from '@/components/app/text-highlight/AppTextHighlight.vue'
 import { useSettingsNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
 import type { SettingsMenuItemKey } from '@/modules/settings/types/settingsMenuItemKey.type.ts'
+
+const emit = defineEmits<{
+  close: []
+}>()
 
 const i18n = useI18n()
 
@@ -122,6 +126,7 @@ function onMenuItemClick(key: SettingsMenuItemKey): void {
       my-4xl flex size-full max-h-[80vh] max-w-[90vw]
       lg:max-w-[70vw]
     "
+    @close="emit('close')"
   >
     <div class="absolute top-2 right-2">
       <VcDialogCloseButton />
