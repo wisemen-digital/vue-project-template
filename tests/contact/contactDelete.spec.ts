@@ -38,6 +38,9 @@ test('delete a contact', async ({
   // Click the delete button
   await page.getByTestId(TEST_ID.CONTACTS.DETAIL.DELETE_BUTTON).click()
 
+  // Click the delete confirmation button
+  await page.getByRole('button', { name: 'Delete Enter' }).click()
+
   // Check if we are back in the overview page
   await expect(page.getByTestId(TEST_ID.CONTACTS.TABLE.CONTAINER)).toBeVisible()
 })

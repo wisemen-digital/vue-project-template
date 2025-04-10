@@ -45,11 +45,9 @@
   "form.fields.email": "E-mailadres",
   "form.fields.password": "Wachtwoord",
   "form.save_changes": "Wijzigingen opslaan",
-  "module": {
-    "contact": {
-      "address": "Adres"
-    }
-  },
+  "module.contact.address": "Adres",
+  "module.contact.delete.confirm.description": "Ben je zeker dat je \"{name}\" wilt verwijderen?",
+  "module.contact.delete.confirm.title": "Ben je zeker?",
   "module.auth.login.description": "Meld je aan om door te gaan",
   "module.auth.login.error": "Er is iets misgegaan bij het aanmelden. Probeer het opnieuw.",
   "module.auth.login.sign_in": "Aanmelden",
@@ -156,14 +154,8 @@
   "shared.save": "Maak aan",
   "shared.topic": "Topic",
   "shared.type": "Type",
-  "toast": {
-    "error": {
-      "general_title": "Er is iets mis gegaan"
-    },
-    "success": {
-      "general_title": "Geslaagd"
-    }
-  },
+  "toast.error.general_title": "Er is iets mis gegaan",
+  "toast.success.general_title": "Geslaagd",
   "user.email": "E-mailadres",
   "user.first_name": "Voornaam",
   "user.label.plural": "Gebruikers",

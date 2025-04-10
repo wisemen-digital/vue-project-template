@@ -45,11 +45,9 @@
   "form.fields.email": "Email",
   "form.fields.password": "Password",
   "form.save_changes": "Save changes",
-  "module": {
-    "contact": {
-      "address": "Address"
-    }
-  },
+  "module.contact.address": "Address",
+  "module.contact.delete.confirm.description": "Are you sure you want to delete \"{name}\"?",
+  "module.contact.delete.confirm.title": "Are you sure?",
   "module.auth.login.description": "Sign in to your account to continue",
   "module.auth.login.error": "Something went wrong while logging in. Please try again.",
   "module.auth.login.sign_in": "Sign in",
@@ -156,14 +154,8 @@
   "shared.save": "Create",
   "shared.topic": "Topic",
   "shared.type": "Type",
-  "toast": {
-    "error": {
-      "general_title": "Something went wrong"
-    },
-    "success": {
-      "general_title": "Success"
-    }
-  },
+  "toast.error.general_title": "Something went wrong",
+  "toast.success.general_title": "Success",
   "user.birth_date": "Birthdate",
   "user.email": "Email",
   "user.first_name": "First name",

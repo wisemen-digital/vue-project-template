@@ -4,6 +4,7 @@ import {
   VcButton,
   VcRouterLinkButton,
 } from '@wisemen/vue-core'
+import { useVcDialog } from '@wisemen/vue-core-components'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
@@ -26,6 +27,8 @@ const apiErrorToast = useApiErrorToast()
 const router = useRouter()
 const authStore = useAuthStore()
 
+const confirmDeleteDialog = useVcDialog({ component: () => import('@/components/dialog/AppConfirmDialog.vue') })
+
 const fullName = computed<string | null>(() => ContactUtil.getFullName(props.contact))
 const contactDeleteMutation = useContactDeleteMutation()
 const breadcrumbs: BreadcrumbItem[] = [
@@ -43,14 +46,25 @@ const breadcrumbs: BreadcrumbItem[] = [
 const isEditButtonVisible = computed<boolean>(() => authStore.hasPermission(Permission.CONTACT_UPDATE))
 const isDeleteButtonVisible = computed<boolean>(() => authStore.hasPermission(Permission.CONTACT_DELETE))
 
-async function onDeleteContact(): Promise<void> {
-  try {
-    await contactDeleteMutation.execute({ params: { contactUuid: props.contact.uuid } })
-    await router.push({ name: 'contact-overview' })
-  }
-  catch (error) {
-    apiErrorToast.show(error)
-  }
+function onDeleteContact(): void {
+  confirmDeleteDialog.open({
+    title: i18n.t('module.contact.delete.confirm.title'),
+    isDestructive: true,
+    isLoading: contactDeleteMutation.isLoading.value,
+    cancelText: i18n.t('shared.cancel'),
+    confirmText: i18n.t('shared.delete'),
+    description: i18n.t('module.contact.delete.confirm.description', { name: fullName.value ?? props.contact.email }),
+    onConfirm: async () => {
+      try {
+        await contactDeleteMutation.execute({ params: { contactUuid: props.contact.uuid } })
+        await router.push({ name: 'contact-overview' })
+        confirmDeleteDialog.close()
+      }
+      catch (error) {
+        apiErrorToast.show(error)
+      }
+    },
+  })
 }
 </script>
 
