@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@wisemen/vue-core'
 import {
   VcDropdownMenu,
+  VcDropdownMenuItem,
   VcIcon,
-} from '@wisemen/vue-core'
-import { computed } from 'vue'
+} from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
@@ -21,17 +20,9 @@ const emit = defineEmits<{
 
 const i18n = useI18n()
 
-const dropDownItems = computed<DropdownMenuItem[]>(() => ([
-  {
-    isDestructive: true,
-    icon: 'trash',
-    label: i18n.t('module.settings.roles_and_permissions.table.delete_role'),
-    type: 'option',
-    onSelect: (): void => {
-      emit('deleteRole', props.role.uuid)
-    },
-  },
-]))
+function onSelectMenuItem(): void {
+  emit('deleteRole', props.role.uuid)
+}
 </script>
 
 <template>
@@ -45,7 +36,6 @@ const dropDownItems = computed<DropdownMenuItem[]>(() => ([
       {{ props.role.name }}
     </span>
     <VcDropdownMenu
-      :items="dropDownItems"
       :is-arrow-hidden="true"
       side="top"
     >
@@ -56,6 +46,14 @@ const dropDownItems = computed<DropdownMenuItem[]>(() => ([
             class="size-4"
           />
         </AppUnstyledButton>
+      </template>
+      <template #content>
+        <VcDropdownMenuItem
+          :is-destructive="true"
+          :label="i18n.t('module.settings.roles_and_permissions.table.delete_role')"
+          icon="trashIcon"
+          @select="onSelectMenuItem"
+        />
       </template>
     </VcDropdownMenu>
   </div>

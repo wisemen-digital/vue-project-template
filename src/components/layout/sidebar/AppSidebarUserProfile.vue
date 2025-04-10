@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@wisemen/vue-core'
 import {
-  useDialog,
+  useVcDialog,
   VcDropdownMenu,
-  VcDropdownMenuTrigger,
-} from '@wisemen/vue-core'
+  VcDropdownMenuGroup,
+  VcDropdownMenuItem,
+  VcKeyboardShortcut,
+} from '@wisemen/vue-core-components'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -30,35 +31,7 @@ const emit = defineEmits<{
 
 const i18n = useI18n()
 
-const settingsDialog = useDialog({ component: () => import('@/modules/settings/dialogs/SettingsDialog.vue') })
-
-const dropdownMenuItems = computed<DropdownMenuItem[]>(() => [
-  {
-    icon: 'settings',
-    keyboardKeys: [
-      'g',
-      's',
-    ],
-    label: i18n.t('module.settings.title'),
-    type: 'option',
-    onSelect: (): void => {
-      settingsDialog.open()
-    },
-  },
-  { type: 'separator' },
-  {
-    icon: 'logout',
-    keyboardKeys: [
-      's',
-      'o',
-    ],
-    label: i18n.t('component.sidebar.footer.sign_out'),
-    type: 'option',
-    onSelect: (): void => {
-      emit('signOut')
-    },
-  },
-])
+const settingsDialog = useVcDialog({ component: () => import('@/modules/settings/dialogs/SettingsDialog.vue') })
 
 const fullName = computed<string | null>(() => {
   if (props.user === null) {
@@ -79,36 +52,13 @@ const userInitials = computed<string | null>(() => {
 
 <template>
   <VcDropdownMenu
-    :items="dropdownMenuItems"
     :enable-global-keyboard-shortcuts="true"
     :is-arrow-hidden="true"
     :popover-offset-in-px="10"
     popover-side="right"
     popover-align="end"
   >
-    <template #content-top>
-      <div class="pb-xs min-w-56">
-        <span class="px-lg py-md text-primary block text-sm">
-          {{ fullName ?? '-' }}
-        </span>
-
-        <AppSeparator />
-
-        <div class="px-lg py-md">
-          <span class="text-tertiary block text-sm">
-            {{ `${i18n.t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
-          </span>
-
-          <span class="mt-sm text-tertiary block text-sm">
-            {{ `${i18n.t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
-          </span>
-        </div>
-
-        <AppSeparator />
-      </div>
-    </template>
-
-    <VcDropdownMenuTrigger>
+    <template #trigger>
       <AppUnstyledButton
         :data-test-id="TEST_ID.APP_PAGE.USER_BUTTON"
         :aria-label="i18n.t('component.sidebar.footer.user_profile')"
@@ -167,6 +117,66 @@ const userInitials = computed<string | null>(() => {
           </Transition>
         </div>
       </AppUnstyledButton>
-    </VcDropdownMenuTrigger>
+    </template>
+    <template #content>
+      <div class="pb-xs min-w-56">
+        <span class="px-lg py-md text-primary block text-sm">
+          {{ fullName ?? '-' }}
+        </span>
+
+        <AppSeparator />
+
+        <div class="px-lg py-md">
+          <span class="text-tertiary block text-sm">
+            {{ `${i18n.t('component.sidebar.footer.version')}: ${CURRENT_BUILD_NUMBER}` }}
+          </span>
+
+          <span class="mt-sm text-tertiary block text-sm">
+            {{ `${i18n.t('component.sidebar.footer.environment')}: ${CURRENT_ENVIRONMENT}` }}
+          </span>
+        </div>
+
+        <AppSeparator />
+        <VcDropdownMenuGroup>
+          <VcDropdownMenuItem
+            :keyboard-keys="[
+              'g',
+              's',
+            ]"
+            :label="i18n.t('module.settings.title')"
+            icon="settings"
+            @select="() => settingsDialog.open()"
+          >
+            <template #right>
+              <VcKeyboardShortcut
+                :keyboard-keys="['g', 's']"
+              />
+            </template>
+          </VcDropdownMenuItem>
+          <VcDropdownMenuItem
+            :is-destructive="true"
+            :keyboard-keys="[
+              's',
+              'o',
+            ]"
+            :label="i18n.t('component.sidebar.footer.sign_out')"
+            icon="logout"
+            @select="emit('signOut')"
+          >
+            <template #right>
+              <VcKeyboardShortcut
+                :keyboard-keys="['s', 'o']"
+                :class-config="{
+                  keyboardKey: {
+                    key: 'bg-transparent shadow-none bg-error-primary text-error-primary group-data-highlighted/dropdown-menu-item:bg-error-secondary duration-200',
+                  },
+                  thenLabel: 'text-error-primary',
+                }"
+              />
+            </template>
+          </VcDropdownMenuItem>
+        </VcDropdownMenuGroup>
+      </div>
+    </template>
   </VcDropdownMenu>
 </template>

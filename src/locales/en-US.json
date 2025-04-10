@@ -1,4 +1,5 @@
 {
+  "component.sidebar.settings": "Settings",
   "component.keyboard_shortcut.then": "then",
   "component.password_input.hide_password": "Hide password",
   "component.password_input.show_password": "Show password",
@@ -144,11 +145,20 @@
   "shared.empty_dash": "-",
   "shared.id": "Id",
   "shared.info": "Info",
+  "shared.loading": "Loading",
   "shared.navigate_back": "Navigate back",
   "shared.navigate_forward": "Navigate forward",
   "shared.save": "Create",
   "shared.topic": "Topic",
   "shared.type": "Type",
+  "toast": {
+    "error": {
+      "general_title": "Something went wrong"
+    },
+    "success": {
+      "general_title": "Success"
+    }
+  },
   "user.birth_date": "Birthdate",
   "user.email": "Email",
   "user.first_name": "First name",

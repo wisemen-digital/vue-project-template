@@ -5,7 +5,6 @@ import {
   ref,
 } from 'vue'
 
-import AppSidebarBottom from '@/components/layout/sidebar/AppSidebarBottom.vue'
 import AppSidebarCollapseToggle from '@/components/layout/sidebar/AppSidebarCollapseToggle.vue'
 import AppSidebarTop from '@/components/layout/sidebar/AppSidebarTop.vue'
 import AppSidebarNavMenu from '@/components/layout/sidebar/navigation/AppSidebarNavMenu.vue'
@@ -23,10 +22,6 @@ const props = withDefaults(defineProps<{
   user: UserDetail
   variant: 'fixed-sidebar' | 'floating-content' | 'floating-sidebar'
 }>(), { bottomItems: () => [] })
-
-const emit = defineEmits<{
-  signOut: []
-}>()
 
 const isSidebarCollapsed = useLocalStorage<boolean>('isSidebarCollapsed', false)
 
@@ -48,10 +43,6 @@ const sidebarItemHeightInRem = computed<number>(() => {
   return sidebarWidthWhenCollapsedInRem.value - sidebarPaddingXInRem.value * 2
 })
 
-function onSignOut(): void {
-  emit('signOut')
-}
-
 onCreated(() => {
   if (
     sidebarPaddingXInRem.value * 2 + sidebarItemPaddingXInRem.value * 2 + sidebarItemIconSizeInRem.value
@@ -65,16 +56,16 @@ onCreated(() => {
 <template>
   <div
     :class="{
-      'p-xl': props.variant === 'floating-sidebar' || props.variant === 'floating-content',
+      'px-0': props.variant === 'floating-sidebar' || props.variant === 'floating-content',
       'border-secondary border-r border-solid': props.variant === 'fixed-sidebar',
     }"
-    class="bg-primary sticky top-0 z-20 h-dvh"
+    class="sticky top-0 z-20 h-dvh"
   >
     <div
       :class="{
-        'border-secondary rounded-2xl border border-solid': props.variant === 'floating-sidebar',
+        'rounded-2xl border border-solid': props.variant === 'floating-sidebar',
       }"
-      class="bg-secondary h-full"
+      class="h-full"
     >
       <div
         :style="{
@@ -102,13 +93,6 @@ onCreated(() => {
             :bottom-items="props.bottomItems"
           />
         </div>
-
-        <AppSidebarBottom
-          :is-collapsed="isSidebarCollapsed"
-          :sidebar-item-height-in-rem="sidebarItemHeightInRem"
-          :user="props.user"
-          @sign-out="onSignOut"
-        />
       </div>
     </div>
   </div>

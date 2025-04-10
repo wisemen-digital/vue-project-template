@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VcRouterLinkButton } from '@wisemen/vue-core'
+import { VcRouterLinkButton } from '@wisemen/vue-core-components'
 
 import type { RouteLocationCurrent } from '@/types/global/vueRouter'
 

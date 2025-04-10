@@ -1,4 +1,4 @@
-import type { PaginationOptions } from '@wisemen/vue-core'
+import type { PaginationOptions } from '@wisemen/vue-core-components'
 import type { UseInfiniteQueryReturnType } from '@wisemen/vue-core-query'
 import { useInfiniteQuery } from '@wisemen/vue-core-query'
 import type { ComputedRef } from 'vue'

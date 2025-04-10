@@ -1,4 +1,4 @@
-import type { PaginationOptions } from '@wisemen/vue-core'
+import type { PaginationOptions } from '@wisemen/vue-core-components'
 import type { ComputedRef } from 'vue'
 
 import type { ContactUuid } from '@/models/contact/contactUuid.model'

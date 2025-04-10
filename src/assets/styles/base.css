@@ -1,3 +1,4 @@
+@import '@wisemen/vue-core-components/style.css' layer(base);
 @import '@wisemen/vue-core/style.css' layer(base);
 @import './colors.css';
 @import './themes/default.css';

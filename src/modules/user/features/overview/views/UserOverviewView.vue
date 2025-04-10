@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import {
-  useDocumentTitle,
-  usePagination,
-} from '@wisemen/vue-core'
+import { usePagination } from '@wisemen/vue-core-components'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppPaginationSearchField from '@/components/app/search/AppPaginationSearchField.vue'
 import AppTablePage from '@/components/layout/AppTablePage.vue'
+import { useDocumentTitle } from '@/composables/document-title/documentTitle.composable.ts'
 import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
 import { useUserIndexQuery } from '@/modules/user/api/queries/userIndex.query'
 import UserOverviewTable from '@/modules/user/features/overview/components/UserOverviewTable.vue'

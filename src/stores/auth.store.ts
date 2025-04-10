@@ -37,8 +37,6 @@ export const useAuthStore = defineStore('auth', () => {
       return false
     }
 
-    console.log('authUser.value.permissions', JSON.stringify(authUser.value))
-
     if (authUser.value.permissions.includes(Permission.ALL_PERMISSIONS)) {
       return true
     }

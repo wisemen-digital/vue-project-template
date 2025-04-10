@@ -41,6 +41,9 @@ importers:
       '@wisemen/vue-core-auth':
         specifier: 2.0.1
         version: 2.0.1
+      '@wisemen/vue-core-components':
+        specifier: 1.3.0
+        version: 1.3.0(motion-v@1.0.0-beta.0(vue@3.5.13(typescript@5.8.2)))(tailwindcss@4.1.2)(vue-i18n@12.0.0-alpha.1(vue@3.5.13(typescript@5.8.2)))(vue@3.5.13(typescript@5.8.2))
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -2435,6 +2438,13 @@ packages:
 
   '@wisemen/vue-core-auth@2.0.1':
     resolution: {integrity: sha512-pSIbQeoEqr479Qqo9L/iA7SL6+U0rZSTgqDEbb/Jw2Yk4b1HKmSUH52mLLatlcFKZUBGyC5VYMYJpavYGu5O/w==}
+
+  '@wisemen/vue-core-components@1.3.0':
+    resolution: {integrity: sha512-hAFSpCrNpO2qJjVytNtXA0/sXnXc3JH2HFZc4mE1jZUrrMhGgAIuj1gkcQmg7qfYd1BZ86kb5Q3DJTcxJGRt5g==}
+    peerDependencies:
+      motion-v: 1.0.0-beta.0
+      vue: 3.5.13
+      vue-i18n: 11.1.2
 
   '@wisemen/vue-core-generator@1.1.0':
     resolution: {integrity: sha512-RFMbp5E20zUzTGSttlJCnSRebJBIwjy/TuMNTJ+koncW5vuBC1SlVeU5FCSbeacwPYAqlfY+76oHi1A4eEccDw==}
@@ -8562,6 +8572,15 @@ snapshots:
     dependencies:
       pkce-challenge: 4.1.0
 
+  '@wisemen/vue-core-components@1.3.0(motion-v@1.0.0-beta.0(vue@3.5.13(typescript@5.8.2)))(tailwindcss@4.1.2)(vue-i18n@12.0.0-alpha.1(vue@3.5.13(typescript@5.8.2)))(vue@3.5.13(typescript@5.8.2))':
+    dependencies:
+      motion-v: 1.0.0-beta.0(vue@3.5.13(typescript@5.8.2))
+      tailwind-variants: 1.0.0(tailwindcss@4.1.2)
+      vue: 3.5.13(typescript@5.8.2)
+      vue-i18n: 12.0.0-alpha.1(vue@3.5.13(typescript@5.8.2))
+    transitivePeerDependencies:
+      - tailwindcss
+
   '@wisemen/vue-core-generator@1.1.0(@types/node@22.14.0)':
     dependencies:
       chalk: 5.4.1
@@ -11906,6 +11925,11 @@ snapshots:
     dependencies:
       tailwind-merge: 3.0.2
       tailwindcss: 4.0.14
+
+  tailwind-variants@1.0.0(tailwindcss@4.1.2):
+    dependencies:
+      tailwind-merge: 3.0.2
+      tailwindcss: 4.1.2
 
   tailwindcss@4.0.11: {}
 

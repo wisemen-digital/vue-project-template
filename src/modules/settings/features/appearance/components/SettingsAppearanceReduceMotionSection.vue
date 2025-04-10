@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VcSwitch } from '@wisemen/vue-core'
+import { VcSwitch } from '@wisemen/vue-core-components'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 

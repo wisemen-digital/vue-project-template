@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useDocumentTitle } from '@wisemen/vue-core'
 import {
-  useDocumentTitle,
   usePagination,
   VcRouterLinkButton,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 

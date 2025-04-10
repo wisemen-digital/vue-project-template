@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { VcSelect } from '@wisemen/vue-core'
+import {
+  VcSelect,
+  VcSelectItem,
+} from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 import type { FontSize } from '@/client'
@@ -28,11 +31,18 @@ function onUpdateModelValue(value: FontSize | null): void {
   >
     <VcSelect
       v-model="fontSizeSelect.value.value"
-      :items="fontSizeSelect.items.value"
       :display-fn="fontSizeSelect.displayFn"
       :label="i18n.t('module.settings.font_size.title')"
       class="w-72"
       @update:model-value="onUpdateModelValue"
-    />
+    >
+      <VcSelectItem
+        v-for="item in fontSizeSelect.items"
+        :key="item"
+        :value="item"
+      >
+        {{ fontSizeSelect.displayFn(item) }}
+      </VcSelectItem>
+    </VcSelect>
   </FormFieldset>
 </template>

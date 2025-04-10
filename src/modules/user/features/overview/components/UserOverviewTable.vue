@@ -3,8 +3,8 @@ import type {
   PaginatedData,
   Pagination,
   TableColumn,
-} from '@wisemen/vue-core'
-import { VcTable } from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
+import { VcTable } from '@wisemen/vue-core-components'
 import type { VNode } from 'vue'
 import {
   computed,
@@ -54,6 +54,5 @@ const columns = computed<TableColumn<UserIndex>[]>(() => [
     :is-first-column-sticky="true"
     :is-loading="props.isLoading"
     :pagination="props.pagination"
-    class="basis-0"
   />
 </template>

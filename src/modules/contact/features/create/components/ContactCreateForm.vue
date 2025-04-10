@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {
-  useToast,
+  useVcToast,
   VcPhoneNumberField,
   VcTextField,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { useForm } from 'formango'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
@@ -22,7 +22,7 @@ import { toFormField } from '@/utils/formango.util'
 
 const i18n = useI18n()
 const router = useRouter()
-const toast = useToast()
+const toast = useVcToast()
 const errorToast = useApiErrorToast()
 const contactCreateMutation = useContactCreateMutation()
 
@@ -48,7 +48,10 @@ const form = useForm({
     }
   },
   onSubmitError: () => {
-    toast.error({ message: i18n.t('error.invalid_form_input.description') })
+    toast.error({
+      title: i18n.t('error.invalid_form_input.title'),
+      description: i18n.t('error.invalid_form_input.description'),
+    })
   },
 })
 
@@ -87,7 +90,9 @@ const phone = form.register('phone')
         <FormFieldset
           :title="i18n.t('module.contact.contact_info')"
         >
-          <FormGrid :cols="2">
+          <FormGrid
+            :cols="2"
+          >
             <VcTextField
               v-bind="toFormField(email)"
               :label="i18n.t('module.contact.email')"

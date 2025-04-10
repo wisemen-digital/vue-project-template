@@ -23,14 +23,19 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
 </script>
 
 <template>
-  <main class="bg-primary flex min-h-dvh w-full flex-1 flex-col">
+  <main
+
+    class="bg-primary flex min-h-dvh w-full flex-1 flex-col"
+  >
     <header
       :style="{
         viewTransitionName: 'page-header',
       }"
       class="bg-primary sticky top-0 z-10"
     >
-      <AppPageContainer class="pt-4xl pb-0">
+      <AppPageContainer
+        class="pt-4xl pb-0"
+      >
         <VcBreadcrumbs
           v-if="props.breadcrumbs.length > 0"
           :style="{
@@ -68,7 +73,9 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
       </AppPageContainer>
     </header>
 
-    <AppPageContainer class="pb-4xl pt-4xl flex flex-1 flex-col overflow-hidden">
+    <AppPageContainer
+      class="pb-4xl pt-4xl flex flex-1 flex-col overflow-hidden"
+    >
       <slot />
     </AppPageContainer>
   </main>
