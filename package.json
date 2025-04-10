@@ -50,6 +50,7 @@
     "zod": "3.24.2"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.10.1",
     "@hey-api/openapi-ts": "0.66.2",
     "@import-meta-env/cli": "0.7.3",
     "@import-meta-env/unplugin": "0.6.2",
