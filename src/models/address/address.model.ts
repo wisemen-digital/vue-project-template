@@ -1,13 +1,12 @@
-import { z } from 'zod'
-
-export const addressSchema = z.object({
-  address: z.string(),
-  city: z.string(),
-  coords: z.object({
-    lat: z.number(),
-    lng: z.number(),
-  }),
-  postalCode: z.string(),
-})
-
-export type Address = z.infer<typeof addressSchema>
+export interface Address {
+  city: string | null
+  coordinates: {
+    latitude: number
+    longitude: number
+  }
+  country: string | null
+  postalCode: string | null
+  streetName: string | null
+  streetNumber: string | null
+  unit: string | null
+}

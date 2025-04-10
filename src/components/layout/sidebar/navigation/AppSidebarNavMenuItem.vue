@@ -52,7 +52,7 @@ const props = defineProps<{
                 hover:brightness-95
               `
               : `
-                bg-secondary text-quaternary text-primary-on-brand/70
+                text-primary-on-brand
                 group-hover:bg-primary/10
               `,
           ]"

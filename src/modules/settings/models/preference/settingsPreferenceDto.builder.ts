@@ -20,4 +20,10 @@ export class SettingsPreferenceDtoBuilder {
   build(): SettingsPreferenceDto {
     return this.value
   }
+
+  withLanguage(locale: Locale): SettingsPreferenceDtoBuilder {
+    this.value.language = locale
+
+    return this
+  }
 }
