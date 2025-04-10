@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import {
-  useToast,
+  useVcToast,
+  VcAddressAutocomplete,
   VcPhoneNumberField,
   VcTextField,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { useForm } from 'formango'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
@@ -16,6 +17,7 @@ import FormLayout from '@/components/form/FormLayout.vue'
 import FormSubmitButton from '@/components/form/FormSubmitButton.vue'
 import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable'
 import { TEST_ID } from '@/constants/testId.constant'
+import { AddressTransformer } from '@/models/address/address.transformer.ts'
 import type { ContactDetail } from '@/models/contact/detail/contactDetail.model'
 import { contactUpdateFormSchema } from '@/models/contact/update/contactUpdateForm.model'
 import { useContactUpdateMutation } from '@/modules/contact/api/mutations/contactUpdate.mutation'
@@ -27,13 +29,14 @@ const props = defineProps<{
 
 const i18n = useI18n()
 const router = useRouter()
-const toast = useToast()
+const toast = useVcToast()
 const errorToast = useApiErrorToast()
 const contactUpdateMutation = useContactUpdateMutation()
 
 const form = useForm({
   initialState: () => ({
     isActive: props.contact.isActive,
+    address: AddressTransformer.toForm(props.contact.address!),
     email: props.contact.email,
     firstName: props.contact.firstName,
     lastName: props.contact.lastName,
@@ -57,7 +60,10 @@ const form = useForm({
     }
   },
   onSubmitError: () => {
-    toast.error({ message: i18n.t('error.invalid_form_input.description') })
+    toast.error({
+      title: i18n.t('error.invalid_form_input.title'),
+      description: i18n.t('error.invalid_form_input.description'),
+    })
   },
 })
 
@@ -65,6 +71,7 @@ const firstName = form.register('firstName')
 const lastName = form.register('lastName')
 const email = form.register('email')
 const phone = form.register('phone')
+const address = form.register('address')
 </script>
 
 <template>
@@ -106,6 +113,11 @@ const phone = form.register('phone')
             <VcPhoneNumberField
               v-bind="toFormField(phone)"
               :label="i18n.t('module.contact.phone')"
+            />
+            <VcAddressAutocomplete
+              v-bind="toFormField(address)"
+              :label="i18n.t('module.contact.address')"
+              :placeholder="i18n.t('module.contact.address')"
             />
           </FormGrid>
         </FormFieldset>

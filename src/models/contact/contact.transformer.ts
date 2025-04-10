@@ -1,3 +1,4 @@
+import { AddressTransformer } from '@/models/address/address.transformer.ts'
 import type { ContactUuid } from '@/models/contact/contactUuid.model'
 import type { ContactCreateDto } from '@/models/contact/create/contactCreateDto.model'
 import type { ContactCreateForm } from '@/models/contact/create/contactCreateForm.model'
@@ -43,6 +44,7 @@ export class ContactDetailTransformer {
       createdAt: dto.createdAt,
       updatedAt: dto.updatedAt,
       isActive: dto.isActive,
+      address: dto.address ? AddressTransformer.fromDto(dto.address) : null,
       email: dto.email,
       firstName: dto.firstName,
       lastName: dto.lastName,
@@ -58,6 +60,7 @@ export class ContactCreateTransformer {
       createdAt: dto.createdAt,
       updatedAt: dto.updatedAt,
       isActive: dto.isActive,
+      address: dto.address ? AddressTransformer.fromDto(dto.address) : null,
       email: dto.email,
       firstName: dto.firstName,
       lastName: dto.lastName,
@@ -67,6 +70,7 @@ export class ContactCreateTransformer {
 
   static toDto(form: ContactCreateForm): ContactCreateDto {
     return {
+      address: form.address ? AddressTransformer.toDto(form.address) : null,
       email: form.email,
       firstName: form.firstName,
       lastName: form.lastName,
@@ -79,6 +83,7 @@ export class ContactUpdateTransformer {
   static toDto(form: ContactUpdateForm): ContactUpdateDto {
     return {
       isActive: form.isActive,
+      address: AddressTransformer.toDto(form.address),
       email: form.email,
       firstName: form.firstName,
       lastName: form.lastName,

@@ -29,6 +29,8 @@ const appearance = useAppearance()
 const authStore = useAuthStore()
 const theme = useTheme()
 
+const GOOGLE_MAPS_API_KEY = 'AIzaSyATX2fY3BZwaKeURsQhwpEVLmLRr27s4vw'
+
 setTemplate('{title} | $projectName')
 
 useAutoRefresh()
@@ -46,6 +48,7 @@ authStore.onLogout(() => {
 <template>
   <VcConfigProvider
     :locale="i18n.locale.value"
+    :google-maps-api-key="GOOGLE_MAPS_API_KEY"
     teleport-target-selector="#teleport-target"
   >
     <VcThemeProvider

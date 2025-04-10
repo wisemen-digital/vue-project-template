@@ -1,5 +1,4 @@
 {
-  "component.sidebar.settings": "Settings",
   "component.keyboard_shortcut.then": "dan",
   "component.password_input.hide_password": "Wachtwoord verbergen",
   "component.password_input.show_password": "Wachtwoord tonen",
@@ -15,6 +14,7 @@
   "component.sidebar.footer.user_profile": "User profile",
   "component.sidebar.footer.version": "Versie",
   "component.sidebar.open_sidebar": "Zijbalk openen",
+  "component.sidebar.settings": "Settings",
   "component.table.no_data.description": "Er zijn momenteel geen gegevens om weer te geven.",
   "component.table.no_data.title": "Geen gegevens",
   "component.table.no_results.description": "Er zijn geen resultaten die overeenkomen met de zoekcriteria.",
@@ -45,6 +45,11 @@
   "form.fields.email": "E-mailadres",
   "form.fields.password": "Wachtwoord",
   "form.save_changes": "Wijzigingen opslaan",
+  "module": {
+    "contact": {
+      "address": "Adres"
+    }
+  },
   "module.auth.login.description": "Meld je aan om door te gaan",
   "module.auth.login.error": "Er is iets misgegaan bij het aanmelden. Probeer het opnieuw.",
   "module.auth.login.sign_in": "Aanmelden",

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {
   useVcToast,
+  VcAddressAutocomplete,
   VcPhoneNumberField,
   VcTextField,
 } from '@wisemen/vue-core-components'
@@ -28,6 +29,7 @@ const contactCreateMutation = useContactCreateMutation()
 
 const form = useForm({
   initialState: () => ({
+    address: null,
     email: null,
     firstName: null,
     lastName: null,
@@ -59,6 +61,7 @@ const firstName = form.register('firstName')
 const lastName = form.register('lastName')
 const email = form.register('email')
 const phone = form.register('phone')
+const address = form.register('address')
 </script>
 
 <template>
@@ -102,6 +105,11 @@ const phone = form.register('phone')
               v-bind="toFormField(phone)"
               :label="i18n.t('module.contact.phone')"
               type="tel"
+            />
+            <VcAddressAutocomplete
+              v-bind="toFormField(address)"
+              :label="i18n.t('module.contact.address')"
+              :placeholder="i18n.t('module.contact.address')"
             />
           </FormGrid>
         </FormFieldset>

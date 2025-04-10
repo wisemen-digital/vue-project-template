@@ -8,6 +8,18 @@ export class ContactDetailDtoBuilder {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     isActive: true,
+    address: {
+      city: 'New York',
+      coordinates: {
+        latitude: 123.456,
+        longitude: 789.012,
+      },
+      country: 'USA',
+      postalCode: '10001',
+      streetName: 'Main St',
+      streetNumber: '123',
+      unit: 'Apt 1',
+    },
     email: 'john.doe@email.com',
     firstName: 'John',
     lastName: 'Doe',

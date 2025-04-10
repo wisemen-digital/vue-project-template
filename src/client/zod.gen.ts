@@ -16,6 +16,7 @@ export const zPermission = z.enum([
     'file.read',
     'file.create',
     'file.delete',
+    'jobs.read.index',
     'role.read',
     'role.create',
     'role.update',
@@ -95,6 +96,13 @@ export const zViewUsersResponse = z.object({
     meta: zPaginatedOffsetResponseMeta
 });
 
+export const zGetApiInfoResponse = z.object({
+    environment: z.string(),
+    commit: z.string(),
+    version: z.string(),
+    timestamp: z.string().datetime()
+});
+
 export const zCreateRoleCommand = z.object({
     name: z.string()
 });
@@ -168,6 +176,39 @@ export const zCreateFileResponse = z.object({
     uploadUrl: z.string()
 });
 
+export const zCoordinatesCommand = z.object({
+    longitude: z.number(),
+    latitude: z.number()
+});
+
+export const zAddressCommand = z.object({
+    country: z.union([
+        z.string(),
+        z.null()
+    ]),
+    city: z.union([
+        z.string(),
+        z.null()
+    ]),
+    postalCode: z.union([
+        z.string(),
+        z.null()
+    ]),
+    streetName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    streetNumber: z.union([
+        z.string(),
+        z.null()
+    ]),
+    unit: z.union([
+        z.string(),
+        z.null()
+    ]),
+    coordinates: zCoordinatesCommand
+});
+
 export const zCreateContactCommand = z.object({
     firstName: z.union([
         z.string(),
@@ -183,6 +224,46 @@ export const zCreateContactCommand = z.object({
     ]),
     phone: z.union([
         z.string(),
+        z.null()
+    ]),
+    address: z.union([
+        zAddressCommand,
+        z.null()
+    ])
+});
+
+export const zCoordinatesResponse = z.object({
+    longitude: z.number(),
+    latitude: z.number()
+});
+
+export const zAddressResponse = z.object({
+    country: z.union([
+        z.string(),
+        z.null()
+    ]),
+    city: z.union([
+        z.string(),
+        z.null()
+    ]),
+    postalCode: z.union([
+        z.string(),
+        z.null()
+    ]),
+    streetName: z.union([
+        z.string(),
+        z.null()
+    ]),
+    streetNumber: z.union([
+        z.string(),
+        z.null()
+    ]),
+    unit: z.union([
+        z.string(),
+        z.null()
+    ]),
+    coordinates: z.union([
+        zCoordinatesResponse,
         z.null()
     ])
 });
@@ -207,6 +288,10 @@ export const zCreateContactResponse = z.object({
     phone: z.union([
         z.string(),
         z.null()
+    ]),
+    address: z.union([
+        zAddressResponse,
+        z.null()
     ])
 });
 
@@ -227,7 +312,11 @@ export const zUpdateContactCommand = z.object({
         z.string(),
         z.null()
     ]),
-    isActive: z.boolean()
+    isActive: z.boolean(),
+    address: z.union([
+        zAddressCommand,
+        z.null()
+    ])
 });
 
 export const zViewContactDetailResponse = z.object({
@@ -249,6 +338,10 @@ export const zViewContactDetailResponse = z.object({
     ]),
     phone: z.union([
         z.string(),
+        z.null()
+    ]),
+    address: z.union([
+        zAddressResponse,
         z.null()
     ])
 });
@@ -357,7 +450,6 @@ export const zUserCreatedEventContent = z.object({
 
 export const zUserCreatedDomainEventLog = z.object({
     uuid: z.string().uuid(),
-    topic: z.string(),
     createdAt: z.string().datetime(),
     version: z.number().int().gte(0),
     source: z.string(),
@@ -379,7 +471,6 @@ export const zRoleAssignedToUserEventContent = z.object({
 
 export const zUserRoleAssignedDomainEventLog = z.object({
     uuid: z.string().uuid(),
-    topic: z.string(),
     createdAt: z.string().datetime(),
     version: z.number().int().gte(0),
     source: z.string(),
@@ -405,7 +496,6 @@ export const zRolePermissionsUpdatedEventContent = z.object({
 
 export const zRolesPermissionsUpdatedDomainEventLog = z.object({
     uuid: z.string().uuid(),
-    topic: z.string(),
     createdAt: z.string().datetime(),
     version: z.number().int().gte(0),
     source: z.string(),
@@ -422,7 +512,6 @@ export const zRolesPermissionsUpdatedDomainEventLog = z.object({
 
 export const zDomainEventLogResponse = z.object({
     uuid: z.string().uuid(),
-    topic: z.string(),
     createdAt: z.string().datetime(),
     version: z.number().int().gte(0),
     source: z.string(),
@@ -469,6 +558,75 @@ export const zSearchCollectionsResponse = z.object({
     items: z.array(zSearchCollectionsResponseItem)
 });
 
+export const zViewJobsIndexSortQueryKey = z.enum([
+    'createdAt'
+]);
+
+export const zSortDirection = z.enum([
+    'asc',
+    'desc'
+]);
+
+export const zViewJobsIndexSortQuery = z.object({
+    key: zViewJobsIndexSortQueryKey,
+    order: zSortDirection
+});
+
+export const zQueueName = z.enum([
+    'system'
+]);
+
+export const zViewJobsIndexFilterQuery = z.object({
+    queueNames: z.array(zQueueName).optional(),
+    archived: z.string().optional().default('false')
+});
+
+export const zViewJobsIndexQueryKey = z.object({
+    createdAt: z.string().datetime().optional(),
+    id: z.string()
+});
+
+export const zViewJobsIndexPaginationQuery = z.object({
+    limit: z.number().gte(0).lte(100),
+    key: z.union([
+        zViewJobsIndexQueryKey,
+        z.null()
+    ]).optional()
+});
+
+export const zJobStatus = z.enum([
+    'created',
+    'active',
+    'completed',
+    'retry',
+    'failed',
+    'cancelled'
+]);
+
+export const zViewJobsIndexItemResponse = z.object({
+    queueName: zQueueName,
+    id: z.string(),
+    jobName: z.string(),
+    status: zJobStatus,
+    createdAt: z.string().datetime(),
+    completedAt: z.union([
+        z.string().datetime(),
+        z.null()
+    ])
+});
+
+export const zViewJobsIndexResponseMeta = z.object({
+    next: z.union([
+        zViewJobsIndexQueryKey,
+        z.null()
+    ])
+});
+
+export const zViewJobsIndexResponse = z.object({
+    items: z.array(zViewJobsIndexItemResponse),
+    meta: zViewJobsIndexResponseMeta
+});
+
 export const zInternalServerApiError = z.object({
     detail: z.string().optional(),
     status: z.enum([
@@ -486,6 +644,8 @@ export const zViewUserV1Response = zViewUserResponse;
 export const zViewUsersV1Response = zViewUsersResponse;
 
 export const zPermissionV1Response = z.array(z.string());
+
+export const zGetApiInfoResponse2 = zGetApiInfoResponse;
 
 export const zViewRoleIndexV1Response = zViewRoleIndexResponse;
 
@@ -508,3 +668,5 @@ export const zCreateOneSignalTokenV1Response = zCreateOneSignalTokenResponse;
 export const zViewDomainEventLogIndexV1Response = zViewDomainEventLogIndexResponse;
 
 export const zSearchCollectionsV1Response = zSearchCollectionsResponse;
+
+export const zViewJobsIndexV1Response = zViewJobsIndexResponse;

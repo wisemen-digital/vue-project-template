@@ -1,6 +1,7 @@
 import { HttpResponse } from 'msw'
 
 import { TEST_ID } from '@/constants/testId.constant'
+import { ContactDetailDtoBuilder } from '@/models/contact/detail/contactDetailDto.builder.ts'
 import { ContactIndexDtoBuilder } from '@/models/contact/index/contactIndexDto.builder'
 import { PaginationUtil } from '@/utils/pagination.util.ts'
 import {
@@ -56,14 +57,21 @@ test('should navigate to contact detail page when clicking on an entry in the ov
     .withPhone('+1 234 567 890')
     .build()
 
+  const CONTACT_DETAIL = new ContactDetailDtoBuilder()
+    .withFirstName('Charles')
+    .withLastName('Doe')
+    .withEmail('charles.doe@email.com')
+    .withPhone('+1 234 567 890')
+    .build()
+
   await worker.use(
     http.get('*/api/v1/contacts', () => {
       return HttpResponse.json(PaginationUtil.getJson([
         CONTACT,
       ]))
     }),
-    http.get(`*/api/v1/contacts/${CONTACT.uuid}`, () => {
-      return HttpResponse.json(CONTACT)
+    http.get(`*/api/v1/contacts/:uuid`, () => {
+      return HttpResponse.json(CONTACT_DETAIL)
     }),
   )
 

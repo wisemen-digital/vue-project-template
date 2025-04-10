@@ -1,5 +1,6 @@
 import { HttpResponse } from 'msw'
 
+import { TEST_ID } from '@/constants/testId.constant.ts'
 import { ContactDetailDtoBuilder } from '@/models/contact/detail/contactDetailDto.builder'
 import {
   expect,
@@ -14,7 +15,7 @@ test('delete a contact', async ({
   const CONTACT = new ContactDetailDtoBuilder().build()
 
   await worker.use(
-    http.get(`*/api/v1/contacts/${CONTACT.uuid}`, () => {
+    http.get(`*/api/v1/contacts/:uuid`, () => {
       return HttpResponse.json(CONTACT)
     }),
     http.get('*/api/v1/contacts', () => {
@@ -27,14 +28,16 @@ test('delete a contact', async ({
         },
       })
     }),
+    http.delete('*/api/v1/contacts/:uuid', () => {
+      return HttpResponse.json({}, { status: 201 })
+    }),
   )
 
-  await page.goto(`/contacts/${CONTACT.uuid}`)
+  await page.goto(`/contacts/:uuid`)
 
   // Click the delete button
-  await page.locator('#delete-contact-button').click()
+  await page.getByTestId(TEST_ID.CONTACTS.DETAIL.DELETE_BUTTON).click()
 
-  // Check if we're redirected to the contacts overview page
-  await expect(page.url()).toContain('/contacts')
-  await expect(page.url()).not.toContain(CONTACT.uuid)
+  // Check if we are back in the overview page
+  await expect(page.getByTestId(TEST_ID.CONTACTS.TABLE.CONTAINER)).toBeVisible()
 })

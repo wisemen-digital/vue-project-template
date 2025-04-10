@@ -6,12 +6,15 @@ import {
 } from '@wisemen/vue-core'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
 import { Permission } from '@/client'
 import AppPage from '@/components/layout/AppPage.vue'
+import { useApiErrorToast } from '@/composables/api-error-toast/apiErrorToast.composable.ts'
 import { TEST_ID } from '@/constants/testId.constant'
 import { ContactUtil } from '@/models/contact/contact.util'
 import type { ContactDetail } from '@/models/contact/detail/contactDetail.model'
+import { useContactDeleteMutation } from '@/modules/contact/api/mutations/contactDelete.mutation.ts'
 import { useAuthStore } from '@/stores/auth.store'
 
 const props = defineProps<{
@@ -19,10 +22,12 @@ const props = defineProps<{
 }>()
 
 const i18n = useI18n()
+const apiErrorToast = useApiErrorToast()
+const router = useRouter()
 const authStore = useAuthStore()
 
 const fullName = computed<string | null>(() => ContactUtil.getFullName(props.contact))
-
+const contactDeleteMutation = useContactDeleteMutation()
 const breadcrumbs: BreadcrumbItem[] = [
   {
     label: i18n.t('module.contact.label.plural'),
@@ -38,8 +43,14 @@ const breadcrumbs: BreadcrumbItem[] = [
 const isEditButtonVisible = computed<boolean>(() => authStore.hasPermission(Permission.CONTACT_UPDATE))
 const isDeleteButtonVisible = computed<boolean>(() => authStore.hasPermission(Permission.CONTACT_DELETE))
 
-function onDeleteContact(): void {
-  // TODO
+async function onDeleteContact(): Promise<void> {
+  try {
+    await contactDeleteMutation.execute({ params: { contactUuid: props.contact.uuid } })
+    await router.push({ name: 'contact-overview' })
+  }
+  catch (error) {
+    apiErrorToast.show(error)
+  }
 }
 </script>
 
