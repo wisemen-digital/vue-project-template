@@ -88,7 +88,7 @@ const test = base.extend<{
     expect(wcag21aaViolations).toEqual([])
 
     if (otherViolations.length > 0) {
-      console.warn('[AXE WARNING] Non-blocking a11y issues found:', otherViolations)
+      console.warn('[AXE WARNING] Accessibility issues detected that do not meet these standards: WCAG 2.0 Level A / WCAG 2.0 Level AA / WCAG 2.1 Level A. Please review and address the following issues. You can find more details if you download the Accessibility report in the "Attachements" tab.', otherViolations)
     }
 
     await testInfo.attach('accessibility-scan-results', {
