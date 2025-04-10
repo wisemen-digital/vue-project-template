@@ -33,17 +33,19 @@ function onSignOut(): void {
 </script>
 
 <template>
-  <AppGroup
-    justify="between"
-    class="p-md min-h-12"
+  <div
+    class="p-md grid min-h-12 grid-cols-3"
   >
     <div id="header-left" />
 
-    <div class="flex w-full justify-end">
+    <div class="flex w-full justify-center">
       <AppHeaderCommandMenuTrigger />
     </div>
 
-    <AppGroup gap="lg">
+    <AppGroup
+      justify="end"
+      class="bg-err"
+    >
       <AppHeaderSettings />
 
       <AppSeparator
@@ -56,5 +58,5 @@ function onSignOut(): void {
         @sign-out="onSignOut"
       />
     </AppGroup>
-  </AppGroup>
+  </div>
 </template>

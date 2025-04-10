@@ -1,21 +1,10 @@
 {
-  "component": {
-    "global_search": {
-      "dialog": {
-        "aria_description": "Global search dialog",
-        "aria_title": "Global search dialog"
-      },
-      "no_results_found_for": "Geen resultaat gevonden voor \"{value}\"",
-      "placeholder": "Waar ben je naar op zoek?",
-      "recent_results": "Recente resultaten"
-    },
-    "header": {
-      "search": "Zoeken"
-    },
-    "sidebar": {
-      "settings": "Settings"
-    }
-  },
+  "component.global_search.dialog.aria_description": "Global search dialog",
+  "component.global_search.dialog.aria_title": "Global search dialog",
+  "component.global_search.no_results_found_for": "Geen resultaat gevonden voor \"{value}\"",
+  "component.global_search.placeholder": "Waar ben je naar op zoek?",
+  "component.global_search.recent_results": "Recente resultaten",
+  "component.global_search.search": "Zoeken",
   "component.sidebar.settings": "Settings",
   "component.keyboard_shortcut.then": "dan",
   "component.password_input.hide_password": "Wachtwoord verbergen",

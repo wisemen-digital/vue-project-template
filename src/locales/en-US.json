@@ -1,21 +1,10 @@
 {
-  "component": {
-    "global_search": {
-      "dialog": {
-        "aria_description": "Global search dialog",
-        "aria_title": "Global search dialog"
-      },
-      "no_results_found_for": "No results found for \"{value}\"",
-      "placeholder": "What are you looking for?",
-      "recent_results": "Recent results"
-    },
-    "header": {
-      "search": "Global search"
-    },
-    "sidebar": {
-      "settings": "Settings"
-    }
-  },
+  "component.global_search.dialog.aria_description": "Global search dialog",
+  "component.global_search.dialog.aria_title": "Global search dialog",
+  "component.global_search.no_results_found_for": "No results found for \"{value}\"",
+  "component.global_search.placeholder": "What are you looking for?",
+  "component.global_search.recent_results": "Recent results",
+  "component.header.search": "Global search",
   "component.sidebar.settings": "Settings",
   "component.keyboard_shortcut.then": "then",
   "component.password_input.hide_password": "Hide password",

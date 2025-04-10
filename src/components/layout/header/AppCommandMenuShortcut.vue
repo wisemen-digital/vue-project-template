@@ -14,18 +14,18 @@ const props = defineProps<{
   <AppGroup>
     <div
       class="
-        p-sm border-primary flex items-center justify-center rounded-md border
-        bg-white/10
+        p-sm border-primary/10 flex items-center justify-center rounded-md
+        border bg-white/10
       "
     >
       <VcIcon
         :icon="props.icon"
-        class="size-3"
+        class="size-4 text-white"
       />
     </div>
     <span
       v-if="props.label !== undefined"
-      class="shrink-0 text-xs"
+      class="shrink-0 text-xs text-white"
     >
       {{ props.label }}
     </span>

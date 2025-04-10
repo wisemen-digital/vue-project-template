@@ -26,7 +26,7 @@ const dialog = useVcDialog({ component: () => import('@/components/layout/header
     :transition="{
       duration: 0.5,
       type: 'spring',
-      bounce: 0.2,
+      bounce: 0.15,
     }"
   >
     <AnimatePresence>
@@ -39,19 +39,14 @@ const dialog = useVcDialog({ component: () => import('@/components/layout/header
           class="w-full"
         >
           <VcButton
-            class-config="{
-              root: 'border-primary text-placeholder w-72 justify-start !scale-100 !bg-white',
+            :class-config="{
+              root: 'border-primary/30 text-placeholder w-73 justify-start !scale-100 !bg-transparent rounded-full',
             }"
             icon-left="search"
             @click="dialog.open()"
           >
             <template #icon-left>
-              <Motion
-                layout-id="dialog-icon"
-                class="text-white/50"
-              >
-                <VcButtonIconLeft />
-              </Motion>
+              <VcButtonIconLeft />
             </template>
             <Motion
               layout-id="dialog-placeholder"
@@ -59,21 +54,19 @@ const dialog = useVcDialog({ component: () => import('@/components/layout/header
             >
               {{ i18n.t('component.global_search.placeholder') }}
             </Motion>
-            <Motion
-              layout-id="dialog-shortcut"
-              class="ml-7"
+            <div
+              class="ml-5"
             >
               <VcKeyboardShortcut
                 v-if="isKeyboardShortcutHintVisible"
                 :class-config="{
-                  root: 'border-white text-white',
                   keyboardKey: {
-                    key: 'text-white/50 border-white',
+                    key: 'text-white/50',
                   },
                 }"
                 :keyboard-keys="['meta', 'k']"
               />
-            </Motion>
+            </div>
           </VcButton>
         </VcKeyboardShortcutProvider>
       </Motion>
