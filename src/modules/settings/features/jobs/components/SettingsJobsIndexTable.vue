@@ -12,6 +12,7 @@ import {
 } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { ViewJobsIndexSortQueryKey } from '@/client'
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppTableTextCell from '@/components/app/table/AppTableTextCell.vue'
 import { useLocalizedDateFormat } from '@/composables/localized-date-format/localizedDateFormat.composable.ts'
@@ -56,6 +57,7 @@ const columns = computed<TableColumn<SettingsJobsIndex>[]>(() => [
     width: '10rem',
   },
   {
+    isSortable: true,
     cell:
         (eventLog): VNode =>
           h(AppTableTextCell, {
@@ -63,7 +65,7 @@ const columns = computed<TableColumn<SettingsJobsIndex>[]>(() => [
                 eventLog.createdAt ? useLocalizedDateFormat().toNumericDate(eventLog.createdAt) : '-',
           }),
     headerLabel: i18n.t('module.settings.jobs.table.created_at'),
-    key: 'type',
+    key: ViewJobsIndexSortQueryKey.CREATED_AT,
     width: '10rem',
   },
   {

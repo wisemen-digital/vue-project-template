@@ -469,7 +469,7 @@ export enum QueueName {
 
 export type ViewJobsIndexFilterQuery = {
     queueNames?: Array<QueueName>;
-    archived?: string;
+    archived?: boolean;
 };
 
 export type ViewJobsIndexQueryKey = {
