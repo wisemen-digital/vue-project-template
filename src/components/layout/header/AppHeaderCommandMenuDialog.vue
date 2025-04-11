@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { VcAnimateHeight } from '@wisemen/vue-core'
 import {
   VcDialogContent,
   VcDialogDescription,
@@ -72,7 +73,7 @@ function onOpenDialogAnimationComplete(): void {
       :transition="{
         duration: 0.5,
         type: 'spring',
-        bounce: 0.15,
+        bounce: 0.1,
       }"
     >
       <VcDialogContent>
@@ -105,35 +106,32 @@ function onOpenDialogAnimationComplete(): void {
                 />
               </ListboxFilter>
 
-              <div
-                v-if="
-                  (commandMenu.searchTerm.value.length > 0 || commandMenu.recentSearches.value.length > 0)
-                    && commandMenu.items.value.length > 0"
-                class="p-lg"
-              >
-                <AppHeaderCommandMenuRecentResultsLabel
-                  v-if="commandMenu.recentSearches.value.length > 0 && commandMenu.searchTerm.value.length === 0"
-                  @clear="commandMenu.clearRecentSearches()"
-                />
-                <p
-                  v-if="commandMenu.items.value.length === 0
-                    && commandMenu.searchTerm.value.length > 0
-                    && !commandMenu.isFetching.value"
-                  class="pt-lg text-sm"
+              <VcAnimateHeight>
+                <div
+                  v-if="
+                    (commandMenu.searchTerm.value.length > 0 || commandMenu.recentSearches.value.length > 0)
+                      && commandMenu.items.value.length > 0"
+                  class="p-lg"
                 >
-                  {{ i18n.t('component.global_search.no_results_found_for', { value: commandMenu.searchTerm.value }) }}
-                </p>
-                <ListboxContent class="flex flex-col">
-                  <ListboxItem
-                    v-for="(item) in commandMenu.items.value"
-                    :key="item.id"
-                    :as-child="true"
-                    :value="item.id"
-                    @click="onClick(item)"
+                  <AppHeaderCommandMenuRecentResultsLabel
+                    v-if="commandMenu.recentSearches.value.length > 0 && commandMenu.searchTerm.value.length === 0"
+                    @clear="commandMenu.clearRecentSearches()"
+                  />
+                  <p
+                    v-if="commandMenu.items.value.length === 0
+                      && commandMenu.searchTerm.value.length > 0
+                      && !commandMenu.isFetching.value"
+                    class="pt-lg text-sm"
                   >
-                    <Motion
-                      :layout-id="isOpenAnimationFinished ? item.id : undefined"
+                    {{ i18n.t('component.global_search.no_results_found_for', { value: commandMenu.searchTerm.value }) }}
+                  </p>
+                  <ListboxContent class="flex flex-col">
+                    <ListboxItem
+                      v-for="(item) in commandMenu.items.value"
+                      :key="item.id"
                       :as-child="true"
+                      :value="item.id"
+                      @click="onClick(item)"
                     >
                       <RouterLink
                         :to="item.to"
@@ -174,10 +172,10 @@ function onOpenDialogAnimationComplete(): void {
                           </AppGroup>
                         </div>
                       </RouterLink>
-                    </Motion>
-                  </ListboxItem>
-                </ListboxContent>
-              </div>
+                    </ListboxItem>
+                  </ListboxContent>
+                </div>
+              </VcAnimateHeight>
             </ListboxRoot>
             <AppSeparator
               v-if="
@@ -186,29 +184,25 @@ function onOpenDialogAnimationComplete(): void {
               class="my-sm !bg-white/50"
               direction="horizontal"
             />
-            <Motion
-              :layout-id="isOpenAnimationFinished ? 'command-menu-shortcuts' : undefined"
+            <AppGroup
+              class="p-lg"
+              justify="between"
             >
-              <AppGroup
-                class="p-lg"
-                justify="between"
-              >
-                <AppCommandMenuShortcut icon="arrowUp" />
-                <AppCommandMenuShortcut
-                  :label="i18n.t('shared.navigate')"
-                  icon="arrowDown"
-                />
-                <AppCommandMenuShortcut
-                  :label="i18n.t('shared.select')"
-                  icon="enterKey"
-                />
-                <AppCommandMenuShortcut
-                  :label="i18n.t('shared.close')"
-                  class="ml-auto"
-                  icon="escKey"
-                />
-              </AppGroup>
-            </Motion>
+              <AppCommandMenuShortcut icon="arrowUp" />
+              <AppCommandMenuShortcut
+                :label="i18n.t('shared.navigate')"
+                icon="arrowDown"
+              />
+              <AppCommandMenuShortcut
+                :label="i18n.t('shared.select')"
+                icon="enterKey"
+              />
+              <AppCommandMenuShortcut
+                :label="i18n.t('shared.close')"
+                class="ml-auto"
+                icon="escKey"
+              />
+            </AppGroup>
           </div>
         </Motion>
       </VcDialogContent>
