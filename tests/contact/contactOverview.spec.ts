@@ -77,7 +77,7 @@ test('should navigate to contact detail page when clicking on an entry in the ov
 
   await page.goto('/contacts')
 
-  await page.getByRole('cell', { name: 'Charles Doe' }).click()
+  await page.getByRole('link', { name: 'Charles Doe' }).click()
 
   await expect(page).toHaveURL(`/contacts/${CONTACT.uuid}`)
 })
