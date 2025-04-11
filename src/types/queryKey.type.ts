@@ -14,6 +14,9 @@ interface ProjectQueryKeys {
   contactIndex: {
     paginationOptions?: ComputedRef<PaginationOptions<ContactIndexPagination>>
   }
+  globalSearchIndex: {
+    search: ComputedRef<string>
+  }
   permissions: void
   preferences: void
   roles: void

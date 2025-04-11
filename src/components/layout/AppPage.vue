@@ -24,8 +24,7 @@ const hasTabsSlot = computed<boolean>(() => slots.tabs !== undefined)
 
 <template>
   <main
-
-    class="bg-primary flex min-h-dvh w-full flex-1 flex-col"
+    class="bg-primary flex w-full flex-1 flex-col"
   >
     <header
       :style="{

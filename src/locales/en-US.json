@@ -1,4 +1,11 @@
 {
+  "component.global_search.dialog.aria_description": "Global search dialog",
+  "component.global_search.dialog.aria_title": "Global search dialog",
+  "component.global_search.no_results_found_for": "No results found for \"{value}\"",
+  "component.global_search.placeholder": "What are you looking for?",
+  "component.global_search.recent_results": "Recent results",
+  "component.header.search": "Global search",
+  "component.sidebar.settings": "Settings",
   "component.keyboard_shortcut.then": "then",
   "component.password_input.hide_password": "Hide password",
   "component.password_input.show_password": "Show password",
@@ -140,6 +147,11 @@
   "module.user.role": "Role",
   "module.user.title": "Users",
   "module.user.update.success_toast.message": "User has been updated successfully.",
+  "shared": {
+    "navigate": "Navigate",
+    "select": "Select",
+    "user": "User"
+  },
   "shared.cancel": "Cancel",
   "shared.close": "Close",
   "shared.created_at": "Created at",
