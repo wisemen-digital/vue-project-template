@@ -42,23 +42,34 @@ function onClick(): void {
       </template>
 
       <template #content>
-        <AppGrid
-          :cols="1"
-          class="p-lg items-start"
+        <div
+          class="relative"
         >
-          <VcButton
-            :class-config="{
-              root: 'bg-fg-primary border-transparent',
-            }"
-            :label="i18n.t('shared.info')"
-            :icon="clipboard.copied.value ? 'check' : 'infoCircle'"
-            icon-left="copy"
-            @click="onClick"
+          <div
+            class="
+              p-lg from-fg-primary sticky top-0 flex w-full justify-center
+              bg-gradient-to-b from-70% to-transparent to-100%
+            "
           >
-            {{ i18n.t('shared.copy_to_clipboard') }}
-          </VcButton>
-          <pre class="text-primary-on-brand text-xs">{{ props.content }}</pre>
-        </AppGrid>
+            <VcButton
+              :class-config="{
+                root: 'bg-fg-primary border-transparent',
+              }"
+              :label="i18n.t('shared.info')"
+              :icon="clipboard.copied.value ? 'check' : 'infoCircle'"
+              icon-left="copy"
+              @click="onClick"
+            >
+              {{ i18n.t('shared.copy_to_clipboard') }}
+            </VcButton>
+          </div>
+          <AppGrid
+            :cols="1"
+            class="items-start"
+          >
+            <pre class="text-primary-on-brand text-xs">{{ props.content }}</pre>
+          </AppGrid>
+        </div>
       </template>
     </VcTooltip>
   </VcTableCell>
