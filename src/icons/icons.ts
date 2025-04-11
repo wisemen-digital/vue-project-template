@@ -10,6 +10,8 @@ export const icons = {
   chevronUp: import('./ChevronUpIcon.vue'),
   copy: import('./CopyIcon.vue'),
   edit: import('./EditIcon.vue'),
+  enterKey: import('./EnterKeyIcon.vue'),
+  escKey: import('./EscKeyIcon.vue'),
   file: import('./FileIcon.vue'),
   googleLogo: import('./GoogleLogoIcon.vue'),
   infoCircle: import('./InfoCircleIcon.vue'),
