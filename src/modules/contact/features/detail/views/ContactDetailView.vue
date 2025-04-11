@@ -17,6 +17,7 @@ import { ContactUtil } from '@/models/contact/contact.util'
 import type { ContactDetail } from '@/models/contact/detail/contactDetail.model'
 import { useContactDeleteMutation } from '@/modules/contact/api/mutations/contactDelete.mutation.ts'
 import { useAuthStore } from '@/stores/auth.store'
+import { AddressUtil } from '@/utils/address.util.ts'
 
 const props = defineProps<{
   contact: ContactDetail
@@ -127,6 +128,10 @@ function onDeleteContact(): void {
           <div>
             <span class="font-medium">{{ i18n.t('module.contact.phone') }}</span>
             <span class="ml-2">{{ contact.phone ?? '-' }}</span>
+          </div>
+          <div>
+            <span class="font-medium">{{ i18n.t('module.contact.address') }}</span>
+            <span class="ml-2">{{ AddressUtil.format(contact.address) }}</span>
           </div>
           <div>
             <span class="font-medium">{{ i18n.t('module.contact.status') }}</span>

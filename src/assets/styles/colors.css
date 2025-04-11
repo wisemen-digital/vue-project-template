@@ -1,5 +1,5 @@
 /**
- * This file should not be edited directly. If you want to customize the theme, 
+ * This file should not be edited directly. If you want to customize the theme,
  * edit the `default.scss` (or a custuom theme) file instead.
  */
 
@@ -183,7 +183,7 @@
   --border-brand: var(--brand-400);
   --border-brand-alt: var(--gray-700);
   --border-error: var(--error-400);
-  --border-error-subtle: var(--error-400); 
+  --border-error-subtle: var(--error-400);
 }
 
 .system {

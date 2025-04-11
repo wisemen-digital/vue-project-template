@@ -161,23 +161,23 @@
 }
 
 @theme {
-  --spacing-none: 0rem;     /* 0px */
-  --spacing-xxs: 0.125rem;  /* 2px */
-  --spacing-xs: 0.25rem;    /* 4px */
-  --spacing-sm: 0.375rem;   /* 6px */
-  --spacing-md: 0.5rem;     /* 8px */
-  --spacing-lg: 0.75rem;    /* 12px */
-  --spacing-xl: 1rem;       /* 16px */
-  --spacing-2xl: 1.25rem;   /* 20px */
-  --spacing-3xl: 1.5rem;    /* 24px */
-  --spacing-4xl: 2rem;      /* 32px */
-  --spacing-5xl: 2.5rem;    /* 40px */
-  --spacing-6xl: 3rem;      /* 48px */
-  --spacing-7xl: 4rem;      /* 64px */
-  --spacing-8xl: 5rem;      /* 80px */
-  --spacing-9xl: 6rem;      /* 96px */
-  --spacing-10xl: 8rem;     /* 128px */
-  --spacing-11xl: 10rem;    /* 160px */
+  --spacing-none: 0rem; /* 0px */
+  --spacing-xxs: 0.125rem; /* 2px */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.375rem; /* 6px */
+  --spacing-md: 0.5rem; /* 8px */
+  --spacing-lg: 0.75rem; /* 12px */
+  --spacing-xl: 1rem; /* 16px */
+  --spacing-2xl: 1.25rem; /* 20px */
+  --spacing-3xl: 1.5rem; /* 24px */
+  --spacing-4xl: 2rem; /* 32px */
+  --spacing-5xl: 2.5rem; /* 40px */
+  --spacing-6xl: 3rem; /* 48px */
+  --spacing-7xl: 4rem; /* 64px */
+  --spacing-8xl: 5rem; /* 80px */
+  --spacing-9xl: 6rem; /* 96px */
+  --spacing-10xl: 8rem; /* 128px */
+  --spacing-11xl: 10rem; /* 160px */
 
   /* Since we don't want the width & height to be overridden by `--spacing-*`, we redefine it here */
   --width-xs: var(--container-xs);
@@ -243,45 +243,45 @@
   --max-height-9xl: var(--container-9xl);
   --max-height-10xl: var(--container-10xl);
   --max-height-11xl: var(--container-11xl);
-  
+
   --radius-*: initial;
-  --radius-none: 0rem;      /* 0px */
-  --radius-xxs: 0.125rem;   /* 2px */
-  --radius-xs: 0.25rem;     /* 4px */
-  --radius-sm: 0.375rem;    /* 6px */
-  --radius-md: 0.5rem;      /* 8px */
-  --radius-lg: 0.625rem;    /* 10px */
-  --radius-xl: 0.75rem;     /* 12px */
-  --radius-2xl: 1rem;       /* 16px */
-  --radius-4xl: 1.5rem;     /* 24px */
-  --radius-full: 62.5rem;   /* 9999px */
+  --radius-none: 0rem; /* 0px */
+  --radius-xxs: 0.125rem; /* 2px */
+  --radius-xs: 0.25rem; /* 4px */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.625rem; /* 10px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-4xl: 1.5rem; /* 24px */
+  --radius-full: 62.5rem; /* 9999px */
 
   --leading-*: initial;
-  --leading-xs: 1.125rem;          /* 18px */
-  --leading-sm: 1.25rem;           /* 20px */
-  --leading-md: 1.5rem;            /* 24px */
-  --leading-lg: 1.75rem;           /* 28px */
-  --leading-xl: 2rem;              /* 32px */  
-  --leading-display-xs: 2rem;      /* 32px */
-  --leading-display-sm: 2.375rem;  /* 38px */
-  --leading-4xl: 2.75rem;          /* 44px */
+  --leading-xs: 1.125rem; /* 18px */
+  --leading-sm: 1.25rem; /* 20px */
+  --leading-md: 1.5rem; /* 24px */
+  --leading-lg: 1.75rem; /* 28px */
+  --leading-xl: 2rem; /* 32px */
+  --leading-display-xs: 2rem; /* 32px */
+  --leading-display-sm: 2.375rem; /* 38px */
+  --leading-4xl: 2.75rem; /* 44px */
 
   --text-*: initial;
-  --text-xs: 0.75rem;               /* 12px */
+  --text-xs: 0.75rem; /* 12px */
   --text-xs--line-height: var(--line-height-xs);
-  --text-sm: 0.875rem;              /* 14px */
+  --text-sm: 0.875rem; /* 14px */
   --text-sm--line-height: var(--line-height-sm);
-  --text-md: 1rem;                  /* 16px */
+  --text-md: 1rem; /* 16px */
   --text-md--line-height: var(--line-height-md);
-  --text-lg: 1.125rem;              /* 18px */
+  --text-lg: 1.125rem; /* 18px */
   --text-lg--line-height: var(--line-height-lg);
-  --text-xl: 1.25rem;               /* 20px */
+  --text-xl: 1.25rem; /* 20px */
   --text-xl--line-height: var(--line-height-xl);
-  --text-display-xs: 1.5rem;        /* 24px */
+  --text-display-xs: 1.5rem; /* 24px */
   --text-display-xs--line-height: var(--line-height-display-xs);
-  --text-display-sm: 1.875rem;      /* 30px */
+  --text-display-sm: 1.875rem; /* 30px */
   --text-display-sm--line-height: var(--line-height-display-sm);
-  --text-4xl: 2.25rem;              /* 36px */
+  --text-4xl: 2.25rem; /* 36px */
   --text-4xl--line-height: var(--line-height-4xl);
 
   --margin-*: initial;
@@ -355,7 +355,7 @@
   --font-sans: Inter Variable, sans-serif;
 
   --ease-sidebar-collapse: cubic-bezier(0.25, 0.8, 0.25, 1);
-  
+
   --width-dialog-sm: 26rem;
   --width-drawer-lg: 40rem;
   --width-drawer-md: 30rem;

@@ -32,6 +32,7 @@ export const TEST_ID = {
       TITLE: 'contacts-overview-title',
     },
     TABLE: {
+      ADDRESS: 'contacts-overview-table-address',
       CONTAINER: 'contacts-overview-table-container',
       EMAIL_LINK: 'contacts-overview-table-email-link',
       NAME_LINK: 'contacts-overview-table-name-link',

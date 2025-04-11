@@ -150,7 +150,7 @@ function onUpdateActionCheckbox(
     v-for="permission of props.permissions"
     :key="permission.key"
     :class="{
-      'last:border-b-0': props.isTableScrolledToBottom || !props.isTableScrollable,
+      'last:border-b-0': props.isTableScrolledToBottom,
     }"
     class="
       border-secondary col-span-full grid grid-cols-subgrid border-b
@@ -161,7 +161,7 @@ function onUpdateActionCheckbox(
       <Component
         :is="permission.actions.length > 1 ? AppUnstyledButton : 'div'"
         class="
-          border-secondary bg-primary sticky left-0 flex items-center
+          border-secondary bg-primary sticky left-0 z-1 flex items-center
           justify-between border-r border-solid p-3 px-6 text-left text-sm
           uppercase !ring-offset-0
         "
