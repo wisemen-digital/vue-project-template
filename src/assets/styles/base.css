@@ -13,9 +13,4 @@
   #app {
     @apply flex flex-col w-full h-full flex-1;
   }
-
-  img,
-  video {
-    @apply w-full h-full object-cover;
-  }
 }

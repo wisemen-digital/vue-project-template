@@ -6,7 +6,7 @@ import {
   expect,
   test,
 } from '@@/base.fixture'
-import { getPaginatedJson } from '@@/utils/interceptor.util.ts'
+import { MockPaginationUtil } from '@@/utils/mockPagination.util.ts'
 
 test('display users in the table', async ({
   http,
@@ -29,7 +29,7 @@ test('display users in the table', async ({
 
   await worker.use(
     http.get('*/api/v1/users', () => {
-      return HttpResponse.json(getPaginatedJson([
+      return HttpResponse.json(MockPaginationUtil.getJson([
         USER_1,
         USER_2,
       ]))

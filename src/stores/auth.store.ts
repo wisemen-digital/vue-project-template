@@ -5,7 +5,7 @@ import {
 } from 'vue'
 
 import { AuthService } from '@/api/services/auth.service'
-import type { Permission } from '@/client'
+import { Permission } from '@/client'
 import { oAuthClient } from '@/libs/oAuth.lib.ts'
 import type { UserDetail } from '@/models/user/detail/userDetail.model.ts'
 
@@ -35,6 +35,10 @@ export const useAuthStore = defineStore('auth', () => {
   function hasPermission(permission: Permission): boolean {
     if (authUser.value === null) {
       return false
+    }
+
+    if (authUser.value.permissions.includes(Permission.ALL_PERMISSIONS)) {
+      return true
     }
 
     return authUser.value.permissions.includes(permission)

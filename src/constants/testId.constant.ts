@@ -12,6 +12,33 @@ export const TEST_ID = {
       SUBMIT_BUTTON: 'login-form-submit-button',
     },
   },
+  CONTACTS: {
+    CREATE: { SUCCESS_TOAST: 'contacts-create-success-toast' },
+    DETAIL: {
+      DELETE_BUTTON: 'contacts-detail-delete-button',
+      EDIT_BUTTON: 'contacts-detail-edit-button',
+    },
+    FORM: {
+      EMAIL_INPUT: 'contacts-form-email-input',
+      FIRST_NAME_INPUT: 'contacts-form-first-name-input',
+      IS_ACTIVE_CHECKBOX: 'contacts-form-is-active-checkbox',
+      LAST_NAME_INPUT: 'contacts-form-last-name-input',
+      PHONE_INPUT: 'contacts-form-phone-input',
+      SUBMIT_BUTTON: 'contacts-form-submit-button',
+      TITLE: 'contacts-form-title',
+    },
+    OVERVIEW: {
+      CREATE_BUTTON: 'contacts-overview-create-button',
+      TITLE: 'contacts-overview-title',
+    },
+    TABLE: {
+      CONTAINER: 'contacts-overview-table-container',
+      EMAIL_LINK: 'contacts-overview-table-email-link',
+      NAME_LINK: 'contacts-overview-table-name-link',
+      PHONE_LINK: 'contacts-overview-table-phone-link',
+    },
+    UPDATE: { SUCCESS_TOAST: 'contacts-update-success-toast' },
+  },
   SHARED: { MALFORMED_RESPONSE_TOAST: 'shared-malformed-response-toast' },
   USERS: {
     CREATE: { SUCCESS_TOAST: 'users-create-success-toast' },

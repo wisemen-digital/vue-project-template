@@ -3,6 +3,7 @@ import * as fs from 'node:fs'
 import * as path from 'node:path'
 import process from 'node:process'
 
+import AxeBuilder from '@axe-core/playwright'
 import {
   expect,
   test as base,
@@ -45,7 +46,7 @@ const test = base.extend<{
     }
   },
   http,
-  page: async ({ page }, use) => {
+  page: async ({ page }, use, testInfo) => {
     const errors: string[] = []
     const warnings: string[] = []
 
@@ -63,26 +64,37 @@ const test = base.extend<{
 
     await use(page)
 
-    // TODO enable accessibility scan
-    // const accessibilityScanResults = await new AxeBuilder({ page })
-    //   .withTags([
-    //     'wcag2a',
-    //     'wcag2aa',
-    //     'wcag21a',
-    //     'wcag21aa',
-    //   ])
-    //   .analyze()
+    await page.waitForTimeout(500)
+
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .withTags([
+        'wcag2a',
+        'wcag2aa',
+        'wcag21a',
+        'wcag21aa',
+      ])
+      .analyze()
+
+    const wcag21aaViolations = accessibilityScanResults.violations.filter((v) =>
+      v.tags.includes('wcag21aa'))
+    const otherViolations = accessibilityScanResults.violations.filter((v) =>
+      !v.tags.includes('wcag21aa'))
 
     expect(errors).toStrictEqual([])
     expect(warnings).toStrictEqual([])
 
     await expect(page.getByTestId(TEST_ID.SHARED.MALFORMED_RESPONSE_TOAST)).toBeHidden()
-    // expect(accessibilityScanResults.violations).toEqual([])
-    //
-    // await testInfo.attach('accessibility-scan-results', {
-    //   body: JSON.stringify(accessibilityScanResults, null, 2),
-    //   contentType: 'application/json',
-    // })
+
+    expect(wcag21aaViolations).toEqual([])
+
+    if (otherViolations.length > 0) {
+      console.warn('[AXE WARNING] Accessibility issues detected that do not meet these standards: WCAG 2.0 Level A / WCAG 2.0 Level AA / WCAG 2.1 Level A. Please review and address the following issues. You can find more details if you download the Accessibility report in the "Attachements" tab.', otherViolations)
+    }
+
+    await testInfo.attach('accessibility-scan-results', {
+      body: JSON.stringify(accessibilityScanResults, null, 2),
+      contentType: 'application/json',
+    })
   },
   worker: createWorkerFixture(handlers, { waitForPageLoad: true }),
 })

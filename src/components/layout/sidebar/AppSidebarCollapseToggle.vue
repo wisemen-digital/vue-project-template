@@ -42,7 +42,10 @@ const toggleBtnLabel = computed<string>(() => {
         side="right"
       >
         <template #trigger>
-          <Toggle v-model="isCollapsed">
+          <Toggle
+            v-model="isCollapsed"
+            :as-child="true"
+          >
             <AppUnstyledButton
               :aria-label="toggleBtnLabel"
               class="

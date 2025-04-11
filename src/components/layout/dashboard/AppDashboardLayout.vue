@@ -32,6 +32,11 @@ const mainItems = computed<NavigationGroup[]>(() => [
         label: i18n.t('user.label.plural'),
         to: { name: 'user-overview' },
       },
+      {
+        icon: 'plus',
+        label: i18n.t('module.contact.title'),
+        to: { name: 'contact-overview' },
+      },
     ],
     label: 'General',
   },

@@ -11,7 +11,7 @@ export class SettingsEventLogIndexTransformer {
       createdAt: CalendarDateTimeTransformer.fromDto(dto.createdAt),
       content: dto.content,
       message: '',
-      topic: dto.topic,
+      topic: '',
       type: dto.type,
     }
   }

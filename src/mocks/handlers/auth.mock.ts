@@ -4,6 +4,7 @@ import {
   HttpResponse,
 } from 'msw'
 
+import { Permission } from '@/client'
 import { UserDetailDtoBuilder } from '@/models/user/detail/userDetailDto.builder'
 import { SettingsPreferenceDtoBuilder } from '@/modules/settings/models/preference/settingsPreferenceDto.builder.ts'
 
@@ -15,7 +16,11 @@ function encodeJwt(token: Token): string {
   return sign(token, 'secret')
 }
 
-const USER = new UserDetailDtoBuilder().build()
+const USER = new UserDetailDtoBuilder()
+  .withPermissions([
+    Permission.ALL_PERMISSIONS,
+  ])
+  .build()
 
 export const authHandlers = [
   http.post('*/oauth/v2/token', () => {
