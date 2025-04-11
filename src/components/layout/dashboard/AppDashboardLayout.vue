@@ -28,12 +28,12 @@ const mainItems = computed<NavigationGroup[]>(() => [
   {
     items: [
       {
-        icon: 'barChartSquare',
+        icon: 'users',
         label: i18n.t('user.label.plural'),
         to: { name: 'user-overview' },
       },
       {
-        icon: 'plus',
+        icon: 'userSquare',
         label: i18n.t('module.contact.title'),
         to: { name: 'contact-overview' },
       },

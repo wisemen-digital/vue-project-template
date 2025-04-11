@@ -8,6 +8,7 @@ export const icons = {
   brush: import('./BrushIcon.vue'),
   chevronDown: import('./ChevronDownIcon.vue'),
   chevronUp: import('./ChevronUpIcon.vue'),
+  copy: import('./CopyIcon.vue'),
   edit: import('./EditIcon.vue'),
   enterKey: import('./EnterKeyIcon.vue'),
   escKey: import('./EscKeyIcon.vue'),
@@ -20,6 +21,8 @@ export const icons = {
   stars: import('./StarsIcon.vue'),
   threeDots: import('./ThreeDotsIcon.vue'),
   trashIcon: import('./TrashIcon.vue'),
+  users: import('./UsersIcon.vue'),
+  userSquare: import('./UserSquareIcon.vue'),
 } satisfies Record<string, Component>
 
 type CustomIcons = {

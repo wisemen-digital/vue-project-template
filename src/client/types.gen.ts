@@ -15,6 +15,7 @@ export enum Permission {
     FILE_CREATE = 'file.create',
     FILE_DELETE = 'file.delete',
     JOBS_READ_INDEX = 'jobs.read.index',
+    JOBS_READ_DETAIL = 'jobs.read.detail',
     ROLE_READ = 'role.read',
     ROLE_CREATE = 'role.create',
     ROLE_UPDATE = 'role.update',
@@ -281,7 +282,7 @@ export enum UiTheme {
 
 export enum Locale {
     EN_US = 'en-US',
-    NL_BE = 'nl-BE',
+    NL_BE = 'nl-BE'
 }
 
 export enum FontSize {
@@ -327,6 +328,16 @@ export type SendPushNotificationCommand = {
     userUuids: Array<string>;
 };
 
+export enum SubjectType {
+    USER = 'user'
+}
+
+export type ViewDomainEventLogIndexFilterQuery = {
+    subjectType?: SubjectType;
+    subjectId?: string;
+    userUuid?: string;
+};
+
 export type ViewDomainEventLogIndexQueryKey = {
     createdAt: string;
     uuid: string;
@@ -348,6 +359,8 @@ export type UserCreatedDomainEventLog = {
     source: string;
     userUuid: string | null;
     message: string;
+    subjectType: SubjectType | null;
+    subjectId: string | null;
     type: 'user.created';
     content: UserCreatedEventContent;
 };
@@ -364,6 +377,8 @@ export type UserRoleAssignedDomainEventLog = {
     source: string;
     userUuid: string | null;
     message: string;
+    subjectType: SubjectType | null;
+    subjectId: string | null;
     type: 'user.role-assigned';
     content: RoleAssignedToUserEventContent;
 };
@@ -384,6 +399,8 @@ export type RolesPermissionsUpdatedDomainEventLog = {
     source: string;
     userUuid: string | null;
     message: string;
+    subjectType: SubjectType | null;
+    subjectId: string | null;
     type: 'roles.permissions.updated';
     content: RolePermissionsUpdatedEventContent;
 };
@@ -395,6 +412,8 @@ export type DomainEventLogResponse = {
     source: string;
     userUuid: string | null;
     message: string;
+    subjectType: SubjectType | null;
+    subjectId: string | null;
 };
 
 export type ViewDomainEventLogIndexResponseMeta = {
@@ -450,7 +469,7 @@ export enum QueueName {
 
 export type ViewJobsIndexFilterQuery = {
     queueNames?: Array<QueueName>;
-    archived?: string;
+    archived?: boolean;
 };
 
 export type ViewJobsIndexQueryKey = {
@@ -475,7 +494,7 @@ export enum JobStatus {
 export type ViewJobsIndexItemResponse = {
     queueName: QueueName;
     id: string;
-    jobName: string;
+    name: string;
     status: JobStatus;
     createdAt: string;
     completedAt: string | null;
@@ -488,6 +507,36 @@ export type ViewJobsIndexResponseMeta = {
 export type ViewJobsIndexResponse = {
     items: Array<ViewJobsIndexItemResponse>;
     meta: ViewJobsIndexResponseMeta;
+};
+
+export type ViewJobDetailResponse = {
+    id: string;
+    queueName: QueueName;
+    priority: number;
+    name: string;
+    data: {
+        [key: string]: unknown;
+    };
+    status: JobStatus;
+    retryLimit: number;
+    retryCount: number;
+    retryDelay: number;
+    retryBackoff: boolean;
+    startAfter: string;
+    startedAt: string | null;
+    singletonKey: string | null;
+    singletonOn: string | null;
+    expireIn: {
+        [key: string]: unknown;
+    };
+    createdAt: string;
+    completedAt: string | null;
+    keepUntil: string;
+    output: {
+        [key: string]: unknown;
+    } | null;
+    deadLetter: string | null;
+    policy: string | null;
 };
 
 export type InternalServerApiError = {
@@ -1171,6 +1220,7 @@ export type ViewDomainEventLogIndexV1Data = {
     body?: never;
     path?: never;
     query?: {
+        filter?: ViewDomainEventLogIndexFilterQuery;
         pagination?: ViewDomainEventLogIndexPaginationQuery;
     };
     url: '/api/v1/event-logs';
@@ -1241,6 +1291,32 @@ export type ViewJobsIndexV1Responses = {
 };
 
 export type ViewJobsIndexV1Response = ViewJobsIndexV1Responses[keyof ViewJobsIndexV1Responses];
+
+export type ViewJobDetailV1Data = {
+    body?: never;
+    path: {
+        jobId: string;
+    };
+    query: {
+        isArchived: boolean;
+    };
+    url: '/api/v1/jobs/{jobId}';
+};
+
+export type ViewJobDetailV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewJobDetailV1Error = ViewJobDetailV1Errors[keyof ViewJobDetailV1Errors];
+
+export type ViewJobDetailV1Responses = {
+    200: ViewJobDetailResponse;
+};
+
+export type ViewJobDetailV1Response = ViewJobDetailV1Responses[keyof ViewJobDetailV1Responses];
 
 export type ClientOptions = {
     baseUrl: 'https://example.development.appwi.se' | 'http://localhost:3000' | 'https://example.test.appwi.se' | 'https://example.qa.appwi.se' | 'https://example.staging.appwi.se' | 'https://example.production.appwi.se' | (string & {});

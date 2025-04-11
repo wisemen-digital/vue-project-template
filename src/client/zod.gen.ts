@@ -17,6 +17,7 @@ export const zPermission = z.enum([
     'file.create',
     'file.delete',
     'jobs.read.index',
+    'jobs.read.detail',
     'role.read',
     'role.create',
     'role.update',
@@ -431,6 +432,16 @@ export const zSendPushNotificationCommand = z.object({
     userUuids: z.array(z.string().uuid())
 });
 
+export const zSubjectType = z.enum([
+    'user'
+]);
+
+export const zViewDomainEventLogIndexFilterQuery = z.object({
+    subjectType: zSubjectType.optional(),
+    subjectId: z.string().uuid().optional(),
+    userUuid: z.string().uuid().optional()
+});
+
 export const zViewDomainEventLogIndexQueryKey = z.object({
     createdAt: z.string(),
     uuid: z.string().uuid()
@@ -458,6 +469,14 @@ export const zUserCreatedDomainEventLog = z.object({
         z.null()
     ]),
     message: z.string(),
+    subjectType: z.union([
+        zSubjectType,
+        z.null()
+    ]),
+    subjectId: z.union([
+        z.string().uuid(),
+        z.null()
+    ]),
     type: z.enum([
         'user.created'
     ]),
@@ -479,6 +498,14 @@ export const zUserRoleAssignedDomainEventLog = z.object({
         z.null()
     ]),
     message: z.string(),
+    subjectType: z.union([
+        zSubjectType,
+        z.null()
+    ]),
+    subjectId: z.union([
+        z.string().uuid(),
+        z.null()
+    ]),
     type: z.enum([
         'user.role-assigned'
     ]),
@@ -504,6 +531,14 @@ export const zRolesPermissionsUpdatedDomainEventLog = z.object({
         z.null()
     ]),
     message: z.string(),
+    subjectType: z.union([
+        zSubjectType,
+        z.null()
+    ]),
+    subjectId: z.union([
+        z.string().uuid(),
+        z.null()
+    ]),
     type: z.enum([
         'roles.permissions.updated'
     ]),
@@ -519,7 +554,15 @@ export const zDomainEventLogResponse = z.object({
         z.string().uuid(),
         z.null()
     ]),
-    message: z.string()
+    message: z.string(),
+    subjectType: z.union([
+        zSubjectType,
+        z.null()
+    ]),
+    subjectId: z.union([
+        z.string().uuid(),
+        z.null()
+    ])
 });
 
 export const zViewDomainEventLogIndexResponseMeta = z.object({
@@ -605,8 +648,8 @@ export const zJobStatus = z.enum([
 
 export const zViewJobsIndexItemResponse = z.object({
     queueName: zQueueName,
-    id: z.string(),
-    jobName: z.string(),
+    id: z.string().uuid(),
+    name: z.string(),
     status: zJobStatus,
     createdAt: z.string().datetime(),
     completedAt: z.union([
@@ -625,6 +668,51 @@ export const zViewJobsIndexResponseMeta = z.object({
 export const zViewJobsIndexResponse = z.object({
     items: z.array(zViewJobsIndexItemResponse),
     meta: zViewJobsIndexResponseMeta
+});
+
+export const zViewJobDetailResponse = z.object({
+    id: z.string().uuid(),
+    queueName: zQueueName,
+    priority: z.number(),
+    name: z.string(),
+    data: z.object({}),
+    status: zJobStatus,
+    retryLimit: z.number(),
+    retryCount: z.number(),
+    retryDelay: z.number(),
+    retryBackoff: z.boolean(),
+    startAfter: z.string().datetime(),
+    startedAt: z.union([
+        z.string().datetime(),
+        z.null()
+    ]),
+    singletonKey: z.union([
+        z.string(),
+        z.null()
+    ]),
+    singletonOn: z.union([
+        z.string().datetime(),
+        z.null()
+    ]),
+    expireIn: z.object({}),
+    createdAt: z.string().datetime(),
+    completedAt: z.union([
+        z.string().datetime(),
+        z.null()
+    ]),
+    keepUntil: z.string().datetime(),
+    output: z.union([
+        z.object({}),
+        z.null()
+    ]),
+    deadLetter: z.union([
+        z.string(),
+        z.null()
+    ]),
+    policy: z.union([
+        z.string(),
+        z.null()
+    ])
 });
 
 export const zInternalServerApiError = z.object({
@@ -670,3 +758,5 @@ export const zViewDomainEventLogIndexV1Response = zViewDomainEventLogIndexRespon
 export const zSearchCollectionsV1Response = zSearchCollectionsResponse;
 
 export const zViewJobsIndexV1Response = zViewJobsIndexResponse;
+
+export const zViewJobDetailV1Response = zViewJobDetailResponse;
