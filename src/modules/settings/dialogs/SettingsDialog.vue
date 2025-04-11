@@ -105,8 +105,10 @@ function isActive(key: SettingsMenuItemKey): boolean {
   return activeMenuItem.value === key
 }
 
-const activeComponent = computed<{ key: string
-  component: Promise<Component> } | null>(() => {
+const activeComponent = computed<{
+  key: string
+  component: Promise<Component>
+} | null>(() => {
   const item = menuItems.value
     .flatMap((group) => group.items)
     .find((item) => isActive(item.key))

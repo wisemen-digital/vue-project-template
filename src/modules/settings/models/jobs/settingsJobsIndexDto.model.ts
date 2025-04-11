@@ -7,7 +7,7 @@ export interface SettingsJobsIndex {
   id: string
   completedAt: Date | null
   createdAt: Date | null
-  jobName: string
+  name: string
   queueName: QueueName
   status: JobStatus
 }

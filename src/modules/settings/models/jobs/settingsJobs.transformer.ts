@@ -10,7 +10,7 @@ export class SettingsJobsIndexTransformer {
       id: dto.id,
       completedAt: CalendarDateTimeTransformer.fromNullableDto(dto.completedAt),
       createdAt: CalendarDateTimeTransformer.fromDto(dto.createdAt),
-      jobName: dto.jobName,
+      name: dto.name,
       queueName: dto.queueName,
       status: dto.status,
     }
