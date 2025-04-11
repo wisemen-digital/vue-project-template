@@ -187,7 +187,7 @@ function onOpenDialogAnimationComplete(): void {
               direction="horizontal"
             />
             <Motion
-              layout-id="command-menu-shortcuts"
+              :layout-id="isOpenAnimationFinished ? 'command-menu-shortcuts' : undefined"
             >
               <AppGroup
                 class="p-lg"
