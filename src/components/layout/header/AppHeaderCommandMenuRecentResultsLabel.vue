@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Motion } from 'motion-v'
 import { useI18n } from 'vue-i18n'
 
 import AppUnstyledButton from '@/components/app/button/AppUnstyledButton.vue'
@@ -16,21 +17,25 @@ function onClearAll(): void {
 </script>
 
 <template>
-  <AppGroup
-    align="center"
-    class="mb-md text-white"
-    justify="between"
+  <Motion
+    layout
   >
-    <p
-      class="text-xs"
+    <AppGroup
+      align="center"
+      class="mb-md text-white"
+      justify="between"
     >
-      {{ i18n.t('component.global_search.recent_results') }}
-    </p>
-    <AppUnstyledButton
-      class="text-xs"
-      @click="onClearAll"
-    >
-      {{ i18n.t('component.search_input.clear') }}
-    </AppUnstyledButton>
-  </AppGroup>
+      <p
+        class="text-xs"
+      >
+        {{ i18n.t('component.global_search.recent_results') }}
+      </p>
+      <AppUnstyledButton
+        class="text-xs"
+        @click="onClearAll"
+      >
+        {{ i18n.t('component.search_input.clear') }}
+      </AppUnstyledButton>
+    </AppGroup>
+  </Motion>
 </template>

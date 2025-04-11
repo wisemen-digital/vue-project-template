@@ -8,14 +8,14 @@ import type { UserUuid } from '@/models/user/userUuid.model'
 import type { SettingsEventLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
 
 interface ProjectQueryKeys {
-  globalSearchIndex: {
-    search: ComputedRef<string>
-  }
   contactDetail: {
     contactUuid: ComputedRef<ContactUuid>
   }
   contactIndex: {
     paginationOptions?: ComputedRef<PaginationOptions<ContactIndexPagination>>
+  }
+  globalSearchIndex: {
+    search: ComputedRef<string>
   }
   permissions: void
   preferences: void

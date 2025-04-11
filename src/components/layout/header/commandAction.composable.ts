@@ -1,5 +1,5 @@
 import { useRouteQuery } from '@vueuse/router'
-import type { Icon } from '@wisemen/vue-core'
+import type { Icon } from '@wisemen/vue-core-components'
 import type { ComputedRef } from 'vue'
 import {
   computed,

@@ -6,6 +6,7 @@ import {
   VcDialogOverlayTransition,
   VcDialogRoot,
   VcDialogTitle,
+  VcIcon,
 } from '@wisemen/vue-core-components'
 import {
   Motion,
@@ -17,9 +18,15 @@ import {
   ListboxItem,
   ListboxRoot,
 } from 'reka-ui'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { RouterLink } from 'vue-router'
 
 import AppSeparator from '@/components/app/AppSeparator.vue'
+import AppGroup from '@/components/app/group/AppGroup.vue'
+import AppCommandMenuShortcut from '@/components/layout/header/AppCommandMenuShortcut.vue'
+import AppHeaderCommandMenuRecentResultsLabel from '@/components/layout/header/AppHeaderCommandMenuRecentResultsLabel.vue'
+import AppHeaderCommandMenuSearchField from '@/components/layout/header/AppHeaderCommandMenuSearchField.vue'
 import type { CommandMenuItem } from '@/components/layout/header/commandMenu.composable.ts'
 import { useCommandMenu } from '@/components/layout/header/commandMenu.composable.ts'
 
@@ -41,6 +48,12 @@ function onClick(item: CommandMenuItem): void {
 
 function onClose(): void {
   emit('close')
+}
+
+const isOpenAnimationFinished = ref<boolean>(false)
+
+function onOpenDialogAnimationComplete(): void {
+  isOpenAnimationFinished.value = true
 }
 </script>
 
@@ -69,6 +82,7 @@ function onClose(): void {
           }"
           layout-id="dialog"
           class="w-150"
+          @animation-complete="onOpenDialogAnimationComplete"
         >
           <VcDialogTitle
             class="sr-only"
@@ -84,48 +98,117 @@ function onClose(): void {
           <div class="relative">
             <ListboxRoot @highlight="(payload) => onHighlight(payload?.value?.toString())">
               <ListboxFilter as-child>
-                <div class="bg-error-500">
-                  SEARCH
-                </div>
+                <AppHeaderCommandMenuSearchField
+                  v-model="commandMenu.searchTerm.value"
+                  :is-open-animation-finished="isOpenAnimationFinished"
+                  :is-loading="commandMenu.isFetching.value"
+                />
               </ListboxFilter>
 
               <div
+                v-if="
+                  (commandMenu.searchTerm.value.length > 0 || commandMenu.recentSearches.value.length > 0)
+                    && commandMenu.items.value.length > 0"
                 class="p-lg"
               >
-                <Motion
-                  class="bg-success-500"
-                  layout
+                <AppHeaderCommandMenuRecentResultsLabel
+                  v-if="commandMenu.recentSearches.value.length > 0 && commandMenu.searchTerm.value.length === 0"
+                  @clear="commandMenu.clearRecentSearches()"
+                />
+                <p
+                  v-if="commandMenu.items.value.length === 0
+                    && commandMenu.searchTerm.value.length > 0
+                    && !commandMenu.isFetching.value"
+                  class="pt-lg text-sm"
                 >
-                  RECENT
-                </Motion>
+                  {{ i18n.t('component.global_search.no_results_found_for', { value: commandMenu.searchTerm.value }) }}
+                </p>
                 <ListboxContent class="flex flex-col">
-                  <Motion>
-                    <ListboxItem
-                      v-for="(item) in 2"
-                      :key="item"
-                      :value="item"
+                  <ListboxItem
+                    v-for="(item) in commandMenu.items.value"
+                    :key="item.id"
+                    :as-child="true"
+                    :value="item.id"
+                    @click="onClick(item)"
+                  >
+                    <Motion
+                      :layout-id="isOpenAnimationFinished ? item.id : undefined"
                       :as-child="true"
                     >
-                      <Motion
-                        :as-child="true"
+                      <RouterLink
+                        :to="item.to"
+                        :class="{
+                          'bg-brand-100/10 data-[highlighted]:border-primary/20': commandMenu.isHighlighted(item.id),
+                        }"
+                        class="
+                          gap-md p-md flex items-center rounded-lg border
+                          border-transparent
+                        "
                       >
-                        <div class="bg-warning-500">
-                          ITEM
+                        <div
+                          :class="{
+                            'bg-brand-600': commandMenu.isHighlighted(item.id),
+                            'bg-white/10': !commandMenu.isHighlighted(item.id),
+                          }"
+                          class="p-md w-min rounded-lg"
+                        >
+                          <VcIcon
+                            :icon="item.icon"
+                            class="size-5 text-white"
+                          />
                         </div>
-                      </Motion>
-                    </ListboxItem>
-                  </Motion>
+                        <div>
+                          <span class="text-sm font-medium text-white"> {{ item.label }}</span>
+                          <AppGroup>
+                            <template
+                              v-for="(breadcrumb, index) in item.breadcrumbs"
+                              :key="index"
+                            >
+                              <span class="text-xs text-white">{{ breadcrumb }}</span>
+                              <VcIcon
+                                v-if="index !== item.breadcrumbs.length - 1"
+                                icon="chevronRight"
+                                class="text-brand-500 size-4"
+                              />
+                            </template>
+                          </AppGroup>
+                        </div>
+                      </RouterLink>
+                    </Motion>
+                  </ListboxItem>
                 </ListboxContent>
               </div>
             </ListboxRoot>
             <AppSeparator
+              v-if="
+                (commandMenu.searchTerm.value.length > 0 || commandMenu.recentSearches.value.length > 0)
+                  && commandMenu.items.value.length > 0"
               class="my-sm !bg-white/50"
               direction="horizontal"
             />
-
-            <div class="bg-error-500">
-              SHORTCUTS
-            </div>
+            <Motion
+              layout-id="command-menu-shortcuts"
+            >
+              <AppGroup
+                class="p-lg"
+                justify="between"
+              >
+                <AppCommandMenuShortcut icon="arrowUp" />
+                <AppCommandMenuShortcut
+                  :label="i18n.t('shared.navigate')"
+                  icon="arrowDown"
+                />
+                <AppCommandMenuShortcut
+                  :label="i18n.t('shared.select')"
+                  icon="enterKey"
+                />
+                <AppCommandMenuShortcut
+                  :label="i18n.t('shared.close')"
+                  class="ml-auto"
+                  icon="escKey"
+                />
+              </AppGroup>
+            </Motion>
           </div>
         </Motion>
       </VcDialogContent>

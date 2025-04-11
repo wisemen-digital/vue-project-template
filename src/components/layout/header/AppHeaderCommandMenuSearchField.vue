@@ -8,6 +8,7 @@ import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
   isLoading: boolean
+  isOpenAnimationFinished: boolean
 }>()
 
 const i18n = useI18n()
@@ -17,7 +18,7 @@ const modelValue = defineModel<string>({ required: true })
 
 <template>
   <Motion
-    layout-id="dialog-filter-search"
+    layout
   >
     <VcTextField
       v-model="modelValue"
