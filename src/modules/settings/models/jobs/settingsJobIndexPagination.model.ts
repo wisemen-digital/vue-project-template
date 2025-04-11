@@ -5,7 +5,7 @@ import type {
   ViewJobsIndexSortQueryKey,
 } from '@/client'
 
-export interface SettingsJobsIndexPagination extends BasePagination {
+export interface SettingsJobIndexPagination extends BasePagination {
   filter: {
     archived?: boolean
     queueNames?: Array<QueueName>

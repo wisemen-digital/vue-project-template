@@ -16,22 +16,22 @@ import { ViewJobsIndexSortQueryKey } from '@/client'
 import AppErrorState from '@/components/app/error-state/AppErrorState.vue'
 import AppTableTextCell from '@/components/app/table/AppTableTextCell.vue'
 import { useLocalizedDateFormat } from '@/composables/localized-date-format/localizedDateFormat.composable.ts'
-import SettingsJobsIndexTableContentCell from '@/modules/settings/features/jobs/components/SettingsJobsIndexTableContentCell.vue'
-import type { SettingsJobsIndex } from '@/modules/settings/models/jobs/settingsJobsIndexDto.model.ts'
-import type { SettingsJobsIndexPagination } from '@/modules/settings/models/jobs/settingsJobsIndexPagination.model.ts'
+import SettingsJobsIndexTableContentCell from '@/modules/settings/features/jobs/components/SettingsJobIndexTableContentCell.vue'
+import type { SettingsJobIndex } from '@/modules/settings/models/jobs/settingsJobIndexDto.model.ts'
+import type { SettingsJobIndexPagination } from '@/modules/settings/models/jobs/settingsJobIndexPagination.model.ts'
 
 const props = defineProps<{
   isFetching: boolean
   isLoading: boolean
-  data: PaginatedData<SettingsJobsIndex> | null
+  data: PaginatedData<SettingsJobIndex> | null
   error: unknown | null
-  pagination: Pagination<SettingsJobsIndexPagination>
+  pagination: Pagination<SettingsJobIndexPagination>
   onNext: () => Promise<void>
 }>()
 
 const i18n = useI18n()
 
-const columns = computed<TableColumn<SettingsJobsIndex>[]>(() => [
+const columns = computed<TableColumn<SettingsJobIndex>[]>(() => [
   {
     cell: (eventLog): VNode => h(SettingsJobsIndexTableContentCell, { value: eventLog.name }),
     headerLabel: i18n.t('shared.info'),

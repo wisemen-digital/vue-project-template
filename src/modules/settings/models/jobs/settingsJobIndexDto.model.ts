@@ -3,7 +3,7 @@ import type {
   QueueName,
 } from '@/client'
 
-export interface SettingsJobsIndex {
+export interface SettingsJobIndex {
   id: string
   completedAt: Date | null
   createdAt: Date | null

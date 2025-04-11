@@ -5,7 +5,7 @@ import type {
   ViewJobsIndexSortQueryKey,
 } from '@/client'
 
-export interface SettingsJobsIndexPaginationDto extends BasePagination {
+export interface SettingsJobIndexPaginationDto extends BasePagination {
   filter: ViewJobsIndexFilterQuery
   sort: ViewJobsIndexSortQueryKey
 }

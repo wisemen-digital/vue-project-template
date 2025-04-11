@@ -71,7 +71,7 @@ const menuItems = computed<MenuItemGroup<SettingsMenuItemKey>[]>(() => {
           title: i18n.t('module.settings.jobs.title'),
           icon: 'file',
           key: 'jobs',
-          component: import('@/modules/settings/features/jobs/views/SettingsJobsView.vue'),
+          component: import('@/modules/settings/features/jobs/views/SettingsJobView.vue'),
         },
       ],
     },

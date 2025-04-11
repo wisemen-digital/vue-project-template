@@ -11,8 +11,8 @@ import { QueueName } from '@/client'
 import { useSettingsJobsIndexQuery } from '@/modules/settings/api/queries/settingsJobsIndex.query.ts'
 import SettingsDialogContainer from '@/modules/settings/components/SettingsDialogContainer.vue'
 import type { SettingsNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'
-import SettingsJobsIndexTable from '@/modules/settings/features/jobs/components/SettingsJobsIndexTable.vue'
-import type { SettingsJobsIndexPagination } from '@/modules/settings/models/jobs/settingsJobsIndexPagination.model.ts'
+import SettingsJobsIndexTable from '@/modules/settings/features/jobs/components/SettingsJobIndexTable.vue'
+import type { SettingsJobIndexPagination } from '@/modules/settings/models/jobs/settingsJobIndexPagination.model.ts'
 
 const props = defineProps<{
   navigation: SettingsNavigation
@@ -20,7 +20,7 @@ const props = defineProps<{
 
 const i18n = useI18n()
 
-const pagination = usePagination<SettingsJobsIndexPagination>({
+const pagination = usePagination<SettingsJobIndexPagination>({
   isRouteQueryEnabled: false,
   type: 'keyset',
 })

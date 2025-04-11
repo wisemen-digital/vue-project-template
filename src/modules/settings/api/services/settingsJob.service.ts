@@ -6,23 +6,23 @@ import { PaginationParamsBuilder } from '@wisemen/vue-core-components'
 
 import { viewJobsIndexV1 } from '@/client'
 import {
-  SettingsJobsIndexPaginationTransformer,
-  SettingsJobsIndexTransformer,
-} from '@/modules/settings/models/jobs/settingsJobs.transformer.ts'
-import type { SettingsJobsIndex } from '@/modules/settings/models/jobs/settingsJobsIndexDto.model.ts'
-import type { SettingsJobsIndexPagination } from '@/modules/settings/models/jobs/settingsJobsIndexPagination.model.ts'
+  SettingsJobIndexPaginationTransformer,
+  SettingsJobIndexTransformer,
+} from '@/modules/settings/models/jobs/settingsJob.transformer.ts'
+import type { SettingsJobIndex } from '@/modules/settings/models/jobs/settingsJobIndexDto.model.ts'
+import type { SettingsJobIndexPagination } from '@/modules/settings/models/jobs/settingsJobIndexPagination.model.ts'
 
 export class SettingsJobService {
   static async getAll(
-    paginationOptions: PaginationOptions<SettingsJobsIndexPagination>,
-  ): Promise<PaginatedData<SettingsJobsIndex>> {
+    paginationOptions: PaginationOptions<SettingsJobIndexPagination>,
+  ): Promise<PaginatedData<SettingsJobIndex>> {
     const query = new PaginationParamsBuilder(paginationOptions)
-      .buildKeyset(SettingsJobsIndexPaginationTransformer.toDto)
+      .buildKeyset(SettingsJobIndexPaginationTransformer.toDto)
 
     const response = await viewJobsIndexV1({ query })
 
     return {
-      data: response.data.items.map(SettingsJobsIndexTransformer.fromDto),
+      data: response.data.items.map(SettingsJobIndexTransformer.fromDto),
       meta: {
         next: response.data.meta.next,
         total: response.data.items.length,
