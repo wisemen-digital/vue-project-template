@@ -26,7 +26,7 @@ const dialog = useVcDialog({ component: () => import('@/components/layout/header
     :transition="{
       duration: 0.5,
       type: 'spring',
-      bounce: 0.15,
+      bounce: 0.1,
     }"
   >
     <AnimatePresence>
