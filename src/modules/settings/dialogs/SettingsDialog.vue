@@ -67,6 +67,12 @@ const menuItems = computed<MenuItemGroup<SettingsMenuItemKey>[]>(() => {
           key: 'eventLogs',
           component: import('@/modules/settings/features/event-logs/views/SettingsEventLogsView.vue'),
         },
+        {
+          title: i18n.t('module.settings.jobs.title'),
+          icon: 'file',
+          key: 'jobs',
+          component: import('@/modules/settings/features/jobs/views/SettingsJobsView.vue'),
+        },
       ],
     },
   ]

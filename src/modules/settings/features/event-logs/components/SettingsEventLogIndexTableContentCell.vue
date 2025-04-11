@@ -22,7 +22,13 @@ function onClick(): void {
 
 <template>
   <VcTableCell class="gap-md flex">
-    <VcTooltip :delay-duration="200">
+    <VcTooltip
+      :class-config="{
+        innerContent: 'bg-fg-primary',
+        arrow: 'bg-fg-primary',
+      }"
+      :delay-duration="200"
+    >
       <template #trigger>
         <VcIconButton
           :label="i18n.t('shared.info')"

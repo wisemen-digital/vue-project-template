@@ -1,1 +1,1 @@
-export type SettingsMenuItemKey = 'appearance' | 'eventLogs' | 'rolesPermissions'
+export type SettingsMenuItemKey = 'appearance' | 'eventLogs' | 'jobs' | 'rolesPermissions'

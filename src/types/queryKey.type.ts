@@ -6,6 +6,7 @@ import type { ContactIndexPagination } from '@/models/contact/index/contactIndex
 import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { SettingsEventLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
+import type { SettingsJobsIndexPagination } from '@/modules/settings/models/jobs/settingsJobsIndexPagination.model.ts'
 
 interface ProjectQueryKeys {
   contactDetail: {
@@ -19,6 +20,9 @@ interface ProjectQueryKeys {
   roles: void
   settingsEventLogIndex: {
     paginationOptions: ComputedRef<PaginationOptions<SettingsEventLogIndexPagination>>
+  }
+  settingsJobsIndex: {
+    paginationOptions: ComputedRef<PaginationOptions<SettingsJobsIndexPagination>>
   }
   userDetail: {
     userUuid: ComputedRef<UserUuid>
