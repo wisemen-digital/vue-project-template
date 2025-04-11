@@ -38,7 +38,7 @@ const isTableScrolledToBottom = computed<boolean>(() => {
 })
 
 const gridColsStyle = computed<string>(() => {
-  const firstColumn = 'minmax(200px, 300px)'
+  const firstColumn = 'minmax(250px, 300px)'
 
   return `${firstColumn} ${props.roles.map(() => `minmax(200px, auto)`).join(' ')}`
 })
