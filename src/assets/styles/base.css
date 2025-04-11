@@ -1,3 +1,4 @@
+@import '@wisemen/vue-core-components/style.css' layer(base);
 @import '@wisemen/vue-core/style.css' layer(base);
 @import './colors.css';
 @import './themes/default.css';
@@ -10,10 +11,5 @@
 
   #app {
     @apply flex flex-col w-full h-full flex-1;
-  }
-
-  img,
-  video {
-    @apply w-full h-full object-cover;
   }
 }

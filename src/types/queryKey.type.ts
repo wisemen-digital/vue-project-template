@@ -1,11 +1,19 @@
-import type { PaginationOptions } from '@wisemen/vue-core'
+import type { PaginationOptions } from '@wisemen/vue-core-components'
 import type { ComputedRef } from 'vue'
 
+import type { ContactUuid } from '@/models/contact/contactUuid.model'
+import type { ContactIndexPagination } from '@/models/contact/index/contactIndexPagination.model'
 import type { UserIndexPagination } from '@/models/user/index/userIndexPagination.model.ts'
 import type { UserUuid } from '@/models/user/userUuid.model'
 import type { SettingsEventLogIndexPagination } from '@/modules/settings/models/event-log/settingsEventLogIndexPagination.model.ts'
 
 interface ProjectQueryKeys {
+  contactDetail: {
+    contactUuid: ComputedRef<ContactUuid>
+  }
+  contactIndex: {
+    paginationOptions?: ComputedRef<PaginationOptions<ContactIndexPagination>>
+  }
   permissions: void
   preferences: void
   roles: void

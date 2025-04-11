@@ -2,7 +2,7 @@
 import {
   VcIcon,
   VcIconButton,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { useI18n } from 'vue-i18n'
 
 import type { SettingsNavigation } from '@/modules/settings/composables/settingsNavigation.composable.ts'

@@ -14,6 +14,7 @@ export enum Permission {
     FILE_READ = 'file.read',
     FILE_CREATE = 'file.create',
     FILE_DELETE = 'file.delete',
+    JOBS_READ_INDEX = 'jobs.read.index',
     ROLE_READ = 'role.read',
     ROLE_CREATE = 'role.create',
     ROLE_UPDATE = 'role.update',
@@ -85,6 +86,22 @@ export type ViewUsersResponse = {
      */
     items: Array<UserIndexView>;
     meta: PaginatedOffsetResponseMeta;
+};
+
+export type GetApiInfoResponse = {
+    environment: string;
+    /**
+     * Commit SHA of the current build
+     */
+    commit: string;
+    /**
+     * Version of the current build
+     */
+    version: string;
+    /**
+     * Timestamp of the current build
+     */
+    timestamp: string;
 };
 
 export type CreateRoleCommand = {
@@ -162,11 +179,42 @@ export type CreateFileResponse = {
     uploadUrl: string;
 };
 
+export type CoordinatesCommand = {
+    longitude: number;
+    latitude: number;
+};
+
+export type AddressCommand = {
+    country: string | null;
+    city: string | null;
+    postalCode: string | null;
+    streetName: string | null;
+    streetNumber: string | null;
+    unit: string | null;
+    coordinates: CoordinatesCommand;
+};
+
 export type CreateContactCommand = {
     firstName: string | null;
     lastName: string | null;
     email: string | null;
     phone: string | null;
+    address: AddressCommand | null;
+};
+
+export type CoordinatesResponse = {
+    longitude: number;
+    latitude: number;
+};
+
+export type AddressResponse = {
+    country: string | null;
+    city: string | null;
+    postalCode: string | null;
+    streetName: string | null;
+    streetNumber: string | null;
+    unit: string | null;
+    coordinates: CoordinatesResponse | null;
 };
 
 export type CreateContactResponse = {
@@ -178,6 +226,7 @@ export type CreateContactResponse = {
     lastName: string | null;
     email: string | null;
     phone: string | null;
+    address: AddressResponse | null;
 };
 
 export type UpdateContactCommand = {
@@ -186,6 +235,7 @@ export type UpdateContactCommand = {
     email: string | null;
     phone: string | null;
     isActive: boolean;
+    address: AddressCommand | null;
 };
 
 export type ViewContactDetailResponse = {
@@ -197,6 +247,7 @@ export type ViewContactDetailResponse = {
     lastName: string | null;
     email: string | null;
     phone: string | null;
+    address: AddressResponse | null;
 };
 
 export type ViewContactIndexFilterQuery = {
@@ -230,7 +281,7 @@ export enum UiTheme {
 
 export enum Locale {
     EN_US = 'en-US',
-    NL_BE= 'nl-BE'
+    NL_BE = 'nl-BE',
 }
 
 export enum FontSize {
@@ -292,7 +343,6 @@ export type UserCreatedEventContent = {
 
 export type UserCreatedDomainEventLog = {
     uuid: string;
-    topic: string;
     createdAt: string;
     version: number;
     source: string;
@@ -309,7 +359,6 @@ export type RoleAssignedToUserEventContent = {
 
 export type UserRoleAssignedDomainEventLog = {
     uuid: string;
-    topic: string;
     createdAt: string;
     version: number;
     source: string;
@@ -330,7 +379,6 @@ export type RolePermissionsUpdatedEventContent = {
 
 export type RolesPermissionsUpdatedDomainEventLog = {
     uuid: string;
-    topic: string;
     createdAt: string;
     version: number;
     source: string;
@@ -342,7 +390,6 @@ export type RolesPermissionsUpdatedDomainEventLog = {
 
 export type DomainEventLogResponse = {
     uuid: string;
-    topic: string;
     createdAt: string;
     version: number;
     source: string;
@@ -381,6 +428,66 @@ export type SearchCollectionsResponseItem = {
 
 export type SearchCollectionsResponse = {
     items: Array<SearchCollectionsResponseItem>;
+};
+
+export enum ViewJobsIndexSortQueryKey {
+    CREATED_AT = 'createdAt'
+}
+
+export enum SortDirection {
+    ASC = 'asc',
+    DESC = 'desc'
+}
+
+export type ViewJobsIndexSortQuery = {
+    key: ViewJobsIndexSortQueryKey;
+    order: SortDirection;
+};
+
+export enum QueueName {
+    SYSTEM = 'system'
+}
+
+export type ViewJobsIndexFilterQuery = {
+    queueNames?: Array<QueueName>;
+    archived?: string;
+};
+
+export type ViewJobsIndexQueryKey = {
+    createdAt?: string;
+    id: string;
+};
+
+export type ViewJobsIndexPaginationQuery = {
+    limit: number;
+    key?: ViewJobsIndexQueryKey | null;
+};
+
+export enum JobStatus {
+    CREATED = 'created',
+    ACTIVE = 'active',
+    COMPLETED = 'completed',
+    RETRY = 'retry',
+    FAILED = 'failed',
+    CANCELLED = 'cancelled'
+}
+
+export type ViewJobsIndexItemResponse = {
+    queueName: QueueName;
+    id: string;
+    jobName: string;
+    status: JobStatus;
+    createdAt: string;
+    completedAt: string | null;
+};
+
+export type ViewJobsIndexResponseMeta = {
+    next: ViewJobsIndexQueryKey | null;
+};
+
+export type ViewJobsIndexResponse = {
+    items: Array<ViewJobsIndexItemResponse>;
+    meta: ViewJobsIndexResponseMeta;
 };
 
 export type InternalServerApiError = {
@@ -610,21 +717,30 @@ export type SwaggerResponses = {
     200: unknown;
 };
 
-export type StatusData = {
+export type GetApiInfoData = {
     body?: never;
     path?: never;
     query?: never;
     url: '/api';
 };
 
-export type StatusErrors = {
+export type GetApiInfoErrors = {
     500: {
         traceId?: string | null;
         errors?: Array<InternalServerApiError>;
     };
 };
 
-export type StatusError = StatusErrors[keyof StatusErrors];
+export type GetApiInfoError = GetApiInfoErrors[keyof GetApiInfoErrors];
+
+export type GetApiInfoResponses = {
+    /**
+     * API info retrieved
+     */
+    200: GetApiInfoResponse;
+};
+
+export type GetApiInfoResponse2 = GetApiInfoResponses[keyof GetApiInfoResponses];
 
 export type ViewRoleIndexV1Data = {
     body?: never;
@@ -1099,6 +1215,32 @@ export type SearchCollectionsV1Responses = {
 };
 
 export type SearchCollectionsV1Response = SearchCollectionsV1Responses[keyof SearchCollectionsV1Responses];
+
+export type ViewJobsIndexV1Data = {
+    body?: never;
+    path?: never;
+    query?: {
+        sort?: Array<ViewJobsIndexSortQuery>;
+        filter?: ViewJobsIndexFilterQuery;
+        pagination?: ViewJobsIndexPaginationQuery;
+    };
+    url: '/api/v1/jobs';
+};
+
+export type ViewJobsIndexV1Errors = {
+    500: {
+        traceId?: string | null;
+        errors?: Array<InternalServerApiError>;
+    };
+};
+
+export type ViewJobsIndexV1Error = ViewJobsIndexV1Errors[keyof ViewJobsIndexV1Errors];
+
+export type ViewJobsIndexV1Responses = {
+    200: ViewJobsIndexResponse;
+};
+
+export type ViewJobsIndexV1Response = ViewJobsIndexV1Responses[keyof ViewJobsIndexV1Responses];
 
 export type ClientOptions = {
     baseUrl: 'https://example.development.appwi.se' | 'http://localhost:3000' | 'https://example.test.appwi.se' | 'https://example.qa.appwi.se' | 'https://example.staging.appwi.se' | 'https://example.production.appwi.se' | (string & {});

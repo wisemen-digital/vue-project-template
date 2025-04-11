@@ -22,14 +22,14 @@ const logoLg = 'Wisemen'
     >
       <span
         v-if="props.isCollapsed"
-        class="absolute left-1/2 -translate-x-1/2"
+        class="text-primary-on-brand absolute left-1/2 -translate-x-1/2"
       >
         {{ logoSm }}
       </span>
 
       <span
         v-else
-        class="absolute left-1/2 -translate-x-1/2"
+        class="text-primary-on-brand absolute left-1/2 -translate-x-1/2"
       >
         {{ logoLg }}
       </span>

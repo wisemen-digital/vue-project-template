@@ -9,7 +9,7 @@ import { SettingsPreferenceDtoBuilder } from '@/modules/settings/models/preferen
 import type { SettingsPreferenceDto } from '@/modules/settings/models/preference/settingsPreferenceDto.model.ts'
 import type { PaginatedDtoData } from '@/types/paginatedData.type.ts'
 
-function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
+export function getPaginatedJson<T>(response: T[]): PaginatedDtoData {
   return {
     items: response,
     meta: {

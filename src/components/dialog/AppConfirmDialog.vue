@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VcDialog } from '@wisemen/vue-core'
+import { VcDialog } from '@wisemen/vue-core-components'
 
 import AppDialogActionCancel from '@/components/app/dialog/AppDialogActionCancel.vue'
 import AppDialogActionPrimary from '@/components/app/dialog/AppDialogActionPrimary.vue'

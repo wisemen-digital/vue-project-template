@@ -3,8 +3,8 @@ import type {
   PaginatedData,
   Pagination,
   TableColumn,
-} from '@wisemen/vue-core'
-import { VcTable } from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
+import { VcTable } from '@wisemen/vue-core-components'
 import type { VNode } from 'vue'
 import {
   computed,
@@ -58,10 +58,6 @@ const columns = computed<TableColumn<SettingsEventLogIndex>[]>(() => [
     width: '24rem',
   },
 ])
-
-async function onNext(): Promise<void> {
-  await props.onNext()
-}
 </script>
 
 <template>
@@ -73,14 +69,16 @@ async function onNext(): Promise<void> {
     v-else
     :columns="columns"
     :data="props.data"
-    :infinite-scroll="{
-      onNext,
-      distance: 300,
+    :class-config="{
+      row: 'border-0 hover:bg-secondary',
+      headerCell: 'bg-primary',
+      root: 'border-0',
+      cell: 'group-hover/row:bg-secondary',
     }"
     :row-class="() => '!border-b-secondary'"
     :is-first-column-sticky="true"
     :is-loading="props.isLoading"
     :pagination="props.pagination"
-    variant="borderless"
+    @next="props.onNext()"
   />
 </template>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {
-  useToast,
+  useVcToast,
   VcButton,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -15,7 +15,7 @@ const authStore = useAuthStore()
 const isSigningIn = ref<boolean>(false)
 
 const i18n = useI18n()
-const toast = useToast()
+const toast = useVcToast()
 
 async function onSignInWithZitadel(): Promise<void> {
   isSigningIn.value = true
@@ -28,7 +28,10 @@ async function onSignInWithZitadel(): Promise<void> {
   catch {
     isSigningIn.value = false
 
-    toast.error({ message: i18n.t('module.auth.login.error') })
+    toast.error({
+      title: i18n.t('toast.error.general_title'),
+      description: i18n.t('module.auth.login.error'),
+    })
   }
 }
 </script>

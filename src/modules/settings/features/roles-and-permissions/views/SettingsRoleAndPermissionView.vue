@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {
-  useDialog,
-  useToast,
+  useVcDialog,
+  useVcToast,
   VcButton,
-} from '@wisemen/vue-core'
+} from '@wisemen/vue-core-components'
 import { useForm } from 'formango'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -33,12 +33,12 @@ const props = defineProps<{
 
 const i18n = useI18n()
 const apiErrorToast = useApiErrorToast()
-const toast = useToast()
+const toast = useVcToast()
 
 const settingsPermissionQuery = useSettingsPermissionQuery()
 const settingsRoleQuery = useSettingsRolesQuery()
 
-const addRoleDialog = useDialog({ component: () => import('@/modules/settings/features/roles-and-permissions/components/SettingsRoleAndPermissionRoleCreateDialog.vue') })
+const addRoleDialog = useVcDialog({ component: () => import('@/modules/settings/features/roles-and-permissions/components/SettingsRoleAndPermissionRoleCreateDialog.vue') })
 const settingsRoleDeleteMutation = useSettingsRoleDeleteMutation()
 const settingsRolesBulkUpdateMutation = useSettingsRoleBulkUpdateMutation()
 
@@ -67,7 +67,10 @@ const form = useForm({
     try {
       await settingsRolesBulkUpdateMutation.execute({ body: values })
 
-      toast.success({ message: i18n.t('module.settings.roles_and_permissions.save_changes_success') })
+      toast.success({
+        title: i18n.t('toast.success.general_title'),
+        description: i18n.t('module.settings.roles_and_permissions.save_changes_success'),
+      })
     }
     catch (error) {
       apiErrorToast.show(error)

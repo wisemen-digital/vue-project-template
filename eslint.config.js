@@ -23,7 +23,8 @@ export default [
         'snake_case',
         { splitByDots: true },
       ],
-      // Add or override rules here
+      '@intlify/vue-i18n/no-dynamic-keys': 'off',
+      '@intlify/vue-i18n/no-raw-text': 'off',
     },
   },
 ]

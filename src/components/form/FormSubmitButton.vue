@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="TFormType extends z.ZodType">
-import type { Icon } from '@wisemen/vue-core'
-import { VcButton } from '@wisemen/vue-core'
+import type { Icon } from '@wisemen/vue-core-components'
+import { VcButton } from '@wisemen/vue-core-components'
 import type { Form } from 'formango'
 import {
   computed,
